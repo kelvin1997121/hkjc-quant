@@ -72,6 +72,19 @@ def summarise(a: dict) -> str:
         picks.append(t)
     lines.append("【選擇】" + ";".join(picks) + "。")
 
+    # 3b. longshots: odds >= 10 but ranked top 5 by the model (place more often than
+    # typical longshots, but win bets on longshots have lost money historically)
+    shots = a.get("longshots") or []
+    if shots:
+        parts = []
+        for x in shots:
+            why = "、".join(x["pros"][:2]) or "綜合數據"
+            parts.append(f"{_name(x)}(獨贏 {x['win_odds']:g},模型排第 {x['rank']}):{why}")
+        lines.append("【冷門】" + ";".join(parts) +
+                     "。呢類馬歷來入位機會高過一般冷門,較適合位置或者連贏配腳,唔建議重注獨贏。")
+    elif any(x.get("win_odds") for x in runners):
+        lines.append("【冷門】今場冇賠率 10 倍以上而模型排頭五嘅馬。")
+
     # 4. market view and risks
     risks = []
     with_odds = [x for x in runners if x.get("market_prob")]

@@ -22,7 +22,8 @@ SYSTEM = """你係一位香港賽馬量化分析師。你會收到一場賽事�
 歷來各跑法嘅勝出率,講步速時要跟數據,唔好話「快步速一定後上有利」)、今日場地走勢、
 今日分段時間走勢(today_sect:跑道快慢同末段追勁作用)同跑道歷來偏差。
 如有即時賠率:win_odds(獨贏賠率)、market_prob(市場機率)、blend_prob(模型同市場綜合機率)、
-ev(綜合機率 x 賠率,大過 1 先有正期望)、value(係咪值博)。講值博時要以 ev 為準。
+ev(綜合機率 x 賠率,大過 1 先有正期望)、value(係咪值博)、longshots(冷門馬:獨贏 10 倍以上
+但模型排頭五,歷來入位率約兩成,高過一般冷門嘅一成三,但買獨贏長遠輸錢,要提醒適合位置/配腳)。講值博時要以 ev 為準。
 賠率會不斷變,所以唔好引用確實賠率數字,只講熱門程度同值博與否。
 
 用廣東話書面語寫一段精簡賽事分析(250字以內),結構:
@@ -69,7 +70,7 @@ def _compact(race):
     keep = ("rank", "no", "horse", "jockey", "draw", "weight", "rating", "last6", "win_prob",
             "fair_odds", "style", "speed_best", "perf_best", "handicap_edge", "runs_in_db",
             "pros", "cons", "win_odds", "market_prob", "blend_prob", "ev", "value")
-    r = {k: v for k, v in race.items() if k != "runners" and k != "ai"}
+    r = {k: v for k, v in race.items() if k not in ("runners", "ai", "summary")}
     r["runners"] = [{k: x.get(k) for k in keep} for x in race["runners"]]
     return r
 

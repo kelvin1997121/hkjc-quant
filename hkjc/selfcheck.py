@@ -67,7 +67,8 @@ def walk_forward(samples, cols, cfg, folds=4, test_frac=0.4, with_blend=False):
             pm = model.predict(p, s["X"])
             q = model.market_probs(s["odds"])
             r = {"ll": -math.log(max(pm[s["y"]], 1e-9)), "hit": int(np.argmax(pm)) == s["y"],
-                 "p_win": float(pm[s["y"]]), "probs": pm, "y": s["y"]}
+                 "p_win": float(pm[s["y"]]), "probs": pm, "y": s["y"],
+                 "odds": s["odds"], "order": s.get("order") or [s["y"]]}
             if q is not None:
                 r["ll_mkt"] = -math.log(q[s["y"]])
                 r["fav_hit"] = int(np.argmax(q)) == s["y"]
@@ -110,6 +111,38 @@ def calibration(rows, bins=(0, .05, .1, .15, .2, .3, .45, 1.01)):
                         "predicted": round(float(pred[m].mean()), 4),
                         "actual": round(float(won[m].mean()), 4)})
     return out
+
+
+def longshot_stats(rows):
+    """Record of the 冷門馬 rule (odds >= 10, model top 5) vs. all odds >= 10 runners,
+    at final odds on walk-forward test races."""
+    from .analyze import LONGSHOT_ODDS, LONGSHOT_RANK
+    picked, base = [], []
+    for r in rows:
+        odds = r["odds"]
+        if not (odds > 0).all():
+            continue
+        ranks = (-r["probs"]).argsort().argsort() + 1
+        top3 = set(r["order"])
+        for i, o in enumerate(odds):
+            if o < LONGSHOT_ODDS:
+                continue
+            row = (o, i == r["y"], i in top3)
+            base.append(row)
+            if ranks[i] <= LONGSHOT_RANK:
+                picked.append(row)
+
+    def summary(sel):
+        if not sel:
+            return None
+        k = len(sel)
+        return {"n": k, "win": round(sum(w for _, w, _ in sel) / k, 4),
+                "top3": round(sum(t for _, _, t in sel) / k, 4),
+                "avg_odds": round(float(np.mean([o for o, _, _ in sel])), 1),
+                "win_roi": round(sum(o for o, w, _ in sel if w) / k - 1, 4)}
+
+    return {"rule": f"獨贏 {LONGSHOT_ODDS} 倍以上而模型排頭 {LONGSHOT_RANK}",
+            "picked": summary(picked), "all_longshots": summary(base)}
 
 
 def data_health(races):
@@ -203,6 +236,13 @@ def run():
     if off:
         notes.append("部分機率區間校準有偏差:" + ";".join(
             f"{c['band']} 預測 {c['predicted']:.0%} 實際 {c['actual']:.0%}" for c in off) + "。")
+    ls = longshot_stats(base_rows)
+    if ls["picked"] and ls["all_longshots"]:
+        p, b = ls["picked"], ls["all_longshots"]
+        better = p["top3"] > b["top3"] * 1.2
+        notes.append(f"冷門馬規則({ls['rule']}):入位率 {p['top3']:.0%},一般冷門 {b['top3']:.0%}"
+                     + (",仍然有效" if better else ",已經冇明顯優勢,要重新檢討")
+                     + f";獨贏平注回報 {p['win_roi']:+.0%}。")
     if tr.get("races", 0) < 50:
         notes.append(f"實戰往績只有 {tr.get('races', 0)} 場,樣本太少,未能下結論。")
 
@@ -216,6 +256,7 @@ def run():
         "tuning": {"current": current, "tried": tried, "switched": switched,
                    "chosen": {"l2": best["l2"], "stages": best["stages"]} if switched else current},
         "live": {k: tr.get(k) for k in ("races", "wins", "places", "flat_roi")},
+        "longshots": ls,
         "notes": notes,
     }
     for c in report["health"]["checks"]:

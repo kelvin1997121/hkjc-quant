@@ -68,6 +68,11 @@ def today_label(ctx):
 
 
 VALUE_EV = 1.15  # flag a bet only when blended prob x odds clears takeout comfortably
+# 冷門馬: win odds >= 10 that the model still ranks in the race's top 5. In walk-forward
+# tests these placed 20.8% vs 13.4% for all such longshots (2,143 runners); picking
+# longshots the model thinks are "underpriced" did worse (9.9%), so that isn't used.
+LONGSHOT_ODDS = 10
+LONGSHOT_RANK = 5
 
 
 def today_sect_label(ctx):
@@ -151,6 +156,11 @@ def analyse_race(state, params, race, odds=None):
         })
     for r in out:
         r["value"] = bool(r["ev"] and r["ev"] >= VALUE_EV and bw and bw["a"] > 0)
+        r["longshot"] = bool(r["win_odds"] and r["win_odds"] >= LONGSHOT_ODDS
+                             and r["rank"] <= LONGSHOT_RANK)
+    longshots = [{k: r[k] for k in ("no", "horse", "win_odds", "place_odds", "win_prob", "rank",
+                                    "style", "pros", "cons")}
+                 for r in out if r["longshot"]]  # all of them: the backtest record covers all
     pace_lv, pace_txt, pace_favours = pace_text(state, ctx, race["venue"])
     return {
         "race_no": race["race_no"], "race_name": race.get("race_name"),
@@ -167,5 +177,6 @@ def analyse_race(state, params, race, odds=None):
                         "此跑道路程歷來後上馬有利" if ctx["course_edge"] < -0.05 else
                         "此跑道路程跑法偏差不明顯"),
         "odds_updated": (odds or {}).get("updated"),
+        "longshots": longshots,
         "runners": out,
     }

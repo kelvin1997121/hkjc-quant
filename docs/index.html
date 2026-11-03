@@ -41,6 +41,9 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
 .kpi{background:var(--chip);border-radius:8px;padding:10px}
 .kpi b{display:block;font-size:20px}
 .warn{font-size:12px;color:var(--muted);margin-top:24px}
+.tag{display:inline-block;background:var(--accent2);color:#1b1f24;border-radius:4px;padding:0 5px;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}
+.shots{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.shots button{border:1px solid var(--accent2);background:transparent;color:var(--ink);border-radius:8px;padding:4px 10px;font-size:13px;cursor:pointer}
 </style>
 </head>
 <body>
@@ -50,6 +53,7 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
 </header>
 <main>
   <div class="tabs" id="tabs"></div>
+  <section class="card" id="allshots" style="display:none"></section>
   <div id="view"></div>
   <section class="card" id="perf"></section>
   <section class="card" id="selfcheck"></section>
@@ -58,13 +62,14 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
 <script>
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-let data, cur = 0;
+let data, scData = null, cur = 0;
 
 async function load() {
   const bust = "?t=" + Date.now();
   data = await fetch("data/latest.json" + bust).then(r => r.json());
   const tr = await fetch("data/track_record.json" + bust).then(r => r.json()).catch(() => null);
   const sc = await fetch("data/selfcheck.json" + bust).then(r => r.json()).catch(() => null);
+  scData = sc;
   selfcheck(sc);
   const m = data.meeting;
   $("#sub").textContent = `${m.date} ${m.venue_zh} · ${data.races.length} 場 · 更新於 ${new Date(data.updated_at).toLocaleString("zh-HK")} · 歷史數據 ${data.history_races} 場`;
@@ -74,7 +79,7 @@ async function load() {
     load.done = true;
   }
   cur = Math.min(cur, data.races.length - 1);
-  tabs(); show(); perf(tr);
+  tabs(); show(); perf(tr); allShots();
 }
 
 function tabs() {
@@ -90,7 +95,7 @@ function show() {
   const rows = r.runners.map(x => `
     <tr class="${x.no === winner ? "won" : ""}">
       <td class="num">${x.rank}</td>
-      <td><b>${x.no}. ${esc(x.horse)}</b><br><span class="sub">${esc(x.jockey)} / ${esc(x.trainer)}</span></td>
+      <td><b>${x.no}. ${esc(x.horse)}</b>${x.longshot ? '<span class="tag">冷門</span>' : ""}<br><span class="sub">${esc(x.jockey)} / ${esc(x.trainer)}</span></td>
       <td class="num">${x.draw ?? ""}</td>
       <td class="num">${x.weight ?? ""}</td>
       <td class="num">${x.rating ?? ""}</td>
@@ -123,6 +128,9 @@ function show() {
       <div class="note">${esc(r.today_bias)}${r.today_sect ? `<br>${esc(r.today_sect)}` : ""}</div>
       <div class="note">${esc(r.course_bias)}</div>
     </div>
+    ${(r.longshots || []).length ? `<div class="note" style="border-color:var(--accent2);margin-bottom:10px"><b>冷門馬:</b>${
+      r.longshots.map(x => `${x.no}. ${esc(x.horse)}(獨贏 ${x.win_odds}${x.place_odds ? " / 位 " + x.place_odds : ""},模型排第 ${x.rank},${(x.win_prob * 100).toFixed(1)}%)${x.pros.length ? ":" + esc(x.pros.slice(0, 2).join("、")) : ""}`).join(";")
+    }<br><span class="sub">${esc(shotRecord())}</span></div>` : ""}
     <div class="tblwrap"><table>
       <thead><tr><th>排名</th><th>馬匹</th><th>檔</th><th title="已扣見習騎師減磅">實際<br>負磅</th><th>評分</th><th>近績</th><th>跑法</th><th>速度</th><th title="讓磅著數 = 比同場中位數高/低幾多分">表現評分<br>(讓磅著數±)</th><th>模型機率</th><th>公平賠率</th><th>即時賠率</th><th>綜合機率</th><th>EV</th><th>因素</th></tr></thead>
       <tbody>${rows}</tbody>
@@ -165,6 +173,26 @@ function selfcheck(sc) {
       <div><div class="sub">機率校準(預測 vs 實際勝出率)</div>
         <table><thead><tr><th>區間</th><th>馬次</th><th>預測</th><th>實際</th></tr></thead><tbody>${cal}</tbody></table></div>
     </div>`;
+}
+
+function shotRecord() {
+  const ls = scData && scData.longshots;
+  if (!ls || !ls.picked || !ls.all_longshots) return "";
+  const p = ls.picked, b = ls.all_longshots, pct = v => (v * 100).toFixed(1) + "%";
+  return `過往回測(${p.n} 匹同類馬):入位率 ${pct(p.top3)}(一般冷門 ${pct(b.top3)}),勝出率 ${pct(p.win)},` +
+    `獨贏平注回報 ${(p.win_roi * 100).toFixed(0)}%。較適合位置或者連贏配腳,唔建議重注獨贏。`;
+}
+
+function allShots() {
+  const el = $("#allshots");
+  const items = data.races.flatMap((r, i) => (r.longshots || []).map(x => ({ i, r, x })));
+  if (!items.length) { el.style.display = "none"; return; }
+  el.style.display = "";
+  el.innerHTML = `<b>今日冷門馬</b> <span class="sub">(獨贏 10 倍以上而模型排頭五)</span>
+    <div class="shots">${items.map(({ i, r, x }) =>
+      `<button data-i="${i}">第${r.race_no}場 ${x.no}. ${esc(x.horse)} · ${x.win_odds}倍${r.result ? (r.result.placings.includes(x.no) ? " ✓入位" : "") : ""}</button>`).join("")}</div>
+    <div class="sub" style="margin-top:6px">${esc(shotRecord())}</div>`;
+  el.querySelectorAll("button").forEach(b => b.onclick = () => { cur = +b.dataset.i; tabs(); show(); });
 }
 
 function edgeNote() {
