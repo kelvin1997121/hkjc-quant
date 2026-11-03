@@ -1,0 +1,79 @@
+name: ticker
+
+# Cloud-only backup for GitHub's cron, which can be late or not start at all on a
+# new repo. One long job triggers the "update" workflow every 20 minutes from
+# 08:00 to 23:59 HKT (skipping when an update started in the last 15 minutes),
+# then hands over to a fresh ticker run before the 6-hour job limit. It stops
+# relaying by itself as soon as GitHub's own schedule is seen working.
+on:
+  workflow_dispatch:
+    inputs:
+      test:
+        description: "Trigger one update straight away (to check the ticker works)"
+        type: boolean
+        default: false
+  schedule:
+    - cron: "41 0 * * *"   # 08:41 HKT: restarts the relay if it ever broke
+
+permissions:
+  actions: write   # to start the update workflow and the next ticker run
+  contents: read
+
+concurrency:
+  group: ticker    # at most one ticker running, one waiting
+  cancel-in-progress: false
+
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    outputs:
+      relay: ${{ steps.loop.outputs.relay }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - id: loop
+        name: Trigger updates every 20 minutes during race hours
+        run: |
+          cron_works() {
+            # a scheduled update in the last 2 hours means GitHub's cron is running
+            gh run list --workflow update.yml --event schedule --limit 1 \
+              --json createdAt --jq '[.[] | select((.createdAt | fromdateiso8601) > (now - 7200))] | length' \
+              | grep -qx '[1-9][0-9]*'
+          }
+          recent_update() {
+            gh run list --workflow update.yml --limit 5 --json createdAt,status \
+              --jq '[.[] | select(.status != "completed" or (.createdAt | fromdateiso8601) > (now - 900))] | length' \
+              | grep -qx '[1-9][0-9]*'
+          }
+          trigger() {
+            if recent_update; then echo "$(TZ=Asia/Hong_Kong date '+%F %H:%M') skip: update ran recently"
+            else gh workflow run update.yml && echo "$(TZ=Asia/Hong_Kong date '+%F %H:%M') triggered update"; fi
+          }
+
+          if [ "${{ inputs.test }}" = "true" ]; then trigger; fi
+          end=$(( $(date +%s) + 340 * 60 ))
+          relay=true
+          while [ "$(date +%s)" -lt "$end" ]; do
+            if cron_works; then
+              echo "GitHub's own schedule is running; ticker stops relaying."
+              relay=false
+              break
+            fi
+            hm=$(TZ=Asia/Hong_Kong date +%H%M)
+            if [ "$((10#$hm))" -ge 800 ]; then trigger; else echo "$(TZ=Asia/Hong_Kong date '+%F %H:%M') idle (night)"; fi
+            sleep 1200
+          done
+          echo "relay=$relay" >> "$GITHUB_OUTPUT"
+
+  relay:
+    needs: tick
+    if: needs.tick.outputs.relay == 'true'
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: Hand over to the next ticker run
+        run: gh workflow run ticker.yml
