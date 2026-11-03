@@ -15,7 +15,8 @@ from . import store
 MODEL = os.environ.get("CLAUDE_MODEL", "claude-opus-5-5")
 
 SYSTEM = """你係一位香港賽馬量化分析師。你會收到一場賽事嘅量化模型輸出(JSON),包括:
-每匹馬嘅模型勝出機率、公平賠率、跑法(領放/前列/中游/後上)、速度指數、檔位統計優勢、
+每匹馬嘅模型勝出機率、公平賠率、跑法(領放/前列/中游/後上)、速度指數、表現評分
+(perf_best,同馬會評分同一尺度)、讓磅著數(handicap_edge,近績表現高過今場評分幾多分)、檔位統計優勢、
 模型認為佢嘅優勢(pros)同弱點(cons),仲有預計步速、今日場地走勢同跑道歷來偏差。
 
 用廣東話書面語寫一段精簡賽事分析(250字以內),結構:
@@ -36,7 +37,8 @@ def _client():
 
 def _compact(race):
     keep = ("rank", "no", "horse", "jockey", "draw", "weight", "rating", "last6", "win_prob",
-            "fair_odds", "style", "speed_best", "runs_in_db", "pros", "cons")
+            "fair_odds", "style", "speed_best", "perf_best", "handicap_edge", "runs_in_db",
+            "pros", "cons")
     r = {k: v for k, v in race.items() if k != "runners" and k != "ai"}
     r["runners"] = [{k: x.get(k) for k in keep} for x in race["runners"]]
     return r

@@ -21,6 +21,7 @@ Weights are fitted with a conditional logit (softmax within each race).
 from __future__ import annotations
 
 import math
+import re
 from collections import defaultdict, deque
 from statistics import median
 
@@ -30,10 +31,60 @@ FEATURES = [
     "speed_best", "speed_last", "speed_missing", "form", "dist_form",
     "early", "early_x_pace", "early_x_today", "early_x_course",
     "draw_bias", "draw_x_today", "jockey", "trainer", "weight_rel",
-    "layoff", "debut",
+    "layoff", "debut", "mkt_rating", "vs_mkt", "closing", "class_drop", "bw_change",
+    "perf_best", "perf_last", "handicap_edge",
 ]
+SEC_PER_LENGTH = 0.17
+
+_CLASS = {"一級賽": -2, "二級賽": -1, "三級賽": 0, "第一班": 1, "第二班": 2,
+          "第三班": 3, "第四班": 4, "第五班": 5}
+
+
+_CLASS_TOP = {"一級賽": 130, "二級賽": 118, "三級賽": 110, "第一班": 110, "第二班": 100,
+              "第三班": 80, "第四班": 60, "第五班": 40}
+
+
+def band_top(race):
+    """Upper rating of the race band, e.g. '60-40' -> 60."""
+    m = re.match(r"(\d+)", race.get("rating_band") or "")
+    if m:
+        return int(m.group(1))
+    for k, v in _CLASS_TOP.items():
+        if k in (race.get("class") or ""):
+            return v
+    return None
+
+
+def est_ratings(race, runners):
+    """Rating per runner: card rating if published, else band top minus weight below top weight."""
+    top = band_top(race)
+    wts = [x.get("weight") or 0 for x in runners]
+    maxw = max(wts) if wts else 0
+    out = []
+    for x, w in zip(runners, wts):
+        if x.get("rating"):
+            out.append(float(x["rating"]))
+        elif top is not None and w:
+            out.append(float(top - (maxw - w)))
+        else:
+            out.append(None)
+    return out
+
+
+def class_num(s):
+    """Grade as a number, higher = lower grade (easier). None if unknown."""
+    for k, v in _CLASS.items():
+        if s and k in s:
+            return v
+    return None
+
+
+def _mean(vals):
+    vals = [v for v in vals if v is not None]
+    return float(np.mean(vals)) if vals else None
 
 LB_SEC_PER_KM = 0.07          # 1 lb ~ 0.07 s per 1000 m
+WARMUP_DAYS = 60
 GOOD = {"好地", "快地", "好至快地", "好地至快地"}
 
 
@@ -149,6 +200,14 @@ class State:
             "form": float(np.dot(wts, fsc) / wts.sum()) if fsc else None,
             "dist_form": float(np.mean(dsc[-6:])) if dsc else None,
             "last_date": runs[-1]["date"] if runs else None,
+            "mkt": _mean([x.get("mkt") for x in runs[-3:]]),
+            "vs_mkt": _mean([x.get("vs_mkt") for x in runs[-3:]]),
+            "closing": _mean([x.get("closing") for x in runs[-4:]]),
+            "perf_best": _mean(sorted(x["perf"] for x in runs[-5:]
+                                      if x.get("perf") is not None)[-2:]),
+            "perf_last": _mean([x.get("perf") for x in runs[-1:]]),
+            "last_cls": runs[-1].get("cls") if runs else None,
+            "last_bw": runs[-1].get("bw") if runs else None,
         }
 
     def race_features(self, race, runners):
@@ -166,9 +225,18 @@ class State:
         sp_fill = float(np.percentile(sp_vals, 35)) if sp_vals else 0.0
         wts = [x.get("weight") or 0 for x in runners]
         mean_wt = np.mean([w for w in wts if w]) if any(wts) else 0
+        this_cls = class_num(race.get("class"))
+        ratings = est_ratings(race, runners)
+        known_r = [r for r in ratings if r is not None]
+        r_fill = float(np.median(known_r)) if known_r else 0.0
+        pb_known = [p["perf_best"] for p in profs if p["perf_best"] is not None]
+        pb_fill = float(np.percentile(pb_known, 35)) if pb_known else r_fill
 
         X, extra = [], []
-        for x, p in zip(runners, profs):
+        for x, p, rating in zip(runners, profs, ratings):
+            rating = rating if rating is not None else r_fill
+            pb = p["perf_best"] if p["perf_best"] is not None else pb_fill
+            pl = p["perf_last"] if p["perf_last"] is not None else pb
             early = p["early"] if p["early"] is not None else 0.5
             e_c = 0.5 - early  # >0 forward-running
             draw = x.get("draw") or 0
@@ -196,6 +264,17 @@ class State:
                 "weight_rel": ((x.get("weight") or mean_wt) - mean_wt) / 5,
                 "layoff": layoff,
                 "debut": 1.0 if p["n_runs"] == 0 else 0.0,
+                "mkt_rating": p["mkt"] if p["mkt"] is not None else 0.0,
+                "vs_mkt": p["vs_mkt"] if p["vs_mkt"] is not None else 0.0,
+                "closing": p["closing"] if p["closing"] is not None else 0.0,
+                "class_drop": (this_cls - p["last_cls"])
+                              if this_cls is not None and p["last_cls"] is not None else 0.0,
+                "bw_change": abs(x["body_weight"] - p["last_bw"]) / 10
+                             if x.get("body_weight") and p["last_bw"] else 0.0,
+                "perf_best": pb,
+                "perf_last": pl,
+                # recent performance above today's rating = well handicapped
+                "handicap_edge": (p["perf_best"] - rating) if p["perf_best"] is not None else 0.0,
             }
             X.append([f[k] for k in FEATURES])
             extra.append({"profile": p, "draw_frac": draw_frac})
@@ -218,6 +297,27 @@ class State:
                 self.winner_times[track_key(race)].append(winner["time"])
             elif std:
                 self.going_diff[going_key(race.get("going"))].append((winner["time"] - std) / km)
+        priced = [x for x in runners if (x.get("win_odds") or 0) > 0]
+        mkt = {}
+        if len(priced) >= 4:
+            inv = np.array([1 / x["win_odds"] for x in priced])
+            q = inv / inv.sum()
+            ranks = (-q).argsort().argsort() + 1
+            mkt = {x["no"]: (float(qi), int(rk)) for x, qi, rk in zip(priced, q, ranks)}
+        # performance rating: estimated rating + (field-median beaten lbs - own beaten lbs)
+        perf = {}
+        wt_time = winner.get("time")
+        if wt_time and race.get("distance"):
+            lb_per_len = 3000 / race["distance"]
+            rs = est_ratings(race, runners)
+            beaten = {}
+            for x, r in zip(runners, rs):
+                if x.get("place") and x.get("time") and r is not None:
+                    lens = min((x["time"] - wt_time) / SEC_PER_LENGTH, 30)
+                    beaten[x["no"]] = (r, max(lens, 0) * lb_per_len)
+            if len(beaten) >= 4:
+                med = float(np.median([b for _, b in beaten.values()]))
+                perf = {no: r + med - b for no, (r, b) in beaten.items()}
         dk = draw_key(race)
         top_early, top_draw = [], []
         for x in runners:
@@ -240,10 +340,19 @@ class State:
             self.jockey.add(x.get("jockey_id"), pos == 1)
             self.trainer.add(x.get("trainer_id"), pos == 1)
             fscore = 1 - (pos - 1) / max(field - 1, 1) if pos else 0.0
+            m = mkt.get(x["no"])
             self.horse[x["horse_code"]].append({
                 "date": race["date"], "dist": race.get("distance"), "venue": race["venue"],
                 "speed": self.speed_fig(race, x.get("time"), x.get("weight")) if pos else None,
                 "early": early, "fscore": fscore, "place": pos,
+                # how the market rated the horse that day (log of implied prob x field size)
+                "mkt": math.log(m[0] * field) if m else None,
+                # finished better (+) or worse (-) than its market rank implied
+                "vs_mkt": (m[1] - pos) / max(field - 1, 1) if m and pos else None,
+                "closing": (x["running"][0] - pos) / max(field - 1, 1)
+                           if pos and x.get("running") else None,
+                "cls": class_num(race.get("class")), "bw": x.get("body_weight"),
+                "perf": perf.get(x["no"]),
             })
         self.meeting[(race["date"], race["venue"])].append({
             "race_no": race["race_no"], "surface": race.get("surface", "TURF"),
@@ -292,7 +401,8 @@ PRIOR = {
     "speed_best": 0.35, "speed_last": 0.15, "form": 0.3, "dist_form": 0.1,
     "early_x_pace": 0.1, "early_x_today": 0.1, "early_x_course": 0.1,
     "draw_bias": 0.15, "draw_x_today": 0.1, "jockey": 0.3, "trainer": 0.2,
-    "speed_missing": -0.1,
+    "speed_missing": -0.1, "mkt_rating": 0.4, "vs_mkt": 0.1, "class_drop": 0.1,
+    "perf_best": 0.2, "handicap_edge": 0.2,
 }
 
 
@@ -365,6 +475,10 @@ def evaluate(params, samples):
 
 def train(races):
     st, samples = build_dataset(races)
+    # the first weeks are warm-up: horse histories and bias stats are still empty
+    if samples:
+        start = np.datetime64(samples[0]["date"]) + np.timedelta64(WARMUP_DAYS, "D")
+        samples = [s for s in samples if np.datetime64(s["date"]) >= start]
     if len(samples) < 60:
         return st, None, {"note": "not enough history", "races": len(samples)}
     cut = int(len(samples) * 0.8)

@@ -90,6 +90,7 @@ function show() {
       <td>${esc(x.last6 || "")}</td>
       <td>${esc(x.style)}</td>
       <td class="num">${x.speed_best ?? "–"}</td>
+      <td class="num">${x.perf_best ?? "–"}${x.perf_best != null && x.handicap_edge ? `<br><span class="${x.handicap_edge > 0 ? "pro" : "con"}">${x.handicap_edge > 0 ? "+" : ""}${x.handicap_edge}</span>` : ""}</td>
       <td class="num">${(x.win_prob * 100).toFixed(1)}%<div class="bar"><i style="width:${x.win_prob / maxp * 100}%"></i></div></td>
       <td class="num">${x.fair_odds}</td>
       <td>${x.pros.map(p => `<div class="pro">+ ${esc(p)}</div>`).join("")}${x.cons.map(p => `<div class="con">− ${esc(p)}</div>`).join("")}</td>
@@ -111,7 +112,7 @@ function show() {
       <div class="note">${esc(r.course_bias)}</div>
     </div>
     <div class="tblwrap"><table>
-      <thead><tr><th>排名</th><th>馬匹</th><th>檔</th><th>磅</th><th>評分</th><th>近績</th><th>跑法</th><th>速度</th><th>勝出機率</th><th>公平賠率</th><th>因素</th></tr></thead>
+      <thead><tr><th>排名</th><th>馬匹</th><th>檔</th><th>磅</th><th>評分</th><th>近績</th><th>跑法</th><th>速度</th><th>表現評分<br>(讓磅著數)</th><th>勝出機率</th><th>公平賠率</th><th>因素</th></tr></thead>
       <tbody>${rows}</tbody>
     </table></div>
     ${r.ai ? `<div class="ai"><b>AI 分析</b>\n${esc(r.ai)}</div>` : ""}

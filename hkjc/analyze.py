@@ -11,6 +11,9 @@ FEATURE_ZH = {
     "early_x_pace": "步速形勢", "early_x_today": "今日場地走勢", "early_x_course": "跑道跑法偏差",
     "draw_bias": "檔位統計", "draw_x_today": "今日檔位走勢", "jockey": "騎師", "trainer": "練馬師",
     "weight_rel": "負磅", "layoff": "休賽", "debut": "初出",
+    "mkt_rating": "過往市場評價", "vs_mkt": "跑贏市場預期", "closing": "後段追勁",
+    "class_drop": "降班", "bw_change": "體重變化", "perf_best": "表現評分(近績最佳)",
+    "perf_last": "上仗表現評分", "handicap_edge": "讓磅著數",
 }
 
 
@@ -78,6 +81,8 @@ def analyse_race(state, params, race):
             "fair_odds": round(1 / max(float(p[i]), 1e-4), 1),
             "style": style_label(prof["early"]),
             "speed_best": None if prof["speed_best"] is None else round(prof["speed_best"], 1),
+            "perf_best": None if prof["perf_best"] is None else round(prof["perf_best"], 1),
+            "handicap_edge": round(float(X[i][FEATURES.index("handicap_edge")]), 1),
             "runs_in_db": prof["n_runs"],
             "draw_edge": round(float(X[i][FEATURES.index("draw_bias")]), 3),
             "pros": pos, "cons": neg,
