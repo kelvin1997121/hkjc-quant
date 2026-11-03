@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>香港賽馬量化分析</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#1b1f24;--muted:#66707c;--line:#e3e6ea;--accent:#0b6e4f;--accent2:#c9a227;--bad:#b3261e;--chip:#eef1f4}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1216;--card:#171b21;--ink:#e7eaee;--muted:#9aa3ad;--line:#262c34;--accent:#3ccf9a;--accent2:#e5c25a;--bad:#ff8a80;--chip:#222831}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 -apple-system,"Segoe UI","Noto Sans HK","PingFang HK",sans-serif}
+header{padding:20px 16px 8px;max-width:1100px;margin:auto}
+h1{font-size:22px;margin:0 0 4px}
+.sub{color:var(--muted);font-size:13px}
+main{max-width:1100px;margin:auto;padding:0 16px 40px}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:12px 0;position:sticky;top:0;background:var(--bg);z-index:2}
+.tabs button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 12px;font-size:14px;cursor:pointer;white-space:nowrap}
+.tabs button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:12px 0}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}
+.chip{background:var(--chip);border-radius:6px;padding:2px 8px;font-size:13px}
+.chip.hl{background:var(--accent);color:#fff}
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin:8px 0}
+.note{border-left:3px solid var(--accent2);padding:4px 10px;font-size:14px}
+.tblwrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:640px}
+th,td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:12px}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.bar{height:6px;background:var(--chip);border-radius:3px;margin-top:3px}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:3px}
+.pro{color:var(--accent);font-size:12px}.con{color:var(--bad);font-size:12px}
+.ai{white-space:pre-wrap;background:var(--chip);border-radius:8px;padding:12px;font-size:14px;margin-top:12px}
+.res{font-weight:600;color:var(--accent2)}
+.won{background:color-mix(in srgb,var(--accent) 14%,transparent)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.kpi{background:var(--chip);border-radius:8px;padding:10px}
+.kpi b{display:block;font-size:20px}
+.warn{font-size:12px;color:var(--muted);margin-top:24px}
+</style>
+</head>
+<body>
+<header>
+  <h1>香港賽馬量化分析</h1>
+  <div class="sub" id="sub">載入中…</div>
+</header>
+<main>
+  <div class="tabs" id="tabs"></div>
+  <div id="view"></div>
+  <section class="card" id="perf"></section>
+  <p class="warn">模型數字係根據歷史數據嘅統計估算,唔係保證。賽馬涉及風險,請量力而為。未滿十八歲人士不得投注。切勿沉迷賭博,如需協助可致電平和基金熱線 1834 633。</p>
+</main>
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let data, cur = 0;
+
+async function load() {
+  const bust = "?t=" + Date.now();
+  data = await fetch("data/latest.json" + bust).then(r => r.json());
+  const tr = await fetch("data/track_record.json" + bust).then(r => r.json()).catch(() => null);
+  const m = data.meeting;
+  $("#sub").textContent = `${m.date} ${m.venue_zh} · ${data.races.length} 場 · 更新於 ${new Date(data.updated_at).toLocaleString("zh-HK")} · 歷史數據 ${data.history_races} 場`;
+  if (!load.done) {
+    const next = data.races.findIndex(r => !r.result);
+    cur = next >= 0 ? next : 0;
+    load.done = true;
+  }
+  cur = Math.min(cur, data.races.length - 1);
+  tabs(); show(); perf(tr);
+}
+
+function tabs() {
+  $("#tabs").innerHTML = data.races.map((r, i) =>
+    `<button class="${i === cur ? "on" : ""}" data-i="${i}">第${r.race_no}場${r.result ? " ✓" : ""}</button>`).join("");
+  $("#tabs").querySelectorAll("button").forEach(b => b.onclick = () => { cur = +b.dataset.i; tabs(); show(); });
+}
+
+function show() {
+  const r = data.races[cur];
+  const maxp = Math.max(...r.runners.map(x => x.win_prob));
+  const winner = r.result ? r.result.placings[0] : null;
+  const rows = r.runners.map(x => `
+    <tr class="${x.no === winner ? "won" : ""}">
+      <td class="num">${x.rank}</td>
+      <td><b>${x.no}. ${esc(x.horse)}</b><br><span class="sub">${esc(x.jockey)} / ${esc(x.trainer)}</span></td>
+      <td class="num">${x.draw ?? ""}</td>
+      <td class="num">${x.weight ?? ""}</td>
+      <td class="num">${x.rating ?? ""}</td>
+      <td>${esc(x.last6 || "")}</td>
+      <td>${esc(x.style)}</td>
+      <td class="num">${x.speed_best ?? "–"}</td>
+      <td class="num">${(x.win_prob * 100).toFixed(1)}%<div class="bar"><i style="width:${x.win_prob / maxp * 100}%"></i></div></td>
+      <td class="num">${x.fair_odds}</td>
+      <td>${x.pros.map(p => `<div class="pro">+ ${esc(p)}</div>`).join("")}${x.cons.map(p => `<div class="con">− ${esc(p)}</div>`).join("")}</td>
+    </tr>`).join("");
+  const res = r.result ? `<div class="res">賽果:${r.result.placings.join(" - ")}(頭馬獨贏 ${r.result.win_odds ?? "-"})${r.post_hoc ? " · 此場預測於賽後產生,不計入往績" : ""}</div>` : "";
+  $("#view").innerHTML = `
+  <section class="card">
+    <h2 style="margin:0">第${r.race_no}場 ${esc(r.race_name || "")}</h2>
+    <div class="meta">
+      <span class="chip">${esc(r.post_time || "")}</span><span class="chip">${esc(r.class || "")}</span>
+      <span class="chip">${r.distance}米</span><span class="chip">${r.surface === "AWT" ? "全天候" : "草地"} ${esc(r.course ? '"' + r.course + '"' : "")}</span>
+      <span class="chip">${esc(r.going || "場地未公布")}</span>
+      <span class="chip hl">步速:${esc(r.pace)}(${r.n_leaders} 匹前領馬)</span>
+    </div>
+    ${res}
+    <div class="notes">
+      <div class="note">${esc(r.pace_note)}</div>
+      <div class="note">${esc(r.today_bias)}</div>
+      <div class="note">${esc(r.course_bias)}</div>
+    </div>
+    <div class="tblwrap"><table>
+      <thead><tr><th>排名</th><th>馬匹</th><th>檔</th><th>磅</th><th>評分</th><th>近績</th><th>跑法</th><th>速度</th><th>勝出機率</th><th>公平賠率</th><th>因素</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table></div>
+    ${r.ai ? `<div class="ai"><b>AI 分析</b>\n${esc(r.ai)}</div>` : ""}
+  </section>`;
+}
+
+function perf(tr) {
+  const h = data.model && data.model.holdout;
+  const pct = v => v == null ? "–" : (v * 100).toFixed(1) + "%";
+  let html = "<h3 style='margin-top:0'>模型表現</h3>";
+  if (h) {
+    html += `<div class="sub">回測(${h.races} 場,由 ${esc(data.model.holdout_from)} 起,模型未見過嘅數據)</div><div class="kpis">
+      <div class="kpi"><b>${pct(h.top_pick_win_rate)}</b>模型首選勝出率</div>
+      <div class="kpi"><b>${pct(h.favourite_win_rate)}</b>大熱門勝出率(對照)</div>
+      <div class="kpi"><b>${h.logloss}</b>Log loss(市場 ${h.market_logloss},隨機 ${h.uniform_logloss})</div>
+      <div class="kpi"><b>${pct(h.flat_bet_roi_top_pick)}</b>首選平注回報率</div></div>`;
+  }
+  if (tr && tr.races) {
+    html += `<div class="sub" style="margin-top:12px">實戰往績(賽前鎖定嘅預測)</div><div class="kpis">
+      <div class="kpi"><b>${tr.races}</b>場</div>
+      <div class="kpi"><b>${pct(tr.wins / tr.races)}</b>首選勝出</div>
+      <div class="kpi"><b>${pct(tr.places / tr.races)}</b>首選入位</div>
+      <div class="kpi"><b>${pct(tr.flat_roi)}</b>平注回報率</div></div>`;
+  }
+  $("#perf").innerHTML = html;
+}
+
+load();
+setInterval(load, 5 * 60 * 1000);
+</script>
+</body>
+</html>

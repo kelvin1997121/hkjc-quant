@@ -1,0 +1,376 @@
+"""Quantitative model.
+
+Races are replayed in date order. Before each race every runner gets a
+feature vector built only from information known at that moment (no
+look-ahead); afterwards the result updates the running state. The same
+state then scores today's race card, so live predictions use exactly the
+feature pipeline that the weights were trained on.
+
+Factors
+  speed      going/weight adjusted speed figures vs. self-calibrated standard times
+  form       recency-weighted finishing positions
+  style      running style (early position) from 沿途走位
+  pace       projected pace of today's field x horse's style
+  draw       long-run draw bias for venue / track / course / distance
+  today      live bias from races already run at this meeting (style + draw)
+  connections jockey / trainer strike rates
+  weight, layoff, distance suitability
+
+Weights are fitted with a conditional logit (softmax within each race).
+"""
+from __future__ import annotations
+
+import math
+from collections import defaultdict, deque
+from statistics import median
+
+import numpy as np
+
+FEATURES = [
+    "speed_best", "speed_last", "speed_missing", "form", "dist_form",
+    "early", "early_x_pace", "early_x_today", "early_x_course",
+    "draw_bias", "draw_x_today", "jockey", "trainer", "weight_rel",
+    "layoff", "debut",
+]
+
+LB_SEC_PER_KM = 0.07          # 1 lb ~ 0.07 s per 1000 m
+GOOD = {"好地", "快地", "好至快地", "好地至快地"}
+
+
+def going_key(g: str) -> str:
+    return g or "?"
+
+
+def track_key(r) -> tuple:
+    return (r["venue"], r.get("surface", "TURF"), r.get("distance"))
+
+
+def draw_key(r) -> tuple:
+    return (r["venue"], r.get("surface", "TURF"), r.get("course", ""), r.get("distance"))
+
+
+class RateBook:
+    """Smoothed win rate over a rolling window of runs."""
+
+    def __init__(self, window=400, prior=0.08, strength=20):
+        self.d = defaultdict(lambda: deque(maxlen=window))
+        self.prior, self.k = prior, strength
+
+    def rate(self, key):
+        h = self.d.get(key)
+        n = len(h) if h else 0
+        w = sum(h) if h else 0
+        return (w + self.prior * self.k) / (n + self.k)
+
+    def add(self, key, won):
+        if key:
+            self.d[key].append(1 if won else 0)
+
+
+class State:
+    def __init__(self):
+        self.horse = defaultdict(list)            # code -> runs
+        self.winner_times = defaultdict(list)     # track_key -> times on good ground
+        self.going_diff = defaultdict(list)       # going -> (time-std)/km on winners
+        self.draw = defaultdict(lambda: defaultdict(lambda: [0, 0, 0]))  # key -> draw -> [runs, win, place]
+        self.course_early = defaultdict(list)     # draw_key -> early frac of winners
+        self.jockey = RateBook()
+        self.trainer = RateBook()
+        self.meeting = defaultdict(list)          # (date, venue) -> finished race summaries
+
+    # ---------------------------------------------------------------- helpers
+    def std_time(self, r):
+        times = self.winner_times.get(track_key(r))
+        if not times or len(times) < 3:
+            return None
+        return median(times[-60:])
+
+    def going_adj(self, going):
+        if going in GOOD:
+            return 0.0
+        d = self.going_diff.get(going_key(going))
+        return median(d[-80:]) if d and len(d) >= 3 else 0.0
+
+    def speed_fig(self, r, time, weight):
+        std = self.std_time(r)
+        if std is None or not time or not r.get("distance"):
+            return None
+        km = r["distance"] / 1000
+        diff = (time - std) / km - self.going_adj(r.get("going"))
+        diff -= (weight - 126) * LB_SEC_PER_KM if weight else 0
+        return round(-diff * 10, 2)  # 1 point = 0.1 s per km faster than standard
+
+    def draw_bias(self, r, draw):
+        stats = self.draw.get(draw_key(r))
+        if not stats or not draw:
+            return 0.0
+        runs = sum(v[0] for v in stats.values())
+        places = sum(v[2] for v in stats.values())
+        if runs < 50:
+            return 0.0
+        base = places / runs
+        s = stats.get(draw, [0, 0, 0])
+        k = 30
+        rate = (s[2] + base * k) / (s[0] + k)
+        return math.log(rate / base)
+
+    def course_leader_edge(self, r):
+        """How far forward winners have been at this course/distance (0.5 = neutral)."""
+        e = self.course_early.get(draw_key(r))
+        if not e or len(e) < 8:
+            return 0.0
+        return 0.45 - float(np.mean(e[-80:]))  # >0: leaders favoured
+
+    def today_bias(self, r):
+        """Live bias at this meeting: (style_edge, draw_edge) from races already run."""
+        done = [m for m in self.meeting.get((r["date"], r["venue"]), [])
+                if m["surface"] == r.get("surface", "TURF")]
+        if not done:
+            return 0.0, 0.0, 0
+        style = float(np.mean([m["top_early"] for m in done]))   # avg early frac of top-3
+        draw = float(np.mean([m["top_draw"] for m in done]))     # avg draw frac of top-3
+        n = len(done)
+        shrink = n / (n + 3)
+        return (0.45 - style) * shrink, (0.5 - draw) * shrink, n
+
+    # ---------------------------------------------------------------- features
+    def runner_profile(self, code, dist):
+        runs = self.horse.get(code, [])
+        figs = [x["speed"] for x in runs[-6:] if x["speed"] is not None]
+        early = [x["early"] for x in runs[-6:] if x["early"] is not None]
+        fsc = [x["fscore"] for x in runs[-5:]]
+        dsc = [x["fscore"] for x in runs if dist and abs((x["dist"] or 0) - dist) <= 200]
+        wts = np.array([0.6 ** i for i in range(len(fsc))][::-1])
+        return {
+            "n_runs": len(runs),
+            "speed_best": float(np.mean(sorted(figs)[-2:])) if figs else None,
+            "speed_last": figs[-1] if figs else None,
+            "early": float(np.mean(early)) if early else None,
+            "form": float(np.dot(wts, fsc) / wts.sum()) if fsc else None,
+            "dist_form": float(np.mean(dsc[-6:])) if dsc else None,
+            "last_date": runs[-1]["date"] if runs else None,
+        }
+
+    def race_features(self, race, runners):
+        """runners: list of dicts with horse_code, draw, weight, jockey_id, trainer_id."""
+        dist = race.get("distance")
+        profs = [self.runner_profile(x.get("horse_code"), dist) for x in runners]
+        field = max(len(runners), 2)
+        early_known = [p["early"] for p in profs if p["early"] is not None]
+        n_lead = sum(1 for e in early_known if e <= 0.25)
+        exp_lead = 0.2 * field
+        pace = (n_lead - exp_lead) / max(field, 1) * 4  # >0 = contested early pace
+        t_style, t_draw, t_n = self.today_bias(race)
+        c_edge = self.course_leader_edge(race)
+        sp_vals = [p["speed_best"] for p in profs if p["speed_best"] is not None]
+        sp_fill = float(np.percentile(sp_vals, 35)) if sp_vals else 0.0
+        wts = [x.get("weight") or 0 for x in runners]
+        mean_wt = np.mean([w for w in wts if w]) if any(wts) else 0
+
+        X, extra = [], []
+        for x, p in zip(runners, profs):
+            early = p["early"] if p["early"] is not None else 0.5
+            e_c = 0.5 - early  # >0 forward-running
+            draw = x.get("draw") or 0
+            draw_frac = (draw - 1) / max(field - 1, 1) if draw else 0.5
+            layoff = 0.0
+            if p["last_date"]:
+                days = (np.datetime64(race["date"]) - np.datetime64(p["last_date"])).astype(int)
+                layoff = math.log1p(max(days, 0)) - math.log1p(21)
+            sb = p["speed_best"] if p["speed_best"] is not None else sp_fill
+            sl = p["speed_last"] if p["speed_last"] is not None else sb
+            f = {
+                "speed_best": sb,
+                "speed_last": sl,
+                "speed_missing": 1.0 if p["speed_best"] is None else 0.0,
+                "form": p["form"] if p["form"] is not None else 0.4,
+                "dist_form": p["dist_form"] if p["dist_form"] is not None else 0.4,
+                "early": e_c,
+                "early_x_pace": -e_c * pace,
+                "early_x_today": e_c * t_style * 4,
+                "early_x_course": e_c * c_edge * 4,
+                "draw_bias": self.draw_bias(race, draw),
+                "draw_x_today": (0.5 - draw_frac) * t_draw * 4,
+                "jockey": math.log(self.jockey.rate(x.get("jockey_id"))),
+                "trainer": math.log(self.trainer.rate(x.get("trainer_id"))),
+                "weight_rel": ((x.get("weight") or mean_wt) - mean_wt) / 5,
+                "layoff": layoff,
+                "debut": 1.0 if p["n_runs"] == 0 else 0.0,
+            }
+            X.append([f[k] for k in FEATURES])
+            extra.append({"profile": p, "draw_frac": draw_frac})
+        ctx = {"pace": pace, "n_lead": n_lead, "today_style": t_style, "today_draw": t_draw,
+               "today_n": t_n, "course_edge": c_edge}
+        return np.array(X, dtype=float), extra, ctx
+
+    # ---------------------------------------------------------------- update
+    def update(self, race):
+        runners = [x for x in race["runners"] if x.get("horse_code")]
+        finished = [x for x in runners if x.get("place")]
+        field = len(runners)
+        if not finished:
+            return
+        km = (race.get("distance") or 1000) / 1000
+        winner = min(finished, key=lambda x: x["place"])
+        if winner.get("time") and race.get("distance"):
+            std = self.std_time(race)
+            if race.get("going") in GOOD:
+                self.winner_times[track_key(race)].append(winner["time"])
+            elif std:
+                self.going_diff[going_key(race.get("going"))].append((winner["time"] - std) / km)
+        dk = draw_key(race)
+        top_early, top_draw = [], []
+        for x in runners:
+            pos = x.get("place")
+            early = None
+            if x.get("running"):
+                early = (x["running"][0] - 1) / max(field - 1, 1)
+            if x.get("draw"):
+                s = self.draw[dk][x["draw"]]
+                s[0] += 1
+                s[1] += 1 if pos == 1 else 0
+                s[2] += 1 if pos and pos <= 3 else 0
+            if pos and pos <= 3:
+                if early is not None:
+                    top_early.append(early)
+                if x.get("draw"):
+                    top_draw.append((x["draw"] - 1) / max(field - 1, 1))
+            if pos == 1 and early is not None:
+                self.course_early[dk].append(early)
+            self.jockey.add(x.get("jockey_id"), pos == 1)
+            self.trainer.add(x.get("trainer_id"), pos == 1)
+            fscore = 1 - (pos - 1) / max(field - 1, 1) if pos else 0.0
+            self.horse[x["horse_code"]].append({
+                "date": race["date"], "dist": race.get("distance"), "venue": race["venue"],
+                "speed": self.speed_fig(race, x.get("time"), x.get("weight")) if pos else None,
+                "early": early, "fscore": fscore, "place": pos,
+            })
+        self.meeting[(race["date"], race["venue"])].append({
+            "race_no": race["race_no"], "surface": race.get("surface", "TURF"),
+            "top_early": float(np.mean(top_early)) if top_early else 0.45,
+            "top_draw": float(np.mean(top_draw)) if top_draw else 0.5,
+        })
+
+
+# -------------------------------------------------------------------- training
+
+def build_dataset(races):
+    """Replay history. Returns (state, samples) where each sample is one race."""
+    st = State()
+    samples = []
+    for race in races:
+        runners = [x for x in race["runners"] if x.get("horse_code") and x.get("draw")]
+        win_idx = [i for i, x in enumerate(runners) if x.get("place") == 1]
+        if len(runners) >= 5 and len(win_idx) == 1:
+            X, _, _ = st.race_features(race, runners)
+            odds = np.array([x.get("win_odds") or 0 for x in runners], dtype=float)
+            samples.append({"date": race["date"], "X": X, "y": win_idx[0], "odds": odds})
+        st.update(race)
+    return st, samples
+
+
+def _standardise(samples):
+    allx = np.vstack([s["X"] for s in samples])
+    mu, sd = allx.mean(0), allx.std(0)
+    sd[sd < 1e-3] = 1.0  # constant so far (e.g. bias stats still warming up)
+    return mu, sd
+
+
+def _z(X, mu, sd):
+    return np.clip((X - mu) / sd, -4, 4)
+
+
+def softmax(z):
+    z = z - z.max()
+    e = np.exp(z)
+    return e / e.sum()
+
+
+# Domain-knowledge starting weights (per standardised feature). Training shrinks
+# towards these instead of towards zero, so thin data can't flip obvious signs.
+PRIOR = {
+    "speed_best": 0.35, "speed_last": 0.15, "form": 0.3, "dist_form": 0.1,
+    "early_x_pace": 0.1, "early_x_today": 0.1, "early_x_course": 0.1,
+    "draw_bias": 0.15, "draw_x_today": 0.1, "jockey": 0.3, "trainer": 0.2,
+    "speed_missing": -0.1,
+}
+
+
+def prior_vector():
+    return np.array([PRIOR.get(f, 0.0) for f in FEATURES])
+
+
+def fit(samples, l2=0.05, iters=600, lr=0.05):
+    mu, sd = _standardise(samples)
+    w0 = prior_vector()
+    w = w0.copy()
+    m = np.zeros_like(w)
+    v = np.zeros_like(w)
+    # pad races into one tensor so each step is a few vectorised ops
+    n, kmax = len(samples), max(len(s["X"]) for s in samples)
+    Xp = np.zeros((n, kmax, len(FEATURES)))
+    mask = np.zeros((n, kmax), dtype=bool)
+    for i, s in enumerate(samples):
+        Xp[i, : len(s["X"])] = _z(s["X"], mu, sd)
+        mask[i, : len(s["X"])] = True
+    ys = np.array([s["y"] for s in samples])
+    Xy = Xp[np.arange(n), ys]
+    for t in range(1, iters + 1):
+        z = np.where(mask, Xp @ w, -np.inf)
+        z -= z.max(1, keepdims=True)
+        p = np.exp(z)
+        p /= p.sum(1, keepdims=True)
+        g = l2 * (w - w0) + ((p[..., None] * Xp).sum(1) - Xy).mean(0)
+        m = 0.9 * m + 0.1 * g
+        v = 0.999 * v + 0.001 * g * g
+        w -= lr * (m / (1 - 0.9 ** t)) / (np.sqrt(v / (1 - 0.999 ** t)) + 1e-8)
+    return {"w": w.tolist(), "mu": mu.tolist(), "sd": sd.tolist(), "features": FEATURES}
+
+
+def predict(params, X):
+    w, mu, sd = (np.array(params[k]) for k in ("w", "mu", "sd"))
+    return softmax(_z(X, mu, sd) @ w)
+
+
+def contributions(params, X):
+    w, mu, sd = (np.array(params[k]) for k in ("w", "mu", "sd"))
+    return _z(X, mu, sd) * w
+
+
+def evaluate(params, samples):
+    ll, hit, mkt_hit, mkt_ll, n, roi_stake, roi_ret = 0, 0, 0, 0, 0, 0, 0
+    for s in samples:
+        p = predict(params, s["X"])
+        ll -= math.log(max(p[s["y"]], 1e-9))
+        top = int(np.argmax(p))
+        hit += top == s["y"]
+        odds = s["odds"]
+        if (odds > 0).all():
+            q = (1 / odds) / (1 / odds).sum()
+            mkt_ll -= math.log(max(q[s["y"]], 1e-9))
+            mkt_hit += int(np.argmin(odds)) == s["y"]
+            roi_stake += 1
+            roi_ret += odds[top] if top == s["y"] else 0
+        n += 1
+    return {
+        "races": n,
+        "logloss": round(ll / n, 4) if n else None,
+        "top_pick_win_rate": round(hit / n, 4) if n else None,
+        "market_logloss": round(mkt_ll / max(roi_stake, 1), 4),
+        "favourite_win_rate": round(mkt_hit / max(roi_stake, 1), 4),
+        "flat_bet_roi_top_pick": round(float(roi_ret) / roi_stake - 1, 4) if roi_stake else None,
+        "uniform_logloss": round(float(np.mean([math.log(len(s["X"])) for s in samples])), 4) if n else None,
+    }
+
+
+def train(races):
+    st, samples = build_dataset(races)
+    if len(samples) < 60:
+        return st, None, {"note": "not enough history", "races": len(samples)}
+    cut = int(len(samples) * 0.8)
+    params = fit(samples[:cut])
+    report = {"holdout": evaluate(params, samples[cut:]), "train_races": cut,
+              "holdout_from": samples[cut]["date"]}
+    params = fit(samples)  # final weights use everything
+    report["weights"] = dict(zip(FEATURES, [round(x, 3) for x in params["w"]]))
+    return st, params, report
