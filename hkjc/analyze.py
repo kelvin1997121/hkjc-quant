@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from .model import FEATURES, contributions, predict, prior_vector
+from .model import FEATURES, blend, contributions, market_probs, predict, prior_vector
 
 FEATURE_ZH = {
     "speed_best": "速度指數(近績最佳)", "speed_last": "上仗速度指數", "speed_missing": "缺速度數據",
@@ -48,8 +48,16 @@ def today_label(ctx):
     return f"根據今日已跑 {ctx['today_n']} 場:" + ",".join(parts)
 
 
-def analyse_race(state, params, race):
-    runners = [x for x in race["runners"] if x.get("draw") and not x.get("scratched")]
+VALUE_EV = 1.15  # flag a bet only when blended prob x odds clears takeout comfortably
+
+
+def analyse_race(state, params, race, odds=None):
+    """odds: {"win": {no: odds}, "place": {...}, "updated": str, "scratched": [no]} or None."""
+    win = {int(k): v for k, v in (odds or {}).get("win", {}).items()}
+    place = {int(k): v for k, v in (odds or {}).get("place", {}).items()}
+    scratched = {int(n) for n in (odds or {}).get("scratched", [])}
+    runners = [x for x in race["runners"]
+               if x.get("draw") and not x.get("scratched") and x["no"] not in scratched]
     if not runners:
         return None
     X, extra, ctx = state.race_features(race, runners)
@@ -61,6 +69,10 @@ def analyse_race(state, params, race):
         contrib = z * prior_vector()
         s = contrib.sum(1)
         p = np.exp(s - s.max()) / np.exp(s - s.max()).sum()
+    # live market view
+    q = market_probs([win.get(x["no"], 0) for x in runners]) if win else None
+    bw = (params or {}).get("blend")
+    pb = blend(p, q, bw["a"], bw["b"]) if q is not None and bw else None
     order = np.argsort(-p)
     out = []
     for rank, i in enumerate(order, 1):
@@ -87,7 +99,14 @@ def analyse_race(state, params, race):
             "runs_in_db": prof["n_runs"],
             "draw_edge": round(float(X[i][FEATURES.index("draw_bias")]), 3),
             "pros": pos, "cons": neg,
+            "win_odds": win.get(x["no"]), "place_odds": place.get(x["no"]),
+            "market_prob": None if q is None else round(float(q[i]), 4),
+            "blend_prob": None if pb is None else round(float(pb[i]), 4),
+            "ev": None if pb is None or not win.get(x["no"])
+                  else round(float(pb[i]) * win[x["no"]], 3),
         })
+    for r in out:
+        r["value"] = bool(r["ev"] and r["ev"] >= VALUE_EV and bw and bw["a"] > 0)
     pace_lv, pace_txt = pace_label(ctx["pace"])
     return {
         "race_no": race["race_no"], "race_name": race.get("race_name"),
@@ -99,5 +118,6 @@ def analyse_race(state, params, race):
         "course_bias": ("此跑道路程歷來前置馬有利" if ctx["course_edge"] > 0.05 else
                         "此跑道路程歷來後上馬有利" if ctx["course_edge"] < -0.05 else
                         "此跑道路程跑法偏差不明顯"),
+        "odds_updated": (odds or {}).get("updated"),
         "runners": out,
     }

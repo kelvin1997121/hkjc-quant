@@ -31,6 +31,9 @@ jobs:
 
       - run: pip install -r requirements.txt
 
+      - name: Headless browser for live odds
+        run: python -m playwright install --with-deps chromium
+
       - name: Run pipeline
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}

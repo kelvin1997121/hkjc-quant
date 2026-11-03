@@ -523,6 +523,39 @@ def evaluate(params, samples):
     }
 
 
+def market_probs(odds):
+    """Implied win probabilities from win odds (takeout removed by normalising)."""
+    odds = np.asarray(odds, dtype=float)
+    if len(odds) == 0 or not (odds > 0).all():
+        return None
+    q = 1 / odds
+    return q / q.sum()
+
+
+def blend(p, q, a, b):
+    """Combine model and market: p_blend ~ p_model^a * q_market^b."""
+    z = a * np.log(np.maximum(p, 1e-9)) + b * np.log(np.maximum(q, 1e-9))
+    z -= z.max()
+    e = np.exp(z)
+    return e / e.sum()
+
+
+def fit_blend(params, samples):
+    """Grid-fit blend weights on races the model was not trained on."""
+    val = [(predict(params, s["X"]), market_probs(s["odds"]), s["y"]) for s in samples]
+    val = [v for v in val if v[1] is not None]
+    if len(val) < 50:
+        return None
+    best = None
+    for a in np.arange(0, 1.01, 0.05):
+        for b in np.arange(0.8, 1.31, 0.05):
+            ll = -float(np.mean([math.log(blend(p, q, a, b)[y]) for p, q, y in val]))
+            if best is None or ll < best["logloss"]:
+                best = {"a": round(float(a), 2), "b": round(float(b), 2), "logloss": round(ll, 4)}
+    best["market_logloss"] = round(-float(np.mean([math.log(q[y]) for _, q, y in val])), 4)
+    return best
+
+
 def train(races):
     st, samples = build_dataset(races)
     # the first weeks are warm-up: horse histories and bias stats are still empty
@@ -535,6 +568,10 @@ def train(races):
     params = fit(samples[:cut])
     report = {"holdout": evaluate(params, samples[cut:]), "train_races": cut,
               "holdout_from": samples[cut]["date"]}
+    # how much to trust the model vs. the market, judged on the unseen holdout
+    blend_w = fit_blend(params, samples[cut:])
     params = fit(samples)  # final weights use everything
+    params["blend"] = blend_w
+    report["blend"] = blend_w
     report["weights"] = dict(zip(FEATURES, [round(x, 3) for x in params["w"]]))
     return st, params, report

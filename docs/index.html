@@ -23,7 +23,10 @@ main{max-width:1100px;margin:auto;padding:0 16px 40px}
 .notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin:8px 0}
 .note{border-left:3px solid var(--accent2);padding:4px 10px;font-size:14px}
 .tblwrap{overflow-x:auto}
-table{border-collapse:collapse;width:100%;font-size:14px;min-width:640px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:1040px}
+td:nth-child(2){white-space:nowrap}
+td:last-child{min-width:150px}
+th{white-space:nowrap}
 th,td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
 th{color:var(--muted);font-weight:600;font-size:12px}
 td.num{text-align:right;font-variant-numeric:tabular-nums}
@@ -93,6 +96,9 @@ function show() {
       <td class="num">${x.perf_best ?? "–"}${x.perf_best != null && x.handicap_edge ? `<br><span class="${x.handicap_edge > 0 ? "pro" : "con"}">${x.handicap_edge > 0 ? "+" : ""}${x.handicap_edge}</span>` : ""}</td>
       <td class="num">${(x.win_prob * 100).toFixed(1)}%<div class="bar"><i style="width:${x.win_prob / maxp * 100}%"></i></div></td>
       <td class="num">${x.fair_odds}</td>
+      <td class="num">${x.win_odds ?? "–"}${x.place_odds ? `<br><span class="sub">位 ${x.place_odds}</span>` : ""}</td>
+      <td class="num">${x.blend_prob != null ? (x.blend_prob * 100).toFixed(1) + "%" : "–"}</td>
+      <td class="num">${x.ev != null ? `<span class="${x.value ? "pro" : ""}">${x.ev.toFixed(2)}${x.value ? " 值博" : ""}</span>` : "–"}</td>
       <td>${x.pros.map(p => `<div class="pro">+ ${esc(p)}</div>`).join("")}${x.cons.map(p => `<div class="con">− ${esc(p)}</div>`).join("")}</td>
     </tr>`).join("");
   const res = r.result ? `<div class="res">賽果:${r.result.placings.join(" - ")}(頭馬獨贏 ${r.result.win_odds ?? "-"})${r.post_hoc ? " · 此場預測於賽後產生,不計入往績" : ""}</div>` : "";
@@ -104,7 +110,9 @@ function show() {
       <span class="chip">${r.distance}米</span><span class="chip">${r.surface === "AWT" ? "全天候" : "草地"} ${esc(r.course ? '"' + r.course + '"' : "")}</span>
       <span class="chip">${esc(r.going || "場地未公布")}</span>
       <span class="chip hl">步速:${esc(r.pace)}(${r.n_leaders} 匹前領馬)</span>
+      ${r.odds_updated ? `<span class="chip">賠率更新 ${esc(r.odds_updated)}</span>` : ""}
     </div>
+    ${edgeNote()}
     ${res}
     <div class="notes">
       <div class="note">${esc(r.pace_note)}</div>
@@ -112,11 +120,18 @@ function show() {
       <div class="note">${esc(r.course_bias)}</div>
     </div>
     <div class="tblwrap"><table>
-      <thead><tr><th>排名</th><th>馬匹</th><th>檔</th><th>磅</th><th>評分</th><th>近績</th><th>跑法</th><th>速度</th><th>表現評分<br>(讓磅著數)</th><th>勝出機率</th><th>公平賠率</th><th>因素</th></tr></thead>
+      <thead><tr><th>排名</th><th>馬匹</th><th>檔</th><th>磅</th><th>評分</th><th>近績</th><th>跑法</th><th>速度</th><th>表現評分<br>(讓磅著數)</th><th>模型機率</th><th>公平賠率</th><th>即時賠率</th><th>綜合機率</th><th>EV</th><th>因素</th></tr></thead>
       <tbody>${rows}</tbody>
     </table></div>
     ${r.ai ? `<div class="ai"><b>AI 分析</b>\n${esc(r.ai)}</div>` : ""}
   </section>`;
+}
+
+function edgeNote() {
+  const b = data.model && data.model.blend;
+  if (!b) return "";
+  if (b.a === 0) return `<div class="note" style="border-color:var(--bad)">回測顯示模型暫時未有市場賠率以外嘅資訊(綜合權重:模型 0 / 市場 ${b.b}),所以綜合機率 ≈ 市場機率,唔會標「值博」。</div>`;
+  return `<div class="note">綜合機率 = 模型權重 ${b.a} + 市場權重 ${b.b}(喺未見過嘅賽事回測得出)。EV ≥ 1.15 先標「值博」;賠率會變,以落注一刻為準。</div>`;
 }
 
 function perf(tr) {

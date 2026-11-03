@@ -72,6 +72,31 @@ def write_if_changed(path, doc):
     return True
 
 
+def live_odds(card):
+    """Read live odds on race day and the day before; never fails the run."""
+    days_ahead = (date.fromisoformat(card["date"]) - today_hkt()).days
+    if days_ahead not in (0, 1):
+        return {}
+    path = store.DATA / "odds" / f"{card['date']}_{card['venue']}.json"
+    saved = store.read_json(path, {"latest": {}, "history": {}})
+    try:
+        from . import odds as odds_mod
+        nos = [r["race_no"] for r in card["races"]]
+        snap = odds_mod.fetch_odds(card["date"], card["venue"], nos)
+    except Exception as e:  # browser missing, page changed, blocked...
+        print(f"   odds unavailable: {e!r}")
+        return {int(k): v for k, v in saved["latest"].items()}
+    fetched = snap.pop("_fetched_at")
+    for n, o in snap.items():
+        saved["latest"][str(n)] = o
+        hist = saved["history"].setdefault(str(n), [])
+        if not hist or hist[-1]["win"] != {str(k): v for k, v in o["win"].items()}:
+            hist.append({"t": fetched, "win": o["win"]})
+    store.write_json(path, saved)
+    print(f"   odds for {len(snap)} races")
+    return {int(k): v for k, v in saved["latest"].items()}
+
+
 def run(use_agent=True):
     print("1) catching up on results")
     backfill(max_meetings=8)
@@ -97,6 +122,9 @@ def run(use_agent=True):
             store.save_results(live)
         print(f"   {len(live)} races finished")
 
+    print("3b) live odds")
+    odds = live_odds(card)
+
     print("4) training model on history")
     races = store.load_all_results()
     state, params, report = model.train(races)
@@ -115,7 +143,7 @@ def run(use_agent=True):
             # race already run: keep the pre-race prediction frozen, attach the result
             a = prev_races[race["race_no"]]
         else:
-            a = analyze.analyse_race(state, params, race)
+            a = analyze.analyse_race(state, params, race, odds.get(race["race_no"]))
             if not a:
                 continue
             if use_agent and not res:
