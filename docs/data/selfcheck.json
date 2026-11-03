@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-11-03T14:13:52+00:00",
+ "checked_at": "2026-11-03T14:52:29+00:00",
  "health": {
   "checks": [
    {
@@ -24,114 +24,120 @@
    }
   ],
   "last_result": "2026-11-01",
-  "meetings": 133,
-  "races": 1308
+  "meetings": 354,
+  "races": 3402
  },
  "walk_forward": {
-  "races": 452,
-  "logloss": 2.2127,
-  "top_hit": 0.2478,
-  "market_logloss": 2.0458,
-  "favourite_hit": 0.2788,
-  "blend_gain": -0.0037,
-  "blend_gain_ci": 0.007
+  "races": 1288,
+  "logloss": 2.2264,
+  "top_hit": 0.222,
+  "market_logloss": 2.029,
+  "favourite_hit": 0.2981,
+  "blend_gain": 0.0006,
+  "blend_gain_ci": 0.0035
  },
  "blend_weights": [
   {
    "a": 0.0,
-   "b": 1.15,
-   "logloss": 1.9499,
-   "market_logloss": 1.9566
-  },
-  {
-   "a": 0.0,
-   "b": 1.05,
-   "logloss": 2.0194,
-   "market_logloss": 2.0199
-  },
-  {
-   "a": 0.0,
-   "b": 1.0,
-   "logloss": 2.0463,
-   "market_logloss": 2.0463
+   "b": 1.1,
+   "logloss": 1.9721,
+   "market_logloss": 1.9759
   },
   {
    "a": 0.0,
    "b": 1.1,
-   "logloss": 2.03,
-   "market_logloss": 2.0325
+   "logloss": 1.9811,
+   "market_logloss": 1.9843
+  },
+  {
+   "a": 0.0,
+   "b": 1.05,
+   "logloss": 2.0406,
+   "market_logloss": 2.0414
+  },
+  {
+   "a": 0.0,
+   "b": 1.05,
+   "logloss": 2.0416,
+   "market_logloss": 2.0422
   }
  ],
  "calibration": [
   {
    "band": "0%-5%",
-   "n": 2264,
-   "predicted": 0.0273,
-   "actual": 0.023
+   "n": 6635,
+   "predicted": 0.027,
+   "actual": 0.0264
   },
   {
    "band": "5%-10%",
-   "n": 1710,
-   "predicted": 0.0718,
-   "actual": 0.0807
+   "n": 4921,
+   "predicted": 0.0721,
+   "actual": 0.0801
   },
   {
    "band": "10%-15%",
-   "n": 864,
-   "predicted": 0.1214,
-   "actual": 0.1262
+   "n": 2291,
+   "predicted": 0.1216,
+   "actual": 0.1235
   },
   {
    "band": "15%-20%",
-   "n": 407,
-   "predicted": 0.1713,
-   "actual": 0.1499
+   "n": 1099,
+   "predicted": 0.1712,
+   "actual": 0.1629
   },
   {
    "band": "20%-30%",
-   "n": 288,
-   "predicted": 0.2363,
-   "actual": 0.2188
+   "n": 783,
+   "predicted": 0.2398,
+   "actual": 0.2069
   },
   {
    "band": "30%-45%",
-   "n": 56,
-   "predicted": 0.3498,
-   "actual": 0.4107
+   "n": 210,
+   "predicted": 0.3525,
+   "actual": 0.3238
+  },
+  {
+   "band": "45%-100%",
+   "n": 47,
+   "predicted": 0.5441,
+   "actual": 0.5745
   }
  ],
  "factor_groups": [
   {
    "group": "騎練",
-   "delta_logloss": 0.0492
+   "delta_logloss": 0.0279
   },
   {
    "group": "檔位",
-   "delta_logloss": 0.0304
-  },
-  {
-   "group": "速度/表現評分",
-   "delta_logloss": 0.014
+   "delta_logloss": 0.0217
   },
   {
    "group": "市場往績",
-   "delta_logloss": 0.0105
-  },
-  {
-   "group": "負磅",
-   "delta_logloss": 0.0022
-  },
-  {
-   "group": "分段時間",
-   "delta_logloss": 0.0008
-  },
-  {
-   "group": "跑法/步速",
-   "delta_logloss": 0.0006
+   "delta_logloss": 0.009
   },
   {
    "group": "近況",
-   "delta_logloss": 0.0004
+   "delta_logloss": 0.0074
+  },
+  {
+   "group": "速度/表現評分",
+   "delta_logloss": 0.0065
+  },
+  {
+   "group": "負磅",
+   "delta_logloss": 0.0045
+  },
+  {
+   "group": "分段時間",
+   "delta_logloss": 0.0012
+  },
+  {
+   "group": "跑法/步速",
+   "delta_logloss": -0.0008
   }
  ],
  "tuning": {
@@ -143,44 +149,44 @@
    {
     "l2": 0.02,
     "stages": 1,
-    "logloss": 2.2236,
-    "top_hit": 0.2345
+    "logloss": 2.2218,
+    "top_hit": 0.2236
    },
    {
     "l2": 0.02,
     "stages": 3,
-    "logloss": 2.2287,
-    "top_hit": 0.2257
+    "logloss": 2.2211,
+    "top_hit": 0.2259
    },
    {
     "l2": 0.05,
     "stages": 1,
-    "logloss": 2.2199,
-    "top_hit": 0.2323
+    "logloss": 2.2218,
+    "top_hit": 0.2182
    },
    {
     "l2": 0.05,
     "stages": 3,
-    "logloss": 2.2266,
-    "top_hit": 0.2279
+    "logloss": 2.2209,
+    "top_hit": 0.2275
    },
    {
     "l2": 0.2,
     "stages": 1,
-    "logloss": 2.2127,
-    "top_hit": 0.2478
+    "logloss": 2.2264,
+    "top_hit": 0.222
    },
    {
     "l2": 0.2,
     "stages": 3,
-    "logloss": 2.2208,
-    "top_hit": 0.2389
+    "logloss": 2.2226,
+    "top_hit": 0.2236
    }
   ],
-  "switched": false,
+  "switched": true,
   "chosen": {
-   "l2": 0.2,
-   "stages": 1
+   "l2": 0.05,
+   "stages": 3
   }
  },
  "live": {
@@ -191,7 +197,7 @@
  },
  "notes": [
   "模型暫時未能提供市場賠率以外嘅資訊(綜合增益未超出誤差範圍),所以唔建議單靠模型落注。",
-  "最有用嘅因素組:騎練、檔位、速度/表現評分。",
+  "最有用嘅因素組:騎練、檔位、市場往績。",
   "實戰往績只有 0 場,樣本太少,未能下結論。"
  ]
 }
