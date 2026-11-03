@@ -33,7 +33,10 @@ FEATURES = [
     "draw_bias", "draw_x_today", "jockey", "trainer", "weight_rel",
     "layoff", "debut", "mkt_rating", "vs_mkt", "closing", "class_drop", "bw_change",
     "perf_best", "perf_last", "handicap_edge", "late_speed", "early_speed",
+    "jockey_form", "trainer_form", "combo",
 ]
+# venue_form (horse's form at this venue/surface) was tried and dropped: it worsened
+# walk-forward log loss (2.2199 without vs 2.2220 with).
 # Same-day sectional reads (track variant, closing advantage) are shown to the user
 # but kept out of the model: as features they worsened walk-forward log loss
 # (2.2251 -> 2.2303 on 452 races).
@@ -128,6 +131,13 @@ class RateBook:
         if key:
             self.d[key].append(1 if won else 0)
 
+    def rate_vs(self, key, base):
+        """Recent rate shrunk towards `base` (e.g. the long-run rate), as log ratio."""
+        h = self.d.get(key)
+        n = len(h) if h else 0
+        w = sum(h) if h else 0
+        return math.log(((w + base * self.k) / (n + self.k)) / base)
+
 
 class State:
     def __init__(self):
@@ -138,6 +148,12 @@ class State:
         self.course_early = defaultdict(list)     # draw_key -> early frac of winners
         self.jockey = RateBook()
         self.trainer = RateBook()
+        # recent form (top-3 rate, last few weeks) relative to each one's long-run rate
+        self.jockey_place = RateBook(window=400, prior=0.24, strength=20)
+        self.trainer_place = RateBook(window=400, prior=0.24, strength=20)
+        self.jockey_recent = RateBook(window=40, strength=15)
+        self.trainer_recent = RateBook(window=30, strength=15)
+        self.combo = RateBook(window=150, prior=0.24, strength=15)  # jockey x trainer, top-3
         self.meeting = defaultdict(list)          # (date, venue) -> finished race summaries
         self.class_var = defaultdict(list)        # class -> (winner time - std)/km, good ground
         self.late_top_hist = []                   # per race: avg final-section edge of top 3
@@ -212,8 +228,10 @@ class State:
         return v, lt, len(var), len(late)
 
     # ---------------------------------------------------------------- features
-    def runner_profile(self, code, dist):
+    def runner_profile(self, code, dist, venue=None, surface=None):
         runs = self.horse.get(code, [])
+        here = [x["fscore"] for x in runs
+                if x["venue"] == venue and x.get("surface", "TURF") == surface][-6:]
         figs = [x["speed"] for x in runs[-6:] if x["speed"] is not None]
         early = [x["early"] for x in runs[-6:] if x["early"] is not None]
         fsc = [x["fscore"] for x in runs[-5:]]
@@ -237,12 +255,15 @@ class State:
             "early_s": _mean([x.get("early_s") for x in runs[-3:]]),
             "last_cls": runs[-1].get("cls") if runs else None,
             "last_bw": runs[-1].get("bw") if runs else None,
+            # form at this venue + surface (needs 2+ runs there)
+            "venue_form": float(np.mean(here)) if len(here) >= 2 else None,
         }
 
     def race_features(self, race, runners):
         """runners: list of dicts with horse_code, draw, weight, jockey_id, trainer_id."""
         dist = race.get("distance")
-        profs = [self.runner_profile(x.get("horse_code"), dist) for x in runners]
+        profs = [self.runner_profile(x.get("horse_code"), dist, race["venue"],
+                                     race.get("surface", "TURF")) for x in runners]
         field = max(len(runners), 2)
         early_known = [p["early"] for p in profs if p["early"] is not None]
         n_lead = sum(1 for e in early_known if e <= 0.25)
@@ -291,6 +312,13 @@ class State:
                 "draw_x_today": (0.5 - draw_frac) * t_draw * 4,
                 "jockey": math.log(self.jockey.rate(x.get("jockey_id"))),
                 "trainer": math.log(self.trainer.rate(x.get("trainer_id"))),
+                "jockey_form": self.jockey_recent.rate_vs(
+                    x.get("jockey_id"), self.jockey_place.rate(x.get("jockey_id"))),
+                "trainer_form": self.trainer_recent.rate_vs(
+                    x.get("trainer_id"), self.trainer_place.rate(x.get("trainer_id"))),
+                "combo": math.log(self.combo.rate((x.get("jockey_id"), x.get("trainer_id")))),
+                "venue_form": (p["venue_form"] - p["form"])
+                              if p["venue_form"] is not None and p["form"] is not None else 0.0,
                 "weight_rel": ((x.get("weight") or mean_wt) - mean_wt) / 5,
                 "layoff": layoff,
                 "debut": 1.0 if p["n_runs"] == 0 else 0.0,
@@ -400,10 +428,18 @@ class State:
                 self.course_early[dk].append(early)
             self.jockey.add(x.get("jockey_id"), pos == 1)
             self.trainer.add(x.get("trainer_id"), pos == 1)
+            placed = bool(pos and pos <= 3)
+            self.jockey_place.add(x.get("jockey_id"), placed)
+            self.trainer_place.add(x.get("trainer_id"), placed)
+            self.jockey_recent.add(x.get("jockey_id"), placed)
+            self.trainer_recent.add(x.get("trainer_id"), placed)
+            if x.get("jockey_id") and x.get("trainer_id"):
+                self.combo.add((x["jockey_id"], x["trainer_id"]), placed)
             fscore = 1 - (pos - 1) / max(field - 1, 1) if pos else 0.0
             m = mkt.get(x["no"])
             self.horse[x["horse_code"]].append({
                 "date": race["date"], "dist": race.get("distance"), "venue": race["venue"],
+                "surface": race.get("surface", "TURF"),
                 "speed": self.speed_fig(race, x.get("time"), x.get("weight")) if pos else None,
                 "early": early, "fscore": fscore, "place": pos,
                 # how the market rated the horse that day (log of implied prob x field size)
@@ -597,7 +633,10 @@ def fit_blend(params, samples):
     return best
 
 
-def train(races):
+def train(races, cfg=None):
+    """cfg: tuned settings from the self-check ({"l2", "stages"}); defaults otherwise."""
+    cfg = cfg or {}
+    l2, stages = cfg.get("l2", 0.05), cfg.get("stages", 1)
     st, samples = build_dataset(races)
     # the first weeks are warm-up: horse histories and bias stats are still empty
     if samples:
@@ -606,12 +645,12 @@ def train(races):
     if len(samples) < 60:
         return st, None, {"note": "not enough history", "races": len(samples)}
     cut = int(len(samples) * 0.8)
-    params = fit(samples[:cut])
+    params = fit(samples[:cut], l2=l2, stages=stages)
     report = {"holdout": evaluate(params, samples[cut:]), "train_races": cut,
               "holdout_from": samples[cut]["date"]}
     # how much to trust the model vs. the market, judged on the unseen holdout
     blend_w = fit_blend(params, samples[cut:])
-    params = fit(samples)  # final weights use everything
+    params = fit(samples, l2=l2, stages=stages)  # final weights use everything
     params["blend"] = blend_w
     report["blend"] = blend_w
     report["weights"] = dict(zip(FEATURES, [round(x, 3) for x in params["w"]]))

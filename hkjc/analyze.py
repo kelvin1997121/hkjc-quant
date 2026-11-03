@@ -15,6 +15,8 @@ FEATURE_ZH = {
     "class_drop": "降班", "bw_change": "體重變化", "perf_best": "表現評分(近績最佳)",
     "perf_last": "上仗表現評分", "handicap_edge": "讓磅著數",
     "late_speed": "末段速度(分段時間)", "early_speed": "前段速度(分段時間)",
+    "jockey_form": "騎師近況", "trainer_form": "練馬師近況", "combo": "騎練組合",
+    "venue_form": "本場地往績",
 }
 
 

@@ -127,7 +127,9 @@ def run(use_agent=True):
 
     print("4) training model on history")
     races = store.load_all_results()
-    state, params, report = model.train(races)
+    cfg = store.read_json(store.DATA / "model_config.json", {})  # set by the daily self-check
+    state, params, report = model.train(races, cfg)
+    report["config"] = cfg or {"l2": 0.05, "stages": 1}
     print(f"   {report}")
 
     print("5) analysing card")

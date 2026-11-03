@@ -1,0 +1,197 @@
+{
+ "checked_at": "2026-11-03T14:11:02+00:00",
+ "health": {
+  "checks": [
+   {
+    "name": "賽果更新",
+    "ok": true,
+    "detail": "最近 10 個賽馬日齊全"
+   },
+   {
+    "name": "分段時間",
+    "ok": true,
+    "detail": "近 60 日 100% 賽事有分段時間"
+   },
+   {
+    "name": "即時賠率",
+    "ok": true,
+    "detail": "最近一次:2026-11-04_HV"
+   },
+   {
+    "name": "賽果解析",
+    "ok": true,
+    "detail": "完成時間齊全"
+   }
+  ],
+  "last_result": "2026-11-01",
+  "meetings": 133,
+  "races": 1308
+ },
+ "walk_forward": {
+  "races": 452,
+  "logloss": 2.2127,
+  "top_hit": 0.2478,
+  "market_logloss": 2.0458,
+  "favourite_hit": 0.2788,
+  "blend_gain": -0.0037,
+  "blend_gain_ci": 0.007
+ },
+ "blend_weights": [
+  {
+   "a": 0.0,
+   "b": 1.15,
+   "logloss": 1.9499,
+   "market_logloss": 1.9566
+  },
+  {
+   "a": 0.0,
+   "b": 1.05,
+   "logloss": 2.0194,
+   "market_logloss": 2.0199
+  },
+  {
+   "a": 0.0,
+   "b": 1.0,
+   "logloss": 2.0463,
+   "market_logloss": 2.0463
+  },
+  {
+   "a": 0.0,
+   "b": 1.1,
+   "logloss": 2.03,
+   "market_logloss": 2.0325
+  }
+ ],
+ "calibration": [
+  {
+   "band": "0%-5%",
+   "n": 2264,
+   "predicted": 0.0273,
+   "actual": 0.023
+  },
+  {
+   "band": "5%-10%",
+   "n": 1710,
+   "predicted": 0.0718,
+   "actual": 0.0807
+  },
+  {
+   "band": "10%-15%",
+   "n": 864,
+   "predicted": 0.1214,
+   "actual": 0.1262
+  },
+  {
+   "band": "15%-20%",
+   "n": 407,
+   "predicted": 0.1713,
+   "actual": 0.1499
+  },
+  {
+   "band": "20%-30%",
+   "n": 288,
+   "predicted": 0.2363,
+   "actual": 0.2188
+  },
+  {
+   "band": "30%-45%",
+   "n": 56,
+   "predicted": 0.3498,
+   "actual": 0.4107
+  }
+ ],
+ "factor_groups": [
+  {
+   "group": "騎練",
+   "delta_logloss": 0.0492
+  },
+  {
+   "group": "檔位",
+   "delta_logloss": 0.0304
+  },
+  {
+   "group": "速度/表現評分",
+   "delta_logloss": 0.014
+  },
+  {
+   "group": "市場往績",
+   "delta_logloss": 0.0105
+  },
+  {
+   "group": "負磅",
+   "delta_logloss": 0.0022
+  },
+  {
+   "group": "分段時間",
+   "delta_logloss": 0.0008
+  },
+  {
+   "group": "跑法/步速",
+   "delta_logloss": 0.0006
+  },
+  {
+   "group": "近況",
+   "delta_logloss": 0.0004
+  }
+ ],
+ "tuning": {
+  "current": {
+   "l2": 0.2,
+   "stages": 1
+  },
+  "tried": [
+   {
+    "l2": 0.02,
+    "stages": 1,
+    "logloss": 2.2236,
+    "top_hit": 0.2345
+   },
+   {
+    "l2": 0.02,
+    "stages": 3,
+    "logloss": 2.2287,
+    "top_hit": 0.2257
+   },
+   {
+    "l2": 0.05,
+    "stages": 1,
+    "logloss": 2.2199,
+    "top_hit": 0.2323
+   },
+   {
+    "l2": 0.05,
+    "stages": 3,
+    "logloss": 2.2266,
+    "top_hit": 0.2279
+   },
+   {
+    "l2": 0.2,
+    "stages": 1,
+    "logloss": 2.2127,
+    "top_hit": 0.2478
+   },
+   {
+    "l2": 0.2,
+    "stages": 3,
+    "logloss": 2.2208,
+    "top_hit": 0.2389
+   }
+  ],
+  "switched": false,
+  "chosen": {
+   "l2": 0.2,
+   "stages": 1
+  }
+ },
+ "live": {
+  "races": 0,
+  "wins": 0,
+  "places": 0,
+  "flat_roi": null
+ },
+ "notes": [
+  "模型暫時未能提供市場賠率以外嘅資訊(綜合增益未超出誤差範圍),所以唔建議單靠模型落注。",
+  "最有用嘅因素組:騎練、檔位、速度/表現評分。",
+  "實戰往績只有 0 場,樣本太少,未能下結論。"
+ ]
+}

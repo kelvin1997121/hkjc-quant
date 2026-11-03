@@ -23,9 +23,10 @@ main{max-width:1100px;margin:auto;padding:0 16px 40px}
 .notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin:8px 0}
 .note{border-left:3px solid var(--accent2);padding:4px 10px;font-size:14px}
 .tblwrap{overflow-x:auto}
-table{border-collapse:collapse;width:100%;font-size:14px;min-width:1040px}
-td:nth-child(2){white-space:nowrap}
-td:last-child{min-width:150px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+.tblwrap table{min-width:1040px}
+.tblwrap td:nth-child(2){white-space:nowrap}
+.tblwrap td:last-child{min-width:150px}
 th{white-space:nowrap}
 th,td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
 th{color:var(--muted);font-weight:600;font-size:12px}
@@ -51,6 +52,7 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
   <div class="tabs" id="tabs"></div>
   <div id="view"></div>
   <section class="card" id="perf"></section>
+  <section class="card" id="selfcheck"></section>
   <p class="warn">模型數字係根據歷史數據嘅統計估算,唔係保證。賽馬涉及風險,請量力而為。未滿十八歲人士不得投注。切勿沉迷賭博,如需協助可致電平和基金熱線 1834 633。</p>
 </main>
 <script>
@@ -62,6 +64,8 @@ async function load() {
   const bust = "?t=" + Date.now();
   data = await fetch("data/latest.json" + bust).then(r => r.json());
   const tr = await fetch("data/track_record.json" + bust).then(r => r.json()).catch(() => null);
+  const sc = await fetch("data/selfcheck.json" + bust).then(r => r.json()).catch(() => null);
+  selfcheck(sc);
   const m = data.meeting;
   $("#sub").textContent = `${m.date} ${m.venue_zh} · ${data.races.length} 場 · 更新於 ${new Date(data.updated_at).toLocaleString("zh-HK")} · 歷史數據 ${data.history_races} 場`;
   if (!load.done) {
@@ -126,6 +130,41 @@ function show() {
     ${r.ai ? `<div class="ai"><b>AI 分析(Claude)</b>\n${esc(r.ai)}</div>`
       : r.summary ? `<div class="ai"><b>系統分析</b>\n${esc(r.summary)}</div>` : ""}
   </section>`;
+}
+
+function selfcheck(sc) {
+  const el = $("#selfcheck");
+  if (!sc) { el.style.display = "none"; return; }
+  const pct = v => v == null ? "–" : (v * 100).toFixed(1) + "%";
+  const w = sc.walk_forward;
+  const health = sc.health.checks.map(c =>
+    `<div class="${c.ok ? "pro" : "con"}" style="font-size:14px">${c.ok ? "✓" : "⚠"} ${esc(c.name)}:${esc(c.detail)}</div>`).join("");
+  const maxd = Math.max(...sc.factor_groups.map(g => Math.abs(g.delta_logloss)), 0.001);
+  const groups = sc.factor_groups.map(g => {
+    const good = g.delta_logloss > 0;
+    return `<tr><td>${esc(g.group)}</td><td class="num">${g.delta_logloss > 0 ? "+" : ""}${g.delta_logloss.toFixed(4)}</td>
+      <td style="width:45%"><div class="bar"><i style="width:${Math.abs(g.delta_logloss) / maxd * 100}%;background:${good ? "var(--accent)" : "var(--bad)"}"></i></div></td></tr>`;
+  }).join("");
+  const cal = sc.calibration.map(c =>
+    `<tr><td>${esc(c.band)}</td><td class="num">${c.n}</td><td class="num">${pct(c.predicted)}</td><td class="num">${pct(c.actual)}</td></tr>`).join("");
+  const t = sc.tuning;
+  el.innerHTML = `
+    <h3 style="margin-top:0">系統自我檢測</h3>
+    <div class="sub">每日自動檢查 · 上次 ${new Date(sc.checked_at).toLocaleString("zh-HK")} · ${sc.health.races} 場歷史數據</div>
+    <div style="margin:10px 0">${health}</div>
+    <div class="kpis">
+      <div class="kpi"><b>${pct(w.top_hit)}</b>首選勝出率(大熱門 ${pct(w.favourite_hit)})</div>
+      <div class="kpi"><b>${w.logloss}</b>Log loss(市場 ${w.market_logloss})</div>
+      <div class="kpi"><b>${w.blend_gain > 0 ? "+" : ""}${w.blend_gain} ± ${w.blend_gain_ci}</b>加入模型後對市場嘅改善</div>
+      <div class="kpi"><b>l2 ${t.chosen.l2} · ${t.chosen.stages === 1 ? "頭馬" : "頭三名"}</b>${t.switched ? "今日自動調校咗設定" : "設定維持不變"}</div>
+    </div>
+    ${sc.notes.map(n => `<div class="note" style="margin-top:8px">${esc(n)}</div>`).join("")}
+    <div class="notes" style="margin-top:12px">
+      <div><div class="sub">因素組貢獻(拎走後 log loss 變差幾多;紅色 = 拎走反而更準)</div>
+        <table><tbody>${groups}</tbody></table></div>
+      <div><div class="sub">機率校準(預測 vs 實際勝出率)</div>
+        <table><thead><tr><th>區間</th><th>馬次</th><th>預測</th><th>實際</th></tr></thead><tbody>${cal}</tbody></table></div>
+    </div>`;
 }
 
 function edgeNote() {

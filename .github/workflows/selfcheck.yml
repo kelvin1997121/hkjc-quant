@@ -1,0 +1,59 @@
+name: selfcheck
+
+# Daily self-check: data health, walk-forward accuracy vs. market, calibration,
+# factor contributions and guarded auto-tuning (writes data/model_config.json).
+on:
+  schedule:
+    - cron: "37 19 * * *"   # 03:37 HKT, after the night's results are in
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: update   # shares the data with the live updates, so never overlap them
+  cancel-in-progress: false
+
+jobs:
+  selfcheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Self-check
+        env:
+          HKJC_PROXY: ${{ secrets.HKJC_PROXY }}
+        run: python -m hkjc.selfcheck
+
+      - name: Commit report
+        run: |
+          git config user.name "hkjc-bot"
+          git config user.email "hkjc-bot@users.noreply.github.com"
+          git add docs/data/selfcheck.json data/model_config.json
+          git diff --cached --quiet || git commit -m "selfcheck: $(TZ=Asia/Hong_Kong date '+%Y-%m-%d %H:%M') HKT"
+          git pull --rebase -X theirs
+          git push
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: docs
+
+  deploy:
+    needs: selfcheck
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
