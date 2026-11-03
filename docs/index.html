@@ -116,7 +116,7 @@ function show() {
     ${res}
     <div class="notes">
       <div class="note">${esc(r.pace_note)}</div>
-      <div class="note">${esc(r.today_bias)}</div>
+      <div class="note">${esc(r.today_bias)}${r.today_sect ? `<br>${esc(r.today_sect)}` : ""}</div>
       <div class="note">${esc(r.course_bias)}</div>
     </div>
     <div class="tblwrap"><table>

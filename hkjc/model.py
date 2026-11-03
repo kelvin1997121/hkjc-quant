@@ -34,6 +34,9 @@ FEATURES = [
     "layoff", "debut", "mkt_rating", "vs_mkt", "closing", "class_drop", "bw_change",
     "perf_best", "perf_last", "handicap_edge", "late_speed", "early_speed",
 ]
+# Same-day sectional reads (track variant, closing advantage) are shown to the user
+# but kept out of the model: as features they worsened walk-forward log loss
+# (2.2251 -> 2.2303 on 452 races).
 SEC_PER_LENGTH = 0.17
 
 _CLASS = {"一級賽": -2, "二級賽": -1, "三級賽": 0, "第一班": 1, "第二班": 2,
@@ -136,6 +139,8 @@ class State:
         self.jockey = RateBook()
         self.trainer = RateBook()
         self.meeting = defaultdict(list)          # (date, venue) -> finished race summaries
+        self.class_var = defaultdict(list)        # class -> (winner time - std)/km, good ground
+        self.late_top_hist = []                   # per race: avg final-section edge of top 3
 
     # ---------------------------------------------------------------- helpers
     def std_time(self, r):
@@ -192,6 +197,20 @@ class State:
         shrink = n / (n + 3)
         return (0.45 - style) * shrink, (0.5 - draw) * shrink, n
 
+    def today_sectionals(self, r):
+        """Live read from today's sectional times on this surface.
+
+        variant: s/km slower (+) or faster (-) than the class-adjusted standard
+        late:    how much more than usual the top 3 out-finished the field (s, + = closers)
+        """
+        done = [m for m in self.meeting.get((r["date"], r["venue"]), [])
+                if m["surface"] == r.get("surface", "TURF")]
+        var = [m["variant"] for m in done if m.get("variant") is not None]
+        late = [m["late_excess"] for m in done if m.get("late_excess") is not None]
+        v = float(np.mean(var)) * len(var) / (len(var) + 2) if var else 0.0
+        lt = float(np.mean(late)) * len(late) / (len(late) + 2) if late else 0.0
+        return v, lt, len(var), len(late)
+
     # ---------------------------------------------------------------- features
     def runner_profile(self, code, dist):
         runs = self.horse.get(code, [])
@@ -230,6 +249,7 @@ class State:
         exp_lead = 0.2 * field
         pace = (n_lead - exp_lead) / max(field, 1) * 4  # >0 = contested early pace
         t_style, t_draw, t_n = self.today_bias(race)
+        t_var, t_late, t_nv, t_nl = self.today_sectionals(race)
         c_edge = self.course_leader_edge(race)
         sp_vals = [p["speed_best"] for p in profs if p["speed_best"] is not None]
         sp_fill = float(np.percentile(sp_vals, 35)) if sp_vals else 0.0
@@ -291,7 +311,8 @@ class State:
             X.append([f[k] for k in FEATURES])
             extra.append({"profile": p, "draw_frac": draw_frac})
         ctx = {"pace": pace, "n_lead": n_lead, "today_style": t_style, "today_draw": t_draw,
-               "today_n": t_n, "course_edge": c_edge}
+               "today_n": t_n, "course_edge": c_edge, "today_variant": t_var,
+               "today_late": t_late, "today_sect_n": max(t_nv, t_nl)}
         return np.array(X, dtype=float), extra, ctx
 
     # ---------------------------------------------------------------- update
@@ -304,8 +325,17 @@ class State:
             return
         km = (race.get("distance") or 1000) / 1000
         winner = min(finished, key=lambda x: x["place"])
+        variant = None
         if winner.get("time") and race.get("distance"):
             std = self.std_time(race)
+            if std:
+                # track speed: winner vs. standard, minus the usual gap for this class
+                raw = (winner["time"] - std) / km
+                cls = race.get("class") or "?"
+                cv = self.class_var.get(cls)
+                variant = raw - (median(cv[-150:]) if cv and len(cv) >= 5 else 0.0)
+                if race.get("going") in GOOD:
+                    self.class_var[cls].append(raw)
             if race.get("going") in GOOD:
                 self.winner_times[track_key(race)].append(winner["time"])
             elif std:
@@ -339,6 +369,16 @@ class State:
             last_med = float(np.median([x["sect"][-1] for x in with_sect]))
             sect_rel = {x["no"]: (first_med - x["sect"][0], last_med - x["sect"][-1])
                         for x in with_sect}
+        # closing advantage: how much the top 3 out-finished the field, vs. a normal race
+        late_top = [sect_rel[x["no"]][1] for x in finished
+                    if x["place"] <= 3 and x["no"] in sect_rel]
+        late_excess = None
+        if len(late_top) >= 2:
+            lt = float(np.mean(late_top))
+            hist = self.late_top_hist
+            if len(hist) >= 30:
+                late_excess = lt - float(np.mean(hist[-400:]))
+            hist.append(lt)
         dk = draw_key(race)
         top_early, top_draw = [], []
         for x in runners:
@@ -381,6 +421,7 @@ class State:
             "race_no": race["race_no"], "surface": race.get("surface", "TURF"),
             "top_early": float(np.mean(top_early)) if top_early else 0.45,
             "top_draw": float(np.mean(top_draw)) if top_draw else 0.5,
+            "variant": variant, "late_excess": late_excess,
         })
 
 

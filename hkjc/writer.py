@@ -45,6 +45,13 @@ def summarise(a: dict) -> str:
 
     # 2. track and draw
     s = f"【場地】{a.get('today_bias', '')};{a.get('course_bias', '')}。"
+    if a.get("today_sect"):
+        s += a["today_sect"] + "。"
+        late = (a.get("today_sect_data") or {}).get("late", 0)
+        if late > 0.07:
+            fast_finish = [x for x in top5 if "末段速度(分段時間)" in x["pros"]]
+            if fast_finish:
+                s += f"末段快嘅{_names(fast_finish, 2)}受惠。"
     good_draw = sorted([x for x in runners if (x.get("draw_edge") or 0) > 0.08],
                        key=lambda x: -x["draw_edge"])
     bad_draw = [x for x in top5 if (x.get("draw_edge") or 0) < -0.08]

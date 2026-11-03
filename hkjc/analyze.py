@@ -51,6 +51,26 @@ def today_label(ctx):
 VALUE_EV = 1.15  # flag a bet only when blended prob x odds clears takeout comfortably
 
 
+def today_sect_label(ctx):
+    """Plain-language read of today's sectional times (empty before any data)."""
+    if not ctx.get("today_sect_n"):
+        return ""
+    v, lt = ctx["today_variant"], ctx["today_late"]
+    if v < -0.2:
+        speed = f"跑道偏快(比標準快約 {abs(v):.1f} 秒/公里)"
+    elif v > 0.2:
+        speed = f"跑道偏慢(比標準慢約 {v:.1f} 秒/公里)"
+    else:
+        speed = "跑道速度正常"
+    if lt > 0.07:
+        late = "末段追勁作用大,末段快嘅馬有著數"
+    elif lt < -0.07:
+        late = "末段追勁作用細,前置馬較易守得住"
+    else:
+        late = "末段追勁影響正常"
+    return f"今日分段時間({ctx['today_sect_n']} 場):{speed};{late}"
+
+
 def analyse_race(state, params, race, odds=None):
     """odds: {"win": {no: odds}, "place": {...}, "updated": str, "scratched": [no]} or None."""
     win = {int(k): v for k, v in (odds or {}).get("win", {}).items()}
@@ -115,6 +135,9 @@ def analyse_race(state, params, race, odds=None):
         "course": race.get("course"), "going": race.get("going"),
         "pace": pace_lv, "pace_note": pace_txt, "n_leaders": ctx["n_lead"],
         "today_bias": today_label(ctx),
+        "today_sect": today_sect_label(ctx),
+        "today_sect_data": {"variant": round(ctx["today_variant"], 2),
+                            "late": round(ctx["today_late"], 3), "races": ctx["today_sect_n"]},
         "course_bias": ("此跑道路程歷來前置馬有利" if ctx["course_edge"] > 0.05 else
                         "此跑道路程歷來後上馬有利" if ctx["course_edge"] < -0.05 else
                         "此跑道路程跑法偏差不明顯"),
