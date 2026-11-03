@@ -4,8 +4,9 @@ name: update
 # GitHub cron is UTC. HKT = UTC+8.
 on:
   schedule:
-    - cron: "0 0 * * *"          # 08:00 HKT daily: results catch-up + new race card
-    - cron: "*/20 3-15 * * *"    # every 20 min, 11:00-23:59 HKT: live race-day updates
+    # off-peak minutes: GitHub drops/delays many schedules that fire at :00
+    - cron: "13 0 * * *"           # 08:13 HKT daily: results catch-up + new race card
+    - cron: "7,27,47 3-15 * * *"   # every 20 min, 11:07-23:47 HKT: live race-day updates
   workflow_dispatch:
 
 permissions:
