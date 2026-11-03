@@ -1,19 +1,15 @@
 name: backfill
 
 # Manual: download older seasons and per-horse sectional times in the cloud.
-# Stops after the time budget and commits what it has; run again to continue.
+# Seasons run as parallel jobs, each with a few concurrent requests under a
+# polite global rate cap; then one job fills in sectional times. Each job stops
+# at its time budget and commits what it has; run again to continue.
 on:
   workflow_dispatch:
     inputs:
-      from:
-        description: "Earliest date to probe (YYYY-MM-DD)"
-        default: "2022-09-01"
-      to:
-        description: "Latest date to probe (YYYY-MM-DD)"
-        default: "2025-07-25"
       minutes:
-        description: "Time budget in minutes"
-        default: "300"
+        description: "Time budget per job in minutes"
+        default: "150"
 
 permissions:
   contents: write
@@ -22,12 +18,26 @@ concurrency:
   group: backfill   # separate from "update" so live race-day runs are never blocked
   cancel-in-progress: false
 
+env:
+  HKJC_CONCURRENCY: "4"
+  HKJC_RATE: "2"          # request starts per second, per job
+  HKJC_PROXY: ${{ secrets.HKJC_PROXY }}
+
 jobs:
-  backfill:
+  seasons:
     runs-on: ubuntu-latest
-    timeout-minutes: 340
+    timeout-minutes: 200
+    strategy:
+      fail-fast: false
+      matrix:
+        range:
+          - "2022-09-01 2023-07-25"
+          - "2023-09-01 2024-07-25"
+          - "2024-09-01 2025-07-25"
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: main
 
       - uses: actions/setup-python@v7
         with:
@@ -36,15 +46,8 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - name: Older seasons (55% of budget)
-        env:
-          HKJC_PROXY: ${{ secrets.HKJC_PROXY }}
-        run: BACKFILL_MINUTES=$(( ${{ inputs.minutes }} * 55 / 100 )) python -m hkjc.backfill range ${{ inputs.from }} ${{ inputs.to }}
-
-      - name: Sectional times (rest of budget)
-        env:
-          HKJC_PROXY: ${{ secrets.HKJC_PROXY }}
-        run: BACKFILL_MINUTES=$(( ${{ inputs.minutes }} * 40 / 100 )) python -m hkjc.backfill sectionals
+      - name: Results for ${{ matrix.range }}
+        run: BACKFILL_MINUTES=${{ inputs.minutes }} python -m hkjc.backfill range ${{ matrix.range }}
 
       - name: Commit data
         if: always()
@@ -52,6 +55,44 @@ jobs:
           git config user.name "hkjc-bot"
           git config user.email "hkjc-bot@users.noreply.github.com"
           git add data
-          git diff --cached --quiet || git commit -m "data: backfill $(TZ=Asia/Hong_Kong date '+%Y-%m-%d %H:%M') HKT"
-          git pull --rebase -X theirs
-          git push
+          git diff --cached --quiet && exit 0
+          git commit -m "data: backfill ${{ matrix.range }}"
+          for i in 1 2 3 4 5; do
+            git pull --rebase -X theirs && git push && exit 0
+            sleep $((RANDOM % 20 + 5))
+          done
+          exit 1
+
+  sectionals:
+    needs: seasons
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 200
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main   # pick up what the season jobs just pushed
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Sectional times
+        run: BACKFILL_MINUTES=${{ inputs.minutes }} python -m hkjc.backfill sectionals
+
+      - name: Commit data
+        if: always()
+        run: |
+          git config user.name "hkjc-bot"
+          git config user.email "hkjc-bot@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet && exit 0
+          git commit -m "data: sectional times backfill"
+          for i in 1 2 3 4 5; do
+            git pull --rebase -X theirs && git push && exit 0
+            sleep $((RANDOM % 20 + 5))
+          done
+          exit 1

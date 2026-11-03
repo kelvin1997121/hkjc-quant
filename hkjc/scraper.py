@@ -8,7 +8,9 @@ from __future__ import annotations
 import json
 import os
 import re
+import threading
 import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import date, datetime
 
 import requests
@@ -21,26 +23,47 @@ UA = (
     "(KHTML, like Gecko) Chrome/130.0 Safari/537.36 hkjc-quant/1.0"
 )
 
-_session = requests.Session()
-_session.headers.update({"User-Agent": UA, "Accept-Language": "zh-HK,zh;q=0.9"})
-# Optional proxy (e.g. a Hong Kong egress) for runners whose IP gets blocked.
-if os.environ.get("HKJC_PROXY"):
-    _session.proxies.update({"http": os.environ["HKJC_PROXY"], "https": os.environ["HKJC_PROXY"]})
+_local = threading.local()
 
-_last_request = 0.0
-DELAY = float(os.environ.get("HKJC_DELAY", "1.0"))
+
+def _session() -> requests.Session:
+    """One session per thread (requests.Session isn't guaranteed thread-safe)."""
+    s = getattr(_local, "session", None)
+    if s is None:
+        s = requests.Session()
+        s.headers.update({"User-Agent": UA, "Accept-Language": "zh-HK,zh;q=0.9"})
+        # Optional proxy (e.g. a Hong Kong egress) for runners whose IP gets blocked.
+        if os.environ.get("HKJC_PROXY"):
+            s.proxies.update({"http": os.environ["HKJC_PROXY"], "https": os.environ["HKJC_PROXY"]})
+        _local.session = s
+    return s
+
+
+# Politeness: a global cap on request *starts* per second, shared by all threads.
+# Live runs use 1/s; backfills raise HKJC_RATE and use a few threads so the ~1.5 s
+# page latency overlaps instead of serialising.
+RATE = float(os.environ.get("HKJC_RATE", "1.0"))
+CONCURRENCY = int(os.environ.get("HKJC_CONCURRENCY", "1"))
+_rate_lock = threading.Lock()
+_next_start = 0.0
+
+
+def _pace():
+    global _next_start
+    with _rate_lock:
+        now = time.time()
+        start = max(now, _next_start)
+        _next_start = start + 1.0 / RATE
+    if start > now:
+        time.sleep(start - now)
 
 
 def get(path: str, **params) -> str:
-    global _last_request
-    wait = DELAY - (time.time() - _last_request)
-    if wait > 0:
-        time.sleep(wait)
     url = ("https://racing.hkjc.com" + path) if path.startswith("/") else BASE + path
     for attempt in range(4):
+        _pace()
         try:
-            r = _session.get(url, params=params or None, timeout=30)
-            _last_request = time.time()
+            r = _session().get(url, params=params or None, timeout=30)
             if r.status_code == 200:
                 r.encoding = "utf-8"
                 return r.text
@@ -247,14 +270,18 @@ def fetch_meeting_results(race_date: date, with_sectionals: bool = True):
     if not venue:
         return []
     nos.add(1)
-    races = []
-    for n in sorted(nos):
+
+    def one(n):
         page = html if n == 1 else get("LocalResults.aspx", RaceDate=ds, Racecourse=venue, RaceNo=n)
         r = _parse_result_race(BeautifulSoup(page, "html.parser"), venue, race_date, n)
         if r and r["runners"]:
             if with_sectionals:
                 attach_sectionals(r)
-            races.append(r)
+            return r
+        return None
+
+    with ThreadPoolExecutor(max_workers=CONCURRENCY) as pool:
+        races = [r for r in pool.map(one, sorted(nos)) if r]
     return races
 
 
