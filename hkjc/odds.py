@@ -40,7 +40,10 @@ def fetch_odds(date_iso: str, venue: str, race_nos: list[int], log=print) -> dic
 
     out = {}
     with sync_playwright() as pw:
-        browser = pw.chromium.launch()
+        try:  # GitHub runners ship Google Chrome: no 5-minute browser install needed
+            browser = pw.chromium.launch(channel="chrome")
+        except Exception:
+            browser = pw.chromium.launch()
         # cloud runners are on UTC; the page prints its update time in local time
         page = browser.new_page(locale="zh-HK", timezone_id="Asia/Hong_Kong")
         for n in race_nos:

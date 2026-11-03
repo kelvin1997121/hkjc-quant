@@ -33,7 +33,8 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Headless browser for live odds
-        run: python -m playwright install --with-deps chromium
+        # use the runner's preinstalled Chrome; only install Chromium if it's missing
+        run: command -v google-chrome || python -m playwright install --with-deps chromium
 
       - name: Run pipeline
         env:
