@@ -48,7 +48,11 @@ def load_all_results() -> list[dict]:
 
 
 def save_card(card: dict):
-    _write(CARDS / f"{card['date']}_{card['venue']}.json", card)
+    path = CARDS / f"{card['date']}_{card['venue']}.json"
+    old = _read(path)
+    if old and old.get("races") == json.loads(json.dumps(card["races"], ensure_ascii=False)):
+        return  # unchanged apart from fetch time: keep git quiet
+    _write(path, card)
 
 
 def load_card(date_iso: str, venue: str):

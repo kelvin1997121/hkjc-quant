@@ -4,47 +4,49 @@
   "venue": "HV",
   "venue_zh": "跑馬地"
  },
- "updated_at": "2026-11-03T12:09:13+00:00",
+ "updated_at": "2026-11-03T12:21:28+00:00",
  "model": {
   "holdout": {
-   "races": 204,
-   "logloss": 2.2231,
-   "top_pick_win_rate": 0.2108,
-   "market_logloss": 2.0373,
-   "favourite_win_rate": 0.2892,
-   "flat_bet_roi_top_pick": -0.2181,
-   "uniform_logloss": 2.5019
+   "races": 226,
+   "logloss": 2.2328,
+   "top_pick_win_rate": 0.1991,
+   "market_logloss": 2.0453,
+   "favourite_win_rate": 0.2876,
+   "flat_bet_roi_top_pick": -0.2217,
+   "uniform_logloss": 2.5087
   },
-  "train_races": 815,
-  "holdout_from": "2026-07-01",
+  "train_races": 903,
+  "holdout_from": "2026-06-24",
   "weights": {
-   "speed_best": -0.002,
-   "speed_last": 0.035,
-   "speed_missing": -0.103,
-   "form": 0.378,
-   "dist_form": -0.038,
-   "early": -0.062,
-   "early_x_pace": 0.027,
-   "early_x_today": 0.008,
-   "early_x_course": 0.064,
+   "speed_best": -0.03,
+   "speed_last": 0.065,
+   "speed_missing": -0.066,
+   "form": 0.395,
+   "dist_form": 0.022,
+   "early": -0.005,
+   "early_x_pace": 0.035,
+   "early_x_today": 0.02,
+   "early_x_course": -0.02,
    "draw_bias": 0.107,
-   "draw_x_today": 0.121,
-   "jockey": 0.269,
-   "trainer": 0.014,
-   "weight_rel": -0.111,
-   "layoff": 0.044,
-   "debut": 0.155,
-   "mkt_rating": 0.426,
-   "vs_mkt": 0.021,
-   "closing": -0.091,
-   "class_drop": 0.056,
-   "bw_change": -0.007,
-   "perf_best": 0.09,
-   "perf_last": 0.086,
-   "handicap_edge": 0.104
+   "draw_x_today": 0.08,
+   "jockey": 0.17,
+   "trainer": 0.017,
+   "weight_rel": -0.073,
+   "layoff": 0.015,
+   "debut": 0.068,
+   "mkt_rating": 0.341,
+   "vs_mkt": 0.026,
+   "closing": -0.085,
+   "class_drop": 0.053,
+   "bw_change": 0.004,
+   "perf_best": 0.111,
+   "perf_last": 0.089,
+   "handicap_edge": 0.123,
+   "late_speed": 0.074,
+   "early_speed": -0.021
   }
  },
- "history_races": 1074,
+ "history_races": 1308,
  "races": [
   {
    "race_no": 1,
@@ -57,7 +59,7 @@
    "going": "好地",
    "pace": "快",
    "pace_note": "多匹前領馬爭位,預計步速偏快,後上馬有利",
-   "n_leaders": 6,
+   "n_leaders": 7,
    "today_bias": "今日未有已完成賽事,未能計算即日場地走勢",
    "course_bias": "此跑道路程歷來前置馬有利",
    "runners": [
@@ -69,30 +71,59 @@
      "jockey": "袁幸堯",
      "trainer": "廖康銘",
      "draw": 7,
-     "weight": 135,
+     "weight": 128,
      "rating": 40,
      "last6": "5/9/4/2/2/2",
      "gear": "B/TT",
-     "win_prob": 0.1885,
-     "fair_odds": 5.3,
+     "win_prob": 0.2793,
+     "fair_odds": 3.6,
      "style": "領放",
      "speed_best": -3.0,
      "perf_best": 52.2,
      "handicap_edge": 12.2,
-     "runs_in_db": 16,
-     "draw_edge": -0.148,
+     "runs_in_db": 20,
+     "draw_edge": -0.194,
      "pros": [
       "過往市場評價",
-      "騎師",
-      "近況"
+      "末段速度(分段時間)",
+      "騎師"
      ],
      "cons": [
-      "檔位統計",
-      "負磅"
+      "步速形勢",
+      "檔位統計"
      ]
     },
     {
      "rank": 2,
+     "no": 5,
+     "horse": "辣得金",
+     "horse_code": "J087",
+     "jockey": "黃寶妮",
+     "trainer": "巫偉傑",
+     "draw": 9,
+     "weight": 126,
+     "rating": 38,
+     "last6": "5/1/6/2/6/3",
+     "gear": "H/TT",
+     "win_prob": 0.1282,
+     "fair_odds": 7.8,
+     "style": "前列",
+     "speed_best": 0.3,
+     "perf_best": 41.2,
+     "handicap_edge": 3.2,
+     "runs_in_db": 18,
+     "draw_edge": -0.194,
+     "pros": [
+      "過往市場評價",
+      "近況"
+     ],
+     "cons": [
+      "步速形勢",
+      "表現評分(近績最佳)"
+     ]
+    },
+    {
+     "rank": 3,
      "no": 4,
      "horse": "馬運高",
      "horse_code": "L175",
@@ -103,52 +134,22 @@
      "rating": 38,
      "last6": "5/8/4/5/11/7",
      "gear": "H/XB",
-     "win_prob": 0.17,
-     "fair_odds": 5.9,
+     "win_prob": 0.1061,
+     "fair_odds": 9.4,
      "style": "領放",
      "speed_best": -9.4,
      "perf_best": 49.5,
      "handicap_edge": 11.5,
      "runs_in_db": 8,
-     "draw_edge": 0.125,
+     "draw_edge": 0.153,
      "pros": [
       "過往市場評價",
       "降班",
-      "騎師"
+      "讓磅著數"
      ],
      "cons": [
-      "步速形勢",
-      "前置跑法"
-     ]
-    },
-    {
-     "rank": 3,
-     "no": 5,
-     "horse": "辣得金",
-     "horse_code": "J087",
-     "jockey": "黃寶妮",
-     "trainer": "巫偉傑",
-     "draw": 9,
-     "weight": 133,
-     "rating": 38,
-     "last6": "5/1/6/2/6/3",
-     "gear": "H/TT",
-     "win_prob": 0.1139,
-     "fair_odds": 8.8,
-     "style": "前列",
-     "speed_best": 0.1,
-     "perf_best": 41.2,
-     "handicap_edge": 3.2,
-     "runs_in_db": 15,
-     "draw_edge": -0.148,
-     "pros": [
-      "過往市場評價",
-      "近況",
-      "跑道跑法偏差"
-     ],
-     "cons": [
-      "騎師",
-      "檔位統計"
+      "末段速度(分段時間)",
+      "步速形勢"
      ]
     },
     {
@@ -159,18 +160,18 @@
      "jockey": "鍾易禮",
      "trainer": "告東尼",
      "draw": 10,
-     "weight": 133,
+     "weight": 131,
      "rating": 38,
      "last6": "6/6/7/11/11/6",
      "gear": "CP/TT",
-     "win_prob": 0.0871,
-     "fair_odds": 11.5,
+     "win_prob": 0.1008,
+     "fair_odds": 9.9,
      "style": "中游",
      "speed_best": -6.2,
      "perf_best": 49.3,
      "handicap_edge": 11.3,
      "runs_in_db": 10,
-     "draw_edge": 0.125,
+     "draw_edge": 0.153,
      "pros": [
       "降班",
       "檔位統計",
@@ -189,19 +190,21 @@
      "jockey": "周俊樂",
      "trainer": "沈集成",
      "draw": 4,
-     "weight": 130,
+     "weight": 128,
      "rating": 35,
      "last6": "9/8/5/5/1/12",
      "gear": "B2/TT",
-     "win_prob": 0.0761,
-     "fair_odds": 13.1,
+     "win_prob": 0.0968,
+     "fair_odds": 10.3,
      "style": "中游",
-     "speed_best": 1.6,
+     "speed_best": 1.9,
      "perf_best": 41.2,
      "handicap_edge": 6.2,
-     "runs_in_db": 12,
-     "draw_edge": 0.042,
+     "runs_in_db": 16,
+     "draw_edge": 0.153,
      "pros": [
+      "末段速度(分段時間)",
+      "檔位統計",
       "騎師"
      ],
      "cons": [
@@ -251,56 +254,25 @@
      "rating": 34,
      "last6": "9/8/6/8/2/6",
      "gear": "B2/TT",
-     "win_prob": 0.0721,
-     "fair_odds": 13.9,
+     "win_prob": 0.0647,
+     "fair_odds": 15.4,
      "style": "領放",
-     "speed_best": -10.2,
+     "speed_best": -9.9,
      "perf_best": 38.1,
      "handicap_edge": 4.1,
-     "runs_in_db": 17,
-     "draw_edge": -0.148,
+     "runs_in_db": 20,
+     "draw_edge": -0.194,
      "pros": [
       "過往市場評價",
-      "後段追勁",
-      "跑道跑法偏差"
+      "後段追勁"
      ],
      "cons": [
-      "上仗表現評分",
-      "近況"
+      "表現評分(近績最佳)",
+      "步速形勢"
      ]
     },
     {
-     "rank": 8,
-     "no": 6,
-     "horse": "精算奕然",
-     "horse_code": "K295",
-     "jockey": "潘頓",
-     "trainer": "鄭俊偉",
-     "draw": 12,
-     "weight": 133,
-     "rating": 38,
-     "last6": "9/7/8/12/11/13",
-     "gear": "TT",
-     "win_prob": 0.0629,
-     "fair_odds": 15.9,
-     "style": "前列",
-     "speed_best": -15.8,
-     "perf_best": 43.5,
-     "handicap_edge": 5.5,
-     "runs_in_db": 9,
-     "draw_edge": 0.065,
-     "pros": [
-      "騎師",
-      "後段追勁",
-      "降班"
-     ],
-     "cons": [
-      "過往市場評價",
-      "近況"
-     ]
-    },
-    {
-     "rank": 9,
+     "rank": 7,
      "no": 11,
      "horse": "洛河",
      "horse_code": "J308",
@@ -311,22 +283,81 @@
      "rating": 30,
      "last6": "6/2/11/3/12/5",
      "gear": "CP/TT",
-     "win_prob": 0.0624,
-     "fair_odds": 16.0,
+     "win_prob": 0.0617,
+     "fair_odds": 16.2,
      "style": "前列",
      "speed_best": 1.6,
      "perf_best": 37.5,
      "handicap_edge": 7.5,
-     "runs_in_db": 9,
-     "draw_edge": -0.148,
+     "runs_in_db": 11,
+     "draw_edge": -0.172,
      "pros": [
       "近況",
-      "負磅",
       "過往市場評價"
      ],
      "cons": [
       "騎師",
       "表現評分(近績最佳)"
+     ]
+    },
+    {
+     "rank": 8,
+     "no": 10,
+     "horse": "飈誌",
+     "horse_code": "J504",
+     "jockey": "奧爾民",
+     "trainer": "黎昭昇",
+     "draw": 3,
+     "weight": 128,
+     "rating": 33,
+     "last6": "11/3/13/6/3/11",
+     "gear": "B/TT",
+     "win_prob": 0.0455,
+     "fair_odds": 22.0,
+     "style": "領放",
+     "speed_best": -8.8,
+     "perf_best": 45.8,
+     "handicap_edge": 12.8,
+     "runs_in_db": 14,
+     "draw_edge": 0.153,
+     "pros": [
+      "後段追勁",
+      "讓磅著數",
+      "檔位統計"
+     ],
+     "cons": [
+      "末段速度(分段時間)",
+      "近況"
+     ]
+    },
+    {
+     "rank": 9,
+     "no": 6,
+     "horse": "精算奕然",
+     "horse_code": "K295",
+     "jockey": "潘頓",
+     "trainer": "鄭俊偉",
+     "draw": 12,
+     "weight": 133,
+     "rating": 38,
+     "last6": "9/7/8/12/11/13",
+     "gear": "TT",
+     "win_prob": 0.0378,
+     "fair_odds": 26.4,
+     "style": "前列",
+     "speed_best": -15.8,
+     "perf_best": 43.5,
+     "handicap_edge": 5.5,
+     "runs_in_db": 8,
+     "draw_edge": 0.039,
+     "pros": [
+      "騎師",
+      "降班",
+      "後段追勁"
+     ],
+     "cons": [
+      "過往市場評價",
+      "末段速度(分段時間)"
      ]
     },
     {
@@ -341,21 +372,21 @@
      "rating": 28,
      "last6": "10/6/4/9/4/12",
      "gear": "B/TT2",
-     "win_prob": 0.0539,
-     "fair_odds": 18.5,
+     "win_prob": 0.0331,
+     "fair_odds": 30.2,
      "style": "前列",
      "speed_best": -0.8,
      "perf_best": 38.3,
      "handicap_edge": 10.3,
-     "runs_in_db": 10,
-     "draw_edge": -0.048,
+     "runs_in_db": 12,
+     "draw_edge": -0.095,
      "pros": [
-      "負磅",
       "後段追勁",
-      "讓磅著數"
+      "讓磅著數",
+      "負磅"
      ],
      "cons": [
-      "過往市場評價",
+      "末段速度(分段時間)",
       "近況"
      ]
     },
@@ -367,21 +398,20 @@
      "jockey": "巫顯東",
      "trainer": "徐雨石",
      "draw": 5,
-     "weight": 133,
+     "weight": 131,
      "rating": 38,
      "last6": "11/6/11/10/11/7",
      "gear": "B-/CP2/TT",
-     "win_prob": 0.0246,
-     "fair_odds": 40.7,
+     "win_prob": 0.0253,
+     "fair_odds": 39.5,
      "style": "前列",
      "speed_best": -5.3,
      "perf_best": 44.8,
      "handicap_edge": 6.8,
      "runs_in_db": 7,
-     "draw_edge": -0.148,
+     "draw_edge": -0.095,
      "pros": [
       "降班",
-      "休賽",
       "後段追勁"
      ],
      "cons": [
@@ -401,18 +431,18 @@
      "rating": 34,
      "last6": "11/11/10/10/10/11",
      "gear": "TT",
-     "win_prob": 0.016,
-     "fair_odds": 62.6,
+     "win_prob": 0.0208,
+     "fair_odds": 48.2,
      "style": "後上",
      "speed_best": -8.4,
      "perf_best": 46.8,
      "handicap_edge": 12.8,
      "runs_in_db": 7,
-     "draw_edge": 0.125,
+     "draw_edge": 0.153,
      "pros": [
-      "降班",
+      "步速形勢",
       "讓磅著數",
-      "休賽"
+      "降班"
      ],
      "cons": [
       "過往市場評價",
@@ -449,22 +479,22 @@
      "rating": 31,
      "last6": "3/8/5/7/11/7",
      "gear": "TT",
-     "win_prob": 0.2074,
-     "fair_odds": 4.8,
+     "win_prob": 0.1808,
+     "fair_odds": 5.5,
      "style": "領放",
-     "speed_best": 2.9,
+     "speed_best": 2.6,
      "perf_best": 39.1,
      "handicap_edge": 8.1,
      "runs_in_db": 13,
-     "draw_edge": 0.19,
+     "draw_edge": 0.237,
      "pros": [
       "近況",
-      "過往市場評價",
-      "檔位統計"
+      "檔位統計",
+      "過往市場評價"
      ],
      "cons": [
       "表現評分(近績最佳)",
-      "前置跑法"
+      "上仗表現評分"
      ]
     },
     {
@@ -479,52 +509,52 @@
      "rating": 28,
      "last6": "9/4/2/5/3/4",
      "gear": "V",
-     "win_prob": 0.1538,
-     "fair_odds": 6.5,
+     "win_prob": 0.124,
+     "fair_odds": 8.1,
      "style": "後上",
      "speed_best": 4.3,
      "perf_best": 40.5,
      "handicap_edge": 12.5,
-     "runs_in_db": 18,
-     "draw_edge": 0.145,
+     "runs_in_db": 23,
+     "draw_edge": 0.118,
      "pros": [
       "過往市場評價",
-      "檔位統計",
-      "讓磅著數"
+      "讓磅著數",
+      "近況"
      ],
      "cons": [
       "上仗表現評分",
-      "後段追勁"
+      "表現評分(近績最佳)"
      ]
     },
     {
      "rank": 3,
-     "no": 3,
-     "horse": "暴風一族",
-     "horse_code": "K104",
-     "jockey": "田泰安",
-     "trainer": "桂福特",
-     "draw": 6,
-     "weight": 132,
-     "rating": 37,
-     "last6": "6/7/8/4/7/11",
-     "gear": "",
-     "win_prob": 0.1238,
-     "fair_odds": 8.1,
-     "style": "中游",
-     "speed_best": 3.9,
-     "perf_best": 49.4,
-     "handicap_edge": 12.4,
-     "runs_in_db": 13,
-     "draw_edge": 0.19,
+     "no": 1,
+     "horse": "愛心萬里",
+     "horse_code": "L165",
+     "jockey": "袁幸堯",
+     "trainer": "姚本輝",
+     "draw": 5,
+     "weight": 128,
+     "rating": 40,
+     "last6": "4/12/11/7/6/8",
+     "gear": "V",
+     "win_prob": 0.1072,
+     "fair_odds": 9.3,
+     "style": "後上",
+     "speed_best": -3.7,
+     "perf_best": 53.6,
+     "handicap_edge": 13.6,
+     "runs_in_db": 6,
+     "draw_edge": -0.174,
      "pros": [
-      "檔位統計",
+      "末段速度(分段時間)",
       "騎師",
-      "近況"
+      "讓磅著數"
      ],
      "cons": [
-      "負磅",
-      "上仗表現評分"
+      "過往市場評價",
+      "檔位統計"
      ]
     },
     {
@@ -539,22 +569,22 @@
      "rating": 32,
      "last6": "4/11/10/7/4/3",
      "gear": "TT",
-     "win_prob": 0.1015,
-     "fair_odds": 9.9,
+     "win_prob": 0.1004,
+     "fair_odds": 10.0,
      "style": "前列",
      "speed_best": -6.2,
      "perf_best": 44.4,
      "handicap_edge": 12.4,
-     "runs_in_db": 13,
-     "draw_edge": 0.247,
+     "runs_in_db": 16,
+     "draw_edge": 0.356,
      "pros": [
       "檔位統計",
       "讓磅著數",
       "後段追勁"
      ],
      "cons": [
-      "上仗表現評分",
-      "近況"
+      "近況",
+      "表現評分(近績最佳)"
      ]
     },
     {
@@ -569,17 +599,17 @@
      "rating": 24,
      "last6": "6/2/6/11/9/4",
      "gear": "B",
-     "win_prob": 0.0746,
-     "fair_odds": 13.4,
+     "win_prob": 0.0912,
+     "fair_odds": 11.0,
      "style": "中游",
      "speed_best": -3.8,
      "perf_best": 28.7,
      "handicap_edge": 4.7,
-     "runs_in_db": 15,
-     "draw_edge": -0.113,
+     "runs_in_db": 17,
+     "draw_edge": -0.215,
      "pros": [
+      "末段速度(分段時間)",
       "過往市場評價",
-      "負磅",
       "近況"
      ],
      "cons": [
@@ -595,18 +625,18 @@
      "jockey": "鍾易禮",
      "trainer": "告東尼",
      "draw": 3,
-     "weight": 133,
+     "weight": 131,
      "rating": 38,
      "last6": "9/6/3/8/13/9",
      "gear": "H/TT",
-     "win_prob": 0.0724,
-     "fair_odds": 13.8,
+     "win_prob": 0.0872,
+     "fair_odds": 11.5,
      "style": "後上",
      "speed_best": -4.0,
      "perf_best": 48.9,
      "handicap_edge": 10.9,
-     "runs_in_db": 9,
-     "draw_edge": 0.19,
+     "runs_in_db": 11,
+     "draw_edge": 0.199,
      "pros": [
       "檔位統計",
       "降班",
@@ -629,51 +659,52 @@
      "rating": 36,
      "last6": "8/8/8/3/3/10",
      "gear": "B/TT",
-     "win_prob": 0.0676,
-     "fair_odds": 14.8,
+     "win_prob": 0.0822,
+     "fair_odds": 12.2,
      "style": "中游",
-     "speed_best": -0.5,
+     "speed_best": -0.9,
      "perf_best": 48.2,
      "handicap_edge": 12.2,
-     "runs_in_db": 15,
-     "draw_edge": -0.004,
+     "runs_in_db": 20,
+     "draw_edge": -0.017,
      "pros": [
+      "末段速度(分段時間)",
       "讓磅著數",
       "過往市場評價"
      ],
      "cons": [
       "騎師",
-      "上仗表現評分"
+      "近況"
      ]
     },
     {
      "rank": 8,
-     "no": 1,
-     "horse": "愛心萬里",
-     "horse_code": "L165",
-     "jockey": "袁幸堯",
-     "trainer": "姚本輝",
-     "draw": 5,
-     "weight": 135,
-     "rating": 40,
-     "last6": "4/12/11/7/6/8",
-     "gear": "V",
-     "win_prob": 0.059,
-     "fair_odds": 16.9,
-     "style": "後上",
-     "speed_best": -3.7,
-     "perf_best": 53.6,
-     "handicap_edge": 13.6,
-     "runs_in_db": 6,
-     "draw_edge": -0.117,
+     "no": 3,
+     "horse": "暴風一族",
+     "horse_code": "K104",
+     "jockey": "田泰安",
+     "trainer": "桂福特",
+     "draw": 6,
+     "weight": 132,
+     "rating": 37,
+     "last6": "6/7/8/4/7/11",
+     "gear": "",
+     "win_prob": 0.0756,
+     "fair_odds": 13.2,
+     "style": "中游",
+     "speed_best": 3.9,
+     "perf_best": 49.4,
+     "handicap_edge": 12.4,
+     "runs_in_db": 15,
+     "draw_edge": 0.118,
      "pros": [
-      "騎師",
-      "降班",
-      "讓磅著數"
+      "近況",
+      "讓磅著數",
+      "騎師"
      ],
      "cons": [
-      "過往市場評價",
-      "負磅"
+      "末段速度(分段時間)",
+      "前段速度(分段時間)"
      ]
     },
     {
@@ -688,18 +719,18 @@
      "rating": 26,
      "last6": "6/7/4/8/8/13",
      "gear": "B/TT",
-     "win_prob": 0.0469,
-     "fair_odds": 21.3,
+     "win_prob": 0.0528,
+     "fair_odds": 18.9,
      "style": "後上",
      "speed_best": 2.7,
      "perf_best": 37.5,
      "handicap_edge": 11.5,
      "runs_in_db": 14,
-     "draw_edge": 0.048,
+     "draw_edge": 0.118,
      "pros": [
-      "負磅",
       "近況",
-      "讓磅著數"
+      "讓磅著數",
+      "負磅"
      ],
      "cons": [
       "過往市場評價",
@@ -708,35 +739,6 @@
     },
     {
      "rank": 10,
-     "no": 7,
-     "horse": "極速滿貫",
-     "horse_code": "G277",
-     "jockey": "奧爾民",
-     "trainer": "黎昭昇",
-     "draw": 8,
-     "weight": 128,
-     "rating": 33,
-     "last6": "11/9/9/7/12/9",
-     "gear": "",
-     "win_prob": 0.0356,
-     "fair_odds": 28.1,
-     "style": "中游",
-     "speed_best": -4.8,
-     "perf_best": 37.5,
-     "handicap_edge": 4.5,
-     "runs_in_db": 16,
-     "draw_edge": -0.117,
-     "pros": [
-      "後段追勁",
-      "路程適應"
-     ],
-     "cons": [
-      "近況",
-      "過往市場評價"
-     ]
-    },
-    {
-     "rank": 11,
      "no": 4,
      "horse": "寫我其誰",
      "horse_code": "L048",
@@ -747,21 +749,48 @@
      "rating": 37,
      "last6": "6/7/11/6/7/12",
      "gear": "TT",
-     "win_prob": 0.0291,
-     "fair_odds": 34.3,
+     "win_prob": 0.036,
+     "fair_odds": 27.8,
      "style": "後上",
      "speed_best": -3.5,
      "perf_best": 47.1,
      "handicap_edge": 10.1,
      "runs_in_db": 8,
-     "draw_edge": -0.416,
+     "draw_edge": -0.456,
      "pros": [
-      "前置跑法",
       "讓磅著數"
      ],
      "cons": [
       "過往市場評價",
       "檔位統計"
+     ]
+    },
+    {
+     "rank": 11,
+     "no": 7,
+     "horse": "極速滿貫",
+     "horse_code": "G277",
+     "jockey": "奧爾民",
+     "trainer": "黎昭昇",
+     "draw": 8,
+     "weight": 128,
+     "rating": 33,
+     "last6": "11/9/9/7/12/9",
+     "gear": "",
+     "win_prob": 0.0316,
+     "fair_odds": 31.7,
+     "style": "中游",
+     "speed_best": -4.8,
+     "perf_best": 37.5,
+     "handicap_edge": 4.5,
+     "runs_in_db": 22,
+     "draw_edge": -0.119,
+     "pros": [
+      "後段追勁"
+     ],
+     "cons": [
+      "近況",
+      "過往市場評價"
      ]
     },
     {
@@ -776,21 +805,20 @@
      "rating": 36,
      "last6": "11/6/10/11/7/1",
      "gear": "",
-     "win_prob": 0.0283,
-     "fair_odds": 35.3,
+     "win_prob": 0.0309,
+     "fair_odds": 32.3,
      "style": "前列",
-     "speed_best": 3.0,
+     "speed_best": 3.6,
      "perf_best": 41.5,
      "handicap_edge": 5.5,
-     "runs_in_db": 15,
-     "draw_edge": -0.645,
+     "runs_in_db": 19,
+     "draw_edge": -0.665,
      "pros": [
-      "後段追勁",
-      "跑道跑法偏差"
+      "後段追勁"
      ],
      "cons": [
       "檔位統計",
-      "過往市場評價"
+      "近況"
      ]
     }
    ],
@@ -823,22 +851,22 @@
      "rating": 60,
      "last6": "4/1/1/2/5/2",
      "gear": "V/TT",
-     "win_prob": 0.2173,
-     "fair_odds": 4.6,
+     "win_prob": 0.1805,
+     "fair_odds": 5.5,
      "style": "中游",
      "speed_best": 1.2,
      "perf_best": 59.9,
      "handicap_edge": -0.1,
      "runs_in_db": 13,
-     "draw_edge": -0.001,
+     "draw_edge": -0.04,
      "pros": [
       "近況",
-      "騎師",
-      "過往市場評價"
+      "過往市場評價",
+      "騎師"
      ],
      "cons": [
-      "負磅",
-      "後段追勁"
+      "後段追勁",
+      "負磅"
      ]
     },
     {
@@ -853,20 +881,21 @@
      "rating": 52,
      "last6": "2/2/2/4/5/2",
      "gear": "XB",
-     "win_prob": 0.1526,
-     "fair_odds": 6.6,
+     "win_prob": 0.1789,
+     "fair_odds": 5.6,
      "style": "中游",
      "speed_best": -2.7,
      "perf_best": 57.5,
      "handicap_edge": 5.5,
      "runs_in_db": 11,
-     "draw_edge": 0.012,
+     "draw_edge": 0.216,
      "pros": [
       "近況",
-      "過往市場評價"
+      "過往市場評價",
+      "檔位統計"
      ],
      "cons": [
-      "路程適應"
+      "上仗速度指數"
      ]
     },
     {
@@ -884,23 +913,142 @@
      "win_prob": 0.1131,
      "fair_odds": 8.8,
      "style": "領放",
-     "speed_best": 2.9,
+     "speed_best": 3.0,
      "perf_best": 67.4,
      "handicap_edge": 11.4,
-     "runs_in_db": 11,
-     "draw_edge": 0.238,
+     "runs_in_db": 14,
+     "draw_edge": 0.412,
      "pros": [
       "檔位統計",
       "近況",
-      "騎師"
+      "讓磅著數"
      ],
      "cons": [
-      "負磅",
-      "前置跑法"
+      "末段速度(分段時間)",
+      "前段速度(分段時間)"
      ]
     },
     {
      "rank": 4,
+     "no": 6,
+     "horse": "飛輪霸",
+     "horse_code": "K320",
+     "jockey": "潘明輝",
+     "trainer": "姚本輝",
+     "draw": 4,
+     "weight": 127,
+     "rating": 52,
+     "last6": "6/10/4/7/3/6",
+     "gear": "TT",
+     "win_prob": 0.0887,
+     "fair_odds": 11.3,
+     "style": "領放",
+     "speed_best": -2.7,
+     "perf_best": 57.4,
+     "handicap_edge": 5.4,
+     "runs_in_db": 15,
+     "draw_edge": 0.204,
+     "pros": [
+      "過往市場評價",
+      "檔位統計",
+      "後段追勁"
+     ],
+     "cons": [
+      "騎師"
+     ]
+    },
+    {
+     "rank": 5,
+     "no": 3,
+     "horse": "長勝金剛",
+     "horse_code": "K266",
+     "jockey": "袁幸堯",
+     "trainer": "伍鵬志",
+     "draw": 7,
+     "weight": 125,
+     "rating": 57,
+     "last6": "4/3/14/12/10/12",
+     "gear": "TT",
+     "win_prob": 0.0873,
+     "fair_odds": 11.5,
+     "style": "中游",
+     "speed_best": -5.5,
+     "perf_best": 58.9,
+     "handicap_edge": 1.9,
+     "runs_in_db": 16,
+     "draw_edge": -0.221,
+     "pros": [
+      "末段速度(分段時間)",
+      "騎師",
+      "前段速度(分段時間)"
+     ],
+     "cons": [
+      "過往市場評價",
+      "檔位統計"
+     ]
+    },
+    {
+     "rank": 6,
+     "no": 8,
+     "horse": "大千赤風",
+     "horse_code": "L208",
+     "jockey": "霍宏聲",
+     "trainer": "廖康銘",
+     "draw": 12,
+     "weight": 125,
+     "rating": 50,
+     "last6": "6/6",
+     "gear": "B1",
+     "win_prob": 0.0831,
+     "fair_odds": 12.0,
+     "style": "中游",
+     "speed_best": -2.8,
+     "perf_best": 56.3,
+     "handicap_edge": 6.3,
+     "runs_in_db": 2,
+     "draw_edge": -0.267,
+     "pros": [
+      "近況",
+      "過往市場評價",
+      "上仗速度指數"
+     ],
+     "cons": [
+      "檔位統計",
+      "騎師"
+     ]
+    },
+    {
+     "rank": 7,
+     "no": 12,
+     "horse": "焦點",
+     "horse_code": "H173",
+     "jockey": "巴度",
+     "trainer": "游達榮",
+     "draw": 10,
+     "weight": 116,
+     "rating": 41,
+     "last6": "4/7/9/2/4/1",
+     "gear": "B/TT",
+     "win_prob": 0.0666,
+     "fair_odds": 15.0,
+     "style": "中游",
+     "speed_best": 0.4,
+     "perf_best": 51.0,
+     "handicap_edge": 10.0,
+     "runs_in_db": 19,
+     "draw_edge": -0.087,
+     "pros": [
+      "近況",
+      "負磅",
+      "讓磅著數"
+     ],
+     "cons": [
+      "過往市場評價",
+      "表現評分(近績最佳)"
+     ]
+    },
+    {
+     "rank": 8,
      "no": 7,
      "horse": "王者無雙",
      "horse_code": "L456",
@@ -911,14 +1059,14 @@
      "rating": 52,
      "last6": "-",
      "gear": "",
-     "win_prob": 0.0873,
-     "fair_odds": 11.5,
+     "win_prob": 0.0657,
+     "fair_odds": 15.2,
      "style": "未知",
      "speed_best": null,
      "perf_best": null,
      "handicap_edge": 0.0,
      "runs_in_db": 0,
-     "draw_edge": -0.053,
+     "draw_edge": -0.04,
      "pros": [
       "初出",
       "過往市場評價",
@@ -930,124 +1078,37 @@
      ]
     },
     {
-     "rank": 5,
-     "no": 6,
-     "horse": "飛輪霸",
-     "horse_code": "K320",
-     "jockey": "潘明輝",
-     "trainer": "姚本輝",
-     "draw": 4,
-     "weight": 127,
-     "rating": 52,
-     "last6": "6/10/4/7/3/6",
-     "gear": "TT",
-     "win_prob": 0.0829,
-     "fair_odds": 12.1,
-     "style": "領放",
-     "speed_best": -2.7,
-     "perf_best": 57.4,
-     "handicap_edge": 5.4,
-     "runs_in_db": 14,
-     "draw_edge": 0.225,
+     "rank": 9,
+     "no": 10,
+     "horse": "棉棉日上",
+     "horse_code": "L323",
+     "jockey": "希威森",
+     "trainer": "大衛希斯",
+     "draw": 5,
+     "weight": 120,
+     "rating": 45,
+     "last6": "6/7/9/7",
+     "gear": "CP/TT",
+     "win_prob": 0.0376,
+     "fair_odds": 26.6,
+     "style": "後上",
+     "speed_best": -5.5,
+     "perf_best": 53.1,
+     "handicap_edge": 8.1,
+     "runs_in_db": 4,
+     "draw_edge": 0.152,
      "pros": [
-      "過往市場評價",
       "檔位統計",
-      "後段追勁"
-     ],
-     "cons": [
-      "騎師",
-      "前置跑法"
-     ]
-    },
-    {
-     "rank": 6,
-     "no": 12,
-     "horse": "焦點",
-     "horse_code": "H173",
-     "jockey": "巴度",
-     "trainer": "游達榮",
-     "draw": 10,
-     "weight": 116,
-     "rating": 41,
-     "last6": "4/7/9/2/4/1",
-     "gear": "B/TT",
-     "win_prob": 0.0766,
-     "fair_odds": 13.1,
-     "style": "中游",
-     "speed_best": 0.4,
-     "perf_best": 51.0,
-     "handicap_edge": 10.0,
-     "runs_in_db": 16,
-     "draw_edge": -0.001,
-     "pros": [
       "負磅",
-      "近況",
       "讓磅著數"
      ],
      "cons": [
+      "騎師",
       "過往市場評價"
      ]
     },
     {
-     "rank": 7,
-     "no": 8,
-     "horse": "大千赤風",
-     "horse_code": "L208",
-     "jockey": "霍宏聲",
-     "trainer": "廖康銘",
-     "draw": 12,
-     "weight": 125,
-     "rating": 50,
-     "last6": "6/6",
-     "gear": "B1",
-     "win_prob": 0.057,
-     "fair_odds": 17.6,
-     "style": "中游",
-     "speed_best": -2.8,
-     "perf_best": 56.3,
-     "handicap_edge": 6.3,
-     "runs_in_db": 3,
-     "draw_edge": -0.14,
-     "pros": [
-      "過往市場評價",
-      "休賽"
-     ],
-     "cons": [
-      "近況",
-      "檔位統計"
-     ]
-    },
-    {
-     "rank": 8,
-     "no": 3,
-     "horse": "長勝金剛",
-     "horse_code": "K266",
-     "jockey": "袁幸堯",
-     "trainer": "伍鵬志",
-     "draw": 7,
-     "weight": 132,
-     "rating": 57,
-     "last6": "4/3/14/12/10/12",
-     "gear": "TT",
-     "win_prob": 0.0522,
-     "fair_odds": 19.2,
-     "style": "中游",
-     "speed_best": -5.8,
-     "perf_best": 58.9,
-     "handicap_edge": 1.9,
-     "runs_in_db": 12,
-     "draw_edge": -0.202,
-     "pros": [
-      "騎師",
-      "近況"
-     ],
-     "cons": [
-      "過往市場評價",
-      "檔位統計"
-     ]
-    },
-    {
-     "rank": 9,
+     "rank": 10,
      "no": 9,
      "horse": "莊家班",
      "horse_code": "L115",
@@ -1058,37 +1119,38 @@
      "rating": 48,
      "last6": "8/6/5/11/4/7",
      "gear": "TT",
-     "win_prob": 0.0516,
-     "fair_odds": 19.4,
+     "win_prob": 0.0365,
+     "fair_odds": 27.4,
      "style": "前列",
      "speed_best": -0.6,
      "perf_best": 58.0,
      "handicap_edge": 10.0,
      "runs_in_db": 9,
-     "draw_edge": -0.053,
+     "draw_edge": -0.136,
      "pros": [
       "讓磅著數",
       "騎師",
-      "負磅"
+      "後段追勁"
      ],
      "cons": [
+      "末段速度(分段時間)",
       "過往市場評價"
      ]
     },
     {
-     "rank": 10,
+     "rank": 11,
      "no": 11,
      "horse": "駿馬之光",
      "horse_code": "K159",
      "jockey": "鍾易禮",
      "trainer": "告東尼",
      "draw": 11,
-     "weight": 117,
+     "weight": 115,
      "rating": 42,
      "last6": "7/3/7/9/7/12",
      "gear": "CP/TT",
-     "win_prob": 0.0454,
-     "fair_odds": 22.0,
+     "win_prob": 0.0347,
+     "fair_odds": 28.8,
      "style": "前列",
      "speed_best": -6.5,
      "perf_best": 50.2,
@@ -1101,38 +1163,8 @@
       "讓磅著數"
      ],
      "cons": [
-      "檔位統計",
-      "騎師"
-     ]
-    },
-    {
-     "rank": 11,
-     "no": 10,
-     "horse": "棉棉日上",
-     "horse_code": "L323",
-     "jockey": "希威森",
-     "trainer": "大衛希斯",
-     "draw": 5,
-     "weight": 120,
-     "rating": 45,
-     "last6": "6/7/9/7",
-     "gear": "CP/TT",
-     "win_prob": 0.0395,
-     "fair_odds": 25.3,
-     "style": "中游",
-     "speed_best": -5.5,
-     "perf_best": 53.1,
-     "handicap_edge": 8.1,
-     "runs_in_db": 4,
-     "draw_edge": 0.251,
-     "pros": [
-      "檔位統計",
-      "負磅",
-      "讓磅著數"
-     ],
-     "cons": [
-      "騎師",
-      "過往市場評價"
+      "末段速度(分段時間)",
+      "檔位統計"
      ]
     },
     {
@@ -1147,22 +1179,21 @@
      "rating": 58,
      "last6": "10/10/10/4",
      "gear": "TT",
-     "win_prob": 0.0247,
-     "fair_odds": 40.5,
+     "win_prob": 0.0272,
+     "fair_odds": 36.7,
      "style": "後上",
-     "speed_best": -4.3,
+     "speed_best": -3.8,
      "perf_best": 67.3,
      "handicap_edge": 9.3,
      "runs_in_db": 4,
-     "draw_edge": -0.108,
+     "draw_edge": -0.136,
      "pros": [
       "降班",
-      "讓磅著數",
-      "前置跑法"
+      "讓磅著數"
      ],
      "cons": [
-      "騎師",
-      "近況"
+      "近況",
+      "騎師"
      ]
     }
    ],
@@ -1195,18 +1226,18 @@
      "rating": 43,
      "last6": "2/2/3/2/2/7",
      "gear": "",
-     "win_prob": 0.2574,
-     "fair_odds": 3.9,
+     "win_prob": 0.3204,
+     "fair_odds": 3.1,
      "style": "中游",
-     "speed_best": -6.6,
+     "speed_best": -6.2,
      "perf_best": 51.4,
      "handicap_edge": 8.4,
-     "runs_in_db": 9,
-     "draw_edge": 0.19,
+     "runs_in_db": 12,
+     "draw_edge": 0.118,
      "pros": [
-      "過往市場評價",
       "近況",
-      "檔位統計"
+      "過往市場評價",
+      "末段速度(分段時間)"
      ],
      "cons": [
       "騎師",
@@ -1225,22 +1256,22 @@
      "rating": 42,
      "last6": "2/5/3/7/6/6",
      "gear": "E/V1/XB2/TT-",
-     "win_prob": 0.1792,
-     "fair_odds": 5.6,
+     "win_prob": 0.1596,
+     "fair_odds": 6.3,
      "style": "後上",
-     "speed_best": -3.2,
+     "speed_best": -3.0,
      "perf_best": 50.1,
      "handicap_edge": 8.1,
-     "runs_in_db": 17,
-     "draw_edge": 0.19,
+     "runs_in_db": 21,
+     "draw_edge": 0.237,
      "pros": [
       "近況",
       "過往市場評價",
-      "騎師"
+      "檔位統計"
      ],
      "cons": [
       "後段追勁",
-      "表現評分(近績最佳)"
+      "上仗速度指數"
      ]
     },
     {
@@ -1255,22 +1286,20 @@
      "rating": 44,
      "last6": "9/5/4/4/2/7",
      "gear": "CP-/B2/TT",
-     "win_prob": 0.1317,
-     "fair_odds": 7.6,
+     "win_prob": 0.1236,
+     "fair_odds": 8.1,
      "style": "前列",
-     "speed_best": -0.2,
+     "speed_best": -0.1,
      "perf_best": 56.9,
      "handicap_edge": 12.9,
-     "runs_in_db": 11,
-     "draw_edge": 0.247,
+     "runs_in_db": 16,
+     "draw_edge": 0.356,
      "pros": [
       "檔位統計",
-      "騎師",
-      "讓磅著數"
+      "讓磅著數",
+      "騎師"
      ],
-     "cons": [
-      "前置跑法"
-     ]
+     "cons": []
     },
     {
      "rank": 4,
@@ -1284,14 +1313,14 @@
      "rating": 46,
      "last6": "12/1/6/3/7/5",
      "gear": "TT",
-     "win_prob": 0.1068,
-     "fair_odds": 9.4,
+     "win_prob": 0.0805,
+     "fair_odds": 12.4,
      "style": "前列",
      "speed_best": -5.0,
      "perf_best": 48.0,
      "handicap_edge": 2.0,
      "runs_in_db": 11,
-     "draw_edge": -0.004,
+     "draw_edge": -0.017,
      "pros": [
       "過往市場評價",
       "後段追勁"
@@ -1303,6 +1332,66 @@
     },
     {
      "rank": 5,
+     "no": 1,
+     "horse": "龍文瑞安",
+     "horse_code": "L029",
+     "jockey": "班德禮",
+     "trainer": "黎昭昇",
+     "draw": 4,
+     "weight": 131,
+     "rating": 56,
+     "last6": "3/5/13/13/10",
+     "gear": "TT",
+     "win_prob": 0.0596,
+     "fair_odds": 16.8,
+     "style": "後上",
+     "speed_best": -0.3,
+     "perf_best": 62.3,
+     "handicap_edge": 6.3,
+     "runs_in_db": 5,
+     "draw_edge": 0.118,
+     "pros": [
+      "末段速度(分段時間)",
+      "檔位統計",
+      "近況",
+      "前置跑法"
+     ],
+     "cons": [
+      "過往市場評價",
+      "負磅"
+     ]
+    },
+    {
+     "rank": 6,
+     "no": 8,
+     "horse": "同心",
+     "horse_code": "K253",
+     "jockey": "蔡明紹",
+     "trainer": "呂健威",
+     "draw": 12,
+     "weight": 119,
+     "rating": 44,
+     "last6": "2/2/6/10/10/11",
+     "gear": "V/XB",
+     "win_prob": 0.0552,
+     "fair_odds": 18.1,
+     "style": "前列",
+     "speed_best": -5.2,
+     "perf_best": 47.9,
+     "handicap_edge": 3.9,
+     "runs_in_db": 11,
+     "draw_edge": -0.215,
+     "pros": [
+      "近況",
+      "跑贏市場預期"
+     ],
+     "cons": [
+      "騎師",
+      "檔位統計"
+     ]
+    },
+    {
+     "rank": 7,
      "no": 9,
      "horse": "越駿齊歡",
      "horse_code": "L079",
@@ -1313,14 +1402,14 @@
      "rating": 44,
      "last6": "6/11/5/12/9/4",
      "gear": "H/TT",
-     "win_prob": 0.0681,
-     "fair_odds": 14.7,
+     "win_prob": 0.0552,
+     "fair_odds": 18.1,
      "style": "中游",
      "speed_best": -2.5,
      "perf_best": 51.6,
      "handicap_edge": 7.6,
      "runs_in_db": 12,
-     "draw_edge": 0.19,
+     "draw_edge": 0.199,
      "pros": [
       "檔位統計",
       "騎師",
@@ -1332,64 +1421,36 @@
      ]
     },
     {
-     "rank": 6,
+     "rank": 8,
      "no": 2,
      "horse": "士登",
      "horse_code": "K358",
      "jockey": "周俊樂",
      "trainer": "巫偉傑",
      "draw": 11,
-     "weight": 124,
+     "weight": 122,
      "rating": 49,
      "last6": "7/8/5/9/11/13",
      "gear": "TT",
-     "win_prob": 0.0671,
-     "fair_odds": 14.9,
+     "win_prob": 0.0534,
+     "fair_odds": 18.7,
      "style": "中游",
      "speed_best": -2.0,
      "perf_best": 56.6,
      "handicap_edge": 7.6,
-     "runs_in_db": 7,
-     "draw_edge": -0.416,
+     "runs_in_db": 9,
+     "draw_edge": -0.456,
      "pros": [
-      "休賽",
-      "騎師"
+      "騎師",
+      "讓磅著數"
      ],
      "cons": [
       "檔位統計",
-      "負磅"
-     ]
-    },
-    {
-     "rank": 7,
-     "no": 8,
-     "horse": "同心",
-     "horse_code": "K253",
-     "jockey": "蔡明紹",
-     "trainer": "呂健威",
-     "draw": 12,
-     "weight": 119,
-     "rating": 44,
-     "last6": "2/2/6/10/10/11",
-     "gear": "V/XB",
-     "win_prob": 0.054,
-     "fair_odds": 18.5,
-     "style": "前列",
-     "speed_best": -5.2,
-     "perf_best": 47.9,
-     "handicap_edge": 3.9,
-     "runs_in_db": 10,
-     "draw_edge": -0.113,
-     "pros": [
       "近況"
-     ],
-     "cons": [
-      "騎師",
-      "過往市場評價"
      ]
     },
     {
-     "rank": 8,
+     "rank": 9,
      "no": 3,
      "horse": "同樣世界",
      "horse_code": "L329",
@@ -1400,51 +1461,20 @@
      "rating": 47,
      "last6": "11/5/7/5",
      "gear": "CP-/B1",
-     "win_prob": 0.0464,
-     "fair_odds": 21.5,
+     "win_prob": 0.0456,
+     "fair_odds": 21.9,
      "style": "後上",
-     "speed_best": -4.7,
+     "speed_best": -4.2,
      "perf_best": 56.7,
      "handicap_edge": 9.7,
      "runs_in_db": 4,
-     "draw_edge": -0.117,
+     "draw_edge": -0.119,
      "pros": [
-      "讓磅著數",
-      "前置跑法"
+      "讓磅著數"
      ],
      "cons": [
       "騎師",
       "近況"
-     ]
-    },
-    {
-     "rank": 9,
-     "no": 1,
-     "horse": "龍文瑞安",
-     "horse_code": "L029",
-     "jockey": "班德禮",
-     "trainer": "黎昭昇",
-     "draw": 4,
-     "weight": 131,
-     "rating": 56,
-     "last6": "3/5/13/13/10",
-     "gear": "TT",
-     "win_prob": 0.0333,
-     "fair_odds": 30.1,
-     "style": "後上",
-     "speed_best": -0.3,
-     "perf_best": 62.3,
-     "handicap_edge": 6.3,
-     "runs_in_db": 5,
-     "draw_edge": 0.145,
-     "pros": [
-      "檔位統計",
-      "近況",
-      "前置跑法"
-     ],
-     "cons": [
-      "過往市場評價",
-      "負磅"
      ]
     },
     {
@@ -1459,18 +1489,18 @@
      "rating": 42,
      "last6": "14/12/10/11/4/11",
      "gear": "TT",
-     "win_prob": 0.0238,
-     "fair_odds": 42.0,
+     "win_prob": 0.0191,
+     "fair_odds": 52.4,
      "style": "中游",
-     "speed_best": -7.2,
+     "speed_best": -5.7,
      "perf_best": 58.3,
      "handicap_edge": 16.3,
      "runs_in_db": 6,
-     "draw_edge": 0.048,
+     "draw_edge": 0.118,
      "pros": [
       "讓磅著數",
-      "路程適應",
-      "後段追勁"
+      "檔位統計",
+      "前段速度(分段時間)"
      ],
      "cons": [
       "近況",
@@ -1489,16 +1519,16 @@
      "rating": 46,
      "last6": "10/10/8/4",
      "gear": "SR",
-     "win_prob": 0.0183,
-     "fair_odds": 54.5,
+     "win_prob": 0.0186,
+     "fair_odds": 53.9,
      "style": "中游",
      "speed_best": -13.0,
      "perf_best": 46.2,
      "handicap_edge": 0.2,
      "runs_in_db": 4,
-     "draw_edge": -0.117,
+     "draw_edge": -0.174,
      "pros": [
-      "後段追勁"
+      "速度指數(近績最佳)"
      ],
      "cons": [
       "過往市場評價",
@@ -1517,17 +1547,18 @@
      "rating": 46,
      "last6": "10/8/11",
      "gear": "",
-     "win_prob": 0.0139,
-     "fair_odds": 72.0,
+     "win_prob": 0.0095,
+     "fair_odds": 105.8,
      "style": "中游",
-     "speed_best": -16.4,
+     "speed_best": -16.3,
      "perf_best": 43.6,
      "handicap_edge": -2.4,
      "runs_in_db": 3,
-     "draw_edge": -0.645,
+     "draw_edge": -0.665,
      "pros": [
+      "後段追勁",
       "騎師",
-      "後段追勁"
+      "速度指數(近績最佳)"
      ],
      "cons": [
       "過往市場評價",
@@ -1554,36 +1585,6 @@
    "runners": [
     {
      "rank": 1,
-     "no": 2,
-     "horse": "創寶駒",
-     "horse_code": "L161",
-     "jockey": "艾道拿",
-     "trainer": "黎昭昇",
-     "draw": 12,
-     "weight": 130,
-     "rating": 55,
-     "last6": "2/4/2/3/3/5",
-     "gear": "V/TT",
-     "win_prob": 0.2268,
-     "fair_odds": 4.4,
-     "style": "中游",
-     "speed_best": 4.2,
-     "perf_best": 67.5,
-     "handicap_edge": 12.5,
-     "runs_in_db": 8,
-     "draw_edge": -0.14,
-     "pros": [
-      "過往市場評價",
-      "近況",
-      "讓磅著數"
-     ],
-     "cons": [
-      "騎師",
-      "檔位統計"
-     ]
-    },
-    {
-     "rank": 2,
      "no": 4,
      "horse": "實力加",
      "horse_code": "K058",
@@ -1594,21 +1595,52 @@
      "rating": 55,
      "last6": "3/1/3/3/5/5",
      "gear": "B/SR/TT",
-     "win_prob": 0.1725,
-     "fair_odds": 5.8,
+     "win_prob": 0.2524,
+     "fair_odds": 4.0,
      "style": "中游",
      "speed_best": 0.7,
      "perf_best": 59.3,
      "handicap_edge": 4.3,
-     "runs_in_db": 12,
-     "draw_edge": -0.001,
+     "runs_in_db": 14,
+     "draw_edge": -0.04,
      "pros": [
       "近況",
-      "過往市場評價"
+      "過往市場評價",
+      "末段速度(分段時間)"
      ],
      "cons": [
       "後段追勁",
       "負磅"
+     ]
+    },
+    {
+     "rank": 2,
+     "no": 2,
+     "horse": "創寶駒",
+     "horse_code": "L161",
+     "jockey": "艾道拿",
+     "trainer": "黎昭昇",
+     "draw": 12,
+     "weight": 130,
+     "rating": 55,
+     "last6": "2/4/2/3/3/5",
+     "gear": "V/TT",
+     "win_prob": 0.211,
+     "fair_odds": 4.7,
+     "style": "中游",
+     "speed_best": 4.2,
+     "perf_best": 67.5,
+     "handicap_edge": 12.5,
+     "runs_in_db": 8,
+     "draw_edge": -0.267,
+     "pros": [
+      "過往市場評價",
+      "近況",
+      "讓磅著數"
+     ],
+     "cons": [
+      "檔位統計",
+      "騎師"
      ]
     },
     {
@@ -1623,18 +1655,18 @@
      "rating": 52,
      "last6": "-",
      "gear": "H1/XB1",
-     "win_prob": 0.1696,
-     "fair_odds": 5.9,
+     "win_prob": 0.1129,
+     "fair_odds": 8.9,
      "style": "未知",
      "speed_best": null,
      "perf_best": null,
      "handicap_edge": 0.0,
      "runs_in_db": 0,
-     "draw_edge": 0.238,
+     "draw_edge": 0.412,
      "pros": [
       "騎師",
-      "初出",
-      "過往市場評價"
+      "檔位統計",
+      "初出"
      ],
      "cons": [
       "缺速度數據",
@@ -1643,6 +1675,36 @@
     },
     {
      "rank": 4,
+     "no": 6,
+     "horse": "銳不可當",
+     "horse_code": "L205",
+     "jockey": "梁家俊",
+     "trainer": "沈集成",
+     "draw": 1,
+     "weight": 129,
+     "rating": 54,
+     "last6": "2/6/6",
+     "gear": "TT",
+     "win_prob": 0.092,
+     "fair_odds": 10.9,
+     "style": "後上",
+     "speed_best": -0.8,
+     "perf_best": 58.4,
+     "handicap_edge": 4.4,
+     "runs_in_db": 3,
+     "draw_edge": 0.216,
+     "pros": [
+      "近況",
+      "檔位統計",
+      "騎師"
+     ],
+     "cons": [
+      "過往市場評價",
+      "後段追勁"
+     ]
+    },
+    {
+     "rank": 5,
      "no": 3,
      "horse": "渡月橋",
      "horse_code": "K334",
@@ -1653,14 +1715,14 @@
      "rating": 55,
      "last6": "9/11/3/11/7/13",
      "gear": "CP/TT",
-     "win_prob": 0.1016,
-     "fair_odds": 9.8,
+     "win_prob": 0.079,
+     "fair_odds": 12.7,
      "style": "中游",
      "speed_best": 1.3,
      "perf_best": 63.8,
      "handicap_edge": 8.8,
-     "runs_in_db": 9,
-     "draw_edge": 0.251,
+     "runs_in_db": 10,
+     "draw_edge": 0.152,
      "pros": [
       "過往市場評價",
       "檔位統計",
@@ -1672,7 +1734,7 @@
      ]
     },
     {
-     "rank": 5,
+     "rank": 6,
      "no": 1,
      "horse": "飛龍在天",
      "horse_code": "K411",
@@ -1683,14 +1745,14 @@
      "rating": 60,
      "last6": "9/7/7/10/12/4",
      "gear": "V-",
-     "win_prob": 0.077,
-     "fair_odds": 13.0,
+     "win_prob": 0.0777,
+     "fair_odds": 12.9,
      "style": "領放",
      "speed_best": -5.2,
      "perf_best": 65.6,
      "handicap_edge": 5.6,
      "runs_in_db": 10,
-     "draw_edge": 0.225,
+     "draw_edge": 0.204,
      "pros": [
       "後段追勁",
       "檔位統計",
@@ -1702,66 +1764,7 @@
      ]
     },
     {
-     "rank": 6,
-     "no": 6,
-     "horse": "銳不可當",
-     "horse_code": "L205",
-     "jockey": "梁家俊",
-     "trainer": "沈集成",
-     "draw": 1,
-     "weight": 129,
-     "rating": 54,
-     "last6": "2/6/6",
-     "gear": "TT",
-     "win_prob": 0.0716,
-     "fair_odds": 14.0,
-     "style": "後上",
-     "speed_best": -0.8,
-     "perf_best": 58.4,
-     "handicap_edge": 4.4,
-     "runs_in_db": 3,
-     "draw_edge": 0.012,
-     "pros": [
-      "近況",
-      "前置跑法",
-      "騎師"
-     ],
-     "cons": [
-      "過往市場評價",
-      "後段追勁"
-     ]
-    },
-    {
      "rank": 7,
-     "no": 7,
-     "horse": "合夥飛馳",
-     "horse_code": "K342",
-     "jockey": "周俊樂",
-     "trainer": "呂健威",
-     "draw": 7,
-     "weight": 127,
-     "rating": 52,
-     "last6": "4/4/10/5/10/5",
-     "gear": "V/XB",
-     "win_prob": 0.056,
-     "fair_odds": 17.9,
-     "style": "中游",
-     "speed_best": 0.4,
-     "perf_best": 58.8,
-     "handicap_edge": 6.8,
-     "runs_in_db": 16,
-     "draw_edge": -0.202,
-     "pros": [
-      "近況",
-      "騎師"
-     ],
-     "cons": [
-      "過往市場評價",
-      "檔位統計"
-     ]
-    },
-    {
-     "rank": 8,
      "no": 11,
      "horse": "螢影飛馳",
      "horse_code": "K228",
@@ -1772,17 +1775,18 @@
      "rating": 45,
      "last6": "3/14/10/12/5/12",
      "gear": "B",
-     "win_prob": 0.0383,
-     "fair_odds": 26.1,
+     "win_prob": 0.0515,
+     "fair_odds": 19.4,
      "style": "中游",
      "speed_best": -7.9,
      "perf_best": 47.0,
      "handicap_edge": 2.0,
-     "runs_in_db": 8,
-     "draw_edge": -0.053,
+     "runs_in_db": 11,
+     "draw_edge": -0.04,
      "pros": [
+      "末段速度(分段時間)",
       "騎師",
-      "負磅"
+      "前段速度(分段時間)"
      ],
      "cons": [
       "過往市場評價",
@@ -1790,36 +1794,36 @@
      ]
     },
     {
-     "rank": 9,
-     "no": 12,
-     "horse": "豐功偉績",
-     "horse_code": "K480",
-     "jockey": "楊明綸",
-     "trainer": "蔡約翰",
-     "draw": 10,
-     "weight": 116,
-     "rating": 41,
-     "last6": "14/5/13/9/10/14",
-     "gear": "H",
-     "win_prob": 0.0291,
-     "fair_odds": 34.4,
+     "rank": 8,
+     "no": 7,
+     "horse": "合夥飛馳",
+     "horse_code": "K342",
+     "jockey": "周俊樂",
+     "trainer": "呂健威",
+     "draw": 7,
+     "weight": 125,
+     "rating": 52,
+     "last6": "4/4/10/5/10/5",
+     "gear": "V/XB",
+     "win_prob": 0.042,
+     "fair_odds": 23.8,
      "style": "中游",
-     "speed_best": -10.3,
-     "perf_best": 49.2,
-     "handicap_edge": 8.2,
-     "runs_in_db": 19,
-     "draw_edge": -0.001,
+     "speed_best": 0.4,
+     "perf_best": 58.8,
+     "handicap_edge": 6.8,
+     "runs_in_db": 17,
+     "draw_edge": -0.221,
      "pros": [
-      "負磅",
-      "讓磅著數"
-     ],
-     "cons": [
       "近況",
       "騎師"
+     ],
+     "cons": [
+      "末段速度(分段時間)",
+      "過往市場評價"
      ]
     },
     {
-     "rank": 10,
+     "rank": 9,
      "no": 9,
      "horse": "昇龍戰駒",
      "horse_code": "L330",
@@ -1830,8 +1834,8 @@
      "rating": 47,
      "last6": "10/14/12",
      "gear": "H/TT",
-     "win_prob": 0.0254,
-     "fair_odds": 39.4,
+     "win_prob": 0.0305,
+     "fair_odds": 32.8,
      "style": "前列",
      "speed_best": -13.2,
      "perf_best": 44.9,
@@ -1839,13 +1843,43 @@
      "runs_in_db": 3,
      "draw_edge": -0.352,
      "pros": [
+      "末段速度(分段時間)",
       "後段追勁",
-      "騎師",
-      "負磅"
+      "前段速度(分段時間)"
      ],
      "cons": [
       "近況",
       "過往市場評價"
+     ]
+    },
+    {
+     "rank": 10,
+     "no": 12,
+     "horse": "豐功偉績",
+     "horse_code": "K480",
+     "jockey": "楊明綸",
+     "trainer": "蔡約翰",
+     "draw": 10,
+     "weight": 116,
+     "rating": 41,
+     "last6": "14/5/13/9/10/14",
+     "gear": "H",
+     "win_prob": 0.0216,
+     "fair_odds": 46.3,
+     "style": "中游",
+     "speed_best": -10.3,
+     "perf_best": 49.2,
+     "handicap_edge": 8.2,
+     "runs_in_db": 20,
+     "draw_edge": -0.087,
+     "pros": [
+      "負磅",
+      "前段速度(分段時間)",
+      "讓磅著數"
+     ],
+     "cons": [
+      "近況",
+      "末段速度(分段時間)"
      ]
     },
     {
@@ -1860,14 +1894,14 @@
      "rating": 54,
      "last6": "8/9/8/12/12/7",
      "gear": "TT",
-     "win_prob": 0.0168,
-     "fair_odds": 59.6,
+     "win_prob": 0.0163,
+     "fair_odds": 61.4,
      "style": "後上",
      "speed_best": -0.3,
      "perf_best": 57.1,
      "handicap_edge": 3.1,
      "runs_in_db": 7,
-     "draw_edge": -0.108,
+     "draw_edge": -0.136,
      "pros": [
       "後段追勁"
      ],
@@ -1888,18 +1922,16 @@
      "rating": 45,
      "last6": "8/14/10/7/10/12",
      "gear": "B/TT",
-     "win_prob": 0.0154,
-     "fair_odds": 64.7,
+     "win_prob": 0.013,
+     "fair_odds": 76.7,
      "style": "後上",
      "speed_best": -7.6,
      "perf_best": 49.3,
      "handicap_edge": 4.3,
      "runs_in_db": 9,
-     "draw_edge": -0.053,
+     "draw_edge": -0.136,
      "pros": [
-      "負磅",
-      "前置跑法",
-      "路程適應"
+      "負磅"
      ],
      "cons": [
       "過往市場評價",
@@ -1926,35 +1958,6 @@
    "runners": [
     {
      "rank": 1,
-     "no": 4,
-     "horse": "沙井之友",
-     "horse_code": "K202",
-     "jockey": "周俊樂",
-     "trainer": "巫偉傑",
-     "draw": 5,
-     "weight": 133,
-     "rating": 58,
-     "last6": "3/3/10/5/4/7",
-     "gear": "CP/TT",
-     "win_prob": 0.2019,
-     "fair_odds": 5.0,
-     "style": "前列",
-     "speed_best": -1.2,
-     "perf_best": 68.3,
-     "handicap_edge": 10.3,
-     "runs_in_db": 12,
-     "draw_edge": 0.251,
-     "pros": [
-      "過往市場評價",
-      "近況",
-      "檔位統計"
-     ],
-     "cons": [
-      "負磅"
-     ]
-    },
-    {
-     "rank": 2,
      "no": 11,
      "horse": "頑童",
      "horse_code": "L144",
@@ -1965,14 +1968,14 @@
      "rating": 48,
      "last6": "1/2/3/5/3/9",
      "gear": "",
-     "win_prob": 0.1565,
-     "fair_odds": 6.4,
+     "win_prob": 0.1734,
+     "fair_odds": 5.8,
      "style": "中游",
      "speed_best": -7.2,
      "perf_best": 51.8,
      "handicap_edge": 3.8,
      "runs_in_db": 9,
-     "draw_edge": 0.225,
+     "draw_edge": 0.204,
      "pros": [
       "近況",
       "過往市場評價",
@@ -1980,8 +1983,35 @@
      ],
      "cons": [
       "騎師",
-      "後段追勁"
+      "表現評分(近績最佳)"
      ]
+    },
+    {
+     "rank": 2,
+     "no": 4,
+     "horse": "沙井之友",
+     "horse_code": "K202",
+     "jockey": "周俊樂",
+     "trainer": "巫偉傑",
+     "draw": 5,
+     "weight": 131,
+     "rating": 58,
+     "last6": "3/3/10/5/4/7",
+     "gear": "CP/TT",
+     "win_prob": 0.17,
+     "fair_odds": 5.9,
+     "style": "前列",
+     "speed_best": -1.2,
+     "perf_best": 68.3,
+     "handicap_edge": 10.3,
+     "runs_in_db": 12,
+     "draw_edge": 0.152,
+     "pros": [
+      "過往市場評價",
+      "近況",
+      "檔位統計"
+     ],
+     "cons": []
     },
     {
      "rank": 3,
@@ -1995,18 +2025,18 @@
      "rating": 60,
      "last6": "4/6/8/13/4/3",
      "gear": "B2/TT2",
-     "win_prob": 0.1409,
-     "fair_odds": 7.1,
+     "win_prob": 0.1264,
+     "fair_odds": 7.9,
      "style": "中游",
      "speed_best": -2.4,
      "perf_best": 73.1,
      "handicap_edge": 13.1,
-     "runs_in_db": 21,
-     "draw_edge": -0.108,
+     "runs_in_db": 26,
+     "draw_edge": -0.136,
      "pros": [
       "騎師",
-      "降班",
-      "讓磅著數"
+      "讓磅著數",
+      "降班"
      ],
      "cons": [
       "負磅",
@@ -2025,84 +2055,25 @@
      "rating": 57,
      "last6": "8/5/3/3/3/2",
      "gear": "B",
-     "win_prob": 0.1304,
-     "fair_odds": 7.7,
-     "style": "前列",
+     "win_prob": 0.1211,
+     "fair_odds": 8.3,
+     "style": "中游",
      "speed_best": 6.3,
      "perf_best": 65.3,
      "handicap_edge": 8.3,
      "runs_in_db": 10,
-     "draw_edge": -0.001,
+     "draw_edge": -0.04,
      "pros": [
       "過往市場評價",
-      "騎師",
-      "近況"
+      "近況",
+      "騎師"
      ],
      "cons": [
-      "後段追勁",
-      "負磅"
+      "後段追勁"
      ]
     },
     {
      "rank": 5,
-     "no": 3,
-     "horse": "輕功猛男",
-     "horse_code": "J513",
-     "jockey": "袁幸堯",
-     "trainer": "姚本輝",
-     "draw": 8,
-     "weight": 133,
-     "rating": 58,
-     "last6": "1/8/4/12/6/7",
-     "gear": "",
-     "win_prob": 0.1083,
-     "fair_odds": 9.2,
-     "style": "中游",
-     "speed_best": -1.2,
-     "perf_best": 58.2,
-     "handicap_edge": 0.2,
-     "runs_in_db": 15,
-     "draw_edge": -0.053,
-     "pros": [
-      "騎師",
-      "近況"
-     ],
-     "cons": [
-      "負磅"
-     ]
-    },
-    {
-     "rank": 6,
-     "no": 10,
-     "horse": "醒眼光",
-     "horse_code": "L490",
-     "jockey": "潘明輝",
-     "trainer": "大衛希斯",
-     "draw": 2,
-     "weight": 127,
-     "rating": 52,
-     "last6": "-",
-     "gear": "",
-     "win_prob": 0.0855,
-     "fair_odds": 11.7,
-     "style": "未知",
-     "speed_best": null,
-     "perf_best": null,
-     "handicap_edge": 0.0,
-     "runs_in_db": 0,
-     "draw_edge": 0.238,
-     "pros": [
-      "初出",
-      "過往市場評價",
-      "檔位統計"
-     ],
-     "cons": [
-      "缺速度數據",
-      "騎師"
-     ]
-    },
-    {
-     "rank": 7,
      "no": 12,
      "horse": "朗日雪峰",
      "horse_code": "J187",
@@ -2113,22 +2084,81 @@
      "rating": 42,
      "last6": "1/11/10/11/3/1",
      "gear": "B",
-     "win_prob": 0.0689,
-     "fair_odds": 14.5,
+     "win_prob": 0.109,
+     "fair_odds": 9.2,
      "style": "領放",
-     "speed_best": 0.3,
+     "speed_best": 0.4,
      "perf_best": 47.5,
      "handicap_edge": 5.5,
-     "runs_in_db": 20,
-     "draw_edge": -0.053,
+     "runs_in_db": 23,
+     "draw_edge": -0.136,
      "pros": [
-      "負磅",
+      "末段速度(分段時間)",
       "近況",
-      "騎師"
+      "負磅"
      ],
      "cons": [
       "過往市場評價",
       "降班"
+     ]
+    },
+    {
+     "rank": 6,
+     "no": 3,
+     "horse": "輕功猛男",
+     "horse_code": "J513",
+     "jockey": "袁幸堯",
+     "trainer": "姚本輝",
+     "draw": 8,
+     "weight": 126,
+     "rating": 58,
+     "last6": "1/8/4/12/6/7",
+     "gear": "",
+     "win_prob": 0.1075,
+     "fair_odds": 9.3,
+     "style": "中游",
+     "speed_best": -1.2,
+     "perf_best": 58.2,
+     "handicap_edge": 0.2,
+     "runs_in_db": 19,
+     "draw_edge": -0.04,
+     "pros": [
+      "近況",
+      "騎師"
+     ],
+     "cons": [
+      "上仗速度指數",
+      "讓磅著數"
+     ]
+    },
+    {
+     "rank": 7,
+     "no": 10,
+     "horse": "醒眼光",
+     "horse_code": "L490",
+     "jockey": "潘明輝",
+     "trainer": "大衛希斯",
+     "draw": 2,
+     "weight": 127,
+     "rating": 52,
+     "last6": "-",
+     "gear": "",
+     "win_prob": 0.0771,
+     "fair_odds": 13.0,
+     "style": "未知",
+     "speed_best": null,
+     "perf_best": null,
+     "handicap_edge": 0.0,
+     "runs_in_db": 0,
+     "draw_edge": 0.412,
+     "pros": [
+      "檔位統計",
+      "初出",
+      "過往市場評價"
+     ],
+     "cons": [
+      "缺速度數據",
+      "近況"
      ]
     },
     {
@@ -2139,57 +2169,29 @@
      "jockey": "鍾易禮",
      "trainer": "告東尼",
      "draw": 10,
-     "weight": 132,
+     "weight": 130,
      "rating": 57,
      "last6": "6/8/13/10/11/6",
      "gear": "TT",
-     "win_prob": 0.039,
-     "fair_odds": 25.7,
+     "win_prob": 0.0446,
+     "fair_odds": 22.4,
      "style": "前列",
      "speed_best": -5.4,
      "perf_best": 66.2,
      "handicap_edge": 9.2,
-     "runs_in_db": 14,
-     "draw_edge": -0.001,
+     "runs_in_db": 18,
+     "draw_edge": -0.087,
      "pros": [
-      "後段追勁",
-      "讓磅著數"
+      "讓磅著數",
+      "後段追勁"
      ],
      "cons": [
-      "過往市場評價",
-      "近況"
+      "近況",
+      "過往市場評價"
      ]
     },
     {
      "rank": 9,
-     "no": 7,
-     "horse": "添開心",
-     "horse_code": "H203",
-     "jockey": "霍宏聲",
-     "trainer": "伍鵬志",
-     "draw": 12,
-     "weight": 131,
-     "rating": 56,
-     "last6": "11/6/14/7/1/10",
-     "gear": "PC",
-     "win_prob": 0.0253,
-     "fair_odds": 39.5,
-     "style": "中游",
-     "speed_best": -1.2,
-     "perf_best": 61.7,
-     "handicap_edge": 5.7,
-     "runs_in_db": 17,
-     "draw_edge": -0.14,
-     "pros": [
-      "後段追勁"
-     ],
-     "cons": [
-      "過往市場評價",
-      "近況"
-     ]
-    },
-    {
-     "rank": 10,
      "no": 8,
      "horse": "勝於藍",
      "horse_code": "K476",
@@ -2200,15 +2202,45 @@
      "rating": 54,
      "last6": "7/8/11/14/14/11",
      "gear": "XB/TT",
-     "win_prob": 0.0239,
-     "fair_odds": 41.8,
+     "win_prob": 0.0307,
+     "fair_odds": 32.6,
      "style": "後上",
-     "speed_best": -2.1,
+     "speed_best": -2.0,
      "perf_best": 59.7,
      "handicap_edge": 5.7,
      "runs_in_db": 7,
-     "draw_edge": 0.012,
-     "pros": [],
+     "draw_edge": 0.216,
+     "pros": [
+      "檔位統計"
+     ],
+     "cons": [
+      "過往市場評價",
+      "近況"
+     ]
+    },
+    {
+     "rank": 10,
+     "no": 7,
+     "horse": "添開心",
+     "horse_code": "H203",
+     "jockey": "霍宏聲",
+     "trainer": "伍鵬志",
+     "draw": 12,
+     "weight": 131,
+     "rating": 56,
+     "last6": "11/6/14/7/1/10",
+     "gear": "PC",
+     "win_prob": 0.0186,
+     "fair_odds": 53.9,
+     "style": "中游",
+     "speed_best": -1.2,
+     "perf_best": 61.7,
+     "handicap_edge": 5.7,
+     "runs_in_db": 21,
+     "draw_edge": -0.267,
+     "pros": [
+      "後段追勁"
+     ],
      "cons": [
       "過往市場評價",
       "近況"
@@ -2226,18 +2258,15 @@
      "rating": 52,
      "last6": "10",
      "gear": "",
-     "win_prob": 0.0114,
-     "fair_odds": 87.5,
+     "win_prob": 0.0123,
+     "fair_odds": 81.0,
      "style": "後上",
      "speed_best": -11.2,
      "perf_best": 42.5,
      "handicap_edge": -9.5,
      "runs_in_db": 1,
      "draw_edge": -0.352,
-     "pros": [
-      "前置跑法",
-      "路程適應"
-     ],
+     "pros": [],
      "cons": [
       "近況",
       "過往市場評價"
@@ -2251,22 +2280,20 @@
      "jockey": "巫顯東",
      "trainer": "沈集成",
      "draw": 7,
-     "weight": 134,
+     "weight": 132,
      "rating": 59,
      "last6": "12/12/11/12",
      "gear": "TT",
-     "win_prob": 0.0079,
-     "fair_odds": 126.1,
+     "win_prob": 0.0093,
+     "fair_odds": 107.4,
      "style": "後上",
      "speed_best": -8.7,
      "perf_best": 57.8,
      "handicap_edge": -1.2,
      "runs_in_db": 4,
-     "draw_edge": -0.202,
+     "draw_edge": -0.221,
      "pros": [
-      "降班",
-      "前置跑法",
-      "休賽"
+      "降班"
      ],
      "cons": [
       "過往市場評價",
@@ -2303,17 +2330,17 @@
      "rating": 69,
      "last6": "6/4/5/1/1/2",
      "gear": "B",
-     "win_prob": 0.2397,
-     "fair_odds": 4.2,
+     "win_prob": 0.2113,
+     "fair_odds": 4.7,
      "style": "中游",
-     "speed_best": 4.3,
+     "speed_best": 4.4,
      "perf_best": 76.8,
      "handicap_edge": 7.8,
      "runs_in_db": 8,
-     "draw_edge": -0.004,
+     "draw_edge": -0.017,
      "pros": [
-      "騎師",
       "過往市場評價",
+      "騎師",
       "近況"
      ],
      "cons": [
@@ -2329,60 +2356,30 @@
      "jockey": "周俊樂",
      "trainer": "呂健威",
      "draw": 2,
-     "weight": 122,
+     "weight": 120,
      "rating": 65,
      "last6": "7/6/4/3/2/2",
      "gear": "XB/TT",
-     "win_prob": 0.2068,
-     "fair_odds": 4.8,
+     "win_prob": 0.1905,
+     "fair_odds": 5.2,
      "style": "領放",
      "speed_best": 4.5,
      "perf_best": 77.6,
      "handicap_edge": 12.6,
-     "runs_in_db": 14,
-     "draw_edge": 0.048,
+     "runs_in_db": 17,
+     "draw_edge": 0.118,
      "pros": [
       "過往市場評價",
       "近況",
-      "騎師"
+      "讓磅著數"
      ],
      "cons": [
-      "前置跑法",
-      "路程適應"
+      "步速形勢",
+      "跑贏市場預期"
      ]
     },
     {
      "rank": 3,
-     "no": 12,
-     "horse": "翠兒威威",
-     "horse_code": "K084",
-     "jockey": "田泰安",
-     "trainer": "巫偉傑",
-     "draw": 7,
-     "weight": 118,
-     "rating": 61,
-     "last6": "9/6/2/7/8/4",
-     "gear": "CP/TT",
-     "win_prob": 0.1042,
-     "fair_odds": 9.6,
-     "style": "領放",
-     "speed_best": -3.6,
-     "perf_best": 67.4,
-     "handicap_edge": 6.4,
-     "runs_in_db": 15,
-     "draw_edge": 0.247,
-     "pros": [
-      "檔位統計",
-      "負磅",
-      "後段追勁"
-     ],
-     "cons": [
-      "前置跑法",
-      "近況"
-     ]
-    },
-    {
-     "rank": 4,
      "no": 2,
      "horse": "一定掂",
      "horse_code": "J225",
@@ -2393,18 +2390,18 @@
      "rating": 78,
      "last6": "1/7/5/4/11/4",
      "gear": "B",
-     "win_prob": 0.0875,
-     "fair_odds": 11.4,
+     "win_prob": 0.114,
+     "fair_odds": 8.8,
      "style": "中游",
      "speed_best": 6.5,
      "perf_best": 81.1,
      "handicap_edge": 3.1,
-     "runs_in_db": 13,
-     "draw_edge": -0.117,
+     "runs_in_db": 15,
+     "draw_edge": -0.174,
      "pros": [
       "近況",
-      "過往市場評價",
-      "上仗表現評分"
+      "末段速度(分段時間)",
+      "過往市場評價"
      ],
      "cons": [
       "負磅",
@@ -2412,37 +2409,37 @@
      ]
     },
     {
-     "rank": 5,
-     "no": 10,
-     "horse": "金錢遊戲",
-     "horse_code": "L402",
-     "jockey": "梁家俊",
-     "trainer": "廖康銘",
-     "draw": 6,
-     "weight": 121,
-     "rating": 64,
-     "last6": "10/6",
-     "gear": "",
-     "win_prob": 0.0781,
-     "fair_odds": 12.8,
-     "style": "後上",
-     "speed_best": -2.6,
-     "perf_best": 68.1,
-     "handicap_edge": 4.1,
-     "runs_in_db": 2,
-     "draw_edge": 0.19,
+     "rank": 4,
+     "no": 12,
+     "horse": "翠兒威威",
+     "horse_code": "K084",
+     "jockey": "田泰安",
+     "trainer": "巫偉傑",
+     "draw": 7,
+     "weight": 118,
+     "rating": 61,
+     "last6": "9/6/2/7/8/4",
+     "gear": "CP/TT",
+     "win_prob": 0.0861,
+     "fair_odds": 11.6,
+     "style": "領放",
+     "speed_best": -3.6,
+     "perf_best": 67.4,
+     "handicap_edge": 6.4,
+     "runs_in_db": 19,
+     "draw_edge": 0.356,
      "pros": [
       "檔位統計",
-      "負磅",
-      "前置跑法"
+      "後段追勁",
+      "騎師"
      ],
      "cons": [
       "近況",
-      "跑道跑法偏差"
+      "步速形勢"
      ]
     },
     {
-     "rank": 6,
+     "rank": 5,
      "no": 1,
      "horse": "將睿",
      "horse_code": "K356",
@@ -2453,18 +2450,18 @@
      "rating": 78,
      "last6": "4/6/4/1/13/9",
      "gear": "XB",
-     "win_prob": 0.0729,
-     "fair_odds": 13.7,
+     "win_prob": 0.0772,
+     "fair_odds": 12.9,
      "style": "前列",
-     "speed_best": -0.5,
+     "speed_best": -0.1,
      "perf_best": 81.2,
      "handicap_edge": 3.2,
      "runs_in_db": 9,
-     "draw_edge": 0.145,
+     "draw_edge": 0.118,
      "pros": [
       "近況",
       "降班",
-      "檔位統計"
+      "表現評分(近績最佳)"
      ],
      "cons": [
       "騎師",
@@ -2472,7 +2469,66 @@
      ]
     },
     {
+     "rank": 6,
+     "no": 10,
+     "horse": "金錢遊戲",
+     "horse_code": "L402",
+     "jockey": "梁家俊",
+     "trainer": "廖康銘",
+     "draw": 6,
+     "weight": 121,
+     "rating": 64,
+     "last6": "10/6",
+     "gear": "",
+     "win_prob": 0.0712,
+     "fair_odds": 14.1,
+     "style": "後上",
+     "speed_best": -2.6,
+     "perf_best": 68.1,
+     "handicap_edge": 4.1,
+     "runs_in_db": 2,
+     "draw_edge": 0.118,
+     "pros": [
+      "檔位統計",
+      "步速形勢",
+      "騎師"
+     ],
+     "cons": [
+      "近況",
+      "後段追勁"
+     ]
+    },
+    {
      "rank": 7,
+     "no": 7,
+     "horse": "金滙千帥",
+     "horse_code": "J498",
+     "jockey": "黃寶妮",
+     "trainer": "賀賢",
+     "draw": 10,
+     "weight": 116,
+     "rating": 66,
+     "last6": "2/13/1/7/8/4",
+     "gear": "V",
+     "win_prob": 0.0541,
+     "fair_odds": 18.5,
+     "style": "中游",
+     "speed_best": 2.5,
+     "perf_best": 66.7,
+     "handicap_edge": 0.7,
+     "runs_in_db": 18,
+     "draw_edge": -0.665,
+     "pros": [
+      "近況",
+      "負磅"
+     ],
+     "cons": [
+      "檔位統計",
+      "騎師"
+     ]
+    },
+    {
+     "rank": 8,
      "no": 9,
      "horse": "傲視同群",
      "horse_code": "K357",
@@ -2483,18 +2539,18 @@
      "rating": 64,
      "last6": "10/8/2/5/14/8",
      "gear": "B/TT",
-     "win_prob": 0.0512,
-     "fair_odds": 19.5,
+     "win_prob": 0.0523,
+     "fair_odds": 19.1,
      "style": "前列",
-     "speed_best": 3.0,
+     "speed_best": 2.8,
      "perf_best": 76.2,
      "handicap_edge": 12.2,
-     "runs_in_db": 7,
-     "draw_edge": -0.117,
+     "runs_in_db": 8,
+     "draw_edge": -0.119,
      "pros": [
       "讓磅著數",
-      "負磅",
-      "表現評分(近績最佳)"
+      "表現評分(近績最佳)",
+      "後段追勁"
      ],
      "cons": [
       "近況",
@@ -2502,61 +2558,33 @@
      ]
     },
     {
-     "rank": 8,
-     "no": 4,
-     "horse": "相映紅",
-     "horse_code": "J426",
-     "jockey": "何澤堯",
-     "trainer": "方嘉柏",
-     "draw": 12,
-     "weight": 128,
-     "rating": 71,
-     "last6": "10/10/9/8/1/2",
-     "gear": "PC-/TT",
-     "win_prob": 0.0442,
-     "fair_odds": 22.6,
-     "style": "領放",
-     "speed_best": -2.6,
-     "perf_best": 70.9,
-     "handicap_edge": -0.1,
-     "runs_in_db": 8,
-     "draw_edge": -0.113,
-     "pros": [
-      "後段追勁",
-      "騎師",
-      "跑道跑法偏差"
-     ],
-     "cons": [
-      "近況",
-      "前置跑法"
-     ]
-    },
-    {
      "rank": 9,
-     "no": 7,
-     "horse": "金滙千帥",
-     "horse_code": "J498",
-     "jockey": "黃寶妮",
-     "trainer": "賀賢",
-     "draw": 10,
-     "weight": 123,
-     "rating": 66,
-     "last6": "2/13/1/7/8/4",
-     "gear": "V",
-     "win_prob": 0.0416,
-     "fair_odds": 24.0,
-     "style": "中游",
-     "speed_best": 2.5,
-     "perf_best": 66.7,
-     "handicap_edge": 0.7,
-     "runs_in_db": 16,
-     "draw_edge": -0.645,
+     "no": 11,
+     "horse": "天然數字",
+     "horse_code": "L166",
+     "jockey": "蔡明紹",
+     "trainer": "徐雨石",
+     "draw": 11,
+     "weight": 118,
+     "rating": 61,
+     "last6": "5/6/13/7/10/11",
+     "gear": "B",
+     "win_prob": 0.0513,
+     "fair_odds": 19.5,
+     "style": "後上",
+     "speed_best": -2.7,
+     "perf_best": 70.7,
+     "handicap_edge": 9.7,
+     "runs_in_db": 10,
+     "draw_edge": -0.456,
      "pros": [
-      "近況"
+      "末段速度(分段時間)",
+      "負磅",
+      "讓磅著數"
      ],
      "cons": [
-      "檔位統計",
-      "騎師"
+      "騎師",
+      "檔位統計"
      ]
     },
     {
@@ -2571,14 +2599,14 @@
      "rating": 67,
      "last6": "6/12/12/7",
      "gear": "",
-     "win_prob": 0.0316,
-     "fair_odds": 31.6,
+     "win_prob": 0.0401,
+     "fair_odds": 25.0,
      "style": "後上",
      "speed_best": 0.1,
      "perf_best": 75.5,
      "handicap_edge": 8.5,
      "runs_in_db": 4,
-     "draw_edge": 0.19,
+     "draw_edge": 0.199,
      "pros": [
       "檔位統計",
       "上仗表現評分",
@@ -2586,36 +2614,36 @@
      ],
      "cons": [
       "過往市場評價",
-      "騎師"
+      "近況"
      ]
     },
     {
      "rank": 11,
-     "no": 11,
-     "horse": "天然數字",
-     "horse_code": "L166",
-     "jockey": "蔡明紹",
-     "trainer": "徐雨石",
-     "draw": 11,
-     "weight": 118,
-     "rating": 61,
-     "last6": "5/6/13/7/10/11",
-     "gear": "B",
-     "win_prob": 0.0307,
-     "fair_odds": 32.5,
-     "style": "中游",
-     "speed_best": -2.8,
-     "perf_best": 70.7,
-     "handicap_edge": 9.7,
-     "runs_in_db": 10,
-     "draw_edge": -0.416,
+     "no": 4,
+     "horse": "相映紅",
+     "horse_code": "J426",
+     "jockey": "何澤堯",
+     "trainer": "方嘉柏",
+     "draw": 12,
+     "weight": 128,
+     "rating": 71,
+     "last6": "10/10/9/8/1/2",
+     "gear": "PC-/TT",
+     "win_prob": 0.0367,
+     "fair_odds": 27.2,
+     "style": "領放",
+     "speed_best": -2.6,
+     "perf_best": 70.9,
+     "handicap_edge": -0.1,
+     "runs_in_db": 8,
+     "draw_edge": -0.215,
      "pros": [
-      "負磅",
-      "讓磅著數",
-      "近況"
+      "後段追勁",
+      "騎師",
+      "表現評分(近績最佳)"
      ],
      "cons": [
-      "騎師",
+      "近況",
       "檔位統計"
      ]
     },
@@ -2627,22 +2655,22 @@
      "jockey": "鍾易禮",
      "trainer": "沈集成",
      "draw": 1,
-     "weight": 131,
+     "weight": 129,
      "rating": 74,
      "last6": "14",
      "gear": "CP1/TT",
-     "win_prob": 0.0114,
-     "fair_odds": 87.4,
+     "win_prob": 0.0152,
+     "fair_odds": 65.9,
      "style": "後上",
      "speed_best": -2.9,
      "perf_best": 69.4,
      "handicap_edge": -4.6,
      "runs_in_db": 1,
-     "draw_edge": 0.19,
+     "draw_edge": 0.237,
      "pros": [
       "檔位統計",
-      "前置跑法",
-      "步速形勢"
+      "步速形勢",
+      "上仗表現評分"
      ],
      "cons": [
       "近況",
@@ -2679,86 +2707,55 @@
      "rating": 64,
      "last6": "2/1/1/5/3/7",
      "gear": "B/XB",
-     "win_prob": 0.292,
-     "fair_odds": 3.4,
+     "win_prob": 0.2707,
+     "fair_odds": 3.7,
      "style": "領放",
      "speed_best": 2.7,
      "perf_best": 69.0,
      "handicap_edge": 5.0,
      "runs_in_db": 9,
-     "draw_edge": 0.012,
+     "draw_edge": 0.216,
      "pros": [
       "近況",
-      "騎師",
-      "過往市場評價"
+      "過往市場評價",
+      "騎師"
      ],
      "cons": [
-      "前置跑法",
       "步速形勢"
      ]
     },
     {
      "rank": 2,
-     "no": 6,
-     "horse": "輝灑自如",
-     "horse_code": "L281",
-     "jockey": "袁幸堯",
-     "trainer": "姚本輝",
-     "draw": 4,
-     "weight": 126,
-     "rating": 67,
-     "last6": "1/8/9/1",
-     "gear": "TT",
-     "win_prob": 0.1168,
-     "fair_odds": 8.6,
-     "style": "前列",
-     "speed_best": -1.5,
-     "perf_best": 59.8,
-     "handicap_edge": -7.2,
-     "runs_in_db": 4,
-     "draw_edge": 0.225,
-     "pros": [
-      "過往市場評價",
-      "騎師",
-      "近況"
-     ],
-     "cons": [
-      "降班",
-      "讓磅著數"
-     ]
-    },
-    {
-     "rank": 3,
      "no": 8,
      "horse": "何方來聲",
      "horse_code": "L481",
      "jockey": "鍾易禮",
      "trainer": "告東尼",
      "draw": 2,
-     "weight": 124,
+     "weight": 122,
      "rating": 65,
      "last6": "3/4",
      "gear": "TT",
-     "win_prob": 0.1069,
-     "fair_odds": 9.4,
+     "win_prob": 0.1337,
+     "fair_odds": 7.5,
      "style": "領放",
      "speed_best": -9.5,
      "perf_best": 72.5,
      "handicap_edge": 7.5,
      "runs_in_db": 2,
-     "draw_edge": 0.238,
+     "draw_edge": 0.412,
      "pros": [
       "近況",
-      "過往市場評價",
-      "檔位統計"
+      "檔位統計",
+      "過往市場評價"
      ],
      "cons": [
       "騎師",
-      "前置跑法"
+      "步速形勢"
      ]
     },
     {
-     "rank": 4,
+     "rank": 3,
      "no": 2,
      "horse": "觀眾之力",
      "horse_code": "K107",
@@ -2769,13 +2766,13 @@
      "rating": 75,
      "last6": "2/2/1/5/5/1",
      "gear": "TT",
-     "win_prob": 0.1051,
-     "fair_odds": 9.5,
+     "win_prob": 0.12,
+     "fair_odds": 8.3,
      "style": "前列",
      "speed_best": 4.8,
      "perf_best": 80.7,
      "handicap_edge": 5.7,
-     "runs_in_db": 7,
+     "runs_in_db": 10,
      "draw_edge": -0.352,
      "pros": [
       "近況",
@@ -2784,11 +2781,131 @@
      ],
      "cons": [
       "檔位統計",
-      "負磅"
+      "後段追勁"
+     ]
+    },
+    {
+     "rank": 4,
+     "no": 6,
+     "horse": "輝灑自如",
+     "horse_code": "L281",
+     "jockey": "袁幸堯",
+     "trainer": "姚本輝",
+     "draw": 4,
+     "weight": 119,
+     "rating": 67,
+     "last6": "1/8/9/1",
+     "gear": "TT",
+     "win_prob": 0.1063,
+     "fair_odds": 9.4,
+     "style": "前列",
+     "speed_best": -1.5,
+     "perf_best": 59.8,
+     "handicap_edge": -7.2,
+     "runs_in_db": 4,
+     "draw_edge": 0.204,
+     "pros": [
+      "近況",
+      "過往市場評價",
+      "騎師"
+     ],
+     "cons": [
+      "讓磅著數",
+      "降班"
      ]
     },
     {
      "rank": 5,
+     "no": 4,
+     "horse": "家樂龍駒",
+     "horse_code": "H396",
+     "jockey": "周俊樂",
+     "trainer": "賀賢",
+     "draw": 3,
+     "weight": 128,
+     "rating": 71,
+     "last6": "5/9/8/10/3/1",
+     "gear": "XB",
+     "win_prob": 0.0732,
+     "fair_odds": 13.7,
+     "style": "後上",
+     "speed_best": 4.5,
+     "perf_best": 80.5,
+     "handicap_edge": 9.5,
+     "runs_in_db": 8,
+     "draw_edge": -0.136,
+     "pros": [
+      "末段速度(分段時間)",
+      "表現評分(近績最佳)",
+      "騎師"
+     ],
+     "cons": [
+      "過往市場評價",
+      "檔位統計"
+     ]
+    },
+    {
+     "rank": 6,
+     "no": 3,
+     "horse": "快活英雄",
+     "horse_code": "J346",
+     "jockey": "班德禮",
+     "trainer": "黎昭昇",
+     "draw": 9,
+     "weight": 130,
+     "rating": 71,
+     "last6": "3/11/5/9/5/10",
+     "gear": "",
+     "win_prob": 0.0549,
+     "fair_odds": 18.2,
+     "style": "中游",
+     "speed_best": 3.3,
+     "perf_best": 77.7,
+     "handicap_edge": 6.7,
+     "runs_in_db": 18,
+     "draw_edge": -0.04,
+     "pros": [
+      "末段速度(分段時間)",
+      "表現評分(近績最佳)",
+      "上仗表現評分"
+     ],
+     "cons": [
+      "過往市場評價",
+      "前段速度(分段時間)"
+     ]
+    },
+    {
+     "rank": 7,
+     "no": 5,
+     "horse": "競駿皇者",
+     "horse_code": "K011",
+     "jockey": "霍宏聲",
+     "trainer": "游達榮",
+     "draw": 12,
+     "weight": 129,
+     "rating": 70,
+     "last6": "11/4/3/6/5/3",
+     "gear": "B-/TT",
+     "win_prob": 0.052,
+     "fair_odds": 19.2,
+     "style": "中游",
+     "speed_best": 5.1,
+     "perf_best": 81.3,
+     "handicap_edge": 11.3,
+     "runs_in_db": 13,
+     "draw_edge": -0.267,
+     "pros": [
+      "過往市場評價",
+      "表現評分(近績最佳)",
+      "讓磅著數"
+     ],
+     "cons": [
+      "檔位統計",
+      "近況"
+     ]
+    },
+    {
+     "rank": 8,
      "no": 7,
      "horse": "辣得準",
      "horse_code": "J520",
@@ -2799,26 +2916,56 @@
      "rating": 67,
      "last6": "10/11/1/3/5/7",
      "gear": "B",
-     "win_prob": 0.076,
-     "fair_odds": 13.2,
+     "win_prob": 0.0518,
+     "fair_odds": 19.3,
      "style": "中游",
-     "speed_best": 4.2,
+     "speed_best": 4.3,
      "perf_best": 71.9,
      "handicap_edge": 4.9,
-     "runs_in_db": 11,
-     "draw_edge": -0.053,
+     "runs_in_db": 10,
+     "draw_edge": -0.136,
      "pros": [
       "過往市場評價",
       "騎師",
-      "表現評分(近績最佳)"
+      "前段速度(分段時間)"
      ],
      "cons": [
-      "近況",
-      "休賽"
+      "末段速度(分段時間)",
+      "檔位統計"
      ]
     },
     {
-     "rank": 6,
+     "rank": 9,
+     "no": 10,
+     "horse": "關鍵所在",
+     "horse_code": "K154",
+     "jockey": "梁家俊",
+     "trainer": "沈集成",
+     "draw": 5,
+     "weight": 122,
+     "rating": 63,
+     "last6": "12/4/10/6/7/2",
+     "gear": "B/TT",
+     "win_prob": 0.051,
+     "fair_odds": 19.6,
+     "style": "領放",
+     "speed_best": -4.2,
+     "perf_best": 72.0,
+     "handicap_edge": 9.0,
+     "runs_in_db": 19,
+     "draw_edge": 0.152,
+     "pros": [
+      "後段追勁",
+      "檔位統計",
+      "過往市場評價"
+     ],
+     "cons": [
+      "近況",
+      "步速形勢"
+     ]
+    },
+    {
+     "rank": 10,
      "no": 1,
      "horse": "偵探之神",
      "horse_code": "M070",
@@ -2829,14 +2976,14 @@
      "rating": 76,
      "last6": "-",
      "gear": "B-/TT-",
-     "win_prob": 0.0631,
-     "fair_odds": 15.8,
+     "win_prob": 0.0487,
+     "fair_odds": 20.5,
      "style": "未知",
      "speed_best": null,
      "perf_best": null,
      "handicap_edge": 0.0,
      "runs_in_db": 0,
-     "draw_edge": -0.053,
+     "draw_edge": -0.04,
      "pros": [
       "初出",
       "過往市場評價",
@@ -2848,156 +2995,7 @@
      ]
     },
     {
-     "rank": 7,
-     "no": 10,
-     "horse": "關鍵所在",
-     "horse_code": "K154",
-     "jockey": "梁家俊",
-     "trainer": "沈集成",
-     "draw": 5,
-     "weight": 122,
-     "rating": 63,
-     "last6": "12/4/10/6/7/2",
-     "gear": "B/TT",
-     "win_prob": 0.0597,
-     "fair_odds": 16.8,
-     "style": "領放",
-     "speed_best": -4.2,
-     "perf_best": 72.0,
-     "handicap_edge": 9.0,
-     "runs_in_db": 15,
-     "draw_edge": 0.251,
-     "pros": [
-      "檔位統計",
-      "後段追勁",
-      "過往市場評價"
-     ],
-     "cons": [
-      "近況",
-      "前置跑法"
-     ]
-    },
-    {
-     "rank": 8,
-     "no": 5,
-     "horse": "競駿皇者",
-     "horse_code": "K011",
-     "jockey": "霍宏聲",
-     "trainer": "游達榮",
-     "draw": 12,
-     "weight": 129,
-     "rating": 70,
-     "last6": "11/4/3/6/5/3",
-     "gear": "B-/TT",
-     "win_prob": 0.0578,
-     "fair_odds": 17.3,
-     "style": "中游",
-     "speed_best": 5.1,
-     "perf_best": 81.3,
-     "handicap_edge": 11.3,
-     "runs_in_db": 13,
-     "draw_edge": -0.14,
-     "pros": [
-      "過往市場評價",
-      "表現評分(近績最佳)",
-      "讓磅著數"
-     ],
-     "cons": [
-      "檔位統計",
-      "近況"
-     ]
-    },
-    {
-     "rank": 9,
-     "no": 4,
-     "horse": "家樂龍駒",
-     "horse_code": "H396",
-     "jockey": "周俊樂",
-     "trainer": "賀賢",
-     "draw": 3,
-     "weight": 130,
-     "rating": 71,
-     "last6": "5/9/8/10/3/1",
-     "gear": "XB",
-     "win_prob": 0.0453,
-     "fair_odds": 22.1,
-     "style": "後上",
-     "speed_best": 4.5,
-     "perf_best": 80.5,
-     "handicap_edge": 9.5,
-     "runs_in_db": 7,
-     "draw_edge": -0.108,
-     "pros": [
-      "騎師",
-      "表現評分(近績最佳)",
-      "讓磅著數"
-     ],
-     "cons": [
-      "過往市場評價",
-      "後段追勁"
-     ]
-    },
-    {
-     "rank": 10,
-     "no": 3,
-     "horse": "快活英雄",
-     "horse_code": "J346",
-     "jockey": "班德禮",
-     "trainer": "黎昭昇",
-     "draw": 9,
-     "weight": 130,
-     "rating": 71,
-     "last6": "3/11/5/9/5/10",
-     "gear": "",
-     "win_prob": 0.0399,
-     "fair_odds": 25.1,
-     "style": "中游",
-     "speed_best": 3.3,
-     "perf_best": 77.7,
-     "handicap_edge": 6.7,
-     "runs_in_db": 14,
-     "draw_edge": -0.001,
-     "pros": [
-      "表現評分(近績最佳)",
-      "上仗表現評分",
-      "近況"
-     ],
-     "cons": [
-      "過往市場評價",
-      "負磅"
-     ]
-    },
-    {
      "rank": 11,
-     "no": 12,
-     "horse": "大番薯",
-     "horse_code": "J383",
-     "jockey": "蔡明紹",
-     "trainer": "廖康銘",
-     "draw": 10,
-     "weight": 120,
-     "rating": 61,
-     "last6": "6/11/8/8/9/1",
-     "gear": "TT",
-     "win_prob": 0.0198,
-     "fair_odds": 50.5,
-     "style": "領放",
-     "speed_best": -5.7,
-     "perf_best": 66.6,
-     "handicap_edge": 5.6,
-     "runs_in_db": 15,
-     "draw_edge": -0.001,
-     "pros": [
-      "負磅",
-      "後段追勁"
-     ],
-     "cons": [
-      "騎師",
-      "過往市場評價"
-     ]
-    },
-    {
-     "rank": 12,
      "no": 11,
      "horse": "佛亮老撾",
      "horse_code": "K174",
@@ -3008,22 +3006,51 @@
      "rating": 61,
      "last6": "11/9/7/1/5/6",
      "gear": "",
-     "win_prob": 0.0177,
-     "fair_odds": 56.5,
+     "win_prob": 0.0218,
+     "fair_odds": 45.9,
      "style": "後上",
      "speed_best": 1.8,
      "perf_best": 67.0,
      "handicap_edge": 6.0,
-     "runs_in_db": 12,
-     "draw_edge": -0.202,
+     "runs_in_db": 16,
+     "draw_edge": -0.221,
      "pros": [
-      "負磅",
-      "前置跑法",
-      "步速形勢"
+      "步速形勢",
+      "前段速度(分段時間)",
+      "負磅"
      ],
      "cons": [
       "過往市場評價",
       "騎師"
+     ]
+    },
+    {
+     "rank": 12,
+     "no": 12,
+     "horse": "大番薯",
+     "horse_code": "J383",
+     "jockey": "蔡明紹",
+     "trainer": "廖康銘",
+     "draw": 10,
+     "weight": 120,
+     "rating": 61,
+     "last6": "6/11/8/8/9/1",
+     "gear": "TT",
+     "win_prob": 0.0159,
+     "fair_odds": 63.0,
+     "style": "領放",
+     "speed_best": -5.7,
+     "perf_best": 66.6,
+     "handicap_edge": 5.6,
+     "runs_in_db": 18,
+     "draw_edge": -0.087,
+     "pros": [
+      "後段追勁",
+      "負磅"
+     ],
+     "cons": [
+      "騎師",
+      "末段速度(分段時間)"
      ]
     }
    ],
@@ -3038,9 +3065,9 @@
    "surface": "TURF",
    "course": "A",
    "going": "好地",
-   "pace": "中",
-   "pace_note": "預計步速中等",
-   "n_leaders": 2,
+   "pace": "慢",
+   "pace_note": "前領馬少,預計步速偏慢,前置馬有利",
+   "n_leaders": 1,
    "today_bias": "今日未有已完成賽事,未能計算即日場地走勢",
    "course_bias": "此跑道路程歷來前置馬有利",
    "runners": [
@@ -3056,22 +3083,22 @@
      "rating": 76,
      "last6": "1/1/11/3/6/7",
      "gear": "CP/TT",
-     "win_prob": 0.1895,
-     "fair_odds": 5.3,
+     "win_prob": 0.1723,
+     "fair_odds": 5.8,
      "style": "後上",
      "speed_best": -1.7,
      "perf_best": 77.6,
      "handicap_edge": 1.6,
      "runs_in_db": 9,
-     "draw_edge": 0.251,
+     "draw_edge": 0.152,
      "pros": [
       "近況",
       "過往市場評價",
       "檔位統計"
      ],
      "cons": [
-      "負磅",
-      "後段追勁"
+      "後段追勁",
+      "負磅"
      ]
     },
     {
@@ -3086,21 +3113,22 @@
      "rating": 63,
      "last6": "10/3/2/5/8/12",
      "gear": "TT",
-     "win_prob": 0.1345,
-     "fair_odds": 7.4,
+     "win_prob": 0.123,
+     "fair_odds": 8.1,
      "style": "中游",
-     "speed_best": 0.5,
+     "speed_best": 0.7,
      "perf_best": 75.4,
      "handicap_edge": 12.4,
-     "runs_in_db": 10,
-     "draw_edge": 0.225,
+     "runs_in_db": 13,
+     "draw_edge": 0.204,
      "pros": [
       "過往市場評價",
       "檔位統計",
-      "騎師"
+      "讓磅著數"
      ],
      "cons": [
-      "後段追勁"
+      "後段追勁",
+      "上仗速度指數"
      ]
     },
     {
@@ -3115,14 +3143,14 @@
      "rating": 62,
      "last6": "9/6/5/8/3/2",
      "gear": "B/TT",
-     "win_prob": 0.1255,
-     "fair_odds": 8.0,
+     "win_prob": 0.1126,
+     "fair_odds": 8.9,
      "style": "前列",
      "speed_best": -2.2,
      "perf_best": 71.0,
      "handicap_edge": 9.0,
-     "runs_in_db": 14,
-     "draw_edge": -0.108,
+     "runs_in_db": 15,
+     "draw_edge": -0.136,
      "pros": [
       "騎師",
       "後段追勁",
@@ -3130,41 +3158,11 @@
      ],
      "cons": [
       "近況",
-      "前置跑法"
+      "檔位統計"
      ]
     },
     {
      "rank": 4,
-     "no": 6,
-     "horse": "事理",
-     "horse_code": "L338",
-     "jockey": "周俊樂",
-     "trainer": "游達榮",
-     "draw": 6,
-     "weight": 120,
-     "rating": 64,
-     "last6": "-",
-     "gear": "CP1",
-     "win_prob": 0.1007,
-     "fair_odds": 9.9,
-     "style": "未知",
-     "speed_best": null,
-     "perf_best": null,
-     "handicap_edge": 0.0,
-     "runs_in_db": 0,
-     "draw_edge": -0.053,
-     "pros": [
-      "初出",
-      "過往市場評價",
-      "騎師"
-     ],
-     "cons": [
-      "缺速度數據",
-      "近況"
-     ]
-    },
-    {
-     "rank": 5,
      "no": 4,
      "horse": "馭跑得",
      "horse_code": "L193",
@@ -3175,26 +3173,25 @@
      "rating": 67,
      "last6": "2/9/11/5/6/6",
      "gear": "",
-     "win_prob": 0.0946,
-     "fair_odds": 10.6,
+     "win_prob": 0.1038,
+     "fair_odds": 9.6,
      "style": "前列",
      "speed_best": 5.5,
      "perf_best": 80.8,
      "handicap_edge": 13.8,
-     "runs_in_db": 10,
-     "draw_edge": -0.202,
+     "runs_in_db": 9,
+     "draw_edge": -0.221,
      "pros": [
       "近況",
-      "騎師",
-      "讓磅著數"
+      "讓磅著數",
+      "表現評分(近績最佳)"
      ],
      "cons": [
-      "檔位統計",
-      "前置跑法"
+      "檔位統計"
      ]
     },
     {
-     "rank": 6,
+     "rank": 5,
      "no": 2,
      "horse": "乘數表",
      "horse_code": "K352",
@@ -3205,51 +3202,81 @@
      "rating": 73,
      "last6": "4/5/5/6/8/4",
      "gear": "CP-/B1",
-     "win_prob": 0.0741,
-     "fair_odds": 13.5,
+     "win_prob": 0.1021,
+     "fair_odds": 9.8,
      "style": "中游",
      "speed_best": 4.8,
      "perf_best": 81.6,
      "handicap_edge": 8.6,
      "runs_in_db": 16,
-     "draw_edge": 0.238,
+     "draw_edge": 0.412,
      "pros": [
-      "近況",
       "檔位統計",
-      "上仗表現評分"
+      "近況",
+      "表現評分(近績最佳)"
      ],
      "cons": [
       "過往市場評價",
-      "負磅"
+      "騎師"
+     ]
+    },
+    {
+     "rank": 6,
+     "no": 7,
+     "horse": "天馬行雲",
+     "horse_code": "L221",
+     "jockey": "希威森",
+     "trainer": "桂福特",
+     "draw": 1,
+     "weight": 120,
+     "rating": 64,
+     "last6": "3/4/8/4",
+     "gear": "",
+     "win_prob": 0.0716,
+     "fair_odds": 14.0,
+     "style": "中游",
+     "speed_best": -2.2,
+     "perf_best": 69.2,
+     "handicap_edge": 5.2,
+     "runs_in_db": 4,
+     "draw_edge": 0.216,
+     "pros": [
+      "近況",
+      "檔位統計"
+     ],
+     "cons": [
+      "騎師",
+      "過往市場評價"
      ]
     },
     {
      "rank": 7,
-     "no": 11,
-     "horse": "競駿非凡",
-     "horse_code": "J401",
-     "jockey": "巴度",
-     "trainer": "韋達",
-     "draw": 11,
+     "no": 6,
+     "horse": "事理",
+     "horse_code": "L338",
+     "jockey": "周俊樂",
+     "trainer": "游達榮",
+     "draw": 6,
      "weight": 118,
-     "rating": 62,
-     "last6": "10/1/3/5/3/3",
-     "gear": "CP",
-     "win_prob": 0.0647,
-     "fair_odds": 15.4,
-     "style": "中游",
-     "speed_best": 3.2,
-     "perf_best": 65.3,
-     "handicap_edge": 3.3,
-     "runs_in_db": 14,
-     "draw_edge": -0.352,
+     "rating": 64,
+     "last6": "-",
+     "gear": "CP1",
+     "win_prob": 0.071,
+     "fair_odds": 14.1,
+     "style": "未知",
+     "speed_best": null,
+     "perf_best": null,
+     "handicap_edge": 0.0,
+     "runs_in_db": 0,
+     "draw_edge": -0.136,
      "pros": [
+      "初出",
       "過往市場評價",
-      "近況",
-      "負磅"
+      "騎師"
      ],
      "cons": [
-      "檔位統計"
+      "缺速度數據",
+      "近況"
      ]
     },
     {
@@ -3264,17 +3291,18 @@
      "rating": 67,
      "last6": "6/8/5/4/1/6",
      "gear": "CP",
-     "win_prob": 0.0613,
-     "fair_odds": 16.3,
+     "win_prob": 0.0705,
+     "fair_odds": 14.2,
      "style": "中游",
      "speed_best": -0.6,
      "perf_best": 73.8,
      "handicap_edge": 6.8,
-     "runs_in_db": 18,
-     "draw_edge": -0.001,
+     "runs_in_db": 22,
+     "draw_edge": -0.04,
      "pros": [
       "近況",
-      "表現評分(近績最佳)"
+      "表現評分(近績最佳)",
+      "上仗速度指數"
      ],
      "cons": [
       "過往市場評價",
@@ -3283,24 +3311,52 @@
     },
     {
      "rank": 9,
+     "no": 11,
+     "horse": "競駿非凡",
+     "horse_code": "J401",
+     "jockey": "巴度",
+     "trainer": "韋達",
+     "draw": 11,
+     "weight": 118,
+     "rating": 62,
+     "last6": "10/1/3/5/3/3",
+     "gear": "CP",
+     "win_prob": 0.0646,
+     "fair_odds": 15.5,
+     "style": "中游",
+     "speed_best": 3.2,
+     "perf_best": 65.3,
+     "handicap_edge": 3.3,
+     "runs_in_db": 17,
+     "draw_edge": -0.352,
+     "pros": [
+      "過往市場評價",
+      "近況"
+     ],
+     "cons": [
+      "檔位統計"
+     ]
+    },
+    {
+     "rank": 10,
      "no": 3,
      "horse": "重情重義",
      "horse_code": "L311",
      "jockey": "袁幸堯",
      "trainer": "姚本輝",
      "draw": 10,
-     "weight": 125,
+     "weight": 118,
      "rating": 69,
      "last6": "8/11/12/10/1",
      "gear": "V",
-     "win_prob": 0.0492,
-     "fair_odds": 20.3,
+     "win_prob": 0.0535,
+     "fair_odds": 18.7,
      "style": "中游",
      "speed_best": -9.5,
      "perf_best": 71.5,
      "handicap_edge": 2.5,
      "runs_in_db": 5,
-     "draw_edge": -0.001,
+     "draw_edge": -0.087,
      "pros": [
       "騎師",
       "上仗表現評分",
@@ -3312,34 +3368,6 @@
      ]
     },
     {
-     "rank": 10,
-     "no": 7,
-     "horse": "天馬行雲",
-     "horse_code": "L221",
-     "jockey": "希威森",
-     "trainer": "桂福特",
-     "draw": 1,
-     "weight": 120,
-     "rating": 64,
-     "last6": "3/4/8/4",
-     "gear": "",
-     "win_prob": 0.0484,
-     "fair_odds": 20.7,
-     "style": "中游",
-     "speed_best": -2.2,
-     "perf_best": 69.2,
-     "handicap_edge": 5.2,
-     "runs_in_db": 4,
-     "draw_edge": 0.012,
-     "pros": [
-      "近況"
-     ],
-     "cons": [
-      "騎師",
-      "過往市場評價"
-     ]
-    },
-    {
      "rank": 11,
      "no": 8,
      "horse": "爆發",
@@ -3347,25 +3375,24 @@
      "jockey": "鍾易禮",
      "trainer": "告東尼",
      "draw": 12,
-     "weight": 120,
+     "weight": 118,
      "rating": 64,
      "last6": "11",
      "gear": "B/TT",
-     "win_prob": 0.0383,
-     "fair_odds": 26.1,
+     "win_prob": 0.0322,
+     "fair_odds": 31.0,
      "style": "中游",
      "speed_best": -4.6,
      "perf_best": 63.0,
      "handicap_edge": -1.0,
      "runs_in_db": 1,
-     "draw_edge": -0.14,
+     "draw_edge": -0.267,
      "pros": [
-      "過往市場評價",
-      "後段追勁"
+      "過往市場評價"
      ],
      "cons": [
       "近況",
-      "騎師"
+      "檔位統計"
      ]
     },
     {
@@ -3380,22 +3407,22 @@
      "rating": 60,
      "last6": "9/10/9/13/8/10",
      "gear": "V",
-     "win_prob": 0.0191,
-     "fair_odds": 52.4,
+     "win_prob": 0.0228,
+     "fair_odds": 43.9,
      "style": "中游",
      "speed_best": -4.9,
      "perf_best": 66.1,
      "handicap_edge": 6.1,
-     "runs_in_db": 14,
-     "draw_edge": -0.053,
+     "runs_in_db": 19,
+     "draw_edge": -0.04,
      "pros": [
-      "負磅",
       "後段追勁",
-      "路程適應"
+      "前段速度(分段時間)",
+      "負磅"
      ],
      "cons": [
-      "騎師",
-      "近況"
+      "近況",
+      "騎師"
      ]
     }
    ],

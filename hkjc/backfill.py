@@ -1,7 +1,9 @@
 """Download historical results that are not stored yet."""
 from __future__ import annotations
 
+import os
 import sys
+import time
 from datetime import date, datetime, timedelta, timezone
 
 from . import scraper, store
@@ -34,6 +36,33 @@ def backfill(max_meetings: int = 120, log=print) -> int:
 
 
 PROBED = store.DATA / "probed_dates.json"
+# optional wall-clock budget so cloud jobs can stop cleanly and commit what they have
+_DEADLINE = time.time() + float(os.environ["BACKFILL_MINUTES"]) * 60 \
+    if os.environ.get("BACKFILL_MINUTES") else None
+
+
+def _out_of_time() -> bool:
+    return _DEADLINE is not None and time.time() > _DEADLINE
+
+
+def enrich_sectionals(log=print, newest_first=True) -> int:
+    """Add per-horse sectional times to stored races that don't have them yet."""
+    files = sorted((p for p in store.RESULTS.glob("20*_*.json") if "NONE" not in p.name),
+                   reverse=newest_first)
+    done = 0
+    for p in files:
+        races = store.read_json(p, [])
+        todo = [r for r in races if "has_sect" not in r]
+        if not todo:
+            continue
+        if _out_of_time():
+            break
+        for r in todo:
+            scraper.attach_sectionals(r)
+        store.write_json(p, races)
+        done += 1
+        log(f"  sectionals {p.stem}: {sum(r.get('has_sect', False) for r in races)}/{len(races)}")
+    return done
 
 
 def backfill_range(start: date, end: date, log=print) -> int:
@@ -45,7 +74,7 @@ def backfill_range(start: date, end: date, log=print) -> int:
     probed = set(store.read_json(PROBED, []))
     added = 0
     d = end
-    while d >= start:
+    while d >= start and not _out_of_time():
         iso = d.isoformat()
         summer = (d.month == 7 and d.day > 20) or d.month == 8
         if d.weekday() in (2, 5, 6) and not summer and iso not in probed \
@@ -67,6 +96,9 @@ def backfill_range(start: date, end: date, log=print) -> int:
 
 
 if __name__ == "__main__":
+    if len(sys.argv) > 1 and sys.argv[1] == "sectionals":
+        print("enriched", enrich_sectionals(), "meetings")
+        sys.exit()
     if len(sys.argv) > 2 and sys.argv[1] == "range":
         s, e = (date.fromisoformat(x) for x in sys.argv[2:4])
         print("added", backfill_range(s, e), "meetings")

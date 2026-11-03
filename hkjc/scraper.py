@@ -36,7 +36,7 @@ def get(path: str, **params) -> str:
     wait = DELAY - (time.time() - _last_request)
     if wait > 0:
         time.sleep(wait)
-    url = BASE + path
+    url = ("https://racing.hkjc.com" + path) if path.startswith("/") else BASE + path
     for attempt in range(4):
         try:
             r = _session.get(url, params=params or None, timeout=30)
@@ -197,7 +197,44 @@ def _parse_track(s: str):
     return surface, (m.group(1) if m else "")
 
 
-def fetch_meeting_results(race_date: date):
+def fetch_sectionals(race_date: date, race_no: int) -> dict:
+    """Per-horse sectional times: {horse_no: [section seconds, ...]} (empty if unavailable)."""
+    html = get("/zh-hk/local/information/displaysectionaltime",
+               racedate=race_date.strftime("%d/%m/%Y"), RaceNo=race_no)
+    soup = BeautifulSoup(html, "html.parser")
+    table = next((t for t in soup.select("table.race_table") if "馬名" in t.get_text()), None)
+    out = {}
+    if not table:
+        return out
+    for tr in table.find_all("tr"):
+        tds = tr.find_all("td", recursive=False)
+        if len(tds) < 5 or not re.search(r"\([A-Z]\d{3}\)", _txt(tds[2])):
+            continue
+        no = _int(_txt(tds[1]))
+        secs = []
+        for td in tds[3:]:
+            ps = td.find_all("p", recursive=False)
+            if len(ps) < 2:
+                continue
+            first = (ps[1].find(string=True, recursive=False) or "").strip()
+            secs.append(_float(first))
+        if no is not None and secs and all(s for s in secs):
+            out[no] = secs
+    return out
+
+
+def attach_sectionals(race: dict):
+    try:
+        sect = fetch_sectionals(date.fromisoformat(race["date"]), race["race_no"])
+    except RuntimeError:
+        return
+    for x in race["runners"]:
+        if x.get("no") in sect:
+            x["sect"] = sect[x["no"]]
+    race["has_sect"] = bool(sect)
+
+
+def fetch_meeting_results(race_date: date, with_sectionals: bool = True):
     """Fetch every race result for a meeting. Returns list of race dicts (maybe empty)."""
     ds = race_date.strftime("%Y/%m/%d")
     html = get("LocalResults.aspx", RaceDate=ds)
@@ -215,6 +252,8 @@ def fetch_meeting_results(race_date: date):
         page = html if n == 1 else get("LocalResults.aspx", RaceDate=ds, Racecourse=venue, RaceNo=n)
         r = _parse_result_race(BeautifulSoup(page, "html.parser"), venue, race_date, n)
         if r and r["runners"]:
+            if with_sectionals:
+                attach_sectionals(r)
             races.append(r)
     return races
 
@@ -291,6 +330,15 @@ def _parse_card_race(html: str, race_date: date, venue: str, race_no: int):
                        "body_weight_change", "age", "days_since"):
                 val = _int(val)
             r[key] = val
+        # results report the weight actually carried, so apply the apprentice claim here too
+        if r.get("weight") is not None:
+            r["handicap_weight"] = r["weight"]
+            r["weight"] = r["weight"] + (r.get("allowance") or 0)
+        # scratched horses stay on the card; HKJC greys them out / marks them 退出
+        row_txt = _txt(tr)
+        style = (tr.get("style") or "") + " ".join(tr.get("class") or [])
+        r["scratched"] = ("退出" in row_txt or "line-through" in style
+                          or "grey" in style.lower() or r.get("draw") is None)
         if r.get("no") is not None and r.get("horse"):
             runners.append(r)
     info["runners"] = runners

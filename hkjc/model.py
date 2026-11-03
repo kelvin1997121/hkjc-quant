@@ -32,7 +32,7 @@ FEATURES = [
     "early", "early_x_pace", "early_x_today", "early_x_course",
     "draw_bias", "draw_x_today", "jockey", "trainer", "weight_rel",
     "layoff", "debut", "mkt_rating", "vs_mkt", "closing", "class_drop", "bw_change",
-    "perf_best", "perf_last", "handicap_edge",
+    "perf_best", "perf_last", "handicap_edge", "late_speed", "early_speed",
 ]
 SEC_PER_LENGTH = 0.17
 
@@ -69,6 +69,14 @@ def est_ratings(race, runners):
         else:
             out.append(None)
     return out
+
+
+def started(x) -> bool:
+    """False for withdrawn / void entries, which must not count as a run."""
+    if x.get("place"):
+        return True
+    code = (x.get("place_raw") or "").upper()
+    return bool(code) and not code.startswith("W") and code != "VOID"
 
 
 def class_num(s):
@@ -206,6 +214,8 @@ class State:
             "perf_best": _mean(sorted(x["perf"] for x in runs[-5:]
                                       if x.get("perf") is not None)[-2:]),
             "perf_last": _mean([x.get("perf") for x in runs[-1:]]),
+            "late_s": _mean([x.get("late_s") for x in runs[-3:]]),
+            "early_s": _mean([x.get("early_s") for x in runs[-3:]]),
             "last_cls": runs[-1].get("cls") if runs else None,
             "last_bw": runs[-1].get("bw") if runs else None,
         }
@@ -275,6 +285,8 @@ class State:
                 "perf_last": pl,
                 # recent performance above today's rating = well handicapped
                 "handicap_edge": (p["perf_best"] - rating) if p["perf_best"] is not None else 0.0,
+                "late_speed": p["late_s"] if p["late_s"] is not None else 0.0,
+                "early_speed": p["early_s"] if p["early_s"] is not None else 0.0,
             }
             X.append([f[k] for k in FEATURES])
             extra.append({"profile": p, "draw_frac": draw_frac})
@@ -284,7 +296,8 @@ class State:
 
     # ---------------------------------------------------------------- update
     def update(self, race):
-        runners = [x for x in race["runners"] if x.get("horse_code")]
+        # only horses that actually started: withdrawn (WV/WX...) and void runs never ran
+        runners = [x for x in race["runners"] if x.get("horse_code") and started(x)]
         finished = [x for x in runners if x.get("place")]
         field = len(runners)
         if not finished:
@@ -318,6 +331,14 @@ class State:
             if len(beaten) >= 4:
                 med = float(np.median([b for _, b in beaten.values()]))
                 perf = {no: r + med - b for no, (r, b) in beaten.items()}
+        # sectionals: own first / final section vs. the field median (seconds, + = faster)
+        sect_rel = {}
+        with_sect = [x for x in runners if x.get("place") and x.get("sect")]
+        if len(with_sect) >= 4:
+            first_med = float(np.median([x["sect"][0] for x in with_sect]))
+            last_med = float(np.median([x["sect"][-1] for x in with_sect]))
+            sect_rel = {x["no"]: (first_med - x["sect"][0], last_med - x["sect"][-1])
+                        for x in with_sect}
         dk = draw_key(race)
         top_early, top_draw = [], []
         for x in runners:
@@ -353,6 +374,8 @@ class State:
                            if pos and x.get("running") else None,
                 "cls": class_num(race.get("class")), "bw": x.get("body_weight"),
                 "perf": perf.get(x["no"]),
+                "early_s": sect_rel[x["no"]][0] if x["no"] in sect_rel else None,
+                "late_s": sect_rel[x["no"]][1] if x["no"] in sect_rel else None,
             })
         self.meeting[(race["date"], race["venue"])].append({
             "race_no": race["race_no"], "surface": race.get("surface", "TURF"),
@@ -368,12 +391,21 @@ def build_dataset(races):
     st = State()
     samples = []
     for race in races:
-        runners = [x for x in race["runners"] if x.get("horse_code") and x.get("draw")]
+        runners = [x for x in race["runners"]
+                   if x.get("horse_code") and x.get("draw") and started(x)]
         win_idx = [i for i, x in enumerate(runners) if x.get("place") == 1]
         if len(runners) >= 5 and len(win_idx) == 1:
             X, _, _ = st.race_features(race, runners)
             odds = np.array([x.get("win_odds") or 0 for x in runners], dtype=float)
-            samples.append({"date": race["date"], "X": X, "y": win_idx[0], "odds": odds})
+            # finishing order of the first three (stops at a dead heat)
+            order = []
+            for place in (1, 2, 3):
+                idx = [i for i, x in enumerate(runners) if x.get("place") == place]
+                if len(idx) != 1:
+                    break
+                order.append(idx[0])
+            samples.append({"date": race["date"], "X": X, "y": win_idx[0], "odds": odds,
+                            "order": order})
         st.update(race)
     return st, samples
 
@@ -402,7 +434,7 @@ PRIOR = {
     "early_x_pace": 0.1, "early_x_today": 0.1, "early_x_course": 0.1,
     "draw_bias": 0.15, "draw_x_today": 0.1, "jockey": 0.3, "trainer": 0.2,
     "speed_missing": -0.1, "mkt_rating": 0.4, "vs_mkt": 0.1, "class_drop": 0.1,
-    "perf_best": 0.2, "handicap_edge": 0.2,
+    "perf_best": 0.2, "handicap_edge": 0.2, "late_speed": 0.1,
 }
 
 
@@ -410,7 +442,11 @@ def prior_vector():
     return np.array([PRIOR.get(f, 0.0) for f in FEATURES])
 
 
-def fit(samples, l2=0.05, iters=600, lr=0.05):
+STAGE_WEIGHTS = (1.0, 0.6, 0.4)
+
+
+# stages=1 (winner only) tested slightly better than 3 on the walk-forward backtest
+def fit(samples, l2=0.05, iters=600, lr=0.05, stages=1):
     mu, sd = _standardise(samples)
     w0 = prior_vector()
     w = w0.copy()
@@ -423,14 +459,28 @@ def fit(samples, l2=0.05, iters=600, lr=0.05):
     for i, s in enumerate(samples):
         Xp[i, : len(s["X"])] = _z(s["X"], mu, sd)
         mask[i, : len(s["X"])] = True
-    ys = np.array([s["y"] for s in samples])
-    Xy = Xp[np.arange(n), ys]
+    # Rank-ordered logit: 1st among all, 2nd among the rest, 3rd among the rest.
+    # Later stages are down-weighted because minor placings are noisier.
+    stage_masks, stage_X, stage_has = [], [], []
+    cur = mask.copy()
+    for k in range(min(stages, len(STAGE_WEIGHTS))):
+        has = np.array([len(s.get("order") or [s["y"]]) > k for s in samples])
+        pick = np.array([(s.get("order") or [s["y"]])[k] if h else 0
+                         for s, h in zip(samples, has)])
+        stage_masks.append(cur.copy())
+        stage_X.append(Xp[np.arange(n), pick])
+        stage_has.append(has)
+        cur[np.arange(n)[has], pick[has]] = False
     for t in range(1, iters + 1):
-        z = np.where(mask, Xp @ w, -np.inf)
-        z -= z.max(1, keepdims=True)
-        p = np.exp(z)
-        p /= p.sum(1, keepdims=True)
-        g = l2 * (w - w0) + ((p[..., None] * Xp).sum(1) - Xy).mean(0)
+        g = l2 * (w - w0)
+        s_all = Xp @ w
+        for k, (mk, xk, hk) in enumerate(zip(stage_masks, stage_X, stage_has)):
+            z = np.where(mk, s_all, -np.inf)
+            z -= z.max(1, keepdims=True)
+            p = np.exp(z)
+            p /= p.sum(1, keepdims=True)
+            gk = (p[..., None] * Xp).sum(1) - xk
+            g += STAGE_WEIGHTS[k] * gk[hk].sum(0) / n
         m = 0.9 * m + 0.1 * g
         v = 0.999 * v + 0.001 * g * g
         w -= lr * (m / (1 - 0.9 ** t)) / (np.sqrt(v / (1 - 0.999 ** t)) + 1e-8)

@@ -5,6 +5,7 @@
 """
 from __future__ import annotations
 
+import json
 import sys
 from datetime import date, datetime, timezone
 
@@ -19,9 +20,62 @@ def _result_summary(res_race):
             "times": res_race.get("sectionals")}
 
 
+def complete_recent_results(days=4):
+    """Re-fetch recent meetings whose stored results are missing races.
+
+    Live runs save partial results during a meeting; if the last run of the
+    day happened before the last race (GitHub cron is often late), the
+    backfill would otherwise treat the date as done forever.
+    """
+    today = today_hkt()
+    for p in sorted(store.CARDS.glob("20*_*.json")):
+        card = store.read_json(p)
+        d = date.fromisoformat(card["date"])
+        if not (0 <= (today - d).days <= days):
+            continue
+        have = store.read_json(store.result_path(card["date"], card["venue"]), [])
+        if len(have) < len(card["races"]):
+            res = scraper.fetch_meeting_results(d)
+            if len(res) > len(have):
+                store.save_results(res)
+                print(f"   completed {card['date']}: {len(have)} -> {len(res)} races")
+        elif d < today and any(not r.get("has_sect") for r in have):
+            # sectional times are sometimes published a while after the result
+            for r in have:
+                if not r.get("has_sect"):
+                    scraper.attach_sectionals(r)
+            store.save_results(have)
+
+
+def validate_card(card):
+    """Fail loudly (workflow goes red, GitHub emails you) if parsing looks broken."""
+    problems = []
+    for r in card["races"]:
+        live = [x for x in r["runners"] if not x.get("scratched")]
+        if len(live) < 4:
+            problems.append(f"R{r['race_no']}: only {len(live)} runners parsed")
+        if not r.get("distance"):
+            problems.append(f"R{r['race_no']}: distance missing")
+        if sum(1 for x in live if x.get("draw")) < len(live) * 0.8:
+            problems.append(f"R{r['race_no']}: draws missing")
+    if problems:
+        raise RuntimeError("race card parse check failed: " + "; ".join(problems))
+
+
+def write_if_changed(path, doc):
+    """Skip rewriting when only the timestamp would change (avoids a commit every 20 min)."""
+    old = store.read_json(path)
+    if old and {k: v for k, v in old.items() if k != "updated_at"} == \
+            json.loads(json.dumps({k: v for k, v in doc.items() if k != "updated_at"})):
+        return False
+    store.write_json(path, doc)
+    return True
+
+
 def run(use_agent=True):
     print("1) catching up on results")
     backfill(max_meetings=8)
+    complete_recent_results()
 
     attach_results()
 
@@ -30,6 +84,7 @@ def run(use_agent=True):
     if not card or not card["races"]:
         print("   no race card published")
         return
+    validate_card(card)
     store.save_card(card)
     mkey = f"{card['date']}_{card['venue']}"
     meeting_day = date.fromisoformat(card["date"])
@@ -81,10 +136,12 @@ def run(use_agent=True):
         "history_races": len(races),
         "races": out_races,
     }
-    store.write_json(out_path, doc)
-    store.write_json(store.DOCS / "data" / "latest.json", doc)
+    if write_if_changed(out_path, doc):
+        store.write_json(store.DOCS / "data" / "latest.json", doc)
+        print(f"   wrote {out_path}")
+    else:
+        print("   analysis unchanged")
     update_track_record()
-    print(f"   wrote {out_path}")
 
 
 def attach_results():

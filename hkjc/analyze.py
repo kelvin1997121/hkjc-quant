@@ -14,6 +14,7 @@ FEATURE_ZH = {
     "mkt_rating": "過往市場評價", "vs_mkt": "跑贏市場預期", "closing": "後段追勁",
     "class_drop": "降班", "bw_change": "體重變化", "perf_best": "表現評分(近績最佳)",
     "perf_last": "上仗表現評分", "handicap_edge": "讓磅著數",
+    "late_speed": "末段速度(分段時間)", "early_speed": "前段速度(分段時間)",
 }
 
 
@@ -48,7 +49,7 @@ def today_label(ctx):
 
 
 def analyse_race(state, params, race):
-    runners = [x for x in race["runners"] if x.get("draw")]
+    runners = [x for x in race["runners"] if x.get("draw") and not x.get("scratched")]
     if not runners:
         return None
     X, extra, ctx = state.race_features(race, runners)
