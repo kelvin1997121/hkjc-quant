@@ -1,0 +1,4047 @@
+[
+ {
+  "date": "2023-04-02",
+  "venue": "ST",
+  "race_no": 1,
+  "race_id": 539,
+  "class": "第四班",
+  "distance": 1200,
+  "rating_band": "60-40",
+  "going": "好地",
+  "race_name": "錦田河讓賽",
+  "surface": "TURF",
+  "course": "A+3",
+  "prize": "HK$ 1,080,000",
+  "cum_times": [
+   23.92,
+   46.52,
+   70.52
+  ],
+  "sectionals": [
+   23.92,
+   22.6,
+   24.0
+  ],
+  "runners": [
+   {
+    "place_raw": "1",
+    "place": 1,
+    "no": 13,
+    "horse": "多多配合",
+    "horse_code": "G211",
+    "jockey": "周俊樂",
+    "jockey_id": "CJE",
+    "trainer": "容天鵬",
+    "trainer_id": null,
+    "weight": 119,
+    "body_weight": 1221,
+    "draw": 10,
+    "lbw": "---",
+    "running": [
+     11,
+     10,
+     1
+    ],
+    "time": 70.52,
+    "win_odds": 4.0,
+    "sect": [
+     25.08,
+     22.36,
+     23.08
+    ]
+   },
+   {
+    "place_raw": "2",
+    "place": 2,
+    "no": 8,
+    "horse": "錶壇精英",
+    "horse_code": "H185",
+    "jockey": "班德禮",
+    "jockey_id": "BHW",
+    "trainer": "姚本輝",
+    "trainer_id": "YPF",
+    "weight": 126,
+    "body_weight": 1102,
+    "draw": 9,
+    "lbw": "短馬頭位",
+    "running": [
+     9,
+     8,
+     2
+    ],
+    "time": 70.54,
+    "win_odds": 79.0,
+    "sect": [
+     24.68,
+     22.68,
+     23.18
+    ]
+   },
+   {
+    "place_raw": "3",
+    "place": 3,
+    "no": 5,
+    "horse": "精算謀略",
+    "horse_code": "H237",
+    "jockey": "潘頓",
+    "jockey_id": "PZ",
+    "trainer": "蔡約翰",
+    "trainer_id": "SJJ",
+    "weight": 126,
+    "body_weight": 1145,
+    "draw": 13,
+    "lbw": "1",
+    "running": [
+     13,
+     13,
+     3
+    ],
+    "time": 70.69,
+    "win_odds": 9.9,
+    "sect": [
+     25.32,
+     22.52,
+     22.85
+    ]
+   },
+   {
+    "place_raw": "4",
+    "place": 4,
+    "no": 4,
+    "horse": "迎樂",
+    "horse_code": "H149",
+    "jockey": "何澤堯",
+    "jockey_id": "HCY",
+    "trainer": "呂健威",
+    "trainer_id": "LKW",
+    "weight": 126,
+    "body_weight": 1133,
+    "draw": 12,
+    "lbw": "2-3/4",
+    "running": [
+     2,
+     3,
+     4
+    ],
+    "time": 70.96,
+    "win_odds": 16.0,
+    "sect": [
+     24.08,
+     22.72,
+     24.16
+    ]
+   },
+   {
+    "place_raw": "5",
+    "place": 5,
+    "no": 12,
+    "horse": "都柏名駒",
+    "horse_code": "C436",
+    "jockey": "蘇兆輝",
+    "jockey_id": null,
+    "trainer": "文家良",
+    "trainer_id": "MKL",
+    "weight": 122,
+    "body_weight": 1263,
+    "draw": 8,
+    "lbw": "3-1/4",
+    "running": [
+     8,
+     6,
+     5
+    ],
+    "time": 71.04,
+    "win_odds": 17.0,
+    "sect": [
+     24.56,
+     22.64,
+     23.84
+    ]
+   },
+   {
+    "place_raw": "6",
+    "place": 6,
+    "no": 14,
+    "horse": "奮鬥雄才",
+    "horse_code": "E255",
+    "jockey": "巴度",
+    "jockey_id": "BA",
+    "trainer": "葉楚航",
+    "trainer_id": "YCH",
+    "weight": 120,
+    "body_weight": 1071,
+    "draw": 7,
+    "lbw": "3-3/4",
+    "running": [
+     3,
+     1,
+     6
+    ],
+    "time": 71.14,
+    "win_odds": 5.9,
+    "sect": [
+     24.08,
+     22.44,
+     24.62
+    ]
+   },
+   {
+    "place_raw": "7",
+    "place": 7,
+    "no": 2,
+    "horse": "妙玲瓏",
+    "horse_code": "H068",
+    "jockey": "鍾易禮",
+    "jockey_id": "CCY",
+    "trainer": "沈集成",
+    "trainer_id": "SCS",
+    "weight": 124,
+    "body_weight": 1127,
+    "draw": 2,
+    "lbw": "4",
+    "running": [
+     4,
+     2,
+     7
+    ],
+    "time": 71.14,
+    "win_odds": 42.0,
+    "sect": [
+     24.08,
+     22.68,
+     24.38
+    ]
+   },
+   {
+    "place_raw": "8",
+    "place": 8,
+    "no": 3,
+    "horse": "港林福將",
+    "horse_code": "H192",
+    "jockey": "田泰安",
+    "jockey_id": "TEK",
+    "trainer": "羅富全",
+    "trainer_id": "LFC",
+    "weight": 126,
+    "body_weight": 1232,
+    "draw": 3,
+    "lbw": "5",
+    "running": [
+     7,
+     7,
+     8
+    ],
+    "time": 71.32,
+    "win_odds": 2.3,
+    "sect": [
+     24.48,
+     22.72,
+     24.12
+    ]
+   },
+   {
+    "place_raw": "9",
+    "place": 9,
+    "no": 7,
+    "horse": "南征北戰",
+    "horse_code": "H131",
+    "jockey": "波健士",
+    "jockey_id": null,
+    "trainer": "韋達",
+    "trainer_id": "WDJ",
+    "weight": 126,
+    "body_weight": 1191,
+    "draw": 6,
+    "lbw": "6",
+    "running": [
+     10,
+     9,
+     9
+    ],
+    "time": 71.47,
+    "win_odds": 39.0,
+    "sect": [
+     24.72,
+     22.72,
+     24.03
+    ]
+   },
+   {
+    "place_raw": "10",
+    "place": 10,
+    "no": 6,
+    "horse": "滿多福",
+    "horse_code": "H251",
+    "jockey": "梁家俊",
+    "jockey_id": "LDE",
+    "trainer": "黎昭昇",
+    "trainer_id": "RW",
+    "weight": 126,
+    "body_weight": 1102,
+    "draw": 11,
+    "lbw": "6",
+    "running": [
+     12,
+     12,
+     10
+    ],
+    "time": 71.49,
+    "win_odds": 57.0,
+    "sect": [
+     25.24,
+     22.56,
+     23.69
+    ]
+   },
+   {
+    "place_raw": "11",
+    "place": 11,
+    "no": 9,
+    "horse": "同滿滿",
+    "horse_code": "G400",
+    "jockey": "賀銘年",
+    "jockey_id": null,
+    "trainer": "伍鵬志",
+    "trainer_id": "NPC",
+    "weight": 124,
+    "body_weight": 1082,
+    "draw": 4,
+    "lbw": "7",
+    "running": [
+     6,
+     4,
+     11
+    ],
+    "time": 71.66,
+    "win_odds": 24.0,
+    "sect": [
+     24.32,
+     22.68,
+     24.66
+    ]
+   },
+   {
+    "place_raw": "12",
+    "place": 12,
+    "no": 10,
+    "horse": "喜喜利高",
+    "horse_code": "G397",
+    "jockey": "巫顯東",
+    "jockey_id": "MHT",
+    "trainer": "何良",
+    "trainer_id": null,
+    "weight": 121,
+    "body_weight": 1090,
+    "draw": 5,
+    "lbw": "17",
+    "running": [
+     1,
+     5,
+     12
+    ],
+    "time": 73.25,
+    "win_odds": 110.0,
+    "sect": [
+     23.92,
+     23.2,
+     26.13
+    ]
+   },
+   {
+    "place_raw": "13",
+    "place": 13,
+    "no": 1,
+    "horse": "福恩多多",
+    "horse_code": "G344",
+    "jockey": "霍宏聲",
+    "jockey_id": "FEL",
+    "trainer": "容天鵬",
+    "trainer_id": null,
+    "weight": 120,
+    "body_weight": 1049,
+    "draw": 1,
+    "lbw": "19",
+    "running": [
+     5,
+     11,
+     13
+    ],
+    "time": 73.55,
+    "win_odds": 69.0,
+    "sect": [
+     24.12,
+     23.36,
+     26.07
+    ]
+   },
+   {
+    "place_raw": "WV",
+    "place": null,
+    "no": 11,
+    "horse": "特威",
+    "horse_code": "G375",
+    "jockey": "蔡明紹",
+    "jockey_id": "CML",
+    "trainer": "蘇偉賢",
+    "trainer_id": "SWY",
+    "weight": 122,
+    "body_weight": null,
+    "draw": null,
+    "lbw": "---",
+    "running": [],
+    "time": null,
+    "win_odds": null
+   },
+   {
+    "place_raw": "WV",
+    "place": null,
+    "no": null,
+    "horse": "皇龍上將",
+    "horse_code": "G311",
+    "jockey": "霍宏聲",
+    "jockey_id": "FEL",
+    "trainer": "徐雨石",
+    "trainer_id": "TYS",
+    "weight": 133,
+    "body_weight": null,
+    "draw": null,
+    "lbw": "---",
+    "running": [],
+    "time": null,
+    "win_odds": null
+   },
+   {
+    "place_raw": "WV",
+    "place": null,
+    "no": null,
+    "horse": "友心友型",
+    "horse_code": "E100",
+    "jockey": "---",
+    "jockey_id": null,
+    "trainer": "葉楚航",
+    "trainer_id": "YCH",
+    "weight": 134,
+    "body_weight": null,
+    "draw": null,
+    "lbw": "---",
+    "running": [],
+    "time": null,
+    "win_odds": null
+   }
+  ],
+  "has_sect": true
+ },
+ {
+  "date": "2023-04-02",
+  "venue": "ST",
+  "race_no": 2,
+  "race_id": 540,
+  "class": "第五班",
+  "distance": 1200,
+  "rating_band": "40-0",
+  "going": "好地",
+  "race_name": "林村河讓賽",
+  "surface": "TURF",
+  "course": "A+3",
+  "prize": "HK$ 810,000",
+  "cum_times": [
+   23.92,
+   46.82,
+   70.9
+  ],
+  "sectionals": [
+   23.92,
+   22.9,
+   24.08
+  ],
+  "runners": [
+   {
+    "place_raw": "1",
+    "place": 1,
+    "no": 8,
+    "horse": "投資有利",
+    "horse_code": "G025",
+    "jockey": "霍宏聲",
+    "jockey_id": "FEL",
+    "trainer": "韋達",
+    "trainer_id": "WDJ",
+    "weight": 122,
+    "body_weight": 1103,
+    "draw": 12,
+    "lbw": "---",
+    "running": [
+     11,
+     11,
+     1
+    ],
+    "time": 70.9,
+    "win_odds": 6.1,
+    "sect": [
+     24.84,
+     23.06,
+     23.0
+    ]
+   },
+   {
+    "place_raw": "2",
+    "place": 2,
+    "no": 9,
+    "horse": "天天智庫",
+    "horse_code": "D231",
+    "jockey": "田泰安",
+    "jockey_id": "TEK",
+    "trainer": "容天鵬",
+    "trainer_id": null,
+    "weight": 119,
+    "body_weight": 1037,
+    "draw": 10,
+    "lbw": "頸位",
+    "running": [
+     1,
+     1,
+     2
+    ],
+    "time": 70.97,
+    "win_odds": 13.0,
+    "sect": [
+     23.92,
+     22.9,
+     24.15
+    ]
+   },
+   {
+    "place_raw": "3",
+    "place": 3,
+    "no": 11,
+    "horse": "鴻圖巨星",
+    "horse_code": "C163",
+    "jockey": "賀銘年",
+    "jockey_id": null,
+    "trainer": "葉楚航",
+    "trainer_id": "YCH",
+    "weight": 119,
+    "body_weight": 1086,
+    "draw": 8,
+    "lbw": "2-3/4",
+    "running": [
+     9,
+     9,
+     3
+    ],
+    "time": 71.33,
+    "win_odds": 15.0,
+    "sect": [
+     24.72,
+     23.06,
+     23.55
+    ]
+   },
+   {
+    "place_raw": "4",
+    "place": 4,
+    "no": 13,
+    "horse": "佳尊三",
+    "horse_code": "D186",
+    "jockey": "蘇兆輝",
+    "jockey_id": null,
+    "trainer": "蘇偉賢",
+    "trainer_id": "SWY",
+    "weight": 130,
+    "body_weight": 1112,
+    "draw": 11,
+    "lbw": "2-3/4",
+    "running": [
+     6,
+     6,
+     4
+    ],
+    "time": 71.35,
+    "win_odds": 25.0,
+    "sect": [
+     24.48,
+     22.94,
+     23.93
+    ]
+   },
+   {
+    "place_raw": "5",
+    "place": 5,
+    "no": 7,
+    "horse": "開心再來",
+    "horse_code": "E450",
+    "jockey": "何澤堯",
+    "jockey_id": "HCY",
+    "trainer": "沈集成",
+    "trainer_id": "SCS",
+    "weight": 124,
+    "body_weight": 1027,
+    "draw": 13,
+    "lbw": "3",
+    "running": [
+     13,
+     13,
+     5
+    ],
+    "time": 71.38,
+    "win_odds": 37.0,
+    "sect": [
+     25.12,
+     23.18,
+     23.08
+    ]
+   },
+   {
+    "place_raw": "6",
+    "place": 6,
+    "no": 10,
+    "horse": "親愛的",
+    "horse_code": "E404",
+    "jockey": "巫顯東",
+    "jockey_id": "MHT",
+    "trainer": "何良",
+    "trainer_id": null,
+    "weight": 113,
+    "body_weight": 1146,
+    "draw": 9,
+    "lbw": "3-3/4",
+    "running": [
+     12,
+     12,
+     6
+    ],
+    "time": 71.51,
+    "win_odds": 125.0,
+    "sect": [
+     25.0,
+     23.1,
+     23.41
+    ]
+   },
+   {
+    "place_raw": "7",
+    "place": 7,
+    "no": 6,
+    "horse": "金剛石",
+    "horse_code": "C106",
+    "jockey": "周俊樂",
+    "jockey_id": "CJE",
+    "trainer": "鄭俊偉",
+    "trainer_id": "CCW",
+    "weight": 123,
+    "body_weight": 1147,
+    "draw": 1,
+    "lbw": "4-1/4",
+    "running": [
+     4,
+     3,
+     7
+    ],
+    "time": 71.58,
+    "win_odds": 9.7,
+    "sect": [
+     24.24,
+     23.02,
+     24.32
+    ]
+   },
+   {
+    "place_raw": "8",
+    "place": 8,
+    "no": 3,
+    "horse": "耀力之城",
+    "horse_code": "G267",
+    "jockey": "潘頓",
+    "jockey_id": "PZ",
+    "trainer": "大衛希斯",
+    "trainer_id": "HDA",
+    "weight": 134,
+    "body_weight": 1024,
+    "draw": 3,
+    "lbw": "4-3/4",
+    "running": [
+     5,
+     5,
+     8
+    ],
+    "time": 71.64,
+    "win_odds": 2.1,
+    "sect": [
+     24.36,
+     22.98,
+     24.3
+    ]
+   },
+   {
+    "place_raw": "9",
+    "place": 9,
+    "no": 2,
+    "horse": "歡樂好友",
+    "horse_code": "C533",
+    "jockey": "蔡明紹",
+    "jockey_id": "CML",
+    "trainer": "蘇偉賢",
+    "trainer_id": "SWY",
+    "weight": 134,
+    "body_weight": 1089,
+    "draw": 4,
+    "lbw": "5-1/2",
+    "running": [
+     7,
+     7,
+     9
+    ],
+    "time": 71.78,
+    "win_odds": 36.0,
+    "sect": [
+     24.52,
+     22.9,
+     24.36
+    ]
+   },
+   {
+    "place_raw": "10",
+    "place": 10,
+    "no": 12,
+    "horse": "玉樹臨風",
+    "horse_code": "G044",
+    "jockey": "巴度",
+    "jockey_id": "BA",
+    "trainer": "方嘉柏",
+    "trainer_id": "FC",
+    "weight": 118,
+    "body_weight": 1121,
+    "draw": 6,
+    "lbw": "7-1/2",
+    "running": [
+     10,
+     10,
+     10
+    ],
+    "time": 72.09,
+    "win_odds": 8.1,
+    "sect": [
+     24.84,
+     22.98,
+     24.27
+    ]
+   },
+   {
+    "place_raw": "11",
+    "place": 11,
+    "no": 1,
+    "horse": "喜盈於心",
+    "horse_code": "G118",
+    "jockey": "梁家俊",
+    "jockey_id": "LDE",
+    "trainer": "文家良",
+    "trainer_id": "MKL",
+    "weight": 135,
+    "body_weight": 1045,
+    "draw": 7,
+    "lbw": "10-1/2",
+    "running": [
+     3,
+     4,
+     11
+    ],
+    "time": 72.59,
+    "win_odds": 12.0,
+    "sect": [
+     24.08,
+     23.22,
+     25.29
+    ]
+   },
+   {
+    "place_raw": "12",
+    "place": 12,
+    "no": 4,
+    "horse": "東風壹號",
+    "horse_code": "G042",
+    "jockey": "馬雅",
+    "jockey_id": null,
+    "trainer": "姚本輝",
+    "trainer_id": "YPF",
+    "weight": 132,
+    "body_weight": 1170,
+    "draw": 5,
+    "lbw": "11",
+    "running": [
+     8,
+     8,
+     12
+    ],
+    "time": 72.64,
+    "win_odds": 34.0,
+    "sect": [
+     24.56,
+     23.06,
+     25.02
+    ]
+   },
+   {
+    "place_raw": "13",
+    "place": 13,
+    "no": 5,
+    "horse": "滿風雲",
+    "horse_code": "G281",
+    "jockey": "黃皓楠",
+    "jockey_id": null,
+    "trainer": "丁冠豪",
+    "trainer_id": "TKH",
+    "weight": 127,
+    "body_weight": 977,
+    "draw": 2,
+    "lbw": "14-1/4",
+    "running": [
+     2,
+     2,
+     13
+    ],
+    "time": 73.18,
+    "win_odds": 119.0,
+    "sect": [
+     24.04,
+     23.1,
+     26.04
+    ]
+   },
+   {
+    "place_raw": "WV",
+    "place": null,
+    "no": 14,
+    "horse": "勇猛精靈",
+    "horse_code": "G064",
+    "jockey": "鍾易禮",
+    "jockey_id": "CCY",
+    "trainer": "告東尼",
+    "trainer_id": "CAS",
+    "weight": 108,
+    "body_weight": null,
+    "draw": null,
+    "lbw": "---",
+    "running": [],
+    "time": null,
+    "win_odds": null
+   },
+   {
+    "place_raw": "WV",
+    "place": null,
+    "no": null,
+    "horse": "奇妙之春",
+    "horse_code": "E293",
+    "jockey": "班德禮",
+    "jockey_id": "BHW",
+    "trainer": "徐雨石",
+    "trainer_id": "TYS",
+    "weight": 119,
+    "body_weight": null,
+    "draw": null,
+    "lbw": "---",
+    "running": [],
+    "time": null,
+    "win_odds": null
+   },
+   {
+    "place_raw": "WV",
+    "place": null,
+    "no": null,
+    "horse": "超班",
+    "horse_code": "G086",
+    "jockey": "波健士",
+    "jockey_id": null,
+    "trainer": "苗禮德",
+    "trainer_id": null,
+    "weight": 115,
+    "body_weight": null,
+    "draw": null,
+    "lbw": "---",
+    "running": [],
+    "time": null,
+    "win_odds": null
+   }
+  ],
+  "has_sect": true
+ },
+ {
+  "date": "2023-04-02",
+  "venue": "ST",
+  "race_no": 3,
+  "race_id": 541,
+  "class": "第二班",
+  "distance": 1600,
+  "rating_band": "100-80",
+  "going": "好地",
+  "race_name": "雙魚河讓賽",
+  "surface": "TURF",
+  "course": "A+3",
+  "prize": "HK$ 2,900,000",
+  "cum_times": [
+   26.21,
+   50.21,
+   74.49,
+   97.39
+  ],
+  "sectionals": [
+   26.21,
+   24.0,
+   24.28,
+   22.9
+  ],
+  "runners": [
+   {
+    "place_raw": "1",
+    "place": 1,
+    "no": 7,
+    "horse": "駿馬快車",
+    "horse_code": "G356",
+    "jockey": "巴度",
+    "jockey_id": "BA",
+    "trainer": "姚本輝",
+    "trainer_id": "YPF",
+    "weight": 123,
+    "body_weight": 1173,
+    "draw": 4,
+    "lbw": "---",
+    "running": [
+     6,
+     6,
+     5,
+     1
+    ],
+    "time": 97.39,
+    "win_odds": 5.4,
+    "sect": [
+     26.69,
+     24.2,
+     23.88,
+     22.62
+    ]
+   },
+   {
+    "place_raw": "2",
+    "place": 2,
+    "no": 8,
+    "horse": "縱橫天下",
+    "horse_code": "G123",
+    "jockey": "田泰安",
+    "jockey_id": "TEK",
+    "trainer": "何良",
+    "trainer_id": null,
+    "weight": 117,
+    "body_weight": 1049,
+    "draw": 3,
+    "lbw": "頸位",
+    "running": [
+     3,
+     4,
+     4,
+     2
+    ],
+    "time": 97.44,
+    "win_odds": 3.9,
+    "sect": [
+     26.45,
+     24.16,
+     24.12,
+     22.71
+    ]
+   },
+   {
+    "place_raw": "3",
+    "place": 3,
+    "no": 4,
+    "horse": "笑哥兒",
+    "horse_code": "E365",
+    "jockey": "賀銘年",
+    "jockey_id": null,
+    "trainer": "蔡約翰",
+    "trainer_id": "SJJ",
+    "weight": 126,
+    "body_weight": 1042,
+    "draw": 6,
+    "lbw": "頸位",
+    "running": [
+     4,
+     2,
+     2,
+     3
+    ],
+    "time": 97.45,
+    "win_odds": 8.3,
+    "sect": [
+     26.45,
+     23.92,
+     24.24,
+     22.84
+    ]
+   },
+   {
+    "place_raw": "4",
+    "place": 4,
+    "no": 6,
+    "horse": "加州十大",
+    "horse_code": "E045",
+    "jockey": "潘頓",
+    "jockey_id": "PZ",
+    "trainer": "告東尼",
+    "trainer_id": "CAS",
+    "weight": 124,
+    "body_weight": 1108,
+    "draw": 7,
+    "lbw": "3/4",
+    "running": [
+     7,
+     8,
+     7,
+     4
+    ],
+    "time": 97.53,
+    "win_odds": 2.8,
+    "sect": [
+     26.89,
+     24.24,
+     23.92,
+     22.48
+    ]
+   },
+   {
+    "place_raw": "5",
+    "place": 5,
+    "no": 3,
+    "horse": "保羅承傳",
+    "horse_code": "C517",
+    "jockey": "蔡明紹",
+    "jockey_id": "CML",
+    "trainer": "羅富全",
+    "trainer_id": "LFC",
+    "weight": 126,
+    "body_weight": 1102,
+    "draw": 5,
+    "lbw": "1-1/2",
+    "running": [
+     1,
+     1,
+     1,
+     5
+    ],
+    "time": 97.62,
+    "win_odds": 7.1,
+    "sect": [
+     26.21,
+     24.0,
+     24.28,
+     23.13
+    ]
+   },
+   {
+    "place_raw": "6",
+    "place": 6,
+    "no": 2,
+    "horse": "禪勝寶駒",
+    "horse_code": "D270",
+    "jockey": "馬雅",
+    "jockey_id": null,
+    "trainer": "呂健威",
+    "trainer_id": "LKW",
+    "weight": 131,
+    "body_weight": 1163,
+    "draw": 2,
+    "lbw": "4",
+    "running": [
+     2,
+     3,
+     3,
+     6
+    ],
+    "time": 98.02,
+    "win_odds": 37.0,
+    "sect": [
+     26.37,
+     24.08,
+     24.24,
+     23.33
+    ]
+   },
+   {
+    "place_raw": "7",
+    "place": 7,
+    "no": 5,
+    "horse": "路路醒",
+    "horse_code": "E053",
+    "jockey": "蘇兆輝",
+    "jockey_id": null,
+    "trainer": "羅富全",
+    "trainer_id": "LFC",
+    "weight": 126,
+    "body_weight": 1117,
+    "draw": 8,
+    "lbw": "4-1/2",
+    "running": [
+     8,
+     7,
+     8,
+     7
+    ],
+    "time": 98.1,
+    "win_odds": 39.0,
+    "sect": [
+     27.01,
+     24.0,
+     24.08,
+     23.01
+    ]
+   },
+   {
+    "place_raw": "8",
+    "place": 8,
+    "no": 1,
+    "horse": "都靈太陽",
+    "horse_code": "G134",
+    "jockey": "鍾易禮",
+    "jockey_id": "CCY",
+    "trainer": "韋達",
+    "trainer_id": "WDJ",
+    "weight": 128,
+    "body_weight": 1107,
+    "draw": 1,
+    "lbw": "6-3/4",
+    "running": [
+     5,
+     5,
+     6,
+     8
+    ],
+    "time": 98.46,
+    "win_odds": 9.0,
+    "sect": [
+     26.65,
+     24.08,
+     24.24,
+     23.49
+    ]
+   }
+  ],
+  "has_sect": true
+ },
+ {
+  "date": "2023-04-02",
+  "venue": "ST",
+  "race_no": 4,
+  "race_id": 542,
+  "class": "第四班",
+  "distance": 1000,
+  "rating_band": "60-40",
+  "going": "好地",
+  "race_name": "南涌河讓賽",
+  "surface": "TURF",
+  "course": "A+3",
+  "prize": "HK$ 1,080,000",
+  "cum_times": [
+   13.08,
+   34.2,
+   56.92
+  ],
+  "sectionals": [
+   13.08,
+   21.12,
+   22.72
+  ],
+  "runners": [
+   {
+    "place_raw": "1",
+    "place": 1,
+    "no": 9,
+    "horse": "卓諾人生",
+    "horse_code": "E396",
+    "jockey": "何澤堯",
+    "jockey_id": "HCY",
+    "trainer": "葉楚航",
+    "trainer_id": "YCH",
+    "weight": 128,
+    "body_weight": 1119,
+    "draw": 6,
+    "lbw": "---",
+    "running": [
+     3,
+     1,
+     1
+    ],
+    "time": 56.92,
+    "win_odds": 3.8,
+    "sect": [
+     13.2,
+     21.0,
+     22.72
+    ]
+   },
+   {
+    "place_raw": "2",
+    "place": 2,
+    "no": 14,
+    "horse": "連連勝利",
+    "horse_code": "H097",
+    "jockey": "蘇兆輝",
+    "jockey_id": null,
+    "trainer": "蔡約翰",
+    "trainer_id": "SJJ",
+    "weight": 119,
+    "body_weight": 1054,
+    "draw": 10,
+    "lbw": "3-1/2",
+    "running": [
+     5,
+     5,
+     2
+    ],
+    "time": 57.49,
+    "win_odds": 5.4,
+    "sect": [
+     13.4,
+     21.12,
+     22.97
+    ]
+   },
+   {
+    "place_raw": "3",
+    "place": 3,
+    "no": 2,
+    "horse": "勝利才子",
+    "horse_code": "E091",
+    "jockey": "鍾易禮",
+    "jockey_id": "CCY",
+    "trainer": "方嘉柏",
+    "trainer_id": "FC",
+    "weight": 128,
+    "body_weight": 1247,
+    "draw": 3,
+    "lbw": "4-1/4",
+    "running": [
+     6,
+     3,
+     3
+    ],
+    "time": 57.59,
+    "win_odds": 7.0,
+    "sect": [
+     13.4,
+     21.08,
+     23.11
+    ]
+   },
+   {
+    "place_raw": "4",
+    "place": 4,
+    "no": 8,
+    "horse": "瑰麗人生",
+    "horse_code": "H044",
+    "jockey": "黃皓楠",
+    "jockey_id": null,
+    "trainer": "呂健威",
+    "trainer_id": "LKW",
+    "weight": 126,
+    "body_weight": 1086,
+    "draw": 5,
+    "lbw": "4-1/4",
+    "running": [
+     9,
+     8,
+     4
+    ],
+    "time": 57.62,
+    "win_odds": 57.0,
+    "sect": [
+     13.56,
+     21.12,
+     22.94
+    ]
+   },
+   {
+    "place_raw": "5",
+    "place": 5,
+    "no": 4,
+    "horse": "時時好運",
+    "horse_code": "E195",
+    "jockey": "潘頓",
+    "jockey_id": "PZ",
+    "trainer": "高伯新",
+    "trainer_id": null,
+    "weight": 129,
+    "body_weight": 1106,
+    "draw": 14,
+    "lbw": "4-3/4",
+    "running": [
+     10,
+     6,
+     5
+    ],
+    "time": 57.67,
+    "win_odds": 3.3,
+    "sect": [
+     13.56,
+     21.04,
+     23.07
+    ]
+   },
+   {
+    "place_raw": "6",
+    "place": 6,
+    "no": 5,
+    "horse": "添開心",
+    "horse_code": "H203",
+    "jockey": "梁家俊",
+    "jockey_id": "LDE",
+    "trainer": "伍鵬志",
+    "trainer_id": "NPC",
+    "weight": 129,
+    "body_weight": 1124,
+    "draw": 11,
+    "lbw": "6",
+    "running": [
+     8,
+     10,
+     6
+    ],
+    "time": 57.87,
+    "win_odds": 7.5,
+    "sect": [
+     13.52,
+     21.2,
+     23.15
+    ]
+   },
+   {
+    "place_raw": "7",
+    "place": 7,
+    "no": 7,
+    "horse": "神速馬車",
+    "horse_code": "H193",
+    "jockey": "田泰安",
+    "jockey_id": "TEK",
+    "trainer": "韋達",
+    "trainer_id": "WDJ",
+    "weight": 129,
+    "body_weight": 1084,
+    "draw": 13,
+    "lbw": "6",
+    "running": [
+     11,
+     11,
+     7
+    ],
+    "time": 57.87,
+    "win_odds": 25.0,
+    "sect": [
+     13.6,
+     21.2,
+     23.07
+    ]
+   },
+   {
+    "place_raw": "8",
+    "place": 8,
+    "no": 6,
+    "horse": "海豚星",
+    "horse_code": "C332",
+    "jockey": "波健士",
+    "jockey_id": null,
+    "trainer": "徐雨石",
+    "trainer_id": "TYS",
+    "weight": 129,
+    "body_weight": 1216,
+    "draw": 8,
+    "lbw": "6-3/4",
+    "running": [
+     1,
+     2,
+     8
+    ],
+    "time": 58.02,
+    "win_odds": 39.0,
+    "sect": [
+     13.08,
+     21.16,
+     23.78
+    ]
+   },
+   {
+    "place_raw": "9",
+    "place": 9,
+    "no": 12,
+    "horse": "開心馬",
+    "horse_code": "H061",
+    "jockey": "周俊樂",
+    "jockey_id": "CJE",
+    "trainer": "文家良",
+    "trainer_id": "MKL",
+    "weight": 122,
+    "body_weight": 1084,
+    "draw": 9,
+    "lbw": "8",
+    "running": [
+     2,
+     4,
+     9
+    ],
+    "time": 58.22,
+    "win_odds": 97.0,
+    "sect": [
+     13.16,
+     21.32,
+     23.74
+    ]
+   },
+   {
+    "place_raw": "10",
+    "place": 10,
+    "no": 1,
+    "horse": "團結精神",
+    "horse_code": "B230",
+    "jockey": "黃俊",
+    "jockey_id": null,
+    "trainer": "大衛希斯",
+    "trainer_id": "HDA",
+    "weight": 130,
+    "body_weight": 1235,
+    "draw": 2,
+    "lbw": "9",
+    "running": [
+     4,
+     7,
+     10
+    ],
+    "time": 58.36,
+    "win_odds": 33.0,
+    "sect": [
+     13.28,
+     21.36,
+     23.72
+    ]
+   },
+   {
+    "place_raw": "11",
+    "place": 11,
+    "no": 11,
+    "horse": "吉吉利高",
+    "horse_code": "G341",
+    "jockey": "巫顯東",
+    "jockey_id": "MHT",
+    "trainer": "何良",
+    "trainer_id": null,
+    "weight": 123,
+    "body_weight": 1107,
+    "draw": 4,
+    "lbw": "9-1/4",
+    "running": [
+     13,
+     13,
+     11
+    ],
+    "time": 58.39,
+    "win_odds": 49.0,
+    "sect": [
+     13.84,
+     21.12,
+     23.43
+    ]
+   },
+   {
+    "place_raw": "12",
+    "place": 12,
+    "no": 10,
+    "horse": "帝豪之星",
+    "horse_code": "E399",
+    "jockey": "賀銘年",
+    "jockey_id": null,
+    "trainer": "沈集成",
+    "trainer_id": "SCS",
+    "weight": 128,
+    "body_weight": 1094,
+    "draw": 7,
+    "lbw": "10",
+    "running": [
+     7,
+     9,
+     12
+    ],
+    "time": 58.52,
+    "win_odds": 117.0,
+    "sect": [
+     13.4,
+     21.32,
+     23.8
+    ]
+   },
+   {
+    "place_raw": "13",
+    "place": 13,
+    "no": 13,
+    "horse": "慷慨友",
+    "horse_code": "G439",
+    "jockey": "馬雅",
+    "jockey_id": null,
+    "trainer": "葉楚航",
+    "trainer_id": "YCH",
+    "weight": 123,
+    "body_weight": 1033,
+    "draw": 12,
+    "lbw": "10-1/4",
+    "running": [
+     12,
+     14,
+     13
+    ],
+    "time": 58.58,
+    "win_odds": 138.0,
+    "sect": [
+     13.68,
+     21.36,
+     23.54
+    ]
+   },
+   {
+    "place_raw": "14",
+    "place": 14,
+    "no": 3,
+    "horse": "風流人物",
+    "horse_code": "D498",
+    "jockey": "巴度",
+    "jockey_id": "BA",
+    "trainer": "大衛希斯",
+    "trainer_id": "HDA",
+    "weight": 132,
+    "body_weight": 1223,
+    "draw": 1,
+    "lbw": "17-3/4",
+    "running": [
+     14,
+     12,
+     14
+    ],
+    "time": 59.75,
+    "win_odds": 30.0,
+    "sect": [
+     13.84,
+     21.08,
+     24.83
+    ]
+   }
+  ],
+  "has_sect": true
+ },
+ {
+  "date": "2023-04-02",
+  "venue": "ST",
+  "race_no": 5,
+  "race_id": 543,
+  "class": "第四班",
+  "distance": 1400,
+  "rating_band": "60-40",
+  "going": "好地",
+  "race_name": "梧桐河讓賽",
+  "surface": "TURF",
+  "course": "A+3",
+  "prize": "HK$ 1,080,000",
+  "cum_times": [
+   13.48,
+   36.09,
+   60.12,
+   83.61
+  ],
+  "sectionals": [
+   13.48,
+   22.61,
+   24.03,
+   23.49
+  ],
+  "runners": [
+   {
+    "place_raw": "1",
+    "place": 1,
+    "no": 13,
+    "horse": "是必飛飛",
+    "horse_code": "D121",
+    "jockey": "巴度",
+    "jockey_id": "BA",
+    "trainer": "苗禮德",
+    "trainer_id": null,
+    "weight": 117,
+    "body_weight": 1322,
+    "draw": 4,
+    "lbw": "---",
+    "running": [
+     4,
+     5,
+     6,
+     1
+    ],
+    "time": 83.61,
+    "win_odds": 7.8,
+    "sect": [
+     13.72,
+     22.77,
+     24.03,
+     23.09
+    ]
+   },
+   {
+    "place_raw": "2",
+    "place": 2,
+    "no": 2,
+    "horse": "四喜鳥",
+    "horse_code": "H181",
+    "jockey": "潘頓",
+    "jockey_id": "PZ",
+    "trainer": "黎昭昇",
+    "trainer_id": "RW",
+    "weight": 132,
+    "body_weight": 1093,
+    "draw": 7,
+    "lbw": "短馬頭位",
+    "running": [
+     6,
+     7,
+     5,
+     2
+    ],
+    "time": 83.63,
+    "win_odds": 2.7,
+    "sect": [
+     13.88,
+     22.77,
+     23.83,
+     23.15
+    ]
+   },
+   {
+    "place_raw": "3",
+    "place": 3,
+    "no": 5,
+    "horse": "馬林",
+    "horse_code": "H078",
+    "jockey": "班德禮",
+    "jockey_id": "BHW",
+    "trainer": "韋達",
+    "trainer_id": "WDJ",
+    "weight": 126,
+    "body_weight": 1290,
+    "draw": 9,
+    "lbw": "1/2",
+    "running": [
+     9,
+     9,
+     7,
+     3
+    ],
+    "time": 83.72,
+    "win_odds": 9.2,
+    "sect": [
+     14.04,
+     22.85,
+     23.71,
+     23.12
+    ]
+   },
+   {
+    "place_raw": "4",
+    "place": 4,
+    "no": 14,
+    "horse": "飛騰騅",
+    "horse_code": "E494",
+    "jockey": "黃俊",
+    "jockey_id": null,
+    "trainer": "方嘉柏",
+    "trainer_id": "FC",
+    "weight": 111,
+    "body_weight": 1048,
+    "draw": 10,
+    "lbw": "1-1/4",
+    "running": [
+     2,
+     2,
+     2,
+     4
+    ],
+    "time": 83.82,
+    "win_odds": 86.0,
+    "sect": [
+     13.52,
+     22.69,
+     23.95,
+     23.66
+    ]
+   },
+   {
+    "place_raw": "5",
+    "place": 5,
+    "no": 8,
+    "horse": "珍珠哥",
+    "horse_code": "H030",
+    "jockey": "馬雅",
+    "jockey_id": null,
+    "trainer": "葉楚航",
+    "trainer_id": "YCH",
+    "weight": 124,
+    "body_weight": 1020,
+    "draw": 5,
+    "lbw": "2-1/4",
+    "running": [
+     10,
+     10,
+     10,
+     5
+    ],
+    "time": 83.97,
+    "win_odds": 132.0,
+    "sect": [
+     14.16,
+     22.73,
+     23.95,
+     23.13
+    ]
+   },
+   {
+    "place_raw": "6",
+    "place": 6,
+    "no": 11,
+    "horse": "滿載歸來",
+    "horse_code": "H083",
+    "jockey": "周俊樂",
+    "jockey_id": "CJE",
+    "trainer": "容天鵬",
+    "trainer_id": null,
+    "weight": 119,
+    "body_weight": 1172,
+    "draw": 6,
+    "lbw": "2-1/2",
+    "running": [
+     8,
+     8,
+     9,
+     6
+    ],
+    "time": 84.0,
+    "win_odds": 74.0,
+    "sect": [
+     13.96,
+     22.77,
+     23.99,
+     23.28
+    ]
+   },
+   {
+    "place_raw": "7",
+    "place": 7,
+    "no": 9,
+    "horse": "喜悅精靈",
+    "horse_code": "E388",
+    "jockey": "霍宏聲",
+    "jockey_id": "FEL",
+    "trainer": "賀賢",
+    "trainer_id": "HAD",
+    "weight": 124,
+    "body_weight": 1206,
+    "draw": 1,
+    "lbw": "2-1/2",
+    "running": [
+     7,
+     6,
+     8,
+     7
+    ],
+    "time": 84.02,
+    "win_odds": 6.5,
+    "sect": [
+     13.96,
+     22.65,
+     24.11,
+     23.3
+    ]
+   },
+   {
+    "place_raw": "8",
+    "place": 8,
+    "no": 6,
+    "horse": "皇仁福星",
+    "horse_code": "H128",
+    "jockey": "鍾易禮",
+    "jockey_id": "CCY",
+    "trainer": "伍鵬志",
+    "trainer_id": "NPC",
+    "weight": 118,
+    "body_weight": 1098,
+    "draw": 2,
+    "lbw": "2-3/4",
+    "running": [
+     3,
+     3,
+     4,
+     8
+    ],
+    "time": 84.07,
+    "win_odds": 86.0,
+    "sect": [
+     13.68,
+     22.65,
+     24.03,
+     23.71
+    ]
+   },
+   {
+    "place_raw": "9",
+    "place": 9,
+    "no": 1,
+    "horse": "逐夢年代",
+    "horse_code": "G241",
+    "jockey": "梁家俊",
+    "jockey_id": "LDE",
+    "trainer": "文家良",
+    "trainer_id": "MKL",
+    "weight": 135,
+    "body_weight": 1213,
+    "draw": 8,
+    "lbw": "4-3/4",
+    "running": [
+     5,
+     4,
+     3,
+     9
+    ],
+    "time": 84.35,
+    "win_odds": 8.8,
+    "sect": [
+     13.8,
+     22.57,
+     23.91,
+     24.07
+    ]
+   },
+   {
+    "place_raw": "10",
+    "place": 10,
+    "no": 12,
+    "horse": "合夥贛勁",
+    "horse_code": "D051",
+    "jockey": "波健士",
+    "jockey_id": null,
+    "trainer": "蘇偉賢",
+    "trainer_id": "SWY",
+    "weight": 118,
+    "body_weight": 1206,
+    "draw": 14,
+    "lbw": "4-3/4",
+    "running": [
+     13,
+     14,
+     13,
+     10
+    ],
+    "time": 84.37,
+    "win_odds": 19.0,
+    "sect": [
+     14.36,
+     22.89,
+     23.87,
+     23.25
+    ]
+   },
+   {
+    "place_raw": "11",
+    "place": 11,
+    "no": 10,
+    "horse": "寶麗生輝",
+    "horse_code": "E323",
+    "jockey": "田泰安",
+    "jockey_id": "TEK",
+    "trainer": "大衛希斯",
+    "trainer_id": "HDA",
+    "weight": 120,
+    "body_weight": 1053,
+    "draw": 3,
+    "lbw": "5-1/4",
+    "running": [
+     1,
+     1,
+     1,
+     11
+    ],
+    "time": 84.45,
+    "win_odds": 5.9,
+    "sect": [
+     13.48,
+     22.61,
+     24.03,
+     24.33
+    ]
+   },
+   {
+    "place_raw": "12",
+    "place": 12,
+    "no": 7,
+    "horse": "旅遊小子",
+    "horse_code": "H182",
+    "jockey": "賀銘年",
+    "jockey_id": null,
+    "trainer": "高伯新",
+    "trainer_id": null,
+    "weight": 125,
+    "body_weight": 1175,
+    "draw": 11,
+    "lbw": "7-3/4",
+    "running": [
+     12,
+     11,
+     12,
+     12
+    ],
+    "time": 84.84,
+    "win_odds": 128.0,
+    "sect": [
+     14.28,
+     22.73,
+     23.99,
+     23.84
+    ]
+   },
+   {
+    "place_raw": "13",
+    "place": 13,
+    "no": 3,
+    "horse": "喜蓮慧星",
+    "horse_code": "D460",
+    "jockey": "蔡明紹",
+    "jockey_id": "CML",
+    "trainer": "告東尼",
+    "trainer_id": "CAS",
+    "weight": 130,
+    "body_weight": 1278,
+    "draw": 12,
+    "lbw": "9",
+    "running": [
+     11,
+     12,
+     11,
+     13
+    ],
+    "time": 85.06,
+    "win_odds": 14.0,
+    "sect": [
+     14.24,
+     22.85,
+     23.87,
+     24.1
+    ]
+   },
+   {
+    "place_raw": "14",
+    "place": 14,
+    "no": 4,
+    "horse": "天地同欣",
+    "horse_code": "G379",
+    "jockey": "巫顯東",
+    "jockey_id": "MHT",
+    "trainer": "徐雨石",
+    "trainer_id": "TYS",
+    "weight": 125,
+    "body_weight": 1136,
+    "draw": 13,
+    "lbw": "13-3/4",
+    "running": [
+     14,
+     13,
+     14,
+     14
+    ],
+    "time": 85.82,
+    "win_odds": 174.0,
+    "sect": [
+     14.48,
+     22.65,
+     24.11,
+     24.58
+    ]
+   }
+  ],
+  "has_sect": true
+ },
+ {
+  "date": "2023-04-02",
+  "venue": "ST",
+  "race_no": 6,
+  "race_id": 544,
+  "class": "第四班",
+  "distance": 2000,
+  "rating_band": "60-40",
+  "going": "好地",
+  "race_name": "沙頭角河讓賽",
+  "surface": "TURF",
+  "course": "A+3",
+  "prize": "HK$ 1,080,000",
+  "cum_times": [
+   26.86,
+   53.02,
+   77.61,
+   101.38,
+   125.43
+  ],
+  "sectionals": [
+   26.86,
+   26.16,
+   24.59,
+   23.77,
+   24.05
+  ],
+  "runners": [
+   {
+    "place_raw": "1",
+    "place": 1,
+    "no": 10,
+    "horse": "奇妙年華",
+    "horse_code": "G001",
+    "jockey": "班德禮",
+    "jockey_id": "BHW",
+    "trainer": "韋達",
+    "trainer_id": "WDJ",
+    "weight": 121,
+    "body_weight": 1219,
+    "draw": 13,
+    "lbw": "---",
+    "running": [
+     13,
+     12,
+     1,
+     1,
+     1
+    ],
+    "time": 125.43,
+    "win_odds": 41.0,
+    "sect": [
+     28.1,
+     26.08,
+     23.43,
+     23.77,
+     24.05
+    ]
+   },
+   {
+    "place_raw": "2",
+    "place": 2,
+    "no": 3,
+    "horse": "九龍神駒",
+    "horse_code": "E476",
+    "jockey": "鍾易禮",
+    "jockey_id": "CCY",
+    "trainer": "沈集成",
+    "trainer_id": "SCS",
+    "weight": 124,
+    "body_weight": 1018,
+    "draw": 1,
+    "lbw": "1/2",
+    "running": [
+     4,
+     3,
+     5,
+     5,
+     2
+    ],
+    "time": 125.5,
+    "win_odds": 5.5,
+    "sect": [
+     27.14,
+     26.28,
+     24.55,
+     23.77,
+     23.76
+    ]
+   },
+   {
+    "place_raw": "3",
+    "place": 3,
+    "no": 13,
+    "horse": "壹喜",
+    "horse_code": "G353",
+    "jockey": "何澤堯",
+    "jockey_id": "HCY",
+    "trainer": "羅富全",
+    "trainer_id": "LFC",
+    "weight": 118,
+    "body_weight": 1122,
+    "draw": 9,
+    "lbw": "3",
+    "running": [
+     2,
+     2,
+     4,
+     2,
+     3
+    ],
+    "time": 125.9,
+    "win_odds": 13.0,
+    "sect": [
+     26.9,
+     26.32,
+     24.67,
+     23.69,
+     24.32
+    ]
+   },
+   {
+    "place_raw": "4",
+    "place": 4,
+    "no": 9,
+    "horse": "全才",
+    "horse_code": "B213",
+    "jockey": "賀銘年",
+    "jockey_id": null,
+    "trainer": "葉楚航",
+    "trainer_id": "YCH",
+    "weight": 122,
+    "body_weight": 1070,
+    "draw": 10,
+    "lbw": "3-3/4",
+    "running": [
+     10,
+     9,
+     10,
+     7,
+     4
+    ],
+    "time": 126.02,
+    "win_odds": 19.0,
+    "sect": [
+     27.7,
+     26.2,
+     24.35,
+     23.73,
+     24.04
+    ]
+   },
+   {
+    "place_raw": "5",
+    "place": 5,
+    "no": 2,
+    "horse": "勤德威力",
+    "horse_code": "G412",
+    "jockey": "梁家俊",
+    "jockey_id": "LDE",
+    "trainer": "賀賢",
+    "trainer_id": "HAD",
+    "weight": 132,
+    "body_weight": 1086,
+    "draw": 4,
+    "lbw": "4",
+    "running": [
+     1,
+     1,
+     2,
+     3,
+     5
+    ],
+    "time": 126.05,
+    "win_odds": 5.8,
+    "sect": [
+     26.86,
+     26.16,
+     24.67,
+     23.89,
+     24.47
+    ]
+   },
+   {
+    "place_raw": "6",
+    "place": 6,
+    "no": 6,
+    "horse": "香港精神",
+    "horse_code": "D241",
+    "jockey": "蔡明紹",
+    "jockey_id": "CML",
+    "trainer": "苗禮德",
+    "trainer_id": null,
+    "weight": 125,
+    "body_weight": 1041,
+    "draw": 6,
+    "lbw": "4-1/2",
+    "running": [
+     7,
+     6,
+     7,
+     6,
+     6
+    ],
+    "time": 126.13,
+    "win_odds": 9.0,
+    "sect": [
+     27.42,
+     26.2,
+     24.47,
+     23.77,
+     24.27
+    ]
+   },
+   {
+    "place_raw": "7",
+    "place": 7,
+    "no": 12,
+    "horse": "樂天派",
+    "horse_code": "E166",
+    "jockey": "蘇兆輝",
+    "jockey_id": null,
+    "trainer": "大衛希斯",
+    "trainer_id": "HDA",
+    "weight": 119,
+    "body_weight": 1117,
+    "draw": 5,
+    "lbw": "5-3/4",
+    "running": [
+     3,
+     4,
+     3,
+     4,
+     7
+    ],
+    "time": 126.33,
+    "win_odds": 12.0,
+    "sect": [
+     27.02,
+     26.44,
+     24.39,
+     23.81,
+     24.67
+    ]
+   },
+   {
+    "place_raw": "8",
+    "place": 8,
+    "no": 8,
+    "horse": "縱橫十六",
+    "horse_code": "E244",
+    "jockey": "田泰安",
+    "jockey_id": "TEK",
+    "trainer": "文家良",
+    "trainer_id": "MKL",
+    "weight": 123,
+    "body_weight": 1299,
+    "draw": 12,
+    "lbw": "6",
+    "running": [
+     12,
+     13,
+     13,
+     12,
+     8
+    ],
+    "time": 126.4,
+    "win_odds": 8.7,
+    "sect": [
+     27.86,
+     26.4,
+     24.35,
+     23.69,
+     24.1
+    ]
+   },
+   {
+    "place_raw": "9",
+    "place": 9,
+    "no": 11,
+    "horse": "帝豪大師",
+    "horse_code": "D225",
+    "jockey": "波健士",
+    "jockey_id": null,
+    "trainer": "沈集成",
+    "trainer_id": "SCS",
+    "weight": 120,
+    "body_weight": 1084,
+    "draw": 11,
+    "lbw": "7-1/4",
+    "running": [
+     5,
+     5,
+     6,
+     8,
+     9
+    ],
+    "time": 126.59,
+    "win_odds": 31.0,
+    "sect": [
+     27.26,
+     26.32,
+     24.43,
+     23.97,
+     24.61
+    ]
+   },
+   {
+    "place_raw": "10",
+    "place": 10,
+    "no": 7,
+    "horse": "精彩非凡",
+    "horse_code": "D327",
+    "jockey": "嘉里",
+    "jockey_id": null,
+    "trainer": "方嘉柏",
+    "trainer_id": "FC",
+    "weight": 124,
+    "body_weight": 1193,
+    "draw": 7,
+    "lbw": "8-3/4",
+    "running": [
+     9,
+     10,
+     11,
+     10,
+     10
+    ],
+    "time": 126.83,
+    "win_odds": 20.0,
+    "sect": [
+     27.54,
+     26.48,
+     24.31,
+     23.85,
+     24.65
+    ]
+   },
+   {
+    "place_raw": "11",
+    "place": 11,
+    "no": 1,
+    "horse": "追風驥足",
+    "horse_code": "D009",
+    "jockey": "潘頓",
+    "jockey_id": "PZ",
+    "trainer": "蘇偉賢",
+    "trainer_id": "SWY",
+    "weight": 135,
+    "body_weight": 1025,
+    "draw": 3,
+    "lbw": "9",
+    "running": [
+     8,
+     8,
+     12,
+     11,
+     11
+    ],
+    "time": 126.88,
+    "win_odds": 10.0,
+    "sect": [
+     27.5,
+     26.4,
+     24.51,
+     23.85,
+     24.62
+    ]
+   },
+   {
+    "place_raw": "12",
+    "place": 12,
+    "no": 4,
+    "horse": "逐步贏",
+    "horse_code": "G420",
+    "jockey": "巴度",
+    "jockey_id": "BA",
+    "trainer": "伍鵬志",
+    "trainer_id": "NPC",
+    "weight": 128,
+    "body_weight": 1142,
+    "draw": 8,
+    "lbw": "10",
+    "running": [
+     11,
+     11,
+     9,
+     9,
+     12
+    ],
+    "time": 127.02,
+    "win_odds": 15.0,
+    "sect": [
+     27.74,
+     26.4,
+     24.07,
+     23.81,
+     25.0
+    ]
+   },
+   {
+    "place_raw": "13",
+    "place": 13,
+    "no": 5,
+    "horse": "機械戰士",
+    "horse_code": "C532",
+    "jockey": "霍宏聲",
+    "jockey_id": "FEL",
+    "trainer": "姚本輝",
+    "trainer_id": "YPF",
+    "weight": 127,
+    "body_weight": 1133,
+    "draw": 2,
+    "lbw": "11-1/4",
+    "running": [
+     6,
+     7,
+     8,
+     13,
+     13
+    ],
+    "time": 127.22,
+    "win_odds": 6.2,
+    "sect": [
+     27.3,
+     26.44,
+     24.43,
+     24.17,
+     24.88
+    ]
+   }
+  ],
+  "has_sect": true
+ },
+ {
+  "date": "2023-04-02",
+  "venue": "ST",
+  "race_no": 7,
+  "race_id": 545,
+  "class": "第四班",
+  "distance": 1400,
+  "rating_band": "60-40",
+  "going": "好地",
+  "race_name": "梧桐河讓賽",
+  "surface": "TURF",
+  "course": "A+3",
+  "prize": "HK$ 1,080,000",
+  "cum_times": [
+   13.46,
+   35.57,
+   59.28,
+   83.24
+  ],
+  "sectionals": [
+   13.46,
+   22.11,
+   23.71,
+   23.96
+  ],
+  "runners": [
+   {
+    "place_raw": "1",
+    "place": 1,
+    "no": 8,
+    "horse": "浪漫老撾",
+    "horse_code": "G476",
+    "jockey": "潘頓",
+    "jockey_id": "PZ",
+    "trainer": "黎昭昇",
+    "trainer_id": "RW",
+    "weight": 125,
+    "body_weight": 1144,
+    "draw": 5,
+    "lbw": "---",
+    "running": [
+     11,
+     11,
+     9,
+     1
+    ],
+    "time": 83.24,
+    "win_odds": 4.1,
+    "sect": [
+     14.06,
+     22.51,
+     23.31,
+     23.36
+    ]
+   },
+   {
+    "place_raw": "2",
+    "place": 2,
+    "no": 3,
+    "horse": "健康之星",
+    "horse_code": "G374",
+    "jockey": "蔡明紹",
+    "jockey_id": "CML",
+    "trainer": "告東尼",
+    "trainer_id": "CAS",
+    "weight": 131,
+    "body_weight": 1063,
+    "draw": 7,
+    "lbw": "2-1/2",
+    "running": [
+     6,
+     5,
+     5,
+     2
+    ],
+    "time": 83.64,
+    "win_odds": 20.0,
+    "sect": [
+     13.7,
+     22.35,
+     23.55,
+     24.04
+    ]
+   },
+   {
+    "place_raw": "3",
+    "place": 3,
+    "no": 10,
+    "horse": "愛馬善",
+    "horse_code": "H155",
+    "jockey": "賀銘年",
+    "jockey_id": null,
+    "trainer": "鄭俊偉",
+    "trainer_id": "CCW",
+    "weight": 123,
+    "body_weight": 1046,
+    "draw": 10,
+    "lbw": "2-1/2",
+    "running": [
+     9,
+     10,
+     10,
+     3
+    ],
+    "time": 83.65,
+    "win_odds": 66.0,
+    "sect": [
+     13.94,
+     22.55,
+     23.43,
+     23.73
+    ]
+   },
+   {
+    "place_raw": "4",
+    "place": 4,
+    "no": 5,
+    "horse": "駿行星",
+    "horse_code": "H080",
+    "jockey": "何澤堯",
+    "jockey_id": "HCY",
+    "trainer": "方嘉柏",
+    "trainer_id": "FC",
+    "weight": 129,
+    "body_weight": 1114,
+    "draw": 8,
+    "lbw": "3-1/4",
+    "running": [
+     13,
+     13,
+     13,
+     4
+    ],
+    "time": 83.77,
+    "win_odds": 2.9,
+    "sect": [
+     14.14,
+     22.55,
+     23.43,
+     23.65
+    ]
+   },
+   {
+    "place_raw": "5",
+    "place": 5,
+    "no": 9,
+    "horse": "長長友",
+    "horse_code": "B472",
+    "jockey": "周俊樂",
+    "jockey_id": "CJE",
+    "trainer": "容天鵬",
+    "trainer_id": null,
+    "weight": 122,
+    "body_weight": 1250,
+    "draw": 6,
+    "lbw": "4-1/4",
+    "running": [
+     14,
+     14,
+     11,
+     5
+    ],
+    "time": 83.92,
+    "win_odds": 8.6,
+    "sect": [
+     14.38,
+     22.43,
+     23.31,
+     23.8
+    ]
+   },
+   {
+    "place_raw": "6",
+    "place": 6,
+    "no": 6,
+    "horse": "自來金",
+    "horse_code": "E402",
+    "jockey": "班德禮",
+    "jockey_id": "BHW",
+    "trainer": "韋達",
+    "trainer_id": "WDJ",
+    "weight": 128,
+    "body_weight": 1128,
+    "draw": 14,
+    "lbw": "5-1/4",
+    "running": [
+     4,
+     2,
+     3,
+     6
+    ],
+    "time": 84.07,
+    "win_odds": 28.0,
+    "sect": [
+     13.62,
+     22.11,
+     23.67,
+     24.67
+    ]
+   },
+   {
+    "place_raw": "7",
+    "place": 7,
+    "no": 11,
+    "horse": "紅鬃烈馬",
+    "horse_code": "D087",
+    "jockey": "馬雅",
+    "jockey_id": null,
+    "trainer": "葉楚航",
+    "trainer_id": "YCH",
+    "weight": 121,
+    "body_weight": 1038,
+    "draw": 12,
+    "lbw": "6-1/4",
+    "running": [
+     1,
+     4,
+     4,
+     7
+    ],
+    "time": 84.23,
+    "win_odds": 43.0,
+    "sect": [
+     13.46,
+     22.47,
+     23.55,
+     24.75
+    ]
+   },
+   {
+    "place_raw": "8",
+    "place": 8,
+    "no": 2,
+    "horse": "天外飛天",
+    "horse_code": "G323",
+    "jockey": "田泰安",
+    "jockey_id": "TEK",
+    "trainer": "大衛希斯",
+    "trainer_id": "HDA",
+    "weight": 134,
+    "body_weight": 1111,
+    "draw": 2,
+    "lbw": "6-1/4",
+    "running": [
+     7,
+     8,
+     7,
+     8
+    ],
+    "time": 84.24,
+    "win_odds": 5.5,
+    "sect": [
+     13.86,
+     22.43,
+     23.47,
+     24.48
+    ]
+   },
+   {
+    "place_raw": "9",
+    "place": 9,
+    "no": 12,
+    "horse": "極速之星",
+    "horse_code": "G181",
+    "jockey": "陳嘉熙",
+    "jockey_id": null,
+    "trainer": "賀賢",
+    "trainer_id": "HAD",
+    "weight": 116,
+    "body_weight": 1059,
+    "draw": 4,
+    "lbw": "6-1/4",
+    "running": [
+     5,
+     6,
+     6,
+     9
+    ],
+    "time": 84.26,
+    "win_odds": 28.0,
+    "sect": [
+     13.66,
+     22.47,
+     23.59,
+     24.54
+    ]
+   },
+   {
+    "place_raw": "10",
+    "place": 10,
+    "no": 1,
+    "horse": "美麗之選",
+    "horse_code": "H074",
+    "jockey": "巴度",
+    "jockey_id": "BA",
+    "trainer": "伍鵬志",
+    "trainer_id": "NPC",
+    "weight": 135,
+    "body_weight": 1193,
+    "draw": 9,
+    "lbw": "7",
+    "running": [
+     3,
+     3,
+     2,
+     10
+    ],
+    "time": 84.37,
+    "win_odds": 55.0,
+    "sect": [
+     13.58,
+     22.27,
+     23.43,
+     25.09
+    ]
+   },
+   {
+    "place_raw": "11",
+    "place": 11,
+    "no": 7,
+    "horse": "喜駿風采",
+    "horse_code": "G422",
+    "jockey": "蘇兆輝",
+    "jockey_id": null,
+    "trainer": "文家良",
+    "trainer_id": "MKL",
+    "weight": 126,
+    "body_weight": 1232,
+    "draw": 13,
+    "lbw": "8-1/2",
+    "running": [
+     2,
+     1,
+     1,
+     11
+    ],
+    "time": 84.62,
+    "win_odds": 11.0,
+    "sect": [
+     13.58,
+     21.99,
+     23.71,
+     25.34
+    ]
+   },
+   {
+    "place_raw": "12",
+    "place": 12,
+    "no": 4,
+    "horse": "駿皇寶",
+    "horse_code": "H067",
+    "jockey": "嘉里",
+    "jockey_id": null,
+    "trainer": "蘇偉賢",
+    "trainer_id": "SWY",
+    "weight": 130,
+    "body_weight": 1171,
+    "draw": 11,
+    "lbw": "8-3/4",
+    "running": [
+     10,
+     7,
+     8,
+     12
+    ],
+    "time": 84.63,
+    "win_odds": 178.0,
+    "sect": [
+     14.02,
+     22.15,
+     23.59,
+     24.87
+    ]
+   },
+   {
+    "place_raw": "13",
+    "place": 13,
+    "no": 14,
+    "horse": "領航神駒",
+    "horse_code": "G015",
+    "jockey": "波健士",
+    "jockey_id": null,
+    "trainer": "高伯新",
+    "trainer_id": null,
+    "weight": 116,
+    "body_weight": 1072,
+    "draw": 3,
+    "lbw": "8-3/4",
+    "running": [
+     12,
+     12,
+     12,
+     13
+    ],
+    "time": 84.65,
+    "win_odds": 16.0,
+    "sect": [
+     14.1,
+     22.51,
+     23.51,
+     24.53
+    ]
+   },
+   {
+    "place_raw": "14",
+    "place": 14,
+    "no": 13,
+    "horse": "神舟十二",
+    "horse_code": "G164",
+    "jockey": "巫顯東",
+    "jockey_id": "MHT",
+    "trainer": "徐雨石",
+    "trainer_id": "TYS",
+    "weight": 117,
+    "body_weight": 1096,
+    "draw": 1,
+    "lbw": "16-1/4",
+    "running": [
+     8,
+     9,
+     14,
+     14
+    ],
+    "time": 85.83,
+    "win_odds": 180.0,
+    "sect": [
+     13.9,
+     22.43,
+     24.03,
+     25.47
+    ]
+   }
+  ],
+  "has_sect": true
+ },
+ {
+  "date": "2023-04-02",
+  "venue": "ST",
+  "race_no": 8,
+  "race_id": 546,
+  "class": "第三班",
+  "distance": 1400,
+  "rating_band": "80-60",
+  "going": "好地",
+  "race_name": "皮亞士紀念挑戰盃（讓賽）",
+  "surface": "TURF",
+  "course": "A+3",
+  "prize": "HK$ 1,725,000",
+  "cum_times": [
+   13.55,
+   36.6,
+   60.16,
+   83.57
+  ],
+  "sectionals": [
+   13.55,
+   23.05,
+   23.56,
+   23.41
+  ],
+  "runners": [
+   {
+    "place_raw": "1",
+    "place": 1,
+    "no": 11,
+    "horse": "金佰令",
+    "horse_code": "G434",
+    "jockey": "蘇兆輝",
+    "jockey_id": null,
+    "trainer": "姚本輝",
+    "trainer_id": "YPF",
+    "weight": 121,
+    "body_weight": 1179,
+    "draw": 5,
+    "lbw": "---",
+    "running": [
+     3,
+     3,
+     3,
+     1
+    ],
+    "time": 83.57,
+    "win_odds": 6.9,
+    "sect": [
+     13.87,
+     23.09,
+     23.56,
+     23.05
+    ]
+   },
+   {
+    "place_raw": "2",
+    "place": 2,
+    "no": 9,
+    "horse": "翡翠鳳凰",
+    "horse_code": "D179",
+    "jockey": "鍾易禮",
+    "jockey_id": "CCY",
+    "trainer": "羅富全",
+    "trainer_id": "LFC",
+    "weight": 115,
+    "body_weight": 1160,
+    "draw": 8,
+    "lbw": "1/2",
+    "running": [
+     1,
+     1,
+     1,
+     2
+    ],
+    "time": 83.68,
+    "win_odds": 35.0,
+    "sect": [
+     13.55,
+     23.05,
+     23.56,
+     23.52
+    ]
+   },
+   {
+    "place_raw": "3",
+    "place": 3,
+    "no": 4,
+    "horse": "潮州精神",
+    "horse_code": "H175",
+    "jockey": "潘頓",
+    "jockey_id": "PZ",
+    "trainer": "容天鵬",
+    "trainer_id": null,
+    "weight": 130,
+    "body_weight": 1230,
+    "draw": 9,
+    "lbw": "3/4",
+    "running": [
+     4,
+     4,
+     4,
+     3
+    ],
+    "time": 83.71,
+    "win_odds": 1.5,
+    "sect": [
+     13.91,
+     23.13,
+     23.52,
+     23.15
+    ]
+   },
+   {
+    "place_raw": "4",
+    "place": 4,
+    "no": 2,
+    "horse": "非凡之星",
+    "horse_code": "G396",
+    "jockey": "蔡明紹",
+    "jockey_id": "CML",
+    "trainer": "蘇偉賢",
+    "trainer_id": "SWY",
+    "weight": 133,
+    "body_weight": 1028,
+    "draw": 10,
+    "lbw": "4",
+    "running": [
+     11,
+     11,
+     11,
+     4
+    ],
+    "time": 84.2,
+    "win_odds": 12.0,
+    "sect": [
+     14.47,
+     23.21,
+     23.6,
+     22.92
+    ]
+   },
+   {
+    "place_raw": "5",
+    "place": 5,
+    "no": 6,
+    "horse": "四季喜",
+    "horse_code": "E146",
+    "jockey": "梁家俊",
+    "jockey_id": "LDE",
+    "trainer": "丁冠豪",
+    "trainer_id": "TKH",
+    "weight": 123,
+    "body_weight": 1246,
+    "draw": 3,
+    "lbw": "4-1/4",
+    "running": [
+     5,
+     5,
+     5,
+     5
+    ],
+    "time": 84.24,
+    "win_odds": 15.0,
+    "sect": [
+     14.07,
+     23.17,
+     23.52,
+     23.48
+    ]
+   },
+   {
+    "place_raw": "6",
+    "place": 6,
+    "no": 1,
+    "horse": "快搏",
+    "horse_code": "E434",
+    "jockey": "霍宏聲",
+    "jockey_id": "FEL",
+    "trainer": "賀賢",
+    "trainer_id": "HAD",
+    "weight": 135,
+    "body_weight": 1091,
+    "draw": 2,
+    "lbw": "4-1/2",
+    "running": [
+     9,
+     9,
+     7,
+     6
+    ],
+    "time": 84.31,
+    "win_odds": 23.0,
+    "sect": [
+     14.39,
+     23.13,
+     23.48,
+     23.31
+    ]
+   },
+   {
+    "place_raw": "7",
+    "place": 7,
+    "no": 10,
+    "horse": "有緣人",
+    "horse_code": "D348",
+    "jockey": "巴度",
+    "jockey_id": "BA",
+    "trainer": "蔡約翰",
+    "trainer_id": "SJJ",
+    "weight": 121,
+    "body_weight": 1188,
+    "draw": 7,
+    "lbw": "5-3/4",
+    "running": [
+     2,
+     2,
+     2,
+     7
+    ],
+    "time": 84.49,
+    "win_odds": 35.0,
+    "sect": [
+     13.75,
+     23.05,
+     23.64,
+     24.05
+    ]
+   },
+   {
+    "place_raw": "8",
+    "place": 8,
+    "no": 5,
+    "horse": "時時稱心",
+    "horse_code": "H090",
+    "jockey": "田泰安",
+    "jockey_id": "TEK",
+    "trainer": "告東尼",
+    "trainer_id": "CAS",
+    "weight": 124,
+    "body_weight": 1180,
+    "draw": 12,
+    "lbw": "6-1/4",
+    "running": [
+     10,
+     10,
+     10,
+     8
+    ],
+    "time": 84.58,
+    "win_odds": 21.0,
+    "sect": [
+     14.39,
+     23.25,
+     23.64,
+     23.3
+    ]
+   },
+   {
+    "place_raw": "9",
+    "place": 9,
+    "no": 3,
+    "horse": "旭日昇",
+    "horse_code": "E466",
+    "jockey": "何澤堯",
+    "jockey_id": "HCY",
+    "trainer": "伍鵬志",
+    "trainer_id": "NPC",
+    "weight": 130,
+    "body_weight": 1209,
+    "draw": 11,
+    "lbw": "6-1/4",
+    "running": [
+     12,
+     12,
+     12,
+     9
+    ],
+    "time": 84.58,
+    "win_odds": 10.0,
+    "sect": [
+     14.55,
+     23.37,
+     23.48,
+     23.18
+    ]
+   },
+   {
+    "place_raw": "10",
+    "place": 10,
+    "no": 12,
+    "horse": "威威鬥士",
+    "horse_code": "E347",
+    "jockey": "黃皓楠",
+    "jockey_id": null,
+    "trainer": "呂健威",
+    "trainer_id": "LKW",
+    "weight": 117,
+    "body_weight": 1071,
+    "draw": 6,
+    "lbw": "8-1/2",
+    "running": [
+     7,
+     7,
+     8,
+     10
+    ],
+    "time": 84.95,
+    "win_odds": 171.0,
+    "sect": [
+     14.27,
+     23.09,
+     23.72,
+     23.87
+    ]
+   },
+   {
+    "place_raw": "11",
+    "place": 11,
+    "no": 8,
+    "horse": "金寶",
+    "horse_code": "H136",
+    "jockey": "班德禮",
+    "jockey_id": "BHW",
+    "trainer": "方嘉柏",
+    "trainer_id": "FC",
+    "weight": 122,
+    "body_weight": 1114,
+    "draw": 4,
+    "lbw": "9",
+    "running": [
+     8,
+     8,
+     9,
+     11
+    ],
+    "time": 85.03,
+    "win_odds": 123.0,
+    "sect": [
+     14.31,
+     23.13,
+     23.64,
+     23.95
+    ]
+   },
+   {
+    "place_raw": "12",
+    "place": 12,
+    "no": 7,
+    "horse": "紅楓勝景",
+    "horse_code": "H051",
+    "jockey": "賀銘年",
+    "jockey_id": null,
+    "trainer": "韋達",
+    "trainer_id": "WDJ",
+    "weight": 122,
+    "body_weight": 1152,
+    "draw": 1,
+    "lbw": "9-1/2",
+    "running": [
+     6,
+     6,
+     6,
+     12
+    ],
+    "time": 85.1,
+    "win_odds": 46.0,
+    "sect": [
+     14.11,
+     23.13,
+     23.56,
+     24.3
+    ]
+   }
+  ],
+  "has_sect": true
+ },
+ {
+  "date": "2023-04-02",
+  "venue": "ST",
+  "race_no": 9,
+  "race_id": 547,
+  "class": "第三班",
+  "distance": 1200,
+  "rating_band": "80-60",
+  "going": "好地",
+  "race_name": "石上河讓賽",
+  "surface": "TURF",
+  "course": "A+3",
+  "prize": "HK$ 1,725,000",
+  "cum_times": [
+   23.62,
+   46.53,
+   70.32
+  ],
+  "sectionals": [
+   23.62,
+   22.91,
+   23.79
+  ],
+  "runners": [
+   {
+    "place_raw": "1",
+    "place": 1,
+    "no": 9,
+    "horse": "勇敢夢想",
+    "horse_code": "G156",
+    "jockey": "蔡明紹",
+    "jockey_id": "CML",
+    "trainer": "告東尼",
+    "trainer_id": "CAS",
+    "weight": 123,
+    "body_weight": 1089,
+    "draw": 10,
+    "lbw": "---",
+    "running": [
+     11,
+     8,
+     1
+    ],
+    "time": 70.32,
+    "win_odds": 8.4,
+    "sect": [
+     24.66,
+     22.35,
+     23.31
+    ]
+   },
+   {
+    "place_raw": "2",
+    "place": 2,
+    "no": 6,
+    "horse": "魅力寶駒",
+    "horse_code": "G213",
+    "jockey": "潘頓",
+    "jockey_id": "PZ",
+    "trainer": "蔡約翰",
+    "trainer_id": "SJJ",
+    "weight": 129,
+    "body_weight": 1156,
+    "draw": 2,
+    "lbw": "頸位",
+    "running": [
+     4,
+     3,
+     2
+    ],
+    "time": 70.37,
+    "win_odds": 3.9,
+    "sect": [
+     23.9,
+     22.79,
+     23.68
+    ]
+   },
+   {
+    "place_raw": "3",
+    "place": 3,
+    "no": 2,
+    "horse": "好拍檔",
+    "horse_code": "E097",
+    "jockey": "霍宏聲",
+    "jockey_id": "FEL",
+    "trainer": "賀賢",
+    "trainer_id": "HAD",
+    "weight": 133,
+    "body_weight": 1294,
+    "draw": 3,
+    "lbw": "3/4",
+    "running": [
+     8,
+     10,
+     3
+    ],
+    "time": 70.46,
+    "win_odds": 6.8,
+    "sect": [
+     24.3,
+     22.79,
+     23.37
+    ]
+   },
+   {
+    "place_raw": "4",
+    "place": 4,
+    "no": 8,
+    "horse": "喜喜任務",
+    "horse_code": "H050",
+    "jockey": "梁家俊",
+    "jockey_id": "LDE",
+    "trainer": "容天鵬",
+    "trainer_id": null,
+    "weight": 125,
+    "body_weight": 1102,
+    "draw": 11,
+    "lbw": "3/4",
+    "running": [
+     6,
+     6,
+     4
+    ],
+    "time": 70.47,
+    "win_odds": 31.0,
+    "sect": [
+     24.18,
+     22.71,
+     23.58
+    ]
+   },
+   {
+    "place_raw": "5",
+    "place": 5,
+    "no": 5,
+    "horse": "超音鼠",
+    "horse_code": "E046",
+    "jockey": "波健士",
+    "jockey_id": null,
+    "trainer": "羅富全",
+    "trainer_id": "LFC",
+    "weight": 132,
+    "body_weight": 1020,
+    "draw": 9,
+    "lbw": "1-1/4",
+    "running": [
+     10,
+     9,
+     5
+    ],
+    "time": 70.52,
+    "win_odds": 44.0,
+    "sect": [
+     24.5,
+     22.59,
+     23.43
+    ]
+   },
+   {
+    "place_raw": "6",
+    "place": 6,
+    "no": 10,
+    "horse": "傑出漢子",
+    "horse_code": "G455",
+    "jockey": "何澤堯",
+    "jockey_id": "HCY",
+    "trainer": "呂健威",
+    "trainer_id": "LKW",
+    "weight": 123,
+    "body_weight": 1097,
+    "draw": 6,
+    "lbw": "1-1/4",
+    "running": [
+     3,
+     4,
+     6
+    ],
+    "time": 70.53,
+    "win_odds": 2.3,
+    "sect": [
+     23.9,
+     22.87,
+     23.76
+    ]
+   },
+   {
+    "place_raw": "7",
+    "place": 7,
+    "no": 4,
+    "horse": "志勝時機",
+    "horse_code": "E444",
+    "jockey": "田泰安",
+    "jockey_id": "TEK",
+    "trainer": "蔡約翰",
+    "trainer_id": "SJJ",
+    "weight": 132,
+    "body_weight": 1087,
+    "draw": 12,
+    "lbw": "2-1/4",
+    "running": [
+     12,
+     12,
+     7
+    ],
+    "time": 70.67,
+    "win_odds": 59.0,
+    "sect": [
+     24.82,
+     22.43,
+     23.42
+    ]
+   },
+   {
+    "place_raw": "8",
+    "place": 8,
+    "no": 1,
+    "horse": "展宏圖",
+    "horse_code": "H138",
+    "jockey": "班德禮",
+    "jockey_id": "BHW",
+    "trainer": "韋達",
+    "trainer_id": "WDJ",
+    "weight": 135,
+    "body_weight": 1085,
+    "draw": 4,
+    "lbw": "2-1/2",
+    "running": [
+     9,
+     11,
+     8
+    ],
+    "time": 70.73,
+    "win_odds": 43.0,
+    "sect": [
+     24.5,
+     22.71,
+     23.52
+    ]
+   },
+   {
+    "place_raw": "9",
+    "place": 9,
+    "no": 11,
+    "horse": "萬眾力得",
+    "horse_code": "D328",
+    "jockey": "蘇兆輝",
+    "jockey_id": null,
+    "trainer": "羅富全",
+    "trainer_id": "LFC",
+    "weight": 121,
+    "body_weight": 1164,
+    "draw": 7,
+    "lbw": "3-3/4",
+    "running": [
+     5,
+     5,
+     9
+    ],
+    "time": 70.91,
+    "win_odds": 27.0,
+    "sect": [
+     24.1,
+     22.79,
+     24.02
+    ]
+   },
+   {
+    "place_raw": "10",
+    "place": 10,
+    "no": 13,
+    "horse": "喜駿之星",
+    "horse_code": "D033",
+    "jockey": "陳嘉熙",
+    "jockey_id": null,
+    "trainer": "文家良",
+    "trainer_id": "MKL",
+    "weight": 115,
+    "body_weight": 1146,
+    "draw": 1,
+    "lbw": "7",
+    "running": [
+     2,
+     1,
+     10
+    ],
+    "time": 71.46,
+    "win_odds": 46.0,
+    "sect": [
+     23.66,
+     22.87,
+     24.93
+    ]
+   },
+   {
+    "place_raw": "11",
+    "place": 11,
+    "no": 7,
+    "horse": "實力哥",
+    "horse_code": "H228",
+    "jockey": "嘉里",
+    "jockey_id": null,
+    "trainer": "大衛希斯",
+    "trainer_id": "HDA",
+    "weight": 127,
+    "body_weight": 1173,
+    "draw": 5,
+    "lbw": "9",
+    "running": [
+     7,
+     7,
+     11
+    ],
+    "time": 71.76,
+    "win_odds": 45.0,
+    "sect": [
+     24.22,
+     22.75,
+     24.79
+    ]
+   },
+   {
+    "place_raw": "12",
+    "place": 12,
+    "no": 3,
+    "horse": "連連有盈",
+    "horse_code": "G065",
+    "jockey": "鍾易禮",
+    "jockey_id": "CCY",
+    "trainer": "告東尼",
+    "trainer_id": "CAS",
+    "weight": 126,
+    "body_weight": 1208,
+    "draw": 8,
+    "lbw": "12-1/4",
+    "running": [
+     1,
+     2,
+     12
+    ],
+    "time": 72.27,
+    "win_odds": 10.0,
+    "sect": [
+     23.62,
+     23.07,
+     25.58
+    ]
+   },
+   {
+    "place_raw": "WV",
+    "place": null,
+    "no": 12,
+    "horse": "十二馬",
+    "horse_code": "D280",
+    "jockey": "賀銘年",
+    "jockey_id": null,
+    "trainer": "蘇偉賢",
+    "trainer_id": "SWY",
+    "weight": 120,
+    "body_weight": null,
+    "draw": null,
+    "lbw": "---",
+    "running": [],
+    "time": null,
+    "win_odds": null
+   }
+  ],
+  "has_sect": true
+ },
+ {
+  "date": "2023-04-02",
+  "venue": "ST",
+  "race_no": 10,
+  "race_id": 548,
+  "class": "第三班",
+  "distance": 1800,
+  "rating_band": "80-60",
+  "going": "好地",
+  "race_name": "丹山河讓賽",
+  "surface": "TURF",
+  "course": "A+3",
+  "prize": "HK$ 1,900,000",
+  "cum_times": [
+   13.79,
+   36.5,
+   60.44,
+   84.55,
+   109.06
+  ],
+  "sectionals": [
+   13.79,
+   22.71,
+   23.94,
+   24.11,
+   24.51
+  ],
+  "runners": [
+   {
+    "place_raw": "1",
+    "place": 1,
+    "no": 2,
+    "horse": "敏捷神駒",
+    "horse_code": "H210",
+    "jockey": "潘頓",
+    "jockey_id": "PZ",
+    "trainer": "黎昭昇",
+    "trainer_id": "RW",
+    "weight": 134,
+    "body_weight": 1102,
+    "draw": 14,
+    "lbw": "---",
+    "running": [
+     12,
+     13,
+     12,
+     11,
+     1
+    ],
+    "time": 109.06,
+    "win_odds": 3.2,
+    "sect": [
+     14.47,
+     23.19,
+     23.9,
+     23.83,
+     23.67
+    ]
+   },
+   {
+    "place_raw": "2",
+    "place": 2,
+    "no": 14,
+    "horse": "競駿光輝",
+    "horse_code": "H135",
+    "jockey": "波健士",
+    "jockey_id": null,
+    "trainer": "葉楚航",
+    "trainer_id": "YCH",
+    "weight": 118,
+    "body_weight": 1114,
+    "draw": 11,
+    "lbw": "3/4",
+    "running": [
+     2,
+     2,
+     2,
+     1,
+     2
+    ],
+    "time": 109.19,
+    "win_odds": 133.0,
+    "sect": [
+     13.91,
+     22.67,
+     23.9,
+     24.07,
+     24.64
+    ]
+   },
+   {
+    "place_raw": "3",
+    "place": 3,
+    "no": 9,
+    "horse": "翔龍再現",
+    "horse_code": "E452",
+    "jockey": "何澤堯",
+    "jockey_id": "HCY",
+    "trainer": "賀賢",
+    "trainer_id": "HAD",
+    "weight": 122,
+    "body_weight": 1217,
+    "draw": 8,
+    "lbw": "1-3/4",
+    "running": [
+     14,
+     14,
+     14,
+     14,
+     3
+    ],
+    "time": 109.34,
+    "win_odds": 5.1,
+    "sect": [
+     14.59,
+     23.27,
+     23.98,
+     23.75,
+     23.75
+    ]
+   },
+   {
+    "place_raw": "4",
+    "place": 4,
+    "no": 4,
+    "horse": "波爾多",
+    "horse_code": "E273",
+    "jockey": "嘉里",
+    "jockey_id": null,
+    "trainer": "蔡約翰",
+    "trainer_id": "SJJ",
+    "weight": 134,
+    "body_weight": 1072,
+    "draw": 10,
+    "lbw": "2-1/2",
+    "running": [
+     3,
+     5,
+     4,
+     3,
+     4
+    ],
+    "time": 109.45,
+    "win_odds": 18.0,
+    "sect": [
+     14.03,
+     22.83,
+     23.9,
+     23.95,
+     24.74
+    ]
+   },
+   {
+    "place_raw": "5",
+    "place": 5,
+    "no": 10,
+    "horse": "海島材子",
+    "horse_code": "D219",
+    "jockey": "馬雅",
+    "jockey_id": null,
+    "trainer": "姚本輝",
+    "trainer_id": "YPF",
+    "weight": 121,
+    "body_weight": 1067,
+    "draw": 3,
+    "lbw": "3-1/4",
+    "running": [
+     4,
+     7,
+     8,
+     9,
+     5
+    ],
+    "time": 109.56,
+    "win_odds": 54.0,
+    "sect": [
+     14.07,
+     22.95,
+     24.22,
+     23.91,
+     24.41
+    ]
+   },
+   {
+    "place_raw": "6",
+    "place": 6,
+    "no": 13,
+    "horse": "悅風雲",
+    "horse_code": "E235",
+    "jockey": "霍宏聲",
+    "jockey_id": "FEL",
+    "trainer": "丁冠豪",
+    "trainer_id": "TKH",
+    "weight": 120,
+    "body_weight": 1124,
+    "draw": 5,
+    "lbw": "4-1/4",
+    "running": [
+     11,
+     12,
+     13,
+     13,
+     6
+    ],
+    "time": 109.75,
+    "win_odds": 7.8,
+    "sect": [
+     14.43,
+     23.19,
+     24.14,
+     23.71,
+     24.28
+    ]
+   },
+   {
+    "place_raw": "7",
+    "place": 7,
+    "no": 1,
+    "horse": "當年情",
+    "horse_code": "G371",
+    "jockey": "鍾易禮",
+    "jockey_id": "CCY",
+    "trainer": "告東尼",
+    "trainer_id": "CAS",
+    "weight": 128,
+    "body_weight": 998,
+    "draw": 4,
+    "lbw": "4-3/4",
+    "running": [
+     10,
+     9,
+     11,
+     12,
+     7
+    ],
+    "time": 109.81,
+    "win_odds": 7.7,
+    "sect": [
+     14.39,
+     22.95,
+     24.18,
+     23.91,
+     24.38
+    ]
+   },
+   {
+    "place_raw": "8",
+    "place": 8,
+    "no": 7,
+    "horse": "多多勇駒",
+    "horse_code": "G144",
+    "jockey": "班德禮",
+    "jockey_id": "BHW",
+    "trainer": "苗禮德",
+    "trainer_id": null,
+    "weight": 127,
+    "body_weight": 1061,
+    "draw": 1,
+    "lbw": "5-1/2",
+    "running": [
+     7,
+     6,
+     7,
+     6,
+     8
+    ],
+    "time": 109.94,
+    "win_odds": 18.0,
+    "sect": [
+     14.15,
+     22.87,
+     24.1,
+     23.95,
+     24.87
+    ]
+   },
+   {
+    "place_raw": "9",
+    "place": 9,
+    "no": 3,
+    "horse": "安采",
+    "horse_code": "D066",
+    "jockey": "周俊樂",
+    "jockey_id": "CJE",
+    "trainer": "蘇偉賢",
+    "trainer_id": "SWY",
+    "weight": 132,
+    "body_weight": 1161,
+    "draw": 2,
+    "lbw": "5-1/2",
+    "running": [
+     5,
+     3,
+     5,
+     4,
+     9
+    ],
+    "time": 109.95,
+    "win_odds": 34.0,
+    "sect": [
+     14.07,
+     22.71,
+     23.98,
+     24.07,
+     25.12
+    ]
+   },
+   {
+    "place_raw": "10",
+    "place": 10,
+    "no": 11,
+    "horse": "大力猴王",
+    "horse_code": "G307",
+    "jockey": "巴度",
+    "jockey_id": "BA",
+    "trainer": "韋達",
+    "trainer_id": "WDJ",
+    "weight": 120,
+    "body_weight": 1075,
+    "draw": 6,
+    "lbw": "5-1/2",
+    "running": [
+     9,
+     11,
+     9,
+     10,
+     10
+    ],
+    "time": 109.95,
+    "win_odds": 9.6,
+    "sect": [
+     14.27,
+     23.11,
+     23.94,
+     23.87,
+     24.76
+    ]
+   },
+   {
+    "place_raw": "11",
+    "place": 11,
+    "no": 5,
+    "horse": "浪漫風采",
+    "horse_code": "H227",
+    "jockey": "蘇兆輝",
+    "jockey_id": null,
+    "trainer": "沈集成",
+    "trainer_id": "SCS",
+    "weight": 130,
+    "body_weight": 1206,
+    "draw": 12,
+    "lbw": "6-1/4",
+    "running": [
+     8,
+     8,
+     6,
+     7,
+     11
+    ],
+    "time": 110.05,
+    "win_odds": 35.0,
+    "sect": [
+     14.23,
+     22.87,
+     23.94,
+     24.07,
+     24.94
+    ]
+   },
+   {
+    "place_raw": "12",
+    "place": 12,
+    "no": 8,
+    "horse": "精準快車",
+    "horse_code": "D198",
+    "jockey": "蔡明紹",
+    "jockey_id": "CML",
+    "trainer": "姚本輝",
+    "trainer_id": "YPF",
+    "weight": 127,
+    "body_weight": 1012,
+    "draw": 7,
+    "lbw": "7-1/4",
+    "running": [
+     13,
+     10,
+     10,
+     8,
+     12
+    ],
+    "time": 110.23,
+    "win_odds": 18.0,
+    "sect": [
+     14.51,
+     22.83,
+     24.1,
+     23.67,
+     25.12
+    ]
+   },
+   {
+    "place_raw": "13",
+    "place": 13,
+    "no": 12,
+    "horse": "鐵三角",
+    "horse_code": "H073",
+    "jockey": "田泰安",
+    "jockey_id": "TEK",
+    "trainer": "大衛希斯",
+    "trainer_id": "HDA",
+    "weight": 120,
+    "body_weight": 1192,
+    "draw": 9,
+    "lbw": "17-1/2",
+    "running": [
+     1,
+     1,
+     1,
+     2,
+     13
+    ],
+    "time": 111.86,
+    "win_odds": 12.0,
+    "sect": [
+     13.79,
+     22.71,
+     23.94,
+     24.15,
+     27.27
+    ]
+   },
+   {
+    "place_raw": "14",
+    "place": 14,
+    "no": 6,
+    "horse": "西利哥",
+    "horse_code": "D128",
+    "jockey": "梁家俊",
+    "jockey_id": "LDE",
+    "trainer": "羅富全",
+    "trainer_id": "LFC",
+    "weight": 129,
+    "body_weight": 1139,
+    "draw": 13,
+    "lbw": "20-1/2",
+    "running": [
+     6,
+     4,
+     3,
+     5,
+     14
+    ],
+    "time": 112.33,
+    "win_odds": 75.0,
+    "sect": [
+     14.11,
+     22.71,
+     23.82,
+     24.39,
+     27.3
+    ]
+   }
+  ],
+  "has_sect": true
+ }
+]
