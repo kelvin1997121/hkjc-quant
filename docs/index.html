@@ -113,7 +113,7 @@ function show() {
       <span class="chip">${esc(r.post_time || "")}</span><span class="chip">${esc(r.class || "")}</span>
       <span class="chip">${r.distance}米</span><span class="chip">${r.surface === "AWT" ? "全天候" : "草地"} ${esc(r.course ? '"' + r.course + '"' : "")}</span>
       <span class="chip">${esc(r.going || "場地未公布")}</span>
-      <span class="chip hl">步速:${esc(r.pace)}(${r.n_leaders} 匹前領馬)</span>
+      <span class="chip hl">步速:${esc(r.pace)}(${r.n_leaders} 匹前置馬)</span>
       ${r.odds_updated ? `<span class="chip">賠率更新 ${esc(r.odds_updated)}</span>` : ""}
     </div>
     ${edgeNote()}

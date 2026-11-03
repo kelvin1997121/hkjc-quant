@@ -3,7 +3,8 @@ from __future__ import annotations
 
 import numpy as np
 
-from .model import FEATURES, blend, contributions, market_probs, predict, prior_vector
+from .model import (FEATURES, blend, contributions, market_probs, pace_bucket, predict,
+                    prior_vector, style_label)
 
 FEATURE_ZH = {
     "speed_best": "速度指數(近績最佳)", "speed_last": "上仗速度指數", "speed_missing": "缺速度數據",
@@ -20,24 +21,38 @@ FEATURE_ZH = {
 }
 
 
-def style_label(early):
-    if early is None:
-        return "未知"
-    if early <= 0.2:
-        return "領放"
-    if early <= 0.4:
-        return "前列"
-    if early <= 0.65:
-        return "中游"
-    return "後上"
+def pace_text(state, ctx, venue):
+    """Pace read backed by history, not a rule of thumb.
 
-
-def pace_label(pace):
-    if pace > 0.5:
-        return "快", "多匹前領馬爭位,預計步速偏快,後上馬有利"
-    if pace < -0.4:
-        return "慢", "前領馬少,預計步速偏慢,前置馬有利"
-    return "中", "預計步速中等"
+    In HK, leaders win most often at every projected pace; a fast pace only
+    narrows their edge. So the verdict comes from past win rates per running
+    style for this venue and projected pace. Returns (bucket, note, favours).
+    """
+    bucket = pace_bucket(ctx["pace"])
+    head = {"快": "預計步速偏快", "慢": "預計步速偏慢", "中": "預計步速中等"}[bucket] \
+        + f"({ctx['n_lead']} 匹慣常跑喺最前嘅位置)"
+    rates, v = state.pace_history(venue, bucket)
+    if len(rates) < 3:
+        return bucket, head + "。", "中性"
+    where = {"HV": "跑馬地", "ST": "沙田"}.get(v, "過往")
+    stats = "、".join(f"{s} {r:.1%}" for s, (r, _) in rates.items())
+    front = max(rates.get("領放", (0, 0))[0], rates.get("前列", (0, 0))[0])
+    back = rates.get("後上", (0, 0))[0]
+    if front > back * 1.2:
+        favours, verdict = "前置", "前置馬仍然較有利"
+    elif back > front * 1.2:
+        favours, verdict = "後上", "後上馬較有利"
+    else:
+        favours, verdict = "中性", "跑法影響唔大"
+    if bucket != "中":
+        normal, _ = state.pace_history(venue, "中")
+        if "領放" in rates and "領放" in normal:
+            diff = rates["領放"][0] - normal["領放"][0]
+            if diff < -0.005:
+                verdict += ",不過領放馬優勢比平時細"
+            elif diff > 0.005:
+                verdict += ",而且領放馬優勢比平時大"
+    return bucket, f"{head}。{where}同類步速歷來每匹馬勝出率:{stats};{verdict}", favours
 
 
 def today_label(ctx):
@@ -45,7 +60,9 @@ def today_label(ctx):
         return "今日未有已完成賽事,未能計算即日場地走勢"
     parts = []
     s, d = ctx["today_style"], ctx["today_draw"]
-    parts.append("前置馬有利" if s > 0.04 else "後上馬有利" if s < -0.04 else "跑法無明顯偏差")
+    # relative to a normal day (leaders normally have an edge in HK)
+    parts.append("前置馬比平時更著數" if s > 0.04 else "後上馬比平時更著數" if s < -0.04
+                 else "跑法同平時差唔多")
     parts.append("內檔有利" if d > 0.04 else "外檔有利" if d < -0.04 else "檔位無明顯偏差")
     return f"根據今日已跑 {ctx['today_n']} 場:" + ",".join(parts)
 
@@ -129,13 +146,14 @@ def analyse_race(state, params, race, odds=None):
         })
     for r in out:
         r["value"] = bool(r["ev"] and r["ev"] >= VALUE_EV and bw and bw["a"] > 0)
-    pace_lv, pace_txt = pace_label(ctx["pace"])
+    pace_lv, pace_txt, pace_favours = pace_text(state, ctx, race["venue"])
     return {
         "race_no": race["race_no"], "race_name": race.get("race_name"),
         "post_time": race.get("post_time"), "class": race.get("class"),
         "distance": race.get("distance"), "surface": race.get("surface"),
         "course": race.get("course"), "going": race.get("going"),
-        "pace": pace_lv, "pace_note": pace_txt, "n_leaders": ctx["n_lead"],
+        "pace": pace_lv, "pace_note": pace_txt, "pace_favours": pace_favours,
+        "n_leaders": ctx["n_lead"],
         "today_bias": today_label(ctx),
         "today_sect": today_sect_label(ctx),
         "today_sect_data": {"variant": round(ctx["today_variant"], 2),

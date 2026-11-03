@@ -26,21 +26,21 @@ def summarise(a: dict) -> str:
     top5 = by_model[:5]
     lines = []
 
-    # 1. pace and shape
+    # 1. pace and shape: verdict comes from history (analyze.pace_text), not a rule of thumb
     leaders = [x for x in runners if x["style"] == "領放"]
-    pace = a.get("pace")
-    s = f"【步速】預計步速{pace}"
+    s = "【步速】"
     if leaders:
-        s += f",{_names(leaders)}有機會爭放"
-    s += "。"
-    if pace == "快":
-        fit = [x for x in top5 if x["style"] in ("後上", "中游")]
-        s += f"前面有得拉,後上馬著數{(',留意' + _names(fit, 2)) if fit else ''}。"
-    elif pace == "慢":
+        s += f"{_names(leaders)}有機會爭放。"
+    s += a.get("pace_note", "") + "。"
+    favours = a.get("pace_favours")
+    if favours == "前置":
         fit = [x for x in top5 if x["style"] in ("領放", "前列")]
-        s += f"前領馬少,前置馬著數{(',留意' + _names(fit, 2)) if fit else ''}。"
+    elif favours == "後上":
+        fit = [x for x in top5 if x["style"] in ("後上", "中游")]
     else:
-        s += "步速中等,跑法影響不大。"
+        fit = []
+    if fit:
+        s += f"跑法配合嘅熱門選擇:{_names(fit, 2)}。"
     lines.append(s)
 
     # 2. track and draw

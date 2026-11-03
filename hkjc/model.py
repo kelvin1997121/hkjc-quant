@@ -77,6 +77,32 @@ def est_ratings(race, runners):
     return out
 
 
+STYLES = ("領放", "前列", "中游", "後上")
+
+
+def style_label(early):
+    """Running style from average early position (0 = leads, 1 = last)."""
+    if early is None:
+        return "未知"
+    if early <= 0.2:
+        return "領放"
+    if early <= 0.4:
+        return "前列"
+    if early <= 0.65:
+        return "中游"
+    return "後上"
+
+
+def pace_projection(profs, field):
+    """Pre-race pace from how many runners usually lead: (score, n_leaders); >0 = contested."""
+    n_lead = sum(1 for p in profs if p["early"] is not None and p["early"] <= 0.25)
+    return (n_lead - 0.2 * field) / max(field, 1) * 4, n_lead
+
+
+def pace_bucket(pace):
+    return "快" if pace > 0.5 else "慢" if pace < -0.4 else "中"
+
+
 def started(x) -> bool:
     """False for withdrawn / void entries, which must not count as a run."""
     if x.get("place"):
@@ -157,6 +183,8 @@ class State:
         self.meeting = defaultdict(list)          # (date, venue) -> finished race summaries
         self.class_var = defaultdict(list)        # class -> (winner time - std)/km, good ground
         self.late_top_hist = []                   # per race: avg final-section edge of top 3
+        # (venue, projected pace) -> running style -> [runners, winners]: what pace really does
+        self.pace_style = defaultdict(lambda: defaultdict(lambda: [0, 0]))
 
     # ---------------------------------------------------------------- helpers
     def std_time(self, r):
@@ -213,6 +241,22 @@ class State:
         shrink = n / (n + 3)
         return (0.45 - style) * shrink, (0.5 - draw) * shrink, n
 
+    def pace_history(self, venue, bucket):
+        """Per-style win rate in past races with this projected pace at this venue
+        (both venues pooled if the venue has too little history)."""
+        book = self.pace_style.get((venue, bucket), {})
+        if sum(v[0] for v in book.values()) < 300:
+            merged = defaultdict(lambda: [0, 0])
+            for (v, b), bk in self.pace_style.items():
+                if b == bucket:
+                    for s, (n, w) in bk.items():
+                        merged[s][0] += n
+                        merged[s][1] += w
+            book, venue = merged, None
+        rates = {s: (book[s][1] / book[s][0], book[s][0]) for s in STYLES
+                 if s in book and book[s][0] >= 50}
+        return rates, venue
+
     def today_sectionals(self, r):
         """Live read from today's sectional times on this surface.
 
@@ -265,10 +309,7 @@ class State:
         profs = [self.runner_profile(x.get("horse_code"), dist, race["venue"],
                                      race.get("surface", "TURF")) for x in runners]
         field = max(len(runners), 2)
-        early_known = [p["early"] for p in profs if p["early"] is not None]
-        n_lead = sum(1 for e in early_known if e <= 0.25)
-        exp_lead = 0.2 * field
-        pace = (n_lead - exp_lead) / max(field, 1) * 4  # >0 = contested early pace
+        pace, n_lead = pace_projection(profs, field)
         t_style, t_draw, t_n = self.today_bias(race)
         t_var, t_late, t_nv, t_nl = self.today_sectionals(race)
         c_edge = self.course_leader_edge(race)
@@ -353,6 +394,16 @@ class State:
             return
         km = (race.get("distance") or 1000) / 1000
         winner = min(finished, key=lambda x: x["place"])
+        # record how each pre-race running style fared under the projected pace
+        # (profiles are still pre-race here: this race isn't in the histories yet)
+        profs = [self.runner_profile(x["horse_code"], race.get("distance")) for x in runners]
+        pace, _ = pace_projection(profs, max(field, 2))
+        book = self.pace_style[(race["venue"], pace_bucket(pace))]
+        for x, p in zip(runners, profs):
+            s = style_label(p["early"])
+            if s in STYLES:
+                book[s][0] += 1
+                book[s][1] += 1 if x is winner else 0
         variant = None
         if winner.get("time") and race.get("distance"):
             std = self.std_time(race)
