@@ -32,6 +32,7 @@ ev(綜合機率 x 賠率,大過 1 先有正期望)、value(係咪值博)。講�
 
 
 _auth_failed = False
+_key_warned = False
 
 
 def key_problem(key: str) -> str | None:
@@ -52,7 +53,10 @@ def _client():
         return None
     problem = key_problem(key)
     if problem:
-        print(f"  ANTHROPIC_API_KEY 問題:{problem}")
+        global _key_warned
+        if not _key_warned:  # once per run, not once per race
+            print(f"  ANTHROPIC_API_KEY 問題:{problem}(改用系統文字分析)")
+            _key_warned = True
         return None
     import anthropic
     return anthropic.Anthropic(api_key=key)
@@ -68,6 +72,7 @@ def _compact(race):
 
 
 def analyse(race: dict, meeting_key: str) -> str | None:
+    global _auth_failed
     client = _client()
     if client is None:
         return None
@@ -99,7 +104,6 @@ def analyse(race: dict, meeting_key: str) -> str | None:
             extra_body={"fallbacks": "default"},
         )
     except anthropic.AuthenticationError as e:
-        global _auth_failed
         _auth_failed = True  # no point retrying the other races this run
         print(f"  agent: API key rejected (401) - 請檢查 GitHub secret ANTHROPIC_API_KEY: {e.message}")
         return cached["text"] if cached else None
@@ -107,7 +111,11 @@ def analyse(race: dict, meeting_key: str) -> str | None:
         print(f"  agent rate limited: {e}")
         return cached["text"] if cached else None
     except anthropic.APIStatusError as e:
-        print(f"  agent API error {e.status_code}: {e.message}")
+        if e.status_code in (400, 402) and "credit" in str(e.message).lower():
+            _auth_failed = True  # account has no credit: use the free summary this run
+            print("  agent: Anthropic 戶口額度不足,改用系統文字分析")
+        else:
+            print(f"  agent API error {e.status_code}: {e.message}")
         return cached["text"] if cached else None
     except anthropic.APIConnectionError as e:
         print(f"  agent connection error: {e}")

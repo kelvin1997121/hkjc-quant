@@ -9,7 +9,7 @@ import json
 import sys
 from datetime import date, datetime, timezone
 
-from . import agent, analyze, model, scraper, store
+from . import agent, analyze, model, scraper, store, writer
 from .backfill import backfill, today_hkt
 
 
@@ -152,6 +152,8 @@ def run(use_agent=True):
                 a["ai"] = prev_races[race["race_no"]].get("ai")
             if res:  # first seen after the race: features include the result itself
                 a["post_hoc"] = True
+            # free rule-based preview; shown whenever there is no AI text
+            a["summary"] = writer.summarise(a)
         if res:
             a["result"] = _result_summary(res)
         out_races.append(a)
