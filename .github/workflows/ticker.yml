@@ -2,7 +2,8 @@ name: ticker
 
 # Cloud-only backup for GitHub's cron, which can be late or not start at all on a
 # new repo. One long job triggers the "update" workflow every 20 minutes from
-# 08:00 to 23:59 HKT (skipping when an update started in the last 15 minutes),
+# 08:00 to 23:59 HKT (skipping when an update started in the last 15 minutes)
+# and the self-check once a night between 03:30 and 04:00,
 # then hands over to a fresh ticker run before the 6-hour job limit. It stops
 # relaying by itself as soon as GitHub's own schedule is seen working.
 on:
@@ -47,6 +48,11 @@ jobs:
               --jq '[.[] | select(.status != "completed" or (.createdAt | fromdateiso8601) > (now - 900))] | length' \
               | grep -qx '[1-9][0-9]*'
           }
+          recent_selfcheck() {
+            gh run list --workflow selfcheck.yml --limit 3 --json createdAt \
+              --jq '[.[] | select((.createdAt | fromdateiso8601) > (now - 43200))] | length' \
+              | grep -qx '[1-9][0-9]*'
+          }
           trigger() {
             if recent_update; then echo "$(TZ=Asia/Hong_Kong date '+%F %H:%M') skip: update ran recently"
             else gh workflow run update.yml && echo "$(TZ=Asia/Hong_Kong date '+%F %H:%M') triggered update"; fi
@@ -62,7 +68,12 @@ jobs:
               break
             fi
             hm=$(TZ=Asia/Hong_Kong date +%H%M)
-            if [ "$((10#$hm))" -ge 800 ]; then trigger; else echo "$(TZ=Asia/Hong_Kong date '+%F %H:%M') idle (night)"; fi
+            hm=$((10#$hm))
+            # nightly self-check (its own cron may not be firing either)
+            if [ "$hm" -ge 330 ] && [ "$hm" -lt 400 ] && ! recent_selfcheck; then
+              gh workflow run selfcheck.yml && echo "$(TZ=Asia/Hong_Kong date '+%F %H:%M') triggered selfcheck"
+            fi
+            if [ "$hm" -ge 800 ]; then trigger; else echo "$(TZ=Asia/Hong_Kong date '+%F %H:%M') idle (night)"; fi
             sleep 1200
           done
           echo "relay=$relay" >> "$GITHUB_OUTPUT"
