@@ -4,47 +4,47 @@
   "venue": "HV",
   "venue_zh": "跑馬地"
  },
- "updated_at": "2026-11-03T12:08:07+00:00",
+ "updated_at": "2026-11-03T12:09:13+00:00",
  "model": {
   "holdout": {
    "races": 204,
-   "logloss": 2.2235,
-   "top_pick_win_rate": 0.2206,
+   "logloss": 2.2231,
+   "top_pick_win_rate": 0.2108,
    "market_logloss": 2.0373,
    "favourite_win_rate": 0.2892,
-   "flat_bet_roi_top_pick": -0.1583,
+   "flat_bet_roi_top_pick": -0.2181,
    "uniform_logloss": 2.5019
   },
   "train_races": 815,
   "holdout_from": "2026-07-01",
   "weights": {
-   "speed_best": -0.005,
-   "speed_last": 0.031,
-   "speed_missing": -0.136,
-   "form": 0.385,
-   "dist_form": -0.015,
-   "early": -0.082,
-   "early_x_pace": 0.02,
+   "speed_best": -0.002,
+   "speed_last": 0.035,
+   "speed_missing": -0.103,
+   "form": 0.378,
+   "dist_form": -0.038,
+   "early": -0.062,
+   "early_x_pace": 0.027,
    "early_x_today": 0.008,
-   "early_x_course": 0.077,
-   "draw_bias": 0.104,
-   "draw_x_today": 0.122,
-   "jockey": 0.267,
-   "trainer": 0.022,
-   "weight_rel": -0.12,
-   "layoff": 0.048,
-   "debut": 0.183,
-   "mkt_rating": 0.41,
-   "vs_mkt": 0.012,
-   "closing": -0.1,
-   "class_drop": 0.062,
-   "bw_change": -0.008,
-   "perf_best": 0.106,
-   "perf_last": 0.096,
-   "handicap_edge": 0.091
+   "early_x_course": 0.064,
+   "draw_bias": 0.107,
+   "draw_x_today": 0.121,
+   "jockey": 0.269,
+   "trainer": 0.014,
+   "weight_rel": -0.111,
+   "layoff": 0.044,
+   "debut": 0.155,
+   "mkt_rating": 0.426,
+   "vs_mkt": 0.021,
+   "closing": -0.091,
+   "class_drop": 0.056,
+   "bw_change": -0.007,
+   "perf_best": 0.09,
+   "perf_last": 0.086,
+   "handicap_edge": 0.104
   }
  },
- "history_races": 1063,
+ "history_races": 1074,
  "races": [
   {
    "race_no": 1,
@@ -73,8 +73,8 @@
      "rating": 40,
      "last6": "5/9/4/2/2/2",
      "gear": "B/TT",
-     "win_prob": 0.193,
-     "fair_odds": 5.2,
+     "win_prob": 0.1885,
+     "fair_odds": 5.3,
      "style": "領放",
      "speed_best": -3.0,
      "perf_best": 52.2,
@@ -87,7 +87,7 @@
       "近況"
      ],
      "cons": [
-      "前置跑法",
+      "檔位統計",
       "負磅"
      ]
     },
@@ -103,8 +103,8 @@
      "rating": 38,
      "last6": "5/8/4/5/11/7",
      "gear": "H/XB",
-     "win_prob": 0.1721,
-     "fair_odds": 5.8,
+     "win_prob": 0.17,
+     "fair_odds": 5.9,
      "style": "領放",
      "speed_best": -9.4,
      "perf_best": 49.5,
@@ -117,8 +117,8 @@
       "騎師"
      ],
      "cons": [
-      "前置跑法",
-      "步速形勢"
+      "步速形勢",
+      "前置跑法"
      ]
     },
     {
@@ -133,8 +133,8 @@
      "rating": 38,
      "last6": "5/1/6/2/6/3",
      "gear": "H/TT",
-     "win_prob": 0.116,
-     "fair_odds": 8.6,
+     "win_prob": 0.1139,
+     "fair_odds": 8.8,
      "style": "前列",
      "speed_best": 0.1,
      "perf_best": 41.2,
@@ -148,7 +148,7 @@
      ],
      "cons": [
       "騎師",
-      "表現評分(近績最佳)"
+      "檔位統計"
      ]
     },
     {
@@ -163,10 +163,10 @@
      "rating": 38,
      "last6": "6/6/7/11/11/6",
      "gear": "CP/TT",
-     "win_prob": 0.0856,
-     "fair_odds": 11.7,
+     "win_prob": 0.0871,
+     "fair_odds": 11.5,
      "style": "中游",
-     "speed_best": -5.6,
+     "speed_best": -6.2,
      "perf_best": 49.3,
      "handicap_edge": 11.3,
      "runs_in_db": 10,
@@ -193,8 +193,8 @@
      "rating": 35,
      "last6": "9/8/5/5/1/12",
      "gear": "B2/TT",
-     "win_prob": 0.0748,
-     "fair_odds": 13.4,
+     "win_prob": 0.0761,
+     "fair_odds": 13.1,
      "style": "中游",
      "speed_best": 1.6,
      "perf_best": 41.2,
@@ -206,11 +206,41 @@
      ],
      "cons": [
       "近況",
-      "表現評分(近績最佳)"
+      "上仗表現評分"
      ]
     },
     {
      "rank": 6,
+     "no": 10,
+     "horse": "飈誌",
+     "horse_code": "J504",
+     "jockey": "奧爾民",
+     "trainer": "黎昭昇",
+     "draw": 3,
+     "weight": 128,
+     "rating": 33,
+     "last6": "11/3/13/6/3/11",
+     "gear": "B/TT",
+     "win_prob": 0.0724,
+     "fair_odds": 13.8,
+     "style": "領放",
+     "speed_best": -8.8,
+     "perf_best": 45.8,
+     "handicap_edge": 12.8,
+     "runs_in_db": 10,
+     "draw_edge": 0.202,
+     "pros": [
+      "檔位統計",
+      "後段追勁",
+      "讓磅著數"
+     ],
+     "cons": [
+      "近況",
+      "上仗表現評分"
+     ]
+    },
+    {
+     "rank": 7,
      "no": 9,
      "horse": "精益大師",
      "horse_code": "H134",
@@ -221,7 +251,7 @@
      "rating": 34,
      "last6": "9/8/6/8/2/6",
      "gear": "B2/TT",
-     "win_prob": 0.072,
+     "win_prob": 0.0721,
      "fair_odds": 13.9,
      "style": "領放",
      "speed_best": -10.2,
@@ -235,38 +265,8 @@
       "跑道跑法偏差"
      ],
      "cons": [
-      "前置跑法",
-      "上仗表現評分"
-     ]
-    },
-    {
-     "rank": 7,
-     "no": 10,
-     "horse": "飈誌",
-     "horse_code": "J504",
-     "jockey": "奧爾民",
-     "trainer": "黎昭昇",
-     "draw": 3,
-     "weight": 128,
-     "rating": 33,
-     "last6": "11/3/13/6/3/11",
-     "gear": "B/TT",
-     "win_prob": 0.0713,
-     "fair_odds": 14.0,
-     "style": "領放",
-     "speed_best": -8.8,
-     "perf_best": 45.8,
-     "handicap_edge": 12.8,
-     "runs_in_db": 9,
-     "draw_edge": 0.202,
-     "pros": [
-      "後段追勁",
-      "檔位統計",
-      "跑道跑法偏差"
-     ],
-     "cons": [
-      "近況",
-      "上仗表現評分"
+      "上仗表現評分",
+      "近況"
      ]
     },
     {
@@ -281,8 +281,8 @@
      "rating": 38,
      "last6": "9/7/8/12/11/13",
      "gear": "TT",
-     "win_prob": 0.0616,
-     "fair_odds": 16.2,
+     "win_prob": 0.0629,
+     "fair_odds": 15.9,
      "style": "前列",
      "speed_best": -15.8,
      "perf_best": 43.5,
@@ -311,13 +311,13 @@
      "rating": 30,
      "last6": "6/2/11/3/12/5",
      "gear": "CP/TT",
-     "win_prob": 0.0612,
-     "fair_odds": 16.3,
+     "win_prob": 0.0624,
+     "fair_odds": 16.0,
      "style": "前列",
      "speed_best": 1.6,
      "perf_best": 37.5,
      "handicap_edge": 7.5,
-     "runs_in_db": 8,
+     "runs_in_db": 9,
      "draw_edge": -0.148,
      "pros": [
       "近況",
@@ -341,8 +341,8 @@
      "rating": 28,
      "last6": "10/6/4/9/4/12",
      "gear": "B/TT2",
-     "win_prob": 0.0525,
-     "fair_odds": 19.0,
+     "win_prob": 0.0539,
+     "fair_odds": 18.5,
      "style": "前列",
      "speed_best": -0.8,
      "perf_best": 38.3,
@@ -352,11 +352,11 @@
      "pros": [
       "負磅",
       "後段追勁",
-      "跑道跑法偏差"
+      "讓磅著數"
      ],
      "cons": [
       "過往市場評價",
-      "上仗表現評分"
+      "近況"
      ]
     },
     {
@@ -401,8 +401,8 @@
      "rating": 34,
      "last6": "11/11/10/10/10/11",
      "gear": "TT",
-     "win_prob": 0.0152,
-     "fair_odds": 65.7,
+     "win_prob": 0.016,
+     "fair_odds": 62.6,
      "style": "後上",
      "speed_best": -8.4,
      "perf_best": 46.8,
@@ -411,7 +411,7 @@
      "draw_edge": 0.125,
      "pros": [
       "降班",
-      "前置跑法",
+      "讓磅著數",
       "休賽"
      ],
      "cons": [
@@ -449,7 +449,7 @@
      "rating": 31,
      "last6": "3/8/5/7/11/7",
      "gear": "TT",
-     "win_prob": 0.2098,
+     "win_prob": 0.2074,
      "fair_odds": 4.8,
      "style": "領放",
      "speed_best": 2.9,
@@ -463,8 +463,8 @@
       "檔位統計"
      ],
      "cons": [
-      "前置跑法",
-      "表現評分(近績最佳)"
+      "表現評分(近績最佳)",
+      "前置跑法"
      ]
     },
     {
@@ -489,8 +489,8 @@
      "draw_edge": 0.145,
      "pros": [
       "過往市場評價",
-      "負磅",
-      "檔位統計"
+      "檔位統計",
+      "讓磅著數"
      ],
      "cons": [
       "上仗表現評分",
@@ -509,8 +509,8 @@
      "rating": 37,
      "last6": "6/7/8/4/7/11",
      "gear": "",
-     "win_prob": 0.1172,
-     "fair_odds": 8.5,
+     "win_prob": 0.1238,
+     "fair_odds": 8.1,
      "style": "中游",
      "speed_best": 3.9,
      "perf_best": 49.4,
@@ -539,8 +539,8 @@
      "rating": 32,
      "last6": "4/11/10/7/4/3",
      "gear": "TT",
-     "win_prob": 0.1017,
-     "fair_odds": 9.8,
+     "win_prob": 0.1015,
+     "fair_odds": 9.9,
      "style": "前列",
      "speed_best": -6.2,
      "perf_best": 44.4,
@@ -554,7 +554,7 @@
      ],
      "cons": [
       "上仗表現評分",
-      "表現評分(近績最佳)"
+      "近況"
      ]
     },
     {
@@ -569,8 +569,8 @@
      "rating": 24,
      "last6": "6/2/6/11/9/4",
      "gear": "B",
-     "win_prob": 0.0753,
-     "fair_odds": 13.3,
+     "win_prob": 0.0746,
+     "fair_odds": 13.4,
      "style": "中游",
      "speed_best": -3.8,
      "perf_best": 28.7,
@@ -599,7 +599,7 @@
      "rating": 38,
      "last6": "9/6/3/8/13/9",
      "gear": "H/TT",
-     "win_prob": 0.0726,
+     "win_prob": 0.0724,
      "fair_odds": 13.8,
      "style": "後上",
      "speed_best": -4.0,
@@ -608,9 +608,9 @@
      "runs_in_db": 9,
      "draw_edge": 0.19,
      "pros": [
-      "降班",
       "檔位統計",
-      "前置跑法"
+      "降班",
+      "讓磅著數"
      ],
      "cons": [
       "騎師",
@@ -629,8 +629,8 @@
      "rating": 36,
      "last6": "8/8/8/3/3/10",
      "gear": "B/TT",
-     "win_prob": 0.0679,
-     "fair_odds": 14.7,
+     "win_prob": 0.0676,
+     "fair_odds": 14.8,
      "style": "中游",
      "speed_best": -0.5,
      "perf_best": 48.2,
@@ -658,8 +658,8 @@
      "rating": 40,
      "last6": "4/12/11/7/6/8",
      "gear": "V",
-     "win_prob": 0.0617,
-     "fair_odds": 16.2,
+     "win_prob": 0.059,
+     "fair_odds": 16.9,
      "style": "後上",
      "speed_best": -3.7,
      "perf_best": 53.6,
@@ -688,8 +688,8 @@
      "rating": 26,
      "last6": "6/7/4/8/8/13",
      "gear": "B/TT",
-     "win_prob": 0.0458,
-     "fair_odds": 21.8,
+     "win_prob": 0.0469,
+     "fair_odds": 21.3,
      "style": "後上",
      "speed_best": 2.7,
      "perf_best": 37.5,
@@ -699,7 +699,7 @@
      "pros": [
       "負磅",
       "近況",
-      "前置跑法"
+      "讓磅著數"
      ],
      "cons": [
       "過往市場評價",
@@ -718,8 +718,8 @@
      "rating": 33,
      "last6": "11/9/9/7/12/9",
      "gear": "",
-     "win_prob": 0.0355,
-     "fair_odds": 28.2,
+     "win_prob": 0.0356,
+     "fair_odds": 28.1,
      "style": "中游",
      "speed_best": -4.8,
      "perf_best": 37.5,
@@ -727,7 +727,8 @@
      "runs_in_db": 16,
      "draw_edge": -0.117,
      "pros": [
-      "後段追勁"
+      "後段追勁",
+      "路程適應"
      ],
      "cons": [
       "近況",
@@ -746,8 +747,8 @@
      "rating": 37,
      "last6": "6/7/11/6/7/12",
      "gear": "TT",
-     "win_prob": 0.0294,
-     "fair_odds": 34.0,
+     "win_prob": 0.0291,
+     "fair_odds": 34.3,
      "style": "後上",
      "speed_best": -3.5,
      "perf_best": 47.1,
@@ -775,8 +776,8 @@
      "rating": 36,
      "last6": "11/6/10/11/7/1",
      "gear": "",
-     "win_prob": 0.0293,
-     "fair_odds": 34.1,
+     "win_prob": 0.0283,
+     "fair_odds": 35.3,
      "style": "前列",
      "speed_best": 3.0,
      "perf_best": 41.5,
@@ -790,30 +791,6 @@
      "cons": [
       "檔位統計",
       "過往市場評價"
-     ]
-    },
-    {
-     "rank": 12,
-     "no": 4,
-     "horse": "寫我其誰",
-     "horse_code": "L048",
-     "jockey": "霍宏聲",
-     "trainer": "葉楚航",
-     "draw": 11,
-     "weight": 132,
-     "rating": 37,
-     "last6": "6/7/11/6/7/12",
-     "gear": "TT",
-     "win_prob": 0.0382,
-     "fair_odds": 26.2,
-     "style": "後上",
-     "speed_best": -3.5,
-     "runs_in_db": 8,
-     "draw_edge": -0.387,
-     "pros": [],
-     "cons": [
-      "檔位統計",
-      "跑道跑法偏差"
      ]
     }
    ],
@@ -846,8 +823,8 @@
      "rating": 60,
      "last6": "4/1/1/2/5/2",
      "gear": "V/TT",
-     "win_prob": 0.2213,
-     "fair_odds": 4.5,
+     "win_prob": 0.2173,
+     "fair_odds": 4.6,
      "style": "中游",
      "speed_best": 1.2,
      "perf_best": 59.9,
@@ -876,8 +853,8 @@
      "rating": 52,
      "last6": "2/2/2/4/5/2",
      "gear": "XB",
-     "win_prob": 0.1538,
-     "fair_odds": 6.5,
+     "win_prob": 0.1526,
+     "fair_odds": 6.6,
      "style": "中游",
      "speed_best": -2.7,
      "perf_best": 57.5,
@@ -889,7 +866,7 @@
       "過往市場評價"
      ],
      "cons": [
-      "練馬師"
+      "路程適應"
      ]
     },
     {
@@ -904,10 +881,10 @@
      "rating": 56,
      "last6": "4/13/3/3/3/9",
      "gear": "V-/B2",
-     "win_prob": 0.11,
-     "fair_odds": 9.1,
+     "win_prob": 0.1131,
+     "fair_odds": 8.8,
      "style": "領放",
-     "speed_best": 3.1,
+     "speed_best": 2.9,
      "perf_best": 67.4,
      "handicap_edge": 11.4,
      "runs_in_db": 11,
@@ -918,8 +895,8 @@
       "騎師"
      ],
      "cons": [
-      "前置跑法",
-      "負磅"
+      "負磅",
+      "前置跑法"
      ]
     },
     {
@@ -934,8 +911,8 @@
      "rating": 52,
      "last6": "-",
      "gear": "",
-     "win_prob": 0.0853,
-     "fair_odds": 11.7,
+     "win_prob": 0.0873,
+     "fair_odds": 11.5,
      "style": "未知",
      "speed_best": null,
      "perf_best": null,
@@ -964,7 +941,7 @@
      "rating": 52,
      "last6": "6/10/4/7/3/6",
      "gear": "TT",
-     "win_prob": 0.0824,
+     "win_prob": 0.0829,
      "fair_odds": 12.1,
      "style": "領放",
      "speed_best": -2.7,
@@ -994,8 +971,8 @@
      "rating": 41,
      "last6": "4/7/9/2/4/1",
      "gear": "B/TT",
-     "win_prob": 0.0771,
-     "fair_odds": 13.0,
+     "win_prob": 0.0766,
+     "fair_odds": 13.1,
      "style": "中游",
      "speed_best": 0.4,
      "perf_best": 51.0,
@@ -1008,8 +985,7 @@
       "讓磅著數"
      ],
      "cons": [
-      "過往市場評價",
-      "表現評分(近績最佳)"
+      "過往市場評價"
      ]
     },
     {
@@ -1024,7 +1000,7 @@
      "rating": 50,
      "last6": "6/6",
      "gear": "B1",
-     "win_prob": 0.0568,
+     "win_prob": 0.057,
      "fair_odds": 17.6,
      "style": "中游",
      "speed_best": -2.8,
@@ -1053,10 +1029,10 @@
      "rating": 57,
      "last6": "4/3/14/12/10/12",
      "gear": "TT",
-     "win_prob": 0.052,
+     "win_prob": 0.0522,
      "fair_odds": 19.2,
      "style": "中游",
-     "speed_best": -5.5,
+     "speed_best": -5.8,
      "perf_best": 58.9,
      "handicap_edge": 1.9,
      "runs_in_db": 12,
@@ -1082,8 +1058,8 @@
      "rating": 48,
      "last6": "8/6/5/11/4/7",
      "gear": "TT",
-     "win_prob": 0.0519,
-     "fair_odds": 19.3,
+     "win_prob": 0.0516,
+     "fair_odds": 19.4,
      "style": "前列",
      "speed_best": -0.6,
      "perf_best": 58.0,
@@ -1092,12 +1068,11 @@
      "draw_edge": -0.053,
      "pros": [
       "讓磅著數",
-      "負磅",
-      "騎師"
+      "騎師",
+      "負磅"
      ],
      "cons": [
-      "過往市場評價",
-      "前置跑法"
+      "過往市場評價"
      ]
     },
     {
@@ -1112,8 +1087,8 @@
      "rating": 42,
      "last6": "7/3/7/9/7/12",
      "gear": "CP/TT",
-     "win_prob": 0.045,
-     "fair_odds": 22.2,
+     "win_prob": 0.0454,
+     "fair_odds": 22.0,
      "style": "前列",
      "speed_best": -6.5,
      "perf_best": 50.2,
@@ -1123,7 +1098,7 @@
      "pros": [
       "負磅",
       "後段追勁",
-      "近況"
+      "讓磅著數"
      ],
      "cons": [
       "檔位統計",
@@ -1142,8 +1117,8 @@
      "rating": 45,
      "last6": "6/7/9/7",
      "gear": "CP/TT",
-     "win_prob": 0.0393,
-     "fair_odds": 25.4,
+     "win_prob": 0.0395,
+     "fair_odds": 25.3,
      "style": "中游",
      "speed_best": -5.5,
      "perf_best": 53.1,
@@ -1152,7 +1127,8 @@
      "draw_edge": 0.251,
      "pros": [
       "檔位統計",
-      "負磅"
+      "負磅",
+      "讓磅著數"
      ],
      "cons": [
       "騎師",
@@ -1171,18 +1147,18 @@
      "rating": 58,
      "last6": "10/10/10/4",
      "gear": "TT",
-     "win_prob": 0.025,
-     "fair_odds": 40.0,
+     "win_prob": 0.0247,
+     "fair_odds": 40.5,
      "style": "後上",
-     "speed_best": -3.7,
+     "speed_best": -4.3,
      "perf_best": 67.3,
      "handicap_edge": 9.3,
      "runs_in_db": 4,
      "draw_edge": -0.108,
      "pros": [
       "降班",
-      "前置跑法",
-      "讓磅著數"
+      "讓磅著數",
+      "前置跑法"
      ],
      "cons": [
       "騎師",
@@ -1219,10 +1195,10 @@
      "rating": 43,
      "last6": "2/2/3/2/2/7",
      "gear": "",
-     "win_prob": 0.2543,
+     "win_prob": 0.2574,
      "fair_odds": 3.9,
      "style": "中游",
-     "speed_best": -6.4,
+     "speed_best": -6.6,
      "perf_best": 51.4,
      "handicap_edge": 8.4,
      "runs_in_db": 9,
@@ -1249,8 +1225,8 @@
      "rating": 42,
      "last6": "2/5/3/7/6/6",
      "gear": "E/V1/XB2/TT-",
-     "win_prob": 0.1822,
-     "fair_odds": 5.5,
+     "win_prob": 0.1792,
+     "fair_odds": 5.6,
      "style": "後上",
      "speed_best": -3.2,
      "perf_best": 50.1,
@@ -1264,7 +1240,7 @@
      ],
      "cons": [
       "後段追勁",
-      "跑道跑法偏差"
+      "表現評分(近績最佳)"
      ]
     },
     {
@@ -1279,7 +1255,7 @@
      "rating": 44,
      "last6": "9/5/4/4/2/7",
      "gear": "CP-/B2/TT",
-     "win_prob": 0.1316,
+     "win_prob": 0.1317,
      "fair_odds": 7.6,
      "style": "前列",
      "speed_best": -0.2,
@@ -1308,8 +1284,8 @@
      "rating": 46,
      "last6": "12/1/6/3/7/5",
      "gear": "TT",
-     "win_prob": 0.1079,
-     "fair_odds": 9.3,
+     "win_prob": 0.1068,
+     "fair_odds": 9.4,
      "style": "前列",
      "speed_best": -5.0,
      "perf_best": 48.0,
@@ -1318,8 +1294,7 @@
      "draw_edge": -0.004,
      "pros": [
       "過往市場評價",
-      "後段追勁",
-      "跑道跑法偏差"
+      "後段追勁"
      ],
      "cons": [
       "上仗表現評分",
@@ -1338,8 +1313,8 @@
      "rating": 44,
      "last6": "6/11/5/12/9/4",
      "gear": "H/TT",
-     "win_prob": 0.0674,
-     "fair_odds": 14.8,
+     "win_prob": 0.0681,
+     "fair_odds": 14.7,
      "style": "中游",
      "speed_best": -2.5,
      "perf_best": 51.6,
@@ -1349,7 +1324,7 @@
      "pros": [
       "檔位統計",
       "騎師",
-      "後段追勁"
+      "讓磅著數"
      ],
      "cons": [
       "近況",
@@ -1368,7 +1343,7 @@
      "rating": 49,
      "last6": "7/8/5/9/11/13",
      "gear": "TT",
-     "win_prob": 0.0669,
+     "win_prob": 0.0671,
      "fair_odds": 14.9,
      "style": "中游",
      "speed_best": -2.0,
@@ -1397,8 +1372,8 @@
      "rating": 44,
      "last6": "2/2/6/10/10/11",
      "gear": "V/XB",
-     "win_prob": 0.0532,
-     "fair_odds": 18.8,
+     "win_prob": 0.054,
+     "fair_odds": 18.5,
      "style": "前列",
      "speed_best": -5.2,
      "perf_best": 47.9,
@@ -1406,8 +1381,7 @@
      "runs_in_db": 10,
      "draw_edge": -0.113,
      "pros": [
-      "近況",
-      "跑道跑法偏差"
+      "近況"
      ],
      "cons": [
       "騎師",
@@ -1426,21 +1400,21 @@
      "rating": 47,
      "last6": "11/5/7/5",
      "gear": "CP-/B1",
-     "win_prob": 0.0465,
+     "win_prob": 0.0464,
      "fair_odds": 21.5,
      "style": "後上",
-     "speed_best": -4.1,
+     "speed_best": -4.7,
      "perf_best": 56.7,
      "handicap_edge": 9.7,
      "runs_in_db": 4,
      "draw_edge": -0.117,
      "pros": [
-      "前置跑法",
-      "讓磅著數"
+      "讓磅著數",
+      "前置跑法"
      ],
      "cons": [
       "騎師",
-      "後段追勁"
+      "近況"
      ]
     },
     {
@@ -1455,8 +1429,8 @@
      "rating": 56,
      "last6": "3/5/13/13/10",
      "gear": "TT",
-     "win_prob": 0.0342,
-     "fair_odds": 29.2,
+     "win_prob": 0.0333,
+     "fair_odds": 30.1,
      "style": "後上",
      "speed_best": -0.3,
      "perf_best": 62.3,
@@ -1464,9 +1438,9 @@
      "runs_in_db": 5,
      "draw_edge": 0.145,
      "pros": [
-      "前置跑法",
       "檔位統計",
-      "近況"
+      "近況",
+      "前置跑法"
      ],
      "cons": [
       "過往市場評價",
@@ -1485,18 +1459,18 @@
      "rating": 42,
      "last6": "14/12/10/11/4/11",
      "gear": "TT",
-     "win_prob": 0.0228,
-     "fair_odds": 43.8,
+     "win_prob": 0.0238,
+     "fair_odds": 42.0,
      "style": "中游",
-     "speed_best": -6.9,
+     "speed_best": -7.2,
      "perf_best": 58.3,
      "handicap_edge": 16.3,
      "runs_in_db": 6,
      "draw_edge": 0.048,
      "pros": [
       "讓磅著數",
-      "後段追勁",
-      "負磅"
+      "路程適應",
+      "後段追勁"
      ],
      "cons": [
       "近況",
@@ -1515,10 +1489,10 @@
      "rating": 46,
      "last6": "10/10/8/4",
      "gear": "SR",
-     "win_prob": 0.0185,
-     "fair_odds": 54.2,
+     "win_prob": 0.0183,
+     "fair_odds": 54.5,
      "style": "中游",
-     "speed_best": -12.9,
+     "speed_best": -13.0,
      "perf_best": 46.2,
      "handicap_edge": 0.2,
      "runs_in_db": 4,
@@ -1543,10 +1517,10 @@
      "rating": 46,
      "last6": "10/8/11",
      "gear": "",
-     "win_prob": 0.0144,
-     "fair_odds": 69.5,
+     "win_prob": 0.0139,
+     "fair_odds": 72.0,
      "style": "中游",
-     "speed_best": -16.2,
+     "speed_best": -16.4,
      "perf_best": 43.6,
      "handicap_edge": -2.4,
      "runs_in_db": 3,
@@ -1590,7 +1564,7 @@
      "rating": 55,
      "last6": "2/4/2/3/3/5",
      "gear": "V/TT",
-     "win_prob": 0.228,
+     "win_prob": 0.2268,
      "fair_odds": 4.4,
      "style": "中游",
      "speed_best": 4.2,
@@ -1620,7 +1594,7 @@
      "rating": 55,
      "last6": "3/1/3/3/5/5",
      "gear": "B/SR/TT",
-     "win_prob": 0.1733,
+     "win_prob": 0.1725,
      "fair_odds": 5.8,
      "style": "中游",
      "speed_best": 0.7,
@@ -1649,8 +1623,8 @@
      "rating": 52,
      "last6": "-",
      "gear": "H1/XB1",
-     "win_prob": 0.165,
-     "fair_odds": 6.1,
+     "win_prob": 0.1696,
+     "fair_odds": 5.9,
      "style": "未知",
      "speed_best": null,
      "perf_best": null,
@@ -1658,8 +1632,8 @@
      "runs_in_db": 0,
      "draw_edge": 0.238,
      "pros": [
-      "初出",
       "騎師",
+      "初出",
       "過往市場評價"
      ],
      "cons": [
@@ -1679,8 +1653,8 @@
      "rating": 55,
      "last6": "9/11/3/11/7/13",
      "gear": "CP/TT",
-     "win_prob": 0.0995,
-     "fair_odds": 10.0,
+     "win_prob": 0.1016,
+     "fair_odds": 9.8,
      "style": "中游",
      "speed_best": 1.3,
      "perf_best": 63.8,
@@ -1693,7 +1667,8 @@
       "騎師"
      ],
      "cons": [
-      "近況"
+      "近況",
+      "負磅"
      ]
     },
     {
@@ -1708,7 +1683,7 @@
      "rating": 60,
      "last6": "9/7/7/10/12/4",
      "gear": "V-",
-     "win_prob": 0.0767,
+     "win_prob": 0.077,
      "fair_odds": 13.0,
      "style": "領放",
      "speed_best": -5.2,
@@ -1738,8 +1713,8 @@
      "rating": 54,
      "last6": "2/6/6",
      "gear": "TT",
-     "win_prob": 0.0758,
-     "fair_odds": 13.2,
+     "win_prob": 0.0716,
+     "fair_odds": 14.0,
      "style": "後上",
      "speed_best": -0.8,
      "perf_best": 58.4,
@@ -1768,13 +1743,13 @@
      "rating": 52,
      "last6": "4/4/10/5/10/5",
      "gear": "V/XB",
-     "win_prob": 0.057,
-     "fair_odds": 17.6,
+     "win_prob": 0.056,
+     "fair_odds": 17.9,
      "style": "中游",
      "speed_best": 0.4,
      "perf_best": 58.8,
      "handicap_edge": 6.8,
-     "runs_in_db": 15,
+     "runs_in_db": 16,
      "draw_edge": -0.202,
      "pros": [
       "近況",
@@ -1800,7 +1775,7 @@
      "win_prob": 0.0383,
      "fair_odds": 26.1,
      "style": "中游",
-     "speed_best": -7.7,
+     "speed_best": -7.9,
      "perf_best": 47.0,
      "handicap_edge": 2.0,
      "runs_in_db": 8,
@@ -1855,10 +1830,10 @@
      "rating": 47,
      "last6": "10/14/12",
      "gear": "H/TT",
-     "win_prob": 0.0253,
-     "fair_odds": 39.5,
+     "win_prob": 0.0254,
+     "fair_odds": 39.4,
      "style": "前列",
-     "speed_best": -13.1,
+     "speed_best": -13.2,
      "perf_best": 44.9,
      "handicap_edge": -2.1,
      "runs_in_db": 3,
@@ -1885,8 +1860,8 @@
      "rating": 54,
      "last6": "8/9/8/12/12/7",
      "gear": "TT",
-     "win_prob": 0.0166,
-     "fair_odds": 60.1,
+     "win_prob": 0.0168,
+     "fair_odds": 59.6,
      "style": "後上",
      "speed_best": -0.3,
      "perf_best": 57.1,
@@ -1894,8 +1869,7 @@
      "runs_in_db": 7,
      "draw_edge": -0.108,
      "pros": [
-      "後段追勁",
-      "前置跑法"
+      "後段追勁"
      ],
      "cons": [
       "過往市場評價",
@@ -1914,8 +1888,8 @@
      "rating": 45,
      "last6": "8/14/10/7/10/12",
      "gear": "B/TT",
-     "win_prob": 0.0155,
-     "fair_odds": 64.6,
+     "win_prob": 0.0154,
+     "fair_odds": 64.7,
      "style": "後上",
      "speed_best": -7.6,
      "perf_best": 49.3,
@@ -1924,7 +1898,8 @@
      "draw_edge": -0.053,
      "pros": [
       "負磅",
-      "前置跑法"
+      "前置跑法",
+      "路程適應"
      ],
      "cons": [
       "過往市場評價",
@@ -1961,7 +1936,7 @@
      "rating": 58,
      "last6": "3/3/10/5/4/7",
      "gear": "CP/TT",
-     "win_prob": 0.2015,
+     "win_prob": 0.2019,
      "fair_odds": 5.0,
      "style": "前列",
      "speed_best": -1.2,
@@ -1975,8 +1950,7 @@
       "檔位統計"
      ],
      "cons": [
-      "負磅",
-      "前置跑法"
+      "負磅"
      ]
     },
     {
@@ -1991,7 +1965,7 @@
      "rating": 48,
      "last6": "1/2/3/5/3/9",
      "gear": "",
-     "win_prob": 0.1554,
+     "win_prob": 0.1565,
      "fair_odds": 6.4,
      "style": "中游",
      "speed_best": -7.2,
@@ -2021,8 +1995,8 @@
      "rating": 60,
      "last6": "4/6/8/13/4/3",
      "gear": "B2/TT2",
-     "win_prob": 0.1439,
-     "fair_odds": 6.9,
+     "win_prob": 0.1409,
+     "fair_odds": 7.1,
      "style": "中游",
      "speed_best": -2.4,
      "perf_best": 73.1,
@@ -2051,7 +2025,7 @@
      "rating": 57,
      "last6": "8/5/3/3/3/2",
      "gear": "B",
-     "win_prob": 0.1306,
+     "win_prob": 0.1304,
      "fair_odds": 7.7,
      "style": "前列",
      "speed_best": 6.3,
@@ -2081,8 +2055,8 @@
      "rating": 58,
      "last6": "1/8/4/12/6/7",
      "gear": "",
-     "win_prob": 0.1098,
-     "fair_odds": 9.1,
+     "win_prob": 0.1083,
+     "fair_odds": 9.2,
      "style": "中游",
      "speed_best": -1.2,
      "perf_best": 58.2,
@@ -2090,8 +2064,8 @@
      "runs_in_db": 15,
      "draw_edge": -0.053,
      "pros": [
-      "近況",
-      "騎師"
+      "騎師",
+      "近況"
      ],
      "cons": [
       "負磅"
@@ -2109,8 +2083,8 @@
      "rating": 52,
      "last6": "-",
      "gear": "",
-     "win_prob": 0.0827,
-     "fair_odds": 12.1,
+     "win_prob": 0.0855,
+     "fair_odds": 11.7,
      "style": "未知",
      "speed_best": null,
      "perf_best": null,
@@ -2139,10 +2113,10 @@
      "rating": 42,
      "last6": "1/11/10/11/3/1",
      "gear": "B",
-     "win_prob": 0.0682,
-     "fair_odds": 14.7,
+     "win_prob": 0.0689,
+     "fair_odds": 14.5,
      "style": "領放",
-     "speed_best": 0.5,
+     "speed_best": 0.3,
      "perf_best": 47.5,
      "handicap_edge": 5.5,
      "runs_in_db": 20,
@@ -2169,8 +2143,8 @@
      "rating": 57,
      "last6": "6/8/13/10/11/6",
      "gear": "TT",
-     "win_prob": 0.0383,
-     "fair_odds": 26.1,
+     "win_prob": 0.039,
+     "fair_odds": 25.7,
      "style": "前列",
      "speed_best": -5.4,
      "perf_best": 66.2,
@@ -2198,8 +2172,8 @@
      "rating": 56,
      "last6": "11/6/14/7/1/10",
      "gear": "PC",
-     "win_prob": 0.0254,
-     "fair_odds": 39.4,
+     "win_prob": 0.0253,
+     "fair_odds": 39.5,
      "style": "中游",
      "speed_best": -1.2,
      "perf_best": 61.7,
@@ -2226,17 +2200,15 @@
      "rating": 54,
      "last6": "7/8/11/14/14/11",
      "gear": "XB/TT",
-     "win_prob": 0.0242,
-     "fair_odds": 41.4,
+     "win_prob": 0.0239,
+     "fair_odds": 41.8,
      "style": "後上",
-     "speed_best": -1.6,
+     "speed_best": -2.1,
      "perf_best": 59.7,
      "handicap_edge": 5.7,
      "runs_in_db": 7,
      "draw_edge": 0.012,
-     "pros": [
-      "前置跑法"
-     ],
+     "pros": [],
      "cons": [
       "過往市場評價",
       "近況"
@@ -2254,8 +2226,8 @@
      "rating": 52,
      "last6": "10",
      "gear": "",
-     "win_prob": 0.0116,
-     "fair_odds": 86.0,
+     "win_prob": 0.0114,
+     "fair_odds": 87.5,
      "style": "後上",
      "speed_best": -11.2,
      "perf_best": 42.5,
@@ -2264,11 +2236,11 @@
      "draw_edge": -0.352,
      "pros": [
       "前置跑法",
-      "負磅"
+      "路程適應"
      ],
      "cons": [
       "近況",
-      "騎師"
+      "過往市場評價"
      ]
     },
     {
@@ -2283,8 +2255,8 @@
      "rating": 59,
      "last6": "12/12/11/12",
      "gear": "TT",
-     "win_prob": 0.0085,
-     "fair_odds": 117.8,
+     "win_prob": 0.0079,
+     "fair_odds": 126.1,
      "style": "後上",
      "speed_best": -8.7,
      "perf_best": 57.8,
@@ -2292,8 +2264,8 @@
      "runs_in_db": 4,
      "draw_edge": -0.202,
      "pros": [
-      "前置跑法",
       "降班",
+      "前置跑法",
       "休賽"
      ],
      "cons": [
@@ -2331,8 +2303,8 @@
      "rating": 69,
      "last6": "6/4/5/1/1/2",
      "gear": "B",
-     "win_prob": 0.2419,
-     "fair_odds": 4.1,
+     "win_prob": 0.2397,
+     "fair_odds": 4.2,
      "style": "中游",
      "speed_best": 4.3,
      "perf_best": 76.8,
@@ -2345,7 +2317,8 @@
       "近況"
      ],
      "cons": [
-      "後段追勁"
+      "後段追勁",
+      "路程適應"
      ]
     },
     {
@@ -2360,8 +2333,8 @@
      "rating": 65,
      "last6": "7/6/4/3/2/2",
      "gear": "XB/TT",
-     "win_prob": 0.2115,
-     "fair_odds": 4.7,
+     "win_prob": 0.2068,
+     "fair_odds": 4.8,
      "style": "領放",
      "speed_best": 4.5,
      "perf_best": 77.6,
@@ -2374,7 +2347,8 @@
       "騎師"
      ],
      "cons": [
-      "前置跑法"
+      "前置跑法",
+      "路程適應"
      ]
     },
     {
@@ -2389,13 +2363,13 @@
      "rating": 61,
      "last6": "9/6/2/7/8/4",
      "gear": "CP/TT",
-     "win_prob": 0.1033,
-     "fair_odds": 9.7,
+     "win_prob": 0.1042,
+     "fair_odds": 9.6,
      "style": "領放",
      "speed_best": -3.6,
      "perf_best": 67.4,
      "handicap_edge": 6.4,
-     "runs_in_db": 14,
+     "runs_in_db": 15,
      "draw_edge": 0.247,
      "pros": [
       "檔位統計",
@@ -2419,8 +2393,8 @@
      "rating": 78,
      "last6": "1/7/5/4/11/4",
      "gear": "B",
-     "win_prob": 0.0862,
-     "fair_odds": 11.6,
+     "win_prob": 0.0875,
+     "fair_odds": 11.4,
      "style": "中游",
      "speed_best": 6.5,
      "perf_best": 81.1,
@@ -2430,38 +2404,11 @@
      "pros": [
       "近況",
       "過往市場評價",
-      "表現評分(近績最佳)"
+      "上仗表現評分"
      ],
      "cons": [
       "負磅",
       "檔位統計"
-     ]
-    },
-    {
-     "rank": 4,
-     "no": 2,
-     "horse": "一定掂",
-     "horse_code": "J225",
-     "jockey": "奧爾民",
-     "trainer": "姚本輝",
-     "draw": 5,
-     "weight": 135,
-     "rating": 78,
-     "last6": "1/7/5/4/11/4",
-     "gear": "B",
-     "win_prob": 0.1042,
-     "fair_odds": 9.6,
-     "style": "中游",
-     "speed_best": 6.5,
-     "runs_in_db": 13,
-     "draw_edge": -0.151,
-     "pros": [
-      "近況",
-      "速度指數(近績最佳)"
-     ],
-     "cons": [
-      "檔位統計",
-      "負磅"
      ]
     },
     {
@@ -2476,8 +2423,8 @@
      "rating": 64,
      "last6": "10/6",
      "gear": "",
-     "win_prob": 0.0758,
-     "fair_odds": 13.2,
+     "win_prob": 0.0781,
+     "fair_odds": 12.8,
      "style": "後上",
      "speed_best": -2.6,
      "perf_best": 68.1,
@@ -2486,8 +2433,8 @@
      "draw_edge": 0.19,
      "pros": [
       "檔位統計",
-      "前置跑法",
-      "負磅"
+      "負磅",
+      "前置跑法"
      ],
      "cons": [
       "近況",
@@ -2506,8 +2453,8 @@
      "rating": 78,
      "last6": "4/6/4/1/13/9",
      "gear": "XB",
-     "win_prob": 0.0726,
-     "fair_odds": 13.8,
+     "win_prob": 0.0729,
+     "fair_odds": 13.7,
      "style": "前列",
      "speed_best": -0.5,
      "perf_best": 81.2,
@@ -2517,7 +2464,7 @@
      "pros": [
       "近況",
       "降班",
-      "上仗表現評分"
+      "檔位統計"
      ],
      "cons": [
       "騎師",
@@ -2536,8 +2483,8 @@
      "rating": 64,
      "last6": "10/8/2/5/14/8",
      "gear": "B/TT",
-     "win_prob": 0.0495,
-     "fair_odds": 20.2,
+     "win_prob": 0.0512,
+     "fair_odds": 19.5,
      "style": "前列",
      "speed_best": 3.0,
      "perf_best": 76.2,
@@ -2566,8 +2513,8 @@
      "rating": 71,
      "last6": "10/10/9/8/1/2",
      "gear": "PC-/TT",
-     "win_prob": 0.0449,
-     "fair_odds": 22.3,
+     "win_prob": 0.0442,
+     "fair_odds": 22.6,
      "style": "領放",
      "speed_best": -2.6,
      "perf_best": 70.9,
@@ -2577,8 +2524,7 @@
      "pros": [
       "後段追勁",
       "騎師",
-      "跑道跑法偏差",
-      "練馬師"
+      "跑道跑法偏差"
      ],
      "cons": [
       "近況",
@@ -2625,8 +2571,8 @@
      "rating": 67,
      "last6": "6/12/12/7",
      "gear": "",
-     "win_prob": 0.031,
-     "fair_odds": 32.3,
+     "win_prob": 0.0316,
+     "fair_odds": 31.6,
      "style": "後上",
      "speed_best": 0.1,
      "perf_best": 75.5,
@@ -2655,8 +2601,8 @@
      "rating": 61,
      "last6": "5/6/13/7/10/11",
      "gear": "B",
-     "win_prob": 0.0304,
-     "fair_odds": 32.9,
+     "win_prob": 0.0307,
+     "fair_odds": 32.5,
      "style": "中游",
      "speed_best": -2.8,
      "perf_best": 70.7,
@@ -2665,8 +2611,8 @@
      "draw_edge": -0.416,
      "pros": [
       "負磅",
-      "近況",
-      "讓磅著數"
+      "讓磅著數",
+      "近況"
      ],
      "cons": [
       "騎師",
@@ -2686,7 +2632,7 @@
      "last6": "14",
      "gear": "CP1/TT",
      "win_prob": 0.0114,
-     "fair_odds": 87.5,
+     "fair_odds": 87.4,
      "style": "後上",
      "speed_best": -2.9,
      "perf_best": 69.4,
@@ -2694,9 +2640,9 @@
      "runs_in_db": 1,
      "draw_edge": 0.19,
      "pros": [
-      "前置跑法",
       "檔位統計",
-      "上仗表現評分"
+      "前置跑法",
+      "步速形勢"
      ],
      "cons": [
       "近況",
@@ -2733,7 +2679,7 @@
      "rating": 64,
      "last6": "2/1/1/5/3/7",
      "gear": "B/XB",
-     "win_prob": 0.2944,
+     "win_prob": 0.292,
      "fair_odds": 3.4,
      "style": "領放",
      "speed_best": 2.7,
@@ -2763,8 +2709,8 @@
      "rating": 67,
      "last6": "1/8/9/1",
      "gear": "TT",
-     "win_prob": 0.1178,
-     "fair_odds": 8.5,
+     "win_prob": 0.1168,
+     "fair_odds": 8.6,
      "style": "前列",
      "speed_best": -1.5,
      "perf_best": 59.8,
@@ -2793,8 +2739,8 @@
      "rating": 65,
      "last6": "3/4",
      "gear": "TT",
-     "win_prob": 0.1086,
-     "fair_odds": 9.2,
+     "win_prob": 0.1069,
+     "fair_odds": 9.4,
      "style": "領放",
      "speed_best": -9.5,
      "perf_best": 72.5,
@@ -2823,8 +2769,8 @@
      "rating": 75,
      "last6": "2/2/1/5/5/1",
      "gear": "TT",
-     "win_prob": 0.1068,
-     "fair_odds": 9.4,
+     "win_prob": 0.1051,
+     "fair_odds": 9.5,
      "style": "前列",
      "speed_best": 4.8,
      "perf_best": 80.7,
@@ -2853,10 +2799,10 @@
      "rating": 67,
      "last6": "10/11/1/3/5/7",
      "gear": "B",
-     "win_prob": 0.075,
-     "fair_odds": 13.3,
+     "win_prob": 0.076,
+     "fair_odds": 13.2,
      "style": "中游",
-     "speed_best": 4.3,
+     "speed_best": 4.2,
      "perf_best": 71.9,
      "handicap_edge": 4.9,
      "runs_in_db": 11,
@@ -2867,8 +2813,8 @@
       "表現評分(近績最佳)"
      ],
      "cons": [
-      "休賽",
-      "近況"
+      "近況",
+      "休賽"
      ]
     },
     {
@@ -2883,8 +2829,8 @@
      "rating": 76,
      "last6": "-",
      "gear": "B-/TT-",
-     "win_prob": 0.0598,
-     "fair_odds": 16.7,
+     "win_prob": 0.0631,
+     "fair_odds": 15.8,
      "style": "未知",
      "speed_best": null,
      "perf_best": null,
@@ -2898,7 +2844,7 @@
      ],
      "cons": [
       "缺速度數據",
-      "負磅"
+      "近況"
      ]
     },
     {
@@ -2913,7 +2859,7 @@
      "rating": 63,
      "last6": "12/4/10/6/7/2",
      "gear": "B/TT",
-     "win_prob": 0.0596,
+     "win_prob": 0.0597,
      "fair_odds": 16.8,
      "style": "領放",
      "speed_best": -4.2,
@@ -2943,7 +2889,7 @@
      "rating": 70,
      "last6": "11/4/3/6/5/3",
      "gear": "B-/TT",
-     "win_prob": 0.0577,
+     "win_prob": 0.0578,
      "fair_odds": 17.3,
      "style": "中游",
      "speed_best": 5.1,
@@ -2973,8 +2919,8 @@
      "rating": 71,
      "last6": "5/9/8/10/3/1",
      "gear": "XB",
-     "win_prob": 0.0445,
-     "fair_odds": 22.5,
+     "win_prob": 0.0453,
+     "fair_odds": 22.1,
      "style": "後上",
      "speed_best": 4.5,
      "perf_best": 80.5,
@@ -2984,7 +2930,7 @@
      "pros": [
       "騎師",
       "表現評分(近績最佳)",
-      "前置跑法"
+      "讓磅著數"
      ],
      "cons": [
       "過往市場評價",
@@ -3003,8 +2949,8 @@
      "rating": 71,
      "last6": "3/11/5/9/5/10",
      "gear": "",
-     "win_prob": 0.0385,
-     "fair_odds": 26.0,
+     "win_prob": 0.0399,
+     "fair_odds": 25.1,
      "style": "中游",
      "speed_best": 3.3,
      "perf_best": 77.7,
@@ -3033,8 +2979,8 @@
      "rating": 61,
      "last6": "6/11/8/8/9/1",
      "gear": "TT",
-     "win_prob": 0.0197,
-     "fair_odds": 50.9,
+     "win_prob": 0.0198,
+     "fair_odds": 50.5,
      "style": "領放",
      "speed_best": -5.7,
      "perf_best": 66.6,
@@ -3062,10 +3008,10 @@
      "rating": 61,
      "last6": "11/9/7/1/5/6",
      "gear": "",
-     "win_prob": 0.0175,
-     "fair_odds": 57.2,
+     "win_prob": 0.0177,
+     "fair_odds": 56.5,
      "style": "後上",
-     "speed_best": 1.9,
+     "speed_best": 1.8,
      "perf_best": 67.0,
      "handicap_edge": 6.0,
      "runs_in_db": 12,
@@ -3110,8 +3056,8 @@
      "rating": 76,
      "last6": "1/1/11/3/6/7",
      "gear": "CP/TT",
-     "win_prob": 0.1917,
-     "fair_odds": 5.2,
+     "win_prob": 0.1895,
+     "fair_odds": 5.3,
      "style": "後上",
      "speed_best": -1.7,
      "perf_best": 77.6,
@@ -3140,18 +3086,18 @@
      "rating": 63,
      "last6": "10/3/2/5/8/12",
      "gear": "TT",
-     "win_prob": 0.1358,
+     "win_prob": 0.1345,
      "fair_odds": 7.4,
      "style": "中游",
      "speed_best": 0.5,
      "perf_best": 75.4,
      "handicap_edge": 12.4,
-     "runs_in_db": 9,
+     "runs_in_db": 10,
      "draw_edge": 0.225,
      "pros": [
       "過往市場評價",
-      "騎師",
-      "檔位統計"
+      "檔位統計",
+      "騎師"
      ],
      "cons": [
       "後段追勁"
@@ -3169,8 +3115,8 @@
      "rating": 62,
      "last6": "9/6/5/8/3/2",
      "gear": "B/TT",
-     "win_prob": 0.1263,
-     "fair_odds": 7.9,
+     "win_prob": 0.1255,
+     "fair_odds": 8.0,
      "style": "前列",
      "speed_best": -2.2,
      "perf_best": 71.0,
@@ -3180,7 +3126,7 @@
      "pros": [
       "騎師",
       "後段追勁",
-      "負磅"
+      "過往市場評價"
      ],
      "cons": [
       "近況",
@@ -3199,8 +3145,8 @@
      "rating": 64,
      "last6": "-",
      "gear": "CP1",
-     "win_prob": 0.0983,
-     "fair_odds": 10.2,
+     "win_prob": 0.1007,
+     "fair_odds": 9.9,
      "style": "未知",
      "speed_best": null,
      "perf_best": null,
@@ -3229,10 +3175,10 @@
      "rating": 67,
      "last6": "2/9/11/5/6/6",
      "gear": "",
-     "win_prob": 0.0931,
-     "fair_odds": 10.7,
+     "win_prob": 0.0946,
+     "fair_odds": 10.6,
      "style": "前列",
-     "speed_best": 5.6,
+     "speed_best": 5.5,
      "perf_best": 80.8,
      "handicap_edge": 13.8,
      "runs_in_db": 10,
@@ -3240,7 +3186,7 @@
      "pros": [
       "近況",
       "騎師",
-      "表現評分(近績最佳)"
+      "讓磅著數"
      ],
      "cons": [
       "檔位統計",
@@ -3259,8 +3205,8 @@
      "rating": 73,
      "last6": "4/5/5/6/8/4",
      "gear": "CP-/B1",
-     "win_prob": 0.0726,
-     "fair_odds": 13.8,
+     "win_prob": 0.0741,
+     "fair_odds": 13.5,
      "style": "中游",
      "speed_best": 4.8,
      "perf_best": 81.6,
@@ -3270,7 +3216,7 @@
      "pros": [
       "近況",
       "檔位統計",
-      "表現評分(近績最佳)"
+      "上仗表現評分"
      ],
      "cons": [
       "過往市場評價",
@@ -3289,7 +3235,7 @@
      "rating": 62,
      "last6": "10/1/3/5/3/3",
      "gear": "CP",
-     "win_prob": 0.0651,
+     "win_prob": 0.0647,
      "fair_odds": 15.4,
      "style": "中游",
      "speed_best": 3.2,
@@ -3303,8 +3249,7 @@
       "負磅"
      ],
      "cons": [
-      "檔位統計",
-      "後段追勁"
+      "檔位統計"
      ]
     },
     {
@@ -3319,8 +3264,8 @@
      "rating": 67,
      "last6": "6/8/5/4/1/6",
      "gear": "CP",
-     "win_prob": 0.0612,
-     "fair_odds": 16.4,
+     "win_prob": 0.0613,
+     "fair_odds": 16.3,
      "style": "中游",
      "speed_best": -0.6,
      "perf_best": 73.8,
@@ -3329,8 +3274,7 @@
      "draw_edge": -0.001,
      "pros": [
       "近況",
-      "表現評分(近績最佳)",
-      "上仗表現評分"
+      "表現評分(近績最佳)"
      ],
      "cons": [
       "過往市場評價",
@@ -3349,8 +3293,8 @@
      "rating": 69,
      "last6": "8/11/12/10/1",
      "gear": "V",
-     "win_prob": 0.0499,
-     "fair_odds": 20.0,
+     "win_prob": 0.0492,
+     "fair_odds": 20.3,
      "style": "中游",
      "speed_best": -9.5,
      "perf_best": 71.5,
@@ -3379,8 +3323,8 @@
      "rating": 64,
      "last6": "3/4/8/4",
      "gear": "",
-     "win_prob": 0.0489,
-     "fair_odds": 20.4,
+     "win_prob": 0.0484,
+     "fair_odds": 20.7,
      "style": "中游",
      "speed_best": -2.2,
      "perf_best": 69.2,
@@ -3407,8 +3351,8 @@
      "rating": 64,
      "last6": "11",
      "gear": "B/TT",
-     "win_prob": 0.0382,
-     "fair_odds": 26.2,
+     "win_prob": 0.0383,
+     "fair_odds": 26.1,
      "style": "中游",
      "speed_best": -4.6,
      "perf_best": 63.0,
@@ -3417,8 +3361,7 @@
      "draw_edge": -0.14,
      "pros": [
       "過往市場評價",
-      "後段追勁",
-      "休賽"
+      "後段追勁"
      ],
      "cons": [
       "近況",
@@ -3437,8 +3380,8 @@
      "rating": 60,
      "last6": "9/10/9/13/8/10",
      "gear": "V",
-     "win_prob": 0.0188,
-     "fair_odds": 53.3,
+     "win_prob": 0.0191,
+     "fair_odds": 52.4,
      "style": "中游",
      "speed_best": -4.9,
      "perf_best": 66.1,
@@ -3447,7 +3390,8 @@
      "draw_edge": -0.053,
      "pros": [
       "負磅",
-      "後段追勁"
+      "後段追勁",
+      "路程適應"
      ],
      "cons": [
       "騎師",
