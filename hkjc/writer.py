@@ -62,16 +62,12 @@ def summarise(a: dict) -> str:
     lines.append(s)
 
     # 3. picks
-    # "best of recent runs" is biased upward, so compare each horse's handicap
-    # edge with the field's typical edge rather than quoting the raw number
-    edges = sorted(x["handicap_edge"] for x in runners if x.get("perf_best") is not None)
-    mid = edges[len(edges) // 2] if edges else 0
     picks = []
     for label, x in zip(("首選", "次選", "三選"), by_model[:3]):
         why = "、".join(x["pros"][:3]) or "綜合數據"
         t = f"{label}{_name(x)}(模型 {_pct(x['win_prob'])},公平賠率 {x['fair_odds']}):{why}佔優"
-        rel = (x.get("handicap_edge") or 0) - mid
-        if x.get("perf_best") is not None and rel >= 3:
+        rel = x.get("handicap_edge") or 0  # already relative to the field median
+        if rel >= 3:
             t += f",讓磅著數比同場中位數多約 {rel:.0f} 分"
         picks.append(t)
     lines.append("【選擇】" + ";".join(picks) + "。")

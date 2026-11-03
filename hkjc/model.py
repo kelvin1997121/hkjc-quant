@@ -62,15 +62,19 @@ def band_top(race):
 
 
 def est_ratings(race, runners):
-    """Rating per runner: card rating if published, else band top minus weight below top weight."""
+    """Rating per runner: band top minus weight below the top weight.
+
+    Always estimated, even when the race card publishes real ratings: history has
+    no ratings, so the model was trained on these estimates, and live predictions
+    must use the same scale (real ratings differ by +1.3 on average, up to 7 points
+    where an apprentice claims).
+    """
     top = band_top(race)
     wts = [x.get("weight") or 0 for x in runners]
     maxw = max(wts) if wts else 0
     out = []
     for x, w in zip(runners, wts):
-        if x.get("rating"):
-            out.append(float(x["rating"]))
-        elif top is not None and w:
+        if top is not None and w:
             out.append(float(top - (maxw - w)))
         else:
             out.append(None)

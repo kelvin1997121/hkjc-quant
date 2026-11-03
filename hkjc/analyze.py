@@ -112,6 +112,11 @@ def analyse_race(state, params, race, odds=None):
     q = market_probs([win.get(x["no"], 0) for x in runners]) if win else None
     bw = (params or {}).get("blend")
     pb = blend(p, q, bw["a"], bw["b"]) if q is not None and bw else None
+    # "best of recent runs" is biased upward, so show the handicap edge relative to
+    # the field's median rather than as a raw number (raw medians run +4..+11)
+    hi = FEATURES.index("handicap_edge")
+    known = [X[i][hi] for i, e in enumerate(extra) if e["profile"]["perf_best"] is not None]
+    he_mid = float(np.median(known)) if known else 0.0
     order = np.argsort(-p)
     out = []
     for rank, i in enumerate(order, 1):
@@ -134,7 +139,7 @@ def analyse_race(state, params, race, odds=None):
             "style": style_label(prof["early"]),
             "speed_best": None if prof["speed_best"] is None else round(prof["speed_best"], 1),
             "perf_best": None if prof["perf_best"] is None else round(prof["perf_best"], 1),
-            "handicap_edge": round(float(X[i][FEATURES.index("handicap_edge")]), 1),
+            "handicap_edge": None if prof["perf_best"] is None else round(float(X[i][hi]) - he_mid, 1),
             "runs_in_db": prof["n_runs"],
             "draw_edge": round(float(X[i][FEATURES.index("draw_bias")]), 3),
             "pros": pos, "cons": neg,
