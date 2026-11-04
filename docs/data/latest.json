@@ -4,7 +4,7 @@
   "venue": "HV",
   "venue_zh": "跑馬地"
  },
- "updated_at": "2026-11-03T19:52:24+00:00",
+ "updated_at": "2026-11-04T06:10:52+00:00",
  "model": {
   "holdout": {
    "races": 644,
@@ -82,49 +82,13 @@
     "races": 0
    },
    "course_bias": "此跑道路程歷來前置馬有利",
-   "odds_updated": "04/11/2026 03:50",
+   "odds_updated": "04/11/2026 14:10",
    "longshots": [
-    {
-     "no": 4,
-     "horse": "馬運高",
-     "win_odds": 12.0,
-     "place_odds": 3.4,
-     "win_prob": 0.1508,
-     "rank": 2,
-     "style": "領放",
-     "pros": [
-      "過往市場評價",
-      "檔位統計",
-      "後段追勁"
-     ],
-     "cons": [
-      "上仗速度指數",
-      "步速形勢"
-     ]
-    },
-    {
-     "no": 5,
-     "horse": "辣得金",
-     "win_odds": 10.0,
-     "place_odds": 3.0,
-     "win_prob": 0.1285,
-     "rank": 3,
-     "style": "前列",
-     "pros": [
-      "近況",
-      "過往市場評價",
-      "路程適應"
-     ],
-     "cons": [
-      "騎練組合",
-      "步速形勢"
-     ]
-    },
     {
      "no": 2,
      "horse": "燊輝之星",
-     "win_odds": 16.0,
-     "place_odds": 4.6,
+     "win_odds": 14.0,
+     "place_odds": 4.2,
      "win_prob": 0.0899,
      "rank": 4,
      "style": "中游",
@@ -169,11 +133,11 @@
       "步速形勢",
       "末段速度(分段時間)"
      ],
-     "win_odds": 2.8,
-     "place_odds": 1.7,
-     "market_prob": 0.2876,
-     "blend_prob": 0.3021,
-     "ev": 0.846,
+     "win_odds": 3.5,
+     "place_odds": 1.9,
+     "market_prob": 0.2324,
+     "blend_prob": 0.2423,
+     "ev": 0.848,
      "value": false,
      "longshot": false
     },
@@ -206,13 +170,13 @@
       "上仗速度指數",
       "步速形勢"
      ],
-     "win_odds": 12.0,
-     "place_odds": 3.4,
-     "market_prob": 0.0671,
-     "blend_prob": 0.0655,
-     "ev": 0.786,
+     "win_odds": 9.8,
+     "place_odds": 2.5,
+     "market_prob": 0.083,
+     "blend_prob": 0.0822,
+     "ev": 0.805,
      "value": false,
-     "longshot": true
+     "longshot": false
     },
     {
      "rank": 3,
@@ -243,13 +207,13 @@
       "騎練組合",
       "步速形勢"
      ],
-     "win_odds": 10.0,
-     "place_odds": 3.0,
-     "market_prob": 0.0805,
-     "blend_prob": 0.0794,
-     "ev": 0.794,
+     "win_odds": 8.5,
+     "place_odds": 2.8,
+     "market_prob": 0.0957,
+     "blend_prob": 0.0954,
+     "ev": 0.811,
      "value": false,
-     "longshot": true
+     "longshot": false
     },
     {
      "rank": 4,
@@ -280,11 +244,11 @@
       "騎師",
       "騎練組合"
      ],
-     "win_odds": 16.0,
-     "place_odds": 4.6,
-     "market_prob": 0.0503,
-     "blend_prob": 0.0485,
-     "ev": 0.775,
+     "win_odds": 14.0,
+     "place_odds": 4.2,
+     "market_prob": 0.0581,
+     "blend_prob": 0.0565,
+     "ev": 0.791,
      "value": false,
      "longshot": true
     },
@@ -316,11 +280,11 @@
       "近況",
       "表現評分(近績最佳)"
      ],
-     "win_odds": 8.6,
-     "place_odds": 2.5,
-     "market_prob": 0.0936,
-     "blend_prob": 0.093,
-     "ev": 0.8,
+     "win_odds": 6.7,
+     "place_odds": 2.6,
+     "market_prob": 0.1214,
+     "blend_prob": 0.1225,
+     "ev": 0.821,
      "value": false,
      "longshot": false
     },
@@ -353,11 +317,11 @@
       "過往市場評價",
       "近況"
      ],
-     "win_odds": 16.0,
-     "place_odds": 5.2,
-     "market_prob": 0.0503,
-     "blend_prob": 0.0485,
-     "ev": 0.775,
+     "win_odds": 17.0,
+     "place_odds": 5.0,
+     "market_prob": 0.0479,
+     "blend_prob": 0.0461,
+     "ev": 0.783,
      "value": false,
      "longshot": false
     },
@@ -390,11 +354,11 @@
       "步速形勢",
       "近況"
      ],
-     "win_odds": 6.7,
+     "win_odds": 7.0,
      "place_odds": 2.4,
-     "market_prob": 0.1202,
-     "blend_prob": 0.1209,
-     "ev": 0.81,
+     "market_prob": 0.1162,
+     "blend_prob": 0.117,
+     "ev": 0.819,
      "value": false,
      "longshot": false
     },
@@ -428,10 +392,10 @@
       "騎練組合"
      ],
      "win_odds": 17.0,
-     "place_odds": 4.3,
-     "market_prob": 0.0474,
-     "blend_prob": 0.0455,
-     "ev": 0.773,
+     "place_odds": 4.6,
+     "market_prob": 0.0479,
+     "blend_prob": 0.0461,
+     "ev": 0.783,
      "value": false,
      "longshot": false
     },
@@ -463,11 +427,11 @@
       "騎師",
       "檔位統計"
      ],
-     "win_odds": 11.0,
-     "place_odds": 2.5,
-     "market_prob": 0.0732,
-     "blend_prob": 0.0718,
-     "ev": 0.79,
+     "win_odds": 12.0,
+     "place_odds": 2.8,
+     "market_prob": 0.0678,
+     "blend_prob": 0.0664,
+     "ev": 0.797,
      "value": false,
      "longshot": false
     },
@@ -499,11 +463,11 @@
       "近況",
       "步速形勢"
      ],
-     "win_odds": 21.0,
-     "place_odds": 5.7,
-     "market_prob": 0.0383,
-     "blend_prob": 0.0364,
-     "ev": 0.765,
+     "win_odds": 27.0,
+     "place_odds": 5.9,
+     "market_prob": 0.0301,
+     "blend_prob": 0.0284,
+     "ev": 0.766,
      "value": false,
      "longshot": false
     },
@@ -536,11 +500,11 @@
       "近況",
       "騎練組合"
      ],
-     "win_odds": 11.0,
-     "place_odds": 3.1,
-     "market_prob": 0.0732,
-     "blend_prob": 0.0718,
-     "ev": 0.79,
+     "win_odds": 9.9,
+     "place_odds": 3.3,
+     "market_prob": 0.0822,
+     "blend_prob": 0.0813,
+     "ev": 0.805,
      "value": false,
      "longshot": false
     },
@@ -573,17 +537,17 @@
       "過往市場評價",
       "近況"
      ],
-     "win_odds": 44.0,
-     "place_odds": 9.9,
-     "market_prob": 0.0183,
-     "blend_prob": 0.0168,
-     "ev": 0.737,
+     "win_odds": 47.0,
+     "place_odds": 10.0,
+     "market_prob": 0.0173,
+     "blend_prob": 0.0158,
+     "ev": 0.745,
      "value": false,
      "longshot": false
     }
    ],
    "ai": null,
-   "summary": "【步速】1號天下寵兒、4號馬運高、9號精益大師有機會爭放。預計步速偏快(7 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 9.2%、前列 10.7%、中游 8.9%、後上 6.8%;前置馬仍然較有利,不過領放馬優勢比平時細。跑法配合嘅熱門選擇:1號天下寵兒、4號馬運高。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:4號馬運高、10號飈誌。1號天下寵兒、5號辣得金檔位統計較差。\n【選擇】首選1號天下寵兒(模型 21%,公平賠率 4.7):過往市場評價、騎師、讓磅著數佔優,讓磅著數比同場中位數多約 9 分;次選4號馬運高(模型 15%,公平賠率 6.6):過往市場評價、檔位統計、後段追勁佔優;三選5號辣得金(模型 13%,公平賠率 7.8):近況、過往市場評價、路程適應佔優。\n【冷門】4號馬運高(獨贏 12,模型排第 2):過往市場評價、檔位統計;5號辣得金(獨贏 10,模型排第 3):近況、過往市場評價;2號燊輝之星(獨贏 16,模型排第 4):降班、讓磅著數。呢類馬歷來入位機會高過一般冷門,較適合位置或者連贏配腳,唔建議重注獨贏。\n【風險】按綜合機率計暫時冇明顯值博;1號天下寵兒要留意步速形勢、末段速度(分段時間);4號馬運高要留意上仗速度指數、步速形勢;賠率會變,以開跑前為準。"
+   "summary": "【步速】1號天下寵兒、4號馬運高、9號精益大師有機會爭放。預計步速偏快(7 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 9.2%、前列 10.7%、中游 8.9%、後上 6.8%;前置馬仍然較有利,不過領放馬優勢比平時細。跑法配合嘅熱門選擇:1號天下寵兒、4號馬運高。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:4號馬運高、10號飈誌。1號天下寵兒、5號辣得金檔位統計較差。\n【選擇】首選1號天下寵兒(模型 21%,公平賠率 4.7):過往市場評價、騎師、讓磅著數佔優,讓磅著數比同場中位數多約 9 分;次選4號馬運高(模型 15%,公平賠率 6.6):過往市場評價、檔位統計、後段追勁佔優;三選5號辣得金(模型 13%,公平賠率 7.8):近況、過往市場評價、路程適應佔優。\n【冷門】2號燊輝之星(獨贏 14,模型排第 4):降班、讓磅著數。呢類馬歷來入位機會高過一般冷門,較適合位置或者連贏配腳,唔建議重注獨贏。\n【風險】按綜合機率計暫時冇明顯值博;1號天下寵兒要留意步速形勢、末段速度(分段時間);4號馬運高要留意上仗速度指數、步速形勢;賠率會變,以開跑前為準。"
   },
   {
    "race_no": 2,
@@ -606,13 +570,31 @@
     "races": 0
    },
    "course_bias": "此跑道路程歷來前置馬有利",
-   "odds_updated": "04/11/2026 03:51",
+   "odds_updated": "04/11/2026 14:06",
    "longshots": [
+    {
+     "no": 3,
+     "horse": "暴風一族",
+     "win_odds": 10.0,
+     "place_odds": 3.3,
+     "win_prob": 0.1307,
+     "rank": 3,
+     "style": "中游",
+     "pros": [
+      "檔位統計",
+      "近況",
+      "上仗速度指數"
+     ],
+     "cons": [
+      "路程適應",
+      "負磅"
+     ]
+    },
     {
      "no": 8,
      "horse": "多利神駒",
-     "win_odds": 11.0,
-     "place_odds": 3.7,
+     "win_odds": 13.0,
+     "place_odds": 3.8,
      "win_prob": 0.1052,
      "rank": 4,
      "style": "前列",
@@ -656,11 +638,11 @@
      "cons": [
       "表現評分(近績最佳)"
      ],
-     "win_odds": 5.4,
+     "win_odds": 4.9,
      "place_odds": 2.3,
-     "market_prob": 0.1509,
-     "blend_prob": 0.1548,
-     "ev": 0.836,
+     "market_prob": 0.1642,
+     "blend_prob": 0.1692,
+     "ev": 0.829,
      "value": false,
      "longshot": false
     },
@@ -693,11 +675,11 @@
       "後段追勁",
       "表現評分(近績最佳)"
      ],
-     "win_odds": 6.3,
-     "place_odds": 2.0,
-     "market_prob": 0.1293,
-     "blend_prob": 0.1317,
-     "ev": 0.83,
+     "win_odds": 5.9,
+     "place_odds": 1.9,
+     "market_prob": 0.1364,
+     "blend_prob": 0.1392,
+     "ev": 0.821,
      "value": false,
      "longshot": false
     },
@@ -730,13 +712,13 @@
       "路程適應",
       "負磅"
      ],
-     "win_odds": 9.8,
-     "place_odds": 2.7,
-     "market_prob": 0.0831,
-     "blend_prob": 0.0828,
-     "ev": 0.812,
+     "win_odds": 10.0,
+     "place_odds": 3.3,
+     "market_prob": 0.0805,
+     "blend_prob": 0.08,
+     "ev": 0.8,
      "value": false,
-     "longshot": false
+     "longshot": true
     },
     {
      "rank": 4,
@@ -767,11 +749,11 @@
       "近況",
       "末段速度(分段時間)"
      ],
-     "win_odds": 11.0,
-     "place_odds": 3.7,
-     "market_prob": 0.0741,
-     "blend_prob": 0.0734,
-     "ev": 0.807,
+     "win_odds": 13.0,
+     "place_odds": 3.8,
+     "market_prob": 0.0619,
+     "blend_prob": 0.0607,
+     "ev": 0.789,
      "value": false,
      "longshot": true
     },
@@ -804,11 +786,11 @@
       "過往市場評價",
       "後段追勁"
      ],
-     "win_odds": 6.7,
+     "win_odds": 7.0,
      "place_odds": 2.8,
-     "market_prob": 0.1216,
-     "blend_prob": 0.1235,
-     "ev": 0.827,
+     "market_prob": 0.115,
+     "blend_prob": 0.1163,
+     "ev": 0.814,
      "value": false,
      "longshot": false
     },
@@ -841,11 +823,11 @@
       "騎師",
       "近況"
      ],
-     "win_odds": 10.0,
-     "place_odds": 3.4,
-     "market_prob": 0.0815,
-     "blend_prob": 0.0811,
-     "ev": 0.811,
+     "win_odds": 11.0,
+     "place_odds": 3.6,
+     "market_prob": 0.0732,
+     "blend_prob": 0.0724,
+     "ev": 0.796,
      "value": false,
      "longshot": false
     },
@@ -878,11 +860,11 @@
       "檔位統計",
       "騎練組合"
      ],
-     "win_odds": 15.0,
-     "place_odds": 3.9,
-     "market_prob": 0.0543,
-     "blend_prob": 0.053,
-     "ev": 0.794,
+     "win_odds": 13.0,
+     "place_odds": 3.4,
+     "market_prob": 0.0619,
+     "blend_prob": 0.0607,
+     "ev": 0.789,
      "value": false,
      "longshot": false
     },
@@ -915,11 +897,11 @@
       "後段追勁",
       "上仗速度指數"
      ],
-     "win_odds": 13.0,
-     "place_odds": 4.8,
-     "market_prob": 0.0627,
-     "blend_prob": 0.0616,
-     "ev": 0.8,
+     "win_odds": 14.0,
+     "place_odds": 5.3,
+     "market_prob": 0.0575,
+     "blend_prob": 0.0562,
+     "ev": 0.786,
      "value": false,
      "longshot": false
     },
@@ -952,11 +934,11 @@
       "過往市場評價",
       "後段追勁"
      ],
-     "win_odds": 9.6,
-     "place_odds": 2.5,
-     "market_prob": 0.0849,
-     "blend_prob": 0.0846,
-     "ev": 0.812,
+     "win_odds": 8.9,
+     "place_odds": 2.4,
+     "market_prob": 0.0904,
+     "blend_prob": 0.0904,
+     "ev": 0.804,
      "value": false,
      "longshot": false
     },
@@ -988,10 +970,10 @@
       "檔位統計"
      ],
      "win_odds": 12.0,
-     "place_odds": 4.7,
-     "market_prob": 0.0679,
-     "blend_prob": 0.0669,
-     "ev": 0.803,
+     "place_odds": 4.5,
+     "market_prob": 0.0671,
+     "blend_prob": 0.066,
+     "ev": 0.793,
      "value": false,
      "longshot": false
     },
@@ -1022,11 +1004,11 @@
       "檔位統計",
       "過往市場評價"
      ],
-     "win_odds": 21.0,
-     "place_odds": 5.9,
-     "market_prob": 0.0388,
-     "blend_prob": 0.0372,
-     "ev": 0.781,
+     "win_odds": 18.0,
+     "place_odds": 5.1,
+     "market_prob": 0.0447,
+     "blend_prob": 0.0431,
+     "ev": 0.777,
      "value": false,
      "longshot": false
     },
@@ -1058,17 +1040,17 @@
       "近況",
       "過往市場評價"
      ],
-     "win_odds": 16.0,
+     "win_odds": 17.0,
      "place_odds": 5.4,
-     "market_prob": 0.0509,
-     "blend_prob": 0.0495,
-     "ev": 0.792,
+     "market_prob": 0.0473,
+     "blend_prob": 0.0458,
+     "ev": 0.779,
      "value": false,
      "longshot": false
     }
    ],
    "ai": null,
-   "summary": "【步速】9號幸運福星有機會爭放。預計步速偏慢(1 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.3%、前列 10.8%、中游 8.5%、後上 7.2%;前置馬仍然較有利。跑法配合嘅熱門選擇:9號幸運福星、8號多利神駒。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:8號多利神駒、10號電訊驕陽。1號愛心萬里檔位統計較差。\n【選擇】首選9號幸運福星(模型 18%,公平賠率 5.5):後段追勁、近況、檔位統計佔優;次選10號電訊驕陽(模型 14%,公平賠率 7.4):過往市場評價、末段速度(分段時間)、檔位統計佔優;三選3號暴風一族(模型 13%,公平賠率 7.7):檔位統計、近況、上仗速度指數佔優。\n【冷門】8號多利神駒(獨贏 11,模型排第 4):檔位統計、後段追勁。呢類馬歷來入位機會高過一般冷門,較適合位置或者連贏配腳,唔建議重注獨贏。\n【風險】按綜合機率計暫時冇明顯值博;首選機率只有 18%,形勢開放;9號幸運福星要留意表現評分(近績最佳);10號電訊驕陽要留意後段追勁、表現評分(近績最佳);賠率會變,以開跑前為準。"
+   "summary": "【步速】9號幸運福星有機會爭放。預計步速偏慢(1 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.3%、前列 10.8%、中游 8.5%、後上 7.2%;前置馬仍然較有利。跑法配合嘅熱門選擇:9號幸運福星、8號多利神駒。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:8號多利神駒、10號電訊驕陽。1號愛心萬里檔位統計較差。\n【選擇】首選9號幸運福星(模型 18%,公平賠率 5.5):後段追勁、近況、檔位統計佔優;次選10號電訊驕陽(模型 14%,公平賠率 7.4):過往市場評價、末段速度(分段時間)、檔位統計佔優;三選3號暴風一族(模型 13%,公平賠率 7.7):檔位統計、近況、上仗速度指數佔優。\n【冷門】3號暴風一族(獨贏 10,模型排第 3):檔位統計、近況;8號多利神駒(獨贏 13,模型排第 4):檔位統計、後段追勁。呢類馬歷來入位機會高過一般冷門,較適合位置或者連贏配腳,唔建議重注獨贏。\n【風險】按綜合機率計暫時冇明顯值博;首選機率只有 18%,形勢開放;9號幸運福星要留意表現評分(近績最佳);10號電訊驕陽要留意後段追勁、表現評分(近績最佳);賠率會變,以開跑前為準。"
   },
   {
    "race_no": 3,
@@ -1091,13 +1073,13 @@
     "races": 0
    },
    "course_bias": "此跑道路程跑法偏差不明顯",
-   "odds_updated": "04/11/2026 03:50",
+   "odds_updated": "04/11/2026 14:06",
    "longshots": [
     {
      "no": 4,
      "horse": "鼓浪好友",
      "win_odds": 12.0,
-     "place_odds": 2.8,
+     "place_odds": 2.9,
      "win_prob": 0.1278,
      "rank": 3,
      "style": "領放",
@@ -1114,8 +1096,8 @@
     {
      "no": 8,
      "horse": "大千赤風",
-     "win_odds": 17.0,
-     "place_odds": 5.1,
+     "win_odds": 19.0,
+     "place_odds": 5.6,
      "win_prob": 0.0854,
      "rank": 5,
      "style": "中游",
@@ -1160,11 +1142,11 @@
       "後段追勁",
       "負磅"
      ],
-     "win_odds": 4.1,
-     "place_odds": 1.5,
-     "market_prob": 0.1986,
-     "blend_prob": 0.205,
-     "ev": 0.841,
+     "win_odds": 4.5,
+     "place_odds": 1.8,
+     "market_prob": 0.1809,
+     "blend_prob": 0.1855,
+     "ev": 0.835,
      "value": false,
      "longshot": false
     },
@@ -1197,11 +1179,11 @@
       "上仗速度指數",
       "後段追勁"
      ],
-     "win_odds": 3.6,
+     "win_odds": 3.3,
      "place_odds": 1.5,
-     "market_prob": 0.2262,
-     "blend_prob": 0.235,
-     "ev": 0.846,
+     "market_prob": 0.2467,
+     "blend_prob": 0.257,
+     "ev": 0.848,
      "value": false,
      "longshot": false
     },
@@ -1235,10 +1217,10 @@
       "負磅"
      ],
      "win_odds": 12.0,
-     "place_odds": 2.8,
-     "market_prob": 0.0679,
-     "blend_prob": 0.0664,
-     "ev": 0.797,
+     "place_odds": 2.9,
+     "market_prob": 0.0678,
+     "blend_prob": 0.0662,
+     "ev": 0.795,
      "value": false,
      "longshot": true
     },
@@ -1271,11 +1253,11 @@
       "過往市場評價",
       "路程適應"
      ],
-     "win_odds": 8.2,
-     "place_odds": 3.1,
-     "market_prob": 0.0993,
-     "blend_prob": 0.099,
-     "ev": 0.812,
+     "win_odds": 7.0,
+     "place_odds": 2.8,
+     "market_prob": 0.1163,
+     "blend_prob": 0.1167,
+     "ev": 0.817,
      "value": false,
      "longshot": false
     },
@@ -1308,11 +1290,11 @@
       "後段追勁",
       "檔位統計"
      ],
-     "win_odds": 17.0,
-     "place_odds": 5.1,
-     "market_prob": 0.0479,
-     "blend_prob": 0.0461,
-     "ev": 0.783,
+     "win_odds": 19.0,
+     "place_odds": 5.6,
+     "market_prob": 0.0428,
+     "blend_prob": 0.0409,
+     "ev": 0.777,
      "value": false,
      "longshot": true
     },
@@ -1345,11 +1327,11 @@
       "末段速度(分段時間)",
       "騎師"
      ],
-     "win_odds": 12.0,
-     "place_odds": 4.2,
-     "market_prob": 0.0679,
-     "blend_prob": 0.0664,
-     "ev": 0.797,
+     "win_odds": 11.0,
+     "place_odds": 3.5,
+     "market_prob": 0.074,
+     "blend_prob": 0.0726,
+     "ev": 0.798,
      "value": false,
      "longshot": false
     },
@@ -1382,11 +1364,11 @@
       "檔位統計",
       "過往市場評價"
      ],
-     "win_odds": 29.0,
-     "place_odds": 7.6,
-     "market_prob": 0.0281,
-     "blend_prob": 0.0263,
-     "ev": 0.762,
+     "win_odds": 32.0,
+     "place_odds": 6.9,
+     "market_prob": 0.0254,
+     "blend_prob": 0.0237,
+     "ev": 0.757,
      "value": false,
      "longshot": false
     },
@@ -1418,11 +1400,11 @@
       "過往市場評價",
       "騎練組合"
      ],
-     "win_odds": 18.0,
-     "place_odds": 5.2,
-     "market_prob": 0.0452,
-     "blend_prob": 0.0434,
-     "ev": 0.781,
+     "win_odds": 19.0,
+     "place_odds": 5.4,
+     "market_prob": 0.0428,
+     "blend_prob": 0.0409,
+     "ev": 0.777,
      "value": false,
      "longshot": false
     },
@@ -1455,11 +1437,11 @@
       "缺速度數據",
       "近況"
      ],
-     "win_odds": 10.0,
-     "place_odds": 3.6,
-     "market_prob": 0.0814,
-     "blend_prob": 0.0804,
-     "ev": 0.804,
+     "win_odds": 9.7,
+     "place_odds": 3.0,
+     "market_prob": 0.0839,
+     "blend_prob": 0.0828,
+     "ev": 0.803,
      "value": false,
      "longshot": false
     },
@@ -1492,11 +1474,11 @@
       "檔位統計",
       "騎師"
      ],
-     "win_odds": 17.0,
-     "place_odds": 4.6,
-     "market_prob": 0.0479,
-     "blend_prob": 0.0461,
-     "ev": 0.783,
+     "win_odds": 22.0,
+     "place_odds": 5.8,
+     "market_prob": 0.037,
+     "blend_prob": 0.0351,
+     "ev": 0.771,
      "value": false,
      "longshot": false
     },
@@ -1528,11 +1510,11 @@
       "騎師",
       "過往市場評價"
      ],
-     "win_odds": 14.0,
-     "place_odds": 4.2,
-     "market_prob": 0.0582,
-     "blend_prob": 0.0565,
-     "ev": 0.791,
+     "win_odds": 15.0,
+     "place_odds": 3.8,
+     "market_prob": 0.0543,
+     "blend_prob": 0.0524,
+     "ev": 0.786,
      "value": false,
      "longshot": false
     },
@@ -1564,17 +1546,17 @@
       "近況",
       "騎師"
      ],
-     "win_odds": 26.0,
-     "place_odds": 6.1,
-     "market_prob": 0.0313,
-     "blend_prob": 0.0295,
-     "ev": 0.766,
+     "win_odds": 29.0,
+     "place_odds": 6.0,
+     "market_prob": 0.0281,
+     "blend_prob": 0.0262,
+     "ev": 0.761,
      "value": false,
      "longshot": false
     }
    ],
    "ai": null,
-   "summary": "【步速】4號鼓浪好友、6號飛輪霸有機會爭放。預計步速中等(2 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.6%、前列 8.7%、中游 9.5%、後上 6.5%;前置馬仍然較有利。跑法配合嘅熱門選擇:4號鼓浪好友。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程跑法偏差不明顯。檔位統計著數:4號鼓浪好友、5號花好月盈。1號星辰千帥、3號長勝金剛檔位統計較差。\n【選擇】首選1號星辰千帥(模型 18%,公平賠率 5.6):近況、過往市場評價、騎師佔優;次選5號花好月盈(模型 16%,公平賠率 6.1):近況、過往市場評價、檔位統計佔優;三選4號鼓浪好友(模型 13%,公平賠率 7.8):檔位統計、近況、後段追勁佔優。\n【冷門】4號鼓浪好友(獨贏 12,模型排第 3):檔位統計、近況;8號大千赤風(獨贏 17,模型排第 5):近況、過往市場評價。呢類馬歷來入位機會高過一般冷門,較適合位置或者連贏配腳,唔建議重注獨贏。\n【風險】市場大熱門係5號花好月盈,同模型首選唔同;按綜合機率計暫時冇明顯值博;首選機率只有 18%,形勢開放;1號星辰千帥要留意後段追勁、負磅;5號花好月盈要留意上仗速度指數、後段追勁;賠率會變,以開跑前為準。"
+   "summary": "【步速】4號鼓浪好友、6號飛輪霸有機會爭放。預計步速中等(2 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.6%、前列 8.7%、中游 9.5%、後上 6.5%;前置馬仍然較有利。跑法配合嘅熱門選擇:4號鼓浪好友。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程跑法偏差不明顯。檔位統計著數:4號鼓浪好友、5號花好月盈。1號星辰千帥、3號長勝金剛檔位統計較差。\n【選擇】首選1號星辰千帥(模型 18%,公平賠率 5.6):近況、過往市場評價、騎師佔優;次選5號花好月盈(模型 16%,公平賠率 6.1):近況、過往市場評價、檔位統計佔優;三選4號鼓浪好友(模型 13%,公平賠率 7.8):檔位統計、近況、後段追勁佔優。\n【冷門】4號鼓浪好友(獨贏 12,模型排第 3):檔位統計、近況;8號大千赤風(獨贏 19,模型排第 5):近況、過往市場評價。呢類馬歷來入位機會高過一般冷門,較適合位置或者連贏配腳,唔建議重注獨贏。\n【風險】市場大熱門係5號花好月盈,同模型首選唔同;按綜合機率計暫時冇明顯值博;首選機率只有 18%,形勢開放;1號星辰千帥要留意後段追勁、負磅;5號花好月盈要留意上仗速度指數、後段追勁;賠率會變,以開跑前為準。"
   },
   {
    "race_no": 4,
@@ -1597,13 +1579,28 @@
     "races": 0
    },
    "course_bias": "此跑道路程歷來前置馬有利",
-   "odds_updated": "04/11/2026 03:51",
+   "odds_updated": "04/11/2026 14:06",
    "longshots": [
+    {
+     "no": 7,
+     "horse": "奮鬥輝煌",
+     "win_odds": 10.0,
+     "place_odds": 3.4,
+     "win_prob": 0.1408,
+     "rank": 3,
+     "style": "前列",
+     "pros": [
+      "檔位統計",
+      "後段追勁",
+      "練馬師近況"
+     ],
+     "cons": []
+    },
     {
      "no": 6,
      "horse": "爆竹",
-     "win_odds": 10.0,
-     "place_odds": 3.5,
+     "win_odds": 11.0,
+     "place_odds": 3.8,
      "win_prob": 0.0854,
      "rank": 4,
      "style": "前列",
@@ -1647,11 +1644,11 @@
       "後段追勁",
       "騎師"
      ],
-     "win_odds": 4.4,
-     "place_odds": 1.3,
-     "market_prob": 0.1858,
-     "blend_prob": 0.1917,
-     "ev": 0.843,
+     "win_odds": 4.2,
+     "place_odds": 1.7,
+     "market_prob": 0.1924,
+     "blend_prob": 0.1985,
+     "ev": 0.834,
      "value": false,
      "longshot": false
     },
@@ -1684,11 +1681,11 @@
       "後段追勁",
       "上仗速度指數"
      ],
-     "win_odds": 5.5,
-     "place_odds": 2.0,
-     "market_prob": 0.1487,
-     "blend_prob": 0.1517,
-     "ev": 0.834,
+     "win_odds": 4.8,
+     "place_odds": 1.9,
+     "market_prob": 0.1684,
+     "blend_prob": 0.1725,
+     "ev": 0.828,
      "value": false,
      "longshot": false
     },
@@ -1718,13 +1715,13 @@
       "練馬師近況"
      ],
      "cons": [],
-     "win_odds": 9.4,
-     "place_odds": 3.5,
-     "market_prob": 0.087,
-     "blend_prob": 0.0864,
-     "ev": 0.812,
+     "win_odds": 10.0,
+     "place_odds": 3.4,
+     "market_prob": 0.0808,
+     "blend_prob": 0.0798,
+     "ev": 0.798,
      "value": false,
-     "longshot": false
+     "longshot": true
     },
     {
      "rank": 4,
@@ -1754,11 +1751,11 @@
       "末段速度(分段時間)",
       "近況"
      ],
-     "win_odds": 10.0,
-     "place_odds": 3.5,
-     "market_prob": 0.0818,
-     "blend_prob": 0.081,
-     "ev": 0.81,
+     "win_odds": 11.0,
+     "place_odds": 3.8,
+     "market_prob": 0.0735,
+     "blend_prob": 0.0722,
+     "ev": 0.794,
      "value": false,
      "longshot": true
     },
@@ -1790,11 +1787,11 @@
       "騎師",
       "檔位統計"
      ],
-     "win_odds": 6.6,
-     "place_odds": 2.5,
-     "market_prob": 0.1239,
-     "blend_prob": 0.1252,
-     "ev": 0.827,
+     "win_odds": 6.3,
+     "place_odds": 2.1,
+     "market_prob": 0.1283,
+     "blend_prob": 0.1297,
+     "ev": 0.817,
      "value": false,
      "longshot": false
     },
@@ -1826,11 +1823,11 @@
       "後段追勁",
       "騎師"
      ],
-     "win_odds": 11.0,
-     "place_odds": 2.4,
-     "market_prob": 0.0743,
-     "blend_prob": 0.0732,
-     "ev": 0.806,
+     "win_odds": 10.0,
+     "place_odds": 3.0,
+     "market_prob": 0.0808,
+     "blend_prob": 0.0798,
+     "ev": 0.798,
      "value": false,
      "longshot": false
     },
@@ -1862,11 +1859,11 @@
       "近況",
       "過往市場評價"
      ],
-     "win_odds": 8.6,
-     "place_odds": 3.7,
-     "market_prob": 0.0951,
-     "blend_prob": 0.0948,
-     "ev": 0.816,
+     "win_odds": 9.1,
+     "place_odds": 2.9,
+     "market_prob": 0.0888,
+     "blend_prob": 0.0881,
+     "ev": 0.802,
      "value": false,
      "longshot": false
     },
@@ -1899,11 +1896,11 @@
       "檔位統計",
       "後段追勁"
      ],
-     "win_odds": 22.0,
-     "place_odds": 7.7,
-     "market_prob": 0.0372,
-     "blend_prob": 0.0354,
-     "ev": 0.778,
+     "win_odds": 28.0,
+     "place_odds": 8.1,
+     "market_prob": 0.0289,
+     "blend_prob": 0.0271,
+     "ev": 0.758,
      "value": false,
      "longshot": false
     },
@@ -1936,11 +1933,11 @@
       "過往市場評價",
       "後段追勁"
      ],
-     "win_odds": 9.3,
-     "place_odds": 3.6,
-     "market_prob": 0.0879,
-     "blend_prob": 0.0874,
-     "ev": 0.812,
+     "win_odds": 9.1,
+     "place_odds": 2.9,
+     "market_prob": 0.0888,
+     "blend_prob": 0.0881,
+     "ev": 0.802,
      "value": false,
      "longshot": false
     },
@@ -1973,11 +1970,11 @@
       "近況",
       "過往市場評價"
      ],
-     "win_odds": 32.0,
-     "place_odds": 8.3,
-     "market_prob": 0.0256,
-     "blend_prob": 0.0239,
-     "ev": 0.764,
+     "win_odds": 34.0,
+     "place_odds": 7.6,
+     "market_prob": 0.0238,
+     "blend_prob": 0.0221,
+     "ev": 0.751,
      "value": false,
      "longshot": false
     },
@@ -2010,11 +2007,11 @@
       "過往市場評價",
       "近況"
      ],
-     "win_odds": 30.0,
-     "place_odds": 8.7,
-     "market_prob": 0.0273,
-     "blend_prob": 0.0255,
-     "ev": 0.766,
+     "win_odds": 32.0,
+     "place_odds": 8.3,
+     "market_prob": 0.0253,
+     "blend_prob": 0.0235,
+     "ev": 0.753,
      "value": false,
      "longshot": false
     },
@@ -2045,17 +2042,17 @@
       "過往市場評價",
       "近況"
      ],
-     "win_odds": 32.0,
-     "place_odds": 8.9,
-     "market_prob": 0.0256,
-     "blend_prob": 0.0239,
-     "ev": 0.764,
+     "win_odds": 40.0,
+     "place_odds": 9.4,
+     "market_prob": 0.0202,
+     "blend_prob": 0.0186,
+     "ev": 0.745,
      "value": false,
      "longshot": false
     }
    ],
    "ai": null,
-   "summary": "【步速】預計步速偏慢(1 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.3%、前列 10.8%、中游 8.5%、後上 7.2%;前置馬仍然較有利。跑法配合嘅熱門選擇:7號奮鬥輝煌、6號爆竹。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:7號奮鬥輝煌、1號龍文瑞安。6號爆竹、8號同心檔位統計較差。\n【選擇】首選10號飛躍成就(模型 25%,公平賠率 4.1):近況、過往市場評價、檔位統計佔優;次選12號瑞祺威楓(模型 17%,公平賠率 5.9):近況、過往市場評價、檔位統計佔優;三選7號奮鬥輝煌(模型 14%,公平賠率 7.1):檔位統計、後段追勁、練馬師近況佔優,讓磅著數比同場中位數多約 5 分。\n【冷門】6號爆竹(獨贏 10,模型排第 4):過往市場評價、後段追勁。呢類馬歷來入位機會高過一般冷門,較適合位置或者連贏配腳,唔建議重注獨贏。\n【風險】按綜合機率計暫時冇明顯值博;10號飛躍成就要留意後段追勁、騎師;12號瑞祺威楓要留意後段追勁、上仗速度指數;賠率會變,以開跑前為準。"
+   "summary": "【步速】預計步速偏慢(1 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.3%、前列 10.8%、中游 8.5%、後上 7.2%;前置馬仍然較有利。跑法配合嘅熱門選擇:7號奮鬥輝煌、6號爆竹。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:7號奮鬥輝煌、1號龍文瑞安。6號爆竹、8號同心檔位統計較差。\n【選擇】首選10號飛躍成就(模型 25%,公平賠率 4.1):近況、過往市場評價、檔位統計佔優;次選12號瑞祺威楓(模型 17%,公平賠率 5.9):近況、過往市場評價、檔位統計佔優;三選7號奮鬥輝煌(模型 14%,公平賠率 7.1):檔位統計、後段追勁、練馬師近況佔優,讓磅著數比同場中位數多約 5 分。\n【冷門】7號奮鬥輝煌(獨贏 10,模型排第 3):檔位統計、後段追勁;6號爆竹(獨贏 11,模型排第 4):過往市場評價、後段追勁。呢類馬歷來入位機會高過一般冷門,較適合位置或者連贏配腳,唔建議重注獨贏。\n【風險】按綜合機率計暫時冇明顯值博;10號飛躍成就要留意後段追勁、騎師;12號瑞祺威楓要留意後段追勁、上仗速度指數;賠率會變,以開跑前為準。"
   },
   {
    "race_no": 5,
@@ -2078,13 +2075,13 @@
     "races": 0
    },
    "course_bias": "此跑道路程跑法偏差不明顯",
-   "odds_updated": "04/11/2026 03:50",
+   "odds_updated": "04/11/2026 14:06",
    "longshots": [
     {
      "no": 2,
      "horse": "創寶駒",
-     "win_odds": 16.0,
-     "place_odds": 4.8,
+     "win_odds": 14.0,
+     "place_odds": 3.8,
      "win_prob": 0.2142,
      "rank": 1,
      "style": "中游",
@@ -2102,7 +2099,7 @@
      "no": 4,
      "horse": "實力加",
      "win_odds": 12.0,
-     "place_odds": 1.9,
+     "place_odds": 2.2,
      "win_prob": 0.2019,
      "rank": 2,
      "style": "中游",
@@ -2118,8 +2115,8 @@
     {
      "no": 3,
      "horse": "渡月橋",
-     "win_odds": 14.0,
-     "place_odds": 5.3,
+     "win_odds": 16.0,
+     "place_odds": 4.4,
      "win_prob": 0.0886,
      "rank": 5,
      "style": "中游",
@@ -2163,10 +2160,10 @@
       "後段追勁",
       "檔位統計"
      ],
-     "win_odds": 16.0,
-     "place_odds": 4.8,
-     "market_prob": 0.0506,
-     "blend_prob": 0.0485,
+     "win_odds": 14.0,
+     "place_odds": 3.8,
+     "market_prob": 0.0576,
+     "blend_prob": 0.0554,
      "ev": 0.776,
      "value": false,
      "longshot": true
@@ -2200,10 +2197,10 @@
       "後段追勁"
      ],
      "win_odds": 12.0,
-     "place_odds": 1.9,
-     "market_prob": 0.0675,
-     "blend_prob": 0.0656,
-     "ev": 0.788,
+     "place_odds": 2.2,
+     "market_prob": 0.0673,
+     "blend_prob": 0.0652,
+     "ev": 0.782,
      "value": false,
      "longshot": true
     },
@@ -2236,11 +2233,11 @@
       "缺速度數據",
       "近況"
      ],
-     "win_odds": 2.5,
-     "place_odds": 1.5,
-     "market_prob": 0.3241,
-     "blend_prob": 0.3407,
-     "ev": 0.852,
+     "win_odds": 2.4,
+     "place_odds": 1.6,
+     "market_prob": 0.3363,
+     "blend_prob": 0.3531,
+     "ev": 0.848,
      "value": false,
      "longshot": false
     },
@@ -2273,11 +2270,11 @@
       "後段追勁",
       "騎練組合"
      ],
-     "win_odds": 5.5,
-     "place_odds": 1.7,
-     "market_prob": 0.1473,
-     "blend_prob": 0.1489,
-     "ev": 0.819,
+     "win_odds": 4.5,
+     "place_odds": 1.6,
+     "market_prob": 0.1793,
+     "blend_prob": 0.1825,
+     "ev": 0.821,
      "value": false,
      "longshot": false
     },
@@ -2309,11 +2306,11 @@
      "cons": [
       "近況"
      ],
-     "win_odds": 14.0,
-     "place_odds": 5.3,
-     "market_prob": 0.0579,
-     "blend_prob": 0.0558,
-     "ev": 0.781,
+     "win_odds": 16.0,
+     "place_odds": 4.4,
+     "market_prob": 0.0504,
+     "blend_prob": 0.0482,
+     "ev": 0.771,
      "value": false,
      "longshot": true
     },
@@ -2345,11 +2342,11 @@
      "cons": [
       "過往市場評價"
      ],
-     "win_odds": 10.0,
-     "place_odds": 3.3,
-     "market_prob": 0.081,
-     "blend_prob": 0.0795,
-     "ev": 0.795,
+     "win_odds": 11.0,
+     "place_odds": 3.6,
+     "market_prob": 0.0734,
+     "blend_prob": 0.0714,
+     "ev": 0.785,
      "value": false,
      "longshot": false
     },
@@ -2382,11 +2379,11 @@
       "近況",
       "末段速度(分段時間)"
      ],
-     "win_odds": 8.0,
-     "place_odds": 2.2,
-     "market_prob": 0.1013,
-     "blend_prob": 0.1005,
-     "ev": 0.804,
+     "win_odds": 8.8,
+     "place_odds": 2.5,
+     "market_prob": 0.0917,
+     "blend_prob": 0.0903,
+     "ev": 0.794,
      "value": false,
      "longshot": false
     },
@@ -2419,11 +2416,11 @@
       "過往市場評價",
       "近況"
      ],
-     "win_odds": 17.0,
-     "place_odds": 6.3,
-     "market_prob": 0.0477,
-     "blend_prob": 0.0455,
-     "ev": 0.774,
+     "win_odds": 21.0,
+     "place_odds": 5.3,
+     "market_prob": 0.0384,
+     "blend_prob": 0.0362,
+     "ev": 0.76,
      "value": false,
      "longshot": false
     },
@@ -2456,11 +2453,11 @@
       "近況",
       "檔位統計"
      ],
-     "win_odds": 36.0,
-     "place_odds": 8.1,
-     "market_prob": 0.0225,
-     "blend_prob": 0.0207,
-     "ev": 0.745,
+     "win_odds": 28.0,
+     "place_odds": 6.2,
+     "market_prob": 0.0288,
+     "blend_prob": 0.0268,
+     "ev": 0.75,
      "value": false,
      "longshot": false
     },
@@ -2492,11 +2489,11 @@
       "近況",
       "騎師"
      ],
-     "win_odds": 16.0,
-     "place_odds": 6.4,
-     "market_prob": 0.0506,
-     "blend_prob": 0.0485,
-     "ev": 0.776,
+     "win_odds": 23.0,
+     "place_odds": 6.0,
+     "market_prob": 0.0351,
+     "blend_prob": 0.0329,
+     "ev": 0.757,
      "value": false,
      "longshot": false
     },
@@ -2527,11 +2524,11 @@
       "近況",
       "過往市場評價"
      ],
-     "win_odds": 36.0,
-     "place_odds": 9.9,
-     "market_prob": 0.0225,
-     "blend_prob": 0.0207,
-     "ev": 0.745,
+     "win_odds": 42.0,
+     "place_odds": 8.7,
+     "market_prob": 0.0192,
+     "blend_prob": 0.0175,
+     "ev": 0.735,
      "value": false,
      "longshot": false
     },
@@ -2563,17 +2560,17 @@
       "近況",
       "過往市場評價"
      ],
-     "win_odds": 30.0,
-     "place_odds": 4.2,
-     "market_prob": 0.027,
-     "blend_prob": 0.0251,
-     "ev": 0.752,
+     "win_odds": 36.0,
+     "place_odds": 5.6,
+     "market_prob": 0.0224,
+     "blend_prob": 0.0206,
+     "ev": 0.74,
      "value": false,
      "longshot": false
     }
    ],
    "ai": null,
-   "summary": "【步速】1號飛龍在天有機會爭放。預計步速偏慢(1 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.3%、前列 10.8%、中游 8.5%、後上 7.2%;前置馬仍然較有利。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程跑法偏差不明顯。檔位統計著數:8號包裝醒目、6號銳不可當。2號創寶駒、4號實力加檔位統計較差。\n【選擇】首選2號創寶駒(模型 21%,公平賠率 4.7):近況、過往市場評價、末段速度(分段時間)佔優,讓磅著數比同場中位數多約 8 分;次選4號實力加(模型 20%,公平賠率 5.0):近況、過往市場評價、末段速度(分段時間)佔優;三選8號包裝醒目(模型 12%,公平賠率 8.3):騎師、檔位統計、騎練組合佔優。\n【冷門】2號創寶駒(獨贏 16,模型排第 1):近況、過往市場評價;4號實力加(獨贏 12,模型排第 2):近況、過往市場評價;3號渡月橋(獨贏 14,模型排第 5):過往市場評價、檔位統計。呢類馬歷來入位機會高過一般冷門,較適合位置或者連贏配腳,唔建議重注獨贏。\n【風險】市場大熱門係8號包裝醒目,同模型首選唔同;按綜合機率計暫時冇明顯值博;8號包裝醒目數據不足(初出或冇往績),評估把握較低;2號創寶駒要留意後段追勁、檔位統計;4號實力加要留意後段追勁;賠率會變,以開跑前為準。"
+   "summary": "【步速】1號飛龍在天有機會爭放。預計步速偏慢(1 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.3%、前列 10.8%、中游 8.5%、後上 7.2%;前置馬仍然較有利。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程跑法偏差不明顯。檔位統計著數:8號包裝醒目、6號銳不可當。2號創寶駒、4號實力加檔位統計較差。\n【選擇】首選2號創寶駒(模型 21%,公平賠率 4.7):近況、過往市場評價、末段速度(分段時間)佔優,讓磅著數比同場中位數多約 8 分;次選4號實力加(模型 20%,公平賠率 5.0):近況、過往市場評價、末段速度(分段時間)佔優;三選8號包裝醒目(模型 12%,公平賠率 8.3):騎師、檔位統計、騎練組合佔優。\n【冷門】2號創寶駒(獨贏 14,模型排第 1):近況、過往市場評價;4號實力加(獨贏 12,模型排第 2):近況、過往市場評價;3號渡月橋(獨贏 16,模型排第 5):過往市場評價、檔位統計。呢類馬歷來入位機會高過一般冷門,較適合位置或者連贏配腳,唔建議重注獨贏。\n【風險】市場大熱門係8號包裝醒目,同模型首選唔同;按綜合機率計暫時冇明顯值博;8號包裝醒目數據不足(初出或冇往績),評估把握較低;2號創寶駒要留意後段追勁、檔位統計;4號實力加要留意後段追勁;賠率會變,以開跑前為準。"
   },
   {
    "race_no": 6,
@@ -2596,31 +2593,13 @@
     "races": 0
    },
    "course_bias": "此跑道路程跑法偏差不明顯",
-   "odds_updated": "04/11/2026 03:50",
+   "odds_updated": "04/11/2026 14:06",
    "longshots": [
-    {
-     "no": 11,
-     "horse": "頑童",
-     "win_odds": 10.0,
-     "place_odds": 2.6,
-     "win_prob": 0.155,
-     "rank": 2,
-     "style": "中游",
-     "pros": [
-      "近況",
-      "過往市場評價",
-      "檔位統計"
-     ],
-     "cons": [
-      "騎師",
-      "騎練組合"
-     ]
-    },
     {
      "no": 3,
      "horse": "輕功猛男",
-     "win_odds": 12.0,
-     "place_odds": 3.6,
+     "win_odds": 11.0,
+     "place_odds": 3.5,
      "win_prob": 0.113,
      "rank": 4,
      "style": "中游",
@@ -2664,11 +2643,11 @@
      "cons": [
       "上仗速度指數"
      ],
-     "win_odds": 5.0,
-     "place_odds": 1.6,
-     "market_prob": 0.1626,
-     "blend_prob": 0.1653,
-     "ev": 0.827,
+     "win_odds": 4.5,
+     "place_odds": 1.8,
+     "market_prob": 0.1813,
+     "blend_prob": 0.1851,
+     "ev": 0.833,
      "value": false,
      "longshot": false
     },
@@ -2701,13 +2680,13 @@
       "騎師",
       "騎練組合"
      ],
-     "win_odds": 10.0,
+     "win_odds": 9.0,
      "place_odds": 2.6,
-     "market_prob": 0.0813,
-     "blend_prob": 0.0798,
-     "ev": 0.798,
+     "market_prob": 0.0907,
+     "blend_prob": 0.0894,
+     "ev": 0.805,
      "value": false,
-     "longshot": true
+     "longshot": false
     },
     {
      "rank": 3,
@@ -2738,10 +2717,10 @@
       "負磅"
      ],
      "win_odds": 2.7,
-     "place_odds": 1.6,
-     "market_prob": 0.3011,
-     "blend_prob": 0.3157,
-     "ev": 0.852,
+     "place_odds": 1.4,
+     "market_prob": 0.3022,
+     "blend_prob": 0.3165,
+     "ev": 0.855,
      "value": false,
      "longshot": false
     },
@@ -2774,11 +2753,11 @@
       "上仗速度指數",
       "後段追勁"
      ],
-     "win_odds": 12.0,
-     "place_odds": 3.6,
-     "market_prob": 0.0677,
-     "blend_prob": 0.0659,
-     "ev": 0.791,
+     "win_odds": 11.0,
+     "place_odds": 3.5,
+     "market_prob": 0.0742,
+     "blend_prob": 0.0724,
+     "ev": 0.797,
      "value": false,
      "longshot": true
     },
@@ -2811,10 +2790,10 @@
       "後段追勁",
       "練馬師近況"
      ],
-     "win_odds": 8.3,
-     "place_odds": 3.1,
-     "market_prob": 0.0979,
-     "blend_prob": 0.0971,
+     "win_odds": 8.6,
+     "place_odds": 3.0,
+     "market_prob": 0.0949,
+     "blend_prob": 0.0938,
      "ev": 0.806,
      "value": false,
      "longshot": false
@@ -2848,11 +2827,11 @@
       "過往市場評價",
       "降班"
      ],
-     "win_odds": 11.0,
-     "place_odds": 4.2,
-     "market_prob": 0.0739,
-     "blend_prob": 0.0722,
-     "ev": 0.795,
+     "win_odds": 15.0,
+     "place_odds": 4.7,
+     "market_prob": 0.0544,
+     "blend_prob": 0.0523,
+     "ev": 0.784,
      "value": false,
      "longshot": false
     },
@@ -2885,11 +2864,11 @@
       "缺速度數據",
       "近況"
      ],
-     "win_odds": 18.0,
-     "place_odds": 2.4,
-     "market_prob": 0.0452,
-     "blend_prob": 0.0431,
-     "ev": 0.775,
+     "win_odds": 20.0,
+     "place_odds": 3.5,
+     "market_prob": 0.0408,
+     "blend_prob": 0.0387,
+     "ev": 0.773,
      "value": false,
      "longshot": false
     },
@@ -2921,10 +2900,10 @@
       "近況",
       "過往市場評價"
      ],
-     "win_odds": 15.0,
-     "place_odds": 4.7,
-     "market_prob": 0.0542,
-     "blend_prob": 0.0522,
+     "win_odds": 16.0,
+     "place_odds": 4.1,
+     "market_prob": 0.051,
+     "blend_prob": 0.0489,
      "ev": 0.782,
      "value": false,
      "longshot": false
@@ -2958,10 +2937,10 @@
       "過往市場評價",
       "近況"
      ],
-     "win_odds": 22.0,
-     "place_odds": 6.2,
-     "market_prob": 0.0369,
-     "blend_prob": 0.0349,
+     "win_odds": 23.0,
+     "place_odds": 5.6,
+     "market_prob": 0.0355,
+     "blend_prob": 0.0334,
      "ev": 0.768,
      "value": false,
      "longshot": false
@@ -2994,11 +2973,11 @@
       "近況",
       "過往市場評價"
      ],
-     "win_odds": 34.0,
+     "win_odds": 35.0,
      "place_odds": 8.0,
-     "market_prob": 0.0239,
-     "blend_prob": 0.0221,
-     "ev": 0.751,
+     "market_prob": 0.0233,
+     "blend_prob": 0.0215,
+     "ev": 0.752,
      "value": false,
      "longshot": false
     },
@@ -3029,11 +3008,11 @@
       "近況",
       "過往市場評價"
      ],
-     "win_odds": 49.0,
-     "place_odds": 10.0,
-     "market_prob": 0.0166,
-     "blend_prob": 0.015,
-     "ev": 0.737,
+     "win_odds": 56.0,
+     "place_odds": 9.8,
+     "market_prob": 0.0146,
+     "blend_prob": 0.0131,
+     "ev": 0.734,
      "value": false,
      "longshot": false
     },
@@ -3065,17 +3044,17 @@
       "近況",
       "過往市場評價"
      ],
-     "win_odds": 21.0,
-     "place_odds": 5.3,
-     "market_prob": 0.0387,
-     "blend_prob": 0.0366,
+     "win_odds": 22.0,
+     "place_odds": 5.0,
+     "market_prob": 0.0371,
+     "blend_prob": 0.035,
      "ev": 0.769,
      "value": false,
      "longshot": false
     }
    ],
    "ai": null,
-   "summary": "【步速】12號朗日雪峰有機會爭放。預計步速偏慢(1 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.3%、前列 10.8%、中游 8.5%、後上 7.2%;前置馬仍然較有利。跑法配合嘅熱門選擇:4號沙井之友。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程跑法偏差不明顯。檔位統計著數:10號醒眼光、8號勝於藍。3號輕功猛男、5號跨境駿馬檔位統計較差。\n【選擇】首選4號沙井之友(模型 16%,公平賠率 6.2):近況、過往市場評價、讓磅著數佔優,讓磅著數比同場中位數多約 7 分;次選11號頑童(模型 16%,公平賠率 6.5):近況、過往市場評價、檔位統計佔優;三選1號勇霸龍(模型 15%,公平賠率 6.7):騎師、騎練組合、讓磅著數佔優,讓磅著數比同場中位數多約 7 分。\n【冷門】11號頑童(獨贏 10,模型排第 2):近況、過往市場評價;3號輕功猛男(獨贏 12,模型排第 4):近況、騎師。呢類馬歷來入位機會高過一般冷門,較適合位置或者連贏配腳,唔建議重注獨贏。\n【風險】市場大熱門係1號勇霸龍,同模型首選唔同;按綜合機率計暫時冇明顯值博;首選機率只有 16%,形勢開放;4號沙井之友要留意上仗速度指數;11號頑童要留意騎師、騎練組合;賠率會變,以開跑前為準。"
+   "summary": "【步速】12號朗日雪峰有機會爭放。預計步速偏慢(1 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.3%、前列 10.8%、中游 8.5%、後上 7.2%;前置馬仍然較有利。跑法配合嘅熱門選擇:4號沙井之友。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程跑法偏差不明顯。檔位統計著數:10號醒眼光、8號勝於藍。3號輕功猛男、5號跨境駿馬檔位統計較差。\n【選擇】首選4號沙井之友(模型 16%,公平賠率 6.2):近況、過往市場評價、讓磅著數佔優,讓磅著數比同場中位數多約 7 分;次選11號頑童(模型 16%,公平賠率 6.5):近況、過往市場評價、檔位統計佔優;三選1號勇霸龍(模型 15%,公平賠率 6.7):騎師、騎練組合、讓磅著數佔優,讓磅著數比同場中位數多約 7 分。\n【冷門】3號輕功猛男(獨贏 11,模型排第 4):近況、騎師。呢類馬歷來入位機會高過一般冷門,較適合位置或者連贏配腳,唔建議重注獨贏。\n【風險】市場大熱門係1號勇霸龍,同模型首選唔同;按綜合機率計暫時冇明顯值博;首選機率只有 16%,形勢開放;4號沙井之友要留意上仗速度指數;11號頑童要留意騎師、騎練組合;賠率會變,以開跑前為準。"
   },
   {
    "race_no": 7,
@@ -3098,13 +3077,13 @@
     "races": 0
    },
    "course_bias": "此跑道路程歷來前置馬有利",
-   "odds_updated": "04/11/2026 03:51",
+   "odds_updated": "04/11/2026 14:06",
    "longshots": [
     {
      "no": 2,
      "horse": "一定掂",
      "win_odds": 10.0,
-     "place_odds": 1.3,
+     "place_odds": 2.3,
      "win_prob": 0.1032,
      "rank": 3,
      "style": "中游",
@@ -3121,8 +3100,8 @@
     {
      "no": 12,
      "horse": "翠兒威威",
-     "win_odds": 12.0,
-     "place_odds": 4.1,
+     "win_odds": 13.0,
+     "place_odds": 4.0,
      "win_prob": 0.088,
      "rank": 4,
      "style": "領放",
@@ -3167,11 +3146,11 @@
       "後段追勁",
       "練馬師近況"
      ],
-     "win_odds": 3.8,
-     "place_odds": 2.4,
-     "market_prob": 0.213,
-     "blend_prob": 0.2216,
-     "ev": 0.842,
+     "win_odds": 3.4,
+     "place_odds": 1.7,
+     "market_prob": 0.239,
+     "blend_prob": 0.2497,
+     "ev": 0.849,
      "value": false,
      "longshot": false
     },
@@ -3204,11 +3183,11 @@
       "上仗速度指數",
       "步速形勢"
      ],
-     "win_odds": 7.3,
+     "win_odds": 7.0,
      "place_odds": 2.4,
-     "market_prob": 0.1109,
-     "blend_prob": 0.1116,
-     "ev": 0.815,
+     "market_prob": 0.1161,
+     "blend_prob": 0.117,
+     "ev": 0.819,
      "value": false,
      "longshot": false
     },
@@ -3242,10 +3221,10 @@
       "後段追勁"
      ],
      "win_odds": 10.0,
-     "place_odds": 1.3,
-     "market_prob": 0.0809,
-     "blend_prob": 0.0802,
-     "ev": 0.802,
+     "place_odds": 2.3,
+     "market_prob": 0.0813,
+     "blend_prob": 0.0804,
+     "ev": 0.804,
      "value": false,
      "longshot": true
     },
@@ -3278,11 +3257,11 @@
       "近況",
       "末段速度(分段時間)"
      ],
-     "win_odds": 12.0,
-     "place_odds": 4.1,
-     "market_prob": 0.0674,
-     "blend_prob": 0.0663,
-     "ev": 0.795,
+     "win_odds": 13.0,
+     "place_odds": 4.0,
+     "market_prob": 0.0625,
+     "blend_prob": 0.0611,
+     "ev": 0.794,
      "value": false,
      "longshot": true
     },
@@ -3315,11 +3294,11 @@
       "檔位統計",
       "後段追勁"
      ],
-     "win_odds": 9.0,
-     "place_odds": 3.4,
-     "market_prob": 0.0899,
-     "blend_prob": 0.0896,
-     "ev": 0.807,
+     "win_odds": 8.9,
+     "place_odds": 3.1,
+     "market_prob": 0.0913,
+     "blend_prob": 0.0909,
+     "ev": 0.809,
      "value": false,
      "longshot": false
     },
@@ -3352,10 +3331,10 @@
       "近況",
       "後段追勁"
      ],
-     "win_odds": 7.5,
-     "place_odds": 3.1,
-     "market_prob": 0.1079,
-     "blend_prob": 0.1085,
+     "win_odds": 7.8,
+     "place_odds": 3.0,
+     "market_prob": 0.1042,
+     "blend_prob": 0.1044,
      "ev": 0.814,
      "value": false,
      "longshot": false
@@ -3389,11 +3368,11 @@
       "騎練組合",
       "騎師"
      ],
-     "win_odds": 14.0,
-     "place_odds": 4.4,
-     "market_prob": 0.0578,
-     "blend_prob": 0.0563,
-     "ev": 0.789,
+     "win_odds": 12.0,
+     "place_odds": 3.3,
+     "market_prob": 0.0677,
+     "blend_prob": 0.0664,
+     "ev": 0.797,
      "value": false,
      "longshot": false
     },
@@ -3426,11 +3405,11 @@
       "近況",
       "騎練組合"
      ],
-     "win_odds": 26.0,
-     "place_odds": 7.8,
-     "market_prob": 0.0311,
-     "blend_prob": 0.0294,
-     "ev": 0.765,
+     "win_odds": 23.0,
+     "place_odds": 6.4,
+     "market_prob": 0.0353,
+     "blend_prob": 0.0335,
+     "ev": 0.771,
      "value": false,
      "longshot": false
     },
@@ -3462,11 +3441,11 @@
       "過往市場評價",
       "近況"
      ],
-     "win_odds": 12.0,
-     "place_odds": 4.4,
-     "market_prob": 0.0674,
-     "blend_prob": 0.0663,
-     "ev": 0.795,
+     "win_odds": 14.0,
+     "place_odds": 3.9,
+     "market_prob": 0.058,
+     "blend_prob": 0.0565,
+     "ev": 0.791,
      "value": false,
      "longshot": false
     },
@@ -3499,11 +3478,11 @@
       "近況",
       "檔位統計"
      ],
-     "win_odds": 12.0,
-     "place_odds": 5.0,
-     "market_prob": 0.0674,
-     "blend_prob": 0.0663,
-     "ev": 0.795,
+     "win_odds": 16.0,
+     "place_odds": 5.6,
+     "market_prob": 0.0508,
+     "blend_prob": 0.0491,
+     "ev": 0.786,
      "value": false,
      "longshot": false
     },
@@ -3535,11 +3514,11 @@
       "騎師",
       "檔位統計"
      ],
-     "win_odds": 10.0,
-     "place_odds": 3.2,
-     "market_prob": 0.0809,
-     "blend_prob": 0.0802,
-     "ev": 0.802,
+     "win_odds": 11.0,
+     "place_odds": 3.0,
+     "market_prob": 0.0739,
+     "blend_prob": 0.0728,
+     "ev": 0.8,
      "value": false,
      "longshot": false
     },
@@ -3572,17 +3551,17 @@
       "近況",
       "過往市場評價"
      ],
-     "win_odds": 32.0,
+     "win_odds": 41.0,
      "place_odds": 10.0,
-     "market_prob": 0.0253,
-     "blend_prob": 0.0237,
-     "ev": 0.757,
+     "market_prob": 0.0198,
+     "blend_prob": 0.0183,
+     "ev": 0.749,
      "value": false,
      "longshot": false
     }
    ],
    "ai": null,
-   "summary": "【步速】8號做好自己、12號翠兒威威、4號相映紅有機會爭放。預計步速偏快(4 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 9.2%、前列 10.7%、中游 8.9%、後上 6.8%;前置馬仍然較有利,不過領放馬優勢比平時細。跑法配合嘅熱門選擇:8號做好自己、12號翠兒威威。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:12號翠兒威威、1號將睿。5號細水長流、2號一定掂檔位統計較差。\n【選擇】首選5號細水長流(模型 21%,公平賠率 4.8):過往市場評價、騎師、近況佔優;次選8號做好自己(模型 20%,公平賠率 5.1):過往市場評價、近況、後段追勁佔優,讓磅著數比同場中位數多約 8 分;三選2號一定掂(模型 10%,公平賠率 9.7):近況、上仗速度指數、過往市場評價佔優。\n【冷門】2號一定掂(獨贏 10,模型排第 3):近況、上仗速度指數;12號翠兒威威(獨贏 12,模型排第 4):後段追勁、檔位統計。呢類馬歷來入位機會高過一般冷門,較適合位置或者連贏配腳,唔建議重注獨贏。\n【風險】按綜合機率計暫時冇明顯值博;5號細水長流要留意後段追勁、練馬師近況;8號做好自己要留意上仗速度指數、步速形勢;賠率會變,以開跑前為準。"
+   "summary": "【步速】8號做好自己、12號翠兒威威、4號相映紅有機會爭放。預計步速偏快(4 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 9.2%、前列 10.7%、中游 8.9%、後上 6.8%;前置馬仍然較有利,不過領放馬優勢比平時細。跑法配合嘅熱門選擇:8號做好自己、12號翠兒威威。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:12號翠兒威威、1號將睿。5號細水長流、2號一定掂檔位統計較差。\n【選擇】首選5號細水長流(模型 21%,公平賠率 4.8):過往市場評價、騎師、近況佔優;次選8號做好自己(模型 20%,公平賠率 5.1):過往市場評價、近況、後段追勁佔優,讓磅著數比同場中位數多約 8 分;三選2號一定掂(模型 10%,公平賠率 9.7):近況、上仗速度指數、過往市場評價佔優。\n【冷門】2號一定掂(獨贏 10,模型排第 3):近況、上仗速度指數;12號翠兒威威(獨贏 13,模型排第 4):後段追勁、檔位統計。呢類馬歷來入位機會高過一般冷門,較適合位置或者連贏配腳,唔建議重注獨贏。\n【風險】按綜合機率計暫時冇明顯值博;5號細水長流要留意後段追勁、練馬師近況;8號做好自己要留意上仗速度指數、步速形勢;賠率會變,以開跑前為準。"
   },
   {
    "race_no": 8,
@@ -3605,13 +3584,13 @@
     "races": 0
    },
    "course_bias": "此跑道路程跑法偏差不明顯",
-   "odds_updated": "04/11/2026 03:50",
+   "odds_updated": "04/11/2026 14:06",
    "longshots": [
     {
      "no": 7,
      "horse": "辣得準",
-     "win_odds": 24.0,
-     "place_odds": 8.9,
+     "win_odds": 25.0,
+     "place_odds": 7.3,
      "win_prob": 0.0726,
      "rank": 5,
      "style": "中游",
@@ -3656,11 +3635,11 @@
       "步速形勢",
       "前置跑法"
      ],
-     "win_odds": 4.3,
-     "place_odds": 1.6,
-     "market_prob": 0.1907,
-     "blend_prob": 0.1959,
-     "ev": 0.842,
+     "win_odds": 3.2,
+     "place_odds": 1.3,
+     "market_prob": 0.2549,
+     "blend_prob": 0.2659,
+     "ev": 0.851,
      "value": false,
      "longshot": false
     },
@@ -3693,11 +3672,11 @@
       "讓磅著數",
       "降班"
      ],
-     "win_odds": 8.4,
-     "place_odds": 3.8,
-     "market_prob": 0.0976,
-     "blend_prob": 0.097,
-     "ev": 0.815,
+     "win_odds": 7.4,
+     "place_odds": 2.9,
+     "market_prob": 0.1102,
+     "blend_prob": 0.1103,
+     "ev": 0.816,
      "value": false,
      "longshot": false
     },
@@ -3730,11 +3709,11 @@
       "騎師",
       "騎練組合"
      ],
-     "win_odds": 6.6,
-     "place_odds": 2.2,
-     "market_prob": 0.1243,
-     "blend_prob": 0.1249,
-     "ev": 0.825,
+     "win_odds": 7.3,
+     "place_odds": 2.4,
+     "market_prob": 0.1117,
+     "blend_prob": 0.1118,
+     "ev": 0.816,
      "value": false,
      "longshot": false
     },
@@ -3767,11 +3746,11 @@
       "後段追勁",
       "檔位統計"
      ],
-     "win_odds": 6.6,
-     "place_odds": 1.2,
-     "market_prob": 0.1243,
-     "blend_prob": 0.1249,
-     "ev": 0.825,
+     "win_odds": 8.1,
+     "place_odds": 1.8,
+     "market_prob": 0.1007,
+     "blend_prob": 0.1003,
+     "ev": 0.812,
      "value": false,
      "longshot": false
     },
@@ -3804,11 +3783,11 @@
       "後段追勁",
       "近況"
      ],
-     "win_odds": 24.0,
-     "place_odds": 8.9,
-     "market_prob": 0.0342,
-     "blend_prob": 0.0322,
-     "ev": 0.773,
+     "win_odds": 25.0,
+     "place_odds": 7.3,
+     "market_prob": 0.0326,
+     "blend_prob": 0.0307,
+     "ev": 0.768,
      "value": false,
      "longshot": true
     },
@@ -3841,11 +3820,11 @@
       "後段追勁",
       "檔位統計"
      ],
-     "win_odds": 21.0,
-     "place_odds": 9.7,
-     "market_prob": 0.0391,
-     "blend_prob": 0.0371,
-     "ev": 0.778,
+     "win_odds": 20.0,
+     "place_odds": 6.7,
+     "market_prob": 0.0408,
+     "blend_prob": 0.0388,
+     "ev": 0.776,
      "value": false,
      "longshot": false
     },
@@ -3878,11 +3857,11 @@
       "過往市場評價",
       "後段追勁"
      ],
-     "win_odds": 19.0,
-     "place_odds": 7.0,
-     "market_prob": 0.0432,
-     "blend_prob": 0.0412,
-     "ev": 0.782,
+     "win_odds": 12.0,
+     "place_odds": 4.2,
+     "market_prob": 0.068,
+     "blend_prob": 0.0664,
+     "ev": 0.796,
      "value": false,
      "longshot": false
     },
@@ -3915,11 +3894,11 @@
       "缺速度數據",
       "近況"
      ],
-     "win_odds": 3.7,
-     "place_odds": 1.5,
-     "market_prob": 0.2216,
-     "blend_prob": 0.2294,
-     "ev": 0.849,
+     "win_odds": 5.5,
+     "place_odds": 2.1,
+     "market_prob": 0.1483,
+     "blend_prob": 0.1506,
+     "ev": 0.828,
      "value": false,
      "longshot": false
     },
@@ -3951,11 +3930,11 @@
       "過往市場評價",
       "騎練組合"
      ],
-     "win_odds": 30.0,
-     "place_odds": 5.8,
-     "market_prob": 0.0273,
-     "blend_prob": 0.0255,
-     "ev": 0.764,
+     "win_odds": 26.0,
+     "place_odds": 5.5,
+     "market_prob": 0.0314,
+     "blend_prob": 0.0295,
+     "ev": 0.766,
      "value": false,
      "longshot": false
     },
@@ -3988,11 +3967,11 @@
       "近況",
       "騎練組合"
      ],
-     "win_odds": 23.0,
-     "place_odds": 9.7,
-     "market_prob": 0.0357,
-     "blend_prob": 0.0337,
-     "ev": 0.775,
+     "win_odds": 20.0,
+     "place_odds": 6.7,
+     "market_prob": 0.0408,
+     "blend_prob": 0.0388,
+     "ev": 0.776,
      "value": false,
      "longshot": false
     },
@@ -4025,11 +4004,11 @@
       "騎師",
       "過往市場評價"
      ],
-     "win_odds": 23.0,
-     "place_odds": 8.9,
-     "market_prob": 0.0357,
-     "blend_prob": 0.0337,
-     "ev": 0.775,
+     "win_odds": 25.0,
+     "place_odds": 6.9,
+     "market_prob": 0.0326,
+     "blend_prob": 0.0307,
+     "ev": 0.768,
      "value": false,
      "longshot": false
     },
@@ -4062,17 +4041,17 @@
       "過往市場評價",
       "近況"
      ],
-     "win_odds": 31.0,
-     "place_odds": 11.0,
-     "market_prob": 0.0265,
-     "blend_prob": 0.0246,
-     "ev": 0.763,
+     "win_odds": 29.0,
+     "place_odds": 7.9,
+     "market_prob": 0.0281,
+     "blend_prob": 0.0263,
+     "ev": 0.762,
      "value": false,
      "longshot": false
     }
    ],
    "ai": null,
-   "summary": "【步速】9號烈焰光芒、8號何方來聲、10號關鍵所在有機會爭放。預計步速偏快(5 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 9.2%、前列 10.7%、中游 8.9%、後上 6.8%;前置馬仍然較有利,不過領放馬優勢比平時細。跑法配合嘅熱門選擇:9號烈焰光芒、6號輝灑自如。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程跑法偏差不明顯。檔位統計著數:8號何方來聲、9號烈焰光芒。2號觀眾之力檔位統計較差。\n【選擇】首選9號烈焰光芒(模型 30%,公平賠率 3.4):近況、過往市場評價、騎師佔優;次選6號輝灑自如(模型 12%,公平賠率 8.5):近況、過往市場評價、騎師佔優;三選8號何方來聲(模型 12%,公平賠率 8.6):近況、檔位統計、過往市場評價佔優,讓磅著數比同場中位數多約 4 分。\n【冷門】7號辣得準(獨贏 24,模型排第 5):過往市場評價、騎師。呢類馬歷來入位機會高過一般冷門,較適合位置或者連贏配腳,唔建議重注獨贏。\n【風險】市場大熱門係1號偵探之神,同模型首選唔同;按綜合機率計暫時冇明顯值博;9號烈焰光芒要留意步速形勢、前置跑法;6號輝灑自如要留意讓磅著數、降班;賠率會變,以開跑前為準。"
+   "summary": "【步速】9號烈焰光芒、8號何方來聲、10號關鍵所在有機會爭放。預計步速偏快(5 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 9.2%、前列 10.7%、中游 8.9%、後上 6.8%;前置馬仍然較有利,不過領放馬優勢比平時細。跑法配合嘅熱門選擇:9號烈焰光芒、6號輝灑自如。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程跑法偏差不明顯。檔位統計著數:8號何方來聲、9號烈焰光芒。2號觀眾之力檔位統計較差。\n【選擇】首選9號烈焰光芒(模型 30%,公平賠率 3.4):近況、過往市場評價、騎師佔優;次選6號輝灑自如(模型 12%,公平賠率 8.5):近況、過往市場評價、騎師佔優;三選8號何方來聲(模型 12%,公平賠率 8.6):近況、檔位統計、過往市場評價佔優,讓磅著數比同場中位數多約 4 分。\n【冷門】7號辣得準(獨贏 25,模型排第 5):過往市場評價、騎師。呢類馬歷來入位機會高過一般冷門,較適合位置或者連贏配腳,唔建議重注獨贏。\n【風險】按綜合機率計暫時冇明顯值博;9號烈焰光芒要留意步速形勢、前置跑法;6號輝灑自如要留意讓磅著數、降班;賠率會變,以開跑前為準。"
   },
   {
    "race_no": 9,
@@ -4095,13 +4074,13 @@
     "races": 0
    },
    "course_bias": "此跑道路程跑法偏差不明顯",
-   "odds_updated": "04/11/2026 03:50",
+   "odds_updated": "04/11/2026 14:06",
    "longshots": [
     {
      "no": 10,
      "horse": "加州本事",
-     "win_odds": 12.0,
-     "place_odds": 3.5,
+     "win_odds": 11.0,
+     "place_odds": 3.2,
      "win_prob": 0.1312,
      "rank": 2,
      "style": "前列",
@@ -4119,7 +4098,7 @@
      "no": 4,
      "horse": "馭跑得",
      "win_odds": 14.0,
-     "place_odds": 4.8,
+     "place_odds": 4.3,
      "win_prob": 0.1044,
      "rank": 3,
      "style": "前列",
@@ -4135,8 +4114,8 @@
     {
      "no": 9,
      "horse": "首飾悟空",
-     "win_odds": 10.0,
-     "place_odds": 3.9,
+     "win_odds": 13.0,
+     "place_odds": 4.4,
      "win_prob": 0.1019,
      "rank": 4,
      "style": "中游",
@@ -4181,11 +4160,11 @@
       "後段追勁",
       "負磅"
      ],
-     "win_odds": 2.5,
-     "place_odds": 1.3,
-     "market_prob": 0.3227,
-     "blend_prob": 0.3403,
-     "ev": 0.851,
+     "win_odds": 2.3,
+     "place_odds": 1.2,
+     "market_prob": 0.3518,
+     "blend_prob": 0.3709,
+     "ev": 0.853,
      "value": false,
      "longshot": false
     },
@@ -4218,11 +4197,11 @@
       "近況",
       "上仗速度指數"
      ],
-     "win_odds": 12.0,
-     "place_odds": 3.5,
-     "market_prob": 0.0672,
-     "blend_prob": 0.0656,
-     "ev": 0.787,
+     "win_odds": 11.0,
+     "place_odds": 3.2,
+     "market_prob": 0.0736,
+     "blend_prob": 0.0717,
+     "ev": 0.789,
      "value": false,
      "longshot": true
     },
@@ -4255,10 +4234,10 @@
       "末段速度(分段時間)"
      ],
      "win_odds": 14.0,
-     "place_odds": 4.8,
-     "market_prob": 0.0576,
-     "blend_prob": 0.0558,
-     "ev": 0.781,
+     "place_odds": 4.3,
+     "market_prob": 0.0578,
+     "blend_prob": 0.0557,
+     "ev": 0.779,
      "value": false,
      "longshot": true
     },
@@ -4291,11 +4270,11 @@
       "後段追勁",
       "上仗速度指數"
      ],
-     "win_odds": 10.0,
-     "place_odds": 3.9,
-     "market_prob": 0.0807,
-     "blend_prob": 0.0794,
-     "ev": 0.794,
+     "win_odds": 13.0,
+     "place_odds": 4.4,
+     "market_prob": 0.0622,
+     "blend_prob": 0.0602,
+     "ev": 0.782,
      "value": false,
      "longshot": true
     },
@@ -4328,11 +4307,11 @@
       "過往市場評價",
       "負磅"
      ],
-     "win_odds": 8.4,
-     "place_odds": 2.7,
-     "market_prob": 0.0961,
-     "blend_prob": 0.0953,
-     "ev": 0.801,
+     "win_odds": 7.6,
+     "place_odds": 2.3,
+     "market_prob": 0.1065,
+     "blend_prob": 0.1057,
+     "ev": 0.804,
      "value": false,
      "longshot": false
     },
@@ -4365,11 +4344,11 @@
       "缺速度數據",
       "近況"
      ],
-     "win_odds": 17.0,
-     "place_odds": 4.9,
-     "market_prob": 0.0475,
-     "blend_prob": 0.0455,
-     "ev": 0.773,
+     "win_odds": 18.0,
+     "place_odds": 4.8,
+     "market_prob": 0.045,
+     "blend_prob": 0.0428,
+     "ev": 0.77,
      "value": false,
      "longshot": false
     },
@@ -4402,11 +4381,11 @@
       "過往市場評價",
       "騎師"
      ],
-     "win_odds": 20.0,
-     "place_odds": 4.5,
-     "market_prob": 0.0403,
-     "blend_prob": 0.0383,
-     "ev": 0.767,
+     "win_odds": 21.0,
+     "place_odds": 5.1,
+     "market_prob": 0.0385,
+     "blend_prob": 0.0364,
+     "ev": 0.764,
      "value": false,
      "longshot": false
     },
@@ -4439,11 +4418,11 @@
       "騎師",
       "過往市場評價"
      ],
-     "win_odds": 7.6,
-     "place_odds": 2.2,
-     "market_prob": 0.1062,
-     "blend_prob": 0.1059,
-     "ev": 0.805,
+     "win_odds": 6.3,
+     "place_odds": 1.8,
+     "market_prob": 0.1284,
+     "blend_prob": 0.1287,
+     "ev": 0.811,
      "value": false,
      "longshot": false
     },
@@ -4476,11 +4455,11 @@
       "檔位統計",
       "後段追勁"
      ],
-     "win_odds": 22.0,
-     "place_odds": 5.0,
-     "market_prob": 0.0367,
-     "blend_prob": 0.0347,
-     "ev": 0.763,
+     "win_odds": 29.0,
+     "place_odds": 5.9,
+     "market_prob": 0.0279,
+     "blend_prob": 0.0259,
+     "ev": 0.752,
      "value": false,
      "longshot": false
     },
@@ -4513,11 +4492,11 @@
       "過往市場評價",
       "近況"
      ],
-     "win_odds": 15.0,
-     "place_odds": 3.8,
-     "market_prob": 0.0538,
-     "blend_prob": 0.0519,
-     "ev": 0.778,
+     "win_odds": 16.0,
+     "place_odds": 4.4,
+     "market_prob": 0.0506,
+     "blend_prob": 0.0484,
+     "ev": 0.774,
      "value": false,
      "longshot": false
     },
@@ -4549,11 +4528,11 @@
       "近況",
       "騎師"
      ],
-     "win_odds": 14.0,
-     "place_odds": 3.9,
-     "market_prob": 0.0576,
-     "blend_prob": 0.0558,
-     "ev": 0.781,
+     "win_odds": 25.0,
+     "place_odds": 6.5,
+     "market_prob": 0.0324,
+     "blend_prob": 0.0303,
+     "ev": 0.757,
      "value": false,
      "longshot": false
     },
@@ -4585,17 +4564,17 @@
       "近況",
       "騎師"
      ],
-     "win_odds": 24.0,
-     "place_odds": 5.1,
-     "market_prob": 0.0336,
-     "blend_prob": 0.0317,
-     "ev": 0.76,
+     "win_odds": 32.0,
+     "place_odds": 6.6,
+     "market_prob": 0.0253,
+     "blend_prob": 0.0234,
+     "ev": 0.748,
      "value": false,
      "longshot": false
     }
    ],
    "ai": null,
-   "summary": "【步速】預計步速偏慢(1 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.3%、前列 10.8%、中游 8.5%、後上 7.2%;前置馬仍然較有利。跑法配合嘅熱門選擇:10號加州本事、4號馭跑得。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程跑法偏差不明顯。檔位統計著數:2號乘數表、7號天馬行雲。4號馭跑得檔位統計較差。\n【選擇】首選1號長勝隊長(模型 19%,公平賠率 5.3):近況、過往市場評價、末段速度(分段時間)佔優;次選10號加州本事(模型 13%,公平賠率 7.6):騎師、騎練組合、後段追勁佔優;三選4號馭跑得(模型 10%,公平賠率 9.6):近況、後段追勁、表現評分(近績最佳)佔優,讓磅著數比同場中位數多約 7 分。\n【冷門】10號加州本事(獨贏 12,模型排第 2):騎師、騎練組合;4號馭跑得(獨贏 14,模型排第 3):近況、後段追勁;9號首飾悟空(獨贏 10,模型排第 4):過往市場評價、末段速度(分段時間)。呢類馬歷來入位機會高過一般冷門,較適合位置或者連贏配腳,唔建議重注獨贏。\n【風險】按綜合機率計暫時冇明顯值博;首選機率只有 19%,形勢開放;1號長勝隊長要留意後段追勁、負磅;10號加州本事要留意近況、上仗速度指數;賠率會變,以開跑前為準。"
+   "summary": "【步速】預計步速偏慢(1 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.3%、前列 10.8%、中游 8.5%、後上 7.2%;前置馬仍然較有利。跑法配合嘅熱門選擇:10號加州本事、4號馭跑得。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程跑法偏差不明顯。檔位統計著數:2號乘數表、7號天馬行雲。4號馭跑得檔位統計較差。\n【選擇】首選1號長勝隊長(模型 19%,公平賠率 5.3):近況、過往市場評價、末段速度(分段時間)佔優;次選10號加州本事(模型 13%,公平賠率 7.6):騎師、騎練組合、後段追勁佔優;三選4號馭跑得(模型 10%,公平賠率 9.6):近況、後段追勁、表現評分(近績最佳)佔優,讓磅著數比同場中位數多約 7 分。\n【冷門】10號加州本事(獨贏 11,模型排第 2):騎師、騎練組合;4號馭跑得(獨贏 14,模型排第 3):近況、後段追勁;9號首飾悟空(獨贏 13,模型排第 4):過往市場評價、末段速度(分段時間)。呢類馬歷來入位機會高過一般冷門,較適合位置或者連贏配腳,唔建議重注獨贏。\n【風險】按綜合機率計暫時冇明顯值博;首選機率只有 19%,形勢開放;1號長勝隊長要留意後段追勁、負磅;10號加州本事要留意近況、上仗速度指數;賠率會變,以開跑前為準。"
   }
  ]
 }
