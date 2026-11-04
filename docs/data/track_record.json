@@ -1,7 +1,88 @@
 {
- "races": 0,
- "wins": 0,
- "places": 0,
- "flat_roi": null,
- "rows": []
+ "races": 8,
+ "wins": 1,
+ "places": 2,
+ "flat_roi": -0.2625,
+ "rows": [
+  {
+   "date": "2026-11-04",
+   "race_no": 1,
+   "pick": 9,
+   "pick_prob": 0.1829,
+   "winner": 10,
+   "won": false,
+   "placed": false,
+   "return": 0
+  },
+  {
+   "date": "2026-11-04",
+   "race_no": 2,
+   "pick": 9,
+   "pick_prob": 0.1829,
+   "winner": 12,
+   "won": false,
+   "placed": false,
+   "return": 0
+  },
+  {
+   "date": "2026-11-04",
+   "race_no": 3,
+   "pick": 1,
+   "pick_prob": 0.1774,
+   "winner": 1,
+   "won": true,
+   "placed": true,
+   "return": 5.9
+  },
+  {
+   "date": "2026-11-04",
+   "race_no": 4,
+   "pick": 10,
+   "pick_prob": 0.2467,
+   "winner": 6,
+   "won": false,
+   "placed": false,
+   "return": 0
+  },
+  {
+   "date": "2026-11-04",
+   "race_no": 5,
+   "pick": 2,
+   "pick_prob": 0.2142,
+   "winner": 11,
+   "won": false,
+   "placed": false,
+   "return": 0
+  },
+  {
+   "date": "2026-11-04",
+   "race_no": 6,
+   "pick": 4,
+   "pick_prob": 0.1602,
+   "winner": 1,
+   "won": false,
+   "placed": false,
+   "return": 0
+  },
+  {
+   "date": "2026-11-04",
+   "race_no": 7,
+   "pick": 5,
+   "pick_prob": 0.2084,
+   "winner": 8,
+   "won": false,
+   "placed": true,
+   "return": 0
+  },
+  {
+   "date": "2026-11-04",
+   "race_no": 8,
+   "pick": 9,
+   "pick_prob": 0.2984,
+   "winner": 2,
+   "won": false,
+   "placed": false,
+   "return": 0
+  }
+ ]
 }
