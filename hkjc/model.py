@@ -54,6 +54,13 @@ FEATURES = [
 # Same-day sectional reads (track variant, closing advantage) are shown to the user
 # but kept out of the model: as features they worsened walk-forward log loss
 # (2.2251 -> 2.2303 on 452 races).
+# Nov 2026, 968 development races, dropped: track-variant speed, age, sex, imported with
+# experience, distance change, wet-track and all-weather record, weight x distance, beaten
+# margin, career record, mark vs last win, body weight; training on only the last 1-2 seasons.
+# jockey_up (log win rate of today's jockey minus the horse's last jockey) passed there (+0.0028,
+# z 3.35) and vanished when shuffled, but missed on the 323 locked races from 2026-05-20 (+0.0039,
+# z 1.60, needed 1.64). Not adopted: model weight stays 0, so the first choice wouldn't change.
+# Those 323 races are now used up; retest it on races after 2026-11-08.
 SEC_PER_LENGTH = 0.17
 
 _CLASS = {"一級賽": -2, "二級賽": -1, "三級賽": 0, "第一班": 1, "第二班": 2,
