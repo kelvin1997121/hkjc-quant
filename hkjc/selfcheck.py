@@ -27,6 +27,7 @@ GROUPS = {
     "市場往績": ["mkt_rating", "vs_mkt"],
     "分段時間": ["late_speed", "early_speed"],
     "負磅/評分": ["weight_rel", "rating_move"],
+    "配備": ["gear_first", "gear_off", "gear_back"],
 }
 CANDIDATES = [{"l2": l2, "stages": st} for l2 in (0.02, 0.05, 0.2) for st in (1, 3)]
 MIN_GAIN = 0.002  # log-loss improvement needed before a setting is switched
@@ -76,6 +77,9 @@ def walk_forward(samples, cols, cfg, folds=4, test_frac=0.4, with_blend=False):
                     pb = model.blend(pm, q, bw["a"], bw["b"])
                     r["ll_blend"] = -math.log(pb[s["y"]])
                     r["blend_hit"] = int(np.argmax(pb)) == s["y"]
+                    order = list(np.argsort(-pb))
+                    r["winner_rank"] = order.index(s["y"]) + 1
+                    r["first_placed"] = order[0] in (s.get("order") or [s["y"]])
             rows.append(r)
     return rows, weights
 
@@ -92,6 +96,9 @@ def _summary(rows):
     if bl:
         gain = np.array([r["ll_mkt"] - r["ll_blend"] for r in bl])
         out["blend_hit"] = round(float(np.mean([r["blend_hit"] for r in bl])), 4)
+        out["winner_in_top2"] = round(float(np.mean([r["winner_rank"] <= 2 for r in bl])), 4)
+        out["winner_in_top3"] = round(float(np.mean([r["winner_rank"] <= 3 for r in bl])), 4)
+        out["first_placed"] = round(float(np.mean([r["first_placed"] for r in bl])), 4)
         out["blend_gain"] = round(float(gain.mean()), 4)
         out["blend_gain_ci"] = round(float(1.96 * gain.std() / math.sqrt(len(gain))), 4)
     return out

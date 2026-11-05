@@ -18,6 +18,7 @@ FEATURE_ZH = {
     "late_speed": "末段速度(分段時間)", "early_speed": "前段速度(分段時間)",
     "jockey_form": "騎師近況", "trainer_form": "練馬師近況", "combo": "騎練組合",
     "rating_move": "評分變動", "trainer_venue": "練馬師本場地成績", "form_trend": "狀態走勢",
+    "gear_first": "首次配備", "gear_off": "除去配備", "gear_back": "重戴配備",
 }
 
 

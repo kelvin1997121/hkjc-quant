@@ -9,7 +9,7 @@ import json
 import sys
 from datetime import date, datetime, timezone
 
-from . import agent, analyze, model, scraper, store, writer
+from . import agent, analyze, horses, model, scraper, store, writer
 from .backfill import HKT, backfill, today_hkt
 
 
@@ -37,6 +37,7 @@ def complete_recent_results(days=4):
         if len(have) < len(card["races"]):
             res = scraper.fetch_meeting_results(d)
             if len(res) > len(have):
+                horses.attach_card_fields(res, card)
                 store.save_results(res)
                 print(f"   completed {card['date']}: {len(have)} -> {len(res)} races")
         elif d < today and any(not r.get("has_sect") for r in have):
@@ -44,6 +45,10 @@ def complete_recent_results(days=4):
             for r in have:
                 if not r.get("has_sect"):
                     scraper.attach_sectionals(r)
+            store.save_results(have)
+        elif any("rating" not in x for r in have for x in r["runners"]):
+            # saved by the daily catch-up before the race card fields were merged in
+            horses.attach_card_fields(have, card)
             store.save_results(have)
 
 
@@ -136,6 +141,7 @@ def run(use_agent=True):
         card["races"] = sorted(card["races"] + kept, key=lambda r: r["race_no"])
     validate_card(card)
     store.save_card(card)
+    horses.remember_card_horses(card)
     mkey = f"{card['date']}_{card['venue']}"
     meeting_day = date.fromisoformat(card["date"])
     print(f"   {mkey}: {len(card['races'])} races")
@@ -150,6 +156,7 @@ def run(use_agent=True):
         live = scraper.fetch_meeting_results(
             meeting_day, venue=card["venue"], race_nos=[r["race_no"] for r in card["races"]],
             have=have)
+        horses.attach_card_fields(live, card)
         if live:
             store.save_results(live)
         finished = {r["race_no"] for r in live}

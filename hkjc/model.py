@@ -35,7 +35,10 @@ FEATURES = [
     "perf_best", "perf_last", "handicap_edge", "late_speed", "early_speed",
     "jockey_form", "trainer_form", "combo",
     "rating_move", "trainer_venue", "form_trend",
+    "gear_first", "gear_off", "gear_back",
 ]
+# Also tested on official-rating data and dropped for no walk-forward gain: sire record
+# overall and by distance, rating gap to the field, apprentice claim, first-time blinkers.
 # Tried with the 4 Nov review and dropped (no walk-forward gain on 1,291 races):
 # jockey_venue, first_up, quick_back.
 # venue_form (horse's form at this venue/surface) was tried and dropped: it worsened
@@ -65,23 +68,27 @@ def band_top(race):
 
 
 def est_ratings(race, runners):
-    """Rating per runner: band top minus weight below the top weight.
-
-    Always estimated, even when the race card publishes real ratings: history has
-    no ratings, so the model was trained on these estimates, and live predictions
-    must use the same scale (real ratings differ by +1.3 on average, up to 7 points
-    where an apprentice claims).
-    """
+    """Official rating per runner; for the few without one, band top minus weight below top."""
     top = band_top(race)
     wts = [x.get("weight") or 0 for x in runners]
     maxw = max(wts) if wts else 0
     out = []
     for x, w in zip(runners, wts):
-        if top is not None and w:
+        if x.get("rating"):
+            out.append(float(x["rating"]))
+        elif top is not None and w:
             out.append(float(top - (maxw - w)))
         else:
             out.append(None)
     return out
+
+
+def gear_flags(gear):
+    """HKJC gear codes: suffix 1 = first time on, 2 = back on after a break, - = taken off."""
+    parts = [g.strip() for g in (gear or "").split("/") if g.strip()]
+    return {"first": sum(g.endswith("1") for g in parts),
+            "off": sum(g.endswith("-") for g in parts),
+            "back": sum(g.endswith("2") for g in parts)}
 
 
 STYLES = ("領放", "前列", "中游", "後上")
@@ -340,6 +347,7 @@ class State:
         X, extra = [], []
         for x, p, rating in zip(runners, profs, ratings):
             rating = rating if rating is not None else r_fill
+            gear = gear_flags(x.get("gear"))
             pb = p["perf_best"] if p["perf_best"] is not None else pb_fill
             pl = p["perf_last"] if p["perf_last"] is not None else pb
             early = p["early"] if p["early"] is not None else 0.5
@@ -376,6 +384,9 @@ class State:
                 # weight-implied rating now vs. last run (+ = raised by the handicapper)
                 "rating_move": (rating - p["last_est"]) / 5 if p["last_est"] is not None else 0.0,
                 "form_trend": p["form_trend"] if p["form_trend"] is not None else 0.0,
+                "gear_first": gear["first"],
+                "gear_off": gear["off"],
+                "gear_back": gear["back"],
                 "venue_form": (p["venue_form"] - p["form"])
                               if p["venue_form"] is not None and p["form"] is not None else 0.0,
                 "weight_rel": ((x.get("weight") or mean_wt) - mean_wt) / 5,

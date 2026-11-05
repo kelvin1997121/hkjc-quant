@@ -201,6 +201,8 @@ function selfcheck(sc) {
     <div style="margin:10px 0">${health}</div>
     <div class="kpis">
       <div class="kpi"><b>${pct(w.blend_hit ?? w.top_hit)}</b>綜合首選勝出率(純模型 ${pct(w.top_hit)},大熱門 ${pct(w.favourite_hit)})</div>
+      <div class="kpi"><b>${pct(w.first_placed)}</b>綜合首選入位率</div>
+      <div class="kpi"><b>${pct(w.winner_in_top2)} / ${pct(w.winner_in_top3)}</b>頭 2 匹 / 頭 3 匹包中頭馬</div>
       <div class="kpi"><b>${w.logloss}</b>Log loss(市場 ${w.market_logloss})</div>
       <div class="kpi"><b>${w.blend_gain > 0 ? "+" : ""}${w.blend_gain} ± ${w.blend_gain_ci}</b>加入模型後對市場嘅改善</div>
       <div class="kpi"><b>l2 ${t.chosen.l2} · ${t.chosen.stages === 1 ? "頭馬" : "頭三名"}</b>${t.switched ? "今日自動調校咗設定" : "設定維持不變"}</div>

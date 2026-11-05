@@ -308,7 +308,7 @@ _CARD_COLS = {
     "評分": "rating", "評分+/-": "rating_change", "排位體重": "body_weight",
     "排位體重+/-": "body_weight_change", "最佳時間": "best_time", "馬齡": "age",
     "性別": "sex", "上賽距今日數": "days_since", "配備": "gear", "優先參賽次序": "priority",
-    "今季獎金": "season_stakes", "父系": "sire",
+    "今季獎金": "season_stakes", "父系": "sire", "母系": "dam", "進口類別": "import_type",
 }
 
 
