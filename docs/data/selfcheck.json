@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-11-05T10:00:16+00:00",
+ "checked_at": "2026-11-05T11:10:48+00:00",
  "health": {
   "checks": [
    {
@@ -34,11 +34,14 @@
  },
  "walk_forward": {
   "races": 1291,
-  "logloss": 2.2131,
-  "top_hit": 0.227,
+  "logloss": 2.2049,
+  "top_hit": 0.2355,
   "market_logloss": 2.0327,
   "favourite_hit": 0.2967,
   "blend_hit": 0.2967,
+  "winner_in_top2": 0.481,
+  "winner_in_top3": 0.6073,
+  "first_placed": 0.6143,
   "blend_gain": 0.0004,
   "blend_gain_ci": 0.0035
  },
@@ -71,73 +74,77 @@
  "calibration": [
   {
    "band": "0%-5%",
-   "n": 6237,
-   "predicted": 0.0291,
-   "actual": 0.0234
+   "n": 6222,
+   "predicted": 0.0289,
+   "actual": 0.0228
   },
   {
    "band": "5%-10%",
-   "n": 5259,
+   "n": 5297,
    "predicted": 0.0722,
-   "actual": 0.0782
+   "actual": 0.0766
   },
   {
    "band": "10%-15%",
    "n": 2535,
-   "predicted": 0.1216,
-   "actual": 0.1219
+   "predicted": 0.1217,
+   "actual": 0.1223
   },
   {
    "band": "15%-20%",
-   "n": 1125,
-   "predicted": 0.1719,
-   "actual": 0.1653
+   "n": 1086,
+   "predicted": 0.1718,
+   "actual": 0.1667
   },
   {
    "band": "20%-30%",
-   "n": 690,
-   "predicted": 0.2371,
-   "actual": 0.2406
+   "n": 699,
+   "predicted": 0.2377,
+   "actual": 0.2604
   },
   {
    "band": "30%-45%",
-   "n": 149,
-   "predicted": 0.3515,
-   "actual": 0.3826
+   "n": 152,
+   "predicted": 0.3499,
+   "actual": 0.3421
   }
  ],
  "factor_groups": [
   {
    "group": "騎練",
-   "delta_logloss": 0.0338
+   "delta_logloss": 0.0341
   },
   {
    "group": "檔位",
-   "delta_logloss": 0.0209
-  },
-  {
-   "group": "市場往績",
-   "delta_logloss": 0.0136
+   "delta_logloss": 0.0208
   },
   {
    "group": "速度/表現評分",
-   "delta_logloss": 0.0088
+   "delta_logloss": 0.0142
   },
   {
-   "group": "近況",
-   "delta_logloss": 0.0053
+   "group": "市場往績",
+   "delta_logloss": 0.0116
   },
   {
    "group": "負磅/評分",
-   "delta_logloss": 0.0024
+   "delta_logloss": 0.0068
+  },
+  {
+   "group": "近況",
+   "delta_logloss": 0.0032
+  },
+  {
+   "group": "配備",
+   "delta_logloss": 0.0026
   },
   {
    "group": "分段時間",
-   "delta_logloss": 0.001
+   "delta_logloss": 0.0008
   },
   {
    "group": "跑法/步速",
-   "delta_logloss": 0.0002
+   "delta_logloss": 0.0001
   }
  ],
  "tuning": {
@@ -149,38 +156,38 @@
    {
     "l2": 0.02,
     "stages": 1,
-    "logloss": 2.2127,
-    "top_hit": 0.2339
+    "logloss": 2.2043,
+    "top_hit": 0.2363
    },
    {
     "l2": 0.02,
     "stages": 3,
-    "logloss": 2.2131,
-    "top_hit": 0.2324
+    "logloss": 2.2047,
+    "top_hit": 0.2339
    },
    {
     "l2": 0.05,
     "stages": 1,
-    "logloss": 2.2129,
-    "top_hit": 0.2301
-   },
-   {
-    "l2": 0.05,
-    "stages": 3,
-    "logloss": 2.2131,
+    "logloss": 2.205,
     "top_hit": 0.227
    },
    {
+    "l2": 0.05,
+    "stages": 3,
+    "logloss": 2.2049,
+    "top_hit": 0.2355
+   },
+   {
     "l2": 0.2,
     "stages": 1,
-    "logloss": 2.2183,
-    "top_hit": 0.2262
+    "logloss": 2.2118,
+    "top_hit": 0.2301
    },
    {
     "l2": 0.2,
     "stages": 3,
-    "logloss": 2.2149,
-    "top_hit": 0.2239
+    "logloss": 2.2078,
+    "top_hit": 0.2324
    }
   ],
   "switched": false,
@@ -198,11 +205,11 @@
  "longshots": {
   "rule": "獨贏 10 倍以上而模型排頭 5",
   "picked": {
-   "n": 2130,
-   "win": 0.0507,
-   "top3": 0.2103,
-   "avg_odds": 18.9,
-   "win_roi": -0.2808
+   "n": 2136,
+   "win": 0.0501,
+   "top3": 0.2135,
+   "avg_odds": 19.0,
+   "win_roi": -0.279
   },
   "all_longshots": {
    "n": 10642,
@@ -229,7 +236,7 @@
  },
  "notes": [
   "模型暫時未能提供市場賠率以外嘅資訊(綜合增益未超出誤差範圍),所以唔建議單靠模型落注。",
-  "最有用嘅因素組:騎練、檔位、市場往績。",
+  "最有用嘅因素組:騎練、檔位、速度/表現評分。",
   "冷門馬規則(獨贏 10 倍以上而模型排頭 5):入位率 21%,一般冷門 13%,仍然有效;獨贏平注回報 -28%。",
   "實戰往績只有 9 場,樣本太少,未能下結論。"
  ]
