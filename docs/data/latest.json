@@ -4,15 +4,15 @@
   "venue": "ST",
   "venue_zh": "沙田"
  },
- "updated_at": "2026-11-05T06:39:40+00:00",
+ "updated_at": "2026-11-05T09:48:31+00:00",
  "model": {
   "holdout": {
    "races": 646,
-   "logloss": 2.2127,
-   "top_pick_win_rate": 0.2291,
+   "logloss": 2.2015,
+   "top_pick_win_rate": 0.2353,
    "market_logloss": 2.024,
    "favourite_win_rate": 0.2957,
-   "flat_bet_roi_top_pick": -0.2203,
+   "flat_bet_roi_top_pick": -0.2091,
    "uniform_logloss": 2.5061
   },
   "train_races": 2581,
@@ -24,35 +24,38 @@
    "market_logloss": 2.024
   },
   "weights": {
-   "speed_best": -0.012,
-   "speed_last": 0.12,
-   "speed_missing": -0.055,
-   "form": 0.369,
-   "dist_form": 0.064,
-   "early": -0.027,
-   "early_x_pace": 0.034,
+   "speed_best": -0.0,
+   "speed_last": 0.107,
+   "speed_missing": -0.059,
+   "form": 0.208,
+   "dist_form": 0.09,
+   "early": 0.019,
+   "early_x_pace": 0.035,
    "early_x_today": 0.018,
-   "early_x_course": 0.022,
+   "early_x_course": 0.028,
    "draw_bias": 0.121,
    "draw_x_today": 0.087,
-   "jockey": 0.136,
+   "jockey": 0.135,
    "trainer": 0.02,
-   "weight_rel": -0.07,
-   "layoff": -0.013,
-   "debut": 0.013,
-   "mkt_rating": 0.264,
-   "vs_mkt": 0.014,
-   "closing": -0.172,
-   "class_drop": 0.042,
-   "bw_change": -0.005,
-   "perf_best": 0.085,
-   "perf_last": 0.048,
-   "handicap_edge": 0.103,
-   "late_speed": 0.133,
-   "early_speed": -0.001,
-   "jockey_form": -0.005,
-   "trainer_form": 0.041,
-   "combo": 0.104
+   "weight_rel": -0.084,
+   "layoff": -0.007,
+   "debut": 0.004,
+   "mkt_rating": 0.309,
+   "vs_mkt": 0.028,
+   "closing": -0.077,
+   "class_drop": 0.08,
+   "bw_change": -0.003,
+   "perf_best": 0.086,
+   "perf_last": 0.046,
+   "handicap_edge": 0.135,
+   "late_speed": 0.14,
+   "early_speed": 0.029,
+   "jockey_form": -0.006,
+   "trainer_form": 0.039,
+   "combo": 0.098,
+   "rating_move": 0.086,
+   "trainer_venue": 0.078,
+   "form_trend": 0.098
   },
   "config": {
    "l2": 0.05,
@@ -97,8 +100,8 @@
      "rating": 40,
      "last6": "5/7/3/2/4/9",
      "gear": "CP/TT",
-     "win_prob": 0.1968,
-     "fair_odds": 5.1,
+     "win_prob": 0.1767,
+     "fair_odds": 5.7,
      "style": "後上",
      "speed_best": 0.1,
      "perf_best": 50.0,
@@ -106,13 +109,13 @@
      "runs_in_db": 22,
      "draw_edge": -0.208,
      "pros": [
+      "過往市場評價",
       "騎師",
-      "近況",
-      "過往市場評價"
+      "騎練組合"
      ],
      "cons": [
-      "後段追勁",
-      "檔位統計"
+      "檔位統計",
+      "後段追勁"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -120,7 +123,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 1
     },
     {
      "rank": 2,
@@ -134,8 +140,8 @@
      "rating": 38,
      "last6": "4/2/9/2/6/7",
      "gear": "TT",
-     "win_prob": 0.168,
-     "fair_odds": 6.0,
+     "win_prob": 0.1568,
+     "fair_odds": 6.4,
      "style": "領放",
      "speed_best": -0.9,
      "perf_best": 41.5,
@@ -143,49 +149,12 @@
      "runs_in_db": 39,
      "draw_edge": -0.103,
      "pros": [
-      "近況",
       "過往市場評價",
+      "近況",
       "騎師"
      ],
      "cons": [
-      "表現評分(近績最佳)",
-      "騎練組合"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 3,
-     "no": 3,
-     "horse": "連連好運",
-     "horse_code": "K500",
-     "jockey": "艾道拿",
-     "trainer": "文家良",
-     "draw": 3,
-     "weight": 134,
-     "rating": 39,
-     "last6": "7/1/6/5/2/2",
-     "gear": "B",
-     "win_prob": 0.1177,
-     "fair_odds": 8.5,
-     "style": "領放",
-     "speed_best": 2.9,
-     "perf_best": 40.5,
-     "handicap_edge": -8.5,
-     "runs_in_db": 14,
-     "draw_edge": 0.15,
-     "pros": [
-      "近況",
-      "過往市場評價",
-      "上仗速度指數"
-     ],
-     "cons": [
-      "騎師",
+      "練馬師本場地成績",
       "表現評分(近績最佳)"
      ],
      "win_odds": null,
@@ -194,10 +163,13 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 2
     },
     {
-     "rank": 4,
+     "rank": 3,
      "no": 11,
      "horse": "型到爆",
      "horse_code": "H011",
@@ -208,8 +180,8 @@
      "rating": 33,
      "last6": "4/1/4/7/2/2",
      "gear": "E/P/TT",
-     "win_prob": 0.1104,
-     "fair_odds": 9.1,
+     "win_prob": 0.1189,
+     "fair_odds": 8.4,
      "style": "後上",
      "speed_best": -4.8,
      "perf_best": 35.4,
@@ -217,8 +189,8 @@
      "runs_in_db": 34,
      "draw_edge": 0.032,
      "pros": [
-      "近況",
       "過往市場評價",
+      "近況",
       "末段速度(分段時間)"
      ],
      "cons": [
@@ -231,7 +203,50 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 3
+    },
+    {
+     "rank": 4,
+     "no": 3,
+     "horse": "連連好運",
+     "horse_code": "K500",
+     "jockey": "艾道拿",
+     "trainer": "文家良",
+     "draw": 3,
+     "weight": 134,
+     "rating": 39,
+     "last6": "7/1/6/5/2/2",
+     "gear": "B",
+     "win_prob": 0.1042,
+     "fair_odds": 9.6,
+     "style": "領放",
+     "speed_best": 2.9,
+     "perf_best": 40.5,
+     "handicap_edge": -8.5,
+     "runs_in_db": 14,
+     "draw_edge": 0.15,
+     "pros": [
+      "過往市場評價",
+      "近況",
+      "檔位統計"
+     ],
+     "cons": [
+      "騎師",
+      "表現評分(近績最佳)"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 4
     },
     {
      "rank": 5,
@@ -245,8 +260,8 @@
      "rating": 22,
      "last6": "3/4/7/13/4/4",
      "gear": "B",
-     "win_prob": 0.0753,
-     "fair_odds": 13.3,
+     "win_prob": 0.0891,
+     "fair_odds": 11.2,
      "style": "後上",
      "speed_best": -5.5,
      "perf_best": 29.7,
@@ -254,13 +269,13 @@
      "runs_in_db": 37,
      "draw_edge": -0.103,
      "pros": [
-      "近況",
+      "負磅",
       "末段速度(分段時間)",
-      "負磅"
+      "近況"
      ],
      "cons": [
-      "後段追勁",
-      "表現評分(近績最佳)"
+      "表現評分(近績最佳)",
+      "後段追勁"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -268,7 +283,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 5
     },
     {
      "rank": 6,
@@ -282,8 +300,8 @@
      "rating": 36,
      "last6": "5/7/8/6/6/4",
      "gear": "B/TT",
-     "win_prob": 0.0637,
-     "fair_odds": 15.7,
+     "win_prob": 0.0662,
+     "fair_odds": 15.1,
      "style": "前列",
      "speed_best": 0.5,
      "perf_best": 50.6,
@@ -293,7 +311,7 @@
      "pros": [
       "過往市場評價",
       "讓磅著數",
-      "後段追勁"
+      "上仗速度指數"
      ],
      "cons": [
       "騎師",
@@ -305,7 +323,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 6
     },
     {
      "rank": 7,
@@ -319,8 +340,8 @@
      "rating": 28,
      "last6": "8/8/4/7/4/2",
      "gear": "B/TT",
-     "win_prob": 0.0637,
-     "fair_odds": 15.7,
+     "win_prob": 0.0632,
+     "fair_odds": 15.8,
      "style": "後上",
      "speed_best": 6.8,
      "perf_best": 40.3,
@@ -328,13 +349,13 @@
      "runs_in_db": 57,
      "draw_edge": 0.205,
      "pros": [
-      "檔位統計",
       "讓磅著數",
+      "檔位統計",
       "負磅"
      ],
      "cons": [
-      "騎師",
-      "表現評分(近績最佳)"
+      "過往市場評價",
+      "騎師"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -342,7 +363,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 7
     },
     {
      "rank": 8,
@@ -356,8 +380,8 @@
      "rating": 39,
      "last6": "7/8/12/9/1/13",
      "gear": "B/TT",
-     "win_prob": 0.0462,
-     "fair_odds": 21.7,
+     "win_prob": 0.0545,
+     "fair_odds": 18.4,
      "style": "前列",
      "speed_best": -13.7,
      "perf_best": 38.5,
@@ -365,8 +389,8 @@
      "runs_in_db": 26,
      "draw_edge": 0.032,
      "pros": [
-      "後段追勁",
       "降班",
+      "後段追勁",
       "練馬師近況"
      ],
      "cons": [
@@ -379,47 +403,13 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 8
     },
     {
      "rank": 9,
-     "no": 10,
-     "horse": "觀萬物",
-     "horse_code": "K101",
-     "jockey": "蔡明紹",
-     "trainer": "巫偉傑",
-     "draw": 11,
-     "weight": 131,
-     "rating": 36,
-     "last6": "6/6/7/7/12/10",
-     "gear": "XB/TT",
-     "win_prob": 0.0358,
-     "fair_odds": 27.9,
-     "style": "中游",
-     "speed_best": -3.5,
-     "perf_best": 45.9,
-     "handicap_edge": -0.1,
-     "runs_in_db": 18,
-     "draw_edge": -0.212,
-     "pros": [
-      "上仗速度指數",
-      "末段速度(分段時間)",
-      "讓磅著數"
-     ],
-     "cons": [
-      "騎師",
-      "過往市場評價"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 10,
      "no": 1,
      "horse": "大輝煌",
      "horse_code": "K205",
@@ -430,8 +420,8 @@
      "rating": 40,
      "last6": "9/11/9/13/11/6",
      "gear": "B/TT",
-     "win_prob": 0.0339,
-     "fair_odds": 29.5,
+     "win_prob": 0.0411,
+     "fair_odds": 24.4,
      "style": "前列",
      "speed_best": -3.9,
      "perf_best": 48.6,
@@ -439,9 +429,9 @@
      "runs_in_db": 6,
      "draw_edge": -0.033,
      "pros": [
-      "後段追勁",
       "降班",
-      "騎師"
+      "後段追勁",
+      "讓磅著數"
      ],
      "cons": [
       "過往市場評價",
@@ -453,10 +443,13 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 9
     },
     {
-     "rank": 11,
+     "rank": 10,
      "no": 12,
      "horse": "揚威四海",
      "horse_code": "K120",
@@ -467,8 +460,8 @@
      "rating": 30,
      "last6": "10/11/11/8/2/7",
      "gear": "B",
-     "win_prob": 0.0318,
-     "fair_odds": 31.5,
+     "win_prob": 0.0375,
+     "fair_odds": 26.7,
      "style": "後上",
      "speed_best": 1.6,
      "perf_best": 42.2,
@@ -482,7 +475,7 @@
      ],
      "cons": [
       "近況",
-      "騎練組合"
+      "過往市場評價"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -490,7 +483,50 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 10
+    },
+    {
+     "rank": 11,
+     "no": 10,
+     "horse": "觀萬物",
+     "horse_code": "K101",
+     "jockey": "蔡明紹",
+     "trainer": "巫偉傑",
+     "draw": 11,
+     "weight": 131,
+     "rating": 36,
+     "last6": "6/6/7/7/12/10",
+     "gear": "XB/TT",
+     "win_prob": 0.0312,
+     "fair_odds": 32.0,
+     "style": "中游",
+     "speed_best": -3.5,
+     "perf_best": 45.9,
+     "handicap_edge": -0.1,
+     "runs_in_db": 18,
+     "draw_edge": -0.212,
+     "pros": [
+      "讓磅著數",
+      "上仗速度指數",
+      "末段速度(分段時間)"
+     ],
+     "cons": [
+      "騎師",
+      "過往市場評價"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 11
     },
     {
      "rank": 12,
@@ -504,8 +540,8 @@
      "rating": 37,
      "last6": "11/14/11/12/5/13",
      "gear": "B/TT",
-     "win_prob": 0.0264,
-     "fair_odds": 37.9,
+     "win_prob": 0.0295,
+     "fair_odds": 33.9,
      "style": "中游",
      "speed_best": -3.2,
      "perf_best": 45.0,
@@ -514,7 +550,7 @@
      "draw_edge": -0.088,
      "pros": [
       "後段追勁",
-      "練馬師近況",
+      "讓磅著數",
       "騎師"
      ],
      "cons": [
@@ -527,7 +563,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 12
     },
     {
      "rank": 13,
@@ -541,8 +580,8 @@
      "rating": 36,
      "last6": "11/12/12/10/12/8",
      "gear": "B/SR",
-     "win_prob": 0.0185,
-     "fair_odds": 54.1,
+     "win_prob": 0.0206,
+     "fair_odds": 48.5,
      "style": "後上",
      "speed_best": 1.5,
      "perf_best": 47.9,
@@ -555,8 +594,8 @@
       "上仗速度指數"
      ],
      "cons": [
-      "近況",
-      "過往市場評價"
+      "過往市場評價",
+      "近況"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -564,7 +603,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 13
     },
     {
      "rank": 14,
@@ -578,8 +620,8 @@
      "rating": 38,
      "last6": "10/14/14/11/10/12",
      "gear": "TT",
-     "win_prob": 0.0118,
-     "fair_odds": 84.9,
+     "win_prob": 0.0106,
+     "fair_odds": 93.9,
      "style": "後上",
      "speed_best": -2.5,
      "perf_best": 44.6,
@@ -591,8 +633,8 @@
       "上仗速度指數"
      ],
      "cons": [
-      "近況",
-      "過往市場評價"
+      "過往市場評價",
+      "近況"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -600,11 +642,14 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 14
     }
    ],
    "ai": null,
-   "summary": "【步速】5號竣誠駒、3號連連好運有機會爭放。預計步速中等(2 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:5號竣誠駒、3號連連好運。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程跑法偏差不明顯。檔位統計著數:13號駟跑得、8號光明傳承。2號禾道威、5號竣誠駒檔位統計較差。\n【選擇】首選2號禾道威(模型 20%,公平賠率 5.1):騎師、近況、過往市場評價佔優;次選5號竣誠駒(模型 17%,公平賠率 6.0):近況、過往市場評價、騎師佔優;三選3號連連好運(模型 12%,公平賠率 8.5):近況、過往市場評價、上仗速度指數佔優。\n【風險】首選機率只有 20%,形勢開放;2號禾道威要留意後段追勁、檔位統計;5號竣誠駒要留意表現評分(近績最佳)、騎練組合;賠率會變,以開跑前為準。"
+   "summary": "【步速】5號竣誠駒、3號連連好運有機會爭放。預計步速中等(2 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:5號竣誠駒、3號連連好運。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程跑法偏差不明顯。檔位統計著數:13號駟跑得、8號光明傳承。2號禾道威、5號竣誠駒檔位統計較差。\n【選擇】首選2號禾道威(模型 18%,公平賠率 5.7):過往市場評價、騎師、騎練組合佔優;次選5號竣誠駒(模型 16%,公平賠率 6.4):過往市場評價、近況、騎師佔優;三選11號型到爆(模型 12%,公平賠率 8.4):過往市場評價、近況、末段速度(分段時間)佔優。\n【風險】首選機率只有 18%,形勢開放;2號禾道威要留意檔位統計、後段追勁;5號竣誠駒要留意練馬師本場地成績、表現評分(近績最佳);賠率會變,以開跑前為準。"
   },
   {
    "race_no": 2,
@@ -642,8 +687,8 @@
      "rating": 39,
      "last6": "1/7/4/2/4/2",
      "gear": "V",
-     "win_prob": 0.3219,
-     "fair_odds": 3.1,
+     "win_prob": 0.3308,
+     "fair_odds": 3.0,
      "style": "領放",
      "speed_best": -0.8,
      "perf_best": 42.2,
@@ -651,13 +696,13 @@
      "runs_in_db": 24,
      "draw_edge": 0.205,
      "pros": [
-      "近況",
       "過往市場評價",
+      "近況",
       "騎師"
      ],
      "cons": [
       "表現評分(近績最佳)",
-      "上仗表現評分"
+      "練馬師本場地成績"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -665,7 +710,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 1
     },
     {
      "rank": 2,
@@ -679,8 +727,8 @@
      "rating": 36,
      "last6": "4/7/7/5/10/13",
      "gear": "B",
-     "win_prob": 0.134,
-     "fair_odds": 7.5,
+     "win_prob": 0.1231,
+     "fair_odds": 8.1,
      "style": "中游",
      "speed_best": 0.3,
      "perf_best": 47.9,
@@ -688,9 +736,9 @@
      "runs_in_db": 8,
      "draw_edge": -0.016,
      "pros": [
+      "讓磅著數",
       "近況",
-      "上仗速度指數",
-      "讓磅著數"
+      "上仗速度指數"
      ],
      "cons": [
       "表現評分(近績最佳)"
@@ -701,47 +749,13 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 2
     },
     {
      "rank": 3,
-     "no": 5,
-     "horse": "悠然常勝",
-     "horse_code": "L136",
-     "jockey": "周俊樂",
-     "trainer": "巫偉傑",
-     "draw": 6,
-     "weight": 131,
-     "rating": 37,
-     "last6": "8/8/7/4/7/6",
-     "gear": "H-/TT",
-     "win_prob": 0.0975,
-     "fair_odds": 10.3,
-     "style": "中游",
-     "speed_best": 1.8,
-     "perf_best": 46.8,
-     "handicap_edge": 4.8,
-     "runs_in_db": 9,
-     "draw_edge": 0.05,
-     "pros": [
-      "騎師",
-      "讓磅著數",
-      "末段速度(分段時間)"
-     ],
-     "cons": [
-      "過往市場評價",
-      "表現評分(近績最佳)"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 4,
      "no": 10,
      "horse": "猛將兄",
      "horse_code": "K089",
@@ -752,8 +766,8 @@
      "rating": 32,
      "last6": "3/9/14/5/5/6",
      "gear": "B",
-     "win_prob": 0.0866,
-     "fair_odds": 11.6,
+     "win_prob": 0.0967,
+     "fair_odds": 10.3,
      "style": "中游",
      "speed_best": -4.5,
      "perf_best": 41.4,
@@ -761,7 +775,8 @@
      "runs_in_db": 20,
      "draw_edge": -0.121,
      "pros": [
-      "近況",
+      "狀態走勢",
+      "讓磅著數",
       "上仗速度指數"
      ],
      "cons": [
@@ -774,7 +789,50 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 3
+    },
+    {
+     "rank": 4,
+     "no": 5,
+     "horse": "悠然常勝",
+     "horse_code": "L136",
+     "jockey": "周俊樂",
+     "trainer": "巫偉傑",
+     "draw": 6,
+     "weight": 131,
+     "rating": 37,
+     "last6": "8/8/7/4/7/6",
+     "gear": "H-/TT",
+     "win_prob": 0.0836,
+     "fair_odds": 12.0,
+     "style": "中游",
+     "speed_best": 1.8,
+     "perf_best": 46.8,
+     "handicap_edge": 4.8,
+     "runs_in_db": 9,
+     "draw_edge": 0.05,
+     "pros": [
+      "讓磅著數",
+      "騎師",
+      "末段速度(分段時間)"
+     ],
+     "cons": [
+      "練馬師本場地成績",
+      "過往市場評價"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 4
     },
     {
      "rank": 5,
@@ -788,7 +846,7 @@
      "rating": 25,
      "last6": "5/6/7/12/11/2",
      "gear": "TT",
-     "win_prob": 0.0796,
+     "win_prob": 0.0794,
      "fair_odds": 12.6,
      "style": "領放",
      "speed_best": -1.5,
@@ -797,13 +855,13 @@
      "runs_in_db": 16,
      "draw_edge": -0.069,
      "pros": [
-      "後段追勁",
       "負磅",
-      "過往市場評價"
+      "後段追勁",
+      "狀態走勢"
      ],
      "cons": [
-      "上仗速度指數",
-      "表現評分(近績最佳)"
+      "表現評分(近績最佳)",
+      "上仗速度指數"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -811,36 +869,39 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 5
     },
     {
      "rank": 6,
-     "no": 9,
-     "horse": "勇者無敵",
-     "horse_code": "K217",
-     "jockey": "希威森",
-     "trainer": "韋達",
-     "draw": 1,
-     "weight": 130,
-     "rating": 34,
-     "last6": "4/2/12/6/7/9",
-     "gear": "CP-/SR2/TT",
-     "win_prob": 0.0715,
-     "fair_odds": 14.0,
+     "no": 2,
+     "horse": "摯友心得",
+     "horse_code": "K263",
+     "jockey": "田泰安",
+     "trainer": "桂福特",
+     "draw": 9,
+     "weight": 135,
+     "rating": 39,
+     "last6": "1/11/8/7/5/11",
+     "gear": "CP",
+     "win_prob": 0.067,
+     "fair_odds": 14.9,
      "style": "中游",
-     "speed_best": -2.1,
-     "perf_best": 39.5,
-     "handicap_edge": -1.5,
-     "runs_in_db": 15,
-     "draw_edge": 0.01,
+     "speed_best": -7.8,
+     "perf_best": 44.4,
+     "handicap_edge": -1.7,
+     "runs_in_db": 14,
+     "draw_edge": -0.24,
      "pros": [
-      "近況",
-      "後段追勁",
-      "上仗速度指數"
+      "狀態走勢",
+      "評分變動",
+      "近況"
      ],
      "cons": [
-      "騎師",
-      "表現評分(近績最佳)"
+      "過往市場評價",
+      "檔位統計"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -848,7 +909,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 6
     },
     {
      "rank": 7,
@@ -862,8 +926,8 @@
      "rating": 35,
      "last6": "3/1/14/13/9/11",
      "gear": "XB",
-     "win_prob": 0.0601,
-     "fair_odds": 16.6,
+     "win_prob": 0.0631,
+     "fair_odds": 15.9,
      "style": "中游",
      "speed_best": -8.8,
      "perf_best": 39.9,
@@ -871,6 +935,7 @@
      "runs_in_db": 16,
      "draw_edge": -0.031,
      "pros": [
+      "狀態走勢",
       "近況"
      ],
      "cons": [
@@ -883,36 +948,39 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 7
     },
     {
      "rank": 8,
-     "no": 2,
-     "horse": "摯友心得",
-     "horse_code": "K263",
-     "jockey": "田泰安",
-     "trainer": "桂福特",
-     "draw": 9,
-     "weight": 135,
-     "rating": 39,
-     "last6": "1/11/8/7/5/11",
-     "gear": "CP",
-     "win_prob": 0.056,
-     "fair_odds": 17.9,
+     "no": 9,
+     "horse": "勇者無敵",
+     "horse_code": "K217",
+     "jockey": "希威森",
+     "trainer": "韋達",
+     "draw": 1,
+     "weight": 130,
+     "rating": 34,
+     "last6": "4/2/12/6/7/9",
+     "gear": "CP-/SR2/TT",
+     "win_prob": 0.0613,
+     "fair_odds": 16.3,
      "style": "中游",
-     "speed_best": -7.8,
-     "perf_best": 44.4,
-     "handicap_edge": -1.7,
-     "runs_in_db": 14,
-     "draw_edge": -0.24,
+     "speed_best": -2.1,
+     "perf_best": 39.5,
+     "handicap_edge": -1.5,
+     "runs_in_db": 15,
+     "draw_edge": 0.01,
      "pros": [
       "近況",
-      "騎練組合",
-      "騎師"
+      "狀態走勢",
+      "上仗速度指數"
      ],
      "cons": [
-      "過往市場評價",
-      "檔位統計"
+      "騎師",
+      "表現評分(近績最佳)"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -920,7 +988,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 8
     },
     {
      "rank": 9,
@@ -934,8 +1005,8 @@
      "rating": 16,
      "last6": "8/9/5/10/12/3",
      "gear": "B/TT",
-     "win_prob": 0.0395,
-     "fair_odds": 25.3,
+     "win_prob": 0.0439,
+     "fair_odds": 22.8,
      "style": "中游",
      "speed_best": -6.7,
      "perf_best": 22.7,
@@ -944,12 +1015,12 @@
      "draw_edge": 0.154,
      "pros": [
       "負磅",
-      "後段追勁",
-      "檔位統計"
+      "檔位統計",
+      "練馬師本場地成績"
      ],
      "cons": [
-      "近況",
-      "騎師"
+      "騎師",
+      "表現評分(近績最佳)"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -957,7 +1028,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 9
     },
     {
      "rank": 10,
@@ -971,8 +1045,8 @@
      "rating": 38,
      "last6": "11/9/8/9/13/5",
      "gear": "BR",
-     "win_prob": 0.0329,
-     "fair_odds": 30.4,
+     "win_prob": 0.0301,
+     "fair_odds": 33.3,
      "style": "中游",
      "speed_best": -8.9,
      "perf_best": 45.7,
@@ -980,13 +1054,13 @@
      "runs_in_db": 7,
      "draw_edge": 0.112,
      "pros": [
-      "後段追勁",
       "檔位統計",
-      "練馬師近況"
+      "練馬師近況",
+      "後段追勁"
      ],
      "cons": [
-      "近況",
-      "過往市場評價"
+      "過往市場評價",
+      "近況"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -994,7 +1068,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 10
     },
     {
      "rank": 11,
@@ -1008,8 +1085,8 @@
      "rating": 34,
      "last6": "8/11/11/10/10/10",
      "gear": "TT",
-     "win_prob": 0.0137,
-     "fair_odds": 73.0,
+     "win_prob": 0.0142,
+     "fair_odds": 70.4,
      "style": "後上",
      "speed_best": -9.3,
      "perf_best": 40.3,
@@ -1017,11 +1094,12 @@
      "runs_in_db": 8,
      "draw_edge": 0.033,
      "pros": [
-      "練馬師近況"
+      "練馬師本場地成績",
+      "狀態走勢"
      ],
      "cons": [
       "過往市場評價",
-      "近況"
+      "騎練組合"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -1029,7 +1107,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 11
     },
     {
      "rank": 12,
@@ -1043,8 +1124,8 @@
      "rating": 38,
      "last6": "12/11/14/11/14/12",
      "gear": "B/TT",
-     "win_prob": 0.0066,
-     "fair_odds": 151.4,
+     "win_prob": 0.0067,
+     "fair_odds": 149.4,
      "style": "中游",
      "speed_best": -13.2,
      "perf_best": 30.6,
@@ -1052,12 +1133,12 @@
      "runs_in_db": 6,
      "draw_edge": -0.234,
      "pros": [
-      "後段追勁",
-      "降班"
+      "降班",
+      "後段追勁"
      ],
      "cons": [
-      "近況",
-      "過往市場評價"
+      "過往市場評價",
+      "近況"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -1065,11 +1146,14 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 12
     }
    ],
    "ai": null,
-   "summary": "【步速】1號銀亮濠俠、11號千杯有機會爭放。預計步速中等(2 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:1號銀亮濠俠、11號千杯。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:1號銀亮濠俠、12號戰騎飛。10號猛將兄檔位統計較差。\n【選擇】首選1號銀亮濠俠(模型 32%,公平賠率 3.1):近況、過往市場評價、騎師佔優,讓磅著數比同場中位數多約 3 分;次選6號錶之無限(模型 13%,公平賠率 7.5):近況、上仗速度指數、讓磅著數佔優,讓磅著數比同場中位數多約 8 分;三選5號悠然常勝(模型 10%,公平賠率 10.3):騎師、讓磅著數、末段速度(分段時間)佔優,讓磅著數比同場中位數多約 5 分。\n【風險】1號銀亮濠俠要留意表現評分(近績最佳)、上仗表現評分;6號錶之無限要留意表現評分(近績最佳);賠率會變,以開跑前為準。"
+   "summary": "【步速】1號銀亮濠俠、11號千杯有機會爭放。預計步速中等(2 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:1號銀亮濠俠、11號千杯。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:1號銀亮濠俠、12號戰騎飛。10號猛將兄檔位統計較差。\n【選擇】首選1號銀亮濠俠(模型 33%,公平賠率 3.0):過往市場評價、近況、騎師佔優,讓磅著數比同場中位數多約 3 分;次選6號錶之無限(模型 12%,公平賠率 8.1):讓磅著數、近況、上仗速度指數佔優,讓磅著數比同場中位數多約 8 分;三選10號猛將兄(模型 10%,公平賠率 10.3):狀態走勢、讓磅著數、上仗速度指數佔優。\n【風險】1號銀亮濠俠要留意表現評分(近績最佳)、練馬師本場地成績;6號錶之無限要留意表現評分(近績最佳);賠率會變,以開跑前為準。"
   },
   {
    "race_no": 3,
@@ -1107,8 +1191,8 @@
      "rating": 60,
      "last6": "3/11/2/2/2/1",
      "gear": "PC/TT",
-     "win_prob": 0.188,
-     "fair_odds": 5.3,
+     "win_prob": 0.1796,
+     "fair_odds": 5.6,
      "style": "領放",
      "speed_best": 4.0,
      "perf_best": 69.4,
@@ -1118,11 +1202,11 @@
      "pros": [
       "過往市場評價",
       "近況",
-      "上仗速度指數"
+      "路程適應"
      ],
      "cons": [
       "末段速度(分段時間)",
-      "負磅"
+      "練馬師本場地成績"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -1130,7 +1214,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 1
     },
     {
      "rank": 2,
@@ -1144,8 +1231,8 @@
      "rating": 51,
      "last6": "6/11/2/9/5/6",
      "gear": "",
-     "win_prob": 0.1499,
-     "fair_odds": 6.7,
+     "win_prob": 0.1651,
+     "fair_odds": 6.1,
      "style": "領放",
      "speed_best": -3.0,
      "perf_best": 53.1,
@@ -1153,13 +1240,13 @@
      "runs_in_db": 35,
      "draw_edge": 0.05,
      "pros": [
-      "後段追勁",
       "騎師",
-      "過往市場評價"
+      "過往市場評價",
+      "後段追勁"
      ],
      "cons": [
-      "練馬師近況",
-      "末段速度(分段時間)"
+      "末段速度(分段時間)",
+      "練馬師近況"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -1167,7 +1254,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 2
     },
     {
      "rank": 3,
@@ -1181,8 +1271,8 @@
      "rating": 50,
      "last6": "4/9/8/3/13/2",
      "gear": "TT",
-     "win_prob": 0.133,
-     "fair_odds": 7.5,
+     "win_prob": 0.1363,
+     "fair_odds": 7.3,
      "style": "前列",
      "speed_best": 3.1,
      "perf_best": 57.2,
@@ -1191,17 +1281,22 @@
      "draw_edge": 0.033,
      "pros": [
       "過往市場評價",
-      "後段追勁",
+      "狀態走勢",
       "上仗速度指數"
      ],
-     "cons": [],
+     "cons": [
+      "練馬師本場地成績"
+     ],
      "win_odds": null,
      "place_odds": null,
      "market_prob": null,
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 3
     },
     {
      "rank": 4,
@@ -1215,8 +1310,8 @@
      "rating": 55,
      "last6": "10/11/3/8/10/2",
      "gear": "",
-     "win_prob": 0.1181,
-     "fair_odds": 8.5,
+     "win_prob": 0.1155,
+     "fair_odds": 8.7,
      "style": "後上",
      "speed_best": 1.8,
      "perf_best": 63.3,
@@ -1230,7 +1325,7 @@
      ],
      "cons": [
       "近況",
-      "後段追勁"
+      "狀態走勢"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -1238,7 +1333,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 4
     },
     {
      "rank": 5,
@@ -1252,8 +1350,8 @@
      "rating": 59,
      "last6": "3/10/6/4/1/5",
      "gear": "V",
-     "win_prob": 0.1008,
-     "fair_odds": 9.9,
+     "win_prob": 0.1026,
+     "fair_odds": 9.7,
      "style": "中游",
      "speed_best": 3.8,
      "perf_best": 68.0,
@@ -1261,9 +1359,9 @@
      "runs_in_db": 16,
      "draw_edge": -0.24,
      "pros": [
+      "狀態走勢",
       "近況",
-      "上仗速度指數",
-      "騎師"
+      "上仗速度指數"
      ],
      "cons": [
       "檔位統計",
@@ -1275,46 +1373,13 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 5
     },
     {
      "rank": 6,
-     "no": 10,
-     "horse": "嘉應光彩",
-     "horse_code": "K134",
-     "jockey": "潘明輝",
-     "trainer": "大衛希斯",
-     "draw": 10,
-     "weight": 122,
-     "rating": 47,
-     "last6": "11/2/5/2/9/13",
-     "gear": "CP1",
-     "win_prob": 0.0957,
-     "fair_odds": 10.4,
-     "style": "中游",
-     "speed_best": -3.9,
-     "perf_best": 56.1,
-     "handicap_edge": 0.6,
-     "runs_in_db": 7,
-     "draw_edge": -0.016,
-     "pros": [
-      "過往市場評價",
-      "負磅"
-     ],
-     "cons": [
-      "騎師",
-      "騎練組合"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 7,
      "no": 4,
      "horse": "怡昌光輝",
      "horse_code": "K074",
@@ -1325,8 +1390,8 @@
      "rating": 56,
      "last6": "9/4/3/12/7/5",
      "gear": "CP/TT",
-     "win_prob": 0.0877,
-     "fair_odds": 11.4,
+     "win_prob": 0.0843,
+     "fair_odds": 11.9,
      "style": "後上",
      "speed_best": 4.9,
      "perf_best": 66.2,
@@ -1336,11 +1401,11 @@
      "pros": [
       "檔位統計",
       "末段速度(分段時間)",
-      "上仗速度指數"
+      "讓磅著數"
      ],
      "cons": [
-      "後段追勁",
-      "騎練組合"
+      "騎練組合",
+      "後段追勁"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -1348,7 +1413,50 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 6
+    },
+    {
+     "rank": 7,
+     "no": 10,
+     "horse": "嘉應光彩",
+     "horse_code": "K134",
+     "jockey": "潘明輝",
+     "trainer": "大衛希斯",
+     "draw": 10,
+     "weight": 122,
+     "rating": 47,
+     "last6": "11/2/5/2/9/13",
+     "gear": "CP1",
+     "win_prob": 0.0797,
+     "fair_odds": 12.6,
+     "style": "中游",
+     "speed_best": -3.9,
+     "perf_best": 56.1,
+     "handicap_edge": 0.6,
+     "runs_in_db": 7,
+     "draw_edge": -0.016,
+     "pros": [
+      "過往市場評價",
+      "負磅",
+      "讓磅著數"
+     ],
+     "cons": [
+      "狀態走勢",
+      "騎師"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 7
     },
     {
      "rank": 8,
@@ -1362,8 +1470,8 @@
      "rating": 45,
      "last6": "5/9/11/8",
      "gear": "",
-     "win_prob": 0.0555,
-     "fair_odds": 18.0,
+     "win_prob": 0.0647,
+     "fair_odds": 15.5,
      "style": "中游",
      "speed_best": -2.6,
      "perf_best": 52.3,
@@ -1371,7 +1479,8 @@
      "runs_in_db": 4,
      "draw_edge": 0.01,
      "pros": [
-      "負磅"
+      "負磅",
+      "狀態走勢"
      ],
      "cons": [
       "騎師",
@@ -1383,7 +1492,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 8
     },
     {
      "rank": 9,
@@ -1397,8 +1509,8 @@
      "rating": 43,
      "last6": "8/8/9/4/13/10",
      "gear": "B",
-     "win_prob": 0.0247,
-     "fair_odds": 40.5,
+     "win_prob": 0.0241,
+     "fair_odds": 41.4,
      "style": "後上",
      "speed_best": -0.7,
      "perf_best": 51.6,
@@ -1410,7 +1522,7 @@
      ],
      "cons": [
       "騎練組合",
-      "近況"
+      "過往市場評價"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -1418,47 +1530,13 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 9
     },
     {
      "rank": 10,
-     "no": 2,
-     "horse": "星火燎原",
-     "horse_code": "J150",
-     "jockey": "巫顯東",
-     "trainer": "徐雨石",
-     "draw": 4,
-     "weight": 133,
-     "rating": 60,
-     "last6": "9/13/11/11/8/1",
-     "gear": "B",
-     "win_prob": 0.0172,
-     "fair_odds": 58.0,
-     "style": "中游",
-     "speed_best": -5.0,
-     "perf_best": 63.7,
-     "handicap_edge": -2.8,
-     "runs_in_db": 46,
-     "draw_edge": 0.112,
-     "pros": [
-      "後段追勁",
-      "降班",
-      "檔位統計"
-     ],
-     "cons": [
-      "過往市場評價",
-      "近況"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 11,
      "no": 9,
      "horse": "多威心得",
      "horse_code": "L305",
@@ -1469,8 +1547,8 @@
      "rating": 49,
      "last6": "11/11/11/11/11/10",
      "gear": "PC",
-     "win_prob": 0.0162,
-     "fair_odds": 61.8,
+     "win_prob": 0.0183,
+     "fair_odds": 54.8,
      "style": "前列",
      "speed_best": -5.1,
      "perf_best": 48.6,
@@ -1483,8 +1561,8 @@
       "騎練組合"
      ],
      "cons": [
-      "近況",
-      "騎師"
+      "過往市場評價",
+      "近況"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -1492,7 +1570,50 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 10
+    },
+    {
+     "rank": 11,
+     "no": 2,
+     "horse": "星火燎原",
+     "horse_code": "J150",
+     "jockey": "巫顯東",
+     "trainer": "徐雨石",
+     "draw": 4,
+     "weight": 133,
+     "rating": 60,
+     "last6": "9/13/11/11/8/1",
+     "gear": "B",
+     "win_prob": 0.0167,
+     "fair_odds": 59.7,
+     "style": "中游",
+     "speed_best": -5.0,
+     "perf_best": 63.7,
+     "handicap_edge": -2.8,
+     "runs_in_db": 46,
+     "draw_edge": 0.112,
+     "pros": [
+      "降班",
+      "狀態走勢",
+      "檔位統計"
+     ],
+     "cons": [
+      "過往市場評價",
+      "騎練組合"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 11
     },
     {
      "rank": 12,
@@ -1506,8 +1627,8 @@
      "rating": 51,
      "last6": "12/12/12/11/13/12",
      "gear": "",
-     "win_prob": 0.0131,
-     "fair_odds": 76.1,
+     "win_prob": 0.0132,
+     "fair_odds": 75.8,
      "style": "中游",
      "speed_best": -7.4,
      "perf_best": 49.5,
@@ -1515,13 +1636,13 @@
      "runs_in_db": 6,
      "draw_edge": 0.205,
      "pros": [
-      "後段追勁",
       "檔位統計",
-      "練馬師近況"
+      "後段追勁",
+      "練馬師本場地成績"
      ],
      "cons": [
-      "近況",
-      "過往市場評價"
+      "過往市場評價",
+      "近況"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -1529,11 +1650,14 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 12
     }
    ],
    "ai": null,
-   "summary": "【步速】1號葳莉非凡、7號千杯敬典有機會爭放。預計步速中等(3 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:1號葳莉非凡、7號千杯敬典。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:6號威力飛騰、4號怡昌光輝。3號起舞奜奜檔位統計較差。\n【選擇】首選1號葳莉非凡(模型 19%,公平賠率 5.3):過往市場評價、近況、上仗速度指數佔優,讓磅著數比同場中位數多約 4 分;次選7號千杯敬典(模型 15%,公平賠率 6.7):後段追勁、騎師、過往市場評價佔優;三選8號寶成智好(模型 13%,公平賠率 7.5):過往市場評價、後段追勁、上仗速度指數佔優。\n【風險】首選機率只有 19%,形勢開放;1號葳莉非凡要留意末段速度(分段時間)、負磅;7號千杯敬典要留意練馬師近況、末段速度(分段時間);賠率會變,以開跑前為準。"
+   "summary": "【步速】1號葳莉非凡、7號千杯敬典有機會爭放。預計步速中等(3 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:1號葳莉非凡、7號千杯敬典。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:6號威力飛騰、4號怡昌光輝。3號起舞奜奜檔位統計較差。\n【選擇】首選1號葳莉非凡(模型 18%,公平賠率 5.6):過往市場評價、近況、路程適應佔優,讓磅著數比同場中位數多約 4 分;次選7號千杯敬典(模型 17%,公平賠率 6.1):騎師、過往市場評價、後段追勁佔優;三選8號寶成智好(模型 14%,公平賠率 7.3):過往市場評價、狀態走勢、上仗速度指數佔優。\n【風險】首選機率只有 18%,形勢開放;1號葳莉非凡要留意末段速度(分段時間)、練馬師本場地成績;7號千杯敬典要留意末段速度(分段時間)、練馬師近況;賠率會變,以開跑前為準。"
   },
   {
    "race_no": 4,
@@ -1571,8 +1695,8 @@
      "rating": 52,
      "last6": "1/4/11/13/10",
      "gear": "B/TT",
-     "win_prob": 0.2291,
-     "fair_odds": 4.4,
+     "win_prob": 0.2429,
+     "fair_odds": 4.1,
      "style": "前列",
      "speed_best": -4.6,
      "perf_best": 55.8,
@@ -1581,8 +1705,8 @@
      "draw_edge": -0.232,
      "pros": [
       "騎師",
-      "近況",
-      "騎練組合"
+      "騎練組合",
+      "狀態走勢"
      ],
      "cons": [
       "檔位統計",
@@ -1594,7 +1718,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 1
     },
     {
      "rank": 2,
@@ -1608,8 +1735,8 @@
      "rating": 49,
      "last6": "5/2/5/11/7/5",
      "gear": "CP/H/TT",
-     "win_prob": 0.1717,
-     "fair_odds": 5.8,
+     "win_prob": 0.1548,
+     "fair_odds": 6.5,
      "style": "前列",
      "speed_best": -0.0,
      "perf_best": 58.6,
@@ -1617,13 +1744,13 @@
      "runs_in_db": 16,
      "draw_edge": -0.272,
      "pros": [
-      "近況",
       "過往市場評價",
-      "騎師"
+      "騎師",
+      "近況"
      ],
      "cons": [
       "檔位統計",
-      "騎練組合"
+      "練馬師本場地成績"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -1631,7 +1758,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 2
     },
     {
      "rank": 3,
@@ -1645,8 +1775,8 @@
      "rating": 45,
      "last6": "8/10/3/12/5/3",
      "gear": "CP/XB",
-     "win_prob": 0.1184,
-     "fair_odds": 8.4,
+     "win_prob": 0.1274,
+     "fair_odds": 7.8,
      "style": "前列",
      "speed_best": -1.3,
      "perf_best": 55.3,
@@ -1654,8 +1784,9 @@
      "runs_in_db": 7,
      "draw_edge": 0.236,
      "pros": [
+      "檔位統計",
       "後段追勁",
-      "檔位統計"
+      "過往市場評價"
      ],
      "cons": [
       "近況"
@@ -1666,7 +1797,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 3
     },
     {
      "rank": 4,
@@ -1680,8 +1814,8 @@
      "rating": 51,
      "last6": "8/9/3",
      "gear": "E",
-     "win_prob": 0.1062,
-     "fair_odds": 9.4,
+     "win_prob": 0.1076,
+     "fair_odds": 9.3,
      "style": "中游",
      "speed_best": 0.3,
      "perf_best": 56.4,
@@ -1694,8 +1828,8 @@
       "末段速度(分段時間)"
      ],
      "cons": [
-      "練馬師近況",
-      "近況"
+      "狀態走勢",
+      "練馬師近況"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -1703,7 +1837,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 4
     },
     {
      "rank": 5,
@@ -1717,8 +1854,8 @@
      "rating": 44,
      "last6": "7/9/9/3/4/4",
      "gear": "V-/XB/CP2/TT",
-     "win_prob": 0.0726,
-     "fair_odds": 13.8,
+     "win_prob": 0.0806,
+     "fair_odds": 12.4,
      "style": "中游",
      "speed_best": -0.6,
      "perf_best": 56.3,
@@ -1726,13 +1863,12 @@
      "runs_in_db": 23,
      "draw_edge": -0.067,
      "pros": [
-      "騎練組合",
       "負磅",
+      "騎練組合",
       "騎師"
      ],
      "cons": [
-      "過往市場評價",
-      "後段追勁"
+      "過往市場評價"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -1740,7 +1876,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 5
     },
     {
      "rank": 6,
@@ -1754,8 +1893,8 @@
      "rating": 52,
      "last6": "-",
      "gear": "TT1",
-     "win_prob": 0.0708,
-     "fair_odds": 14.1,
+     "win_prob": 0.0694,
+     "fair_odds": 14.4,
      "style": "未知",
      "speed_best": null,
      "perf_best": null,
@@ -1764,8 +1903,7 @@
      "draw_edge": -0.069,
      "pros": [
       "過往市場評價",
-      "騎師",
-      "初出"
+      "騎師"
      ],
      "cons": [
       "缺速度數據",
@@ -1777,7 +1915,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 6
     },
     {
      "rank": 7,
@@ -1791,8 +1932,8 @@
      "rating": 50,
      "last6": "5/9",
      "gear": "",
-     "win_prob": 0.0676,
-     "fair_odds": 14.8,
+     "win_prob": 0.0607,
+     "fair_odds": 16.5,
      "style": "後上",
      "speed_best": -4.2,
      "perf_best": 52.2,
@@ -1800,11 +1941,12 @@
      "runs_in_db": 2,
      "draw_edge": -0.014,
      "pros": [
-      "練馬師近況"
+      "練馬師近況",
+      "評分變動"
      ],
      "cons": [
-      "後段追勁",
-      "讓磅著數"
+      "讓磅著數",
+      "過往市場評價"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -1812,7 +1954,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 7
     },
     {
      "rank": 8,
@@ -1826,8 +1971,8 @@
      "rating": 52,
      "last6": "-",
      "gear": "TT1",
-     "win_prob": 0.0598,
-     "fair_odds": 16.7,
+     "win_prob": 0.0525,
+     "fair_odds": 19.0,
      "style": "未知",
      "speed_best": null,
      "perf_best": null,
@@ -1835,8 +1980,7 @@
      "runs_in_db": 0,
      "draw_edge": -0.358,
      "pros": [
-      "過往市場評價",
-      "初出"
+      "過往市場評價"
      ],
      "cons": [
       "缺速度數據",
@@ -1848,7 +1992,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 8
     },
     {
      "rank": 9,
@@ -1862,8 +2009,8 @@
      "rating": 48,
      "last6": "8/11/8",
      "gear": "XB1/TT",
-     "win_prob": 0.0409,
-     "fair_odds": 24.4,
+     "win_prob": 0.0451,
+     "fair_odds": 22.2,
      "style": "後上",
      "speed_best": -4.1,
      "perf_best": 51.7,
@@ -1874,8 +2021,8 @@
       "末段速度(分段時間)"
      ],
      "cons": [
-      "近況",
-      "後段追勁"
+      "騎師",
+      "近況"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -1883,7 +2030,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 9
     },
     {
      "rank": 10,
@@ -1897,8 +2047,8 @@
      "rating": 42,
      "last6": "12/7/9/13/12",
      "gear": "TT",
-     "win_prob": 0.0303,
-     "fair_odds": 33.0,
+     "win_prob": 0.0291,
+     "fair_odds": 34.4,
      "style": "中游",
      "speed_best": -7.6,
      "perf_best": 49.0,
@@ -1911,8 +2061,8 @@
       "檔位統計"
      ],
      "cons": [
-      "近況",
-      "過往市場評價"
+      "過往市場評價",
+      "近況"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -1920,7 +2070,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 10
     },
     {
      "rank": 11,
@@ -1934,8 +2087,8 @@
      "rating": 55,
      "last6": "10/10/9/10/13",
      "gear": "SR1/TT",
-     "win_prob": 0.0246,
-     "fair_odds": 40.7,
+     "win_prob": 0.0224,
+     "fair_odds": 44.6,
      "style": "後上",
      "speed_best": -0.4,
      "perf_best": 61.6,
@@ -1947,7 +2100,7 @@
      ],
      "cons": [
       "過往市場評價",
-      "近況"
+      "騎練組合"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -1955,7 +2108,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 11
     },
     {
      "rank": 12,
@@ -1969,8 +2125,8 @@
      "rating": 54,
      "last6": "12/9/14/10/14",
      "gear": "H",
-     "win_prob": 0.008,
-     "fair_odds": 124.4,
+     "win_prob": 0.0075,
+     "fair_odds": 132.9,
      "style": "前列",
      "speed_best": -3.7,
      "perf_best": 51.3,
@@ -1982,8 +2138,8 @@
       "練馬師近況"
      ],
      "cons": [
-      "近況",
-      "過往市場評價"
+      "過往市場評價",
+      "末段速度(分段時間)"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -1991,11 +2147,14 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 12
     }
    ],
    "ai": null,
-   "summary": "【步速】預計步速中等(2 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:3號領駿輝煌、8號小魔怪。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:1號十分愛、6號八玲瓏。3號領駿輝煌、8號小魔怪檔位統計較差。\n【選擇】首選3號領駿輝煌(模型 23%,公平賠率 4.4):騎師、近況、騎練組合佔優;次選8號小魔怪(模型 17%,公平賠率 5.8):近況、過往市場評價、騎師佔優,讓磅著數比同場中位數多約 11 分;三選10號快樂共濟(模型 12%,公平賠率 8.4):後段追勁、檔位統計佔優,讓磅著數比同場中位數多約 4 分。\n【風險】3號領駿輝煌要留意檔位統計、讓磅著數;8號小魔怪要留意檔位統計、騎練組合;賠率會變,以開跑前為準。"
+   "summary": "【步速】預計步速中等(2 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:3號領駿輝煌、8號小魔怪。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:1號十分愛、6號八玲瓏。3號領駿輝煌、8號小魔怪檔位統計較差。\n【選擇】首選3號領駿輝煌(模型 24%,公平賠率 4.1):騎師、騎練組合、狀態走勢佔優;次選8號小魔怪(模型 15%,公平賠率 6.5):過往市場評價、騎師、近況佔優,讓磅著數比同場中位數多約 11 分;三選10號快樂共濟(模型 13%,公平賠率 7.8):檔位統計、後段追勁、過往市場評價佔優,讓磅著數比同場中位數多約 4 分。\n【風險】3號領駿輝煌要留意檔位統計、讓磅著數;8號小魔怪要留意檔位統計、練馬師本場地成績;賠率會變,以開跑前為準。"
   },
   {
    "race_no": 5,
@@ -2033,8 +2192,8 @@
      "rating": 45,
      "last6": "3/4/8/2/3/5",
      "gear": "CP/TT",
-     "win_prob": 0.2205,
-     "fair_odds": 4.5,
+     "win_prob": 0.2258,
+     "fair_odds": 4.4,
      "style": "中游",
      "speed_best": -0.7,
      "perf_best": 55.0,
@@ -2043,12 +2202,11 @@
      "draw_edge": 0.061,
      "pros": [
       "過往市場評價",
-      "近況",
-      "騎師"
+      "騎師",
+      "近況"
      ],
      "cons": [
-      "上仗速度指數",
-      "後段追勁"
+      "上仗速度指數"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -2056,7 +2214,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 1
     },
     {
      "rank": 2,
@@ -2070,8 +2231,8 @@
      "rating": 47,
      "last6": "2/1/1/2/7/5",
      "gear": "V/TT",
-     "win_prob": 0.1474,
-     "fair_odds": 6.8,
+     "win_prob": 0.1421,
+     "fair_odds": 7.0,
      "style": "中游",
      "speed_best": 4.0,
      "perf_best": 51.6,
@@ -2079,8 +2240,8 @@
      "runs_in_db": 17,
      "draw_edge": 0.41,
      "pros": [
-      "近況",
       "過往市場評價",
+      "近況",
       "檔位統計"
      ],
      "cons": [
@@ -2093,7 +2254,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 2
     },
     {
      "rank": 3,
@@ -2107,8 +2271,8 @@
      "rating": 42,
      "last6": "3/6/9/4/3/3",
      "gear": "B/TT",
-     "win_prob": 0.1332,
-     "fair_odds": 7.5,
+     "win_prob": 0.1365,
+     "fair_odds": 7.3,
      "style": "前列",
      "speed_best": -3.5,
      "perf_best": 54.9,
@@ -2116,8 +2280,8 @@
      "runs_in_db": 8,
      "draw_edge": -0.061,
      "pros": [
-      "近況",
       "過往市場評價",
+      "近況",
       "讓磅著數"
      ],
      "cons": [],
@@ -2127,7 +2291,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 3
     },
     {
      "rank": 4,
@@ -2141,8 +2308,8 @@
      "rating": 46,
      "last6": "9/6/2/4/3/3",
      "gear": "B-",
-     "win_prob": 0.116,
-     "fair_odds": 8.6,
+     "win_prob": 0.1134,
+     "fair_odds": 8.8,
      "style": "前列",
      "speed_best": 0.2,
      "perf_best": 58.3,
@@ -2154,14 +2321,19 @@
       "檔位統計",
       "末段速度(分段時間)"
      ],
-     "cons": [],
+     "cons": [
+      "狀態走勢"
+     ],
      "win_odds": null,
      "place_odds": null,
      "market_prob": null,
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 4
     },
     {
      "rank": 5,
@@ -2175,8 +2347,8 @@
      "rating": 46,
      "last6": "5/10/3/9/8/5",
      "gear": "XB-/TT",
-     "win_prob": 0.0844,
-     "fair_odds": 11.8,
+     "win_prob": 0.0934,
+     "fair_odds": 10.7,
      "style": "中游",
      "speed_best": -0.5,
      "perf_best": 55.7,
@@ -2186,10 +2358,10 @@
      "pros": [
       "過往市場評價",
       "檔位統計",
-      "近況"
+      "讓磅著數"
      ],
      "cons": [
-      "後段追勁",
+      "跑贏市場預期",
       "騎師"
      ],
      "win_odds": null,
@@ -2198,7 +2370,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 5
     },
     {
      "rank": 6,
@@ -2212,8 +2387,8 @@
      "rating": 49,
      "last6": "7/8/8/9/8/9",
      "gear": "",
-     "win_prob": 0.0583,
-     "fair_odds": 17.2,
+     "win_prob": 0.0598,
+     "fair_odds": 16.7,
      "style": "領放",
      "speed_best": 1.9,
      "perf_best": 59.3,
@@ -2221,9 +2396,9 @@
      "runs_in_db": 12,
      "draw_edge": 0.184,
      "pros": [
-      "後段追勁",
+      "過往市場評價",
       "檔位統計",
-      "過往市場評價"
+      "後段追勁"
      ],
      "cons": [
       "騎練組合",
@@ -2235,10 +2410,93 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 6
     },
     {
      "rank": 7,
+     "no": 12,
+     "horse": "馬上盈",
+     "horse_code": "J394",
+     "jockey": "田泰安",
+     "trainer": "游達榮",
+     "draw": 7,
+     "weight": 118,
+     "rating": 42,
+     "last6": "7/10/9/6/2/8",
+     "gear": "TT",
+     "win_prob": 0.0451,
+     "fair_odds": 22.2,
+     "style": "前列",
+     "speed_best": -4.3,
+     "perf_best": 54.5,
+     "handicap_edge": 1.6,
+     "runs_in_db": 19,
+     "draw_edge": -0.107,
+     "pros": [
+      "讓磅著數",
+      "後段追勁",
+      "負磅"
+     ],
+     "cons": [
+      "末段速度(分段時間)",
+      "近況"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 7
+    },
+    {
+     "rank": 8,
+     "no": 11,
+     "horse": "新力飆",
+     "horse_code": "K177",
+     "jockey": "金誠剛",
+     "trainer": "蘇偉賢",
+     "draw": 10,
+     "weight": 120,
+     "rating": 44,
+     "last6": "5/10/2/5/8/10",
+     "gear": "TT",
+     "win_prob": 0.0438,
+     "fair_odds": 22.8,
+     "style": "中游",
+     "speed_best": -1.8,
+     "perf_best": 54.9,
+     "handicap_edge": 0.0,
+     "runs_in_db": 12,
+     "draw_edge": -0.142,
+     "pros": [
+      "近況",
+      "讓磅著數",
+      "末段速度(分段時間)"
+     ],
+     "cons": [
+      "騎師",
+      "過往市場評價"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 8
+    },
+    {
+     "rank": 9,
      "no": 4,
      "horse": "金鑽精靈",
      "horse_code": "J397",
@@ -2249,8 +2507,8 @@
      "rating": 49,
      "last6": "4/6/1/1/2/4",
      "gear": "",
-     "win_prob": 0.0464,
-     "fair_odds": 21.6,
+     "win_prob": 0.0401,
+     "fair_odds": 25.0,
      "style": "前列",
      "speed_best": 0.6,
      "perf_best": 52.8,
@@ -2272,81 +2530,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 8,
-     "no": 12,
-     "horse": "馬上盈",
-     "horse_code": "J394",
-     "jockey": "田泰安",
-     "trainer": "游達榮",
-     "draw": 7,
-     "weight": 118,
-     "rating": 42,
-     "last6": "7/10/9/6/2/8",
-     "gear": "TT",
-     "win_prob": 0.0447,
-     "fair_odds": 22.4,
-     "style": "前列",
-     "speed_best": -4.3,
-     "perf_best": 54.5,
-     "handicap_edge": 1.6,
-     "runs_in_db": 19,
-     "draw_edge": -0.107,
-     "pros": [
-      "後段追勁",
-      "讓磅著數",
-      "練馬師近況"
-     ],
-     "cons": [
-      "末段速度(分段時間)",
-      "近況"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 9,
-     "no": 11,
-     "horse": "新力飆",
-     "horse_code": "K177",
-     "jockey": "金誠剛",
-     "trainer": "蘇偉賢",
-     "draw": 10,
-     "weight": 120,
-     "rating": 44,
-     "last6": "5/10/2/5/8/10",
-     "gear": "TT",
-     "win_prob": 0.0428,
-     "fair_odds": 23.4,
-     "style": "中游",
-     "speed_best": -1.8,
-     "perf_best": 54.9,
-     "handicap_edge": 0.0,
-     "runs_in_db": 12,
-     "draw_edge": -0.142,
-     "pros": [
-      "近況",
-      "末段速度(分段時間)",
-      "讓磅著數"
-     ],
-     "cons": [
-      "騎師",
-      "過往市場評價"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 9
     },
     {
      "rank": 10,
@@ -2360,8 +2547,8 @@
      "rating": 53,
      "last6": "11/4/9/5/6/9",
      "gear": "BO/XB1/TT1",
-     "win_prob": 0.0351,
-     "fair_odds": 28.5,
+     "win_prob": 0.0305,
+     "fair_odds": 32.7,
      "style": "中游",
      "speed_best": 5.3,
      "perf_best": 70.4,
@@ -2374,8 +2561,8 @@
       "過往市場評價"
      ],
      "cons": [
-      "近況",
-      "末段速度(分段時間)"
+      "狀態走勢",
+      "路程適應"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -2383,7 +2570,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 10
     },
     {
      "rank": 11,
@@ -2397,8 +2587,8 @@
      "rating": 52,
      "last6": "-",
      "gear": "",
-     "win_prob": 0.0302,
-     "fair_odds": 33.2,
+     "win_prob": 0.0288,
+     "fair_odds": 34.8,
      "style": "未知",
      "speed_best": null,
      "perf_best": null,
@@ -2407,12 +2597,11 @@
      "draw_edge": -0.227,
      "pros": [
       "過往市場評價",
-      "上仗速度指數",
-      "初出"
+      "上仗速度指數"
      ],
      "cons": [
       "缺速度數據",
-      "近況"
+      "檔位統計"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -2420,7 +2609,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 11
     },
     {
      "rank": 12,
@@ -2434,8 +2626,8 @@
      "rating": 45,
      "last6": "8/9/13/11",
      "gear": "H/TT",
-     "win_prob": 0.0161,
-     "fair_odds": 62.2,
+     "win_prob": 0.018,
+     "fair_odds": 55.5,
      "style": "中游",
      "speed_best": -3.4,
      "perf_best": 55.2,
@@ -2443,12 +2635,13 @@
      "runs_in_db": 4,
      "draw_edge": -0.412,
      "pros": [
-      "後段追勁",
-      "讓磅著數"
+      "狀態走勢",
+      "讓磅著數",
+      "練馬師本場地成績"
      ],
      "cons": [
       "過往市場評價",
-      "近況"
+      "檔位統計"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -2456,10 +2649,53 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 12
     },
     {
      "rank": 13,
+     "no": 14,
+     "horse": "明亮天下",
+     "horse_code": "J170",
+     "jockey": "蔡明紹",
+     "trainer": "羅富全",
+     "draw": 14,
+     "weight": 116,
+     "rating": 40,
+     "last6": "11/12/3/10/14/12",
+     "gear": "V",
+     "win_prob": 0.0114,
+     "fair_odds": 87.4,
+     "style": "後上",
+     "speed_best": -1.6,
+     "perf_best": 53.3,
+     "handicap_edge": 2.4,
+     "runs_in_db": 22,
+     "draw_edge": 0.108,
+     "pros": [
+      "讓磅著數",
+      "負磅",
+      "檔位統計"
+     ],
+     "cons": [
+      "過往市場評價",
+      "騎師"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 13
+    },
+    {
+     "rank": 14,
      "no": 1,
      "horse": "劍飛聲",
      "horse_code": "L097",
@@ -2470,8 +2706,8 @@
      "rating": 59,
      "last6": "7/9/1/8/11/14",
      "gear": "TT",
-     "win_prob": 0.013,
-     "fair_odds": 76.8,
+     "win_prob": 0.0112,
+     "fair_odds": 89.0,
      "style": "後上",
      "speed_best": 1.2,
      "perf_best": 56.9,
@@ -2489,48 +2725,14 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 14,
-     "no": 14,
-     "horse": "明亮天下",
-     "horse_code": "J170",
-     "jockey": "蔡明紹",
-     "trainer": "羅富全",
-     "draw": 14,
-     "weight": 116,
-     "rating": 40,
-     "last6": "11/12/3/10/14/12",
-     "gear": "V",
-     "win_prob": 0.0119,
-     "fair_odds": 83.7,
-     "style": "後上",
-     "speed_best": -1.6,
-     "perf_best": 53.3,
-     "handicap_edge": 2.4,
-     "runs_in_db": 22,
-     "draw_edge": 0.108,
-     "pros": [
-      "讓磅著數",
-      "負磅",
-      "檔位統計"
-     ],
-     "cons": [
-      "過往市場評價",
-      "近況"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 14
     }
    ],
    "ai": null,
-   "summary": "【步速】5號睿智多寶有機會爭放。預計步速中等(2 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:13號北極之錶、8號好運年。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程跑法偏差不明顯。檔位統計著數:6號捷足奔馳、8號好運年。\n【選擇】首選10號華麗再贏(模型 22%,公平賠率 4.5):過往市場評價、近況、騎師佔優;次選6號捷足奔馳(模型 15%,公平賠率 6.8):近況、過往市場評價、檔位統計佔優;三選13號北極之錶(模型 13%,公平賠率 7.5):近況、過往市場評價、讓磅著數佔優。\n【風險】10號華麗再贏要留意上仗速度指數、後段追勁;6號捷足奔馳要留意後段追勁、練馬師近況;賠率會變,以開跑前為準。"
+   "summary": "【步速】5號睿智多寶有機會爭放。預計步速中等(2 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:13號北極之錶、8號好運年。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程跑法偏差不明顯。檔位統計著數:6號捷足奔馳、8號好運年。\n【選擇】首選10號華麗再贏(模型 23%,公平賠率 4.4):過往市場評價、騎師、近況佔優;次選6號捷足奔馳(模型 14%,公平賠率 7.0):過往市場評價、近況、檔位統計佔優;三選13號北極之錶(模型 14%,公平賠率 7.3):過往市場評價、近況、讓磅著數佔優。\n【風險】10號華麗再贏要留意上仗速度指數;6號捷足奔馳要留意後段追勁、練馬師近況;賠率會變,以開跑前為準。"
   },
   {
    "race_no": 6,
@@ -2568,8 +2770,8 @@
      "rating": 58,
      "last6": "1/3/9/10/6/13",
      "gear": "",
-     "win_prob": 0.1186,
-     "fair_odds": 8.4,
+     "win_prob": 0.1218,
+     "fair_odds": 8.2,
      "style": "中游",
      "speed_best": 1.1,
      "perf_best": 63.7,
@@ -2577,13 +2779,13 @@
      "runs_in_db": 8,
      "draw_edge": 0.199,
      "pros": [
-      "近況",
       "騎師",
-      "檔位統計"
+      "近況",
+      "狀態走勢"
      ],
      "cons": [
-      "後段追勁",
-      "過往市場評價"
+      "過往市場評價",
+      "負磅"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -2591,47 +2793,13 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 1
     },
     {
      "rank": 2,
-     "no": 10,
-     "horse": "盛勢威楓",
-     "horse_code": "K111",
-     "jockey": "霍宏聲",
-     "trainer": "賀賢",
-     "draw": 12,
-     "weight": 123,
-     "rating": 48,
-     "last6": "5/3/7/13/3/4",
-     "gear": "B/XB",
-     "win_prob": 0.1087,
-     "fair_odds": 9.2,
-     "style": "領放",
-     "speed_best": 1.3,
-     "perf_best": 56.6,
-     "handicap_edge": 1.8,
-     "runs_in_db": 21,
-     "draw_edge": -0.32,
-     "pros": [
-      "過往市場評價",
-      "後段追勁",
-      "近況"
-     ],
-     "cons": [
-      "檔位統計",
-      "末段速度(分段時間)"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 3,
      "no": 12,
      "horse": "你知我寶",
      "horse_code": "L132",
@@ -2642,8 +2810,8 @@
      "rating": 46,
      "last6": "3/6/8/3/5/11",
      "gear": "TT",
-     "win_prob": 0.1079,
-     "fair_odds": 9.3,
+     "win_prob": 0.1118,
+     "fair_odds": 8.9,
      "style": "中游",
      "speed_best": -2.5,
      "perf_best": 57.3,
@@ -2651,8 +2819,8 @@
      "runs_in_db": 6,
      "draw_edge": 0.269,
      "pros": [
-      "近況",
       "過往市場評價",
+      "近況",
       "檔位統計"
      ],
      "cons": [
@@ -2665,10 +2833,93 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 2
+    },
+    {
+     "rank": 3,
+     "no": 10,
+     "horse": "盛勢威楓",
+     "horse_code": "K111",
+     "jockey": "霍宏聲",
+     "trainer": "賀賢",
+     "draw": 12,
+     "weight": 123,
+     "rating": 48,
+     "last6": "5/3/7/13/3/4",
+     "gear": "B/XB",
+     "win_prob": 0.111,
+     "fair_odds": 9.0,
+     "style": "領放",
+     "speed_best": 1.3,
+     "perf_best": 56.6,
+     "handicap_edge": 1.8,
+     "runs_in_db": 21,
+     "draw_edge": -0.32,
+     "pros": [
+      "過往市場評價",
+      "近況",
+      "後段追勁"
+     ],
+     "cons": [
+      "檔位統計",
+      "末段速度(分段時間)"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 3
     },
     {
      "rank": 4,
+     "no": 2,
+     "horse": "龍之悅",
+     "horse_code": "K571",
+     "jockey": "奧爾民",
+     "trainer": "呂健威",
+     "draw": 13,
+     "weight": 131,
+     "rating": 56,
+     "last6": "2/6/3/8/10/4",
+     "gear": "B/TT",
+     "win_prob": 0.1072,
+     "fair_odds": 9.3,
+     "style": "中游",
+     "speed_best": 1.1,
+     "perf_best": 61.3,
+     "handicap_edge": -1.5,
+     "runs_in_db": 7,
+     "draw_edge": -0.4,
+     "pros": [
+      "過往市場評價",
+      "近況",
+      "狀態走勢"
+     ],
+     "cons": [
+      "檔位統計",
+      "負磅"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 4
+    },
+    {
+     "rank": 5,
      "no": 4,
      "horse": "美麗大獎",
      "horse_code": "L326",
@@ -2679,8 +2930,8 @@
      "rating": 53,
      "last6": "2/6",
      "gear": "",
-     "win_prob": 0.1067,
-     "fair_odds": 9.4,
+     "win_prob": 0.1018,
+     "fair_odds": 9.8,
      "style": "中游",
      "speed_best": -1.2,
      "perf_best": 59.8,
@@ -2690,7 +2941,7 @@
      "pros": [
       "近況",
       "末段速度(分段時間)",
-      "上仗速度指數"
+      "路程適應"
      ],
      "cons": [
       "後段追勁",
@@ -2702,44 +2953,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 5,
-     "no": 2,
-     "horse": "龍之悅",
-     "horse_code": "K571",
-     "jockey": "奧爾民",
-     "trainer": "呂健威",
-     "draw": 13,
-     "weight": 131,
-     "rating": 56,
-     "last6": "2/6/3/8/10/4",
-     "gear": "B/TT",
-     "win_prob": 0.0984,
-     "fair_odds": 10.2,
-     "style": "中游",
-     "speed_best": 1.1,
-     "perf_best": 61.3,
-     "handicap_edge": -1.5,
-     "runs_in_db": 7,
-     "draw_edge": -0.4,
-     "pros": [
-      "近況",
-      "過往市場評價",
-      "末段速度(分段時間)"
-     ],
-     "cons": [
-      "檔位統計",
-      "後段追勁"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 5
     },
     {
      "rank": 6,
@@ -2753,7 +2970,7 @@
      "rating": 48,
      "last6": "2/4/4/8/11/4",
      "gear": "CP2/TT",
-     "win_prob": 0.0831,
+     "win_prob": 0.0834,
      "fair_odds": 12.0,
      "style": "中游",
      "speed_best": -1.6,
@@ -2764,10 +2981,10 @@
      "pros": [
       "近況",
       "末段速度(分段時間)",
-      "騎師"
+      "狀態走勢"
      ],
      "cons": [
-      "後段追勁"
+      "過往市場評價"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -2775,7 +2992,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 6
     },
     {
      "rank": 7,
@@ -2789,8 +3009,8 @@
      "rating": 53,
      "last6": "3/4/5/8/5/5",
      "gear": "V-/XB/B2/TT",
-     "win_prob": 0.0821,
-     "fair_odds": 12.2,
+     "win_prob": 0.0737,
+     "fair_odds": 13.6,
      "style": "中游",
      "speed_best": 1.3,
      "perf_best": 64.7,
@@ -2798,8 +3018,8 @@
      "runs_in_db": 16,
      "draw_edge": -0.473,
      "pros": [
-      "近況",
       "過往市場評價",
+      "近況",
       "末段速度(分段時間)"
      ],
      "cons": [
@@ -2812,7 +3032,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 7
     },
     {
      "rank": 8,
@@ -2826,8 +3049,8 @@
      "rating": 50,
      "last6": "8/10/11/2/1/8",
      "gear": "BO/H",
-     "win_prob": 0.0637,
-     "fair_odds": 15.7,
+     "win_prob": 0.0672,
+     "fair_odds": 14.9,
      "style": "前列",
      "speed_best": -3.7,
      "perf_best": 59.3,
@@ -2836,12 +3059,12 @@
      "draw_edge": 0.125,
      "pros": [
       "過往市場評價",
-      "後段追勁",
-      "檔位統計"
+      "檔位統計",
+      "後段追勁"
      ],
      "cons": [
       "騎練組合",
-      "近況"
+      "練馬師近況"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -2849,7 +3072,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 8
     },
     {
      "rank": 9,
@@ -2863,8 +3089,8 @@
      "rating": 45,
      "last6": "1/4/7/6/10/13",
      "gear": "B/TT",
-     "win_prob": 0.0588,
-     "fair_odds": 17.0,
+     "win_prob": 0.0556,
+     "fair_odds": 18.0,
      "style": "後上",
      "speed_best": -10.8,
      "perf_best": 49.6,
@@ -2874,7 +3100,7 @@
      "pros": [
       "近況",
       "末段速度(分段時間)",
-      "負磅"
+      "狀態走勢"
      ],
      "cons": [
       "後段追勁",
@@ -2886,7 +3112,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 9
     },
     {
      "rank": 10,
@@ -2900,8 +3129,8 @@
      "rating": 52,
      "last6": "-",
      "gear": "XB1/TT1",
-     "win_prob": 0.0573,
-     "fair_odds": 17.5,
+     "win_prob": 0.0519,
+     "fair_odds": 19.3,
      "style": "未知",
      "speed_best": null,
      "perf_best": null,
@@ -2923,7 +3152,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 10
     },
     {
      "rank": 11,
@@ -2937,8 +3169,8 @@
      "rating": 53,
      "last6": "11/10/9/5/3/4",
      "gear": "TT",
-     "win_prob": 0.049,
-     "fair_odds": 20.4,
+     "win_prob": 0.0501,
+     "fair_odds": 20.0,
      "style": "後上",
      "speed_best": -0.7,
      "perf_best": 68.1,
@@ -2948,10 +3180,11 @@
      "pros": [
       "檔位統計",
       "讓磅著數",
-      "騎師"
+      "練馬師本場地成績"
      ],
      "cons": [
-      "近況"
+      "近況",
+      "過往市場評價"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -2959,7 +3192,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 11
     },
     {
      "rank": 12,
@@ -2973,8 +3209,8 @@
      "rating": 45,
      "last6": "7/13/7/7/7/10",
      "gear": "CP",
-     "win_prob": 0.0268,
-     "fair_odds": 37.3,
+     "win_prob": 0.0288,
+     "fair_odds": 34.7,
      "style": "後上",
      "speed_best": 0.3,
      "perf_best": 54.8,
@@ -2983,8 +3219,8 @@
      "draw_edge": 0.175,
      "pros": [
       "檔位統計",
-      "負磅",
-      "練馬師近況"
+      "狀態走勢",
+      "評分變動"
      ],
      "cons": [
       "過往市場評價",
@@ -2996,45 +3232,13 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 12
     },
     {
      "rank": 13,
-     "no": 9,
-     "horse": "多利旺駒",
-     "horse_code": "K445",
-     "jockey": "巴度",
-     "trainer": "黎昭昇",
-     "draw": 5,
-     "weight": 124,
-     "rating": 49,
-     "last6": "9/12",
-     "gear": "TT",
-     "win_prob": 0.0196,
-     "fair_odds": 50.9,
-     "style": "後上",
-     "speed_best": -5.2,
-     "perf_best": 50.8,
-     "handicap_edge": -5.0,
-     "runs_in_db": 2,
-     "draw_edge": 0.05,
-     "pros": [
-      "末段速度(分段時間)"
-     ],
-     "cons": [
-      "過往市場評價",
-      "近況"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 14,
      "no": 3,
      "horse": "紅愛舍",
      "horse_code": "H110",
@@ -3045,8 +3249,8 @@
      "rating": 56,
      "last6": "7/7/8/9/1/6",
      "gear": "B/TT",
-     "win_prob": 0.0193,
-     "fair_odds": 51.8,
+     "win_prob": 0.0183,
+     "fair_odds": 54.7,
      "style": "後上",
      "speed_best": 1.5,
      "perf_best": 59.5,
@@ -3066,11 +3270,52 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 13
+    },
+    {
+     "rank": 14,
+     "no": 9,
+     "horse": "多利旺駒",
+     "horse_code": "K445",
+     "jockey": "巴度",
+     "trainer": "黎昭昇",
+     "draw": 5,
+     "weight": 124,
+     "rating": 49,
+     "last6": "9/12",
+     "gear": "TT",
+     "win_prob": 0.0174,
+     "fair_odds": 57.4,
+     "style": "後上",
+     "speed_best": -5.2,
+     "perf_best": 50.8,
+     "handicap_edge": -5.0,
+     "runs_in_db": 2,
+     "draw_edge": 0.05,
+     "pros": [
+      "末段速度(分段時間)"
+     ],
+     "cons": [
+      "過往市場評價",
+      "近況"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 14
     }
    ],
    "ai": null,
-   "summary": "【步速】10號盛勢威楓有機會爭放。預計步速偏慢(1 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 14.5%、前列 10.0%、中游 7.7%、後上 5.7%;前置馬仍然較有利,而且領放馬優勢比平時大。跑法配合嘅熱門選擇:10號盛勢威楓。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:12號你知我寶、6號新力好。10號盛勢威楓、2號龍之悅檔位統計較差。\n【選擇】首選1號愛馬心(模型 12%,公平賠率 8.4):近況、騎師、檔位統計佔優;次選10號盛勢威楓(模型 11%,公平賠率 9.2):過往市場評價、後段追勁、近況佔優;三選12號你知我寶(模型 11%,公平賠率 9.3):近況、過往市場評價、檔位統計佔優,讓磅著數比同場中位數多約 5 分。\n【風險】首選機率只有 12%,形勢開放;1號愛馬心要留意後段追勁、過往市場評價;10號盛勢威楓要留意檔位統計、末段速度(分段時間);賠率會變,以開跑前為準。"
+   "summary": "【步速】10號盛勢威楓有機會爭放。預計步速偏慢(1 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 14.5%、前列 10.0%、中游 7.7%、後上 5.7%;前置馬仍然較有利,而且領放馬優勢比平時大。跑法配合嘅熱門選擇:10號盛勢威楓。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:12號你知我寶、6號新力好。10號盛勢威楓、2號龍之悅檔位統計較差。\n【選擇】首選1號愛馬心(模型 12%,公平賠率 8.2):騎師、近況、狀態走勢佔優;次選12號你知我寶(模型 11%,公平賠率 8.9):過往市場評價、近況、檔位統計佔優,讓磅著數比同場中位數多約 5 分;三選10號盛勢威楓(模型 11%,公平賠率 9.0):過往市場評價、近況、後段追勁佔優。\n【風險】首選機率只有 12%,形勢開放;1號愛馬心要留意過往市場評價、負磅;12號你知我寶要留意騎師、後段追勁;賠率會變,以開跑前為準。"
   },
   {
    "race_no": 7,
@@ -3108,8 +3353,8 @@
      "rating": 69,
      "last6": "1/1/11/2/3/7",
      "gear": "",
-     "win_prob": 0.24,
-     "fair_odds": 4.2,
+     "win_prob": 0.2681,
+     "fair_odds": 3.7,
      "style": "前列",
      "speed_best": 2.0,
      "perf_best": 66.3,
@@ -3117,9 +3362,9 @@
      "runs_in_db": 6,
      "draw_edge": 0.223,
      "pros": [
-      "近況",
       "過往市場評價",
-      "檔位統計"
+      "近況",
+      "評分變動"
      ],
      "cons": [
       "降班",
@@ -3131,7 +3376,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 1
     },
     {
      "rank": 2,
@@ -3145,8 +3393,8 @@
      "rating": 73,
      "last6": "5/3/7/13",
      "gear": "CP1",
-     "win_prob": 0.1217,
-     "fair_odds": 8.2,
+     "win_prob": 0.1045,
+     "fair_odds": 9.6,
      "style": "中游",
      "speed_best": 1.1,
      "perf_best": 81.6,
@@ -3154,12 +3402,13 @@
      "runs_in_db": 4,
      "draw_edge": 0.05,
      "pros": [
-      "近況",
       "末段速度(分段時間)",
-      "騎練組合"
+      "近況",
+      "讓磅著數"
      ],
      "cons": [
-      "後段追勁"
+      "評分變動",
+      "練馬師本場地成績"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -3167,7 +3416,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 2
     },
     {
      "rank": 3,
@@ -3181,8 +3433,8 @@
      "rating": 80,
      "last6": "7/1/8/1/4/7",
      "gear": "B/TT",
-     "win_prob": 0.0966,
-     "fair_odds": 10.3,
+     "win_prob": 0.0935,
+     "fair_odds": 10.7,
      "style": "中游",
      "speed_best": 3.6,
      "perf_best": 84.7,
@@ -3190,13 +3442,13 @@
      "runs_in_db": 12,
      "draw_edge": 0.269,
      "pros": [
-      "近況",
       "檔位統計",
+      "近況",
       "末段速度(分段時間)"
      ],
      "cons": [
-      "後段追勁",
-      "負磅"
+      "負磅",
+      "狀態走勢"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -3204,47 +3456,13 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 3
     },
     {
      "rank": 4,
-     "no": 9,
-     "horse": "傑出雷霆",
-     "horse_code": "L121",
-     "jockey": "田泰安",
-     "trainer": "呂健威",
-     "draw": 10,
-     "weight": 122,
-     "rating": 67,
-     "last6": "6/8/3/3/11/1",
-     "gear": "H/CP1",
-     "win_prob": 0.0841,
-     "fair_odds": 11.9,
-     "style": "後上",
-     "speed_best": 2.1,
-     "perf_best": 76.7,
-     "handicap_edge": 2.7,
-     "runs_in_db": 11,
-     "draw_edge": -0.155,
-     "pros": [
-      "過往市場評價",
-      "騎練組合",
-      "上仗速度指數"
-     ],
-     "cons": [
-      "後段追勁",
-      "檔位統計"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 5,
      "no": 12,
      "horse": "米奇",
      "horse_code": "K082",
@@ -3255,8 +3473,8 @@
      "rating": 64,
      "last6": "6/11/10/6/10/7",
      "gear": "B-/TT",
-     "win_prob": 0.0735,
-     "fair_odds": 13.6,
+     "win_prob": 0.0874,
+     "fair_odds": 11.4,
      "style": "後上",
      "speed_best": 3.9,
      "perf_best": 78.4,
@@ -3266,11 +3484,11 @@
      "pros": [
       "末段速度(分段時間)",
       "讓磅著數",
-      "騎師"
+      "狀態走勢"
      ],
      "cons": [
-      "後段追勁",
-      "近況"
+      "練馬師近況",
+      "評分變動"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -3278,7 +3496,50 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 4
+    },
+    {
+     "rank": 5,
+     "no": 9,
+     "horse": "傑出雷霆",
+     "horse_code": "L121",
+     "jockey": "田泰安",
+     "trainer": "呂健威",
+     "draw": 10,
+     "weight": 122,
+     "rating": 67,
+     "last6": "6/8/3/3/11/1",
+     "gear": "H/CP1",
+     "win_prob": 0.0846,
+     "fair_odds": 11.8,
+     "style": "後上",
+     "speed_best": 2.1,
+     "perf_best": 76.7,
+     "handicap_edge": 2.7,
+     "runs_in_db": 11,
+     "draw_edge": -0.155,
+     "pros": [
+      "過往市場評價",
+      "騎練組合",
+      "讓磅著數"
+     ],
+     "cons": [
+      "檔位統計",
+      "後段追勁"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 5
     },
     {
      "rank": 6,
@@ -3292,8 +3553,8 @@
      "rating": 70,
      "last6": "3/3/8/6/12/14",
      "gear": "B/TT",
-     "win_prob": 0.0727,
-     "fair_odds": 13.7,
+     "win_prob": 0.0666,
+     "fair_odds": 15.0,
      "style": "後上",
      "speed_best": 3.2,
      "perf_best": 79.1,
@@ -3303,11 +3564,11 @@
      "pros": [
       "近況",
       "末段速度(分段時間)",
-      "表現評分(近績最佳)"
+      "讓磅著數"
      ],
      "cons": [
       "後段追勁",
-      "檔位統計"
+      "評分變動"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -3315,7 +3576,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 6
     },
     {
      "rank": 7,
@@ -3329,8 +3593,8 @@
      "rating": 67,
      "last6": "11/5/5/2/1/3",
      "gear": "TT",
-     "win_prob": 0.0654,
-     "fair_odds": 15.3,
+     "win_prob": 0.0658,
+     "fair_odds": 15.2,
      "style": "領放",
      "speed_best": -4.1,
      "perf_best": 69.1,
@@ -3339,12 +3603,12 @@
      "draw_edge": 0.125,
      "pros": [
       "後段追勁",
-      "檔位統計",
-      "路程適應"
+      "路程適應",
+      "檔位統計"
      ],
      "cons": [
-      "末段速度(分段時間)",
-      "前置跑法"
+      "狀態走勢",
+      "末段速度(分段時間)"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -3352,46 +3616,13 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 7
     },
     {
      "rank": 8,
-     "no": 10,
-     "horse": "仁仁有餘",
-     "horse_code": "J421",
-     "jockey": "奧璇璧",
-     "trainer": "方嘉柏",
-     "draw": 12,
-     "weight": 120,
-     "rating": 65,
-     "last6": "12/4/5/1/7/8",
-     "gear": "TT",
-     "win_prob": 0.0533,
-     "fair_odds": 18.8,
-     "style": "中游",
-     "speed_best": 0.2,
-     "perf_best": 72.0,
-     "handicap_edge": 0.0,
-     "runs_in_db": 20,
-     "draw_edge": -0.32,
-     "pros": [
-      "過往市場評價",
-      "末段速度(分段時間)"
-     ],
-     "cons": [
-      "檔位統計",
-      "後段追勁"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 9,
      "no": 11,
      "horse": "錶之無敵",
      "horse_code": "L528",
@@ -3402,8 +3633,8 @@
      "rating": 64,
      "last6": "-",
      "gear": "TT",
-     "win_prob": 0.0526,
-     "fair_odds": 19.0,
+     "win_prob": 0.051,
+     "fair_odds": 19.6,
      "style": "未知",
      "speed_best": null,
      "perf_best": null,
@@ -3411,9 +3642,9 @@
      "runs_in_db": 0,
      "draw_edge": 0.199,
      "pros": [
-      "檔位統計",
       "過往市場評價",
-      "上仗速度指數"
+      "檔位統計",
+      "負磅"
      ],
      "cons": [
       "缺速度數據",
@@ -3425,7 +3656,49 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 8
+    },
+    {
+     "rank": 9,
+     "no": 10,
+     "horse": "仁仁有餘",
+     "horse_code": "J421",
+     "jockey": "奧璇璧",
+     "trainer": "方嘉柏",
+     "draw": 12,
+     "weight": 120,
+     "rating": 65,
+     "last6": "12/4/5/1/7/8",
+     "gear": "TT",
+     "win_prob": 0.0415,
+     "fair_odds": 24.1,
+     "style": "中游",
+     "speed_best": 0.2,
+     "perf_best": 72.0,
+     "handicap_edge": 0.0,
+     "runs_in_db": 20,
+     "draw_edge": -0.32,
+     "pros": [
+      "過往市場評價",
+      "末段速度(分段時間)"
+     ],
+     "cons": [
+      "狀態走勢",
+      "檔位統計"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 9
     },
     {
      "rank": 10,
@@ -3439,8 +3712,8 @@
      "rating": 72,
      "last6": "-",
      "gear": "B-/CP1",
-     "win_prob": 0.0422,
-     "fair_odds": 23.7,
+     "win_prob": 0.0403,
+     "fair_odds": 24.8,
      "style": "未知",
      "speed_best": null,
      "perf_best": null,
@@ -3449,12 +3722,11 @@
      "draw_edge": -0.062,
      "pros": [
       "過往市場評價",
-      "騎練組合",
-      "上仗速度指數"
+      "騎練組合"
      ],
      "cons": [
       "缺速度數據",
-      "近況"
+      "騎師"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -3462,7 +3734,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 10
     },
     {
      "rank": 11,
@@ -3476,8 +3751,8 @@
      "rating": 74,
      "last6": "-",
      "gear": "BO-",
-     "win_prob": 0.0336,
-     "fair_odds": 29.8,
+     "win_prob": 0.0345,
+     "fair_odds": 29.0,
      "style": "未知",
      "speed_best": null,
      "perf_best": null,
@@ -3486,8 +3761,7 @@
      "draw_edge": -0.4,
      "pros": [
       "過往市場評價",
-      "練馬師近況",
-      "上仗速度指數"
+      "練馬師近況"
      ],
      "cons": [
       "檔位統計",
@@ -3499,7 +3773,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 11
     },
     {
      "rank": 12,
@@ -3513,8 +3790,8 @@
      "rating": 62,
      "last6": "7/6",
      "gear": "B/TT",
-     "win_prob": 0.0305,
-     "fair_odds": 32.8,
+     "win_prob": 0.0303,
+     "fair_odds": 33.0,
      "style": "後上",
      "speed_best": -10.4,
      "perf_best": 61.3,
@@ -3523,11 +3800,12 @@
      "draw_edge": 0.175,
      "pros": [
       "檔位統計",
-      "負磅"
+      "負磅",
+      "練馬師本場地成績"
      ],
      "cons": [
       "過往市場評價",
-      "近況"
+      "騎師"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -3535,7 +3813,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 12
     },
     {
      "rank": 13,
@@ -3549,8 +3830,8 @@
      "rating": 70,
      "last6": "7",
      "gear": "TT2",
-     "win_prob": 0.0244,
-     "fair_odds": 40.9,
+     "win_prob": 0.0225,
+     "fair_odds": 44.4,
      "style": "領放",
      "speed_best": -8.6,
      "perf_best": 63.2,
@@ -3572,7 +3853,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 13
     },
     {
      "rank": 14,
@@ -3586,8 +3870,8 @@
      "rating": 60,
      "last6": "14/7/14/12/13/11",
      "gear": "CP-/B1/TT1",
-     "win_prob": 0.0094,
-     "fair_odds": 106.0,
+     "win_prob": 0.0092,
+     "fair_odds": 108.2,
      "style": "中游",
      "speed_best": -3.8,
      "perf_best": 67.1,
@@ -3595,13 +3879,13 @@
      "runs_in_db": 6,
      "draw_edge": -0.473,
      "pros": [
-      "後段追勁",
       "負磅",
+      "後段追勁",
       "讓磅著數"
      ],
      "cons": [
-      "近況",
-      "過往市場評價"
+      "過往市場評價",
+      "近況"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -3609,11 +3893,14 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 14
     }
    ],
    "ai": null,
-   "summary": "【步速】8號自動自覺、6號天時威威有機會爭放。預計步速中等(2 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:7號步風影。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:1號臻至辰、7號步風影。9號傑出雷霆檔位統計較差。\n【選擇】首選7號步風影(模型 24%,公平賠率 4.2):近況、過往市場評價、檔位統計佔優;次選3號泰坦(模型 12%,公平賠率 8.2):近況、末段速度(分段時間)、騎練組合佔優,讓磅著數比同場中位數多約 4 分;三選1號臻至辰(模型 10%,公平賠率 10.3):近況、檔位統計、末段速度(分段時間)佔優。\n【風險】7號步風影要留意降班、讓磅著數;3號泰坦要留意後段追勁;賠率會變,以開跑前為準。"
+   "summary": "【步速】8號自動自覺、6號天時威威有機會爭放。預計步速中等(2 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:7號步風影。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:1號臻至辰、7號步風影。9號傑出雷霆檔位統計較差。\n【選擇】首選7號步風影(模型 27%,公平賠率 3.7):過往市場評價、近況、評分變動佔優;次選3號泰坦(模型 10%,公平賠率 9.6):末段速度(分段時間)、近況、讓磅著數佔優,讓磅著數比同場中位數多約 4 分;三選1號臻至辰(模型 9%,公平賠率 10.7):檔位統計、近況、末段速度(分段時間)佔優。\n【風險】7號步風影要留意降班、讓磅著數;3號泰坦要留意評分變動、練馬師本場地成績;賠率會變,以開跑前為準。"
   },
   {
    "race_no": 8,
@@ -3651,8 +3938,8 @@
      "rating": 103,
      "last6": "4/1/4/1/1/1",
      "gear": "",
-     "win_prob": 0.1494,
-     "fair_odds": 6.7,
+     "win_prob": 0.1719,
+     "fair_odds": 5.8,
      "style": "後上",
      "speed_best": 10.9,
      "perf_best": 102.8,
@@ -3660,13 +3947,13 @@
      "runs_in_db": 10,
      "draw_edge": -0.148,
      "pros": [
-      "近況",
       "過往市場評價",
+      "近況",
       "表現評分(近績最佳)"
      ],
      "cons": [
       "後段追勁",
-      "練馬師近況"
+      "檔位統計"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -3674,7 +3961,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 1
     },
     {
      "rank": 2,
@@ -3688,8 +3978,8 @@
      "rating": 108,
      "last6": "2/7/2/4/1/1",
      "gear": "XB",
-     "win_prob": 0.1435,
-     "fair_odds": 7.0,
+     "win_prob": 0.1513,
+     "fair_odds": 6.6,
      "style": "領放",
      "speed_best": 7.1,
      "perf_best": 130.5,
@@ -3697,86 +3987,12 @@
      "runs_in_db": 7,
      "draw_edge": 0.032,
      "pros": [
-      "近況",
-      "表現評分(近績最佳)",
-      "讓磅著數"
-     ],
-     "cons": [
-      "負磅",
-      "過往市場評價"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 3,
-     "no": 12,
-     "horse": "加州動員",
-     "horse_code": "H418",
-     "jockey": "田泰安",
-     "trainer": "告東尼",
-     "draw": 5,
-     "weight": 115,
-     "rating": 85,
-     "last6": "3/7/4/6/11/3",
-     "gear": "B/TT",
-     "win_prob": 0.0805,
-     "fair_odds": 12.4,
-     "style": "領放",
-     "speed_best": 3.3,
-     "perf_best": 91.0,
-     "handicap_edge": -2.8,
-     "runs_in_db": 34,
-     "draw_edge": -0.103,
-     "pros": [
-      "近況",
-      "表現評分(近績最佳)",
-      "後段追勁"
-     ],
-     "cons": [
+      "讓磅著數",
       "降班",
-      "檔位統計"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 4,
-     "no": 1,
-     "horse": "美麗同享",
-     "horse_code": "E058",
-     "jockey": "艾道拿",
-     "trainer": "告東尼",
-     "draw": 9,
-     "weight": 135,
-     "rating": 114,
-     "last6": "5/1/1/2/5/11",
-     "gear": "TT",
-     "win_prob": 0.0776,
-     "fair_odds": 12.9,
-     "style": "後上",
-     "speed_best": 6.7,
-     "perf_best": 106.8,
-     "handicap_edge": -7.0,
-     "runs_in_db": 48,
-     "draw_edge": -0.033,
-     "pros": [
-      "近況",
-      "表現評分(近績最佳)",
-      "上仗速度指數"
+      "表現評分(近績最佳)"
      ],
      "cons": [
-      "後段追勁",
+      "評分變動",
       "負磅"
      ],
      "win_odds": null,
@@ -3785,10 +4001,13 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 2
     },
     {
-     "rank": 5,
+     "rank": 3,
      "no": 7,
      "horse": "勁速威龍",
      "horse_code": "H380",
@@ -3799,8 +4018,8 @@
      "rating": 98,
      "last6": "3/7/8/3/2/1",
      "gear": "B",
-     "win_prob": 0.0771,
-     "fair_odds": 13.0,
+     "win_prob": 0.0784,
+     "fair_odds": 12.7,
      "style": "後上",
      "speed_best": 11.1,
      "perf_best": 106.4,
@@ -3809,45 +4028,8 @@
      "draw_edge": 0.205,
      "pros": [
       "表現評分(近績最佳)",
-      "近況",
-      "檔位統計"
-     ],
-     "cons": [
-      "後段追勁",
-      "降班"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 6,
-     "no": 4,
-     "horse": "大至尊",
-     "horse_code": "J208",
-     "jockey": "潘頓",
-     "trainer": "羅富全",
-     "draw": 11,
-     "weight": 123,
-     "rating": 102,
-     "last6": "1/5/12/6/4/8",
-     "gear": "CP",
-     "win_prob": 0.0746,
-     "fair_odds": 13.4,
-     "style": "後上",
-     "speed_best": 8.0,
-     "perf_best": 103.3,
-     "handicap_edge": 1.5,
-     "runs_in_db": 11,
-     "draw_edge": -0.212,
-     "pros": [
-      "騎師",
-      "近況",
-      "騎練組合"
+      "檔位統計",
+      "讓磅著數"
      ],
      "cons": [
       "降班",
@@ -3859,7 +4041,130 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 3
+    },
+    {
+     "rank": 4,
+     "no": 12,
+     "horse": "加州動員",
+     "horse_code": "H418",
+     "jockey": "田泰安",
+     "trainer": "告東尼",
+     "draw": 5,
+     "weight": 115,
+     "rating": 85,
+     "last6": "3/7/4/6/11/3",
+     "gear": "B/TT",
+     "win_prob": 0.0782,
+     "fair_odds": 12.8,
+     "style": "領放",
+     "speed_best": 3.3,
+     "perf_best": 91.0,
+     "handicap_edge": -2.8,
+     "runs_in_db": 34,
+     "draw_edge": -0.103,
+     "pros": [
+      "表現評分(近績最佳)",
+      "狀態走勢",
+      "過往市場評價"
+     ],
+     "cons": [
+      "降班",
+      "練馬師本場地成績"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 4
+    },
+    {
+     "rank": 5,
+     "no": 4,
+     "horse": "大至尊",
+     "horse_code": "J208",
+     "jockey": "潘頓",
+     "trainer": "羅富全",
+     "draw": 11,
+     "weight": 123,
+     "rating": 102,
+     "last6": "1/5/12/6/4/8",
+     "gear": "CP",
+     "win_prob": 0.0781,
+     "fair_odds": 12.8,
+     "style": "後上",
+     "speed_best": 8.0,
+     "perf_best": 103.3,
+     "handicap_edge": 1.5,
+     "runs_in_db": 11,
+     "draw_edge": -0.212,
+     "pros": [
+      "騎師",
+      "狀態走勢",
+      "表現評分(近績最佳)"
+     ],
+     "cons": [
+      "降班",
+      "檔位統計"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 5
+    },
+    {
+     "rank": 6,
+     "no": 1,
+     "horse": "美麗同享",
+     "horse_code": "E058",
+     "jockey": "艾道拿",
+     "trainer": "告東尼",
+     "draw": 9,
+     "weight": 135,
+     "rating": 114,
+     "last6": "5/1/1/2/5/11",
+     "gear": "TT",
+     "win_prob": 0.0713,
+     "fair_odds": 14.0,
+     "style": "後上",
+     "speed_best": 6.7,
+     "perf_best": 106.8,
+     "handicap_edge": -7.0,
+     "runs_in_db": 48,
+     "draw_edge": -0.033,
+     "pros": [
+      "近況",
+      "表現評分(近績最佳)",
+      "降班"
+     ],
+     "cons": [
+      "負磅",
+      "後段追勁"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 6
     },
     {
      "rank": 7,
@@ -3873,8 +4178,8 @@
      "rating": 87,
      "last6": "9/7/3/4/1/4",
      "gear": "XB/TT",
-     "win_prob": 0.0726,
-     "fair_odds": 13.8,
+     "win_prob": 0.0694,
+     "fair_odds": 14.4,
      "style": "前列",
      "speed_best": 1.3,
      "perf_best": 113.4,
@@ -3896,47 +4201,13 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 7
     },
     {
      "rank": 8,
-     "no": 9,
-     "horse": "極光之子",
-     "horse_code": "L110",
-     "jockey": "金誠剛",
-     "trainer": "伍鵬志",
-     "draw": 2,
-     "weight": 115,
-     "rating": 90,
-     "last6": "5/1/1/1/5/6",
-     "gear": "TT",
-     "win_prob": 0.0686,
-     "fair_odds": 14.6,
-     "style": "後上",
-     "speed_best": 2.1,
-     "perf_best": 91.7,
-     "handicap_edge": -2.1,
-     "runs_in_db": 10,
-     "draw_edge": -0.103,
-     "pros": [
-      "近況",
-      "過往市場評價",
-      "末段速度(分段時間)"
-     ],
-     "cons": [
-      "後段追勁",
-      "騎師"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 9,
      "no": 8,
      "horse": "君子傳承",
      "horse_code": "K385",
@@ -3947,8 +4218,8 @@
      "rating": 90,
      "last6": "4/9/8/2/4/1",
      "gear": "B/TT",
-     "win_prob": 0.0662,
-     "fair_odds": 15.1,
+     "win_prob": 0.0677,
+     "fair_odds": 14.8,
      "style": "後上",
      "speed_best": 6.9,
      "perf_best": 118.4,
@@ -3958,7 +4229,7 @@
      "pros": [
       "讓磅著數",
       "表現評分(近績最佳)",
-      "檔位統計"
+      "路程適應"
      ],
      "cons": [
       "降班",
@@ -3970,7 +4241,50 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 8
+    },
+    {
+     "rank": 9,
+     "no": 9,
+     "horse": "極光之子",
+     "horse_code": "L110",
+     "jockey": "金誠剛",
+     "trainer": "伍鵬志",
+     "draw": 2,
+     "weight": 115,
+     "rating": 90,
+     "last6": "5/1/1/1/5/6",
+     "gear": "TT",
+     "win_prob": 0.0577,
+     "fair_odds": 17.3,
+     "style": "後上",
+     "speed_best": 2.1,
+     "perf_best": 91.7,
+     "handicap_edge": -2.1,
+     "runs_in_db": 10,
+     "draw_edge": -0.103,
+     "pros": [
+      "過往市場評價",
+      "近況",
+      "末段速度(分段時間)"
+     ],
+     "cons": [
+      "降班",
+      "後段追勁"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 9
     },
     {
      "rank": 10,
@@ -3984,8 +4298,8 @@
      "rating": 90,
      "last6": "6/9/3/4/1/4",
      "gear": "CP/TT",
-     "win_prob": 0.06,
-     "fair_odds": 16.7,
+     "win_prob": 0.0529,
+     "fair_odds": 18.9,
      "style": "後上",
      "speed_best": 0.5,
      "perf_best": 92.9,
@@ -3999,7 +4313,7 @@
      ],
      "cons": [
       "降班",
-      "後段追勁"
+      "狀態走勢"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -4007,10 +4321,53 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 10
     },
     {
      "rank": 11,
+     "no": 5,
+     "horse": "太陽勇士",
+     "horse_code": "J127",
+     "jockey": "班德禮",
+     "trainer": "大衛希斯",
+     "draw": 10,
+     "weight": 122,
+     "rating": 101,
+     "last6": "7/5/7/4/1/7",
+     "gear": "H1/TT",
+     "win_prob": 0.046,
+     "fair_odds": 21.7,
+     "style": "領放",
+     "speed_best": 4.4,
+     "perf_best": 97.0,
+     "handicap_edge": -3.8,
+     "runs_in_db": 34,
+     "draw_edge": -0.088,
+     "pros": [
+      "降班",
+      "表現評分(近績最佳)",
+      "後段追勁"
+     ],
+     "cons": [
+      "過往市場評價",
+      "末段速度(分段時間)"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 11
+    },
+    {
+     "rank": 12,
      "no": 13,
      "horse": "桃花開",
      "horse_code": "J301",
@@ -4021,8 +4378,8 @@
      "rating": 85,
      "last6": "6/8/8/5/7/5",
      "gear": "CP/TT",
-     "win_prob": 0.0493,
-     "fair_odds": 20.3,
+     "win_prob": 0.0458,
+     "fair_odds": 21.9,
      "style": "中游",
      "speed_best": 0.6,
      "perf_best": 93.2,
@@ -4035,8 +4392,8 @@
       "上仗速度指數"
      ],
      "cons": [
-      "近況",
-      "降班"
+      "降班",
+      "騎師"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -4044,44 +4401,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 12,
-     "no": 5,
-     "horse": "太陽勇士",
-     "horse_code": "J127",
-     "jockey": "班德禮",
-     "trainer": "大衛希斯",
-     "draw": 10,
-     "weight": 122,
-     "rating": 101,
-     "last6": "7/5/7/4/1/7",
-     "gear": "H1/TT",
-     "win_prob": 0.0457,
-     "fair_odds": 21.9,
-     "style": "領放",
-     "speed_best": 4.4,
-     "perf_best": 97.0,
-     "handicap_edge": -3.8,
-     "runs_in_db": 34,
-     "draw_edge": -0.088,
-     "pros": [
-      "後段追勁",
-      "表現評分(近績最佳)",
-      "降班"
-     ],
-     "cons": [
-      "過往市場評價",
-      "末段速度(分段時間)"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 12
     },
     {
      "rank": 13,
@@ -4095,8 +4418,8 @@
      "rating": 98,
      "last6": "13/2/4/10/9/6",
      "gear": "B",
-     "win_prob": 0.0348,
-     "fair_odds": 28.8,
+     "win_prob": 0.0313,
+     "fair_odds": 31.9,
      "style": "中游",
      "speed_best": 5.5,
      "perf_best": 129.2,
@@ -4110,7 +4433,7 @@
      ],
      "cons": [
       "過往市場評價",
-      "近況"
+      "降班"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -4118,11 +4441,14 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 13
     }
    ],
    "ai": null,
-   "summary": "【步速】2號數字天文、12號加州動員、5號太陽勇士有機會爭放。預計步速中等(3 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:2號數字天文、12號加州動員。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程跑法偏差不明顯。檔位統計著數:7號勁速威龍、13號桃花開。3號首飾天空、12號加州動員檔位統計較差。\n【選擇】首選3號首飾天空(模型 15%,公平賠率 6.7):近況、過往市場評價、表現評分(近績最佳)佔優;次選2號數字天文(模型 14%,公平賠率 7.0):近況、表現評分(近績最佳)、讓磅著數佔優,讓磅著數比同場中位數多約 23 分;三選12號加州動員(模型 8%,公平賠率 12.4):近況、表現評分(近績最佳)、後段追勁佔優。\n【風險】首選機率只有 15%,形勢開放;3號首飾天空要留意後段追勁、練馬師近況;2號數字天文要留意負磅、過往市場評價;賠率會變,以開跑前為準。"
+   "summary": "【步速】2號數字天文、12號加州動員、5號太陽勇士有機會爭放。預計步速中等(3 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:2號數字天文、12號加州動員。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程跑法偏差不明顯。檔位統計著數:7號勁速威龍、13號桃花開。3號首飾天空、12號加州動員檔位統計較差。\n【選擇】首選3號首飾天空(模型 17%,公平賠率 5.8):過往市場評價、近況、表現評分(近績最佳)佔優;次選2號數字天文(模型 15%,公平賠率 6.6):讓磅著數、降班、表現評分(近績最佳)佔優,讓磅著數比同場中位數多約 23 分;三選7號勁速威龍(模型 8%,公平賠率 12.7):表現評分(近績最佳)、檔位統計、讓磅著數佔優,讓磅著數比同場中位數多約 9 分。\n【風險】首選機率只有 17%,形勢開放;3號首飾天空要留意後段追勁、檔位統計;2號數字天文要留意評分變動、負磅;賠率會變,以開跑前為準。"
   },
   {
    "race_no": 9,
@@ -4160,8 +4486,8 @@
      "rating": 68,
      "last6": "3/2/1/1/4",
      "gear": "XB",
-     "win_prob": 0.2722,
-     "fair_odds": 3.7,
+     "win_prob": 0.2758,
+     "fair_odds": 3.6,
      "style": "中游",
      "speed_best": 4.9,
      "perf_best": 76.4,
@@ -4169,9 +4495,9 @@
      "runs_in_db": 5,
      "draw_edge": 0.223,
      "pros": [
-      "近況",
       "過往市場評價",
-      "檔位統計"
+      "近況",
+      "路程適應"
      ],
      "cons": [
       "後段追勁"
@@ -4182,7 +4508,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 1
     },
     {
      "rank": 2,
@@ -4196,8 +4525,8 @@
      "rating": 72,
      "last6": "1/8/10/12/3/6",
      "gear": "B",
-     "win_prob": 0.1564,
-     "fair_odds": 6.4,
+     "win_prob": 0.1748,
+     "fair_odds": 5.7,
      "style": "中游",
      "speed_best": -0.1,
      "perf_best": 89.9,
@@ -4206,11 +4535,12 @@
      "draw_edge": -0.062,
      "pros": [
       "騎師",
-      "騎練組合",
-      "近況"
+      "狀態走勢",
+      "騎練組合"
      ],
      "cons": [
-      "負磅"
+      "負磅",
+      "練馬師本場地成績"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -4218,7 +4548,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 2
     },
     {
      "rank": 3,
@@ -4232,8 +4565,8 @@
      "rating": 69,
      "last6": "9/4/7/7/3/3",
      "gear": "H",
-     "win_prob": 0.0918,
-     "fair_odds": 10.9,
+     "win_prob": 0.085,
+     "fair_odds": 11.8,
      "style": "中游",
      "speed_best": 4.7,
      "perf_best": 79.6,
@@ -4243,9 +4576,10 @@
      "pros": [
       "過往市場評價",
       "檔位統計",
-      "騎師"
+      "讓磅著數"
      ],
      "cons": [
+      "評分變動",
       "練馬師近況"
      ],
      "win_odds": null,
@@ -4254,7 +4588,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 3
     },
     {
      "rank": 4,
@@ -4268,8 +4605,8 @@
      "rating": 66,
      "last6": "8/1/4/3/1",
      "gear": "TT",
-     "win_prob": 0.0834,
-     "fair_odds": 12.0,
+     "win_prob": 0.0649,
+     "fair_odds": 15.4,
      "style": "中游",
      "speed_best": 6.8,
      "perf_best": 69.5,
@@ -4283,7 +4620,7 @@
      ],
      "cons": [
       "檔位統計",
-      "後段追勁"
+      "狀態走勢"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -4291,7 +4628,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 4
     },
     {
      "rank": 5,
@@ -4305,8 +4645,8 @@
      "rating": 63,
      "last6": "7/2/9/6/8/1",
      "gear": "CP/TT",
-     "win_prob": 0.061,
-     "fair_odds": 16.4,
+     "win_prob": 0.0626,
+     "fair_odds": 16.0,
      "style": "前列",
      "speed_best": 1.7,
      "perf_best": 67.7,
@@ -4315,12 +4655,10 @@
      "draw_edge": 0.269,
      "pros": [
       "檔位統計",
-      "後段追勁",
-      "近況"
+      "負磅"
      ],
      "cons": [
-      "末段速度(分段時間)",
-      "上仗速度指數"
+      "末段速度(分段時間)"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -4328,7 +4666,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 5
     },
     {
      "rank": 6,
@@ -4342,8 +4683,8 @@
      "rating": 60,
      "last6": "5/6/9/11/11/6",
      "gear": "SR/TT",
-     "win_prob": 0.0531,
-     "fair_odds": 18.8,
+     "win_prob": 0.0561,
+     "fair_odds": 17.8,
      "style": "前列",
      "speed_best": -1.7,
      "perf_best": 70.3,
@@ -4351,13 +4692,13 @@
      "runs_in_db": 7,
      "draw_edge": 0.175,
      "pros": [
-      "後段追勁",
       "檔位統計",
-      "負磅"
+      "負磅",
+      "後段追勁"
      ],
      "cons": [
       "過往市場評價",
-      "上仗速度指數"
+      "評分變動"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -4365,7 +4706,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 6
     },
     {
      "rank": 7,
@@ -4379,8 +4723,8 @@
      "rating": 70,
      "last6": "-",
      "gear": "XB/TT1",
-     "win_prob": 0.0443,
-     "fair_odds": 22.6,
+     "win_prob": 0.0427,
+     "fair_odds": 23.4,
      "style": "未知",
      "speed_best": null,
      "perf_best": null,
@@ -4402,10 +4746,53 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 7
     },
     {
      "rank": 8,
+     "no": 8,
+     "horse": "富國兄弟",
+     "horse_code": "J396",
+     "jockey": "班德禮",
+     "trainer": "葉楚航",
+     "draw": 11,
+     "weight": 122,
+     "rating": 67,
+     "last6": "11/3/1/12/6/2",
+     "gear": "TT",
+     "win_prob": 0.0418,
+     "fair_odds": 23.9,
+     "style": "前列",
+     "speed_best": -0.7,
+     "perf_best": 74.2,
+     "handicap_edge": -1.2,
+     "runs_in_db": 28,
+     "draw_edge": -0.101,
+     "pros": [
+      "過往市場評價",
+      "路程適應",
+      "後段追勁"
+     ],
+     "cons": [
+      "狀態走勢",
+      "騎練組合"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 8
+    },
+    {
+     "rank": 9,
      "no": 3,
      "horse": "天星",
      "horse_code": "K234",
@@ -4416,8 +4803,8 @@
      "rating": 70,
      "last6": "7/7/6/13/8/10",
      "gear": "B",
-     "win_prob": 0.0428,
-     "fair_odds": 23.3,
+     "win_prob": 0.0416,
+     "fair_odds": 24.0,
      "style": "後上",
      "speed_best": 3.6,
      "perf_best": 78.2,
@@ -4430,7 +4817,7 @@
       "表現評分(近績最佳)"
      ],
      "cons": [
-      "後段追勁",
+      "過往市場評價",
       "騎師"
      ],
      "win_odds": null,
@@ -4439,84 +4826,13 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 9,
-     "no": 8,
-     "horse": "富國兄弟",
-     "horse_code": "J396",
-     "jockey": "班德禮",
-     "trainer": "葉楚航",
-     "draw": 11,
-     "weight": 122,
-     "rating": 67,
-     "last6": "11/3/1/12/6/2",
-     "gear": "TT",
-     "win_prob": 0.0422,
-     "fair_odds": 23.7,
-     "style": "前列",
-     "speed_best": -0.7,
-     "perf_best": 74.2,
-     "handicap_edge": -1.2,
-     "runs_in_db": 28,
-     "draw_edge": -0.101,
-     "pros": [
-      "過往市場評價",
-      "後段追勁",
-      "路程適應"
-     ],
-     "cons": [
-      "近況",
-      "騎練組合"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 9
     },
     {
      "rank": 10,
-     "no": 13,
-     "horse": "逍遙騎士",
-     "horse_code": "K370",
-     "jockey": "鍾易禮",
-     "trainer": "巫偉傑",
-     "draw": 10,
-     "weight": 115,
-     "rating": 62,
-     "last6": "13/8/5/1/3/1",
-     "gear": "B/TT",
-     "win_prob": 0.0389,
-     "fair_odds": 25.7,
-     "style": "前列",
-     "speed_best": 0.6,
-     "perf_best": 69.2,
-     "handicap_edge": 0.9,
-     "runs_in_db": 15,
-     "draw_edge": -0.155,
-     "pros": [
-      "過往市場評價",
-      "負磅",
-      "後段追勁"
-     ],
-     "cons": [
-      "近況",
-      "騎練組合"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 11,
      "no": 7,
      "horse": "武明",
      "horse_code": "L553",
@@ -4527,8 +4843,8 @@
      "rating": 67,
      "last6": "-",
      "gear": "B",
-     "win_prob": 0.0365,
-     "fair_odds": 27.4,
+     "win_prob": 0.0394,
+     "fair_odds": 25.4,
      "style": "未知",
      "speed_best": null,
      "perf_best": null,
@@ -4550,10 +4866,13 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 10
     },
     {
-     "rank": 12,
+     "rank": 11,
      "no": 9,
      "horse": "嵐鑽",
      "horse_code": "L378",
@@ -4564,8 +4883,8 @@
      "rating": 66,
      "last6": "-",
      "gear": "",
-     "win_prob": 0.0341,
-     "fair_odds": 29.3,
+     "win_prob": 0.0372,
+     "fair_odds": 26.9,
      "style": "未知",
      "speed_best": null,
      "perf_best": null,
@@ -4587,7 +4906,50 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 11
+    },
+    {
+     "rank": 12,
+     "no": 13,
+     "horse": "逍遙騎士",
+     "horse_code": "K370",
+     "jockey": "鍾易禮",
+     "trainer": "巫偉傑",
+     "draw": 10,
+     "weight": 115,
+     "rating": 62,
+     "last6": "13/8/5/1/3/1",
+     "gear": "B/TT",
+     "win_prob": 0.0328,
+     "fair_odds": 30.5,
+     "style": "前列",
+     "speed_best": 0.6,
+     "perf_best": 69.2,
+     "handicap_edge": 0.9,
+     "runs_in_db": 15,
+     "draw_edge": -0.155,
+     "pros": [
+      "過往市場評價",
+      "負磅",
+      "讓磅著數"
+     ],
+     "cons": [
+      "狀態走勢",
+      "騎練組合"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 12
     },
     {
      "rank": 13,
@@ -4601,8 +4963,8 @@
      "rating": 80,
      "last6": "-",
      "gear": "CP-/TT1",
-     "win_prob": 0.029,
-     "fair_odds": 34.5,
+     "win_prob": 0.0292,
+     "fair_odds": 34.2,
      "style": "未知",
      "speed_best": null,
      "perf_best": null,
@@ -4616,7 +4978,7 @@
      ],
      "cons": [
       "缺速度數據",
-      "檔位統計"
+      "負磅"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -4624,7 +4986,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 13
     },
     {
      "rank": 14,
@@ -4638,8 +5003,8 @@
      "rating": 66,
      "last6": "11/9/10/11",
      "gear": "B2",
-     "win_prob": 0.0142,
-     "fair_odds": 70.2,
+     "win_prob": 0.016,
+     "fair_odds": 62.4,
      "style": "後上",
      "speed_best": -1.3,
      "perf_best": 73.3,
@@ -4647,11 +5012,12 @@
      "runs_in_db": 4,
      "draw_edge": 0.05,
      "pros": [
+      "評分變動",
       "練馬師近況"
      ],
      "cons": [
-      "近況",
-      "過往市場評價"
+      "過往市場評價",
+      "近況"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -4659,11 +5025,14 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 14
     }
    ],
    "ai": null,
-   "summary": "【步速】預計步速中等(2 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:12號香港仔。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:12號香港仔、6號巴閉精。10號禾道豐檔位統計較差。\n【選擇】首選6號巴閉精(模型 27%,公平賠率 3.7):近況、過往市場評價、檔位統計佔優;次選2號星月飛雲(模型 16%,公平賠率 6.4):騎師、騎練組合、近況佔優,讓磅著數比同場中位數多約 10 分;三選5號一世美麗(模型 9%,公平賠率 10.9):過往市場評價、檔位統計、騎師佔優。\n【風險】6號巴閉精要留意後段追勁;2號星月飛雲要留意負磅;賠率會變,以開跑前為準。"
+   "summary": "【步速】預計步速中等(2 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:12號香港仔。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:12號香港仔、6號巴閉精。10號禾道豐檔位統計較差。\n【選擇】首選6號巴閉精(模型 28%,公平賠率 3.6):過往市場評價、近況、路程適應佔優;次選2號星月飛雲(模型 17%,公平賠率 5.7):騎師、狀態走勢、騎練組合佔優,讓磅著數比同場中位數多約 10 分;三選5號一世美麗(模型 8%,公平賠率 11.8):過往市場評價、檔位統計、讓磅著數佔優。\n【風險】6號巴閉精要留意後段追勁;2號星月飛雲要留意負磅、練馬師本場地成績;賠率會變,以開跑前為準。"
   },
   {
    "race_no": 10,
@@ -4701,8 +5070,8 @@
      "rating": 67,
      "last6": "2/8/8/5/6/1",
      "gear": "TT",
-     "win_prob": 0.2295,
-     "fair_odds": 4.4,
+     "win_prob": 0.2443,
+     "fair_odds": 4.1,
      "style": "領放",
      "speed_best": 1.9,
      "perf_best": 70.0,
@@ -4711,8 +5080,8 @@
      "draw_edge": 0.236,
      "pros": [
       "騎師",
-      "近況",
-      "騎練組合"
+      "騎練組合",
+      "過往市場評價"
      ],
      "cons": [
       "讓磅著數"
@@ -4723,7 +5092,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 1
     },
     {
      "rank": 2,
@@ -4737,8 +5109,8 @@
      "rating": 74,
      "last6": "1/1/8/1",
      "gear": "TT",
-     "win_prob": 0.1951,
-     "fair_odds": 5.1,
+     "win_prob": 0.1919,
+     "fair_odds": 5.2,
      "style": "領放",
      "speed_best": 6.2,
      "perf_best": 73.6,
@@ -4746,9 +5118,9 @@
      "runs_in_db": 4,
      "draw_edge": -0.095,
      "pros": [
-      "近況",
       "過往市場評價",
-      "路程適應"
+      "近況",
+      "評分變動"
      ],
      "cons": [
       "讓磅著數",
@@ -4760,83 +5132,13 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 2
     },
     {
      "rank": 3,
-     "no": 3,
-     "horse": "神衝萬里",
-     "horse_code": "L519",
-     "jockey": "鍾易禮",
-     "trainer": "告東尼",
-     "draw": 11,
-     "weight": 122,
-     "rating": 67,
-     "last6": "3/4",
-     "gear": "TT",
-     "win_prob": 0.1043,
-     "fair_odds": 9.6,
-     "style": "中游",
-     "speed_best": -4.4,
-     "perf_best": 68.6,
-     "handicap_edge": 0.1,
-     "runs_in_db": 2,
-     "draw_edge": -0.069,
-     "pros": [
-      "近況",
-      "過往市場評價",
-      "末段速度(分段時間)"
-     ],
-     "cons": [
-      "後段追勁",
-      "騎師"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 4,
-     "no": 5,
-     "horse": "飛馬座",
-     "horse_code": "L075",
-     "jockey": "奧璇璧",
-     "trainer": "徐雨石",
-     "draw": 9,
-     "weight": 123,
-     "rating": 66,
-     "last6": "6/4/2/7/8/6",
-     "gear": "TT",
-     "win_prob": 0.0825,
-     "fair_odds": 12.1,
-     "style": "前列",
-     "speed_best": -1.1,
-     "perf_best": 73.0,
-     "handicap_edge": 3.5,
-     "runs_in_db": 12,
-     "draw_edge": -0.272,
-     "pros": [
-      "近況",
-      "過往市場評價",
-      "練馬師近況"
-     ],
-     "cons": [
-      "檔位統計"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 5,
      "no": 1,
      "horse": "神鵰",
      "horse_code": "L336",
@@ -4847,8 +5149,8 @@
      "rating": 75,
      "last6": "1/8/7/11",
      "gear": "TT",
-     "win_prob": 0.0792,
-     "fair_odds": 12.6,
+     "win_prob": 0.098,
+     "fair_odds": 10.2,
      "style": "中游",
      "speed_best": -0.1,
      "perf_best": 74.9,
@@ -4856,9 +5158,9 @@
      "runs_in_db": 4,
      "draw_edge": -0.232,
      "pros": [
-      "近況",
-      "末段速度(分段時間)",
-      "騎練組合"
+      "狀態走勢",
+      "評分變動",
+      "近況"
      ],
      "cons": [
       "檔位統計",
@@ -4870,7 +5172,90 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 3
+    },
+    {
+     "rank": 4,
+     "no": 3,
+     "horse": "神衝萬里",
+     "horse_code": "L519",
+     "jockey": "鍾易禮",
+     "trainer": "告東尼",
+     "draw": 11,
+     "weight": 122,
+     "rating": 67,
+     "last6": "3/4",
+     "gear": "TT",
+     "win_prob": 0.088,
+     "fair_odds": 11.4,
+     "style": "中游",
+     "speed_best": -4.4,
+     "perf_best": 68.6,
+     "handicap_edge": 0.1,
+     "runs_in_db": 2,
+     "draw_edge": -0.069,
+     "pros": [
+      "過往市場評價",
+      "近況",
+      "末段速度(分段時間)"
+     ],
+     "cons": [
+      "讓磅著數",
+      "騎師"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 4
+    },
+    {
+     "rank": 5,
+     "no": 5,
+     "horse": "飛馬座",
+     "horse_code": "L075",
+     "jockey": "奧璇璧",
+     "trainer": "徐雨石",
+     "draw": 9,
+     "weight": 123,
+     "rating": 66,
+     "last6": "6/4/2/7/8/6",
+     "gear": "TT",
+     "win_prob": 0.0738,
+     "fair_odds": 13.5,
+     "style": "前列",
+     "speed_best": -1.1,
+     "perf_best": 73.0,
+     "handicap_edge": 3.5,
+     "runs_in_db": 12,
+     "draw_edge": -0.272,
+     "pros": [
+      "過往市場評價",
+      "近況",
+      "評分變動"
+     ],
+     "cons": [
+      "檔位統計",
+      "練馬師本場地成績"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 5
     },
     {
      "rank": 6,
@@ -4884,7 +5269,7 @@
      "rating": 64,
      "last6": "9/3",
      "gear": "",
-     "win_prob": 0.064,
+     "win_prob": 0.0641,
      "fair_odds": 15.6,
      "style": "前列",
      "speed_best": -3.2,
@@ -4893,9 +5278,9 @@
      "runs_in_db": 2,
      "draw_edge": -0.358,
      "pros": [
-      "近況",
       "過往市場評價",
-      "騎練組合"
+      "騎練組合",
+      "騎師"
      ],
      "cons": [
       "檔位統計",
@@ -4907,7 +5292,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 6
     },
     {
      "rank": 7,
@@ -4921,8 +5309,8 @@
      "rating": 65,
      "last6": "7/10/4/10/9/7",
      "gear": "TT",
-     "win_prob": 0.0602,
-     "fair_odds": 16.6,
+     "win_prob": 0.0617,
+     "fair_odds": 16.2,
      "style": "中游",
      "speed_best": 1.4,
      "perf_best": 72.5,
@@ -4930,9 +5318,47 @@
      "runs_in_db": 8,
      "draw_edge": 0.067,
      "pros": [
-      "後段追勁",
+      "檔位統計"
+     ],
+     "cons": [
+      "過往市場評價",
+      "近況"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 7
+    },
+    {
+     "rank": 8,
+     "no": 11,
+     "horse": "健康快車",
+     "horse_code": "H439",
+     "jockey": "艾兆禮",
+     "trainer": "蔡約翰",
+     "draw": 3,
+     "weight": 118,
+     "rating": 61,
+     "last6": "11/9/7/5/11/6",
+     "gear": "E",
+     "win_prob": 0.0574,
+     "fair_odds": 17.4,
+     "style": "中游",
+     "speed_best": -0.2,
+     "perf_best": 77.4,
+     "handicap_edge": 12.9,
+     "runs_in_db": 32,
+     "draw_edge": 0.338,
+     "pros": [
       "檔位統計",
-      "上仗速度指數"
+      "讓磅著數",
+      "騎師"
      ],
      "cons": [
       "近況",
@@ -4944,10 +5370,13 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 8
     },
     {
-     "rank": 8,
+     "rank": 9,
      "no": 8,
      "horse": "競駿戰神",
      "horse_code": "L478",
@@ -4958,8 +5387,8 @@
      "rating": 65,
      "last6": "-",
      "gear": "",
-     "win_prob": 0.056,
-     "fair_odds": 17.9,
+     "win_prob": 0.0547,
+     "fair_odds": 18.3,
      "style": "未知",
      "speed_best": null,
      "perf_best": null,
@@ -4968,8 +5397,7 @@
      "draw_edge": -0.014,
      "pros": [
       "過往市場評價",
-      "騎練組合",
-      "初出"
+      "騎練組合"
      ],
      "cons": [
       "缺速度數據",
@@ -4981,44 +5409,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 9,
-     "no": 11,
-     "horse": "健康快車",
-     "horse_code": "H439",
-     "jockey": "艾兆禮",
-     "trainer": "蔡約翰",
-     "draw": 3,
-     "weight": 118,
-     "rating": 61,
-     "last6": "11/9/7/5/11/6",
-     "gear": "E",
-     "win_prob": 0.055,
-     "fair_odds": 18.2,
-     "style": "中游",
-     "speed_best": -0.2,
-     "perf_best": 77.4,
-     "handicap_edge": 12.9,
-     "runs_in_db": 32,
-     "draw_edge": 0.338,
-     "pros": [
-      "檔位統計",
-      "騎師",
-      "讓磅著數"
-     ],
-     "cons": [
-      "近況",
-      "過往市場評價"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 9
     },
     {
      "rank": 10,
@@ -5032,8 +5426,8 @@
      "rating": 65,
      "last6": "-",
      "gear": "H1/TT1",
-     "win_prob": 0.0464,
-     "fair_odds": 21.6,
+     "win_prob": 0.0443,
+     "fair_odds": 22.6,
      "style": "未知",
      "speed_best": null,
      "perf_best": null,
@@ -5041,8 +5435,7 @@
      "runs_in_db": 0,
      "draw_edge": -0.067,
      "pros": [
-      "過往市場評價",
-      "初出"
+      "過往市場評價"
      ],
      "cons": [
       "缺速度數據",
@@ -5054,7 +5447,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 10
     },
     {
      "rank": 11,
@@ -5068,8 +5464,8 @@
      "rating": 64,
      "last6": "12",
      "gear": "TT",
-     "win_prob": 0.0242,
-     "fair_odds": 41.4,
+     "win_prob": 0.0185,
+     "fair_odds": 54.2,
      "style": "後上",
      "speed_best": -13.7,
      "perf_best": 67.4,
@@ -5079,7 +5475,7 @@
      "pros": [
       "末段速度(分段時間)",
       "騎練組合",
-      "前置跑法"
+      "騎師"
      ],
      "cons": [
       "近況",
@@ -5091,7 +5487,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 11
     },
     {
      "rank": 12,
@@ -5105,8 +5504,8 @@
      "rating": 61,
      "last6": "14/14",
      "gear": "",
-     "win_prob": 0.0037,
-     "fair_odds": 273.1,
+     "win_prob": 0.0033,
+     "fair_odds": 305.1,
      "style": "後上",
      "speed_best": -23.2,
      "perf_best": 37.5,
@@ -5115,12 +5514,12 @@
      "draw_edge": 0.325,
      "pros": [
       "檔位統計",
-      "後段追勁",
-      "負磅"
+      "負磅",
+      "後段追勁"
      ],
      "cons": [
-      "近況",
-      "過往市場評價"
+      "過往市場評價",
+      "讓磅著數"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -5128,11 +5527,14 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 12
     }
    ],
    "ai": null,
-   "summary": "【步速】4號勇者為皇、2號超和平有機會爭放。預計步速中等(2 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:4號勇者為皇、2號超和平。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:11號健康快車、12號戀愛最火。2號超和平、5號飛馬座檔位統計較差。\n【選擇】首選4號勇者為皇(模型 23%,公平賠率 4.4):騎師、近況、騎練組合佔優;次選2號超和平(模型 20%,公平賠率 5.1):近況、過往市場評價、路程適應佔優;三選3號神衝萬里(模型 10%,公平賠率 9.6):近況、過往市場評價、末段速度(分段時間)佔優。\n【風險】4號勇者為皇要留意讓磅著數;2號超和平要留意讓磅著數、負磅;賠率會變,以開跑前為準。"
+   "summary": "【步速】4號勇者為皇、2號超和平有機會爭放。預計步速中等(2 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:4號勇者為皇、2號超和平。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:11號健康快車、12號戀愛最火。2號超和平、1號神鵰檔位統計較差。\n【選擇】首選4號勇者為皇(模型 24%,公平賠率 4.1):騎師、騎練組合、過往市場評價佔優;次選2號超和平(模型 19%,公平賠率 5.2):過往市場評價、近況、評分變動佔優;三選1號神鵰(模型 10%,公平賠率 10.2):狀態走勢、評分變動、近況佔優。\n【風險】4號勇者為皇要留意讓磅著數;2號超和平要留意讓磅著數、負磅;賠率會變,以開跑前為準。"
   },
   {
    "race_no": 11,
@@ -5170,8 +5572,8 @@
      "rating": 92,
      "last6": "2/1/4/1/1/1",
      "gear": "TT",
-     "win_prob": 0.1837,
-     "fair_odds": 5.4,
+     "win_prob": 0.1797,
+     "fair_odds": 5.6,
      "style": "前列",
      "speed_best": 8.1,
      "perf_best": 96.8,
@@ -5179,12 +5581,11 @@
      "runs_in_db": 6,
      "draw_edge": -0.001,
      "pros": [
-      "近況",
       "過往市場評價",
-      "上仗速度指數"
+      "近況",
+      "路程適應"
      ],
      "cons": [
-      "後段追勁",
       "負磅"
      ],
      "win_odds": null,
@@ -5193,7 +5594,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 1
     },
     {
      "rank": 2,
@@ -5207,7 +5611,7 @@
      "rating": 82,
      "last6": "2/1/1/6/1",
      "gear": "",
-     "win_prob": 0.1652,
+     "win_prob": 0.1634,
      "fair_odds": 6.1,
      "style": "中游",
      "speed_best": 7.1,
@@ -5216,48 +5620,12 @@
      "runs_in_db": 5,
      "draw_edge": 0.028,
      "pros": [
-      "近況",
       "過往市場評價",
+      "近況",
       "末段速度(分段時間)"
      ],
      "cons": [
-      "後段追勁",
-      "降班"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 3,
-     "no": 8,
-     "horse": "晒冷",
-     "horse_code": "K369",
-     "jockey": "巴度",
-     "trainer": "廖康銘",
-     "draw": 4,
-     "weight": 117,
-     "rating": 84,
-     "last6": "2/4/3/9/5/9",
-     "gear": "",
-     "win_prob": 0.0979,
-     "fair_odds": 10.2,
-     "style": "後上",
-     "speed_best": 1.5,
-     "perf_best": 92.9,
-     "handicap_edge": 3.5,
-     "runs_in_db": 17,
-     "draw_edge": 0.125,
-     "pros": [
-      "近況",
-      "末段速度(分段時間)",
-      "表現評分(近績最佳)"
-     ],
-     "cons": [
+      "降班",
       "後段追勁"
      ],
      "win_odds": null,
@@ -5266,10 +5634,13 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 2
     },
     {
-     "rank": 4,
+     "rank": 3,
      "no": 1,
      "horse": "康樂高球",
      "horse_code": "J517",
@@ -5280,8 +5651,8 @@
      "rating": 102,
      "last6": "6/1/6/3/1/1",
      "gear": "TT",
-     "win_prob": 0.0951,
-     "fair_odds": 10.5,
+     "win_prob": 0.1159,
+     "fair_odds": 8.6,
      "style": "前列",
      "speed_best": 8.7,
      "perf_best": 102.9,
@@ -5290,12 +5661,12 @@
      "draw_edge": -0.155,
      "pros": [
       "過往市場評價",
-      "近況",
-      "表現評分(近績最佳)"
+      "降班",
+      "近況"
      ],
      "cons": [
       "負磅",
-      "檔位統計"
+      "讓磅著數"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -5303,7 +5674,49 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 3
+    },
+    {
+     "rank": 4,
+     "no": 8,
+     "horse": "晒冷",
+     "horse_code": "K369",
+     "jockey": "巴度",
+     "trainer": "廖康銘",
+     "draw": 4,
+     "weight": 117,
+     "rating": 84,
+     "last6": "2/4/3/9/5/9",
+     "gear": "",
+     "win_prob": 0.1048,
+     "fair_odds": 9.5,
+     "style": "後上",
+     "speed_best": 1.5,
+     "perf_best": 92.9,
+     "handicap_edge": 3.5,
+     "runs_in_db": 17,
+     "draw_edge": 0.125,
+     "pros": [
+      "近況",
+      "末段速度(分段時間)",
+      "過往市場評價"
+     ],
+     "cons": [
+      "後段追勁"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 4
     },
     {
      "rank": 5,
@@ -5317,8 +5730,8 @@
      "rating": 82,
      "last6": "4/1/4/2/1/4",
      "gear": "H/TT",
-     "win_prob": 0.0879,
-     "fair_odds": 11.4,
+     "win_prob": 0.0839,
+     "fair_odds": 11.9,
      "style": "領放",
      "speed_best": 7.9,
      "perf_best": 82.7,
@@ -5340,7 +5753,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 5
     },
     {
      "rank": 6,
@@ -5354,8 +5770,8 @@
      "rating": 85,
      "last6": "5/9/2/9/6/13",
      "gear": "TT",
-     "win_prob": 0.0708,
-     "fair_odds": 14.1,
+     "win_prob": 0.07,
+     "fair_odds": 14.3,
      "style": "前列",
      "speed_best": 0.1,
      "perf_best": 92.6,
@@ -5365,10 +5781,11 @@
      "pros": [
       "檔位統計",
       "表現評分(近績最佳)",
-      "騎練組合"
+      "評分變動"
      ],
      "cons": [
-      "降班"
+      "降班",
+      "練馬師本場地成績"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -5376,7 +5793,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 6
     },
     {
      "rank": 7,
@@ -5390,8 +5810,8 @@
      "rating": 95,
      "last6": "5/5/6/7/10/7",
      "gear": "B",
-     "win_prob": 0.0699,
-     "fair_odds": 14.3,
+     "win_prob": 0.0627,
+     "fair_odds": 15.9,
      "style": "前列",
      "speed_best": 8.6,
      "perf_best": 100.2,
@@ -5404,7 +5824,8 @@
       "檔位統計"
      ],
      "cons": [
-      "騎練組合"
+      "騎練組合",
+      "練馬師本場地成績"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -5412,7 +5833,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 7
     },
     {
      "rank": 8,
@@ -5426,8 +5850,8 @@
      "rating": 92,
      "last6": "4/9/6/1/3/2",
      "gear": "B/XB/TT",
-     "win_prob": 0.0527,
-     "fair_odds": 19.0,
+     "win_prob": 0.0532,
+     "fair_odds": 18.8,
      "style": "中游",
      "speed_best": 2.6,
      "perf_best": 98.3,
@@ -5441,7 +5865,7 @@
      ],
      "cons": [
       "檔位統計",
-      "後段追勁"
+      "練馬師本場地成績"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -5449,7 +5873,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 8
     },
     {
      "rank": 9,
@@ -5463,8 +5890,8 @@
      "rating": 82,
      "last6": "-",
      "gear": "XB1/TT-",
-     "win_prob": 0.0387,
-     "fair_odds": 25.8,
+     "win_prob": 0.0372,
+     "fair_odds": 26.9,
      "style": "未知",
      "speed_best": null,
      "perf_best": null,
@@ -5472,13 +5899,13 @@
      "runs_in_db": 0,
      "draw_edge": 0.05,
      "pros": [
-      "上仗速度指數",
       "過往市場評價",
+      "上仗速度指數",
       "表現評分(近績最佳)"
      ],
      "cons": [
       "缺速度數據",
-      "近況"
+      "騎師"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -5486,10 +5913,53 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 9
     },
     {
      "rank": 10,
+     "no": 11,
+     "horse": "勇霸神駒",
+     "horse_code": "M123",
+     "jockey": "潘明輝",
+     "trainer": "沈集成",
+     "draw": 1,
+     "weight": 116,
+     "rating": 83,
+     "last6": "-",
+     "gear": "TT",
+     "win_prob": 0.0344,
+     "fair_odds": 29.1,
+     "style": "未知",
+     "speed_best": null,
+     "perf_best": null,
+     "handicap_edge": null,
+     "runs_in_db": 0,
+     "draw_edge": 0.269,
+     "pros": [
+      "檔位統計",
+      "過往市場評價",
+      "上仗速度指數"
+     ],
+     "cons": [
+      "缺速度數據",
+      "騎練組合"
+     ],
+     "win_odds": null,
+     "place_odds": null,
+     "market_prob": null,
+     "blend_prob": null,
+     "ev": null,
+     "value": false,
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 10
+    },
+    {
+     "rank": 11,
      "no": 9,
      "horse": "安都",
      "horse_code": "K033",
@@ -5500,8 +5970,8 @@
      "rating": 83,
      "last6": "9/11/1/2/3/3",
      "gear": "E/TT",
-     "win_prob": 0.0351,
-     "fair_odds": 28.5,
+     "win_prob": 0.0328,
+     "fair_odds": 30.5,
      "style": "中游",
      "speed_best": 5.1,
      "perf_best": 87.4,
@@ -5523,44 +5993,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
-    },
-    {
-     "rank": 11,
-     "no": 11,
-     "horse": "勇霸神駒",
-     "horse_code": "M123",
-     "jockey": "潘明輝",
-     "trainer": "沈集成",
-     "draw": 1,
-     "weight": 116,
-     "rating": 83,
-     "last6": "-",
-     "gear": "TT",
-     "win_prob": 0.0343,
-     "fair_odds": 29.1,
-     "style": "未知",
-     "speed_best": null,
-     "perf_best": null,
-     "handicap_edge": null,
-     "runs_in_db": 0,
-     "draw_edge": 0.269,
-     "pros": [
-      "檔位統計",
-      "上仗速度指數",
-      "過往市場評價"
-     ],
-     "cons": [
-      "缺速度數據",
-      "近況"
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 11
     },
     {
      "rank": 12,
@@ -5574,8 +6010,8 @@
      "rating": 86,
      "last6": "12/2/6/3/1/3",
      "gear": "",
-     "win_prob": 0.0271,
-     "fair_odds": 36.9,
+     "win_prob": 0.025,
+     "fair_odds": 39.9,
      "style": "領放",
      "speed_best": 4.5,
      "perf_best": 91.9,
@@ -5584,12 +6020,12 @@
      "draw_edge": -0.101,
      "pros": [
       "過往市場評價",
-      "後段追勁",
-      "表現評分(近績最佳)"
+      "表現評分(近績最佳)",
+      "路程適應"
      ],
      "cons": [
       "騎師",
-      "末段速度(分段時間)"
+      "狀態走勢"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -5597,7 +6033,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 12
     },
     {
      "rank": 13,
@@ -5611,8 +6050,8 @@
      "rating": 83,
      "last6": "3",
      "gear": "XB-",
-     "win_prob": 0.0243,
-     "fair_odds": 41.1,
+     "win_prob": 0.0205,
+     "fair_odds": 48.7,
      "style": "後上",
      "speed_best": 5.8,
      "perf_best": 87.5,
@@ -5625,8 +6064,8 @@
       "上仗速度指數"
      ],
      "cons": [
-      "後段追勁",
-      "檔位統計"
+      "檔位統計",
+      "過往市場評價"
      ],
      "win_odds": null,
      "place_odds": null,
@@ -5634,7 +6073,10 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 13
     },
     {
      "rank": 14,
@@ -5648,8 +6090,8 @@
      "rating": 91,
      "last6": "10/4/8/11/1/11",
      "gear": "",
-     "win_prob": 0.0173,
-     "fair_odds": 57.9,
+     "win_prob": 0.0163,
+     "fair_odds": 61.4,
      "style": "後上",
      "speed_best": 6.0,
      "perf_best": 98.7,
@@ -5657,8 +6099,8 @@
      "runs_in_db": 27,
      "draw_edge": -0.062,
      "pros": [
-      "上仗速度指數",
       "表現評分(近績最佳)",
+      "上仗速度指數",
       "上仗表現評分"
      ],
      "cons": [
@@ -5671,11 +6113,14 @@
      "blend_prob": null,
      "ev": null,
      "value": false,
-     "longshot": false
+     "longshot": false,
+     "open_odds": null,
+     "steam": false,
+     "final_rank": 14
     }
    ],
    "ai": null,
-   "summary": "【步速】12號友瑩仁、6號一起美麗有機會爭放。預計步速中等(3 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:4號喜慶寶、1號康樂高球。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:11號勇霸神駒、2號風雲武士。1號康樂高球、12號友瑩仁檔位統計較差。\n【選擇】首選4號喜慶寶(模型 18%,公平賠率 5.4):近況、過往市場評價、上仗速度指數佔優;次選14號堅先生(模型 17%,公平賠率 6.1):近況、過往市場評價、末段速度(分段時間)佔優;三選8號晒冷(模型 10%,公平賠率 10.2):近況、末段速度(分段時間)、表現評分(近績最佳)佔優,讓磅著數比同場中位數多約 4 分。\n【風險】首選機率只有 18%,形勢開放;4號喜慶寶要留意後段追勁、負磅;14號堅先生要留意後段追勁、降班;賠率會變,以開跑前為準。"
+   "summary": "【步速】12號友瑩仁、6號一起美麗有機會爭放。預計步速中等(3 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:4號喜慶寶、1號康樂高球。\n【場地】今日未有已完成賽事,未能計算即日場地走勢;此跑道路程歷來前置馬有利。檔位統計著數:11號勇霸神駒、2號風雲武士。1號康樂高球、12號友瑩仁檔位統計較差。\n【選擇】首選4號喜慶寶(模型 18%,公平賠率 5.6):過往市場評價、近況、路程適應佔優;次選14號堅先生(模型 16%,公平賠率 6.1):過往市場評價、近況、末段速度(分段時間)佔優;三選1號康樂高球(模型 12%,公平賠率 8.6):過往市場評價、降班、近況佔優。\n【風險】首選機率只有 18%,形勢開放;4號喜慶寶要留意負磅;14號堅先生要留意降班、後段追勁;賠率會變,以開跑前為準。"
   }
  ]
 }

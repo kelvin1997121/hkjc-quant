@@ -2,6 +2,7 @@
  "races": 9,
  "wins": 1,
  "places": 3,
+ "model_wins": 1,
  "flat_roi": -0.3444,
  "rows": [
   {
@@ -12,6 +13,8 @@
    "winner": 2,
    "won": false,
    "placed": false,
+   "model_pick": 1,
+   "model_won": false,
    "return": 0
   },
   {
@@ -22,6 +25,8 @@
    "winner": 12,
    "won": false,
    "placed": false,
+   "model_pick": 9,
+   "model_won": false,
    "return": 0
   },
   {
@@ -32,6 +37,8 @@
    "winner": 1,
    "won": true,
    "placed": true,
+   "model_pick": 1,
+   "model_won": true,
    "return": 5.9
   },
   {
@@ -42,6 +49,8 @@
    "winner": 6,
    "won": false,
    "placed": false,
+   "model_pick": 10,
+   "model_won": false,
    "return": 0
   },
   {
@@ -52,6 +61,8 @@
    "winner": 11,
    "won": false,
    "placed": false,
+   "model_pick": 2,
+   "model_won": false,
    "return": 0
   },
   {
@@ -62,6 +73,8 @@
    "winner": 1,
    "won": false,
    "placed": false,
+   "model_pick": 4,
+   "model_won": false,
    "return": 0
   },
   {
@@ -72,6 +85,8 @@
    "winner": 8,
    "won": false,
    "placed": true,
+   "model_pick": 5,
+   "model_won": false,
    "return": 0
   },
   {
@@ -82,6 +97,8 @@
    "winner": 2,
    "won": false,
    "placed": false,
+   "model_pick": 9,
+   "model_won": false,
    "return": 0
   },
   {
@@ -92,6 +109,8 @@
    "winner": 10,
    "won": false,
    "placed": true,
+   "model_pick": 1,
+   "model_won": false,
    "return": 0
   }
  ]
