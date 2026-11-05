@@ -22,6 +22,7 @@ from .backfill import HKT, today_hkt
 CLOCK_LIVE = "2026-11-05"   # meetings before this ran on GitHub cron, not the 5-minute clock
 MAX_UPDATE_GAP = 20         # minutes; one hung update (15-minute limit) plus the next tick
 REPO = os.environ.get("GITHUB_REPOSITORY", "kelvin1997121/hkjc-quant")
+TRACKWORK_FROM = "2026-11-08"   # first meeting whose trackwork and vet records were saved
 
 GROUPS = {
     "速度/表現評分": ["speed_best", "speed_last", "speed_missing", "perf_best", "perf_last",
@@ -252,6 +253,22 @@ def ticker_check():
             "detail": f"行緊,最近 24 小時接力 {relays} 次" if relays else "行緊,最近 24 小時未接力過"}
 
 
+def trackwork_check(past):
+    """A log that quietly stops would only be noticed months later, when it's needed."""
+    folder = store.DATA / "trackwork"
+    done = [p for p in past if p.stem[:10] >= TRACKWORK_FROM]
+    if not done:
+        saved = sum(1 for _ in folder.glob("20*_*.json"))
+        return {"name": "晨操紀錄", "ok": None,
+                "detail": f"由 {TRACKWORK_FROM} 開始,跑完先驗證到(已儲存 {saved} 個賽馬日)"}
+    stem = done[-1].stem
+    races = (store.read_json(folder / f"{stem}.json") or {}).get("races", {})
+    total = len(store.read_json(done[-1])["races"])
+    horses = sum(len(r["horses"]) for r in races.values())
+    return {"name": "晨操紀錄", "ok": bool(total) and len(races) >= total,
+            "detail": f"{stem[:10]} 儲咗 {len(races)}/{total} 場、{horses} 匹馬"}
+
+
 def data_health(races):
     today = today_hkt()
     last = max(r["date"] for r in races)
@@ -284,6 +301,7 @@ def data_health(races):
     if past:
         checks.append(meeting_updates(store.read_json(past[-1])))
     checks.append(ticker_check())
+    checks.append(trackwork_check(past))
     void = sum(1 for r in recent for x in r["runners"]
                if x.get("place") and not x.get("time"))
     checks.append({"name": "賽果解析", "ok": void == 0,

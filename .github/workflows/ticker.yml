@@ -83,6 +83,7 @@ jobs:
             hm=$(to_min "$(TZ=Asia/Hong_Kong date +%H:%M)")
             if [ "$hm" -ge 210 ] && [ "$hm" -lt 240 ] && ! recent_selfcheck; then
               gh workflow run selfcheck.yml && log "triggered selfcheck"
+              gh workflow run trackwork.yml && log "triggered trackwork"
             fi
             every=$(interval)
             if [ "${every:-0}" -gt 0 ] && ! busy; then

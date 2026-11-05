@@ -44,6 +44,7 @@ hkjc/model.py     特徵、訓練、回測
 hkjc/analyze.py   將模型輸出變成可解釋分析
 hkjc/agent.py     Claude AI 分析(有快取,數據冇變唔會重複收費)
 hkjc/__main__.py  流程
+hkjc/trackwork.py 賽前儲存晨操同傷患紀錄(暫時只收集,未入模型)
 data/             歷史賽果、排位表(由 workflow 自動 commit)
 docs/             網頁 + 分析 JSON
 ```
