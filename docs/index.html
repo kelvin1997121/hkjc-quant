@@ -212,10 +212,10 @@ function selfcheck(sc) {
     </div>
     ${sc.notes.map(n => `<div class="note" style="margin-top:8px">${esc(n)}</div>`).join("")}
     ${sc.pick_bands ? `<div class="sub" style="margin-top:12px">系統首選按賠率分級(最終賠率回測;把握高唔代表值博,三級都係輸錢居多)</div>
-      <table><thead><tr><th>把握</th><th>首選賠率</th><th>場數</th><th>勝出</th><th>入位</th><th>獨贏回報</th><th>位置回報</th></tr></thead><tbody>${
+      <table><thead><tr><th>把握(首選賠率)</th><th>場數</th><th>勝出</th><th>入位</th><th>獨贏回報</th><th>位置回報</th></tr></thead><tbody>${
         [["高", "≤ 2.5"], ["中", "2.5 – 4"], ["低", "> 4"]].filter(([k]) => sc.pick_bands[k]).map(([k, o]) => {
           const b = sc.pick_bands[k];
-          return `<tr><td>${k}</td><td>${o}</td><td class="num">${b.n}</td><td class="num">${pct(b.win)}</td><td class="num">${pct(b.place)}</td><td class="num">${(b.roi * 100).toFixed(0)}%</td><td class="num">${b.place_roi == null ? "–" : (b.place_roi * 100).toFixed(0) + "%"}</td></tr>`;
+          return `<tr><td>${k}(${o})</td><td class="num">${b.n}</td><td class="num">${pct(b.win)}</td><td class="num">${pct(b.place)}</td><td class="num">${(b.roi * 100).toFixed(0)}%</td><td class="num">${b.place_roi == null ? "–" : (b.place_roi * 100).toFixed(0) + "%"}</td></tr>`;
         }).join("")}</tbody></table>` : ""}
     ${sc.bet_returns ? betTable(sc.bet_returns) : ""}
     <div class="notes" style="margin-top:12px">
