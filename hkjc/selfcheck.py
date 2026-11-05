@@ -10,12 +10,18 @@ model.train).
 from __future__ import annotations
 
 import math
-from datetime import date, datetime, timezone
+import os
+from datetime import date, datetime, timedelta, timezone
 
 import numpy as np
+import requests
 
 from . import model, scraper, store
 from .backfill import HKT, today_hkt
+
+CLOCK_LIVE = "2026-11-05"   # meetings before this ran on GitHub cron, not the 5-minute clock
+MAX_UPDATE_GAP = 20         # minutes; one hung update (15-minute limit) plus the next tick
+REPO = os.environ.get("GITHUB_REPOSITORY", "kelvin1997121/hkjc-quant")
 
 GROUPS = {
     "速度/表現評分": ["speed_best", "speed_last", "speed_missing", "perf_best", "perf_last",
@@ -202,6 +208,50 @@ def steam_stats():
             **{g: {"n": n, "wins": w} for g, (n, w) in groups.items()}}
 
 
+def meeting_updates(doc):
+    """Did a finished meeting get its live updates? The longest gap catches what a
+    count hides, such as plenty of updates early and none after race 1."""
+    day = doc["meeting"]["date"]
+    posts = sorted(r["post_time"] for r in doc["races"] if r.get("post_time"))
+    if not posts:
+        return {"name": "賽馬日更新", "ok": False, "detail": f"{day} 冇開跑時間,計唔到更新次數"}
+    mins = lambda hm: int(hm[:2]) * 60 + int(hm[3:5])
+    start, end = mins(posts[0]) - 60, mins(posts[-1]) + 45   # the window the ticker runs every 5 min
+    times = [datetime.fromisoformat(t).astimezone(HKT) for t in doc.get("runs", [])]
+    inside = sorted(m for m in (t.hour * 60 + t.minute for t in times if t.date().isoformat() == day)
+                    if start <= m <= end)
+    edges = [start, *inside, end]
+    gap = max(b - a for a, b in zip(edges, edges[1:]))
+    n = len(inside)
+    if day < CLOCK_LIVE:  # this meeting's fault is known; only a meeting since then can prove the fix
+        upcoming = (store.read_json(store.DOCS / "data" / "schedule.json", {}) or {}).get("date", "下一個賽馬日")
+        return {"name": "賽馬日更新", "ok": None,
+                "detail": f"{day} 只更新 {n} 次,係修正前嘅舊故障;新時鐘要到 {upcoming} 賽馬日先驗證到"}
+    if n >= (end - start) / 5 / 2 and gap <= MAX_UPDATE_GAP:
+        return {"name": "賽馬日更新", "ok": True, "detail": f"{day} 更新 {n} 次,最長相隔 {gap} 分鐘"}
+    return {"name": "賽馬日更新", "ok": False,
+            "detail": f"{day} 只更新 {n} 次,最長相隔 {gap} 分鐘(應該約 5 分鐘一次)"}
+
+
+def ticker_check():
+    """Is the cloud clock running now, and has it been handing over to itself?"""
+    url = f"https://api.github.com/repos/{REPO}/actions/workflows/ticker.yml/runs?per_page=20"
+    token = os.environ.get("GITHUB_TOKEN")
+    try:
+        r = requests.get(url, headers={"Authorization": f"Bearer {token}"} if token else {}, timeout=20)
+        r.raise_for_status()
+        runs = r.json()["workflow_runs"]
+    except (requests.RequestException, KeyError, ValueError) as e:
+        return {"name": "雲端時鐘", "ok": False, "detail": f"查唔到狀態({type(e).__name__})"}
+    if not any(x["status"] != "completed" for x in runs):
+        return {"name": "雲端時鐘", "ok": False, "detail": "停咗,賽馬日唔會自動更新"}
+    since = datetime.now(timezone.utc) - timedelta(hours=24)
+    relays = sum(1 for x in runs if x["triggering_actor"]["login"] == "github-actions[bot]"
+                 and datetime.fromisoformat(x["created_at"]) > since)
+    return {"name": "雲端時鐘", "ok": True,
+            "detail": f"行緊,最近 24 小時接力 {relays} 次" if relays else "行緊,最近 24 小時未接力過"}
+
+
 def data_health(races):
     today = today_hkt()
     last = max(r["date"] for r in races)
@@ -229,14 +279,11 @@ def data_health(races):
     last_trial = trial_files[-1].stem if trial_files else None
     checks.append({"name": "試閘數據", "ok": bool(last_trial) and (today - date.fromisoformat(last_trial)).days <= 21,
                    "detail": f"最近一次:{last_trial}" if last_trial else "未有試閘紀錄"})
-    # did the last meeting really get its live updates? (4 Nov got one all evening)
     past = [p for p in sorted((store.DOCS / "data").glob("20*_*.json"))
             if p.stem[:10] < today.isoformat()]
     if past:
-        last_doc = store.read_json(past[-1])
-        runs = len(last_doc.get("runs", []))
-        checks.append({"name": "賽馬日更新", "ok": runs >= 20,
-                       "detail": f"{last_doc['meeting']['date']} 更新咗 {runs} 次(正常應該 50 次以上)"})
+        checks.append(meeting_updates(store.read_json(past[-1])))
+    checks.append(ticker_check())
     void = sum(1 for r in recent for x in r["runners"]
                if x.get("place") and not x.get("time"))
     checks.append({"name": "賽果解析", "ok": void == 0,

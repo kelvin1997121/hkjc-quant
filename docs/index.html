@@ -185,8 +185,10 @@ function selfcheck(sc) {
   if (!sc) { el.style.display = "none"; return; }
   const pct = v => v == null ? "–" : (v * 100).toFixed(1) + "%";
   const w = sc.walk_forward;
-  const health = sc.health.checks.map(c =>
-    `<div class="${c.ok ? "pro" : "con"}" style="font-size:14px">${c.ok ? "✓" : "⚠"} ${esc(c.name)}:${esc(c.detail)}</div>`).join("");
+  const health = sc.health.checks.map(c => {
+    const [cls, mark] = c.ok === null ? ["sub", "⏳"] : c.ok ? ["pro", "✓"] : ["con", "⚠"];  // null = can't be tested yet
+    return `<div class="${cls}" style="font-size:14px">${mark} ${esc(c.name)}:${esc(c.detail)}</div>`;
+  }).join("");
   const maxd = Math.max(...sc.factor_groups.map(g => Math.abs(g.delta_logloss)), 0.001);
   const groups = sc.factor_groups.map(g => {
     const good = g.delta_logloss > 0;

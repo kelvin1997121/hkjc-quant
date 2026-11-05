@@ -8,6 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: read    # to see whether the ticker is running
   contents: write
   pages: write
   id-token: write
@@ -33,6 +34,7 @@ jobs:
       - name: Self-check
         env:
           HKJC_PROXY: ${{ secrets.HKJC_PROXY }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: python -m hkjc.selfcheck
 
       - name: Commit report

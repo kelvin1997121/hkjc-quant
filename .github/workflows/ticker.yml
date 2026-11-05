@@ -4,8 +4,9 @@ name: ticker
 # repo (4 Nov meeting: one run in the whole evening), so it can't drive race days.
 # One long job triggers the "update" workflow every 5 minutes during a meeting and
 # every 30 minutes otherwise from 08:00 HKT, plus the self-check once a night. It
-# always hands over to a fresh run before the 6-hour job limit. The cron below is
-# only a watchdog that restarts the relay if it ever breaks.
+# always hands over to a fresh run before the 6-hour job limit. If the relay ever
+# breaks, the cron below or any update run restarts it, so to stop the clock on
+# purpose disable this workflow rather than cancelling the run.
 on:
   workflow_dispatch:
     inputs:
@@ -95,11 +96,17 @@ jobs:
 
   relay:
     needs: tick
-    if: ${{ !cancelled() }}   # a failed tick still hands over; only a manual cancel stops it
+    if: ${{ !cancelled() }}   # a failed tick still hands over
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
     steps:
       - name: Hand over to the next ticker run
-        run: gh workflow run ticker.yml
+        # one failed API call here would stop the clock until a restart, so keep trying
+        run: |
+          for i in 1 2 3 4 5 6; do
+            gh workflow run ticker.yml && exit 0
+            sleep 30
+          done
+          exit 1

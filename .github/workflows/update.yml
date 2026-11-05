@@ -11,6 +11,7 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: write   # to restart the ticker if it has stopped
   contents: write
   pages: write
   id-token: write
@@ -22,8 +23,20 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 15   # the ticker waits for this run, so a hang must not cost a race (slowest so far: 7)
     steps:
+      - name: Restart the ticker if it has stopped
+        # this run may have come from GitHub's cron or the PC backup, so either can revive the clock
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          active=$(gh run list --workflow ticker.yml --limit 5 --json status \
+            --jq '[.[] | select(.status != "completed")] | length')
+          echo "active ticker runs: $active"
+          if [ "$active" = "0" ]; then gh workflow run ticker.yml && echo "ticker restarted"; fi
+
       - uses: actions/checkout@v7
 
       - uses: actions/setup-python@v7
