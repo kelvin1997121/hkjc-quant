@@ -269,7 +269,7 @@ def data_health(races):
                    "detail": "最近 10 個賽馬日齊全" if missing == [] else
                    (f"欠 {', '.join(missing)}" if missing else "未能連接馬會網站")})
     sect = np.mean([bool(r.get("has_sect")) for r in recent]) if recent else 0
-    checks.append({"name": "分段時間", "ok": sect >= 0.9,
+    checks.append({"name": "分段時間", "ok": bool(sect >= 0.9),  # a numpy bool isn't valid JSON
                    "detail": f"近 60 日 {sect:.0%} 賽事有分段時間"})
     odds_files = sorted((store.DATA / "odds").glob("*.json"))
     last_odds = odds_files[-1].stem if odds_files else None
@@ -377,8 +377,6 @@ def run():
         "steam": steam_stats(),
         "notes": notes,
     }
-    for c in report["health"]["checks"]:
-        c["ok"] = bool(c["ok"])  # numpy bools are not JSON serialisable
     store.write_json(store.DOCS / "data" / "selfcheck.json", report)
     print("  wrote selfcheck.json")
     return report
