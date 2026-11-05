@@ -88,7 +88,7 @@ def summarise(a: dict) -> str:
             why = "、".join(x["pros"][:2]) or "綜合數據"
             parts.append(f"{_name(x)}(獨贏 {x['win_odds']:g},模型排第 {x['rank']}):{why}")
         lines.append("【冷門】" + ";".join(parts) +
-                     "。呢類馬歷來入位機會高過一般冷門,較適合位置或者連贏配腳,唔建議重注獨贏。")
+                     "。呢類馬入位率略高過同賠率嘅其他馬,但過往買獨贏、位置都係蝕錢,只供參考,唔係值博訊號。")
     elif any(x.get("win_odds") for x in runners):
         lines.append("【冷門】今場冇賠率 10 倍以上而模型排頭五嘅馬。")
 

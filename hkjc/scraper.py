@@ -203,7 +203,26 @@ def _parse_result_race(soup: BeautifulSoup, venue: str, race_date: date, race_no
             "win_odds": _float(_txt(c("獨贏賠率"))),
         })
     info["runners"] = runners
+    info["dividends"] = _parse_dividends(soup)
     return info
+
+
+def _parse_dividends(soup) -> dict:
+    """{'獨贏': [['2', 172.5]], '位置': [['2', 49.0], ['7', 26.0], ...], ...}, per HK$10.
+
+    Empty if the page has none yet. A pool name spans several rows, so only its first
+    row has three cells. A pool that wasn't paid out has None for the amount.
+    """
+    table = next((t for t in soup.find_all("table") if not t.find("table") and "勝出組合" in t.get_text()), None)
+    out: dict = {}
+    pool = None
+    for tr in table.find_all("tr") if table else []:
+        cells = [_txt(td) for td in tr.find_all("td")]
+        if len(cells) == 3:
+            pool = cells[0]
+        if pool and pool != "彩池" and len(cells) in (2, 3):   # 彩池 is the header row
+            out.setdefault(pool, []).append([cells[-2], _float(cells[-1].replace(",", ""))])
+    return out
 
 
 def _parse_class_line(s: str):

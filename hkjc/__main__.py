@@ -153,7 +153,7 @@ def run(use_agent=True):
         print("3) live results for today's meeting")
         path = store.result_path(card["date"], card["venue"])
         stored = store.read_json(path, []) or []
-        have = {r["race_no"]: r for r in stored if r.get("has_sect")}
+        have = {r["race_no"]: r for r in stored if r.get("has_sect") and r.get("dividends")}
         live = scraper.fetch_meeting_results(
             meeting_day, venue=card["venue"], race_nos=[r["race_no"] for r in card["races"]],
             have=have)

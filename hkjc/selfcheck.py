@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import math
 import os
+from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
 
 import numpy as np
@@ -78,18 +79,22 @@ def walk_forward(samples, cols, cfg, folds=4, test_frac=0.4, with_blend=False):
             q = model.market_probs(s["odds"])
             r = {"ll": -math.log(max(pm[s["y"]], 1e-9)), "hit": int(np.argmax(pm)) == s["y"],
                  "p_win": float(pm[s["y"]]), "probs": pm, "y": s["y"],
-                 "odds": s["odds"], "order": s.get("order") or [s["y"]]}
+                 "odds": s["odds"], "order": s.get("order") or [s["y"]],
+                 "date": s["date"], "nos": s["nos"], "dividends": s["dividends"]}
             if q is not None:
                 r["ll_mkt"] = -math.log(q[s["y"]])
                 r["fav_hit"] = int(np.argmax(q)) == s["y"]
                 if bw:
                     pb = model.blend(pm, q, bw["a"], bw["b"])
+                    r["blend_probs"] = pb
                     r["ll_blend"] = -math.log(pb[s["y"]])
                     r["blend_hit"] = int(np.argmax(pb)) == s["y"]
                     order = list(np.argsort(-pb))
                     r["winner_rank"] = order.index(s["y"]) + 1
                     r["first_placed"] = order[0] in (s.get("order") or [s["y"]])
                     r["first_odds"] = float(s["odds"][order[0]])
+                    r["first_no"] = s["nos"][order[0]]
+                    r["second_no"] = s["nos"][order[1]]
             rows.append(r)
     return rows, weights
 
@@ -132,6 +137,68 @@ def calibration(rows, bins=(0, .05, .1, .15, .2, .3, .45, 1.01)):
     return out
 
 
+def payout(div, pool, *nos):
+    """Return per $1 from real dividends: 0 if the bet lost, None if that pool wasn't paid."""
+    rows = (div or {}).get(pool)
+    if not rows or any(a is None for _, a in rows):
+        return None
+    want = set(map(str, nos))
+    return sum(a for c, a in rows if set(c.split(",")) == want) / 10
+
+
+def _returns(name, bets):
+    """Flat-stake record of [(date, return per $1), ...]. The range resamples whole meetings."""
+    days = defaultdict(lambda: [0, 0.0])
+    for day, back in bets:
+        days[day][0] += 1
+        days[day][1] += back
+    stake, back = np.array(list(days.values())).T
+    pick = np.random.default_rng(1108).integers(0, len(stake), (2000, len(stake)))
+    boot = back[pick].sum(1) / stake[pick].sum(1) - 1
+    return {"name": name, "bets": len(bets), "hit": round(sum(b > 0 for _, b in bets) / len(bets), 4),
+            "roi": round(float(back.sum() / stake.sum() - 1), 4),
+            "low": round(float(np.percentile(boot, 2.5)), 4), "high": round(float(np.percentile(boot, 97.5)), 4)}
+
+
+def bet_returns(rows, races):
+    """Each way of backing the published picks, at real dividends on races the model hadn't
+    seen, then the market's top two on all history. Final odds choose the horses, so someone
+    betting before the off couldn't quite do this."""
+    from .analyze import LONGSHOT_ODDS, LONGSHOT_RANK
+    bets = defaultdict(list)
+
+    def add(name, day, back):
+        if back is not None:
+            bets[name].append((day, back))
+
+    for r in rows:
+        if "first_no" not in r or not r["dividends"]:
+            continue
+        d, day, a, b = r["dividends"], r["date"], r["first_no"], r["second_no"]
+        add("首選 獨贏", day, payout(d, "獨贏", a))
+        add("首選 位置", day, payout(d, "位置", a))
+        add("首選+次選 連贏", day, payout(d, "連贏", a, b))
+        add("首選+次選 位置Q", day, payout(d, "位置Q", a, b))
+        ranks = (-r["probs"]).argsort().argsort() + 1
+        for i, no in enumerate(r["nos"]):
+            if r["odds"][i] >= LONGSHOT_ODDS and ranks[i] <= LONGSHOT_RANK:
+                add("冷門馬 獨贏", day, payout(d, "獨贏", no))
+                add("冷門馬 位置", day, payout(d, "位置", no))
+                if no != a:
+                    add("首選+冷門馬 連贏", day, payout(d, "連贏", a, no))
+                    add("首選+冷門馬 位置Q", day, payout(d, "位置Q", a, no))
+    unseen = [_returns(k, v) for k, v in bets.items()]
+
+    bets = defaultdict(list)
+    for race in races:
+        run = sorted((x for x in race["runners"] if x.get("win_odds") and model.started(x)),
+                     key=lambda x: (x["win_odds"], x["no"]))
+        if race.get("dividends") and len(run) >= 5:
+            add("頭兩熱門 連贏", race["date"], payout(race["dividends"], "連贏", run[0]["no"], run[1]["no"]))
+            add("頭兩熱門 位置Q", race["date"], payout(race["dividends"], "位置Q", run[0]["no"], run[1]["no"]))
+    return {"unseen": unseen, "history": [_returns(k, v) for k, v in bets.items()]}
+
+
 def pick_bands(rows):
     """First choice's record by the 把握 band on the race (walk-forward, final odds)."""
     from .analyze import confidence_band
@@ -139,45 +206,58 @@ def pick_bands(rows):
     for r in rows:
         if "first_odds" not in r:
             continue
-        b = out.setdefault(confidence_band(r["first_odds"]), {"n": 0, "wins": 0, "placed": 0, "returned": 0.0})
+        b = out.setdefault(confidence_band(r["first_odds"]),
+                           {"n": 0, "wins": 0, "placed": 0, "win_back": 0.0, "place_back": 0.0})
         b["n"] += 1
         b["wins"] += r["blend_hit"]
         b["placed"] += r["first_placed"]
-        b["returned"] += r["first_odds"] if r["blend_hit"] else 0.0
+        b["win_back"] += payout(r["dividends"], "獨贏", r["first_no"]) or 0.0
+        b["place_back"] += payout(r["dividends"], "位置", r["first_no"]) or 0.0
     return {k: {"n": v["n"], "win": round(v["wins"] / v["n"], 4), "place": round(v["placed"] / v["n"], 4),
-                "roi": round(v["returned"] / v["n"] - 1, 4)} for k, v in out.items()}
+                "roi": round(v["win_back"] / v["n"] - 1, 4),
+                "place_roi": round(v["place_back"] / v["n"] - 1, 4)} for k, v in out.items()}
 
 
 def longshot_stats(rows):
     """Record of the 冷門馬 rule (odds >= 10, model top 5) vs. all odds >= 10 runners,
     at final odds on walk-forward test races."""
     from .analyze import LONGSHOT_ODDS, LONGSHOT_RANK
-    picked, base = [], []
+    picked, base, others = [], [], []
     for r in rows:
         odds = r["odds"]
         if not (odds > 0).all():
             continue
         ranks = (-r["probs"]).argsort().argsort() + 1
-        top3 = set(r["order"])
         for i, o in enumerate(odds):
-            if o < LONGSHOT_ODDS:
+            won = payout(r["dividends"], "獨贏", r["nos"][i])
+            placed = payout(r["dividends"], "位置", r["nos"][i])
+            if o < LONGSHOT_ODDS or won is None or placed is None:
                 continue
-            row = (o, i == r["y"], i in top3)
+            row = (o, won, placed)
             base.append(row)
-            if ranks[i] <= LONGSHOT_RANK:
-                picked.append(row)
+            (picked if ranks[i] <= LONGSHOT_RANK else others).append(row)
 
     def summary(sel):
         if not sel:
             return None
         k = len(sel)
-        return {"n": k, "win": round(sum(w for _, w, _ in sel) / k, 4),
-                "top3": round(sum(t for _, _, t in sel) / k, 4),
+        return {"n": k, "win": round(sum(w > 0 for _, w, _ in sel) / k, 4),
+                "top3": round(sum(p > 0 for _, _, p in sel) / k, 4),
                 "avg_odds": round(float(np.mean([o for o, _, _ in sel])), 1),
-                "win_roi": round(sum(o for o, w, _ in sel if w) / k - 1, 4)}
+                "win_roi": round(sum(w for _, w, _ in sel) / k - 1, 4),
+                "place_roi": round(sum(p for _, _, p in sel) / k - 1, 4)}
 
+    # the rule picks shorter prices than other longshots, so only a like-for-like comparison is fair
+    same_price = []
+    for lo, hi in ((10, 20), (20, 50)):
+        a = [p for o, _, p in picked if lo <= o < hi]
+        b = [p for o, _, p in others if lo <= o < hi]
+        if a and b:
+            same_price.append({"band": f"{lo}-{hi}", "n": len(a),
+                               "picked": round(sum(p > 0 for p in a) / len(a), 4),
+                               "others": round(sum(p > 0 for p in b) / len(b), 4)})
     return {"rule": f"獨贏 {LONGSHOT_ODDS} 倍以上而模型排頭 {LONGSHOT_RANK}",
-            "picked": summary(picked), "all_longshots": summary(base)}
+            "picked": summary(picked), "all_longshots": summary(base), "same_price": same_price}
 
 
 def steam_stats():
@@ -372,11 +452,10 @@ def run():
             f"{c['band']} 預測 {c['predicted']:.0%} 實際 {c['actual']:.0%}" for c in off) + "。")
     ls = longshot_stats(base_rows)
     if ls["picked"] and ls["all_longshots"]:
-        p, b = ls["picked"], ls["all_longshots"]
-        better = p["top3"] > b["top3"] * 1.2
-        notes.append(f"冷門馬規則({ls['rule']}):入位率 {p['top3']:.0%},一般冷門 {b['top3']:.0%}"
-                     + (",仍然有效" if better else ",已經冇明顯優勢,要重新檢討")
-                     + f";獨贏平注回報 {p['win_roi']:+.0%}。")
+        p = ls["picked"]
+        same = "、".join(f"{b['band']} 倍 {b['picked']:.0%}(其他馬 {b['others']:.0%})" for b in ls["same_price"])
+        notes.append(f"冷門馬規則({ls['rule']}):同賠率比較入位率,{same};"
+                     f"平注回報獨贏 {p['win_roi']:+.0%}、位置 {p['place_roi']:+.0%}。")
     if tr.get("races", 0) < 50:
         notes.append(f"實戰往績只有 {tr.get('races', 0)} 場,樣本太少,未能下結論。")
 
@@ -392,6 +471,7 @@ def run():
         "live": {k: tr.get(k) for k in ("races", "wins", "places", "flat_roi")},
         "longshots": ls,
         "pick_bands": pick_bands(base_rows),
+        "bet_returns": bet_returns(base_rows, races),
         "steam": steam_stats(),
         "notes": notes,
     }

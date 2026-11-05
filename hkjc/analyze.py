@@ -179,7 +179,7 @@ def analyse_race(state, params, race, odds=None):
         r["steam"] = bool(was and r["win_odds"] and r["win_odds"] <= STEAM_MAX_ODDS
                           and was / r["win_odds"] >= STEAM_RATIO)
     # Rank by the model + market blend when odds are in: walk-forward its top pick won
-    # 29.7% vs 22.6% for the model alone. r["rank"] stays the model's own view.
+    # more often than the model alone (see selfcheck.json). r["rank"] stays the model's own view.
     if pb is not None:
         for r in out:
             r["final_prob"] = r["blend_prob"]

@@ -212,11 +212,12 @@ function selfcheck(sc) {
     </div>
     ${sc.notes.map(n => `<div class="note" style="margin-top:8px">${esc(n)}</div>`).join("")}
     ${sc.pick_bands ? `<div class="sub" style="margin-top:12px">系統首選按賠率分級(最終賠率回測;把握高唔代表值博,三級都係輸錢居多)</div>
-      <table><thead><tr><th>把握</th><th>首選賠率</th><th>場數</th><th>勝出</th><th>入位</th><th>平注回報</th></tr></thead><tbody>${
+      <table><thead><tr><th>把握</th><th>首選賠率</th><th>場數</th><th>勝出</th><th>入位</th><th>獨贏回報</th><th>位置回報</th></tr></thead><tbody>${
         [["高", "≤ 2.5"], ["中", "2.5 – 4"], ["低", "> 4"]].filter(([k]) => sc.pick_bands[k]).map(([k, o]) => {
           const b = sc.pick_bands[k];
-          return `<tr><td>${k}</td><td>${o}</td><td class="num">${b.n}</td><td class="num">${pct(b.win)}</td><td class="num">${pct(b.place)}</td><td class="num">${(b.roi * 100).toFixed(0)}%</td></tr>`;
+          return `<tr><td>${k}</td><td>${o}</td><td class="num">${b.n}</td><td class="num">${pct(b.win)}</td><td class="num">${pct(b.place)}</td><td class="num">${(b.roi * 100).toFixed(0)}%</td><td class="num">${b.place_roi == null ? "–" : (b.place_roi * 100).toFixed(0) + "%"}</td></tr>`;
         }).join("")}</tbody></table>` : ""}
+    ${sc.bet_returns ? betTable(sc.bet_returns) : ""}
     <div class="notes" style="margin-top:12px">
       <div><div class="sub">因素組貢獻(拎走後 log loss 變差幾多;紅色 = 拎走反而更準)</div>
         <table><tbody>${groups}</tbody></table></div>
@@ -225,12 +226,28 @@ function selfcheck(sc) {
     </div>`;
 }
 
+function betTable(b) {
+  const all = [...b.unseen, ...b.history];
+  const pct = v => (v > 0 ? "+" : "") + (v * 100).toFixed(1) + "%";
+  const row = x => `<tr><td>${esc(x.name)}</td><td class="num">${x.bets}</td><td class="num">${(x.hit * 100).toFixed(1)}%</td>` +
+    `<td class="num">${pct(x.roi)}</td><td class="num">${pct(x.low)} 至 ${pct(x.high)}</td></tr>`;
+  const clear = all.filter(x => x.low > 0).map(x => x.name);
+  const verdict = clear.length
+    ? `${clear.map(esc).join("、")} 嘅範圍高過 0,但同時試咗 ${all.length} 種玩法,可能只係運氣,要用新賽事再驗證。`
+    : `${all.length} 種玩法冇一種可靠咁賺錢。中得多唔等於賺到:入位率高嘅玩法一樣蝕。`;
+  return `<div class="sub" style="margin-top:12px">真實派彩回測(每注 $10 平注;範圍 = 95% 機會落喺呢度。用最終賠率揀馬,實際落注未必做到)</div>
+    <div class="note" style="margin:6px 0">${verdict}</div>
+    <table><thead><tr><th>玩法</th><th>注數</th><th>中率</th><th>回報</th><th>範圍</th></tr></thead><tbody>${all.map(row).join("")}</tbody></table>`;
+}
+
 function shotRecord() {
   const ls = scData && scData.longshots;
-  if (!ls || !ls.picked || !ls.all_longshots) return "";
-  const p = ls.picked, b = ls.all_longshots, pct = v => (v * 100).toFixed(1) + "%";
-  return `過往回測(${p.n} 匹同類馬):入位率 ${pct(p.top3)}(一般冷門 ${pct(b.top3)}),勝出率 ${pct(p.win)},` +
-    `獨贏平注回報 ${(p.win_roi * 100).toFixed(0)}%。較適合位置或者連贏配腳,唔建議重注獨贏。`;
+  if (!ls || !ls.picked || !ls.same_price) return "";
+  const p = ls.picked, pct = v => (v * 100).toFixed(1) + "%", whole = v => (v * 100).toFixed(0) + "%";
+  const same = ls.same_price.map(b => `${b.band} 倍 ${pct(b.picked)}(其他馬 ${pct(b.others)})`).join("、");
+  const pair = scData.bet_returns && scData.bet_returns.unseen.find(b => b.name === "首選+冷門馬 連贏");
+  return `過往回測(${p.n} 匹同類馬):同賠率比較入位率,${same}。平注回報:獨贏 ${whole(p.win_roi)}、` +
+    `位置 ${whole(p.place_roi)}${pair ? `、連贏配首選 ${whole(pair.roi)}` : ""}。呢啲都係蝕錢,只供參考,唔係值博訊號。`;
 }
 
 function allShots() {

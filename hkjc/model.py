@@ -578,8 +578,10 @@ def build_dataset(races):
     st = State()
     samples = []
     for race in races:
-        runners = [x for x in race["runners"]
-                   if x.get("horse_code") and x.get("draw") and started(x)]
+        # results list horses in finishing order; by number, a tie on odds can't favour the winner
+        runners = sorted((x for x in race["runners"]
+                          if x.get("horse_code") and x.get("draw") and started(x)),
+                         key=lambda x: x.get("no") or 99)
         win_idx = [i for i, x in enumerate(runners) if x.get("place") == 1]
         if len(runners) >= 5 and len(win_idx) == 1:
             X, _, _ = st.race_features(race, runners)
@@ -592,7 +594,8 @@ def build_dataset(races):
                     break
                 order.append(idx[0])
             samples.append({"date": race["date"], "X": X, "y": win_idx[0], "odds": odds,
-                            "order": order})
+                            "order": order, "nos": [x["no"] for x in runners],
+                            "dividends": race.get("dividends")})
         st.update(race)
     return st, samples
 
