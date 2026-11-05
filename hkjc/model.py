@@ -34,7 +34,10 @@ FEATURES = [
     "layoff", "debut", "mkt_rating", "vs_mkt", "closing", "class_drop", "bw_change",
     "perf_best", "perf_last", "handicap_edge", "late_speed", "early_speed",
     "jockey_form", "trainer_form", "combo",
+    "rating_move", "trainer_venue", "form_trend",
 ]
+# Tried with the 4 Nov review and dropped (no walk-forward gain on 1,291 races):
+# jockey_venue, first_up, quick_back.
 # venue_form (horse's form at this venue/surface) was tried and dropped: it worsened
 # walk-forward log loss (2.2199 without vs 2.2220 with).
 # Same-day sectional reads (track variant, closing advantage) are shown to the user
@@ -184,6 +187,8 @@ class State:
         self.jockey_recent = RateBook(window=40, strength=15)
         self.trainer_recent = RateBook(window=30, strength=15)
         self.combo = RateBook(window=150, prior=0.24, strength=15)  # jockey x trainer, top-3
+        # trainer's top-3 rate at this venue relative to their overall rate (HV/ST specialists)
+        self.trainer_venue = RateBook(window=300, strength=30)
         self.meeting = defaultdict(list)          # (date, venue) -> finished race summaries
         self.class_var = defaultdict(list)        # class -> (winner time - std)/km, good ground
         self.late_top_hist = []                   # per race: avg final-section edge of top 3
@@ -303,6 +308,10 @@ class State:
             "early_s": _mean([x.get("early_s") for x in runs[-3:]]),
             "last_cls": runs[-1].get("cls") if runs else None,
             "last_bw": runs[-1].get("bw") if runs else None,
+            "last_est": runs[-1].get("est") if runs else None,
+            # last run compared with the ones before it (+ = improving)
+            "form_trend": runs[-1]["fscore"] - float(np.mean([x["fscore"] for x in runs[-4:-1]]))
+                          if len(runs) >= 3 else None,
             # form at this venue + surface (needs 2+ runs there)
             "venue_form": float(np.mean(here)) if len(here) >= 2 else None,
         }
@@ -362,6 +371,11 @@ class State:
                 "trainer_form": self.trainer_recent.rate_vs(
                     x.get("trainer_id"), self.trainer_place.rate(x.get("trainer_id"))),
                 "combo": math.log(self.combo.rate((x.get("jockey_id"), x.get("trainer_id")))),
+                "trainer_venue": self.trainer_venue.rate_vs(
+                    (x.get("trainer_id"), race["venue"]), self.trainer_place.rate(x.get("trainer_id"))),
+                # weight-implied rating now vs. last run (+ = raised by the handicapper)
+                "rating_move": (rating - p["last_est"]) / 5 if p["last_est"] is not None else 0.0,
+                "form_trend": p["form_trend"] if p["form_trend"] is not None else 0.0,
                 "venue_form": (p["venue_form"] - p["form"])
                               if p["venue_form"] is not None and p["form"] is not None else 0.0,
                 "weight_rel": ((x.get("weight") or mean_wt) - mean_wt) / 5,
@@ -462,6 +476,7 @@ class State:
             if len(hist) >= 30:
                 late_excess = lt - float(np.mean(hist[-400:]))
             hist.append(lt)
+        est = dict(zip((x["no"] for x in runners), est_ratings(race, runners)))
         dk = draw_key(race)
         top_early, top_draw = [], []
         for x in runners:
@@ -490,6 +505,7 @@ class State:
             self.trainer_recent.add(x.get("trainer_id"), placed)
             if x.get("jockey_id") and x.get("trainer_id"):
                 self.combo.add((x["jockey_id"], x["trainer_id"]), placed)
+            self.trainer_venue.add((x.get("trainer_id"), race["venue"]), placed)
             fscore = 1 - (pos - 1) / max(field - 1, 1) if pos else 0.0
             m = mkt.get(x["no"])
             self.horse[x["horse_code"]].append({
@@ -504,7 +520,7 @@ class State:
                 "closing": (x["running"][0] - pos) / max(field - 1, 1)
                            if pos and x.get("running") else None,
                 "cls": class_num(race.get("class")), "bw": x.get("body_weight"),
-                "perf": perf.get(x["no"]),
+                "perf": perf.get(x["no"]), "est": est.get(x["no"]),
                 "early_s": sect_rel[x["no"]][0] if x["no"] in sect_rel else None,
                 "late_s": sect_rel[x["no"]][1] if x["no"] in sect_rel else None,
             })

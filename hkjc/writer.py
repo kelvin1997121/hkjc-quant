@@ -22,8 +22,10 @@ def summarise(a: dict) -> str:
     runners = a["runners"]
     if not runners:
         return ""
+    # final_rank = model + market when odds are in; older saved races only have the model's rank
+    by_final = sorted(runners, key=lambda x: x.get("final_rank", x["rank"]))
     by_model = sorted(runners, key=lambda x: x["rank"])
-    top5 = by_model[:5]
+    top5 = by_final[:5]
     lines = []
 
     # 1. pace and shape: verdict comes from history (analyze.pace_text), not a rule of thumb
@@ -63,9 +65,11 @@ def summarise(a: dict) -> str:
 
     # 3. picks
     picks = []
-    for label, x in zip(("首選", "次選", "三選"), by_model[:3]):
+    for label, x in zip(("首選", "次選", "三選"), by_final[:3]):
         why = "、".join(x["pros"][:3]) or "綜合數據"
-        t = f"{label}{_name(x)}(模型 {_pct(x['win_prob'])},公平賠率 {x['fair_odds']}):{why}佔優"
+        p = f"綜合 {_pct(x['final_prob'])},模型排第 {x['rank']}" if x.get("final_prob") \
+            else f"模型 {_pct(x['win_prob'])},公平賠率 {x['fair_odds']}"
+        t = f"{label}{_name(x)}({p}):{why}佔優"
         rel = x.get("handicap_edge") or 0  # already relative to the field median
         if rel >= 3:
             t += f",讓磅著數比同場中位數多約 {rel:.0f} 分"
@@ -85,24 +89,30 @@ def summarise(a: dict) -> str:
     elif any(x.get("win_odds") for x in runners):
         lines.append("【冷門】今場冇賠率 10 倍以上而模型排頭五嘅馬。")
 
+    # 3c. late money (information only: not yet backtested, so not in the probabilities)
+    steam = [x for x in runners if x.get("steam")]
+    if steam:
+        lines.append("【落飛】" + ";".join(f"{_name(x)}(早段 {x['open_odds']:g} → 而家 {x['win_odds']:g})"
+                                         for x in steam[:3]) + "。")
+
     # 4. market view and risks
     risks = []
     with_odds = [x for x in runners if x.get("market_prob")]
     if with_odds:
-        fav = max(with_odds, key=lambda x: x["market_prob"])
-        if fav["no"] != by_model[0]["no"]:
-            risks.append(f"市場大熱門係{_name(fav)},同模型首選唔同")
+        if by_final[0]["no"] != by_model[0]["no"]:
+            risks.append(f"模型自己最睇好{_name(by_model[0])},同市場睇法唔同")
         value = [x for x in runners if x.get("value")]
         if value:
             risks.append(f"按綜合機率計,{_names(value, 2)}有值博")
         else:
             risks.append("按綜合機率計暫時冇明顯值博")
-    thin = [x for x in by_model[:3] if x.get("runs_in_db", 0) == 0]
+    thin = [x for x in by_final[:3] if x.get("runs_in_db", 0) == 0]
     if thin:
         risks.append(f"{_names(thin)}數據不足(初出或冇往績),評估把握較低")
-    if by_model[0]["win_prob"] < 0.2:
-        risks.append(f"首選機率只有 {_pct(by_model[0]['win_prob'])},形勢開放")
-    cons = [x for x in by_model[:2] if x.get("cons")]
+    lead_p = by_final[0].get("final_prob") or by_final[0]["win_prob"]
+    if lead_p < 0.2:
+        risks.append(f"首選機率只有 {_pct(lead_p)},形勢開放")
+    cons = [x for x in by_final[:2] if x.get("cons")]
     for x in cons:
         risks.append(f"{_name(x)}要留意{'、'.join(x['cons'])}")
     risks.append("賠率會變,以開跑前為準")

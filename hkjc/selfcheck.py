@@ -15,18 +15,18 @@ from datetime import date, datetime, timezone
 import numpy as np
 
 from . import model, scraper, store
-from .backfill import today_hkt
+from .backfill import HKT, today_hkt
 
 GROUPS = {
     "速度/表現評分": ["speed_best", "speed_last", "speed_missing", "perf_best", "perf_last",
                  "handicap_edge"],
-    "近況": ["form", "dist_form", "class_drop", "layoff", "debut", "bw_change"],
+    "近況": ["form", "dist_form", "class_drop", "layoff", "debut", "bw_change", "form_trend"],
     "跑法/步速": ["early", "early_x_pace", "early_x_today", "early_x_course", "closing"],
     "檔位": ["draw_bias", "draw_x_today"],
-    "騎練": ["jockey", "trainer", "jockey_form", "trainer_form", "combo"],
+    "騎練": ["jockey", "trainer", "jockey_form", "trainer_form", "combo", "trainer_venue"],
     "市場往績": ["mkt_rating", "vs_mkt"],
     "分段時間": ["late_speed", "early_speed"],
-    "負磅": ["weight_rel"],
+    "負磅/評分": ["weight_rel", "rating_move"],
 }
 CANDIDATES = [{"l2": l2, "stages": st} for l2 in (0.02, 0.05, 0.2) for st in (1, 3)]
 MIN_GAIN = 0.002  # log-loss improvement needed before a setting is switched
@@ -75,6 +75,7 @@ def walk_forward(samples, cols, cfg, folds=4, test_frac=0.4, with_blend=False):
                 if bw:
                     pb = model.blend(pm, q, bw["a"], bw["b"])
                     r["ll_blend"] = -math.log(pb[s["y"]])
+                    r["blend_hit"] = int(np.argmax(pb)) == s["y"]
             rows.append(r)
     return rows, weights
 
@@ -90,6 +91,7 @@ def _summary(rows):
     bl = [r for r in mk if "ll_blend" in r]
     if bl:
         gain = np.array([r["ll_mkt"] - r["ll_blend"] for r in bl])
+        out["blend_hit"] = round(float(np.mean([r["blend_hit"] for r in bl])), 4)
         out["blend_gain"] = round(float(gain.mean()), 4)
         out["blend_gain_ci"] = round(float(1.96 * gain.std() / math.sqrt(len(gain))), 4)
     return out
@@ -145,6 +147,35 @@ def longshot_stats(rows):
             "picked": summary(picked), "all_longshots": summary(base)}
 
 
+def steam_stats():
+    """Win rate of horses whose odds shortened from race day's first snapshot to the off.
+
+    Past results only have final odds, so this builds up meeting by meeting until
+    there is enough to test as a model factor.
+    """
+    from .analyze import STEAM_RATIO
+    groups = {"steam": [0, 0], "steady": [0, 0], "drift": [0, 0]}
+    meetings = 0
+    for p in sorted((store.DATA / "odds").glob("20*_*.json")):
+        day, venue = p.stem.split("_")
+        hist = store.read_json(p, {}).get("history", {})
+        for race in store.read_json(store.result_path(day, venue), []) or []:
+            snaps = [h["win"] for h in hist.get(str(race["race_no"]), [])
+                     if datetime.fromisoformat(h["t"]).astimezone(HKT).date().isoformat() == day]
+            if not snaps:
+                continue
+            for x in race["runners"]:
+                was, final = snaps[0].get(str(x["no"])), x.get("win_odds")
+                if not was or not final:
+                    continue
+                g = "steam" if was / final >= STEAM_RATIO else "drift" if final / was >= STEAM_RATIO else "steady"
+                groups[g][0] += 1
+                groups[g][1] += x.get("place") == 1
+        meetings += 1
+    return {"meetings": meetings,
+            **{g: {"n": n, "wins": w} for g, (n, w) in groups.items()}}
+
+
 def data_health(races):
     today = today_hkt()
     last = max(r["date"] for r in races)
@@ -168,6 +199,14 @@ def data_health(races):
     last_odds = odds_files[-1].stem if odds_files else None
     checks.append({"name": "即時賠率", "ok": bool(last_odds),
                    "detail": f"最近一次:{last_odds}" if last_odds else "未有賠率紀錄"})
+    # did the last meeting really get its live updates? (4 Nov got one all evening)
+    past = [p for p in sorted((store.DOCS / "data").glob("20*_*.json"))
+            if p.stem[:10] < today.isoformat()]
+    if past:
+        last_doc = store.read_json(past[-1])
+        runs = len(last_doc.get("runs", []))
+        checks.append({"name": "賽馬日更新", "ok": runs >= 20,
+                       "detail": f"{last_doc['meeting']['date']} 更新咗 {runs} 次(正常應該 50 次以上)"})
     void = sum(1 for r in recent for x in r["runners"]
                if x.get("place") and not x.get("time"))
     checks.append({"name": "賽果解析", "ok": void == 0,
@@ -257,6 +296,7 @@ def run():
                    "chosen": {"l2": best["l2"], "stages": best["stages"]} if switched else current},
         "live": {k: tr.get(k) for k in ("races", "wins", "places", "flat_roi")},
         "longshots": ls,
+        "steam": steam_stats(),
         "notes": notes,
     }
     for c in report["health"]["checks"]:

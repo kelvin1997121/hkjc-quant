@@ -10,7 +10,7 @@ import sys
 from datetime import date, datetime, timezone
 
 from . import agent, analyze, model, scraper, store, writer
-from .backfill import backfill, today_hkt
+from .backfill import HKT, backfill, today_hkt
 
 
 def _result_summary(res_race):
@@ -72,7 +72,25 @@ def write_if_changed(path, doc):
     return True
 
 
-def live_odds(card):
+def race_schedule(card):
+    """Post times, read by the cloud ticker to speed up during a meeting."""
+    posts = sorted(r["post_time"] for r in card["races"] if r.get("post_time"))
+    return {"date": card["date"], "venue": card["venue"],
+            "first_post": posts[0] if posts else None, "last_post": posts[-1] if posts else None}
+
+
+def with_open(saved, day):
+    """Latest odds per race, plus the first snapshot taken on race day itself
+    (the day-before market is too thin to compare with)."""
+    out = {}
+    for k, v in saved["latest"].items():
+        first = next((h["win"] for h in saved["history"].get(k, [])
+                      if datetime.fromisoformat(h["t"]).astimezone(HKT).date().isoformat() == day), None)
+        out[int(k)] = {**v, "open": first}
+    return out
+
+
+def live_odds(card, skip=()):
     """Read live odds on race day and the day before; never fails the run."""
     days_ahead = (date.fromisoformat(card["date"]) - today_hkt()).days
     if days_ahead not in (0, 1):
@@ -81,11 +99,11 @@ def live_odds(card):
     saved = store.read_json(path, {"latest": {}, "history": {}})
     try:
         from . import odds as odds_mod
-        nos = [r["race_no"] for r in card["races"]]
+        nos = [r["race_no"] for r in card["races"] if r["race_no"] not in skip]
         snap = odds_mod.fetch_odds(card["date"], card["venue"], nos)
     except Exception as e:  # browser missing, page changed, blocked...
         print(f"   odds unavailable: {e!r}")
-        return {int(k): v for k, v in saved["latest"].items()}
+        return with_open(saved, card["date"])
     fetched = snap.pop("_fetched_at")
     for n, o in snap.items():
         saved["latest"][str(n)] = o
@@ -94,7 +112,7 @@ def live_odds(card):
             hist.append({"t": fetched, "win": o["win"]})
     store.write_json(path, saved)
     print(f"   odds for {len(snap)} races")
-    return {int(k): v for k, v in saved["latest"].items()}
+    return with_open(saved, card["date"])
 
 
 def run(use_agent=True):
@@ -109,21 +127,36 @@ def run(use_agent=True):
     if not card or not card["races"]:
         print("   no race card published")
         return
+    # a race HKJC stopped serving mid-meeting keeps its last good version
+    known = store.load_card(card["date"], card["venue"]) or {}
+    got = {r["race_no"] for r in card["races"]}
+    kept = [r for r in known.get("races", []) if r["race_no"] not in got]
+    if kept:
+        print(f"   keeping stored card for races {[r['race_no'] for r in kept]}")
+        card["races"] = sorted(card["races"] + kept, key=lambda r: r["race_no"])
     validate_card(card)
     store.save_card(card)
     mkey = f"{card['date']}_{card['venue']}"
     meeting_day = date.fromisoformat(card["date"])
     print(f"   {mkey}: {len(card['races'])} races")
+    write_if_changed(store.DOCS / "data" / "schedule.json", race_schedule(card))
 
+    finished = set()
     if meeting_day <= today_hkt():
         print("3) live results for today's meeting")
-        live = scraper.fetch_meeting_results(meeting_day)
+        path = store.result_path(card["date"], card["venue"])
+        stored = store.read_json(path, []) or []
+        have = {r["race_no"]: r for r in stored if r.get("has_sect")}
+        live = scraper.fetch_meeting_results(
+            meeting_day, venue=card["venue"], race_nos=[r["race_no"] for r in card["races"]],
+            have=have)
         if live:
             store.save_results(live)
+        finished = {r["race_no"] for r in live}
         print(f"   {len(live)} races finished")
 
     print("3b) live odds")
-    odds = live_odds(card)
+    odds = live_odds(card, skip=finished)
 
     print("4) training model on history")
     races = store.load_all_results()
@@ -141,17 +174,18 @@ def run(use_agent=True):
     out_races = []
     for race in card["races"]:
         res = results_today.get(race["race_no"])
-        if res and race["race_no"] in prev_races:
+        prev = prev_races.get(race["race_no"])
+        if res and prev and prev.get("race_name") == race.get("race_name"):
             # race already run: keep the pre-race prediction frozen, attach the result
-            a = prev_races[race["race_no"]]
+            a = prev
         else:
             a = analyze.analyse_race(state, params, race, odds.get(race["race_no"]))
             if not a:
                 continue
             if use_agent and not res:
                 a["ai"] = agent.analyse(a, mkey)
-            elif race["race_no"] in prev_races:
-                a["ai"] = prev_races[race["race_no"]].get("ai")
+            elif prev:
+                a["ai"] = prev.get("ai")
             if res:  # first seen after the race: features include the result itself
                 a["post_hoc"] = True
             # free rule-based preview; shown whenever there is no AI text
@@ -168,6 +202,8 @@ def run(use_agent=True):
         "history_races": len(races),
         "races": out_races,
     }
+    if meeting_day <= today_hkt():  # how many updates the meeting really got (self-check reads this)
+        doc["runs"] = previous.get("runs", []) + [doc["updated_at"]]
     if write_if_changed(out_path, doc):
         store.write_json(store.DOCS / "data" / "latest.json", doc)
         print(f"   wrote {out_path}")
@@ -202,18 +238,22 @@ def update_track_record():
         for r in d.get("races", []):
             if "result" not in r or not r["result"]["placings"] or r.get("post_hoc"):
                 continue
-            top = r["runners"][0]
+            top = r["runners"][0]   # the published first choice
+            model_top = min(r["runners"], key=lambda x: x["rank"])
             won = top["no"] == r["result"]["placings"][0]
             rows.append({"date": d["meeting"]["date"], "race_no": r["race_no"],
                          "pick": top["no"], "pick_prob": top["win_prob"],
                          "winner": r["result"]["placings"][0], "won": won,
                          "placed": top["no"] in r["result"]["placings"],
+                         "model_pick": model_top["no"],
+                         "model_won": model_top["no"] == r["result"]["placings"][0],
                          "return": r["result"]["win_odds"] if won else 0})
     n = len(rows)
     summary = {
         "races": n,
         "wins": sum(r["won"] for r in rows),
         "places": sum(r["placed"] for r in rows),
+        "model_wins": sum(r["model_won"] for r in rows),
         "flat_roi": round(sum(r["return"] or 0 for r in rows) / n - 1, 4) if n else None,
         "rows": rows[-200:],
     }

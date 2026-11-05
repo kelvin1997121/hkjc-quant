@@ -1,20 +1,20 @@
 name: ticker
 
-# Cloud-only backup for GitHub's cron, which can be late or not start at all on a
-# new repo. One long job triggers the "update" workflow every 20 minutes from
-# 08:00 to 23:59 HKT (skipping when an update started in the last 15 minutes)
-# and the self-check once a night between 03:30 and 04:00,
-# then hands over to a fresh ticker run before the 6-hour job limit. It stops
-# relaying by itself as soon as GitHub's own schedule is seen working.
+# The clock for live updates. GitHub's own cron fires only a few times a day on this
+# repo (4 Nov meeting: one run in the whole evening), so it can't drive race days.
+# One long job triggers the "update" workflow every 5 minutes during a meeting and
+# every 30 minutes otherwise from 08:00 HKT, plus the self-check once a night. It
+# always hands over to a fresh run before the 6-hour job limit. The cron below is
+# only a watchdog that restarts the relay if it ever breaks.
 on:
   workflow_dispatch:
     inputs:
       test:
-        description: "Trigger one update straight away (to check the ticker works)"
+        description: "Act as if a meeting is on for 15 minutes (to check the 5-minute clock)"
         type: boolean
         default: false
   schedule:
-    - cron: "41 0 * * *"   # 08:41 HKT: restarts the relay if it ever broke
+    - cron: "11 */2 * * *"
 
 permissions:
   actions: write   # to start the update workflow and the next ticker run
@@ -28,59 +28,74 @@ jobs:
   tick:
     runs-on: ubuntu-latest
     timeout-minutes: 355
-    outputs:
-      relay: ${{ steps.loop.outputs.relay }}
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
     steps:
-      - id: loop
-        name: Trigger updates every 20 minutes during race hours
+      - name: Trigger updates on the race-day clock
         run: |
-          cron_works() {
-            # a scheduled update in the last 2 hours means GitHub's cron is running
-            gh run list --workflow update.yml --event schedule --limit 1 \
-              --json createdAt --jq '[.[] | select((.createdAt | fromdateiso8601) > (now - 7200))] | length' \
-              | grep -qx '[1-9][0-9]*'
+          set +e   # a failed API call must not end the loop
+          log() { echo "$(TZ=Asia/Hong_Kong date '+%F %H:%M') $*"; }
+          to_min() { echo $(( 10#${1%:*} * 60 + 10#${1#*:} )); }
+
+          # minutes between updates right now; 0 = none
+          interval() {
+            local now today s d first last
+            if [ "$(date +%s)" -lt "$test_until" ]; then echo 5; return; fi
+            now=$(to_min "$(TZ=Asia/Hong_Kong date +%H:%M)")
+            today=$(TZ=Asia/Hong_Kong date +%F)
+            s=$(curl -fsS -m 20 "https://raw.githubusercontent.com/$GH_REPO/main/docs/data/schedule.json") || s='{}'
+            d=$(jq -r '.date // ""' <<<"$s")
+            first=$(jq -r '.first_post // ""' <<<"$s")
+            last=$(jq -r '.last_post // ""' <<<"$s")
+            if [ "$d" = "$today" ] && [ -n "$first" ] && [ -n "$last" ] \
+               && [ "$now" -ge $(( $(to_min "$first") - 60 )) ] \
+               && [ "$now" -le $(( $(to_min "$last") + 45 )) ]; then
+              echo 5
+            elif [ "$now" -ge 480 ]; then
+              echo 30
+            else
+              echo 0
+            fi
           }
-          recent_update() {
-            gh run list --workflow update.yml --limit 5 --json createdAt,status \
-              --jq '[.[] | select(.status != "completed" or (.createdAt | fromdateiso8601) > (now - 900))] | length' \
-              | grep -qx '[1-9][0-9]*'
+          busy() {
+            gh run list --workflow update.yml --limit 5 --json status \
+              --jq '[.[] | select(.status != "completed")] | length' | grep -qx '[1-9][0-9]*'
+          }
+          update_age() {
+            gh run list --workflow update.yml --limit 1 --json createdAt \
+              --jq '((now - (.[0].createdAt | fromdateiso8601)) / 60) | floor'
           }
           recent_selfcheck() {
             gh run list --workflow selfcheck.yml --limit 3 --json createdAt \
               --jq '[.[] | select((.createdAt | fromdateiso8601) > (now - 43200))] | length' \
               | grep -qx '[1-9][0-9]*'
           }
-          trigger() {
-            if recent_update; then echo "$(TZ=Asia/Hong_Kong date '+%F %H:%M') skip: update ran recently"
-            else gh workflow run update.yml && echo "$(TZ=Asia/Hong_Kong date '+%F %H:%M') triggered update"; fi
-          }
 
-          if [ "${{ inputs.test }}" = "true" ]; then trigger; fi
+          test_until=0
+          if [ "${{ inputs.test }}" = "true" ]; then
+            test_until=$(( $(date +%s) + 15 * 60 ))
+            log "test: race-day clock for the next 15 minutes"
+          fi
           end=$(( $(date +%s) + 340 * 60 ))
-          relay=true
           while [ "$(date +%s)" -lt "$end" ]; do
-            if cron_works; then
-              echo "GitHub's own schedule is running; ticker stops relaying."
-              relay=false
-              break
+            hm=$(to_min "$(TZ=Asia/Hong_Kong date +%H:%M)")
+            if [ "$hm" -ge 210 ] && [ "$hm" -lt 240 ] && ! recent_selfcheck; then
+              gh workflow run selfcheck.yml && log "triggered selfcheck"
             fi
-            hm=$(TZ=Asia/Hong_Kong date +%H%M)
-            hm=$((10#$hm))
-            # nightly self-check (its own cron may not be firing either)
-            if [ "$hm" -ge 330 ] && [ "$hm" -lt 400 ] && ! recent_selfcheck; then
-              gh workflow run selfcheck.yml && echo "$(TZ=Asia/Hong_Kong date '+%F %H:%M') triggered selfcheck"
+            every=$(interval)
+            if [ "${every:-0}" -gt 0 ] && ! busy; then
+              age=$(update_age)
+              if [ "${age:-999}" -ge "$every" ]; then
+                gh workflow run update.yml && log "triggered update (every $every min, last $age min ago)"
+              fi
             fi
-            if [ "$hm" -ge 800 ]; then trigger; else echo "$(TZ=Asia/Hong_Kong date '+%F %H:%M') idle (night)"; fi
-            sleep 1200
+            sleep 60
           done
-          echo "relay=$relay" >> "$GITHUB_OUTPUT"
 
   relay:
     needs: tick
-    if: needs.tick.outputs.relay == 'true'
+    if: ${{ !cancelled() }}   # a failed tick still hands over; only a manual cancel stops it
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}

@@ -99,6 +99,11 @@ def parse_time(s: str):
     return round(mins * 60 + int(m.group(2)) + int(m.group(3)) / 100, 2)
 
 
+def _race_no_in(text: str):
+    m = re.search(r"第\s*(\d+)\s*場", text or "")
+    return int(m.group(1)) if m else None
+
+
 def _code_from_href(a, key):
     if not a or not a.get("href"):
         return None
@@ -138,6 +143,8 @@ def _parse_result_race(soup: BeautifulSoup, venue: str, race_date: date, race_no
     rows = tab.select("tbody tr")
     info = {"date": race_date.isoformat(), "venue": venue, "race_no": race_no}
     header = _txt(tab.select_one("thead td"))
+    if _race_no_in(header) != race_no:  # HKJC served a different race than we asked for
+        return None
     info["race_id"] = _int(re.sub(r"第\s*\d+\s*場", "", header))
     for tr in rows:
         tds = tr.find_all("td", recursive=False)
@@ -257,22 +264,31 @@ def attach_sectionals(race: dict):
     race["has_sect"] = bool(sect)
 
 
-def fetch_meeting_results(race_date: date, with_sectionals: bool = True):
-    """Fetch every race result for a meeting. Returns list of race dicts (maybe empty)."""
+def fetch_meeting_results(race_date: date, with_sectionals: bool = True, venue: str | None = None,
+                          race_nos=None, have: dict | None = None):
+    """Fetch race results for a meeting. Returns list of race dicts (maybe empty).
+
+    Every race is requested by explicit number: during a meeting HKJC's default
+    page shows the *latest* race, not race 1. Live runs pass venue and race_nos
+    from the card (with one race run there may be no links to discover them from)
+    and `have` = finished races to keep instead of fetching again.
+    """
     ds = race_date.strftime("%Y/%m/%d")
-    html = get("LocalResults.aspx", RaceDate=ds)
-    meetings = _race_links(html, "localresults")
-    venue = None
-    nos = set()
-    for (d, v), n in meetings.items():
-        if d == ds:
-            venue, nos = v, n
-    if not venue:
-        return []
-    nos.add(1)
+    if venue is None or race_nos is None:
+        html = get("LocalResults.aspx", RaceDate=ds)
+        links = _race_links(html, "localresults")
+        found = next(((v, n) for (d, v), n in links.items() if d == ds), None)
+        if not found:
+            return []
+        venue, nos = found
+        tab = BeautifulSoup(html, "html.parser").select_one("div.race_tab thead td")
+        shown = _race_no_in(_txt(tab)) or 1
+        race_nos = range(1, max(nos | {shown}) + 1)
 
     def one(n):
-        page = html if n == 1 else get("LocalResults.aspx", RaceDate=ds, Racecourse=venue, RaceNo=n)
+        if have and n in have:
+            return have[n]
+        page = get("LocalResults.aspx", RaceDate=ds, Racecourse=venue, RaceNo=n)
         r = _parse_result_race(BeautifulSoup(page, "html.parser"), venue, race_date, n)
         if r and r["runners"]:
             if with_sectionals:
@@ -281,8 +297,7 @@ def fetch_meeting_results(race_date: date, with_sectionals: bool = True):
         return None
 
     with ThreadPoolExecutor(max_workers=CONCURRENCY) as pool:
-        races = [r for r in pool.map(one, sorted(nos)) if r]
-    return races
+        return [r for r in pool.map(one, race_nos) if r]
 
 
 # --------------------------------------------------------------------------- race card
@@ -298,13 +313,16 @@ _CARD_COLS = {
 
 
 def next_meeting():
-    """(date, venue, [race_nos]) of the meeting currently shown on the race card page."""
+    """(date, venue, [race_nos]) of the meeting currently shown on the race card page.
+
+    The page itself shows whichever race is next, so it is only used to find these.
+    """
     html = get("RaceCard.aspx")
     meetings = _race_links(html, 'RaceCard|localtrackwork|racereportext|"')
     if not meetings:
         return None
     (d, v), nos = sorted(meetings.items())[0]
-    return datetime.strptime(d, "%Y/%m/%d").date(), v, sorted(nos | {1}), html
+    return datetime.strptime(d, "%Y/%m/%d").date(), v, list(range(1, max(nos | {1}) + 1))
 
 
 def _parse_card_race(html: str, race_date: date, venue: str, race_no: int):
@@ -314,6 +332,8 @@ def _parse_card_race(html: str, race_date: date, venue: str, race_no: int):
         t = div.get_text("\n", strip=True)
         if re.search(r"第\s*\d+\s*場", t) and "米" in t:
             lines = [l.strip() for l in t.split("\n") if l.strip()]
+            if _race_no_in(lines[0]) != race_no:  # served a different race than requested
+                return None
             info["race_name"] = re.sub(r"^第\s*\d+\s*場\s*-\s*", "", lines[0])
             joined = " ".join(lines)
             m = re.search(r"(\d{1,2}:\d{2})", joined)
@@ -377,20 +397,21 @@ def fetch_racecard(race_date: date | None = None, venue: str | None = None):
     nm = next_meeting()
     if not nm:
         return None
-    d, v, nos, first_html = nm
+    d, v, nos = nm
     if race_date and (race_date != d or (venue and venue != v)):
         ds = race_date.strftime("%Y/%m/%d")
-        first_html = get("RaceCard.aspx", RaceDate=ds, Racecourse=venue or v, RaceNo=1)
+        html = get("RaceCard.aspx", RaceDate=ds, Racecourse=venue or v, RaceNo=1)
         d, v = race_date, venue or v
-        found = _race_links(first_html, 'RaceCard|localtrackwork|racereportext|"').get((ds, v))
-        nos = sorted((found or set()) | {1})
-    races = []
-    for n in nos:
-        html = first_html if n == 1 else get(
-            "RaceCard.aspx", RaceDate=d.strftime("%Y/%m/%d"), Racecourse=v, RaceNo=n)
+        found = _race_links(html, 'RaceCard|localtrackwork|racereportext|"').get((ds, v))
+        nos = list(range(1, max((found or set()) | {1}) + 1))
+
+    def one(n):
+        html = get("RaceCard.aspx", RaceDate=d.strftime("%Y/%m/%d"), Racecourse=v, RaceNo=n)
         r = _parse_card_race(html, d, v, n)
-        if r and r["runners"]:
-            races.append(r)
+        return r if r and r["runners"] else None
+
+    with ThreadPoolExecutor(max_workers=CONCURRENCY) as pool:
+        races = [r for r in pool.map(one, nos) if r]
     return {"date": d.isoformat(), "venue": v, "races": races,
             "fetched_at": datetime.utcnow().isoformat() + "Z"}
 

@@ -41,7 +41,11 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
 .kpi{background:var(--chip);border-radius:8px;padding:10px}
 .kpi b{display:block;font-size:20px}
 .warn{font-size:12px;color:var(--muted);margin-top:24px}
+.refresh{margin-top:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:6px 12px;font-size:14px;cursor:pointer}
+.refresh:disabled{opacity:.5}
+.stale{margin-top:8px;color:var(--bad);font-size:14px}
 .tag{display:inline-block;background:var(--accent2);color:#1b1f24;border-radius:4px;padding:0 5px;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}
+.tag.steam{background:var(--accent);color:#fff}
 .shots{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 .shots button{border:1px solid var(--accent2);background:transparent;color:var(--ink);border-radius:8px;padding:4px 10px;font-size:13px;cursor:pointer}
 </style>
@@ -50,11 +54,13 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
 <header>
   <h1>香港賽馬量化分析</h1>
   <div class="sub" id="sub">載入中…</div>
+  <button id="refresh" class="refresh">重新整理</button>
+  <div id="stale" class="stale" style="display:none"></div>
 </header>
 <main>
   <div class="tabs" id="tabs"></div>
-  <section class="card" id="allshots" style="display:none"></section>
   <div id="view"></div>
+  <section class="card" id="allshots" style="display:none"></section>
   <section class="card" id="perf"></section>
   <section class="card" id="selfcheck"></section>
   <p class="warn">模型數字係根據歷史數據嘅統計估算,唔係保證。賽馬涉及風險,請量力而為。未滿十八歲人士不得投注。切勿沉迷賭博,如需協助可致電平和基金熱線 1834 633。</p>
@@ -64,15 +70,48 @@ const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 let data, scData = null, cur = 0;
 
+// GitHub's CDNs ignore query strings and keep a copy per region (Pages up to 10 min,
+// raw up to 5), so viewers in different places could see different versions. Reading
+// the files at the exact latest commit skips every cache; the others are fallbacks.
+const REPO = "kelvin1997121/hkjc-quant";
+
+async function latestSha() {
+  try {
+    const r = await fetch(`https://api.github.com/repos/${REPO}/commits/main`,
+      { headers: { Accept: "application/vnd.github.sha" }, cache: "no-store" });
+    return r.ok ? (await r.text()).trim() : null;
+  } catch { return null; }
+}
+
+async function getJSON(name, sha) {
+  const urls = [`https://raw.githubusercontent.com/${REPO}/${sha || "main"}/docs/data/${name}`, `data/${name}`];
+  const docs = await Promise.all(urls.map(u =>
+    fetch(u, { cache: "no-store" }).then(r => (r.ok ? r.json() : null)).catch(() => null)));
+  const stamp = d => (d ? Date.parse(d.updated_at || d.checked_at || 0) || 0 : -1);
+  return docs.sort((a, b) => stamp(b) - stamp(a))[0];   // newest copy wins
+}
+
+const hkToday = () => new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Hong_Kong" });
+
 async function load() {
-  const bust = "?t=" + Date.now();
-  data = await fetch("data/latest.json" + bust).then(r => r.json());
-  const tr = await fetch("data/track_record.json" + bust).then(r => r.json()).catch(() => null);
-  const sc = await fetch("data/selfcheck.json" + bust).then(r => r.json()).catch(() => null);
+  const btn = $("#refresh");
+  btn.disabled = true;
+  const sha = await latestSha();
+  const [latest, tr, sc] = await Promise.all(["latest.json", "track_record.json", "selfcheck.json"].map(n => getJSON(n, sha)));
+  btn.disabled = false;
+  if (!latest) {
+    if (!data) $("#sub").textContent = "暫時攞唔到數據,請稍後再試。";
+    return;
+  }
+  data = latest;
   scData = sc;
   selfcheck(sc);
   const m = data.meeting;
   $("#sub").textContent = `${m.date} ${m.venue_zh} · ${data.races.length} 場 · 更新於 ${new Date(data.updated_at).toLocaleString("zh-HK")} · 歷史數據 ${data.history_races} 場`;
+  const age = Math.round((Date.now() - Date.parse(data.updated_at)) / 60000);
+  const stale = m.date === hkToday() && age > 15;
+  $("#stale").style.display = stale ? "" : "none";
+  $("#stale").textContent = stale ? `⚠ 數據已經 ${age} 分鐘冇更新,賠率同走勢可能唔係最新。` : "";
   if (!load.done) {
     const next = data.races.findIndex(r => !r.result);
     cur = next >= 0 ? next : 0;
@@ -94,8 +133,8 @@ function show() {
   const winner = r.result ? r.result.placings[0] : null;
   const rows = r.runners.map(x => `
     <tr class="${x.no === winner ? "won" : ""}">
-      <td class="num">${x.rank}</td>
-      <td><b>${x.no}. ${esc(x.horse)}</b>${x.longshot ? '<span class="tag">冷門</span>' : ""}<br><span class="sub">${esc(x.jockey)} / ${esc(x.trainer)}</span></td>
+      <td class="num">${x.final_rank ?? x.rank}</td>
+      <td><b>${x.no}. ${esc(x.horse)}</b>${x.longshot ? '<span class="tag">冷門</span>' : ""}${x.steam ? '<span class="tag steam">落飛</span>' : ""}<br><span class="sub">${esc(x.jockey)} / ${esc(x.trainer)}</span></td>
       <td class="num">${x.draw ?? ""}</td>
       <td class="num">${x.weight ?? ""}</td>
       <td class="num">${x.rating ?? ""}</td>
@@ -103,9 +142,9 @@ function show() {
       <td>${esc(x.style)}</td>
       <td class="num">${x.speed_best ?? "–"}</td>
       <td class="num">${x.perf_best ?? "–"}${x.handicap_edge ?`<br><span class="${x.handicap_edge > 0 ? "pro" : "con"}">${x.handicap_edge > 0 ? "+" : ""}${x.handicap_edge}</span>` : ""}</td>
-      <td class="num">${(x.win_prob * 100).toFixed(1)}%<div class="bar"><i style="width:${x.win_prob / maxp * 100}%"></i></div></td>
+      <td class="num">${(x.win_prob * 100).toFixed(1)}%<div class="bar"><i style="width:${x.win_prob / maxp * 100}%"></i></div><span class="sub">模型第 ${x.rank}</span></td>
       <td class="num">${x.fair_odds}</td>
-      <td class="num">${x.win_odds ?? "–"}${x.place_odds ? `<br><span class="sub">位 ${x.place_odds}</span>` : ""}</td>
+      <td class="num">${x.win_odds ?? "–"}${x.open_odds && x.open_odds !== x.win_odds ? `<br><span class="sub">早 ${x.open_odds}</span>` : ""}${x.place_odds ? `<br><span class="sub">位 ${x.place_odds}</span>` : ""}</td>
       <td class="num">${x.blend_prob != null ? (x.blend_prob * 100).toFixed(1) + "%" : "–"}</td>
       <td class="num">${x.ev != null ? `<span class="${x.value ? "pro" : ""}">${x.ev.toFixed(2)}${x.value ? " 值博" : ""}</span>` : "–"}</td>
       <td>${x.pros.map(p => `<div class="pro">+ ${esc(p)}</div>`).join("")}${x.cons.map(p => `<div class="con">− ${esc(p)}</div>`).join("")}</td>
@@ -161,7 +200,7 @@ function selfcheck(sc) {
     <div class="sub">每日自動檢查 · 上次 ${new Date(sc.checked_at).toLocaleString("zh-HK")} · ${sc.health.races} 場歷史數據</div>
     <div style="margin:10px 0">${health}</div>
     <div class="kpis">
-      <div class="kpi"><b>${pct(w.top_hit)}</b>首選勝出率(大熱門 ${pct(w.favourite_hit)})</div>
+      <div class="kpi"><b>${pct(w.blend_hit ?? w.top_hit)}</b>綜合首選勝出率(純模型 ${pct(w.top_hit)},大熱門 ${pct(w.favourite_hit)})</div>
       <div class="kpi"><b>${w.logloss}</b>Log loss(市場 ${w.market_logloss})</div>
       <div class="kpi"><b>${w.blend_gain > 0 ? "+" : ""}${w.blend_gain} ± ${w.blend_gain_ci}</b>加入模型後對市場嘅改善</div>
       <div class="kpi"><b>l2 ${t.chosen.l2} · ${t.chosen.stages === 1 ? "頭馬" : "頭三名"}</b>${t.switched ? "今日自動調校咗設定" : "設定維持不變"}</div>
@@ -198,8 +237,8 @@ function allShots() {
 function edgeNote() {
   const b = data.model && data.model.blend;
   if (!b) return "";
-  if (b.a === 0) return `<div class="note" style="border-color:var(--bad)">回測顯示模型暫時未有市場賠率以外嘅資訊(綜合權重:模型 0 / 市場 ${b.b}),所以綜合機率 ≈ 市場機率,唔會標「值博」。</div>`;
-  return `<div class="note">綜合機率 = 模型權重 ${b.a} + 市場權重 ${b.b}(喺未見過嘅賽事回測得出)。EV ≥ 1.15 先標「值博」;賠率會變,以落注一刻為準。</div>`;
+  if (b.a === 0) return `<div class="note" style="border-color:var(--bad)">回測顯示模型暫時未有市場賠率以外嘅資訊(綜合權重:模型 0 / 市場 ${b.b}),所以排名(綜合機率)≈ 市場賠率,唔會標「值博」;想睇模型自己嘅睇法,請睇「模型第幾」。</div>`;
+  return `<div class="note">排名按綜合機率 = 模型權重 ${b.a} + 市場權重 ${b.b}(喺未見過嘅賽事回測得出)。EV ≥ 1.15 先標「值博」;賠率會變,以落注一刻為準。</div>`;
 }
 
 function perf(tr) {
@@ -223,8 +262,16 @@ function perf(tr) {
   $("#perf").innerHTML = html;
 }
 
+$("#refresh").onclick = load;
 load();
-setInterval(load, 5 * 60 * 1000);
+// every 2 minutes on a race day, every 10 otherwise; skipped while the tab is hidden
+let ticks = 0;
+setInterval(() => {
+  ticks++;
+  if (document.hidden) return;
+  if ((data && data.meeting.date === hkToday()) || ticks % 5 === 0) load();
+}, 2 * 60 * 1000);
+document.addEventListener("visibilitychange", () => { if (!document.hidden) load(); });
 </script>
 </body>
 </html>

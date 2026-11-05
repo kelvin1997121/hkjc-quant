@@ -17,7 +17,7 @@ FEATURE_ZH = {
     "perf_last": "上仗表現評分", "handicap_edge": "讓磅著數",
     "late_speed": "末段速度(分段時間)", "early_speed": "前段速度(分段時間)",
     "jockey_form": "騎師近況", "trainer_form": "練馬師近況", "combo": "騎練組合",
-    "venue_form": "本場地往績",
+    "rating_move": "評分變動", "trainer_venue": "練馬師本場地成績", "form_trend": "狀態走勢",
 }
 
 
@@ -73,6 +73,11 @@ VALUE_EV = 1.15  # flag a bet only when blended prob x odds clears takeout comfo
 # longshots the model thinks are "underpriced" did worse (9.9%), so that isn't used.
 LONGSHOT_ODDS = 10
 LONGSHOT_RANK = 5
+# 落飛: odds shortened this much since the first snapshot of race day. Information only,
+# not in the model: past results have final odds only, so it can't be backtested yet
+# (4 Nov alone: 3 winners from 16 such horses vs 5 from 59 steady ones).
+STEAM_RATIO = 1.5
+STEAM_MAX_ODDS = 30
 
 
 def today_sect_label(ctx):
@@ -100,6 +105,7 @@ def analyse_race(state, params, race, odds=None):
     win = {int(k): v for k, v in (odds or {}).get("win", {}).items()}
     place = {int(k): v for k, v in (odds or {}).get("place", {}).items()}
     scratched = {int(n) for n in (odds or {}).get("scratched", [])}
+    opening = {int(k): v for k, v in ((odds or {}).get("open") or {}).items()}
     runners = [x for x in race["runners"]
                if x.get("draw") and not x.get("scratched") and x["no"] not in scratched]
     if not runners:
@@ -158,6 +164,18 @@ def analyse_race(state, params, race, odds=None):
         r["value"] = bool(r["ev"] and r["ev"] >= VALUE_EV and bw and bw["a"] > 0)
         r["longshot"] = bool(r["win_odds"] and r["win_odds"] >= LONGSHOT_ODDS
                              and r["rank"] <= LONGSHOT_RANK)
+        was = opening.get(r["no"])
+        r["open_odds"] = was
+        r["steam"] = bool(was and r["win_odds"] and r["win_odds"] <= STEAM_MAX_ODDS
+                          and was / r["win_odds"] >= STEAM_RATIO)
+    # Rank by the model + market blend when odds are in: walk-forward its top pick won
+    # 29.7% vs 22.6% for the model alone. r["rank"] stays the model's own view.
+    if pb is not None:
+        for r in out:
+            r["final_prob"] = r["blend_prob"]
+        out.sort(key=lambda r: -r["final_prob"])
+    for i, r in enumerate(out, 1):
+        r["final_rank"] = i
     longshots = [{k: r[k] for k in ("no", "horse", "win_odds", "place_odds", "win_prob", "rank",
                                     "style", "pros", "cons")}
                  for r in out if r["longshot"]]  # all of them: the backtest record covers all
