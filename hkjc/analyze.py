@@ -19,6 +19,7 @@ FEATURE_ZH = {
     "jockey_form": "騎師近況", "trainer_form": "練馬師近況", "combo": "騎練組合",
     "rating_move": "評分變動", "trainer_venue": "練馬師本場地成績", "form_trend": "狀態走勢",
     "gear_first": "首次配備", "gear_off": "除去配備", "gear_back": "重戴配備",
+    "run_wide": "上仗走外疊", "trial_score": "試閘名次", "trial_count": "試閘次數",
 }
 
 
@@ -99,6 +100,14 @@ def today_sect_label(ctx):
     else:
         late = "末段追勁影響正常"
     return f"今日分段時間({ctx['today_sect_n']} 場):{speed};{late}"
+
+
+def confidence_band(odds):
+    """How predictable a race is, from the first choice's odds. The model's agreement adds
+    nothing here: favourites at 2.5 or less win about 43% whether it ranks them #1 or #2."""
+    if not odds:
+        return None
+    return "高" if odds <= 2.5 else "中" if odds <= 4 else "低"
 
 
 def analyse_race(state, params, race, odds=None):
@@ -196,6 +205,7 @@ def analyse_race(state, params, race, odds=None):
                         "此跑道路程歷來後上馬有利" if ctx["course_edge"] < -0.05 else
                         "此跑道路程跑法偏差不明顯"),
         "odds_updated": (odds or {}).get("updated"),
+        "confidence": confidence_band(out[0]["win_odds"]) if pb is not None else None,
         "longshots": longshots,
         "runners": out,
     }

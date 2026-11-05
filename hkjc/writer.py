@@ -75,6 +75,9 @@ def summarise(a: dict) -> str:
             t += f",讓磅著數比同場中位數多約 {rel:.0f} 分"
         picks.append(t)
     lines.append("【選擇】" + ";".join(picks) + "。")
+    if a.get("confidence"):
+        lines.append(f"【把握】{a['confidence']}:首選獨贏 {by_final[0]['win_odds']:g} 倍。"
+                     "把握係睇賠率高低,唔代表值博。")
 
     # 3b. longshots: odds >= 10 but ranked top 5 by the model (place more often than
     # typical longshots, but win bets on longshots have lost money historically)

@@ -28,6 +28,8 @@ GROUPS = {
     "分段時間": ["late_speed", "early_speed"],
     "負磅/評分": ["weight_rel", "rating_move"],
     "配備": ["gear_first", "gear_off", "gear_back"],
+    "上仗走外疊": ["run_wide"],
+    "試閘": ["trial_score", "trial_count"],
 }
 CANDIDATES = [{"l2": l2, "stages": st} for l2 in (0.02, 0.05, 0.2) for st in (1, 3)]
 MIN_GAIN = 0.002  # log-loss improvement needed before a setting is switched
@@ -80,6 +82,7 @@ def walk_forward(samples, cols, cfg, folds=4, test_frac=0.4, with_blend=False):
                     order = list(np.argsort(-pb))
                     r["winner_rank"] = order.index(s["y"]) + 1
                     r["first_placed"] = order[0] in (s.get("order") or [s["y"]])
+                    r["first_odds"] = float(s["odds"][order[0]])
             rows.append(r)
     return rows, weights
 
@@ -120,6 +123,22 @@ def calibration(rows, bins=(0, .05, .1, .15, .2, .3, .45, 1.01)):
                         "predicted": round(float(pred[m].mean()), 4),
                         "actual": round(float(won[m].mean()), 4)})
     return out
+
+
+def pick_bands(rows):
+    """First choice's record by the 把握 band on the race (walk-forward, final odds)."""
+    from .analyze import confidence_band
+    out = {}
+    for r in rows:
+        if "first_odds" not in r:
+            continue
+        b = out.setdefault(confidence_band(r["first_odds"]), {"n": 0, "wins": 0, "placed": 0, "returned": 0.0})
+        b["n"] += 1
+        b["wins"] += r["blend_hit"]
+        b["placed"] += r["first_placed"]
+        b["returned"] += r["first_odds"] if r["blend_hit"] else 0.0
+    return {k: {"n": v["n"], "win": round(v["wins"] / v["n"], 4), "place": round(v["placed"] / v["n"], 4),
+                "roi": round(v["returned"] / v["n"] - 1, 4)} for k, v in out.items()}
 
 
 def longshot_stats(rows):
@@ -206,6 +225,10 @@ def data_health(races):
     last_odds = odds_files[-1].stem if odds_files else None
     checks.append({"name": "即時賠率", "ok": bool(last_odds),
                    "detail": f"最近一次:{last_odds}" if last_odds else "未有賠率紀錄"})
+    trial_files = sorted((store.DATA / "trials").glob("20*.json"))
+    last_trial = trial_files[-1].stem if trial_files else None
+    checks.append({"name": "試閘數據", "ok": bool(last_trial) and (today - date.fromisoformat(last_trial)).days <= 21,
+                   "detail": f"最近一次:{last_trial}" if last_trial else "未有試閘紀錄"})
     # did the last meeting really get its live updates? (4 Nov got one all evening)
     past = [p for p in sorted((store.DOCS / "data").glob("20*_*.json"))
             if p.stem[:10] < today.isoformat()]
@@ -303,6 +326,7 @@ def run():
                    "chosen": {"l2": best["l2"], "stages": best["stages"]} if switched else current},
         "live": {k: tr.get(k) for k in ("races", "wins", "places", "flat_roi")},
         "longshots": ls,
+        "pick_bands": pick_bands(base_rows),
         "steam": steam_stats(),
         "notes": notes,
     }

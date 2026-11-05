@@ -23,9 +23,12 @@ from __future__ import annotations
 import math
 import re
 from collections import defaultdict, deque
+from datetime import date
 from statistics import median
 
 import numpy as np
+
+from . import reports
 
 FEATURES = [
     "speed_best", "speed_last", "speed_missing", "form", "dist_form",
@@ -36,7 +39,12 @@ FEATURES = [
     "jockey_form", "trainer_form", "combo",
     "rating_move", "trainer_venue", "form_trend",
     "gear_first", "gear_off", "gear_back",
+    "run_wide", "trial_score", "trial_count",
 ]
+# From running comments, incident reports and trials, these three carried the whole gain
+# (walk-forward log loss 2.2049 -> 2.1866 on 1,291 races; shuffling trials among horses in
+# a race removes it). No gain, dropped: blocked, bad start, pulled, strong or weak finish,
+# health and excuse tags from the last run; trial win, margin, jockey, comment tone, debut.
 # Also tested on official-rating data and dropped for no walk-forward gain: sire record
 # overall and by distance, rating gap to the field, apprentice claim, first-time blinkers.
 # Tried with the 4 Nov review and dropped (no walk-forward gain on 1,291 races):
@@ -201,6 +209,7 @@ class State:
         self.late_top_hist = []                   # per race: avg final-section edge of top 3
         # (venue, projected pace) -> running style -> [runners, winners]: what pace really does
         self.pace_style = defaultdict(lambda: defaultdict(lambda: [0, 0]))
+        self.trials = reports.load_trials()
 
     # ---------------------------------------------------------------- helpers
     def std_time(self, r):
@@ -316,12 +325,28 @@ class State:
             "last_cls": runs[-1].get("cls") if runs else None,
             "last_bw": runs[-1].get("bw") if runs else None,
             "last_est": runs[-1].get("est") if runs else None,
+            "last_wide": bool(runs and runs[-1].get("wide")),
             # last run compared with the ones before it (+ = improving)
             "form_trend": runs[-1]["fscore"] - float(np.mean([x["fscore"] for x in runs[-4:-1]]))
                           if len(runs) >= 3 else None,
             # form at this venue + surface (needs 2+ runs there)
             "venue_form": float(np.mean(here)) if len(here) >= 2 else None,
         }
+
+    def trial_factors(self, code, race_date):
+        """Barrier trials on earlier days: how many in the last 60 days, and how the latest went."""
+        day = date.fromisoformat(race_date)
+        count, score = 0, 0.0
+        for t in reversed(self.trials.get(code, [])):
+            if t["date"] >= race_date:
+                continue
+            age = (day - date.fromisoformat(t["date"])).days
+            if age > 60:
+                break
+            if count == 0 and age <= 45:
+                score = 0.5 - (t["pos"] - 1) / max(t["field"] - 1, 1)
+            count += 1
+        return {"trial_score": score, "trial_count": float(count)}
 
     def race_features(self, race, runners):
         """runners: list of dicts with horse_code, draw, weight, jockey_id, trainer_id."""
@@ -387,6 +412,8 @@ class State:
                 "gear_first": gear["first"],
                 "gear_off": gear["off"],
                 "gear_back": gear["back"],
+                "run_wide": float(p["last_wide"]),
+                **self.trial_factors(x.get("horse_code"), race["date"]),
                 "venue_form": (p["venue_form"] - p["form"])
                               if p["venue_form"] is not None and p["form"] is not None else 0.0,
                 "weight_rel": ((x.get("weight") or mean_wt) - mean_wt) / 5,
@@ -532,6 +559,7 @@ class State:
                            if pos and x.get("running") else None,
                 "cls": class_num(race.get("class")), "bw": x.get("body_weight"),
                 "perf": perf.get(x["no"]), "est": est.get(x["no"]),
+                "wide": reports.ran_wide(x),
                 "early_s": sect_rel[x["no"]][0] if x["no"] in sect_rel else None,
                 "late_s": sect_rel[x["no"]][1] if x["no"] in sect_rel else None,
             })

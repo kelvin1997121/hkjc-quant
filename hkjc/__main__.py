@@ -9,7 +9,7 @@ import json
 import sys
 from datetime import date, datetime, timezone
 
-from . import agent, analyze, horses, model, scraper, store, writer
+from . import agent, analyze, horses, model, reports, scraper, store, writer
 from .backfill import HKT, backfill, today_hkt
 
 
@@ -124,6 +124,7 @@ def run(use_agent=True):
     print("1) catching up on results")
     backfill(max_meetings=8)
     complete_recent_results()
+    reports.refresh_recent()
 
     attach_results()
 
