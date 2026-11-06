@@ -151,10 +151,15 @@ def analyse_race(state, params, race, odds=None):
         c = contrib[i]
         # indicator features only make sense as a label when the flag is set
         flags = {FEATURES.index("speed_missing"), FEATURES.index("debut")}
+        class_move = FEATURES.index("class_drop")
         def shown(j):
+            if j == class_move:  # same class as last time says nothing
+                return X[i][j] != 0
             return j not in flags or X[i][j] == 1
-        pos = [FEATURE_ZH[FEATURES[j]] for j in np.argsort(-c) if c[j] > 0.05 and shown(j)][:3]
-        neg = [FEATURE_ZH[FEATURES[j]] for j in np.argsort(c) if c[j] < -0.05 and shown(j)][:2]
+        def label(j):
+            return "升班" if j == class_move and X[i][j] < 0 else FEATURE_ZH[FEATURES[j]]
+        pos = [label(j) for j in np.argsort(-c) if c[j] > 0.05 and shown(j)][:3]
+        neg = [label(j) for j in np.argsort(c) if c[j] < -0.05 and shown(j)][:2]
         out.append({
             "rank": rank, "no": x["no"], "horse": x["horse"], "horse_code": x.get("horse_code"),
             "jockey": x.get("jockey"), "trainer": x.get("trainer"), "draw": x.get("draw"),
