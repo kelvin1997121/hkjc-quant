@@ -11,10 +11,8 @@ on:
   workflow_dispatch:
 
 permissions:
-  actions: write   # to restart the ticker if it has stopped
+  actions: write   # to restart the ticker and start publishing
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
   group: update
@@ -71,16 +69,17 @@ jobs:
           done
           exit 1
 
-      - uses: actions/upload-pages-artifact@v5
-        with:
-          path: docs
-
-  deploy:
-    needs: update
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v5
+      - name: Publish the site, at most every 10 minutes
+        # the page reads new data from the repo at once, so this needn't keep up with races
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          age=$(gh run list --workflow pages.yml --limit 1 --json createdAt \
+            --jq '((now - (.[0].createdAt | fromdateiso8601)) / 60) | floor') || age=""
+          if [ "${age:-999}" -ge 10 ]; then
+            gh workflow run pages.yml && echo "publishing started"
+          else
+            echo "published $age minutes ago"
+          fi
