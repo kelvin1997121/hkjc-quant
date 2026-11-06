@@ -1,0 +1,47 @@
+name: pages-unstick
+
+# Temporary. GitHub refuses new deployments because it believes build cb33f2f is still running,
+# though it also says that build has finished. Deploying under that same version may clear it.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  unstick:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+    env:
+      GH_TOKEN: ${{ github.token }}
+      VERSION: cb33f2f2275209b2c2dcb89dd0aa13be9a3f7320
+    steps:
+      - uses: actions/checkout@v7
+
+      - id: artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: docs
+
+      - name: Deploy under the stuck version
+        env:
+          ARTIFACT_ID: ${{ steps.artifact.outputs.artifact_id }}
+        run: |
+          oidc=$(curl -sS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL" | jq -r .value)
+          echo "artifact $ARTIFACT_ID"
+          jq -n --argjson a "$ARTIFACT_ID" --arg v "$VERSION" --arg o "$oidc" \
+            '{artifact_id: $a, pages_build_version: $v, oidc_token: $o}' > body.json
+          curl -sS -o reply.json -w "create: HTTP %{http_code}\n" -X POST \
+            -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/pages/deployments" -d @body.json
+          jq 'del(.oidc_token)' reply.json
+          for i in $(seq 1 30); do
+            status=$(gh api "repos/$GITHUB_REPOSITORY/pages/deployments/$VERSION" --jq .status)
+            echo "status: $status"
+            case "$status" in succeed|deployment_failed|deployment_cancelled) break;; esac
+            sleep 10
+          done
