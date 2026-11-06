@@ -737,18 +737,27 @@ def blend(p, q, a, b):
     return e / e.sum()
 
 
+MIN_MODEL_GAIN = 0.002   # log loss, the same bar the self-check uses to switch settings
+
+
 def fit_blend(params, samples):
     """Grid-fit blend weights on races the model was not trained on."""
     val = [(predict(params, s["X"]), market_probs(s["odds"]), s["y"]) for s in samples]
     val = [v for v in val if v[1] is not None]
     if len(val) < 50:
         return None
-    best = None
+    best = market_only = None
     for a in np.arange(0, 1.01, 0.05):
         for b in np.arange(0.8, 1.31, 0.05):
             ll = -float(np.mean([math.log(blend(p, q, a, b)[y]) for p, q, y in val]))
+            cand = {"a": round(float(a), 2), "b": round(float(b), 2), "logloss": round(ll, 4)}
             if best is None or ll < best["logloss"]:
-                best = {"a": round(float(a), 2), "b": round(float(b), 2), "logloss": round(ll, 4)}
+                best = cand
+            if a == 0 and (market_only is None or ll < market_only["logloss"]):
+                market_only = cand
+    # a tiny "gain" is noise: it switched the model's weight on and off between updates
+    if best["logloss"] > market_only["logloss"] - MIN_MODEL_GAIN:
+        best = market_only
     best["market_logloss"] = round(-float(np.mean([math.log(q[y]) for _, q, y in val])), 4)
     return best
 

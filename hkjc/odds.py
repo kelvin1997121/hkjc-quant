@@ -7,9 +7,13 @@ race, only on (or the day before) a race day.
 from __future__ import annotations
 
 import re
+import time
 from datetime import datetime, timezone
 
 URL = "https://bet.hkjc.com/ch/racing/wp/{date}/{venue}/{race}"
+# A slow or blocked site must not use up the update's 15 minutes and lose the results with
+# it. Races run in order, so the next race to run is read first.
+BUDGET_SECONDS = 240
 
 _EXTRACT = """
 (race) => {
@@ -35,10 +39,11 @@ def _num(s):
 
 def fetch_odds(date_iso: str, venue: str, race_nos: list[int], log=print) -> dict:
     """{race_no: {"updated", "win": {no: odds}, "place": {no: odds}, "scratched": [no]}}"""
-    from playwright.sync_api import TimeoutError as PWTimeout
+    from playwright.sync_api import Error as PlaywrightError  # includes timeouts
     from playwright.sync_api import sync_playwright
 
     out = {}
+    started = time.time()
     with sync_playwright() as pw:
         try:  # GitHub runners ship Google Chrome: no 5-minute browser install needed
             browser = pw.chromium.launch(channel="chrome")
@@ -47,17 +52,20 @@ def fetch_odds(date_iso: str, venue: str, race_nos: list[int], log=print) -> dic
         # cloud runners are on UTC; the page prints its update time in local time
         page = browser.new_page(locale="zh-HK", timezone_id="Asia/Hong_Kong")
         for n in race_nos:
+            if time.time() - started > BUDGET_SECONDS:
+                log(f"   odds: out of time, skipped from R{n}")
+                break
             try:
-                page.goto(URL.format(date=date_iso, venue=venue, race=n), timeout=45000)
-                page.wait_for_selector(f'td[id^="runnerNo_{n}_"]', timeout=30000)
+                page.goto(URL.format(date=date_iso, venue=venue, race=n), timeout=30000)
+                page.wait_for_selector(f'td[id^="runnerNo_{n}_"]', timeout=20000)
                 # the table renders before the numbers arrive
                 page.wait_for_function(
                     "(r) => [...document.querySelectorAll(`td[id^=\"runnerNo_${r}_\"]`)]"
                     ".some(td => /\\d/.test(td.closest('tr').querySelector('td.rc-odds')?.innerText || ''))",
-                    arg=n, timeout=20000)
+                    arg=n, timeout=15000)
                 data = page.evaluate(_EXTRACT, n)
-            except PWTimeout:
-                log(f"   odds R{n}: page did not load in time")
+            except PlaywrightError as e:
+                log(f"   odds R{n}: {type(e).__name__}")
                 continue
             win, place, scratched = {}, {}, []
             for r in data["rows"]:

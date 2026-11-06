@@ -67,6 +67,12 @@ jobs:
             gh run list --workflow update.yml --limit 1 --json createdAt \
               --jq '((now - (.[0].createdAt | fromdateiso8601)) / 60) | floor'
           }
+          # started in the last 3 hours: a run from the evening must not cancel race morning's
+          recent_trackwork() {
+            gh run list --workflow trackwork.yml --limit 3 --json createdAt \
+              --jq '[.[] | select((.createdAt | fromdateiso8601) > (now - 10800))] | length' \
+              | grep -qx '[1-9][0-9]*'
+          }
           recent_selfcheck() {
             gh run list --workflow selfcheck.yml --limit 3 --json createdAt \
               --jq '[.[] | select((.createdAt | fromdateiso8601) > (now - 43200))] | length' \
@@ -81,9 +87,9 @@ jobs:
           end=$(( $(date +%s) + 340 * 60 ))
           while [ "$(date +%s)" -lt "$end" ]; do
             hm=$(to_min "$(TZ=Asia/Hong_Kong date +%H:%M)")
-            if [ "$hm" -ge 210 ] && [ "$hm" -lt 240 ] && ! recent_selfcheck; then
-              gh workflow run selfcheck.yml && log "triggered selfcheck"
-              gh workflow run trackwork.yml && log "triggered trackwork"
+            if [ "$hm" -ge 210 ] && [ "$hm" -lt 240 ]; then
+              recent_selfcheck || { gh workflow run selfcheck.yml && log "triggered selfcheck"; }
+              recent_trackwork || { gh workflow run trackwork.yml && log "triggered trackwork"; }
             fi
             every=$(interval)
             if [ "${every:-0}" -gt 0 ] && ! busy; then

@@ -70,9 +70,9 @@ def today_label(ctx):
 
 
 VALUE_EV = 1.15  # flag a bet only when blended prob x odds clears takeout comfortably
-# 冷門馬: win odds >= 10 that the model still ranks in the race's top 5. In walk-forward
-# tests these placed 20.8% vs 13.4% for all such longshots (2,143 runners); picking
-# longshots the model thinks are "underpriced" did worse (9.9%), so that isn't used.
+# 冷門馬: win odds >= 10 that the model still ranks in the race's top 5. They place a little
+# more often than other horses at the same price, but lose money at real dividends (see
+# longshots in selfcheck.json). Picking longshots the model thinks are "underpriced" did worse.
 LONGSHOT_ODDS = 10
 LONGSHOT_RANK = 5
 # 落飛: odds shortened this much since the first snapshot of race day. Information only,
@@ -130,7 +130,12 @@ def analyse_race(state, params, race, odds=None):
         s = contrib.sum(1)
         p = np.exp(s - s.max()) / np.exp(s - s.max()).sum()
     # live market view
-    q = market_probs([win.get(x["no"], 0) for x in runners]) if win else None
+    prices = [win.get(x["no"]) for x in runners]
+    known_prices = [o for o in prices if o]
+    # a late scratching can leave a horse unpriced: treat it as the outsider rather than lose
+    # the market's view of the whole race, which would hand the first choice to the model alone
+    q = market_probs([o or max(known_prices) for o in prices]) \
+        if len(known_prices) >= max(4, 0.7 * len(prices)) else None
     bw = (params or {}).get("blend")
     pb = blend(p, q, bw["a"], bw["b"]) if q is not None and bw else None
     # "best of recent runs" is biased upward, so show the handicap edge relative to

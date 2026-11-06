@@ -28,10 +28,13 @@ def complete_recent_results(days=4):
     backfill would otherwise treat the date as done forever.
     """
     today = today_hkt()
+    current = (store.read_json(store.DOCS / "data" / "schedule.json", {}) or {}).get("date")
     for p in sorted(store.CARDS.glob("20*_*.json")):
         card = store.read_json(p)
         d = date.fromisoformat(card["date"])
         if not (0 <= (today - d).days <= days):
+            continue
+        if d == today and card["date"] == current:   # run() reads this meeting's results itself
             continue
         have = store.read_json(store.result_path(card["date"], card["venue"]), [])
         if len(have) < len(card["races"]):
@@ -122,14 +125,22 @@ def live_odds(card, skip=()):
 
 def run(use_agent=True):
     print("1) catching up on results")
-    backfill(max_meetings=8)
-    complete_recent_results()
+    try:
+        backfill(max_meetings=8)
+        complete_recent_results()
+    except RuntimeError as e:   # HKJC hiccup: today's odds and analysis still matter
+        print(f"   catch-up skipped: {e}")
     reports.refresh_recent()
 
     attach_results()
 
     print("2) race card")
-    card = scraper.fetch_racecard()
+    try:
+        card = scraper.fetch_racecard()
+    except RuntimeError as e:   # carry on with the stored card so odds keep updating
+        print(f"   race card unavailable: {e}")
+        known = store.read_json(store.DOCS / "data" / "schedule.json", {}) or {}
+        card = store.load_card(known.get("date"), known.get("venue"))
     if not card or not card["races"]:
         print("   no race card published")
         return
@@ -157,6 +168,9 @@ def run(use_agent=True):
         live = scraper.fetch_meeting_results(
             meeting_day, venue=card["venue"], race_nos=[r["race_no"] for r in card["races"]],
             have=have)
+        # a race HKJC can't serve right now keeps its stored result
+        got = {r["race_no"] for r in live}
+        live = sorted(live + [r for r in stored if r["race_no"] not in got], key=lambda r: r["race_no"])
         horses.attach_card_fields(live, card)
         if live:
             store.save_results(live)

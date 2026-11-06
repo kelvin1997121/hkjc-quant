@@ -327,10 +327,19 @@ def ticker_check():
     if not any(x["status"] != "completed" for x in runs):
         return {"name": "雲端時鐘", "ok": False, "detail": "停咗,賽馬日唔會自動更新"}
     since = datetime.now(timezone.utc) - timedelta(hours=24)
-    relays = sum(1 for x in runs if x["triggering_actor"]["login"] == "github-actions[bot]"
+    relays = sum(1 for x in runs if (x.get("triggering_actor") or {}).get("login") == "github-actions[bot]"
                  and datetime.fromisoformat(x["created_at"]) > since)
     return {"name": "雲端時鐘", "ok": True,
             "detail": f"行緊,最近 24 小時接力 {relays} 次" if relays else "行緊,最近 24 小時未接力過"}
+
+
+def odds_check(meeting_file):
+    """Did the last meeting get live odds? Any old file would otherwise pass for ever."""
+    stem = meeting_file.stem
+    history = (store.read_json(store.DATA / "odds" / f"{stem}.json") or {}).get("history", {})
+    total = len(store.read_json(meeting_file)["races"])
+    return {"name": "即時賠率", "ok": bool(total) and len(history) >= 0.8 * total,
+            "detail": f"{stem[:10]} 有 {len(history)}/{total} 場賠率紀錄"}
 
 
 def trackwork_check(past):
@@ -368,10 +377,6 @@ def data_health(races):
     sect = np.mean([bool(r.get("has_sect")) for r in recent]) if recent else 0
     checks.append({"name": "分段時間", "ok": bool(sect >= 0.9),  # a numpy bool isn't valid JSON
                    "detail": f"近 60 日 {sect:.0%} 賽事有分段時間"})
-    odds_files = sorted((store.DATA / "odds").glob("*.json"))
-    last_odds = odds_files[-1].stem if odds_files else None
-    checks.append({"name": "即時賠率", "ok": bool(last_odds),
-                   "detail": f"最近一次:{last_odds}" if last_odds else "未有賠率紀錄"})
     trial_files = sorted((store.DATA / "trials").glob("20*.json"))
     last_trial = trial_files[-1].stem if trial_files else None
     checks.append({"name": "試閘數據", "ok": bool(last_trial) and (today - date.fromisoformat(last_trial)).days <= 21,
@@ -379,6 +384,7 @@ def data_health(races):
     past = [p for p in sorted((store.DOCS / "data").glob("20*_*.json"))
             if p.stem[:10] < today.isoformat()]
     if past:
+        checks.append(odds_check(past[-1]))
         checks.append(meeting_updates(store.read_json(past[-1])))
     checks.append(ticker_check())
     checks.append(trackwork_check(past))

@@ -307,7 +307,13 @@ def fetch_meeting_results(race_date: date, with_sectionals: bool = True, venue: 
     def one(n):
         if have and n in have:
             return have[n]
-        page = get("LocalResults.aspx", RaceDate=ds, Racecourse=venue, RaceNo=n)
+        try:
+            page = get("LocalResults.aspx", RaceDate=ds, Racecourse=venue, RaceNo=n)
+        except RuntimeError as e:
+            if have is None:   # a catch-up must not store part of a meeting as if it were whole
+                raise
+            print(f"   R{n} result unavailable: {e}")
+            return None
         r = _parse_result_race(BeautifulSoup(page, "html.parser"), venue, race_date, n)
         if r and r["runners"]:
             if with_sectionals:
@@ -425,7 +431,11 @@ def fetch_racecard(race_date: date | None = None, venue: str | None = None):
         nos = list(range(1, max((found or set()) | {1}) + 1))
 
     def one(n):
-        html = get("RaceCard.aspx", RaceDate=d.strftime("%Y/%m/%d"), Racecourse=v, RaceNo=n)
+        try:
+            html = get("RaceCard.aspx", RaceDate=d.strftime("%Y/%m/%d"), Racecourse=v, RaceNo=n)
+        except RuntimeError as e:   # the pipeline keeps its stored copy of this race
+            print(f"   R{n} card unavailable: {e}")
+            return None
         r = _parse_card_race(html, d, v, n)
         return r if r and r["runners"] else None
 

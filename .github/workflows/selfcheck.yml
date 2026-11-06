@@ -10,11 +10,12 @@ on:
 permissions:
   actions: read    # to see whether the ticker is running
   contents: write
-  pages: write
-  id-token: write
 
+# GitHub's cron can fire hours late, so this has its own queue: sharing the update queue
+# could hold up live updates during a meeting. The page reads selfcheck.json from the repo,
+# so there's no need to publish the site here either.
 concurrency:
-  group: update   # shares the data with the live updates, so never overlap them
+  group: selfcheck
   cancel-in-progress: false
 
 jobs:
@@ -42,20 +43,10 @@ jobs:
           git config user.name "hkjc-bot"
           git config user.email "hkjc-bot@users.noreply.github.com"
           git add docs/data/selfcheck.json data/model_config.json
-          git diff --cached --quiet || git commit -m "selfcheck: $(TZ=Asia/Hong_Kong date '+%Y-%m-%d %H:%M') HKT"
-          git pull --rebase -X theirs
-          git push
-
-      - uses: actions/upload-pages-artifact@v5
-        with:
-          path: docs
-
-  deploy:
-    needs: selfcheck
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v5
+          git diff --cached --quiet && exit 0
+          git commit -m "selfcheck: $(TZ=Asia/Hong_Kong date '+%Y-%m-%d %H:%M') HKT"
+          for i in 1 2 3 4 5; do
+            git pull --rebase -X theirs && git push && exit 0
+            sleep $((RANDOM % 15 + 5))
+          done
+          exit 1
