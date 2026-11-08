@@ -42,6 +42,17 @@ GROUPS = {
 CANDIDATES = [{"l2": l2, "stages": st} for l2 in (0.02, 0.05, 0.2) for st in (1, 3)]
 MIN_GAIN = 0.002  # log-loss improvement needed before a setting is switched
 
+# Self-improvement. A factor on trial (model.TRIAL_FEATURES), or the removal of a factor group,
+# is judged only on races run after it was registered, so no race helps both choose a change
+# and confirm it. Each test is judged when it reaches 300, 500 and 800 new races, and changes
+# the model only at z >= 2.5 (with about 15 tests running, roughly one false change in 400).
+LEARN_PATH = store.DATA / "learning.json"
+LEARN_FROM = "2026-11-08"
+LOOKS = (300, 500, 800)
+Z_DECIDE = 2.5
+STATUS_ZH = {"testing": "測試中", "adopted": "已採用", "rejected": "已放棄", "retired": "已刪走",
+             "kept": "保留"}
+
 
 def _samples():
     races = store.load_all_results()
@@ -396,14 +407,121 @@ def data_health(races):
             "races": len(races)}
 
 
+def forward_gain(samples, start, base_cols, cand_cols, cfg, shuffle=None):
+    """Per-race log-loss gain of cand over base on samples[start:], each third predicted by
+    models trained only on the races before it. shuffle: columns to permute within each race."""
+    rng = np.random.default_rng(1108)
+    edges = np.linspace(start, len(samples), 4).astype(int)
+    F = model.FEATURES
+    out = []
+    for lo, hi in zip(edges[:-1], edges[1:]):
+        if hi <= lo:
+            continue
+        fits = {}
+        for name, cols in (("base", base_cols), ("cand", cand_cols)):
+            idx = [F.index(c) for c in cols]
+            train = [dict(s, X=s["X"][:, idx]) for s in samples[:lo]]
+            fits[name] = (idx, _fit(train, cols, cfg))
+        for s in samples[lo:hi]:
+            X = s["X"]
+            if shuffle:
+                X = X.copy()
+                for c in shuffle:
+                    X[:, F.index(c)] = rng.permutation(X[:, F.index(c)])
+            ll = {k: -math.log(max(model.predict(p, X[:, idx])[s["y"]], 1e-9)) for k, (idx, p) in fits.items()}
+            out.append(ll["base"] - ll["cand"])
+    g = np.array(out)
+    z = float(g.mean() / (g.std() / math.sqrt(len(g)))) if len(g) > 1 and g.std() > 0 else 0.0
+    return round(float(g.mean()), 4), round(z, 2)
+
+
+def learning(samples, cfg):
+    """Run any forward-only test that has reached its next look; adopt or retire on a pass."""
+    log = store.read_json(LEARN_PATH, {}) or {}
+    tests = log.setdefault("tests", {})
+    for f, since in model.TRIAL_FEATURES.items():
+        tests.setdefault(f"add:{f}", {"kind": "add", "cols": [f], "since": since, "status": "testing",
+                                      "looks": []})
+    for g, cols in GROUPS.items():
+        tests.setdefault(f"drop:{g}", {"kind": "drop", "cols": cols, "since": LEARN_FROM, "status": "testing",
+                                       "looks": []})
+    today = today_hkt().isoformat()
+    added, removed = list(cfg.get("added", [])), list(cfg.get("removed", []))
+    for name, t in tests.items():
+        start = next((i for i, s in enumerate(samples) if s["date"] >= t["since"]), len(samples))
+        t["races"] = len(samples) - start
+        if t["status"] != "testing":
+            continue
+        done = [lk["at"] for lk in t["looks"]]
+        due = [n for n in LOOKS if t["races"] >= n and n not in done]
+        if not due:
+            continue
+        base = model.active_features({**cfg, "added": added, "removed": removed})
+        if t["kind"] == "add":
+            cand = base + [c for c in t["cols"] if c not in base]
+            gain, z = forward_gain(samples, start, base, cand, cfg)
+            _, placebo = forward_gain(samples, start, base, cand, cfg, shuffle=t["cols"])
+        else:
+            cand = [c for c in base if c not in t["cols"]]
+            gain, z = forward_gain(samples, start, base, cand, cfg)
+            placebo = None
+        t["looks"].append({"at": max(due), "date": today, "gain": gain, "z": z, "placebo_z": placebo})
+        last = max(due) == LOOKS[-1]
+        if t["kind"] == "add":
+            if z >= Z_DECIDE and placebo < 1.0:
+                t["status"] = "adopted"
+                added += [c for c in t["cols"] if c not in added]
+            elif z <= -Z_DECIDE or last:
+                t["status"] = "rejected"
+        else:
+            if z >= Z_DECIDE:
+                t["status"] = "retired"
+                removed += [c for c in t["cols"] if c not in removed]
+            elif z <= -Z_DECIDE or last:
+                t["status"] = "kept"
+        if t["status"] != "testing":
+            t["decided"] = today
+        print(f"  learning {name}: {t['races']} new races, gain {gain:+.4f}, z {z:+.2f} -> {t['status']}")
+    log["checked"] = today
+    store.write_json(LEARN_PATH, log)
+    if (added, removed) != (cfg.get("added", []), cfg.get("removed", [])):
+        store.write_json(store.DATA / "model_config.json", {**cfg, "added": added, "removed": removed})
+    zh = dict(model_zh(), **{f"drop:{g}": f"刪走:{g}" for g in GROUPS})
+    return [{"test": zh.get(name, name), "status": STATUS_ZH[t["status"]], "races": t["races"],
+             "next": next((n for n in LOOKS if n > t["races"]), None) if t["status"] == "testing" else None,
+             "last": t["looks"][-1] if t["looks"] else None}
+            for name, t in tests.items()]
+
+
+def model_zh():
+    from .analyze import FEATURE_ZH
+    return {f"add:{f}": f"加入:{FEATURE_ZH.get(f, f)}" for f in model.TRIAL_FEATURES}
+
+
+def live_check(tr, base):
+    """Are the frozen pre-race picks doing as well as the backtest said they would?"""
+    n = tr.get("races", 0)
+    if n < 30:
+        return {"name": "實戰表現", "ok": None, "detail": f"實戰 {n} 場,夠 30 場先比較"}
+    zs = []
+    for got, rate in ((tr["wins"], base["blend_hit"]), (tr["places"], base["first_placed"])):
+        zs.append((got - n * rate) / math.sqrt(n * rate * (1 - rate)))
+    ok = min(zs) > -2
+    return {"name": "實戰表現", "ok": ok,
+            "detail": f"實戰 {n} 場:首選勝 {tr['wins'] / n:.0%}(回測 {base['blend_hit']:.0%})、"
+                      f"入位 {tr['places'] / n:.0%}(回測 {base['first_placed']:.0%})"
+                      + ("" if ok else ",明顯差過回測,要檢查")}
+
+
 def load_config():
     return store.read_json(store.DATA / "model_config.json", {"l2": 0.05, "stages": 1})
 
 
 def run():
+    model.FEATURES = list(model.ALL_FEATURES)   # build every factor; each test picks its columns
     races, samples = _samples()
-    F = list(model.FEATURES)
     current = load_config()
+    F = model.active_features(current)
     print(f"self-check on {len(samples)} races, config {current}")
 
     base_rows, weights = walk_forward(samples, F, current, with_blend=True)
@@ -431,9 +549,11 @@ def run():
     best = min(tried, key=lambda t: t["logloss"])
     switched = False
     if best["logloss"] < base["logloss"] - MIN_GAIN and best["top_hit"] >= base["top_hit"] - 0.01:
-        store.write_json(store.DATA / "model_config.json", {"l2": best["l2"], "stages": best["stages"]})
+        store.write_json(store.DATA / "model_config.json", {**current, "l2": best["l2"], "stages": best["stages"]})
         switched = True
     print("  auto-tune best", best, "switched" if switched else "kept")
+
+    learned = learning(samples, load_config())
 
     # live record of frozen pre-race picks
     tr = store.read_json(store.DOCS / "data" / "track_record.json", {}) or {}
@@ -468,6 +588,7 @@ def run():
     report = {
         "checked_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "health": data_health(races),
+        "learning": learned,
         "walk_forward": base,
         "blend_weights": weights,
         "calibration": cal,
@@ -481,6 +602,7 @@ def run():
         "steam": steam_stats(),
         "notes": notes,
     }
+    report["health"]["checks"].append(live_check(tr, base))
     store.write_json(store.DOCS / "data" / "selfcheck.json", report)
     print("  wrote selfcheck.json")
     return report

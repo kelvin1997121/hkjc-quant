@@ -3,8 +3,8 @@ from __future__ import annotations
 
 import numpy as np
 
-from .model import (FEATURES, blend, contributions, market_probs, pace_bucket, predict,
-                    prior_vector, style_label)
+from . import model
+from .model import blend, contributions, market_probs, pace_bucket, predict, prior_vector, style_label
 
 FEATURE_ZH = {
     "speed_best": "速度指數(近績最佳)", "speed_last": "上仗速度指數", "speed_missing": "缺速度數據",
@@ -20,6 +20,7 @@ FEATURE_ZH = {
     "rating_move": "評分變動", "trainer_venue": "練馬師本場地成績", "form_trend": "狀態走勢",
     "gear_first": "首次配備", "gear_off": "除去配備", "gear_back": "重戴配備",
     "run_wide": "上仗走外疊", "trial_score": "試閘名次", "trial_count": "試閘次數",
+    "jockey_up": "換騎師", "awt_pref": "全天候往績",
 }
 
 
@@ -57,16 +58,52 @@ def pace_text(state, ctx, venue):
     return bucket, f"{head}。{where}同類步速歷來每匹馬勝出率:{stats};{verdict}", favours
 
 
-def today_label(ctx):
+def today_label(ctx, surface="TURF"):
+    # each surface is read on its own: turf races say nothing about the all-weather track
+    track = "全天候跑道" if surface == "AWT" else "草地"
     if ctx["today_n"] == 0:
-        return "今日未有已完成賽事,未能計算即日場地走勢"
+        return f"今日{track}未有已完成賽事,未能計算即日場地走勢"
+    t = ctx.get("today_read") or {}
+    pct = lambda v: f"{v:.0%}"
     parts = []
-    s, d = ctx["today_style"], ctx["today_draw"]
-    # relative to a normal day (leaders normally have an edge in HK)
-    parts.append("前置馬比平時更著數" if s > 0.04 else "後上馬比平時更著數" if s < -0.04
-                 else "跑法同平時差唔多")
-    parts.append("內檔有利" if d > 0.04 else "外檔有利" if d < -0.04 else "檔位無明顯偏差")
-    return f"根據今日已跑 {ctx['today_n']} 場:" + ",".join(parts)
+    # against a normal day here, counted in placed horses: in HK about half the top three
+    # are in the front third early on, so "leaders did well" alone says nothing about today
+    n, f, norm = t.get("n_early", 0), t.get("front", 0), t.get("norm_front")
+    if n >= 6 and norm is not None:
+        diff = f / n - norm
+        verdict = ("前置馬比平時跑得好" if diff >= 0.15 else
+                   "後上馬比平時跑得好" if diff <= -0.15 else "跑法同平時差唔多")
+        parts.append(f"頭三名 {n} 匹之中 {f} 匹出閘後跑喺前列(平時約 {pct(norm)}),{verdict}")
+    elif t.get("races") and not t.get("style_races"):
+        parts.append("走位資料未出,跑法走勢未能計算")
+    else:
+        parts.append("跑完場數太少,跑法走勢未能判斷")
+    n, i, norm = t.get("n_draw", 0), t.get("inner", 0), t.get("norm_inner")
+    if n >= 6 and norm is not None:
+        diff = i / n - norm
+        verdict = ("內檔比平時有利" if diff >= 0.15 else
+                   "外檔比平時有利" if diff <= -0.15 else "檔位同平時差唔多")
+        parts.append(f"{i} 匹來自內檔(平時約 {pct(norm)}),{verdict}")
+    missing = t.get("races", 0) - t.get("style_races", 0)
+    note = f"(其中 {missing} 場走位資料未出)" if missing and t.get("style_races") else ""
+    # first races' shape hasn't told us anything about the later races (selfcheck history:
+    # correlation about 0.02-0.05 between a meeting's first four races and the rest)
+    return (f"根據今日{track}已跑 {ctx['today_n']} 場{note}:" + ";".join(parts)
+            + "。過往同日早段嘅走勢對之後場次預測力好低,只作參考")
+
+
+def course_label(ctx, venue, surface="TURF"):
+    # compared with this venue and surface in general: leaders win more everywhere in HK,
+    # so the question is whether this course/distance is more or less so
+    where = "全天候跑道" if surface == "AWT" else {"HV": "跑馬地", "ST": "沙田草地"}.get(venue, "同場地")
+    cv = ctx.get("course_vs_norm")
+    if cv is None:
+        return "此跑道路程往績太少,未能比較跑法"
+    if cv > 0.05:
+        return f"此跑道路程前置馬優勢比{where}平均大"
+    if cv < -0.05:
+        return f"此跑道路程前置馬優勢比{where}平均細,後上馬較有機會"
+    return f"此跑道路程跑法影響同{where}平均差唔多"
 
 
 VALUE_EV = 1.15  # flag a bet only when blended prob x odds clears takeout comfortably
@@ -121,6 +158,8 @@ def analyse_race(state, params, race, odds=None):
     if not runners:
         return None
     X, extra, ctx = state.race_features(race, runners)
+    F = model.FEATURES   # the self-check can add or retire factors, so look them up each time
+    col = {f: j for j, f in enumerate(F)}
     if params:
         p = predict(params, X)
         contrib = contributions(params, X)
@@ -140,8 +179,8 @@ def analyse_race(state, params, race, odds=None):
     pb = blend(p, q, bw["a"], bw["b"]) if q is not None and bw else None
     # "best of recent runs" is biased upward, so show the handicap edge relative to
     # the field's median rather than as a raw number (raw medians run +4..+11)
-    hi = FEATURES.index("handicap_edge")
-    known = [X[i][hi] for i, e in enumerate(extra) if e["profile"]["perf_best"] is not None]
+    hi = col.get("handicap_edge")
+    known = [X[i][hi] for i, e in enumerate(extra) if e["profile"]["perf_best"] is not None] if hi is not None else []
     he_mid = float(np.median(known)) if known else 0.0
     order = np.argsort(-p)
     out = []
@@ -150,14 +189,18 @@ def analyse_race(state, params, race, odds=None):
         prof = e["profile"]
         c = contrib[i]
         # indicator features only make sense as a label when the flag is set
-        flags = {FEATURES.index("speed_missing"), FEATURES.index("debut")}
-        class_move = FEATURES.index("class_drop")
+        flags = {col.get("speed_missing"), col.get("debut")}
+        moves = {col.get("class_drop"), col.get("jockey_up")} - {None}
         def shown(j):
-            if j == class_move:  # same class as last time says nothing
+            if j in moves:  # same class or same jockey as last time says nothing
                 return X[i][j] != 0
             return j not in flags or X[i][j] == 1
         def label(j):
-            return "升班" if j == class_move and X[i][j] < 0 else FEATURE_ZH[FEATURES[j]]
+            if j == col.get("class_drop") and X[i][j] < 0:
+                return "升班"
+            if j == col.get("jockey_up"):
+                return "換更強騎師" if X[i][j] > 0 else "換較弱騎師"
+            return FEATURE_ZH[F[j]]
         pos = [label(j) for j in np.argsort(-c) if c[j] > 0.05 and shown(j)][:3]
         neg = [label(j) for j in np.argsort(c) if c[j] < -0.05 and shown(j)][:2]
         out.append({
@@ -170,9 +213,10 @@ def analyse_race(state, params, race, odds=None):
             "style": style_label(prof["early"]),
             "speed_best": None if prof["speed_best"] is None else round(prof["speed_best"], 1),
             "perf_best": None if prof["perf_best"] is None else round(prof["perf_best"], 1),
-            "handicap_edge": None if prof["perf_best"] is None else round(float(X[i][hi]) - he_mid, 1),
+            "handicap_edge": None if prof["perf_best"] is None or hi is None
+                             else round(float(X[i][hi]) - he_mid, 1),
             "runs_in_db": prof["n_runs"],
-            "draw_edge": round(float(X[i][FEATURES.index("draw_bias")]), 3),
+            "draw_edge": round(float(X[i][col["draw_bias"]]), 3) if "draw_bias" in col else None,
             "pros": pos, "cons": neg,
             "win_odds": win.get(x["no"]), "place_odds": place.get(x["no"]),
             "market_prob": None if q is None else round(float(q[i]), 4),
@@ -207,13 +251,11 @@ def analyse_race(state, params, race, odds=None):
         "course": race.get("course"), "going": race.get("going"),
         "pace": pace_lv, "pace_note": pace_txt, "pace_favours": pace_favours,
         "n_leaders": ctx["n_lead"],
-        "today_bias": today_label(ctx),
+        "today_bias": today_label(ctx, race.get("surface", "TURF")),
         "today_sect": today_sect_label(ctx),
         "today_sect_data": {"variant": round(ctx["today_variant"], 2),
                             "late": round(ctx["today_late"], 3), "races": ctx["today_sect_n"]},
-        "course_bias": ("此跑道路程歷來前置馬有利" if ctx["course_edge"] > 0.05 else
-                        "此跑道路程歷來後上馬有利" if ctx["course_edge"] < -0.05 else
-                        "此跑道路程跑法偏差不明顯"),
+        "course_bias": course_label(ctx, race["venue"], race.get("surface", "TURF")),
         "odds_updated": (odds or {}).get("updated"),
         "confidence": confidence_band(out[0]["win_odds"]) if pb is not None else None,
         "longshots": longshots,

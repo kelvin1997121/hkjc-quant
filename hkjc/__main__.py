@@ -20,6 +20,10 @@ def _result_summary(res_race):
             "times": res_race.get("sectionals")}
 
 
+def has_running(r):
+    return any(x.get("running") for x in r["runners"] if x.get("place"))
+
+
 def complete_recent_results(days=4):
     """Re-fetch recent meetings whose stored results are missing races.
 
@@ -49,6 +53,17 @@ def complete_recent_results(days=4):
                 if not r.get("has_sect"):
                     scraper.attach_sectionals(r)
             store.save_results(have)
+        elif d < today and any(not has_running(r) for r in have):
+            # so are running positions (8 Nov race 5 was first posted without them)
+            res = scraper.fetch_meeting_results(d, venue=card["venue"],
+                                                race_nos=[r["race_no"] for r in have],
+                                                have={r["race_no"]: r for r in have if has_running(r)})
+            got = {r["race_no"]: r for r in res if has_running(r)}
+            if got:
+                fixed = [got.get(r["race_no"], r) for r in have]
+                horses.attach_card_fields(fixed, card)
+                store.save_results(fixed)
+                print(f"   running positions added for {card['date']} races {sorted(got.keys() - {r['race_no'] for r in have if has_running(r)})}")
         elif any("rating" not in x for r in have for x in r["runners"]):
             # saved by the daily catch-up before the race card fields were merged in
             horses.attach_card_fields(have, card)
@@ -176,7 +191,9 @@ def run(use_agent=True):
         stored = store.read_json(path, []) or []
         wrong = [r["race_no"] for r in stored if not ours(r)]
         stored = [r for r in stored if ours(r)]
-        have = {r["race_no"]: r for r in stored if r.get("has_sect") and r.get("dividends")}
+        # a race posted before its running positions or dividends is fetched again
+        have = {r["race_no"]: r for r in stored
+                if r.get("has_sect") and r.get("dividends") and has_running(r)}
         live = scraper.fetch_meeting_results(
             meeting_day, venue=card["venue"], race_nos=[r["race_no"] for r in card["races"]],
             have=have)

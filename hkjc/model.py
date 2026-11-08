@@ -41,6 +41,21 @@ FEATURES = [
     "gear_first", "gear_off", "gear_back",
     "run_wide", "trial_score", "trial_count",
 ]
+BASE_FEATURES = list(FEATURES)
+# Factors on trial, with the date they were registered. The self-check judges each one only on
+# races run after that date (selfcheck.learning) and adds it to FEATURES only if it passes.
+TRIAL_FEATURES = {
+    "jockey_up": "2026-11-08",   # today's jockey's win rate against the horse's last jockey's
+    "awt_pref": "2026-11-08",    # all-weather form against overall form, in all-weather races
+}
+ALL_FEATURES = BASE_FEATURES + list(TRIAL_FEATURES)
+
+
+def active_features(cfg):
+    """Base factors, plus those the self-check adopted, minus those it retired."""
+    cfg = cfg or {}
+    return [f for f in BASE_FEATURES if f not in cfg.get("removed", [])] + \
+        [f for f in cfg.get("added", []) if f in TRIAL_FEATURES]
 # From running comments, incident reports and trials, these three carried the whole gain
 # (walk-forward log loss 2.2049 -> 2.1866 on 1,291 races; shuffling trials among horses in
 # a race removes it). No gain, dropped: blocked, bad start, pulled, strong or weak finish,
@@ -212,6 +227,10 @@ class State:
         # trainer's top-3 rate at this venue relative to their overall rate (HV/ST specialists)
         self.trainer_venue = RateBook(window=300, strength=30)
         self.meeting = defaultdict(list)          # (date, venue) -> finished race summaries
+        # (venue, surface) -> placed horses with an early position, of them in the front third,
+        # placed horses with a draw, of them from the inside third, winners' early position sum,
+        # winners. What a normal day looks like, for the page's description of today only.
+        self.style_norm = defaultdict(lambda: [0, 0, 0, 0, 0.0, 0])
         self.class_var = defaultdict(list)        # class -> (winner time - std)/km, good ground
         self.late_top_hist = []                   # per race: avg final-section edge of top 3
         # (venue, projected pace) -> running style -> [runners, winners]: what pace really does
@@ -273,6 +292,34 @@ class State:
         shrink = n / (n + 3)
         return (0.45 - style) * shrink, (0.5 - draw) * shrink, n
 
+    def today_read(self, r):
+        """Today's finished races on this surface against a normal day, for the page.
+
+        The model's own today_bias above is left as it is (its weights were fitted on it).
+        Races whose running positions aren't published yet don't count for running style.
+        """
+        surface = r.get("surface", "TURF")
+        done = [m for m in self.meeting.get((r["date"], r["venue"]), []) if m["surface"] == surface]
+        nb = self.style_norm.get((r["venue"], surface))
+        out = {"races": len(done),
+               "style_races": sum(1 for m in done if m.get("n_early")),
+               "n_early": sum(m.get("n_early", 0) for m in done),
+               "front": sum(m.get("front", 0) for m in done),
+               "n_draw": sum(m.get("n_draw", 0) for m in done),
+               "inner": sum(m.get("inner", 0) for m in done),
+               "norm_front": nb[1] / nb[0] if nb and nb[0] >= 300 else None,
+               "norm_inner": nb[3] / nb[2] if nb and nb[2] >= 300 else None}
+        return out
+
+    def course_vs_norm(self, r):
+        """How much further forward winners have been at this course/distance than at this
+        venue and surface in general (>0: leaders do better here than usual). None if thin."""
+        e = self.course_early.get(draw_key(r))
+        nb = self.style_norm.get((r["venue"], r.get("surface", "TURF")))
+        if not e or len(e) < 20 or not nb or nb[5] < 200:
+            return None
+        return nb[4] / nb[5] - float(np.mean(e[-80:]))
+
     def pace_history(self, venue, bucket):
         """Per-style win rate in past races with this projected pace at this venue
         (both venues pooled if the venue has too little history)."""
@@ -333,6 +380,10 @@ class State:
             "last_bw": runs[-1].get("bw") if runs else None,
             "last_est": runs[-1].get("est") if runs else None,
             "last_wide": bool(runs and runs[-1].get("wide")),
+            "last_jockey": runs[-1].get("jockey") if runs else None,
+            "awt_pref": float(np.mean([x["fscore"] for x in runs if x.get("surface") == "AWT"])
+                              - np.mean([x["fscore"] for x in runs]))
+                        if any(x.get("surface") == "AWT" for x in runs) else None,
             # last run compared with the ones before it (+ = improving)
             "form_trend": runs[-1]["fscore"] - float(np.mean([x["fscore"] for x in runs[-4:-1]]))
                           if len(runs) >= 3 else None,
@@ -420,6 +471,12 @@ class State:
                 "gear_off": gear["off"],
                 "gear_back": gear["back"],
                 "run_wide": float(p["last_wide"]),
+                "jockey_up": math.log(self.jockey.rate(x.get("jockey_id")))
+                             - math.log(self.jockey.rate(p["last_jockey"]))
+                             if p["last_jockey"] and x.get("jockey_id")
+                             and x.get("jockey_id") != p["last_jockey"] else 0.0,
+                "awt_pref": p["awt_pref"] if race.get("surface") == "AWT" and p["awt_pref"] is not None
+                            else 0.0,
                 **self.trial_factors(x.get("horse_code"), race["date"]),
                 "venue_form": (p["venue_form"] - p["form"])
                               if p["venue_form"] is not None and p["form"] is not None else 0.0,
@@ -444,7 +501,8 @@ class State:
             extra.append({"profile": p, "draw_frac": draw_frac})
         ctx = {"pace": pace, "n_lead": n_lead, "today_style": t_style, "today_draw": t_draw,
                "today_n": t_n, "course_edge": c_edge, "today_variant": t_var,
-               "today_late": t_late, "today_sect_n": max(t_nv, t_nl)}
+               "today_late": t_late, "today_sect_n": max(t_nv, t_nl),
+               "today_read": self.today_read(race), "course_vs_norm": self.course_vs_norm(race)}
         return np.array(X, dtype=float), extra, ctx
 
     # ---------------------------------------------------------------- update
@@ -565,17 +623,31 @@ class State:
                 "closing": (x["running"][0] - pos) / max(field - 1, 1)
                            if pos and x.get("running") else None,
                 "cls": class_num(race.get("class")), "bw": x.get("body_weight"),
+                "jockey": x.get("jockey_id"),
                 "perf": perf.get(x["no"]), "est": est.get(x["no"]),
                 "wide": reports.ran_wide(x),
                 "early_s": sect_rel[x["no"]][0] if x["no"] in sect_rel else None,
                 "late_s": sect_rel[x["no"]][1] if x["no"] in sect_rel else None,
             })
+        front = sum(1 for e in top_early if e <= 1 / 3)
+        inner = sum(1 for d in top_draw if d <= 1 / 3)
         self.meeting[(race["date"], race["venue"])].append({
             "race_no": race["race_no"], "surface": race.get("surface", "TURF"),
             "top_early": float(np.mean(top_early)) if top_early else 0.45,
             "top_draw": float(np.mean(top_draw)) if top_draw else 0.5,
             "variant": variant, "late_excess": late_excess,
+            "n_early": len(top_early), "front": front, "n_draw": len(top_draw), "inner": inner,
         })
+        nb = self.style_norm[(race["venue"], race.get("surface", "TURF"))]
+        nb[0] += len(top_early)
+        nb[1] += front
+        nb[2] += len(top_draw)
+        nb[3] += inner
+        win_early = [(x["running"][0] - 1) / max(field - 1, 1) for x in runners
+                     if x.get("place") == 1 and x.get("running")]
+        if win_early:
+            nb[4] += win_early[0]
+            nb[5] += 1
 
 
 # -------------------------------------------------------------------- training
@@ -764,8 +836,10 @@ def fit_blend(params, samples):
 
 def train(races, cfg=None):
     """cfg: tuned settings from the self-check ({"l2", "stages"}); defaults otherwise."""
+    global FEATURES
     cfg = cfg or {}
     l2, stages = cfg.get("l2", 0.05), cfg.get("stages", 1)
+    FEATURES = active_features(cfg)   # what the self-check has learned to use
     st, samples = build_dataset(races)
     # the first weeks are warm-up: horse histories and bias stats are still empty
     if samples:

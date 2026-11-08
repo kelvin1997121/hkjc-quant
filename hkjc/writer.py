@@ -67,8 +67,9 @@ def summarise(a: dict) -> str:
     picks = []
     for label, x in zip(("首選", "次選", "三選"), by_final[:3]):
         why = "、".join(x["pros"][:3]) or "綜合數據"
-        p = f"綜合 {_pct(x['final_prob'])},模型排第 {x['rank']}" if x.get("final_prob") \
-            else f"模型 {_pct(x['win_prob'])},公平賠率 {x['fair_odds']}"
+        # the ranking is the blend; the model's own view is left to 【風險】 and the page's note
+        p = (f"綜合 {_pct(x['final_prob'])}" + (f",獨贏 {x['win_odds']:g} 倍" if x.get("win_odds") else "")) \
+            if x.get("final_prob") else f"模型 {_pct(x['win_prob'])},公平賠率 {x['fair_odds']}"
         t = f"{label}{_name(x)}({p}):{why}佔優"
         rel = x.get("handicap_edge") or 0  # already relative to the field median
         if rel >= 3:
