@@ -44,6 +44,30 @@ jobs:
 
       - run: pip install -r requirements.txt
 
+      - name: Results first
+        # race day: a race whose result is out goes on the page now, not after the odds
+        # and the retraining below (about 2 minutes). Does nothing on other days.
+        continue-on-error: true
+        env:
+          HKJC_PROXY: ${{ secrets.HKJC_PROXY }}
+          HKJC_CONCURRENCY: "4"
+          HKJC_RATE: "2"
+        run: python -m hkjc results
+
+      - name: Publish results first
+        continue-on-error: true
+        run: |
+          git config user.name "hkjc-bot"
+          git config user.email "hkjc-bot@users.noreply.github.com"
+          git add data docs
+          git diff --cached --quiet && exit 0
+          git commit -m "data: results $(TZ=Asia/Hong_Kong date '+%Y-%m-%d %H:%M') HKT"
+          for i in 1 2 3; do
+            git pull --rebase -X theirs && git push && exit 0
+            sleep $((RANDOM % 10 + 3))
+          done
+          exit 1
+
       - name: Headless browser for live odds
         # use the runner's preinstalled Chrome; only install Chromium if it's missing
         run: command -v google-chrome || python -m playwright install --with-deps chromium

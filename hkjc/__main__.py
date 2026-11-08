@@ -1,6 +1,7 @@
 """Pipeline entry point.
 
     python -m hkjc run            # one full update (what the scheduled workflow runs)
+    python -m hkjc results        # race day: new results onto the page first (fast step)
     python -m hkjc backfill 120   # download up to 120 past meetings
 """
 from __future__ import annotations
@@ -95,11 +96,101 @@ def write_if_changed(path, doc):
     return True
 
 
-def race_schedule(card):
-    """Post times, read by the cloud ticker to speed up during a meeting."""
+def race_schedule(card, resulted=()):
+    """Post times and races already resulted, read by the cloud ticker: an update every
+    5 minutes during a meeting, every 2 while a race's result is due."""
     posts = sorted(r["post_time"] for r in card["races"] if r.get("post_time"))
     return {"date": card["date"], "venue": card["venue"],
-            "first_post": posts[0] if posts else None, "last_post": posts[-1] if posts else None}
+            "first_post": posts[0] if posts else None, "last_post": posts[-1] if posts else None,
+            "posts": {str(r["race_no"]): r["post_time"] for r in card["races"] if r.get("post_time")},
+            "resulted": sorted(resulted)}
+
+
+def _minutes(hhmm):
+    h, m = hhmm.split(":")
+    return int(h) * 60 + int(m)
+
+
+def live_results(card, race_nos=None):
+    """Fetch today's results (all races on the card, or just race_nos) and store them.
+    Returns the race numbers that now have a result."""
+    path = store.result_path(card["date"], card["venue"])
+    # Before a race has run, HKJC can answer with another meeting's race of the same number
+    # (8 Nov: 4 Nov's race 1 was stored as today's 25 minutes before the off). A result
+    # counts only if it is about the horses on today's card for that race.
+    entered = {r["race_no"]: {x.get("horse_code") for x in r["runners"] if x.get("horse_code")}
+               for r in card["races"]}
+
+    def ours(r):
+        want = entered.get(r["race_no"], set())
+        return not want or len(want & {x.get("horse_code") for x in r["runners"]}) >= 0.6 * len(want)
+
+    stored = store.read_json(path, []) or []
+    wrong = [r["race_no"] for r in stored if not ours(r)]
+    stored = [r for r in stored if ours(r)]
+    # a race posted before its running positions or dividends is fetched again
+    have = {r["race_no"]: r for r in stored
+            if r.get("has_sect") and r.get("dividends") and has_running(r)}
+    live = scraper.fetch_meeting_results(
+        date.fromisoformat(card["date"]), venue=card["venue"],
+        race_nos=race_nos or [r["race_no"] for r in card["races"]], have=have)
+    wrong += [r["race_no"] for r in live if not ours(r)]
+    live = [r for r in live if ours(r)]
+    if wrong:
+        print(f"   ignored results about other horses for races {sorted(set(wrong))}")
+    # a race HKJC can't serve right now keeps its stored result
+    got = {r["race_no"] for r in live}
+    live = sorted(live + [r for r in stored if r["race_no"] not in got], key=lambda r: r["race_no"])
+    horses.attach_card_fields(live, card)
+    if live or wrong:
+        store.write_json(path, live)
+    return {r["race_no"] for r in live}
+
+
+def quick_results(now=None):
+    """Race day: put new results on the page as soon as HKJC shows them, before the full
+    update reads odds and retrains. Asks only for races whose post time has passed and
+    that have no result yet. Never fails: the full run follows in the same job."""
+    sched = store.read_json(store.DOCS / "data" / "schedule.json", {}) or {}
+    if sched.get("date") != today_hkt().isoformat():
+        print("results: no meeting today")
+        return False
+    card = store.load_card(sched["date"], sched["venue"])
+    if not card:
+        print("results: no stored race card")
+        return False
+    now = now or datetime.now(HKT)
+    mins = now.hour * 60 + now.minute
+    path = store.result_path(card["date"], card["venue"])
+    done = {r["race_no"] for r in store.read_json(path, []) or []}
+    due = [r["race_no"] for r in card["races"] if r.get("post_time") and r["race_no"] not in done
+           and _minutes(r["post_time"]) + 3 <= mins]
+    if not due:
+        print("results: none due")
+        return False
+    try:
+        finished = live_results(card, race_nos=due)
+    except Exception as e:  # the full run will try again
+        print(f"results: {e!r}")
+        return False
+    new = finished - done
+    if not new:
+        print(f"results: not out yet for races {due}")
+        return False
+    doc_path = store.DOCS / "data" / f"{card['date']}_{card['venue']}.json"
+    doc = store.read_json(doc_path)
+    res = {r["race_no"]: r for r in store.read_json(path, []) or []}
+    names = {r["race_no"]: r.get("race_name") for r in card["races"]}
+    if doc:
+        for a in doc.get("races", []):
+            n = a["race_no"]
+            # the pre-race analysis stays as it was; only the result is attached
+            if n in new and n in res and "result" not in a and a.get("race_name") == names.get(n):
+                a["result"] = _result_summary(res[n])
+        store.write_json(doc_path, doc)
+    write_if_changed(store.DOCS / "data" / "schedule.json", race_schedule(card, finished))
+    print(f"results: races {sorted(new)} on the page")
+    return True
 
 
 def with_open(saved, day):
@@ -128,11 +219,24 @@ def live_odds(card, skip=()):
         print(f"   odds unavailable: {e!r}")
         return with_open(saved, card["date"])
     fetched = snap.pop("_fetched_at")
+    at = datetime.fromisoformat(fetched).astimezone(HKT)
+    posts = {str(r["race_no"]): r.get("post_time") for r in card["races"]}
     for n, o in snap.items():
-        saved["latest"][str(n)] = o
-        hist = saved["history"].setdefault(str(n), [])
-        if not hist or hist[-1]["win"] != {str(k): v for k, v in o["win"].items()}:
-            hist.append({"t": fetched, "win": o["win"]})
+        k = str(n)
+        pools = {p: o.pop(p) for p in ("qin", "qpl") if p in o}
+        saved["latest"][k] = o
+        hist = saved["history"].setdefault(k, [])
+        if not hist or hist[-1]["win"] != {str(x): v for x, v in o["win"].items()}:
+            hist.append({"t": fetched, "win": o["win"], "place": o["place"]})
+        if pools:
+            # all four pools at once, for the pool test registered in pools.py: first seen,
+            # last before the post time, and the latest (= final odds after the off)
+            shot = {"t": fetched, "updated": o.get("updated"), "win": o["win"], "place": o["place"], **pools}
+            book = saved.setdefault("pools", {}).setdefault(k, {})
+            book.setdefault("first", shot)
+            book["last"] = shot
+            if posts.get(k) and at.date().isoformat() == card["date"] and at.strftime("%H:%M") < posts[k]:
+                book["pre"] = shot
     store.write_json(path, saved)
     print(f"   odds for {len(snap)} races")
     return with_open(saved, card["date"])
@@ -172,43 +276,16 @@ def run(use_agent=True):
     mkey = f"{card['date']}_{card['venue']}"
     meeting_day = date.fromisoformat(card["date"])
     print(f"   {mkey}: {len(card['races'])} races")
-    write_if_changed(store.DOCS / "data" / "schedule.json", race_schedule(card))
+    stored = store.read_json(store.result_path(card["date"], card["venue"]), []) or []
+    write_if_changed(store.DOCS / "data" / "schedule.json",
+                     race_schedule(card, {r["race_no"] for r in stored}))
 
     finished = set()
     if meeting_day <= today_hkt():
         print("3) live results for today's meeting")
-        path = store.result_path(card["date"], card["venue"])
-        # Before a race has run, HKJC can answer with another meeting's race of the same number
-        # (8 Nov: 4 Nov's race 1 was stored as today's 25 minutes before the off). A result
-        # counts only if it is about the horses on today's card for that race.
-        entered = {r["race_no"]: {x.get("horse_code") for x in r["runners"] if x.get("horse_code")}
-                   for r in card["races"]}
-
-        def ours(r):
-            want = entered.get(r["race_no"], set())
-            return not want or len(want & {x.get("horse_code") for x in r["runners"]}) >= 0.6 * len(want)
-
-        stored = store.read_json(path, []) or []
-        wrong = [r["race_no"] for r in stored if not ours(r)]
-        stored = [r for r in stored if ours(r)]
-        # a race posted before its running positions or dividends is fetched again
-        have = {r["race_no"]: r for r in stored
-                if r.get("has_sect") and r.get("dividends") and has_running(r)}
-        live = scraper.fetch_meeting_results(
-            meeting_day, venue=card["venue"], race_nos=[r["race_no"] for r in card["races"]],
-            have=have)
-        wrong += [r["race_no"] for r in live if not ours(r)]
-        live = [r for r in live if ours(r)]
-        if wrong:
-            print(f"   ignored results about other horses for races {sorted(set(wrong))}")
-        # a race HKJC can't serve right now keeps its stored result
-        got = {r["race_no"] for r in live}
-        live = sorted(live + [r for r in stored if r["race_no"] not in got], key=lambda r: r["race_no"])
-        horses.attach_card_fields(live, card)
-        if live or wrong:
-            store.write_json(path, live)
-        finished = {r["race_no"] for r in live}
-        print(f"   {len(live)} races finished")
+        finished = live_results(card)
+        print(f"   {len(finished)} races finished")
+        write_if_changed(store.DOCS / "data" / "schedule.json", race_schedule(card, finished))
 
     print("3b) live odds")
     odds = live_odds(card, skip=finished)
@@ -319,6 +396,8 @@ def main(argv):
     cmd = argv[1] if len(argv) > 1 else "run"
     if cmd == "run":
         run(use_agent="--no-agent" not in argv)
+    elif cmd == "results":
+        quick_results()
     elif cmd == "backfill":
         backfill(int(argv[2]) if len(argv) > 2 else 120)
     else:

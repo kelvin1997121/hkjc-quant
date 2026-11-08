@@ -39,20 +39,34 @@ jobs:
           log() { echo "$(TZ=Asia/Hong_Kong date '+%F %H:%M') $*"; }
           to_min() { echo $(( 10#${1%:*} * 60 + 10#${1#*:} )); }
 
+          # races whose post time was 6 to 45 minutes ago and that have no result on the page
+          # yet (HKJC usually posts one 9 to 12 minutes after the post time)
+          due_results() {
+            python3 -c '
+          import json, sys
+          s, now = json.load(sys.stdin), int(sys.argv[1])
+          done = set(s.get("resulted") or [])
+          due = [n for n, t in (s.get("posts") or {}).items() if int(n) not in done
+                 and 6 <= now - (int(t[:2]) * 60 + int(t[3:5])) <= 45]
+          print(len(due))' "$1" <<<"$2" 2>/dev/null || echo 0
+          }
+
           # minutes between updates right now; 0 = none
           interval() {
             local now today s d first last
             if [ "$(date +%s)" -lt "$test_until" ]; then echo 5; return; fi
             now=$(to_min "$(TZ=Asia/Hong_Kong date +%H:%M)")
             today=$(TZ=Asia/Hong_Kong date +%F)
-            s=$(curl -fsS -m 20 "https://raw.githubusercontent.com/$GH_REPO/main/docs/data/schedule.json") || s='{}'
+            # through the API, not raw.githubusercontent.com: raw is cached for up to 5 minutes
+            s=$(gh api "repos/$GH_REPO/contents/docs/data/schedule.json" -H "Accept: application/vnd.github.raw" 2>/dev/null) \
+              || s=$(curl -fsS -m 20 "https://raw.githubusercontent.com/$GH_REPO/main/docs/data/schedule.json") || s='{}'
             d=$(jq -r '.date // ""' <<<"$s")
             first=$(jq -r '.first_post // ""' <<<"$s")
             last=$(jq -r '.last_post // ""' <<<"$s")
             if [ "$d" = "$today" ] && [ -n "$first" ] && [ -n "$last" ] \
                && [ "$now" -ge $(( $(to_min "$first") - 60 )) ] \
                && [ "$now" -le $(( $(to_min "$last") + 45 )) ]; then
-              echo 5
+              if [ "$(due_results "$now" "$s")" -gt 0 ]; then echo 2; else echo 5; fi
             elif [ "$now" -ge 480 ]; then
               echo 30
             else

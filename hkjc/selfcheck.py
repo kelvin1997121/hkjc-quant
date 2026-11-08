@@ -17,7 +17,7 @@ from datetime import date, datetime, timedelta, timezone
 import numpy as np
 import requests
 
-from . import model, scraper, store
+from . import model, pools, scraper, store
 from .backfill import HKT, today_hkt
 
 CLOCK_LIVE = "2026-11-05"   # meetings before this ran on GitHub cron, not the 5-minute clock
@@ -584,6 +584,18 @@ def run():
                      f"平注回報獨贏 {p['win_roi']:+.0%}、位置 {p['place_roi']:+.0%}。")
     if tr.get("races", 0) < 50:
         notes.append(f"實戰往績只有 {tr.get('races', 0)} 場,樣本太少,未能下結論。")
+    try:  # registered 2026-11-08; judged only at its looks (see pools.py)
+        pool_test = pools.status()
+        done = [p for p in pool_test["pools"].values() if p.get("verdict")]
+        if done:
+            notes.append("彩池測試(位置/連贏/位置Q 對比獨贏推算):" + ";".join(
+                f"{p['name']} {p['look']} 場每場平均 {p['profit_per_race']:+.1f} 元,z {p['z']:+.1f},{p['verdict']}"
+                for p in done) + "。")
+        else:
+            notes.append(f"彩池測試:已收集 {pool_test['races']} 場開跑前賠率,"
+                         f"{pools.LOOKS[0]} 場先判斷位置、連贏、位置Q 有冇比獨贏彩池更值博。")
+    except Exception as e:  # a new check must not cost the rest of the report
+        pool_test = {"error": repr(e)}
 
     report = {
         "checked_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
@@ -600,6 +612,7 @@ def run():
         "pick_bands": pick_bands(base_rows),
         "bet_returns": bet_returns(base_rows, races),
         "steam": steam_stats(),
+        "pool_test": pool_test,
         "notes": notes,
     }
     report["health"]["checks"].append(live_check(tr, base))
