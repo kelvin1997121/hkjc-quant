@@ -1,0 +1,67 @@
+name: odds-check
+
+# Manual and read-only: reads one meeting's odds pages in the cloud the same way the update
+# does, and says what came back for each race (win, place, quinella, quinella-place).
+# Nothing is saved or committed, so it can run at any time, race day included.
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Meeting date, YYYY-MM-DD"
+        required: true
+      venue:
+        description: "ST or HV"
+        required: true
+        default: "HV"
+      races:
+        description: "Race numbers, space-separated"
+        default: "1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: odds-check
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Headless browser
+        run: command -v google-chrome || python -m playwright install --with-deps chromium
+
+      - name: Read the odds pages
+        env:
+          DAY: ${{ inputs.date }}
+          VENUE: ${{ inputs.venue }}
+          RACES: ${{ inputs.races }}
+        run: |
+          python - <<'EOF'
+          import os, sys, time
+          from hkjc import odds
+          nos = [int(x) for x in os.environ["RACES"].split()]
+          t = time.time()
+          got = odds.fetch_odds(os.environ["DAY"], os.environ["VENUE"], nos)
+          print(f"took {time.time() - t:.1f} s, fetched at {got.pop('_fetched_at')}")
+          bad = []
+          for n in nos:
+              o = got.get(n)
+              if not o:
+                  print(f"R{n}: nothing read"); bad.append(n); continue
+              counts = {p: len(o.get(p) or {}) for p in ("win", "place", "qin", "qpl")}
+              print(f"R{n}: updated {o['updated']}, {counts}, scratched {o['scratched']}")
+              if not (counts["win"] and counts["qin"] and counts["qpl"]):
+                  bad.append(n)
+          sys.exit(f"incomplete for races {bad}" if bad else 0)
+          EOF
