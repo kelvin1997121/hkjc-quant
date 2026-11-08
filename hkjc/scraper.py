@@ -145,6 +145,9 @@ def _parse_result_race(soup: BeautifulSoup, venue: str, race_date: date, race_no
     header = _txt(tab.select_one("thead td"))
     if _race_no_in(header) != race_no:  # HKJC served a different race than we asked for
         return None
+    shown = re.search(r"賽事日期\s*[:：]?\s*(\d{2}/\d{2}/\d{4})", soup.get_text(" ", strip=True))
+    if shown and datetime.strptime(shown.group(1), "%d/%m/%Y").date() != race_date:
+        return None   # another meeting's result under the date we asked for
     info["race_id"] = _int(re.sub(r"第\s*\d+\s*場", "", header))
     for tr in rows:
         tds = tr.find_all("td", recursive=False)

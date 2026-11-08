@@ -163,17 +163,33 @@ def run(use_agent=True):
     if meeting_day <= today_hkt():
         print("3) live results for today's meeting")
         path = store.result_path(card["date"], card["venue"])
+        # Before a race has run, HKJC can answer with another meeting's race of the same number
+        # (8 Nov: 4 Nov's race 1 was stored as today's 25 minutes before the off). A result
+        # counts only if it is about the horses on today's card for that race.
+        entered = {r["race_no"]: {x.get("horse_code") for x in r["runners"] if x.get("horse_code")}
+                   for r in card["races"]}
+
+        def ours(r):
+            want = entered.get(r["race_no"], set())
+            return not want or len(want & {x.get("horse_code") for x in r["runners"]}) >= 0.6 * len(want)
+
         stored = store.read_json(path, []) or []
+        wrong = [r["race_no"] for r in stored if not ours(r)]
+        stored = [r for r in stored if ours(r)]
         have = {r["race_no"]: r for r in stored if r.get("has_sect") and r.get("dividends")}
         live = scraper.fetch_meeting_results(
             meeting_day, venue=card["venue"], race_nos=[r["race_no"] for r in card["races"]],
             have=have)
+        wrong += [r["race_no"] for r in live if not ours(r)]
+        live = [r for r in live if ours(r)]
+        if wrong:
+            print(f"   ignored results about other horses for races {sorted(set(wrong))}")
         # a race HKJC can't serve right now keeps its stored result
         got = {r["race_no"] for r in live}
         live = sorted(live + [r for r in stored if r["race_no"] not in got], key=lambda r: r["race_no"])
         horses.attach_card_fields(live, card)
-        if live:
-            store.save_results(live)
+        if live or wrong:
+            store.write_json(path, live)
         finished = {r["race_no"] for r in live}
         print(f"   {len(live)} races finished")
 
