@@ -142,7 +142,7 @@ function show() {
       <td>${esc(x.style)}</td>
       <td class="num">${x.speed_best ?? "–"}</td>
       <td class="num">${x.perf_best ?? "–"}${x.handicap_edge ?`<br><span class="${x.handicap_edge > 0 ? "pro" : "con"}">${x.handicap_edge > 0 ? "+" : ""}${x.handicap_edge}</span>` : ""}</td>
-      <td class="num">${(x.win_prob * 100).toFixed(1)}%<div class="bar"><i style="width:${x.win_prob / maxp * 100}%"></i></div><span class="sub">模型第 ${x.rank}</span></td>
+      <td class="num">${(x.win_prob * 100).toFixed(1)}%<div class="bar"><i style="width:${x.win_prob / maxp * 100}%"></i></div></td>
       <td class="num">${x.fair_odds}</td>
       <td class="num">${x.win_odds ?? "–"}${x.open_odds && x.open_odds !== x.win_odds ? `<br><span class="sub">早 ${x.open_odds}</span>` : ""}${x.place_odds ? `<br><span class="sub">位 ${x.place_odds}</span>` : ""}</td>
       <td class="num">${x.blend_prob != null ? (x.blend_prob * 100).toFixed(1) + "%" : "–"}</td>
@@ -162,6 +162,7 @@ function show() {
       ${r.confidence ? `<span class="chip">${esc(bandText(r.confidence))}</span>` : ""}
     </div>
     ${edgeNote()}
+    ${modelNote(r)}
     ${res}
     <div class="notes">
       <div class="note">${esc(r.pace_note)}</div>
@@ -172,7 +173,7 @@ function show() {
       r.longshots.map(x => `${x.no}. ${esc(x.horse)}(獨贏 ${x.win_odds}${x.place_odds ? " / 位 " + x.place_odds : ""},模型排第 ${x.rank},${(x.win_prob * 100).toFixed(1)}%)${x.pros.length ? ":" + esc(x.pros.slice(0, 2).join("、")) : ""}`).join(";")
     }<br><span class="sub">${esc(shotRecord())}</span></div>` : ""}
     <div class="tblwrap"><table>
-      <thead><tr><th>排名</th><th>馬匹</th><th>檔</th><th title="已扣見習騎師減磅">實際<br>負磅</th><th>評分</th><th>近績</th><th>跑法</th><th>速度</th><th title="讓磅著數 = 比同場中位數高/低幾多分">表現評分<br>(讓磅著數±)</th><th>模型機率</th><th>公平賠率</th><th>即時賠率</th><th>綜合機率</th><th>EV</th><th>因素</th></tr></thead>
+      <thead><tr><th>排名</th><th>馬匹</th><th>檔</th><th title="已扣見習騎師減磅">實際<br>負磅</th><th>評分</th><th>近績</th><th>跑法</th><th>速度</th><th title="讓磅著數 = 比同場中位數高/低幾多分">表現評分<br>(讓磅著數±)</th><th>模型機率<br>(參考)</th><th>公平賠率<br>(模型)</th><th>即時賠率</th><th>綜合機率</th><th>EV</th><th>因素</th></tr></thead>
       <tbody>${rows}</tbody>
     </table></div>
     ${r.ai ? `<div class="ai"><b>AI 分析(Claude)</b>\n${esc(r.ai)}</div>`
@@ -218,12 +219,21 @@ function selfcheck(sc) {
           return `<tr><td>${k}(${o})</td><td class="num">${b.n}</td><td class="num">${pct(b.win)}</td><td class="num">${pct(b.place)}</td><td class="num">${(b.roi * 100).toFixed(0)}%</td><td class="num">${b.place_roi == null ? "–" : (b.place_roi * 100).toFixed(0) + "%"}</td></tr>`;
         }).join("")}</tbody></table></div>` : ""}
     ${sc.bet_returns ? betTable(sc.bet_returns) : ""}
+    ${sc.learning ? learnTable(sc.learning) : ""}
     <div class="notes" style="margin-top:12px">
       <div><div class="sub">因素組貢獻(拎走後 log loss 變差幾多;紅色 = 拎走反而更準)</div>
         <table><tbody>${groups}</tbody></table></div>
       <div><div class="sub">機率校準(預測 vs 實際勝出率)</div>
         <table><thead><tr><th>區間</th><th>馬次</th><th>預測</th><th>實際</th></tr></thead><tbody>${cal}</tbody></table></div>
     </div>`;
+}
+
+function learnTable(tests) {
+  const last = t => t.last ? `${t.last.at} 場時 z ${t.last.z > 0 ? "+" : ""}${t.last.z}` : "–";
+  const rows = tests.map(t => `<tr><td>${esc(t.test)}</td><td>${esc(t.status)}</td><td class="num">${t.races}</td>` +
+    `<td class="num">${t.next ?? "–"}</td><td>${esc(last(t))}</td></tr>`).join("");
+  return `<div class="sub" style="margin-top:12px">自我學習:每個改動只用登記之後嘅新賽事評分,去到 300、500、800 場各判斷一次,z ≥ 2.5 先會自動改模型</div>
+    <div class="tblwrap"><table><thead><tr><th>測試</th><th>狀態</th><th>新賽事</th><th>下次判斷</th><th>最近結果</th></tr></thead><tbody>${rows}</tbody></table></div>`;
 }
 
 function betTable(b) {
@@ -267,10 +277,22 @@ function bandText(level) {
   return b ? `把握${level}:歷來勝 ${Math.round(b.win * 100)}%,入位 ${Math.round(b.place * 100)}%` : `把握${level}`;
 }
 
+function modelNote(r) {
+  // the model's own favourite, when it isn't the published first choice
+  const top = r.runners[0], own = r.runners.reduce((a, x) => (x.rank < a.rank ? x : a), r.runners[0]);
+  if (!top.blend_prob || own.no === top.no) return "";
+  const w = scData && scData.walk_forward, pct = v => Math.round(v * 100) + "%";
+  const why = w && w.top_hit != null && w.blend_hit != null
+    ? `回測入面模型自己首選勝出率 ${pct(w.top_hit)},低過排名第一嘅 ${pct(w.blend_hit)},所以唔計入排名,只作參考。`
+    : "模型自己嘅睇法唔計入排名,只作參考。";
+  return `<div class="note sub" style="margin-bottom:10px">模型自己會揀 ${own.no}. ${esc(own.horse)}` +
+    `(獨贏 ${own.win_odds ?? "–"} 倍,排名第 ${own.final_rank ?? "–"})。${why}</div>`;
+}
+
 function edgeNote() {
   const b = data.model && data.model.blend;
   if (!b) return "";
-  if (b.a === 0) return `<div class="note" style="border-color:var(--bad)">回測顯示模型暫時未有市場賠率以外嘅資訊(綜合權重:模型 0 / 市場 ${b.b}),所以排名(綜合機率)≈ 市場賠率,唔會標「值博」;想睇模型自己嘅睇法,請睇「模型第幾」。</div>`;
+  if (b.a === 0) return `<div class="note" style="border-color:var(--bad)">回測顯示模型暫時未有市場賠率以外嘅資訊(綜合權重:模型 0 / 市場 ${b.b}),所以排名(綜合機率)≈ 市場賠率,唔會標「值博」。模型自己嘅睇法只作參考,唔影響排名。</div>`;
   return `<div class="note">排名按綜合機率 = 模型權重 ${b.a} + 市場權重 ${b.b}(喺未見過嘅賽事回測得出)。EV ≥ 1.15 先標「值博」;賠率會變,以落注一刻為準。</div>`;
 }
 
