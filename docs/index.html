@@ -149,7 +149,7 @@ function show() {
       <td class="num">${x.ev != null ? `<span class="${x.value ? "pro" : ""}">${x.ev.toFixed(2)}${x.value ? " 值博" : ""}</span>` : "–"}</td>
       <td>${x.pros.map(p => `<div class="pro">+ ${esc(p)}</div>`).join("")}${x.cons.map(p => `<div class="con">− ${esc(p)}</div>`).join("")}</td>
     </tr>`).join("");
-  const res = r.result ? `<div class="res">賽果:${r.result.placings.join(" - ")}(頭馬獨贏 ${r.result.win_odds ?? "-"})${r.post_hoc ? " · 此場預測於賽後產生,不計入往績" : ""}</div>` : "";
+  const res = r.result ? `<div class="res">賽果:${r.result.placings.join(" - ")}(頭馬獨贏 ${r.result.win_odds ?? "-"})${r.post_hoc ? " · 此場預測於開跑後產生,不計入往績" : ""}</div>` : "";
   $("#view").innerHTML = `
   <section class="card">
     <h2 style="margin:0">第${r.race_no}場 ${esc(r.race_name || "")}</h2>

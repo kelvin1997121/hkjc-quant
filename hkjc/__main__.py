@@ -111,6 +111,23 @@ def _minutes(hhmm):
     return int(h) * 60 + int(m)
 
 
+def now_hkt():
+    return datetime.now(HKT)
+
+
+def started_races(card, now=None):
+    """Races already off: post time passed on race day, or every race of a past meeting."""
+    now = now or now_hkt()
+    day = date.fromisoformat(card["date"])
+    if day > now.date():
+        return set()
+    if day < now.date():
+        return {r["race_no"] for r in card["races"]}
+    mins = now.hour * 60 + now.minute
+    return {r["race_no"] for r in card["races"]
+            if r.get("post_time") and _minutes(r["post_time"]) <= mins}
+
+
 def live_results(card, race_nos=None):
     """Fetch today's results (all races on the card, or just race_nos) and store them.
     Returns the race numbers that now have a result."""
@@ -159,7 +176,7 @@ def quick_results(now=None):
     if not card:
         print("results: no stored race card")
         return False
-    now = now or datetime.now(HKT)
+    now = now or now_hkt()
     mins = now.hour * 60 + now.minute
     path = store.result_path(card["date"], card["venue"])
     done = {r["race_no"] for r in store.read_json(path, []) or []}
@@ -287,6 +304,11 @@ def run(use_agent=True):
         print(f"   {len(finished)} races finished")
         write_if_changed(store.DOCS / "data" / "schedule.json", race_schedule(card, finished))
 
+    # A race's analysis is frozen at its post time: odds read after the off (betting closed,
+    # ~13 minutes before the result appears) mustn't rewrite the pick it is scored on.
+    # Taken before the odds are read, so a pick made from odds read before the off still counts.
+    off = started_races(card)
+
     print("3b) live odds")
     odds = live_odds(card, skip=finished)
 
@@ -307,8 +329,8 @@ def run(use_agent=True):
     for race in card["races"]:
         res = results_today.get(race["race_no"])
         prev = prev_races.get(race["race_no"])
-        if res and prev and prev.get("race_name") == race.get("race_name"):
-            # race already run: keep the pre-race prediction frozen, attach the result
+        if (res or race["race_no"] in off) and prev and prev.get("race_name") == race.get("race_name"):
+            # race off or already run: keep the pre-race prediction frozen, attach the result
             a = prev
         else:
             a = analyze.analyse_race(state, params, race, odds.get(race["race_no"]))
@@ -318,7 +340,9 @@ def run(use_agent=True):
                 a["ai"] = agent.analyse(a, mkey)
             elif prev:
                 a["ai"] = prev.get("ai")
-            if res:  # first seen after the race: features include the result itself
+            if res or race["race_no"] in off:
+                # first seen after the off (final odds) or the race (features include the
+                # result itself): shown, but not a pre-race prediction, so not scored
                 a["post_hoc"] = True
             # free rule-based preview; shown whenever there is no AI text
             a["summary"] = writer.summarise(a)
