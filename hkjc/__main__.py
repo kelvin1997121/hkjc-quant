@@ -10,7 +10,7 @@ import json
 import sys
 from datetime import date, datetime, timezone
 
-from . import agent, analyze, horses, model, reports, scraper, store, writer
+from . import agent, analyze, horses, model, paper, reports, scraper, store, writer
 from .backfill import HKT, backfill, today_hkt
 
 
@@ -207,6 +207,7 @@ def quick_results(now=None):
         store.write_json(doc_path, doc)
     write_if_changed(store.DOCS / "data" / "schedule.json", race_schedule(card, finished))
     print(f"results: races {sorted(new)} on the page")
+    update_paper()
     return True
 
 
@@ -366,6 +367,15 @@ def run(use_agent=True):
     else:
         print("   analysis unchanged")
     update_track_record()
+    update_paper()
+
+
+def update_paper():
+    """模擬倉 (paper.py). Never stops the update: a fault here only leaves the page's copy old."""
+    try:
+        paper.update()
+    except Exception as e:
+        print(f"   paper account skipped: {e!r}")
 
 
 def attach_results():

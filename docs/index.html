@@ -48,6 +48,9 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
 .tag.steam{background:var(--accent);color:#fff}
 .shots{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 .shots button{border:1px solid var(--accent2);background:transparent;color:var(--ink);border-radius:8px;padding:4px 10px;font-size:13px;cursor:pointer}
+.tw{overflow-x:auto}
+.tw table{min-width:560px}
+.pos{color:var(--accent)}.neg{color:var(--bad)}
 </style>
 </head>
 <body>
@@ -60,6 +63,7 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
 <main>
   <div class="tabs" id="tabs"></div>
   <div id="view"></div>
+  <section class="card" id="paper" style="display:none"></section>
   <section class="card" id="allshots" style="display:none"></section>
   <section class="card" id="perf"></section>
   <section class="card" id="selfcheck"></section>
@@ -68,7 +72,7 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
 <script>
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-let data, scData = null, cur = 0;
+let data, scData = null, ppData = null, cur = 0;
 
 // GitHub's CDNs ignore query strings and keep a copy per region (Pages up to 10 min,
 // raw up to 5), so viewers in different places could see different versions. Reading
@@ -97,7 +101,8 @@ async function load() {
   const btn = $("#refresh");
   btn.disabled = true;
   const sha = await latestSha();
-  const [latest, tr, sc] = await Promise.all(["latest.json", "track_record.json", "selfcheck.json"].map(n => getJSON(n, sha)));
+  const [latest, tr, sc, pp] = await Promise.all(["latest.json", "track_record.json", "selfcheck.json", "paper.json"].map(n => getJSON(n, sha)));
+  ppData = pp;
   btn.disabled = false;
   if (!latest) {
     if (!data) $("#sub").textContent = "暫時攞唔到數據,請稍後再試。";
@@ -118,7 +123,7 @@ async function load() {
     load.done = true;
   }
   cur = Math.min(cur, data.races.length - 1);
-  tabs(); show(); perf(tr); allShots();
+  tabs(); show(); perf(tr); allShots(); paperCard();
 }
 
 function tabs() {
@@ -164,6 +169,7 @@ function show() {
     ${edgeNote()}
     ${modelNote(r)}
     ${res}
+    ${paperRace(r)}
     <div class="notes">
       <div class="note">${esc(r.pace_note)}</div>
       <div class="note">${esc(r.today_bias)}${r.today_sect ? `<br>${esc(r.today_sect)}` : ""}</div>
@@ -294,6 +300,64 @@ function edgeNote() {
   if (!b) return "";
   if (b.a === 0) return `<div class="note" style="border-color:var(--bad)">回測顯示模型暫時未有市場賠率以外嘅資訊(綜合權重:模型 0 / 市場 ${b.b}),所以排名(綜合機率)≈ 市場賠率,唔會標「值博」。模型自己嘅睇法只作參考,唔影響排名。</div>`;
   return `<div class="note">排名按綜合機率 = 模型權重 ${b.a} + 市場權重 ${b.b}(喺未見過嘅賽事回測得出)。EV ≥ 1.15 先標「值博」;賠率會變,以落注一刻為準。</div>`;
+}
+
+// ---- 模擬倉 (paper.json, built by hkjc/paper.py)
+const money = v => (v > 0 ? "+" : v < 0 ? "-" : "") + "$" + Math.abs(v).toLocaleString("en", { maximumFractionDigits: 0 });
+const STATE = { planned: "暫定(開跑前會跟賠率變)", placed: "已落注,等賽果", settled: "已結算",
+  post_hoc: "開跑後先有分析,唔落注", void: "冇派彩數據,當冇落注" };
+
+function betText(b) {
+  const why = b.value != null ? `,機會 ${(b.chance * 100).toFixed(1)}% × 賠率 ${b.odds} = ${b.value}` : b.odds ? `,賠率 ${b.odds}` : "";
+  const paid = b.back == null ? "" : b.refund ? " · 退款" : b.back > 0 ? ` · <b class="pos">派 $${b.back}</b>` : ` · <span class="neg">冇中</span>`;
+  return `${esc(b.pool)} ${esc(b.sel)}(${esc(b.names)}${esc(why)})${b.placed ? "" : " · 本金唔夠,冇落"}${paid}`;
+}
+
+function paperMeeting() {
+  if (!ppData || !data) return null;
+  const m = data.meeting;
+  return (ppData.meetings || []).find(x => x.date === m.date && x.venue === m.venue) || null;
+}
+
+function paperRace(r) {
+  const mt = paperMeeting(), pr = mt && mt.races.find(x => x.race_no === r.race_no);
+  if (!pr) return "";
+  const name = esc((ppData.books.find(b => b.key === pr.following) || {}).name || "");
+  const body = pr.main.length ? pr.main.map(betText).join(";") : "今場冇注";
+  return `<div class="note" style="margin-bottom:10px"><b>模擬倉(${name}):</b>${body} <span class="sub">· ${esc(STATE[pr.state] || "")}</span></div>`;
+}
+
+function paperCard() {
+  const el = $("#paper"), p = ppData;
+  if (!p || !p.books) { el.style.display = "none"; return; }
+  el.style.display = "";
+  const mn = p.main, pct = v => v == null ? "–" : (v > 0 ? "+" : "") + (v * 100).toFixed(1) + "%";
+  const mt = p.meetings && p.meetings[0];
+  const rows = mt ? mt.races.map(r => `<tr><td>第${r.race_no}場<div class="sub">${esc(r.post_time || "")}</div></td>
+      <td>${r.main.length ? r.main.map(betText).join("<br>") : "–"}</td>
+      <td>${esc(STATE[r.state] || "")}${r.result ? `<div class="sub">賽果 ${r.result.join("-")}</div>` : ""}</td></tr>`).join("") : "";
+  const books = p.books.map(b => `<tr${b.key === mn.following ? ' class="won"' : ""}><td><b>${esc(b.name)}</b>${b.key === mn.following ? " ← 模擬倉跟緊" : ""}<div class="sub">${esc(b.rule)}</div></td>
+      <td class="num">$${b.balance.toLocaleString()}</td><td class="num">${b.bets}${b.pending ? `<div class="sub">${b.pending} 注未結算</div>` : ""}</td><td class="num">${b.hits}</td>
+      <td class="num ${b.net > 0 ? "pos" : b.net < 0 ? "neg" : ""}">${money(b.net)}</td><td class="num">${pct(b.roi)}</td><td class="num">${pct(b.backtest_roi)}</td></tr>`).join("");
+  const looks = (mn.looks || []).map(l => `<div class="sub">第 ${l.at} 場檢討:${l.compare.map(c => `${esc((p.books.find(b => b.key === c.strategy) || {}).name)} 每場 ${money(c.diff_per_race)}(z ${c.z})`).join(";")}。${l.switched_to ? "轉咗策略。" : "冇一個明顯好過,維持不變。"}</div>`).join("");
+  el.innerHTML = `
+    <h3 style="margin-top:0">模擬倉</h3>
+    <div class="sub">由 ${esc(p.start)} 開始 · 起始本金 $${p.bankroll.toLocaleString()} · 每注 $${p.stake} · 用開跑前最後一份賠率同固定咗嘅分析落注,按馬會真實派彩結算</div>
+    <div class="kpis" style="margin-top:10px">
+      <div class="kpi"><b>$${mn.balance.toLocaleString()}</b>結餘(${mn.pending ? `包括 ${mn.pending} 注未結算` : "全部已結算"})</div>
+      <div class="kpi"><b class="${mn.net > 0 ? "pos" : mn.net < 0 ? "neg" : ""}">${money(mn.net)}</b>淨賺蝕(已結算)</div>
+      <div class="kpi"><b>${mn.hits} / ${mn.bets}</b>中 / 注數</div>
+      <div class="kpi"><b>${esc(mn.following_name)}</b>而家跟緊嘅策略</div>
+      <div class="kpi"><b>${p.races} / ${p.next_look}</b>已結算場數 / 下次檢討</div>
+    </div>
+    ${mt ? `<div class="sub" style="margin-top:12px">${esc(mt.date)} ${esc(mt.venue_zh || "")} 策略分析</div>
+      ${mt.review.map(t => `<div class="note" style="margin-top:6px">${esc(t)}</div>`).join("")}
+      <div class="tw" style="margin-top:8px"><table><thead><tr><th>場次</th><th>模擬倉注項</th><th>狀態</th></tr></thead><tbody>${rows}</tbody></table></div>` : ""}
+    <div class="sub" style="margin-top:12px">四個策略同時模擬(各自 $${p.bankroll.toLocaleString()} 本金)</div>
+    <div class="tw"><table><thead><tr><th>策略</th><th>結餘</th><th>注數</th><th>中</th><th>淨賺蝕</th><th>回報</th><th>過往回測</th></tr></thead><tbody>${books}</tbody></table></div>
+    <div class="note" style="margin-top:10px">自動學習:每 ${p.look_every} 場將其他策略同模擬倉跟緊嗰個逐場比較,要明顯好過(z ≥ ${p.z_pass})先會轉,唔會因為一兩日輸贏而改。模型本身亦每晚用新賽果重新學習(見下面「系統自我檢測」)。</div>
+    ${looks}
+    <div class="sub" style="margin-top:8px">回測入面呢幾種玩法全部都係蝕錢,預計模擬倉會慢慢蝕大約馬會抽水嘅幅度。呢個係實戰測試,唔係賺錢保證,亦唔係投注建議。</div>`;
 }
 
 function perf(tr) {
