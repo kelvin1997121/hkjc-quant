@@ -48,6 +48,12 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
 .tag.steam{background:var(--accent);color:#fff}
 .shots{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 .shots button{border:1px solid var(--accent2);background:transparent;color:var(--ink);border-radius:8px;padding:4px 10px;font-size:13px;cursor:pointer}
+.pages{display:flex;gap:0;margin-top:12px;border:1px solid var(--line);border-radius:10px;overflow:hidden;width:max-content;max-width:100%}
+.pages button{border:0;background:var(--card);color:var(--ink);padding:8px 18px;font-size:15px;cursor:pointer}
+.pages button+button{border-left:1px solid var(--line)}
+.pages button.on{background:var(--accent);color:#fff;font-weight:600}
+details.mt{border-top:1px solid var(--line);padding:8px 0}
+details.mt summary{cursor:pointer;font-weight:600}
 .tw{overflow-x:auto}
 .tw table{min-width:560px}
 .pos{color:var(--accent)}.neg{color:var(--bad)}
@@ -61,18 +67,38 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
   <div id="stale" class="stale" style="display:none"></div>
 </header>
 <main>
-  <div class="tabs" id="tabs"></div>
-  <div id="view"></div>
-  <section class="card" id="paper" style="display:none"></section>
-  <section class="card" id="allshots" style="display:none"></section>
-  <section class="card" id="perf"></section>
-  <section class="card" id="selfcheck"></section>
+  <nav class="pages" id="pages">
+    <button data-p="race">賽事分析</button><button data-p="paper">模擬倉</button>
+  </nav>
+  <div id="racepage">
+    <div class="tabs" id="tabs"></div>
+    <div id="view"></div>
+    <section class="card" id="allshots" style="display:none"></section>
+    <section class="card" id="perf"></section>
+    <section class="card" id="selfcheck"></section>
+  </div>
+  <div id="paperpage" hidden>
+    <section class="card"><div class="sub">模擬倉數據載入中…</div></section>
+  </div>
   <p class="warn">模型數字係根據歷史數據嘅統計估算,唔係保證。賽馬涉及風險,請量力而為。未滿十八歲人士不得投注。切勿沉迷賭博,如需協助可致電平和基金熱線 1834 633。</p>
 </main>
 <script>
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 let data, scData = null, ppData = null, cur = 0;
+
+// two pages: race analysis and the paper account; remembered in the address (#paper)
+let page = location.hash === "#paper" ? "paper" : "race";
+function setPage(p) {
+  page = p;
+  $("#racepage").hidden = p !== "race";
+  $("#paperpage").hidden = p !== "paper";
+  document.querySelectorAll("#pages button").forEach(b => b.classList.toggle("on", b.dataset.p === p));
+  try { history.replaceState(null, "", p === "paper" ? "#paper" : location.pathname + location.search); } catch {}
+}
+document.querySelectorAll("#pages button").forEach(b => b.onclick = () => { setPage(b.dataset.p); window.scrollTo(0, 0); });
+window.addEventListener("hashchange", () => setPage(location.hash === "#paper" ? "paper" : "race"));
+setPage(page);
 
 // GitHub's CDNs ignore query strings and keep a copy per region (Pages up to 10 min,
 // raw up to 5), so viewers in different places could see different versions. Reading
@@ -327,21 +353,42 @@ function paperRace(r) {
   return `<div class="note" style="margin-bottom:10px"><b>模擬倉(${name}):</b>${body} <span class="sub">· ${esc(STATE[pr.state] || "")}</span></div>`;
 }
 
-function paperCard() {
-  const el = $("#paper"), p = ppData;
-  if (!p || !p.books) { el.style.display = "none"; return; }
-  el.style.display = "";
-  const mn = p.main, pct = v => v == null ? "–" : (v > 0 ? "+" : "") + (v * 100).toFixed(1) + "%";
-  const mt = p.meetings && p.meetings[0];
-  const rows = mt ? mt.races.map(r => `<tr><td>第${r.race_no}場<div class="sub">${esc(r.post_time || "")}</div></td>
+function paperMeetingBlock(p, mt, open, openInner) {
+  const placed = r => r.main.filter(b => b.placed);
+  const done = mt.races.flatMap(r => placed(r).filter(b => b.back != null));
+  const net = done.reduce((s, b) => s + b.back - b.stake, 0);
+  const head = `${esc(mt.date)} ${esc(mt.venue_zh || "")} · ${mt.races.reduce((s, r) => s + placed(r).length, 0)} 注` +
+    (done.length ? ` · 已結算 <span class="${net > 0 ? "pos" : net < 0 ? "neg" : ""}">${money(net)}</span>` : " · 未結算");
+  const rows = mt.races.map(r => `<tr><td>第${r.race_no}場<div class="sub">${esc(r.post_time || "")}</div></td>
       <td>${r.main.length ? r.main.map(betText).join("<br>") : "–"}</td>
-      <td>${esc(STATE[r.state] || "")}${r.result ? `<div class="sub">賽果 ${r.result.join("-")}</div>` : ""}</td></tr>`).join("") : "";
+      <td>${esc(STATE[r.state] || "")}${r.result ? `<div class="sub">賽果 ${r.result.join("-")}</div>` : ""}</td></tr>`).join("");
+  const others = mt.races.map(r => `<tr><td>第${r.race_no}場</td>${p.books.map(b =>
+      `<td>${(r.books[b.key] || []).length ? r.books[b.key].map(betText).join("<br>") : "–"}</td>`).join("")}</tr>`).join("");
+  const k = esc(mt.date + mt.venue);
+  return `<details class="mt" data-k="${k}"${open ? " open" : ""}><summary>${head}</summary>
+    <div class="sub" style="margin-top:8px">策略分析</div>
+    ${mt.review.map(t => `<div class="note" style="margin-top:6px">${esc(t)}</div>`).join("")}
+    <div class="tw" style="margin-top:8px"><table><thead><tr><th>場次</th><th>模擬倉注項</th><th>狀態</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <details class="mi" data-k="${k}" style="margin-top:8px"${openInner ? " open" : ""}><summary class="sub">四個策略每場注項</summary>
+      <div class="tw"><table style="min-width:900px"><thead><tr><th>場次</th>${p.books.map(b => `<th>${esc(b.name)}</th>`).join("")}</tr></thead><tbody>${others}</tbody></table></div>
+    </details></details>`;
+}
+
+function paperCard() {
+  const el = $("#paperpage"), p = ppData;
+  if (!p || !p.books) { el.innerHTML = `<section class="card"><div class="sub">模擬倉暫時未有數據(由 2026-11-11 跑馬地開始)。</div></section>`; return; }
+  const mn = p.main, pct = v => v == null ? "–" : (v > 0 ? "+" : "") + (v * 100).toFixed(1) + "%";
+  // the page reloads every few minutes: keep whichever days the viewer has opened or closed
+  const seen = el.querySelectorAll("details.mt").length > 0;
+  const openNow = sel => new Set([...el.querySelectorAll(sel)].filter(d => d.open).map(d => d.dataset.k));
+  const openMt = openNow("details.mt"), openMi = openNow("details.mi");
+  const isOpen = (mt, i) => seen ? openMt.has(mt.date + mt.venue) : i === 0;
   const books = p.books.map(b => `<tr${b.key === mn.following ? ' class="won"' : ""}><td><b>${esc(b.name)}</b>${b.key === mn.following ? " ← 模擬倉跟緊" : ""}<div class="sub">${esc(b.rule)}</div></td>
       <td class="num">$${b.balance.toLocaleString()}</td><td class="num">${b.bets}${b.pending ? `<div class="sub">${b.pending} 注未結算</div>` : ""}</td><td class="num">${b.hits}</td>
       <td class="num ${b.net > 0 ? "pos" : b.net < 0 ? "neg" : ""}">${money(b.net)}</td><td class="num">${pct(b.roi)}</td><td class="num">${pct(b.backtest_roi)}</td></tr>`).join("");
   const looks = (mn.looks || []).map(l => `<div class="sub">第 ${l.at} 場檢討:${l.compare.map(c => `${esc((p.books.find(b => b.key === c.strategy) || {}).name)} 每場 ${money(c.diff_per_race)}(z ${c.z})`).join(";")}。${l.switched_to ? "轉咗策略。" : "冇一個明顯好過,維持不變。"}</div>`).join("");
-  el.innerHTML = `
-    <h3 style="margin-top:0">模擬倉</h3>
+  el.innerHTML = `<section class="card">
+    <h2 style="margin:0 0 4px">模擬倉</h2>
     <div class="sub">由 ${esc(p.start)} 開始 · 起始本金 $${p.bankroll.toLocaleString()} · 每注 $${p.stake} · 用開跑前最後一份賠率同固定咗嘅分析落注,按馬會真實派彩結算</div>
     <div class="kpis" style="margin-top:10px">
       <div class="kpi"><b>$${mn.balance.toLocaleString()}</b>結餘(${mn.pending ? `包括 ${mn.pending} 注未結算` : "全部已結算"})</div>
@@ -350,14 +397,20 @@ function paperCard() {
       <div class="kpi"><b>${esc(mn.following_name)}</b>而家跟緊嘅策略</div>
       <div class="kpi"><b>${p.races} / ${p.next_look}</b>已結算場數 / 下次檢討</div>
     </div>
-    ${mt ? `<div class="sub" style="margin-top:12px">${esc(mt.date)} ${esc(mt.venue_zh || "")} 策略分析</div>
-      ${mt.review.map(t => `<div class="note" style="margin-top:6px">${esc(t)}</div>`).join("")}
-      <div class="tw" style="margin-top:8px"><table><thead><tr><th>場次</th><th>模擬倉注項</th><th>狀態</th></tr></thead><tbody>${rows}</tbody></table></div>` : ""}
-    <div class="sub" style="margin-top:12px">四個策略同時模擬(各自 $${p.bankroll.toLocaleString()} 本金)</div>
-    <div class="tw"><table><thead><tr><th>策略</th><th>結餘</th><th>注數</th><th>中</th><th>淨賺蝕</th><th>回報</th><th>過往回測</th></tr></thead><tbody>${books}</tbody></table></div>
-    <div class="note" style="margin-top:10px">自動學習:每 ${p.look_every} 場將其他策略同模擬倉跟緊嗰個逐場比較,要明顯好過(z ≥ ${p.z_pass})先會轉,唔會因為一兩日輸贏而改。模型本身亦每晚用新賽果重新學習(見下面「系統自我檢測」)。</div>
+  </section>
+  <section class="card">
+    <h3 style="margin:0 0 4px">每個賽馬日</h3>
+    <div class="sub">撳日期睇注項同策略分析;最新一日預設打開</div>
+    ${(p.meetings || []).map((mt, i) => paperMeetingBlock(p, mt, isOpen(mt, i), openMi.has(mt.date + mt.venue))).join("") || `<div class="sub">未有賽馬日</div>`}
+  </section>
+  <section class="card">
+    <h3 style="margin:0 0 4px">四個策略比較</h3>
+    <div class="sub">四個策略同時模擬,各自 $${p.bankroll.toLocaleString()} 本金;綠底係模擬倉跟緊嗰個</div>
+    <div class="tw" style="margin-top:8px"><table><thead><tr><th>策略</th><th>結餘</th><th>注數</th><th>中</th><th>淨賺蝕</th><th>回報</th><th>過往回測</th></tr></thead><tbody>${books}</tbody></table></div>
+    <div class="note" style="margin-top:10px">自動學習:每 ${p.look_every} 場將其他策略同模擬倉跟緊嗰個逐場比較,要明顯好過(z ≥ ${p.z_pass})先會轉,唔會因為一兩日輸贏而改。模型本身亦每晚用新賽果重新學習(見「賽事分析」頁底嘅「系統自我檢測」)。</div>
     ${looks}
-    <div class="sub" style="margin-top:8px">回測入面呢幾種玩法全部都係蝕錢,預計模擬倉會慢慢蝕大約馬會抽水嘅幅度。呢個係實戰測試,唔係賺錢保證,亦唔係投注建議。</div>`;
+    <div class="sub" style="margin-top:8px">回測入面呢幾種玩法全部都係蝕錢,預計模擬倉會慢慢蝕大約馬會抽水嘅幅度。呢個係實戰測試,唔係賺錢保證,亦唔係投注建議。</div>
+  </section>`;
 }
 
 function perf(tr) {
