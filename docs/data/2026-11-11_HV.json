@@ -4,7 +4,7 @@
   "venue": "HV",
   "venue_zh": "跑馬地"
  },
- "updated_at": "2026-11-11T11:17:50+00:00",
+ "updated_at": "2026-11-11T11:20:02+00:00",
  "model": {
   "holdout": {
    "races": 648,
@@ -1184,32 +1184,14 @@
     "races": 1
    },
    "course_bias": "此跑道路程跑法影響同跑馬地平均差唔多",
-   "odds_updated": "11/11/2026 19:16",
+   "odds_updated": "11/11/2026 19:19",
    "confidence": "中",
    "longshots": [
     {
-     "no": 4,
-     "horse": "美麗登場",
-     "win_odds": 11.0,
-     "place_odds": 3.1,
-     "win_prob": 0.103,
-     "rank": 4,
-     "style": "領放",
-     "pros": [
-      "過往市場評價",
-      "讓磅著數",
-      "試閘名次"
-     ],
-     "cons": [
-      "末段速度(分段時間)",
-      "近況"
-     ]
-    },
-    {
      "no": 3,
      "horse": "新力",
-     "win_odds": 15.0,
-     "place_odds": 3.5,
+     "win_odds": 14.0,
+     "place_odds": 3.8,
      "win_prob": 0.0944,
      "rank": 5,
      "style": "中游",
@@ -1254,16 +1236,16 @@
       "後段追勁",
       "試閘名次"
      ],
-     "win_odds": 3.6,
-     "place_odds": 1.6,
-     "market_prob": 0.2266,
-     "blend_prob": 0.235,
-     "ev": 0.846,
+     "win_odds": 3.8,
+     "place_odds": 1.7,
+     "market_prob": 0.2136,
+     "blend_prob": 0.221,
+     "ev": 0.84,
      "value": false,
      "longshot": false,
      "open_odds": 3.7,
      "steam": false,
-     "final_prob": 0.235,
+     "final_prob": 0.221,
      "final_rank": 1
     },
     {
@@ -1294,16 +1276,16 @@
      "cons": [
       "後段追勁"
      ],
-     "win_odds": 6.2,
-     "place_odds": 2.2,
-     "market_prob": 0.1316,
-     "blend_prob": 0.1328,
-     "ev": 0.823,
+     "win_odds": 5.3,
+     "place_odds": 1.1,
+     "market_prob": 0.1532,
+     "blend_prob": 0.1558,
+     "ev": 0.826,
      "value": false,
      "longshot": false,
      "open_odds": 7.4,
      "steam": false,
-     "final_prob": 0.1328,
+     "final_prob": 0.1558,
      "final_rank": 2
     },
     {
@@ -1335,16 +1317,16 @@
       "負磅",
       "騎師"
      ],
-     "win_odds": 6.6,
-     "place_odds": 2.3,
-     "market_prob": 0.1236,
-     "blend_prob": 0.1244,
-     "ev": 0.821,
+     "win_odds": 6.7,
+     "place_odds": 2.6,
+     "market_prob": 0.1212,
+     "blend_prob": 0.1218,
+     "ev": 0.816,
      "value": false,
      "longshot": false,
      "open_odds": 8.0,
      "steam": false,
-     "final_prob": 0.1244,
+     "final_prob": 0.1218,
      "final_rank": 3
     },
     {
@@ -1376,58 +1358,17 @@
       "騎師",
       "後段追勁"
      ],
-     "win_odds": 7.0,
-     "place_odds": 2.2,
-     "market_prob": 0.1165,
-     "blend_prob": 0.1169,
-     "ev": 0.819,
+     "win_odds": 7.2,
+     "place_odds": 2.7,
+     "market_prob": 0.1127,
+     "blend_prob": 0.1129,
+     "ev": 0.813,
      "value": false,
      "longshot": false,
      "open_odds": 8.1,
      "steam": false,
-     "final_prob": 0.1169,
+     "final_prob": 0.1129,
      "final_rank": 4
-    },
-    {
-     "rank": 8,
-     "no": 12,
-     "horse": "有盈勇士",
-     "horse_code": "K271",
-     "jockey": "希威森",
-     "trainer": "沈集成",
-     "draw": 7,
-     "weight": 118,
-     "rating": 42,
-     "last6": "3/2/9/10/12/6",
-     "gear": "B/TT",
-     "win_prob": 0.0702,
-     "fair_odds": 14.2,
-     "style": "後上",
-     "speed_best": -7.8,
-     "perf_best": 45.0,
-     "handicap_edge": -1.8,
-     "runs_in_db": 21,
-     "draw_edge": -0.059,
-     "pros": [
-      "近況",
-      "負磅",
-      "末段速度(分段時間)"
-     ],
-     "cons": [
-      "騎師",
-      "上仗速度指數"
-     ],
-     "win_odds": 9.2,
-     "place_odds": 2.9,
-     "market_prob": 0.0887,
-     "blend_prob": 0.0878,
-     "ev": 0.807,
-     "value": false,
-     "longshot": false,
-     "open_odds": 9.8,
-     "steam": false,
-     "final_prob": 0.0878,
-     "final_rank": 5
     },
     {
      "rank": 4,
@@ -1458,16 +1399,57 @@
       "末段速度(分段時間)",
       "近況"
      ],
-     "win_odds": 11.0,
-     "place_odds": 3.1,
-     "market_prob": 0.0742,
-     "blend_prob": 0.0727,
-     "ev": 0.8,
+     "win_odds": 9.5,
+     "place_odds": 3.3,
+     "market_prob": 0.0854,
+     "blend_prob": 0.0844,
+     "ev": 0.802,
      "value": false,
-     "longshot": true,
+     "longshot": false,
      "open_odds": 12.0,
      "steam": false,
-     "final_prob": 0.0727,
+     "final_prob": 0.0844,
+     "final_rank": 5
+    },
+    {
+     "rank": 8,
+     "no": 12,
+     "horse": "有盈勇士",
+     "horse_code": "K271",
+     "jockey": "希威森",
+     "trainer": "沈集成",
+     "draw": 7,
+     "weight": 118,
+     "rating": 42,
+     "last6": "3/2/9/10/12/6",
+     "gear": "B/TT",
+     "win_prob": 0.0702,
+     "fair_odds": 14.2,
+     "style": "後上",
+     "speed_best": -7.8,
+     "perf_best": 45.0,
+     "handicap_edge": -1.8,
+     "runs_in_db": 21,
+     "draw_edge": -0.059,
+     "pros": [
+      "近況",
+      "負磅",
+      "末段速度(分段時間)"
+     ],
+     "cons": [
+      "騎師",
+      "上仗速度指數"
+     ],
+     "win_odds": 9.6,
+     "place_odds": 3.2,
+     "market_prob": 0.0846,
+     "blend_prob": 0.0835,
+     "ev": 0.802,
+     "value": false,
+     "longshot": false,
+     "open_odds": 9.8,
+     "steam": false,
+     "final_prob": 0.0835,
      "final_rank": 6
     },
     {
@@ -1499,16 +1481,16 @@
       "檔位統計",
       "重戴配備"
      ],
-     "win_odds": 11.0,
-     "place_odds": 4.1,
-     "market_prob": 0.0742,
-     "blend_prob": 0.0727,
-     "ev": 0.8,
+     "win_odds": 12.0,
+     "place_odds": 5.1,
+     "market_prob": 0.0676,
+     "blend_prob": 0.0661,
+     "ev": 0.793,
      "value": false,
      "longshot": false,
      "open_odds": 8.7,
      "steam": false,
-     "final_prob": 0.0727,
+     "final_prob": 0.0661,
      "final_rank": 7
     },
     {
@@ -1540,16 +1522,16 @@
       "騎師",
       "騎練組合"
      ],
-     "win_odds": 15.0,
-     "place_odds": 3.5,
-     "market_prob": 0.0544,
-     "blend_prob": 0.0525,
-     "ev": 0.788,
+     "win_odds": 14.0,
+     "place_odds": 3.8,
+     "market_prob": 0.058,
+     "blend_prob": 0.0562,
+     "ev": 0.787,
      "value": false,
      "longshot": true,
      "open_odds": 16.0,
      "steam": false,
-     "final_prob": 0.0525,
+     "final_prob": 0.0562,
      "final_rank": 8
     },
     {
@@ -1581,16 +1563,16 @@
       "過往市場評價",
       "近況"
      ],
-     "win_odds": 15.0,
-     "place_odds": 4.8,
-     "market_prob": 0.0544,
-     "blend_prob": 0.0525,
-     "ev": 0.788,
+     "win_odds": 17.0,
+     "place_odds": 6.2,
+     "market_prob": 0.0478,
+     "blend_prob": 0.0458,
+     "ev": 0.779,
      "value": false,
      "longshot": false,
      "open_odds": 15.0,
      "steam": false,
-     "final_prob": 0.0525,
+     "final_prob": 0.0458,
      "final_rank": 9
     },
     {
@@ -1622,16 +1604,16 @@
       "讓磅著數",
       "過往市場評價"
      ],
-     "win_odds": 22.0,
-     "place_odds": 5.5,
-     "market_prob": 0.0371,
-     "blend_prob": 0.0351,
-     "ev": 0.773,
+     "win_odds": 21.0,
+     "place_odds": 7.3,
+     "market_prob": 0.0387,
+     "blend_prob": 0.0367,
+     "ev": 0.771,
      "value": false,
      "longshot": false,
      "open_odds": 17.0,
      "steam": false,
-     "final_prob": 0.0351,
+     "final_prob": 0.0367,
      "final_rank": 10
     },
     {
@@ -1663,21 +1645,21 @@
       "過往市場評價",
       "檔位統計"
      ],
-     "win_odds": 43.0,
-     "place_odds": 10.0,
-     "market_prob": 0.019,
-     "blend_prob": 0.0174,
-     "ev": 0.747,
+     "win_odds": 47.0,
+     "place_odds": 13.0,
+     "market_prob": 0.0173,
+     "blend_prob": 0.0158,
+     "ev": 0.74,
      "value": false,
      "longshot": false,
      "open_odds": 45.0,
      "steam": false,
-     "final_prob": 0.0174,
+     "final_prob": 0.0158,
      "final_rank": 11
     }
    ],
    "ai": null,
-   "summary": "【步速】4號美麗登場有機會爭放。預計步速中等(2 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.6%、前列 8.7%、中游 9.6%、後上 6.5%;前置馬仍然較有利。跑法配合嘅熱門選擇:1號當家精彩。\n【場地】根據今日草地已跑 1 場:跑完場數太少,跑法走勢未能判斷。過往同日早段嘅走勢對之後場次預測力好低,只作參考;此跑道路程跑法影響同跑馬地平均差唔多。今日分段時間(1 場):跑道速度正常;末段追勁作用大,末段快嘅馬有著數。末段快嘅11號馬鳳凰、2號幸運愉快受惠。檔位統計著數:6號各絲各法、4號美麗登場。2號幸運愉快檔位統計較差。\n【選擇】首選11號馬鳳凰(綜合 24%,獨贏 3.6 倍):近況、讓磅著數、末段速度(分段時間)佔優,讓磅著數比同場中位數多約 4 分;次選7號加州勇勝(綜合 13%,獨贏 6.2 倍):檔位統計、過往市場評價、讓磅著數佔優;三選1號當家精彩(綜合 12%,獨贏 6.6 倍):近況、練馬師本場地成績、路程適應佔優。\n【把握】中:首選獨贏 3.6 倍。把握係睇賠率高低,唔代表值博。\n【冷門】4號美麗登場(獨贏 11,模型排第 4):過往市場評價、讓磅著數;3號新力(獨贏 15,模型排第 5):近況、練馬師本場地成績。呢類馬入位率略高過同賠率嘅其他馬,但過往買獨贏、位置都係蝕錢,只供參考,唔係值博訊號。\n【風險】模型自己最睇好7號加州勇勝,同市場睇法唔同;按綜合機率計暫時冇明顯值博;11號馬鳳凰要留意後段追勁、試閘名次;7號加州勇勝要留意後段追勁;賠率會變,以開跑前為準。"
+   "summary": "【步速】4號美麗登場有機會爭放。預計步速中等(2 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.6%、前列 8.7%、中游 9.6%、後上 6.5%;前置馬仍然較有利。跑法配合嘅熱門選擇:1號當家精彩、4號美麗登場。\n【場地】根據今日草地已跑 1 場:跑完場數太少,跑法走勢未能判斷。過往同日早段嘅走勢對之後場次預測力好低,只作參考;此跑道路程跑法影響同跑馬地平均差唔多。今日分段時間(1 場):跑道速度正常;末段追勁作用大,末段快嘅馬有著數。末段快嘅11號馬鳳凰、2號幸運愉快受惠。檔位統計著數:6號各絲各法、4號美麗登場。2號幸運愉快檔位統計較差。\n【選擇】首選11號馬鳳凰(綜合 22%,獨贏 3.8 倍):近況、讓磅著數、末段速度(分段時間)佔優,讓磅著數比同場中位數多約 4 分;次選7號加州勇勝(綜合 16%,獨贏 5.3 倍):檔位統計、過往市場評價、讓磅著數佔優;三選1號當家精彩(綜合 12%,獨贏 6.7 倍):近況、練馬師本場地成績、路程適應佔優。\n【把握】中:首選獨贏 3.8 倍。把握係睇賠率高低,唔代表值博。\n【冷門】3號新力(獨贏 14,模型排第 5):近況、練馬師本場地成績。呢類馬入位率略高過同賠率嘅其他馬,但過往買獨贏、位置都係蝕錢,只供參考,唔係值博訊號。\n【風險】模型自己最睇好7號加州勇勝,同市場睇法唔同;按綜合機率計暫時冇明顯值博;11號馬鳳凰要留意後段追勁、試閘名次;7號加州勇勝要留意後段追勁;賠率會變,以開跑前為準。"
   },
   {
    "race_no": 4,
@@ -1700,7 +1682,7 @@
     "races": 1
    },
    "course_bias": "此跑道路程跑法影響同跑馬地平均差唔多",
-   "odds_updated": "11/11/2026 19:16",
+   "odds_updated": "11/11/2026 19:17",
    "confidence": "中",
    "longshots": [
     {
@@ -1809,7 +1791,7 @@
      ],
      "cons": [],
      "win_odds": 4.5,
-     "place_odds": 1.8,
+     "place_odds": 1.7,
      "market_prob": 0.1819,
      "blend_prob": 0.1869,
      "ev": 0.841,
@@ -1850,7 +1832,7 @@
       "過往市場評價"
      ],
      "win_odds": 7.8,
-     "place_odds": 2.8,
+     "place_odds": 2.9,
      "market_prob": 0.1049,
      "blend_prob": 0.1049,
      "ev": 0.818,
@@ -2219,7 +2201,7 @@
       "近況"
      ],
      "win_odds": 35.0,
-     "place_odds": 8.6,
+     "place_odds": 8.7,
      "market_prob": 0.0234,
      "blend_prob": 0.0217,
      "ev": 0.759,
@@ -2255,7 +2237,7 @@
     "races": 1
    },
    "course_bias": "此跑道路程跑法影響同跑馬地平均差唔多",
-   "odds_updated": "11/11/2026 19:16",
+   "odds_updated": "11/11/2026 19:17",
    "confidence": "低",
    "longshots": [
     {
@@ -2791,7 +2773,7 @@
     "races": 1
    },
    "course_bias": "此跑道路程跑法影響同跑馬地平均差唔多",
-   "odds_updated": "11/11/2026 19:16",
+   "odds_updated": "11/11/2026 19:17",
    "confidence": "中",
    "longshots": [
     {
@@ -3190,7 +3172,7 @@
       "重戴配備"
      ],
      "win_odds": 25.0,
-     "place_odds": 6.2,
+     "place_odds": 6.3,
      "market_prob": 0.0327,
      "blend_prob": 0.0308,
      "ev": 0.769,
@@ -4460,7 +4442,7 @@
     "races": 1
    },
    "course_bias": "此跑道路程跑法影響同跑馬地平均差唔多",
-   "odds_updated": "11/11/2026 19:16",
+   "odds_updated": "11/11/2026 19:17",
    "confidence": "低",
    "longshots": [
     {
@@ -5064,6 +5046,7 @@
   "2026-11-11T11:05:31+00:00",
   "2026-11-11T11:10:15+00:00",
   "2026-11-11T11:15:34+00:00",
-  "2026-11-11T11:17:50+00:00"
+  "2026-11-11T11:17:50+00:00",
+  "2026-11-11T11:20:02+00:00"
  ]
 }
