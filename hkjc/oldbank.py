@@ -34,7 +34,7 @@ Test, each candidate f on its own
   Gain per race = log loss(base) - log loss(cand).
   Pass: mean gain > 0 with z = mean / (sd / sqrt(n)) >= 2.5, and a placebo run (f shuffled among
   the runners of each race, in fitting and in predicting) gives z < 1.0.
-  Seven candidates at z >= 2.5: about a 4% chance that any of them passes by luck alone.
+  Eight candidates at z >= 2.5: about a 5% chance that any of them passes by luck alone.
 
   A candidate that passes joins the model's factors and the model's blend with the market is
   refitted; the published ranking changes only if that blend then gives the model weight above 0.
@@ -46,6 +46,9 @@ beaten horses went on to place at later meetings. Looked at over the horse's las
 of which may count. (First version: all other runners' later starts, mean of the last 2 runs.)
 Then, also before any bank data was read, the user set strong_race's bar: at least 2 beaten
 horses placed, within their next 3 starts. (Before that: 40% of beaten horses, next start only.)
+Added after the download finished, before the test was run or any bank race was looked at:
+recent_bias. The user saw the 11 Nov 2026 track change mid-meeting (closers early, on-pace
+runners after race 6), which a whole-day average is slow to see.
 
 Candidates (only information from before the race)
   field_after   強組, the beaten horses: for each of the horse's last 3 runs, that race's beaten
@@ -71,6 +74,10 @@ Candidates (only information from before the race)
                 LATE word, else 0.
   jockey_up     轉騎師 (retest): log win rate of today's jockey minus that of the last run's
                 jockey, when they differ (model.RateBook as in hkjc/model.py); else 0.
+  recent_bias   臨場走勢(最近幾場): the model's early_x_today, but read from only the last 3
+                finished races on this surface at this meeting that have running positions:
+                4 x (0.5 - horse's usual early position) x (0.45 - mean early position of
+                those races' first 3) x n/(n+3). 0 before any such race has been run.
 """
 from __future__ import annotations
 
@@ -101,12 +108,14 @@ SLOW_START = ("出閘緩慢", "起步緩慢", "出閘笨拙")
 HEALTH = ("流鼻血", "心律不正常", "跛行", "不良於行")
 TROUBLE = tuple(reports.WIDE_WORDS) + BLOCKED + CHECKED + SLOW_START + HEALTH
 LATE = ("直路", "最後", "末段", "一百", "二百", "三百", "四百", "終點")
+RECENT_RACES = 3
 CANDIDATES = ["field_after", "race_time", "strong_race", "forgiven_form", "last_draw_bad",
-              "blocked_late", "jockey_up"]
+              "blocked_late", "jockey_up", "recent_bias"]
 NAMES_ZH = {"field_after": "強組(輸嘅馬再出入頭三)", "race_time": "強組(嗰場跑得快)",
             "strong_race": "強組(跑得快兼輸嘅馬再出入頭三)",
             "forgiven_form": "原諒有藉口嘅輸", "last_draw_bad": "上仗檔位不利",
-            "blocked_late": "上仗直路受阻", "jockey_up": "轉騎師(重測)"}
+            "blocked_late": "上仗直路受阻", "jockey_up": "轉騎師(重測)",
+            "recent_bias": "臨場走勢(最近三場)"}
 
 
 def _guard():
@@ -168,7 +177,7 @@ def beaten_next(run, code, today, hist, race_runs):
     return n, top3
 
 
-def features(x, today, hist, race_runs, race_fig, st) -> list[float]:
+def features(x, race, today, hist, race_runs, race_fig, st) -> list[float]:
     runs = hist.get(x["horse_code"], [])
     out = {}
     after, times, strong = [], [], 0.0
@@ -192,7 +201,21 @@ def features(x, today, hist, race_runs, race_fig, st) -> list[float]:
     out["blocked_late"] = 1.0 if runs and blocked_late(runs[-1]["comment"]) else 0.0
     j, lj = x.get("jockey_id"), (runs[-1]["jockey"] if runs else None)
     out["jockey_up"] = math.log(st.jockey.rate(j)) - math.log(st.jockey.rate(lj)) if j and lj and j != lj else 0.0
+    early = st.runner_profile(x["horse_code"], race.get("distance"), race["venue"],
+                              race.get("surface", "TURF"))["early"]
+    out["recent_bias"] = 4 * (0.5 - (early if early is not None else 0.5)) * recent_style(race, st)
     return [out[c] for c in CANDIDATES]
+
+
+def recent_style(race, st) -> float:
+    """(0.45 - mean early position of the first 3) over the last RECENT_RACES finished races on
+    this surface at this meeting that have running positions, shrunk by n/(n+3)."""
+    done = [m for m in st.meeting.get((race["date"], race["venue"]), [])
+            if m["surface"] == race.get("surface", "TURF") and m.get("n_early")][-RECENT_RACES:]
+    if not done:
+        return 0.0
+    n = len(done)
+    return (0.45 - float(np.mean([m["top_early"] for m in done]))) * n / (n + 3)
 
 
 def build(races):
@@ -212,7 +235,7 @@ def build(races):
             if all(o and o > 0 for o in odds) and len(won) == 1:
                 samples.append({"date": r["date"], "y": won[0],
                                 "logq": np.log(model.market_probs(odds)),
-                                "F": np.array([features(x, r["date"], hist, race_runs, race_fig, st)
+                                "F": np.array([features(x, r, r["date"], hist, race_runs, race_fig, st)
                                                for x in starters])})
         # what later races may know about this one, from the state before it
         win = next((x for x in starters if x.get("place") == 1), None)
