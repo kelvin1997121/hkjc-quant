@@ -4,7 +4,7 @@
   "venue": "HV",
   "venue_zh": "跑馬地"
  },
- "updated_at": "2026-11-11T10:44:30+00:00",
+ "updated_at": "2026-11-11T10:46:28+00:00",
  "model": {
   "holdout": {
    "races": 648,
@@ -612,14 +612,14 @@
     "races": 0
    },
    "course_bias": "此跑道路程跑法影響同跑馬地平均差唔多",
-   "odds_updated": "11/11/2026 18:43",
+   "odds_updated": "11/11/2026 18:44",
    "confidence": "低",
    "longshots": [
     {
      "no": 10,
      "horse": "果然僥倖",
-     "win_odds": 11.0,
-     "place_odds": 2.9,
+     "win_odds": 10.0,
+     "place_odds": 3.0,
      "win_prob": 0.1651,
      "rank": 1,
      "style": "前列",
@@ -666,14 +666,14 @@
      ],
      "win_odds": 5.8,
      "place_odds": 2.2,
-     "market_prob": 0.1398,
-     "blend_prob": 0.1427,
-     "ev": 0.828,
+     "market_prob": 0.1405,
+     "blend_prob": 0.1436,
+     "ev": 0.833,
      "value": false,
      "longshot": false,
      "open_odds": 6.7,
      "steam": false,
-     "final_prob": 0.1427,
+     "final_prob": 0.1436,
      "final_rank": 1
     },
     {
@@ -705,17 +705,58 @@
       "表現評分(近績最佳)",
       "騎師"
      ],
-     "win_odds": 6.1,
+     "win_odds": 6.2,
      "place_odds": 2.6,
-     "market_prob": 0.1329,
-     "blend_prob": 0.1354,
-     "ev": 0.826,
+     "market_prob": 0.1315,
+     "blend_prob": 0.1338,
+     "ev": 0.83,
      "value": false,
      "longshot": false,
      "open_odds": 5.5,
      "steam": false,
-     "final_prob": 0.1354,
+     "final_prob": 0.1338,
      "final_rank": 2
+    },
+    {
+     "rank": 4,
+     "no": 4,
+     "horse": "翠湖烈風",
+     "horse_code": "J288",
+     "jockey": "潘頓",
+     "trainer": "賀賢",
+     "draw": 12,
+     "weight": 133,
+     "rating": 38,
+     "last6": "8/8/2/2/7/10",
+     "gear": "",
+     "win_prob": 0.0957,
+     "fair_odds": 10.4,
+     "style": "後上",
+     "speed_best": 1.8,
+     "perf_best": 42.3,
+     "handicap_edge": -3.2,
+     "runs_in_db": 23,
+     "draw_edge": -0.501,
+     "pros": [
+      "騎師",
+      "過往市場評價",
+      "騎練組合"
+     ],
+     "cons": [
+      "檔位統計",
+      "上仗速度指數"
+     ],
+     "win_odds": 7.7,
+     "place_odds": 2.7,
+     "market_prob": 0.1059,
+     "blend_prob": 0.1066,
+     "ev": 0.821,
+     "value": false,
+     "longshot": false,
+     "open_odds": 9.1,
+     "steam": false,
+     "final_prob": 0.1066,
+     "final_rank": 3
     },
     {
      "rank": 7,
@@ -747,16 +788,16 @@
       "試閘名次"
      ],
      "win_odds": 7.9,
-     "place_odds": 3.0,
-     "market_prob": 0.1026,
-     "blend_prob": 0.1032,
-     "ev": 0.815,
+     "place_odds": 2.9,
+     "market_prob": 0.1032,
+     "blend_prob": 0.1038,
+     "ev": 0.82,
      "value": false,
      "longshot": false,
      "open_odds": 8.5,
      "steam": false,
-     "final_prob": 0.1032,
-     "final_rank": 3
+     "final_prob": 0.1038,
+     "final_rank": 4
     },
     {
      "rank": 3,
@@ -787,57 +828,16 @@
       "表現評分(近績最佳)",
       "評分變動"
      ],
-     "win_odds": 8.0,
+     "win_odds": 8.1,
      "place_odds": 2.3,
-     "market_prob": 0.1013,
-     "blend_prob": 0.1018,
-     "ev": 0.815,
+     "market_prob": 0.1006,
+     "blend_prob": 0.1011,
+     "ev": 0.819,
      "value": false,
      "longshot": false,
      "open_odds": 7.3,
      "steam": false,
-     "final_prob": 0.1018,
-     "final_rank": 4
-    },
-    {
-     "rank": 4,
-     "no": 4,
-     "horse": "翠湖烈風",
-     "horse_code": "J288",
-     "jockey": "潘頓",
-     "trainer": "賀賢",
-     "draw": 12,
-     "weight": 133,
-     "rating": 38,
-     "last6": "8/8/2/2/7/10",
-     "gear": "",
-     "win_prob": 0.0957,
-     "fair_odds": 10.4,
-     "style": "後上",
-     "speed_best": 1.8,
-     "perf_best": 42.3,
-     "handicap_edge": -3.2,
-     "runs_in_db": 23,
-     "draw_edge": -0.501,
-     "pros": [
-      "騎師",
-      "過往市場評價",
-      "騎練組合"
-     ],
-     "cons": [
-      "檔位統計",
-      "上仗速度指數"
-     ],
-     "win_odds": 8.0,
-     "place_odds": 2.7,
-     "market_prob": 0.1013,
-     "blend_prob": 0.1018,
-     "ev": 0.815,
-     "value": false,
-     "longshot": false,
-     "open_odds": 9.1,
-     "steam": false,
-     "final_prob": 0.1018,
+     "final_prob": 0.1011,
      "final_rank": 5
     },
     {
@@ -869,16 +869,16 @@
       "檔位統計",
       "練馬師本場地成績"
      ],
-     "win_odds": 8.5,
+     "win_odds": 8.6,
      "place_odds": 3.1,
-     "market_prob": 0.0954,
-     "blend_prob": 0.0956,
-     "ev": 0.812,
+     "market_prob": 0.0948,
+     "blend_prob": 0.0949,
+     "ev": 0.816,
      "value": false,
      "longshot": false,
      "open_odds": 8.4,
      "steam": false,
-     "final_prob": 0.0956,
+     "final_prob": 0.0949,
      "final_rank": 6
     },
     {
@@ -910,16 +910,16 @@
       "練馬師本場地成績",
       "表現評分(近績最佳)"
      ],
-     "win_odds": 11.0,
-     "place_odds": 2.9,
-     "market_prob": 0.0737,
-     "blend_prob": 0.0729,
-     "ev": 0.802,
+     "win_odds": 10.0,
+     "place_odds": 3.0,
+     "market_prob": 0.0815,
+     "blend_prob": 0.081,
+     "ev": 0.81,
      "value": false,
      "longshot": true,
      "open_odds": 10.0,
      "steam": false,
-     "final_prob": 0.0729,
+     "final_prob": 0.081,
      "final_rank": 7
     },
     {
@@ -951,16 +951,16 @@
       "上仗速度指數",
       "騎師"
      ],
-     "win_odds": 11.0,
+     "win_odds": 12.0,
      "place_odds": 3.3,
-     "market_prob": 0.0737,
-     "blend_prob": 0.0729,
-     "ev": 0.802,
+     "market_prob": 0.0679,
+     "blend_prob": 0.0669,
+     "ev": 0.803,
      "value": false,
      "longshot": false,
      "open_odds": 13.0,
      "steam": false,
-     "final_prob": 0.0729,
+     "final_prob": 0.0669,
      "final_rank": 8
     },
     {
@@ -992,16 +992,16 @@
       "騎練組合",
       "上仗速度指數"
      ],
-     "win_odds": 11.0,
+     "win_odds": 12.0,
      "place_odds": 3.9,
-     "market_prob": 0.0737,
-     "blend_prob": 0.0729,
-     "ev": 0.802,
+     "market_prob": 0.0679,
+     "blend_prob": 0.0669,
+     "ev": 0.803,
      "value": false,
      "longshot": false,
      "open_odds": 9.7,
      "steam": false,
-     "final_prob": 0.0729,
+     "final_prob": 0.0669,
      "final_rank": 9
     },
     {
@@ -1034,15 +1034,15 @@
       "試閘名次"
      ],
      "win_odds": 17.0,
-     "place_odds": 5.6,
-     "market_prob": 0.0477,
-     "blend_prob": 0.0461,
-     "ev": 0.785,
+     "place_odds": 5.7,
+     "market_prob": 0.0479,
+     "blend_prob": 0.0464,
+     "ev": 0.789,
      "value": false,
      "longshot": false,
      "open_odds": 25.0,
      "steam": false,
-     "final_prob": 0.0461,
+     "final_prob": 0.0464,
      "final_rank": 10
     },
     {
@@ -1075,15 +1075,15 @@
       "末段速度(分段時間)"
      ],
      "win_odds": 28.0,
-     "place_odds": 7.6,
-     "market_prob": 0.029,
-     "blend_prob": 0.0273,
-     "ev": 0.765,
+     "place_odds": 7.7,
+     "market_prob": 0.0291,
+     "blend_prob": 0.0275,
+     "ev": 0.77,
      "value": false,
      "longshot": false,
      "open_odds": 23.0,
      "steam": false,
-     "final_prob": 0.0273,
+     "final_prob": 0.0275,
      "final_rank": 11
     },
     {
@@ -1116,20 +1116,20 @@
       "近況"
      ],
      "win_odds": 28.0,
-     "place_odds": 6.9,
-     "market_prob": 0.029,
-     "blend_prob": 0.0273,
-     "ev": 0.765,
+     "place_odds": 6.7,
+     "market_prob": 0.0291,
+     "blend_prob": 0.0275,
+     "ev": 0.77,
      "value": false,
      "longshot": false,
      "open_odds": 20.0,
      "steam": false,
-     "final_prob": 0.0273,
+     "final_prob": 0.0275,
      "final_rank": 12
     }
    ],
    "ai": null,
-   "summary": "【步速】1號皇金合、9號勝在當下有機會爭放。預計步速偏快(4 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 9.2%、前列 10.7%、中游 8.9%、後上 6.7%;前置馬仍然較有利,不過領放馬優勢比平時細。跑法配合嘅熱門選擇:8號雙子美麗。\n【場地】今日草地未有已完成賽事,未能計算即日場地走勢;此跑道路程跑法影響同跑馬地平均差唔多。檔位統計著數:8號雙子美麗、11號藍爵爺。12號輕鬆大少、4號翠湖烈風檔位統計較差。\n【選擇】首選3號三強(綜合 14%,獨贏 5.8 倍):降班、練馬師本場地成績、讓磅著數佔優;次選12號輕鬆大少(綜合 14%,獨贏 6.1 倍):讓磅著數、試閘名次、過往市場評價佔優,讓磅著數比同場中位數多約 6 分;三選2號首駿(綜合 10%,獨贏 7.9 倍):降班、檔位統計、練馬師本場地成績佔優。\n【把握】低:首選獨贏 5.8 倍。把握係睇賠率高低,唔代表值博。\n【冷門】10號果然僥倖(獨贏 11,模型排第 1):讓磅著數、近況。呢類馬入位率略高過同賠率嘅其他馬,但過往買獨贏、位置都係蝕錢,只供參考,唔係值博訊號。\n【風險】模型自己最睇好10號果然僥倖,同市場睇法唔同;按綜合機率計暫時冇明顯值博;首選機率只有 14%,形勢開放;3號三強要留意近況、上仗速度指數;12號輕鬆大少要留意表現評分(近績最佳)、騎師;賠率會變,以開跑前為準。"
+   "summary": "【步速】1號皇金合、9號勝在當下有機會爭放。預計步速偏快(4 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 9.2%、前列 10.7%、中游 8.9%、後上 6.7%;前置馬仍然較有利,不過領放馬優勢比平時細。跑法配合嘅熱門選擇:8號雙子美麗。\n【場地】今日草地未有已完成賽事,未能計算即日場地走勢;此跑道路程跑法影響同跑馬地平均差唔多。檔位統計著數:8號雙子美麗、11號藍爵爺。12號輕鬆大少、4號翠湖烈風檔位統計較差。\n【選擇】首選3號三強(綜合 14%,獨贏 5.8 倍):降班、練馬師本場地成績、讓磅著數佔優;次選12號輕鬆大少(綜合 13%,獨贏 6.2 倍):讓磅著數、試閘名次、過往市場評價佔優,讓磅著數比同場中位數多約 6 分;三選4號翠湖烈風(綜合 11%,獨贏 7.7 倍):騎師、過往市場評價、騎練組合佔優。\n【把握】低:首選獨贏 5.8 倍。把握係睇賠率高低,唔代表值博。\n【冷門】10號果然僥倖(獨贏 10,模型排第 1):讓磅著數、近況。呢類馬入位率略高過同賠率嘅其他馬,但過往買獨贏、位置都係蝕錢,只供參考,唔係值博訊號。\n【風險】模型自己最睇好10號果然僥倖,同市場睇法唔同;按綜合機率計暫時冇明顯值博;首選機率只有 14%,形勢開放;3號三強要留意近況、上仗速度指數;12號輕鬆大少要留意表現評分(近績最佳)、騎師;賠率會變,以開跑前為準。"
   },
   {
    "race_no": 3,
@@ -5013,6 +5013,7 @@
   "2026-11-11T10:29:07+00:00",
   "2026-11-11T10:34:13+00:00",
   "2026-11-11T10:39:11+00:00",
-  "2026-11-11T10:44:30+00:00"
+  "2026-11-11T10:44:30+00:00",
+  "2026-11-11T10:46:28+00:00"
  ]
 }
