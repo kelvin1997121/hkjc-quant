@@ -44,19 +44,22 @@ Amended 2026-11-11, still before any bank data was read: at the user's request �
 their definition. A strong race need not be a class drop: its field ran a fast time, and its
 beaten horses went on to place at later meetings. Looked at over the horse's last 3 runs, any
 of which may count. (First version: all other runners' later starts, mean of the last 2 runs.)
+Then, also before any bank data was read, the user set strong_race's bar: at least 2 beaten
+horses placed, within their next 3 starts. (Before that: 40% of beaten horses, next start only.)
 
 Candidates (only information from before the race)
   field_after   強組, the beaten horses: for each of the horse's last 3 runs, that race's beaten
-                horses (not its winner, not this horse) whose next start came before today; the
-                share of them that finished in the first 3 in that next start, shrunk towards
-                0.25 with the weight of 5 horses, minus 0.25. Best of those runs; 0 if none.
+                horses (not its winner, not this horse) that have run again before today; the
+                share of them that finished in the first 3 in any of their next 3 starts (those
+                run before today), shrunk towards 0.25 with the weight of 5 horses, minus 0.25.
+                Best of those runs; 0 if none.
   race_time     強組, the time: for each of the horse's last 3 runs, the winner's speed figure
                 (model.State.speed_fig, as known before that race) minus the mean winner figure
                 of up to the previous 200 races of the same class (needs 20). Best; 0 if none.
   strong_race   強組, both together: 1 if in any of the last 3 runs the horse finished outside
                 the first 3 in a race whose race_time figure is >= +3 (0.3 s per km faster than
-                its class) and in which at least 40% of the beaten horses (at least 3 of them
-                with a next start before today) placed in their next start; else 0.
+                its class) and in which at least 2 of the beaten horses (as in field_after)
+                finished in the first 3 in one of their next 3 starts before today; else 0.
   forgiven_form 原諒有藉口嘅輸: the model's form (finish score over the last 5 runs, weights
                 0.6 per run back) recomputed without the runs that finished outside the first 3
                 and whose comment shows trouble (TROUBLE), minus the normal form. 0 if no run or
@@ -88,7 +91,7 @@ SEASONS = (("2019-09-01", "2020-08-31"), ("2020-09-01", "2021-08-31"), ("2021-09
 FIRST_TRAIN, FOLDS, Z_PASS, PLACEBO_MAX = 300, 4, 2.5, 1.0
 MIN_COMMENTS = 0.90
 LAST_N, SHRINK_N, TOP3_BASE = 3, 5, 0.25
-FAST, PLACED_SHARE, MIN_BEATEN = 3.0, 0.40, 3
+FAST, MIN_PLACED, AFTER_STARTS = 3.0, 2, 3
 CLASS_RACES, CLASS_MIN = 200, 20
 FORM_RUNS, FORM_DECAY = 5, 0.6
 
@@ -152,16 +155,16 @@ def _form(runs):
 
 
 def beaten_next(run, code, today, hist, race_runs):
-    """That race's beaten horses (not its winner, not `code`) whose next start came before
-    today: how many, and how many of them finished in the first 3 in that next start."""
+    """That race's beaten horses (not its winner, not `code`) that ran again before today: how
+    many, and how many of them finished in the first 3 in one of their next 3 starts."""
     n = top3 = 0
     for c, place in race_runs[run["key"]]:
         if c == code or place == 1:
             continue
-        nxt = next((h for h in hist.get(c, []) if h["date"] > run["date"]), None)
-        if nxt and nxt["date"] < today:
+        later = [h for h in hist.get(c, []) if run["date"] < h["date"] < today][:AFTER_STARTS]
+        if later:
             n += 1
-            top3 += bool(nxt["place"] and nxt["place"] <= 3)
+            top3 += any(h["place"] and h["place"] <= 3 for h in later)
     return n, top3
 
 
@@ -177,7 +180,7 @@ def features(x, today, hist, race_runs, race_fig, st) -> list[float]:
         if fig is not None:
             times.append(fig)
         lost = not run["place"] or run["place"] > 3
-        if lost and fig is not None and fig >= FAST and n >= MIN_BEATEN and top3 / n >= PLACED_SHARE:
+        if lost and fig is not None and fig >= FAST and top3 >= MIN_PLACED:
             strong = 1.0
     out["field_after"] = max(after) if after else 0.0
     out["race_time"] = max(times) if times else 0.0
