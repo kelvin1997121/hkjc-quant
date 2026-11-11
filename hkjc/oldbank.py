@@ -1,4 +1,4 @@
-"""Old-season test, registered 2026-11-12, before any of its data was downloaded.
+"""Old-season test, registered 2026-11-11, before any of its data was downloaded.
 
     HKJC_DATA_DIR=<bank> python -m hkjc.oldbank download 2019-09-01 2020-08-31
     HKJC_DATA_DIR=<bank> python -m hkjc.oldbank test
@@ -73,7 +73,7 @@ import numpy as np
 
 from . import backfill, model, reports, scraper, store
 
-REGISTERED = "2026-11-12"
+REGISTERED = "2026-11-11"
 BANK_FROM, TEST_FROM, BANK_TO = "2019-09-01", "2020-03-01", "2022-08-31"
 SEASONS = (("2019-09-01", "2020-08-31"), ("2020-09-01", "2021-08-31"), ("2021-09-01", "2022-08-31"))
 FIRST_TRAIN, FOLDS, Z_PASS, PLACEBO_MAX = 300, 4, 2.5, 1.0
@@ -236,7 +236,7 @@ def logloss(Xi, yi, w):
 
 
 def forward(samples, col, placebo=False):
-    rng = np.random.default_rng(20261112)
+    rng = np.random.default_rng(20261111)
     y = [s["y"] for s in samples]
     f = [s["F"][:, CANDIDATES.index(col)] for s in samples]
     if placebo:
