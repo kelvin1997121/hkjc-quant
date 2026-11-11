@@ -4,7 +4,7 @@
   "venue": "HV",
   "venue_zh": "跑馬地"
  },
- "updated_at": "2026-11-11T14:33:57+00:00",
+ "updated_at": "2026-11-11T14:39:22+00:00",
  "model": {
   "holdout": {
    "races": 650,
@@ -4518,14 +4518,14 @@
     "races": 8
    },
    "course_bias": "此跑道路程跑法影響同跑馬地平均差唔多",
-   "odds_updated": "11/11/2026 22:32",
+   "odds_updated": "11/11/2026 22:38",
    "confidence": "低",
    "longshots": [
     {
      "no": 7,
      "horse": "一生好彩",
      "win_odds": 15.0,
-     "place_odds": 5.8,
+     "place_odds": 5.4,
      "win_prob": 0.1285,
      "rank": 1,
      "style": "後上",
@@ -4542,8 +4542,8 @@
     {
      "no": 4,
      "horse": "時時精準",
-     "win_odds": 18.0,
-     "place_odds": 2.9,
+     "win_odds": 17.0,
+     "place_odds": 3.1,
      "win_prob": 0.1033,
      "rank": 3,
      "style": "中游",
@@ -4589,15 +4589,15 @@
       "讓磅著數"
      ],
      "win_odds": 4.1,
-     "place_odds": 2.4,
-     "market_prob": 0.1979,
-     "blend_prob": 0.2054,
-     "ev": 0.842,
+     "place_odds": 2.1,
+     "market_prob": 0.1985,
+     "blend_prob": 0.206,
+     "ev": 0.845,
      "value": false,
      "longshot": false,
      "open_odds": 6.2,
      "steam": true,
-     "final_prob": 0.2054,
+     "final_prob": 0.206,
      "final_rank": 1
     },
     {
@@ -4629,16 +4629,16 @@
       "試閘名次",
       "檔位統計"
      ],
-     "win_odds": 5.9,
-     "place_odds": 1.6,
-     "market_prob": 0.1376,
-     "blend_prob": 0.1402,
+     "win_odds": 6.2,
+     "place_odds": 1.7,
+     "market_prob": 0.1312,
+     "blend_prob": 0.1335,
      "ev": 0.827,
      "value": false,
      "longshot": false,
      "open_odds": 9.9,
      "steam": true,
-     "final_prob": 0.1402,
+     "final_prob": 0.1335,
      "final_rank": 2
     },
     {
@@ -4671,15 +4671,15 @@
       "後段追勁"
      ],
      "win_odds": 8.2,
-     "place_odds": 2.1,
-     "market_prob": 0.099,
-     "blend_prob": 0.0992,
-     "ev": 0.813,
+     "place_odds": 2.2,
+     "market_prob": 0.0992,
+     "blend_prob": 0.0995,
+     "ev": 0.816,
      "value": false,
      "longshot": false,
      "open_odds": 12.0,
      "steam": false,
-     "final_prob": 0.0992,
+     "final_prob": 0.0995,
      "final_rank": 3
     },
     {
@@ -4711,16 +4711,16 @@
       "狀態走勢",
       "檔位統計"
      ],
-     "win_odds": 9.4,
+     "win_odds": 9.7,
      "place_odds": 3.3,
-     "market_prob": 0.0863,
-     "blend_prob": 0.0859,
-     "ev": 0.808,
+     "market_prob": 0.0839,
+     "blend_prob": 0.0834,
+     "ev": 0.809,
      "value": false,
      "longshot": false,
      "open_odds": 16.0,
      "steam": true,
-     "final_prob": 0.0859,
+     "final_prob": 0.0834,
      "final_rank": 4
     },
     {
@@ -4753,15 +4753,15 @@
       "練馬師本場地成績"
      ],
      "win_odds": 9.8,
-     "place_odds": 4.1,
-     "market_prob": 0.0828,
-     "blend_prob": 0.0823,
-     "ev": 0.806,
+     "place_odds": 4.0,
+     "market_prob": 0.083,
+     "blend_prob": 0.0825,
+     "ev": 0.809,
      "value": false,
      "longshot": false,
      "open_odds": 11.0,
      "steam": false,
-     "final_prob": 0.0823,
+     "final_prob": 0.0825,
      "final_rank": 5
     },
     {
@@ -4793,16 +4793,16 @@
       "過往市場評價",
       "騎師"
      ],
-     "win_odds": 10.0,
-     "place_odds": 4.9,
-     "market_prob": 0.0812,
-     "blend_prob": 0.0805,
-     "ev": 0.805,
+     "win_odds": 9.9,
+     "place_odds": 4.5,
+     "market_prob": 0.0822,
+     "blend_prob": 0.0816,
+     "ev": 0.808,
      "value": false,
      "longshot": false,
      "open_odds": 4.6,
      "steam": false,
-     "final_prob": 0.0805,
+     "final_prob": 0.0816,
      "final_rank": 6
     },
     {
@@ -4835,15 +4835,15 @@
       "負磅"
      ],
      "win_odds": 12.0,
-     "place_odds": 5.4,
-     "market_prob": 0.0676,
-     "blend_prob": 0.0665,
-     "ev": 0.798,
+     "place_odds": 5.1,
+     "market_prob": 0.0678,
+     "blend_prob": 0.0667,
+     "ev": 0.801,
      "value": false,
      "longshot": false,
      "open_odds": 8.0,
      "steam": false,
-     "final_prob": 0.0665,
+     "final_prob": 0.0667,
      "final_rank": 7
     },
     {
@@ -4875,16 +4875,16 @@
       "狀態走勢",
       "近況"
      ],
-     "win_odds": 14.0,
-     "place_odds": 2.1,
-     "market_prob": 0.058,
-     "blend_prob": 0.0566,
-     "ev": 0.792,
+     "win_odds": 13.0,
+     "place_odds": 2.2,
+     "market_prob": 0.0626,
+     "blend_prob": 0.0613,
+     "ev": 0.797,
      "value": false,
      "longshot": false,
      "open_odds": 9.0,
      "steam": false,
-     "final_prob": 0.0566,
+     "final_prob": 0.0613,
      "final_rank": 8
     },
     {
@@ -4917,15 +4917,15 @@
       "近況"
      ],
      "win_odds": 14.0,
-     "place_odds": 7.2,
-     "market_prob": 0.058,
-     "blend_prob": 0.0566,
-     "ev": 0.792,
+     "place_odds": 7.0,
+     "market_prob": 0.0581,
+     "blend_prob": 0.0567,
+     "ev": 0.794,
      "value": false,
      "longshot": false,
      "open_odds": 12.0,
      "steam": false,
-     "final_prob": 0.0566,
+     "final_prob": 0.0567,
      "final_rank": 9
     },
     {
@@ -4958,15 +4958,15 @@
       "後段追勁"
      ],
      "win_odds": 15.0,
-     "place_odds": 5.8,
-     "market_prob": 0.0541,
-     "blend_prob": 0.0526,
-     "ev": 0.789,
+     "place_odds": 5.4,
+     "market_prob": 0.0542,
+     "blend_prob": 0.0528,
+     "ev": 0.792,
      "value": false,
      "longshot": true,
      "open_odds": 12.0,
      "steam": false,
-     "final_prob": 0.0526,
+     "final_prob": 0.0528,
      "final_rank": 10
     },
     {
@@ -4998,16 +4998,16 @@
       "讓磅著數",
       "狀態走勢"
      ],
-     "win_odds": 18.0,
-     "place_odds": 2.9,
-     "market_prob": 0.0451,
-     "blend_prob": 0.0434,
-     "ev": 0.782,
+     "win_odds": 17.0,
+     "place_odds": 3.1,
+     "market_prob": 0.0479,
+     "blend_prob": 0.0463,
+     "ev": 0.787,
      "value": false,
      "longshot": true,
      "open_odds": 16.0,
      "steam": false,
-     "final_prob": 0.0434,
+     "final_prob": 0.0463,
      "final_rank": 11
     },
     {
@@ -5039,21 +5039,21 @@
       "檔位統計",
       "負磅"
      ],
-     "win_odds": 25.0,
-     "place_odds": 11.0,
-     "market_prob": 0.0325,
-     "blend_prob": 0.0308,
-     "ev": 0.769,
+     "win_odds": 26.0,
+     "place_odds": 10.0,
+     "market_prob": 0.0313,
+     "blend_prob": 0.0296,
+     "ev": 0.77,
      "value": false,
      "longshot": false,
      "open_odds": 23.0,
      "steam": false,
-     "final_prob": 0.0308,
+     "final_prob": 0.0296,
      "final_rank": 12
     }
    ],
    "ai": null,
-   "summary": "【步速】預計步速偏慢(1 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.1%、前列 10.8%、中游 8.6%、後上 7.2%;前置馬仍然較有利。跑法配合嘅熱門選擇:9號穿甲金鷹。\n【場地】根據今日草地已跑 8 場:頭三名 24 匹之中 9 匹出閘後跑喺前列(平時約 44%),跑法同平時差唔多;9 匹來自內檔(平時約 42%),檔位同平時差唔多。過往同日早段嘅走勢對之後場次預測力好低,只作參考;此跑道路程跑法影響同跑馬地平均差唔多。今日分段時間(8 場):跑道速度正常;末段追勁影響正常。檔位統計著數:11號至尊瑰寶、12號將義。1號喜蓮勇感、9號穿甲金鷹檔位統計較差。\n【選擇】首選5號勇謀神駒(綜合 21%,獨贏 4.1 倍):騎師、騎練組合、表現評分(近績最佳)佔優;次選1號喜蓮勇感(綜合 14%,獨贏 5.9 倍):表現評分(近績最佳)、近況、狀態走勢佔優;三選12號將義(綜合 10%,獨贏 8.2 倍):近況、過往市場評價、檔位統計佔優。\n【把握】低:首選獨贏 4.1 倍。把握係睇賠率高低,唔代表值博。\n【冷門】7號一生好彩(獨贏 15,模型排第 1):近況、評分變動;4號時時精準(獨贏 18,模型排第 3):表現評分(近績最佳)、近況。呢類馬入位率略高過同賠率嘅其他馬,但過往買獨贏、位置都係蝕錢,只供參考,唔係值博訊號。\n【落飛】5號勇謀神駒(早段 6.2 → 而家 4.1);1號喜蓮勇感(早段 9.9 → 而家 5.9);9號穿甲金鷹(早段 16 → 而家 9.4)。\n【風險】模型自己最睇好7號一生好彩,同市場睇法唔同;按綜合機率計暫時冇明顯值博;5號勇謀神駒要留意過往市場評價、讓磅著數;1號喜蓮勇感要留意試閘名次、檔位統計;賠率會變,以開跑前為準。"
+   "summary": "【步速】預計步速偏慢(1 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.1%、前列 10.8%、中游 8.6%、後上 7.2%;前置馬仍然較有利。跑法配合嘅熱門選擇:9號穿甲金鷹。\n【場地】根據今日草地已跑 8 場:頭三名 24 匹之中 9 匹出閘後跑喺前列(平時約 44%),跑法同平時差唔多;9 匹來自內檔(平時約 42%),檔位同平時差唔多。過往同日早段嘅走勢對之後場次預測力好低,只作參考;此跑道路程跑法影響同跑馬地平均差唔多。今日分段時間(8 場):跑道速度正常;末段追勁影響正常。檔位統計著數:11號至尊瑰寶、12號將義。1號喜蓮勇感、9號穿甲金鷹檔位統計較差。\n【選擇】首選5號勇謀神駒(綜合 21%,獨贏 4.1 倍):騎師、騎練組合、表現評分(近績最佳)佔優;次選1號喜蓮勇感(綜合 13%,獨贏 6.2 倍):表現評分(近績最佳)、近況、狀態走勢佔優;三選12號將義(綜合 10%,獨贏 8.2 倍):近況、過往市場評價、檔位統計佔優。\n【把握】低:首選獨贏 4.1 倍。把握係睇賠率高低,唔代表值博。\n【冷門】7號一生好彩(獨贏 15,模型排第 1):近況、評分變動;4號時時精準(獨贏 17,模型排第 3):表現評分(近績最佳)、近況。呢類馬入位率略高過同賠率嘅其他馬,但過往買獨贏、位置都係蝕錢,只供參考,唔係值博訊號。\n【落飛】5號勇謀神駒(早段 6.2 → 而家 4.1);1號喜蓮勇感(早段 9.9 → 而家 6.2);9號穿甲金鷹(早段 16 → 而家 9.7)。\n【風險】模型自己最睇好7號一生好彩,同市場睇法唔同;按綜合機率計暫時冇明顯值博;5號勇謀神駒要留意過往市場評價、讓磅著數;1號喜蓮勇感要留意試閘名次、檔位統計;賠率會變,以開跑前為準。"
   }
  ],
  "runs": [
@@ -5159,6 +5159,7 @@
   "2026-11-11T14:28:01+00:00",
   "2026-11-11T14:29:44+00:00",
   "2026-11-11T14:32:12+00:00",
-  "2026-11-11T14:33:57+00:00"
+  "2026-11-11T14:33:57+00:00",
+  "2026-11-11T14:39:22+00:00"
  ]
 }
