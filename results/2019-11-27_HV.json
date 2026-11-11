@@ -1,0 +1,4336 @@
+[
+ {
+  "date": "2019-11-27",
+  "venue": "HV",
+  "race_no": 1,
+  "race_id": 199,
+  "class": "第五班",
+  "distance": 1000,
+  "rating_band": "40-0",
+  "going": "好地",
+  "race_name": "霍伊克讓賽",
+  "surface": "TURF",
+  "course": "A",
+  "prize": "HK$ 725,000",
+  "cum_times": [
+   12.73,
+   34.23,
+   57.06
+  ],
+  "sectionals": [
+   12.73,
+   21.5,
+   22.83
+  ],
+  "runners": [
+   {
+    "place_raw": "1",
+    "place": 1,
+    "no": 6,
+    "horse": "爪皇轟天",
+    "horse_code": "A291",
+    "jockey": "郭能",
+    "jockey_id": null,
+    "trainer": "霍利時",
+    "trainer_id": null,
+    "weight": 131,
+    "body_weight": 1123,
+    "draw": 3,
+    "lbw": "---",
+    "running": [
+     1,
+     1,
+     1
+    ],
+    "time": 57.06,
+    "win_odds": 3.8,
+    "sect": [
+     12.73,
+     21.5,
+     22.83
+    ],
+    "comment": "出閘俐落，居前列，走內疊。入直路時領先半個馬位，直路初加速帶離。保持凌厲走勢，勝出賽事。"
+   },
+   {
+    "place_raw": "2",
+    "place": 2,
+    "no": 2,
+    "horse": "喜勁驥",
+    "horse_code": "C006",
+    "jockey": "莫雷拉",
+    "jockey_id": "MOJ",
+    "trainer": "蔡約翰",
+    "trainer_id": "SJJ",
+    "weight": 133,
+    "body_weight": 1115,
+    "draw": 2,
+    "lbw": "2",
+    "running": [
+     5,
+     3,
+     2
+    ],
+    "time": 57.39,
+    "win_odds": 11.0,
+    "sect": [
+     12.97,
+     21.5,
+     22.92
+    ],
+    "comment": "出閘略慢，落後領放馬一個半馬位，走內欄。直路彎落後相同距離。衝刺良佳，跑獲亞軍。"
+   },
+   {
+    "place_raw": "3",
+    "place": 3,
+    "no": 4,
+    "horse": "喜奔騰",
+    "horse_code": "B143",
+    "jockey": "巴度",
+    "jockey_id": "BA",
+    "trainer": "韋達",
+    "trainer_id": "WDJ",
+    "weight": 132,
+    "body_weight": 1067,
+    "draw": 5,
+    "lbw": "4",
+    "running": [
+     2,
+     2,
+     3
+    ],
+    "time": 57.68,
+    "win_odds": 4.9,
+    "sect": [
+     12.77,
+     21.54,
+     23.37
+    ],
+    "comment": "出閘迅速，居前列，走第二疊。直路彎落後半個馬位，直路初未能再增速。保持穩勢，取得季軍。"
+   },
+   {
+    "place_raw": "4",
+    "place": 4,
+    "no": 11,
+    "horse": "金剛秀",
+    "horse_code": "T436",
+    "jockey": "黎海榮",
+    "jockey_id": null,
+    "trainer": "鄭俊偉",
+    "trainer_id": "CCW",
+    "weight": 119,
+    "body_weight": 1109,
+    "draw": 1,
+    "lbw": "4-3/4",
+    "running": [
+     8,
+     7,
+     4
+    ],
+    "time": 57.82,
+    "win_odds": 14.0,
+    "sect": [
+     13.21,
+     21.54,
+     23.07
+    ],
+    "comment": "自第一檔出閘一般，居中間之後位置，走內欄。直路彎沿欄追近，以穩勢衝刺。"
+   },
+   {
+    "place_raw": "5",
+    "place": 5,
+    "no": 7,
+    "horse": "皇家魅力",
+    "horse_code": "A356",
+    "jockey": "蘇兆輝",
+    "jockey_id": null,
+    "trainer": "蘇偉賢",
+    "trainer_id": "SWY",
+    "weight": 131,
+    "body_weight": 1167,
+    "draw": 4,
+    "lbw": "5-1/2",
+    "running": [
+     4,
+     5,
+     5
+    ],
+    "time": 57.92,
+    "win_odds": 5.2,
+    "sect": [
+     12.93,
+     21.62,
+     23.37
+    ],
+    "comment": "出閘普通，居中間之前位置，走第二疊。直路彎前居相同位置。直路初未能再增速，保持穩勢至終點。"
+   },
+   {
+    "place_raw": "6",
+    "place": 6,
+    "no": 12,
+    "horse": "做得好",
+    "horse_code": "A082",
+    "jockey": "巫顯東",
+    "jockey_id": "MHT",
+    "trainer": "何良",
+    "trainer_id": null,
+    "weight": 111,
+    "body_weight": 1179,
+    "draw": 9,
+    "lbw": "6",
+    "running": [
+     7,
+     6,
+     6
+    ],
+    "time": 58.03,
+    "win_odds": 25.0,
+    "sect": [
+     13.09,
+     21.62,
+     23.32
+    ],
+    "comment": "起步時觸碰對手，居中間位置，走第三疊。直路彎居相同位置，以穩勢衝刺。"
+   },
+   {
+    "place_raw": "7",
+    "place": 7,
+    "no": 3,
+    "horse": "生生勝勝",
+    "horse_code": "C110",
+    "jockey": "潘明輝",
+    "jockey_id": "PMF",
+    "trainer": "姚本輝",
+    "trainer_id": "YPF",
+    "weight": 131,
+    "body_weight": 992,
+    "draw": 11,
+    "lbw": "6",
+    "running": [
+     12,
+     12,
+     7
+    ],
+    "time": 58.03,
+    "win_odds": 11.0,
+    "sect": [
+     13.97,
+     21.5,
+     22.56
+    ],
+    "comment": "出閘一般，早段未能跟上步速，被馬群拋離。逐漸恢復走勢，但直路彎仍落後七至八個馬位。末段追前甚多。"
+   },
+   {
+    "place_raw": "8",
+    "place": 8,
+    "no": 9,
+    "horse": "合作愉快",
+    "horse_code": "T392",
+    "jockey": "貝力斯",
+    "jockey_id": null,
+    "trainer": "文家良",
+    "trainer_id": "MKL",
+    "weight": 126,
+    "body_weight": 1146,
+    "draw": 7,
+    "lbw": "7",
+    "running": [
+     6,
+     9,
+     8
+    ],
+    "time": 58.19,
+    "win_odds": 24.0,
+    "sect": [
+     13.09,
+     21.9,
+     23.2
+    ],
+    "comment": "與對手同步出閘，居中間之後位置，走第三疊，有遮擋。直路彎落後四至五個馬位。直路上毫無進展。"
+   },
+   {
+    "place_raw": "9",
+    "place": 9,
+    "no": 1,
+    "horse": "八進",
+    "horse_code": "B263",
+    "jockey": "何澤堯",
+    "jockey_id": "HCY",
+    "trainer": "賀賢",
+    "trainer_id": "HAD",
+    "weight": 133,
+    "body_weight": 1068,
+    "draw": 10,
+    "lbw": "7-1/4",
+    "running": [
+     9,
+     11,
+     9
+    ],
+    "time": 58.22,
+    "win_odds": 5.8,
+    "sect": [
+     13.21,
+     21.98,
+     23.03
+    ],
+    "comment": "起步時被觸碰，居後列，走第四疊。直路彎落後六個馬位。末段保持同速。"
+   },
+   {
+    "place_raw": "10",
+    "place": 10,
+    "no": 5,
+    "horse": "鋒仔",
+    "horse_code": "C282",
+    "jockey": "史卓豐",
+    "jockey_id": null,
+    "trainer": "高伯新",
+    "trainer_id": null,
+    "weight": 131,
+    "body_weight": 1035,
+    "draw": 12,
+    "lbw": "8-1/4",
+    "running": [
+     11,
+     10,
+     10
+    ],
+    "time": 58.37,
+    "win_odds": 59.0,
+    "sect": [
+     13.41,
+     21.66,
+     23.3
+    ],
+    "comment": "自最外檔出閘普通，留居尾列，落後約五個馬位。直路彎走內欄節省腳程。入直路後持續走內疊，毫無進展。"
+   },
+   {
+    "place_raw": "11",
+    "place": 11,
+    "no": 10,
+    "horse": "城中霸",
+    "horse_code": "C101",
+    "jockey": "薛恩",
+    "jockey_id": null,
+    "trainer": "沈集成",
+    "trainer_id": "SCS",
+    "weight": 124,
+    "body_weight": 1168,
+    "draw": 8,
+    "lbw": "8-3/4",
+    "running": [
+     3,
+     4,
+     11
+    ],
+    "time": 58.46,
+    "win_odds": 56.0,
+    "sect": [
+     12.81,
+     21.7,
+     23.95
+    ],
+    "comment": "出閘一般，受催策上前，居前列，但走第三疊。沿途沒有遮擋。耗力太多，直路初轉弱。"
+   },
+   {
+    "place_raw": "12",
+    "place": 12,
+    "no": 8,
+    "horse": "大將風勝",
+    "horse_code": "B419",
+    "jockey": "李寶利",
+    "jockey_id": "RU",
+    "trainer": "葉楚航",
+    "trainer_id": "YCH",
+    "weight": 126,
+    "body_weight": 1009,
+    "draw": 6,
+    "lbw": "21-1/2",
+    "running": [
+     10,
+     8,
+     12
+    ],
+    "time": 60.49,
+    "win_odds": 37.0,
+    "sect": [
+     13.21,
+     21.74,
+     25.54
+    ],
+    "comment": "出閘略慢，落後約三至四個馬位，走第二疊。直路彎未能再增速。直路初轉弱，最後一百五十米收慢。"
+   }
+  ],
+  "dividends": {
+   "獨贏": [
+    [
+     "6",
+     38.0
+    ]
+   ],
+   "位置": [
+    [
+     "6",
+     16.0
+    ],
+    [
+     "2",
+     35.5
+    ],
+    [
+     "4",
+     20.0
+    ]
+   ],
+   "連贏": [
+    [
+     "2,6",
+     218.5
+    ]
+   ],
+   "位置Q": [
+    [
+     "2,6",
+     72.0
+    ],
+    [
+     "4,6",
+     58.0
+    ],
+    [
+     "2,4",
+     114.5
+    ]
+   ],
+   "3揀1（組合獨贏）": [
+    [
+     "A1",
+     null
+    ],
+    [
+     "A2",
+     20.0
+    ],
+    [
+     "A3",
+     null
+    ],
+    [
+     "",
+     null
+    ]
+   ],
+   "三重彩": [
+    [
+     "6,2,4",
+     2686.0
+    ]
+   ],
+   "單T": [
+    [
+     "2,4,6",
+     462.0
+    ]
+   ],
+   "四連環": [
+    [
+     "2,4,6,11",
+     1037.0
+    ]
+   ],
+   "四重彩": [
+    [
+     "6,2,4,11",
+     27057.0
+    ]
+   ]
+  },
+  "has_sect": true,
+  "has_comment": true
+ },
+ {
+  "date": "2019-11-27",
+  "venue": "HV",
+  "race_no": 2,
+  "race_id": 200,
+  "class": "第四班",
+  "distance": 1200,
+  "rating_band": "60-40",
+  "going": "好地",
+  "race_name": "傑德堡讓賽",
+  "surface": "TURF",
+  "course": "A",
+  "prize": "HK$ 967,000",
+  "cum_times": [
+   23.77,
+   46.36,
+   69.77
+  ],
+  "sectionals": [
+   23.77,
+   22.59,
+   23.41
+  ],
+  "runners": [
+   {
+    "place_raw": "1",
+    "place": 1,
+    "no": 1,
+    "horse": "傳奇",
+    "horse_code": "V357",
+    "jockey": "莫雷拉",
+    "jockey_id": "MOJ",
+    "trainer": "呂健威",
+    "trainer_id": "LKW",
+    "weight": 133,
+    "body_weight": 1125,
+    "draw": 2,
+    "lbw": "---",
+    "running": [
+     7,
+     6,
+     1
+    ],
+    "time": 69.77,
+    "win_odds": 2.1,
+    "sect": [
+     24.37,
+     22.51,
+     22.89
+    ],
+    "comment": "居中間位置，走第二疊。三百米處衝刺良佳，勝出賽事。"
+   },
+   {
+    "place_raw": "2",
+    "place": 2,
+    "no": 11,
+    "horse": "善傳千里",
+    "horse_code": "A121",
+    "jockey": "蔡明紹",
+    "jockey_id": "CML",
+    "trainer": "文家良",
+    "trainer_id": "MKL",
+    "weight": 119,
+    "body_weight": 1099,
+    "draw": 7,
+    "lbw": "2",
+    "running": [
+     3,
+     2,
+     2
+    ],
+    "time": 70.08,
+    "win_odds": 8.8,
+    "sect": [
+     23.97,
+     22.51,
+     23.6
+    ],
+    "comment": "受力策上前，走第二疊，步速中等。衝刺良佳，跑獲亞席。"
+   },
+   {
+    "place_raw": "3",
+    "place": 3,
+    "no": 7,
+    "horse": "從頭越",
+    "horse_code": "B073",
+    "jockey": "希威森",
+    "jockey_id": "HEL",
+    "trainer": "徐雨石",
+    "trainer_id": "TYS",
+    "weight": 122,
+    "body_weight": 1177,
+    "draw": 9,
+    "lbw": "2-1/4",
+    "running": [
+     1,
+     1,
+     3
+    ],
+    "time": 70.14,
+    "win_odds": 33.0,
+    "sect": [
+     23.77,
+     22.59,
+     23.78
+    ],
+    "comment": "移入內欄，輕鬆取得領先。保持佳勢，一百五十米處被超越。"
+   },
+   {
+    "place_raw": "4",
+    "place": 4,
+    "no": 5,
+    "horse": "肥仔",
+    "horse_code": "V071",
+    "jockey": "李寶利",
+    "jockey_id": "RU",
+    "trainer": "韋達",
+    "trainer_id": "WDJ",
+    "weight": 126,
+    "body_weight": 1156,
+    "draw": 5,
+    "lbw": "2-1/4",
+    "running": [
+     9,
+     10,
+     4
+    ],
+    "time": 70.15,
+    "win_odds": 11.0,
+    "sect": [
+     24.61,
+     22.51,
+     23.03
+    ],
+    "comment": "出閘時碰撞對手，居後列，走第二疊，步速中等。自四百米處至二百米處缺乏空位，望空後衝刺良佳。"
+   },
+   {
+    "place_raw": "5",
+    "place": 5,
+    "no": 6,
+    "horse": "君悅灣",
+    "horse_code": "P421",
+    "jockey": "黃皓楠",
+    "jockey_id": null,
+    "trainer": "鄭俊偉",
+    "trainer_id": "CCW",
+    "weight": 121,
+    "body_weight": 1212,
+    "draw": 3,
+    "lbw": "2-1/2",
+    "running": [
+     2,
+     3,
+     5
+    ],
+    "time": 70.18,
+    "win_odds": 50.0,
+    "sect": [
+     23.93,
+     22.67,
+     23.58
+    ],
+    "comment": "居包廂位置，步速中等。直路上保持位置。"
+   },
+   {
+    "place_raw": "6",
+    "place": 6,
+    "no": 10,
+    "horse": "富祿",
+    "horse_code": "C352",
+    "jockey": "蘇兆輝",
+    "jockey_id": null,
+    "trainer": "葉楚航",
+    "trainer_id": "YCH",
+    "weight": 120,
+    "body_weight": 1093,
+    "draw": 11,
+    "lbw": "3",
+    "running": [
+     10,
+     8,
+     6
+    ],
+    "time": 70.23,
+    "win_odds": 7.8,
+    "sect": [
+     24.65,
+     22.35,
+     23.23
+    ],
+    "comment": "起步後收慢，走第三至第四疊，步速中等。二百五十米處衝刺良佳。"
+   },
+   {
+    "place_raw": "7",
+    "place": 7,
+    "no": 9,
+    "horse": "勁瀟灑",
+    "horse_code": "C252",
+    "jockey": "何澤堯",
+    "jockey_id": "HCY",
+    "trainer": "羅富全",
+    "trainer_id": "LFC",
+    "weight": 121,
+    "body_weight": 1106,
+    "draw": 8,
+    "lbw": "3-3/4",
+    "running": [
+     6,
+     4,
+     7
+    ],
+    "time": 70.38,
+    "win_odds": 12.0,
+    "sect": [
+     24.21,
+     22.51,
+     23.66
+    ],
+    "comment": "受力策以保持居中間位置，走第二疊，步速中等。走勢一般。"
+   },
+   {
+    "place_raw": "8",
+    "place": 8,
+    "no": 2,
+    "horse": "運才",
+    "horse_code": "A251",
+    "jockey": "沈拿",
+    "jockey_id": null,
+    "trainer": "方嘉柏",
+    "trainer_id": "FC",
+    "weight": 127,
+    "body_weight": 1210,
+    "draw": 10,
+    "lbw": "4-1/4",
+    "running": [
+     11,
+     12,
+     8
+    ],
+    "time": 70.46,
+    "win_odds": 34.0,
+    "sect": [
+     24.93,
+     22.39,
+     23.14
+    ],
+    "comment": "出閘緩慢，居尾列，步速中等。直路上欠缺空位，穩步追前。"
+   },
+   {
+    "place_raw": "9",
+    "place": 9,
+    "no": 12,
+    "horse": "全心全意",
+    "horse_code": "C254",
+    "jockey": "巴度",
+    "jockey_id": "BA",
+    "trainer": "姚本輝",
+    "trainer_id": "YPF",
+    "weight": 118,
+    "body_weight": 1102,
+    "draw": 4,
+    "lbw": "4-3/4",
+    "running": [
+     5,
+     5,
+     9
+    ],
+    "time": 70.52,
+    "win_odds": 5.2,
+    "sect": [
+     24.21,
+     22.67,
+     23.64
+    ],
+    "comment": "收慢留居中間之前位置，走內欄，步速中等。直路上衝刺乏力。"
+   },
+   {
+    "place_raw": "10",
+    "place": 10,
+    "no": 8,
+    "horse": "功夫茶",
+    "horse_code": "C136",
+    "jockey": "貝力斯",
+    "jockey_id": null,
+    "trainer": "賀賢",
+    "trainer_id": "HAD",
+    "weight": 121,
+    "body_weight": 1123,
+    "draw": 6,
+    "lbw": "5-1/4",
+    "running": [
+     12,
+     11,
+     10
+    ],
+    "time": 70.6,
+    "win_odds": 23.0,
+    "sect": [
+     24.93,
+     22.35,
+     23.32
+    ],
+    "comment": "出閘時被碰撞，收慢留後，走第二至第三疊，步速中等。末段走勢尚可。"
+   },
+   {
+    "place_raw": "11",
+    "place": 11,
+    "no": 3,
+    "horse": "橋津精彩",
+    "horse_code": "C468",
+    "jockey": "蘇狄雄",
+    "jockey_id": null,
+    "trainer": "蘇偉賢",
+    "trainer_id": "SWY",
+    "weight": 124,
+    "body_weight": 1109,
+    "draw": 1,
+    "lbw": "7-1/2",
+    "running": [
+     8,
+     9,
+     11
+    ],
+    "time": 70.95,
+    "win_odds": 239.0,
+    "sect": [
+     24.37,
+     22.71,
+     23.87
+    ],
+    "comment": "沿欄居中間之後位置，步速中等。二百五十米處力竭。"
+   },
+   {
+    "place_raw": "12",
+    "place": 12,
+    "no": 4,
+    "horse": "神期大帝",
+    "horse_code": "D107",
+    "jockey": "巫顯東",
+    "jockey_id": "MHT",
+    "trainer": "告東尼",
+    "trainer_id": "CAS",
+    "weight": 123,
+    "body_weight": 1057,
+    "draw": 12,
+    "lbw": "20-1/2",
+    "running": [
+     4,
+     7,
+     12
+    ],
+    "time": 73.05,
+    "win_odds": 48.0,
+    "sect": [
+     23.97,
+     22.91,
+     26.17
+    ],
+    "comment": "出閘緩慢，受力策上前，走第三疊。六百米處迅速墮退。"
+   }
+  ],
+  "dividends": {
+   "獨贏": [
+    [
+     "1",
+     21.5
+    ]
+   ],
+   "位置": [
+    [
+     "1",
+     11.5
+    ],
+    [
+     "11",
+     23.0
+    ],
+    [
+     "7",
+     79.0
+    ]
+   ],
+   "連贏": [
+    [
+     "1,11",
+     107.0
+    ]
+   ],
+   "位置Q": [
+    [
+     "1,11",
+     41.5
+    ],
+    [
+     "1,7",
+     137.5
+    ],
+    [
+     "7,11",
+     302.0
+    ]
+   ],
+   "3揀1（組合獨贏）": [
+    [
+     "A1",
+     15.5
+    ],
+    [
+     "A2",
+     null
+    ],
+    [
+     "A3",
+     null
+    ],
+    [
+     "",
+     null
+    ]
+   ],
+   "三重彩": [
+    [
+     "1,11,7",
+     3179.0
+    ]
+   ],
+   "單T": [
+    [
+     "1,7,11",
+     878.0
+    ]
+   ],
+   "四連環": [
+    [
+     "1,5,7,11",
+     1854.0
+    ]
+   ],
+   "四重彩": [
+    [
+     "1,11,7,5",
+     25802.0
+    ]
+   ],
+   "第一口孖寶": [
+    [
+     "6/1",
+     126.0
+    ],
+    [
+     "6/11",
+     150.0
+    ]
+   ]
+  },
+  "has_sect": true,
+  "has_comment": true
+ },
+ {
+  "date": "2019-11-27",
+  "venue": "HV",
+  "race_no": 3,
+  "race_id": 201,
+  "class": "第五班",
+  "distance": 1800,
+  "rating_band": "40-0",
+  "going": "好地",
+  "race_name": "凱爾索讓賽",
+  "surface": "TURF",
+  "course": "A",
+  "prize": "HK$ 725,000",
+  "cum_times": [
+   13.62,
+   36.58,
+   61.95,
+   86.04,
+   110.72
+  ],
+  "sectionals": [
+   13.62,
+   22.96,
+   25.37,
+   24.09,
+   24.68
+  ],
+  "runners": [
+   {
+    "place_raw": "1",
+    "place": 1,
+    "no": 3,
+    "horse": "金童",
+    "horse_code": "V232",
+    "jockey": "沈拿",
+    "jockey_id": null,
+    "trainer": "呂健威",
+    "trainer_id": "LKW",
+    "weight": 128,
+    "body_weight": 1084,
+    "draw": 8,
+    "lbw": "---",
+    "running": [
+     7,
+     8,
+     8,
+     8,
+     1
+    ],
+    "time": 110.72,
+    "win_odds": 8.7,
+    "sect": [
+     13.98,
+     23.64,
+     25.09,
+     23.97,
+     24.04
+    ],
+    "comment": "沿欄居中間之後位置。跑過六百米處時上前。入直路時走外疊。接近一百米處時加速。末段衝刺強勁，勝出賽事。"
+   },
+   {
+    "place_raw": "2",
+    "place": 2,
+    "no": 12,
+    "horse": "醒目快駒",
+    "horse_code": "B107",
+    "jockey": "莫雷拉",
+    "jockey_id": "MOJ",
+    "trainer": "鄭俊偉",
+    "trainer_id": "CCW",
+    "weight": 115,
+    "body_weight": 1099,
+    "draw": 7,
+    "lbw": "頸位",
+    "running": [
+     8,
+     9,
+     10,
+     10,
+     2
+    ],
+    "time": 110.75,
+    "win_odds": 3.1,
+    "sect": [
+     14.26,
+     23.64,
+     25.05,
+     23.93,
+     23.87
+    ],
+    "comment": "居後列。接近五百米處時受催策。入直路時走最外疊。末段追前甚多，僅以一馬頸位之差落敗。"
+   },
+   {
+    "place_raw": "3",
+    "place": 3,
+    "no": 6,
+    "horse": "賞心星",
+    "horse_code": "C251",
+    "jockey": "薛恩",
+    "jockey_id": null,
+    "trainer": "方嘉柏",
+    "trainer_id": "FC",
+    "weight": 126,
+    "body_weight": 1173,
+    "draw": 12,
+    "lbw": "1-1/4",
+    "running": [
+     10,
+     11,
+     12,
+     9,
+     3
+    ],
+    "time": 110.92,
+    "win_odds": 14.0,
+    "sect": [
+     14.38,
+     23.88,
+     24.93,
+     23.69,
+     24.04
+    ],
+    "comment": "起步時被碰撞，繼而留後。跑過三百米處時受催策。直路上受催策，走勢甚佳。"
+   },
+   {
+    "place_raw": "4",
+    "place": 4,
+    "no": 8,
+    "horse": "明德之星",
+    "horse_code": "B395",
+    "jockey": "希威森",
+    "jockey_id": "HEL",
+    "trainer": "賀賢",
+    "trainer_id": "HAD",
+    "weight": 121,
+    "body_weight": 1053,
+    "draw": 9,
+    "lbw": "2-1/2",
+    "running": [
+     11,
+     10,
+     11,
+     7,
+     4
+    ],
+    "time": 111.1,
+    "win_odds": 14.0,
+    "sect": [
+     14.46,
+     23.48,
+     25.01,
+     23.69,
+     24.46
+    ],
+    "comment": "起步時受妨礙，繼而留後。接近二百米處時在受擠迫之際勒避。接近五十米處時略為追前。"
+   },
+   {
+    "place_raw": "5",
+    "place": 5,
+    "no": 11,
+    "horse": "財帥",
+    "horse_code": "B134",
+    "jockey": "蔡明紹",
+    "jockey_id": "CML",
+    "trainer": "蘇保羅",
+    "trainer_id": null,
+    "weight": 116,
+    "body_weight": 1114,
+    "draw": 10,
+    "lbw": "2-1/2",
+    "running": [
+     1,
+     1,
+     1,
+     1,
+     5
+    ],
+    "time": 111.13,
+    "win_odds": 15.0,
+    "sect": [
+     13.62,
+     22.96,
+     25.37,
+     24.09,
+     25.09
+    ],
+    "comment": "在催策下取得領先。跑過五百米處時開始上前。直路初受催策，走勢甚佳。跑過五十米處時墮退。"
+   },
+   {
+    "place_raw": "6",
+    "place": 6,
+    "no": 5,
+    "horse": "龍騰馬躍",
+    "horse_code": "V202",
+    "jockey": "何澤堯",
+    "jockey_id": "HCY",
+    "trainer": "丁冠豪",
+    "trainer_id": "TKH",
+    "weight": 127,
+    "body_weight": 1208,
+    "draw": 3,
+    "lbw": "3",
+    "running": [
+     6,
+     7,
+     7,
+     2,
+     6
+    ],
+    "time": 111.2,
+    "win_odds": 10.0,
+    "sect": [
+     13.98,
+     23.52,
+     25.21,
+     23.45,
+     25.04
+    ],
+    "comment": "居中間之後位置，跑來搶口。接近六百米處時移至領放馬外側。直路上力拼，但僅能保持同速。"
+   },
+   {
+    "place_raw": "7",
+    "place": 7,
+    "no": 2,
+    "horse": "帝豪寶駒",
+    "horse_code": "C035",
+    "jockey": "郭能",
+    "jockey_id": null,
+    "trainer": "蘇偉賢",
+    "trainer_id": "SWY",
+    "weight": 130,
+    "body_weight": 1167,
+    "draw": 11,
+    "lbw": "4-1/4",
+    "running": [
+     2,
+     2,
+     2,
+     3,
+     7
+    ],
+    "time": 111.41,
+    "win_odds": 13.0,
+    "sect": [
+     13.66,
+     23.12,
+     25.33,
+     24.09,
+     25.21
+    ],
+    "comment": "居領放馬外側。接近六百米處時受催策。跑過一百米處時轉弱。"
+   },
+   {
+    "place_raw": "8",
+    "place": 8,
+    "no": 7,
+    "horse": "祥光普照",
+    "horse_code": "A273",
+    "jockey": "蘇狄雄",
+    "jockey_id": null,
+    "trainer": "何良",
+    "trainer_id": null,
+    "weight": 123,
+    "body_weight": 1032,
+    "draw": 5,
+    "lbw": "4-1/4",
+    "running": [
+     3,
+     4,
+     4,
+     4,
+     8
+    ],
+    "time": 111.41,
+    "win_odds": 8.9,
+    "sect": [
+     13.78,
+     23.32,
+     25.25,
+     24.09,
+     24.97
+    ],
+    "comment": "居中間之前位置。直路上僅能保持同速。"
+   },
+   {
+    "place_raw": "9",
+    "place": 9,
+    "no": 1,
+    "horse": "乘勝追擊",
+    "horse_code": "V369",
+    "jockey": "蘇兆輝",
+    "jockey_id": null,
+    "trainer": "韋達",
+    "trainer_id": "WDJ",
+    "weight": 133,
+    "body_weight": 1089,
+    "draw": 2,
+    "lbw": "5",
+    "running": [
+     5,
+     3,
+     3,
+     6,
+     9
+    ],
+    "time": 111.52,
+    "win_odds": 7.6,
+    "sect": [
+     13.94,
+     23.0,
+     25.33,
+     24.25,
+     25.0
+    ],
+    "comment": "居包廂位置。跑過七百米處時受催策。接近一百米時墮退。"
+   },
+   {
+    "place_raw": "10",
+    "place": 10,
+    "no": 10,
+    "horse": "綠駿精英",
+    "horse_code": "B448",
+    "jockey": "李寶利",
+    "jockey_id": "RU",
+    "trainer": "葉楚航",
+    "trainer_id": "YCH",
+    "weight": 119,
+    "body_weight": 1178,
+    "draw": 6,
+    "lbw": "5-1/2",
+    "running": [
+     9,
+     5,
+     5,
+     5,
+     10
+    ],
+    "time": 111.59,
+    "win_odds": 36.0,
+    "sect": [
+     14.34,
+     22.96,
+     25.17,
+     24.01,
+     25.11
+    ],
+    "comment": "出閘時受擠迫，沿欄居中間位置。接近六百米處時上前。跑過二百米處時轉弱。"
+   },
+   {
+    "place_raw": "11",
+    "place": 11,
+    "no": 9,
+    "horse": "競駿飛鷹",
+    "horse_code": "B292",
+    "jockey": "巴度",
+    "jockey_id": "BA",
+    "trainer": "霍利時",
+    "trainer_id": null,
+    "weight": 120,
+    "body_weight": 1215,
+    "draw": 1,
+    "lbw": "8-3/4",
+    "running": [
+     12,
+     12,
+     9,
+     12,
+     11
+    ],
+    "time": 112.12,
+    "win_odds": 7.8,
+    "sect": [
+     14.78,
+     23.72,
+     24.29,
+     24.49,
+     24.84
+    ],
+    "comment": "出閘僅屬一般，居包尾位置。接近一千米處時開始上前。直路上受催策，但毫無表現。"
+   },
+   {
+    "place_raw": "12",
+    "place": 12,
+    "no": 4,
+    "horse": "威紫荊",
+    "horse_code": "B325",
+    "jockey": "史卓豐",
+    "jockey_id": null,
+    "trainer": "徐雨石",
+    "trainer_id": "TYS",
+    "weight": 128,
+    "body_weight": 1013,
+    "draw": 4,
+    "lbw": "12",
+    "running": [
+     4,
+     6,
+     6,
+     11,
+     12
+    ],
+    "time": 112.65,
+    "win_odds": 72.0,
+    "sect": [
+     13.86,
+     23.48,
+     25.25,
+     24.49,
+     25.57
+    ],
+    "comment": "居中間位置。接近七百米處時受催策。跑過三百米處時力竭。"
+   }
+  ],
+  "dividends": {
+   "獨贏": [
+    [
+     "3",
+     87.5
+    ]
+   ],
+   "位置": [
+    [
+     "3",
+     30.0
+    ],
+    [
+     "12",
+     16.5
+    ],
+    [
+     "6",
+     42.5
+    ]
+   ],
+   "連贏": [
+    [
+     "3,12",
+     131.5
+    ]
+   ],
+   "位置Q": [
+    [
+     "3,12",
+     53.0
+    ],
+    [
+     "3,6",
+     197.0
+    ],
+    [
+     "6,12",
+     120.5
+    ]
+   ],
+   "3揀1（組合獨贏）": [
+    [
+     "A1",
+     null
+    ],
+    [
+     "A2",
+     31.5
+    ],
+    [
+     "A3",
+     null
+    ],
+    [
+     "",
+     null
+    ]
+   ],
+   "三重彩": [
+    [
+     "3,12,6",
+     4390.0
+    ]
+   ],
+   "單T": [
+    [
+     "3,6,12",
+     712.0
+    ]
+   ],
+   "四連環": [
+    [
+     "3,6,8,12",
+     2870.0
+    ]
+   ],
+   "四重彩": [
+    [
+     "3,12,6,8",
+     55974.0
+    ]
+   ],
+   "第二口孖寶": [
+    [
+     "1/3",
+     147.5
+    ],
+    [
+     "1/12",
+     10.5
+    ]
+   ]
+  },
+  "has_sect": true,
+  "has_comment": true
+ },
+ {
+  "date": "2019-11-27",
+  "venue": "HV",
+  "race_no": 4,
+  "race_id": 202,
+  "class": "第四班",
+  "distance": 2200,
+  "rating_band": "60-40",
+  "going": "好地",
+  "race_name": "弗尼赫斯特讓賽",
+  "surface": "TURF",
+  "course": "A",
+  "prize": "HK$ 967,000",
+  "cum_times": [
+   14.34,
+   37.68,
+   62.56,
+   88.24,
+   112.83,
+   137.32
+  ],
+  "sectionals": [
+   14.34,
+   23.34,
+   24.88,
+   25.68,
+   24.59,
+   24.49
+  ],
+  "runners": [
+   {
+    "place_raw": "1",
+    "place": 1,
+    "no": 6,
+    "horse": "高瞻遠矚",
+    "horse_code": "B345",
+    "jockey": "蘇兆輝",
+    "jockey_id": null,
+    "trainer": "約翰摩亞",
+    "trainer_id": null,
+    "weight": 121,
+    "body_weight": 999,
+    "draw": 10,
+    "lbw": "---",
+    "running": [
+     2,
+     3,
+     2,
+     2,
+     1,
+     1
+    ],
+    "time": 137.32,
+    "win_odds": 4.9,
+    "sect": [
+     14.42,
+     23.5,
+     24.96,
+     25.56,
+     24.39,
+     24.49
+    ],
+    "comment": "展步上前，居第二位，離欄競跑。半程時落後領放馬逾一個馬位。趨近四百米處時上前取得領先。入直路後帶離對手，末段力壓對手勝出。"
+   },
+   {
+    "place_raw": "2",
+    "place": 2,
+    "no": 10,
+    "horse": "醉醒神",
+    "horse_code": "B436",
+    "jockey": "莫雷拉",
+    "jockey_id": "MOJ",
+    "trainer": "呂健威",
+    "trainer_id": "LKW",
+    "weight": 116,
+    "body_weight": 1043,
+    "draw": 6,
+    "lbw": "頭位",
+    "running": [
+     9,
+     6,
+     8,
+     9,
+     9,
+     2
+    ],
+    "time": 137.35,
+    "win_odds": 3.0,
+    "sect": [
+     15.18,
+     23.42,
+     25.08,
+     25.36,
+     24.43,
+     23.88
+    ],
+    "comment": "出閘僅屬一般，其後移入內欄，居中間位置。轉直路彎時移離內欄。接近二百米處追前時向內移回。末段奮起直追，僅敗。"
+   },
+   {
+    "place_raw": "3",
+    "place": 3,
+    "no": 12,
+    "horse": "蒜頭爺爺",
+    "horse_code": "V039",
+    "jockey": "蔡明紹",
+    "jockey_id": "CML",
+    "trainer": "葉楚航",
+    "trainer_id": "YCH",
+    "weight": 114,
+    "body_weight": 1023,
+    "draw": 8,
+    "lbw": "1-1/2",
+    "running": [
+     4,
+     4,
+     4,
+     4,
+     3,
+     3
+    ],
+    "time": 137.55,
+    "win_odds": 20.0,
+    "sect": [
+     14.54,
+     23.82,
+     24.88,
+     25.36,
+     24.43,
+     24.52
+    ],
+    "comment": "早段居中間位置，離欄競跑，落後領放馬四個馬位。過了半程後追近領放馬。入直路時落後領放馬稍逾一個馬位。末段衝刺一般，跑獲季軍。"
+   },
+   {
+    "place_raw": "4",
+    "place": 4,
+    "no": 8,
+    "horse": "神州福星",
+    "horse_code": "B326",
+    "jockey": "希威森",
+    "jockey_id": "HEL",
+    "trainer": "羅富全",
+    "trainer_id": "LFC",
+    "weight": 119,
+    "body_weight": 1023,
+    "draw": 1,
+    "lbw": "2",
+    "running": [
+     5,
+     5,
+     5,
+     6,
+     6,
+     4
+    ],
+    "time": 137.64,
+    "win_odds": 6.4,
+    "sect": [
+     14.78,
+     23.58,
+     25.0,
+     25.44,
+     24.47,
+     24.37
+    ],
+    "comment": "早段及中段沿欄居中間有利位置。接近直路彎時固守內疊。入直路時緊迫競跑。末段追前一個馬位，所負不遠。"
+   },
+   {
+    "place_raw": "5",
+    "place": 5,
+    "no": 5,
+    "horse": "牛精輝煌",
+    "horse_code": "A118",
+    "jockey": "史卓豐",
+    "jockey_id": null,
+    "trainer": "鄭俊偉",
+    "trainer_id": "CCW",
+    "weight": 123,
+    "body_weight": 1104,
+    "draw": 5,
+    "lbw": "2-1/4",
+    "running": [
+     12,
+     12,
+     12,
+     12,
+     12,
+     5
+    ],
+    "time": 137.69,
+    "win_odds": 13.0,
+    "sect": [
+     15.86,
+     23.3,
+     25.04,
+     25.08,
+     24.43,
+     23.98
+    ],
+    "comment": "起步時失蹄，因而失地，居後列。轉直路彎時仍居包尾位置，固守內疊。末段在馬群之間競跑，從後列位置追前。"
+   },
+   {
+    "place_raw": "6",
+    "place": 6,
+    "no": 7,
+    "horse": "力王",
+    "horse_code": "A065",
+    "jockey": "郭能",
+    "jockey_id": null,
+    "trainer": "霍利時",
+    "trainer_id": null,
+    "weight": 121,
+    "body_weight": 1056,
+    "draw": 3,
+    "lbw": "2-3/4",
+    "running": [
+     8,
+     9,
+     9,
+     8,
+     8,
+     6
+    ],
+    "time": 137.75,
+    "win_odds": 14.0,
+    "sect": [
+     15.06,
+     23.78,
+     24.84,
+     25.24,
+     24.43,
+     24.4
+    ],
+    "comment": "起步後不久墮居尾四位置，離欄競跑。跑過千二米處時移至第三疊，有遮擋。轉直路彎時移出更外疊，落後領放馬三個馬位。最後四百米落後相同距離。"
+   },
+   {
+    "place_raw": "7",
+    "place": 7,
+    "no": 1,
+    "horse": "精彩飛動",
+    "horse_code": "B095",
+    "jockey": "巴度",
+    "jockey_id": "BA",
+    "trainer": "方嘉柏",
+    "trainer_id": "FC",
+    "weight": 133,
+    "body_weight": 1017,
+    "draw": 4,
+    "lbw": "2-3/4",
+    "running": [
+     10,
+     10,
+     10,
+     11,
+     10,
+     7
+    ],
+    "time": 137.78,
+    "win_odds": 10.0,
+    "sect": [
+     15.26,
+     23.58,
+     25.08,
+     25.2,
+     24.39,
+     24.27
+    ],
+    "comment": "起步後墮居尾三位置，走內欄。四百米處仍居後列。最後三百米追前逾一個馬位，但未能構成真正威脅。"
+   },
+   {
+    "place_raw": "8",
+    "place": 8,
+    "no": 3,
+    "horse": "開心日子",
+    "horse_code": "A333",
+    "jockey": "薛恩",
+    "jockey_id": null,
+    "trainer": "沈集成",
+    "trainer_id": "SCS",
+    "weight": 125,
+    "body_weight": 1106,
+    "draw": 9,
+    "lbw": "3-1/4",
+    "running": [
+     7,
+     8,
+     6,
+     5,
+     5,
+     8
+    ],
+    "time": 137.85,
+    "win_odds": 36.0,
+    "sect": [
+     14.9,
+     23.86,
+     24.72,
+     25.24,
+     24.43,
+     24.7
+    ],
+    "comment": "居中間位置。沿途在沒遮擋下走第三疊。跑過五百米處時在力策下進佔較接近位置。二百米處未能再增速。走外疊後於末段逐漸轉弱。"
+   },
+   {
+    "place_raw": "9",
+    "place": 9,
+    "no": 2,
+    "horse": "其樂無窮",
+    "horse_code": "S147",
+    "jockey": "沈拿",
+    "jockey_id": null,
+    "trainer": "鄭俊偉",
+    "trainer_id": "CCW",
+    "weight": 128,
+    "body_weight": 1108,
+    "draw": 11,
+    "lbw": "3-1/2",
+    "running": [
+     11,
+     11,
+     11,
+     10,
+     11,
+     9
+    ],
+    "time": 137.9,
+    "win_odds": 36.0,
+    "sect": [
+     15.5,
+     23.58,
+     24.92,
+     25.08,
+     24.51,
+     24.31
+    ],
+    "comment": "起步後在馬群之後切入內欄，居尾二位置。四百米處仍居尾二位置。追近頭馬一個馬位，但從未構成威脅。"
+   },
+   {
+    "place_raw": "10",
+    "place": 10,
+    "no": 4,
+    "horse": "鵲橋飛渡",
+    "horse_code": "A247",
+    "jockey": "何澤堯",
+    "jockey_id": "HCY",
+    "trainer": "高伯新",
+    "trainer_id": null,
+    "weight": 124,
+    "body_weight": 1084,
+    "draw": 7,
+    "lbw": "4-1/2",
+    "running": [
+     3,
+     2,
+     3,
+     3,
+     4,
+     10
+    ],
+    "time": 138.02,
+    "win_odds": 17.0,
+    "sect": [
+     14.54,
+     23.38,
+     25.12,
+     25.52,
+     24.51,
+     24.95
+    ],
+    "comment": "出閘快速，早段領放。自千六米處起居領先馬匹之後位置。四百米處落後僅一個半馬位，但最後三百米轉弱。增程或不合發揮。"
+   },
+   {
+    "place_raw": "11",
+    "place": 11,
+    "no": 11,
+    "horse": "君臨大地",
+    "horse_code": "V192",
+    "jockey": "黎海榮",
+    "jockey_id": null,
+    "trainer": "何良",
+    "trainer_id": null,
+    "weight": 115,
+    "body_weight": 1005,
+    "draw": 2,
+    "lbw": "5",
+    "running": [
+     6,
+     7,
+     7,
+     7,
+     7,
+     11
+    ],
+    "time": 138.13,
+    "win_odds": 9.1,
+    "sect": [
+     14.82,
+     23.82,
+     24.92,
+     25.32,
+     24.43,
+     24.82
+    ],
+    "comment": "出閘迅速，首二百米墮居中間位置，離欄競跑。趨近五百米處時受力策。跑過四百米處時落後領放馬僅三個馬位，其後逐漸轉弱。一直落後。"
+   },
+   {
+    "place_raw": "12",
+    "place": 12,
+    "no": 9,
+    "horse": "馬友寶寶",
+    "horse_code": "C085",
+    "jockey": "潘明輝",
+    "jockey_id": "PMF",
+    "trainer": "蘇保羅",
+    "trainer_id": null,
+    "weight": 115,
+    "body_weight": 1115,
+    "draw": 12,
+    "lbw": "11-1/2",
+    "running": [
+     1,
+     1,
+     1,
+     1,
+     2,
+     12
+    ],
+    "time": 139.14,
+    "win_odds": 128.0,
+    "sect": [
+     14.34,
+     23.34,
+     24.88,
+     25.68,
+     24.67,
+     26.23
+    ],
+    "comment": "自最外檔出閘後展步上前，取得領先。接近千五米處時移入內欄。半程時帶離第二位馬匹逾一個馬位。趨近四百米處時被追上。最後四百米大幅度墮退。洩氣潰敗。"
+   }
+  ],
+  "dividends": {
+   "獨贏": [
+    [
+     "6",
+     49.5
+    ]
+   ],
+   "位置": [
+    [
+     "6",
+     19.5
+    ],
+    [
+     "10",
+     15.5
+    ],
+    [
+     "12",
+     41.5
+    ]
+   ],
+   "連贏": [
+    [
+     "6,10",
+     84.0
+    ]
+   ],
+   "位置Q": [
+    [
+     "6,10",
+     37.0
+    ],
+    [
+     "6,12",
+     127.0
+    ],
+    [
+     "10,12",
+     94.0
+    ]
+   ],
+   "3揀1（組合獨贏）": [
+    [
+     "A1",
+     null
+    ],
+    [
+     "A2",
+     28.5
+    ],
+    [
+     "A3",
+     null
+    ],
+    [
+     "",
+     null
+    ]
+   ],
+   "三重彩": [
+    [
+     "6,10,12",
+     1774.0
+    ]
+   ],
+   "單T": [
+    [
+     "6,10,12",
+     341.0
+    ]
+   ],
+   "四連環": [
+    [
+     "6,8,10,12",
+     395.0
+    ]
+   ],
+   "四重彩": [
+    [
+     "6,10,12,8",
+     8739.0
+    ]
+   ],
+   "第三口孖寶": [
+    [
+     "3/6",
+     523.5
+    ],
+    [
+     "3/10",
+     49.0
+    ]
+   ]
+  },
+  "has_sect": true,
+  "has_comment": true
+ },
+ {
+  "date": "2019-11-27",
+  "venue": "HV",
+  "race_no": 5,
+  "race_id": 203,
+  "class": "第四班",
+  "distance": 1200,
+  "rating_band": "60-40",
+  "going": "好地",
+  "race_name": "傑德堡讓賽",
+  "surface": "TURF",
+  "course": "A",
+  "prize": "HK$ 967,000",
+  "cum_times": [
+   24.4,
+   47.02,
+   70.61
+  ],
+  "sectionals": [
+   24.4,
+   22.62,
+   23.59
+  ],
+  "runners": [
+   {
+    "place_raw": "1",
+    "place": 1,
+    "no": 10,
+    "horse": "孖寶",
+    "horse_code": "C239",
+    "jockey": "蔡明紹",
+    "jockey_id": "CML",
+    "trainer": "蘇保羅",
+    "trainer_id": null,
+    "weight": 119,
+    "body_weight": 1210,
+    "draw": 9,
+    "lbw": "---",
+    "running": [
+     2,
+     1,
+     1
+    ],
+    "time": 70.61,
+    "win_odds": 9.6,
+    "sect": [
+     24.4,
+     22.62,
+     23.59
+    ],
+    "comment": "出閘迅速，早段居前列，但走第三疊。跑過八百米處後受推策上前，取得領先。直路彎走勢暢順。直路上保持勁勢，勝出賽事。"
+   },
+   {
+    "place_raw": "2",
+    "place": 2,
+    "no": 4,
+    "horse": "王者奇兵",
+    "horse_code": "C130",
+    "jockey": "莫雷拉",
+    "jockey_id": "MOJ",
+    "trainer": "姚本輝",
+    "trainer_id": "YPF",
+    "weight": 130,
+    "body_weight": 1157,
+    "draw": 3,
+    "lbw": "1/2",
+    "running": [
+     6,
+     7,
+     2
+    ],
+    "time": 70.69,
+    "win_odds": 2.2,
+    "sect": [
+     24.6,
+     22.98,
+     23.11
+    ],
+    "comment": "出閘時碰撞對手，居中間位置，走第二疊。直路彎位置相若。跑過四百米處後開始發力。入直路時走外疊。衝刺良佳，取得亞軍。"
+   },
+   {
+    "place_raw": "3",
+    "place": 3,
+    "no": 6,
+    "horse": "帝豪精彩",
+    "horse_code": "D010",
+    "jockey": "史卓豐",
+    "jockey_id": null,
+    "trainer": "文家良",
+    "trainer_id": "MKL",
+    "weight": 125,
+    "body_weight": 1208,
+    "draw": 5,
+    "lbw": "3/4",
+    "running": [
+     3,
+     3,
+     3
+    ],
+    "time": 70.75,
+    "win_odds": 4.2,
+    "sect": [
+     24.4,
+     22.86,
+     23.49
+    ],
+    "comment": "出閘迅速，居前列，走內疊。接近六百米處時讓對手過頭。直路彎緊隨領放馬。直路上保持佳勢，取得一席季軍。"
+   },
+   {
+    "place_raw": "4",
+    "place": 4,
+    "no": 3,
+    "horse": "銀亮之星",
+    "horse_code": "B027",
+    "jockey": "潘明輝",
+    "jockey_id": "PMF",
+    "trainer": "何良",
+    "trainer_id": null,
+    "weight": 130,
+    "body_weight": 1106,
+    "draw": 12,
+    "lbw": "1-1/4",
+    "running": [
+     11,
+     11,
+     4
+    ],
+    "time": 70.81,
+    "win_odds": 18.0,
+    "sect": [
+     25.08,
+     22.9,
+     22.83
+    ],
+    "comment": "自最外檔出閘，留居包尾位置。直路彎落後約六個馬位。入直路時走大外疊。衝刺凌厲，取得殿軍，過終點時最為接近。"
+   },
+   {
+    "place_raw": "5",
+    "place": 5,
+    "no": 5,
+    "horse": "分到笑",
+    "horse_code": "C078",
+    "jockey": "何澤堯",
+    "jockey_id": "HCY",
+    "trainer": "賀賢",
+    "trainer_id": "HAD",
+    "weight": 126,
+    "body_weight": 1060,
+    "draw": 1,
+    "lbw": "1-3/4",
+    "running": [
+     10,
+     8,
+     5
+    ],
+    "time": 70.91,
+    "win_odds": 58.0,
+    "sect": [
+     24.84,
+     22.9,
+     23.17
+    ],
+    "comment": "出閘笨拙，居後列，走內欄。直路彎前走內欄節省腳程。直路初向外移出，末段追前甚多。"
+   },
+   {
+    "place_raw": "6",
+    "place": 6,
+    "no": 9,
+    "horse": "超級炮彈",
+    "horse_code": "C281",
+    "jockey": "李寶利",
+    "jockey_id": "RU",
+    "trainer": "丁冠豪",
+    "trainer_id": "TKH",
+    "weight": 120,
+    "body_weight": 1147,
+    "draw": 2,
+    "lbw": "2",
+    "running": [
+     5,
+     6,
+     6
+    ],
+    "time": 70.94,
+    "win_odds": 38.0,
+    "sect": [
+     24.56,
+     22.94,
+     23.44
+    ],
+    "comment": "出閘時被對手碰撞，居中間位置，走內欄。沿途走內欄節省腳程。保持佳勢至一百米處，其後逐漸轉弱。"
+   },
+   {
+    "place_raw": "7",
+    "place": 7,
+    "no": 1,
+    "horse": "童話",
+    "horse_code": "B238",
+    "jockey": "黎海榮",
+    "jockey_id": null,
+    "trainer": "徐雨石",
+    "trainer_id": "TYS",
+    "weight": 133,
+    "body_weight": 1129,
+    "draw": 8,
+    "lbw": "2-1/2",
+    "running": [
+     7,
+     4,
+     7
+    ],
+    "time": 71.02,
+    "win_odds": 11.0,
+    "sect": [
+     24.64,
+     22.74,
+     23.64
+    ],
+    "comment": "出閘時被對手觸碰，居中間位置，走第三疊。接近千一米處時踏著他駒的後蹄及失蹄。跑過五百五十米處後開始發力。直路初未能再增速，其後逐漸轉弱。"
+   },
+   {
+    "place_raw": "8",
+    "place": 8,
+    "no": 2,
+    "horse": "大聚會",
+    "horse_code": "V293",
+    "jockey": "郭能",
+    "jockey_id": null,
+    "trainer": "高伯新",
+    "trainer_id": null,
+    "weight": 132,
+    "body_weight": 1088,
+    "draw": 10,
+    "lbw": "2-3/4",
+    "running": [
+     9,
+     9,
+     8
+    ],
+    "time": 71.03,
+    "win_odds": 22.0,
+    "sect": [
+     24.84,
+     22.9,
+     23.29
+    ],
+    "comment": "與對手同步出閘，居中間之後位置，走第三疊，有遮擋。接近一千米處時受妨礙。直路彎落後約四個馬位。直路上略為追前。"
+   },
+   {
+    "place_raw": "9",
+    "place": 9,
+    "no": 7,
+    "horse": "銀時",
+    "horse_code": "C216",
+    "jockey": "黃皓楠",
+    "jockey_id": null,
+    "trainer": "容天鵬",
+    "trainer_id": null,
+    "weight": 120,
+    "body_weight": 1133,
+    "draw": 11,
+    "lbw": "4-3/4",
+    "running": [
+     1,
+     2,
+     9
+    ],
+    "time": 71.38,
+    "win_odds": 25.0,
+    "sect": [
+     24.4,
+     22.74,
+     24.24
+    ],
+    "comment": "自第十一檔出閘迅速，未能切入內欄，居中間之前位置，走大外疊。跑過一千米處後受催策上前，但仍走第四疊。自五百五十米處起走第二疊。入直路時落後四分三個馬位。直路初未能再增速，最後二百米轉弱。"
+   },
+   {
+    "place_raw": "10",
+    "place": 10,
+    "no": 8,
+    "horse": "一路順風",
+    "horse_code": "C453",
+    "jockey": "蘇兆輝",
+    "jockey_id": null,
+    "trainer": "苗禮德",
+    "trainer_id": null,
+    "weight": 123,
+    "body_weight": 1116,
+    "draw": 7,
+    "lbw": "4-3/4",
+    "running": [
+     4,
+     5,
+     10
+    ],
+    "time": 71.38,
+    "win_odds": 6.8,
+    "sect": [
+     24.44,
+     22.98,
+     23.96
+    ],
+    "comment": "出閘時觸碰對手，受催策上前居前列，走第二疊。接近六百五十米處時讓對手過頭。直路彎未能再增速。直路上逐漸轉弱。（見競賽事件報告。）"
+   },
+   {
+    "place_raw": "11",
+    "place": 11,
+    "no": 11,
+    "horse": "辣得真",
+    "horse_code": "C021",
+    "jockey": "沈拿",
+    "jockey_id": null,
+    "trainer": "羅富全",
+    "trainer_id": "LFC",
+    "weight": 119,
+    "body_weight": 1064,
+    "draw": 4,
+    "lbw": "5-1/2",
+    "running": [
+     8,
+     10,
+     11
+    ],
+    "time": 71.49,
+    "win_odds": 73.0,
+    "sect": [
+     24.8,
+     23.02,
+     23.67
+    ],
+    "comment": "出閘普通，居中間之後位置，走第二疊。直路彎落後五個馬位。直路上衝刺乏力。"
+   },
+   {
+    "place_raw": "WV-A",
+    "place": null,
+    "no": 12,
+    "horse": "紅旗福星",
+    "horse_code": "B417",
+    "jockey": "蘇狄雄",
+    "jockey_id": null,
+    "trainer": "蘇偉賢",
+    "trainer_id": "SWY",
+    "weight": 115,
+    "body_weight": null,
+    "draw": null,
+    "lbw": "---",
+    "running": [],
+    "time": null,
+    "win_odds": null
+   }
+  ],
+  "dividends": {
+   "獨贏": [
+    [
+     "10",
+     96.0
+    ]
+   ],
+   "位置": [
+    [
+     "10",
+     26.0
+    ],
+    [
+     "4",
+     11.5
+    ],
+    [
+     "6",
+     15.5
+    ]
+   ],
+   "連贏": [
+    [
+     "4,10",
+     118.5
+    ]
+   ],
+   "位置Q": [
+    [
+     "4,10",
+     44.5
+    ],
+    [
+     "6,10",
+     73.5
+    ],
+    [
+     "4,6",
+     26.0
+    ]
+   ],
+   "3揀1（組合獨贏）": [
+    [
+     "A1",
+     null
+    ],
+    [
+     "A2",
+     23.5
+    ],
+    [
+     "A3",
+     null
+    ],
+    [
+     "",
+     null
+    ]
+   ],
+   "三重彩": [
+    [
+     "10,4,6",
+     1461.0
+    ]
+   ],
+   "單T": [
+    [
+     "4,6,10",
+     162.0
+    ]
+   ],
+   "四連環": [
+    [
+     "3,4,6,10",
+     506.0
+    ]
+   ],
+   "四重彩": [
+    [
+     "10,4,6,3",
+     16005.0
+    ]
+   ],
+   "第四口孖寶": [
+    [
+     "6/10",
+     389.0
+    ],
+    [
+     "6/4,12",
+     22.5
+    ]
+   ],
+   "第一口孖T": [
+    [
+     "6,10,12/10>4,6,12",
+     5973.0
+    ]
+   ]
+  },
+  "has_sect": true,
+  "has_comment": true
+ },
+ {
+  "date": "2019-11-27",
+  "venue": "HV",
+  "race_no": 6,
+  "race_id": 204,
+  "class": "第三班",
+  "distance": 1000,
+  "rating_band": "80-60",
+  "going": "好地",
+  "race_name": "聖安度挑戰碟（讓賽）",
+  "surface": "TURF",
+  "course": "A",
+  "prize": "HK$ 1,450,000",
+  "cum_times": [
+   12.64,
+   34.17,
+   57.04
+  ],
+  "sectionals": [
+   12.64,
+   21.53,
+   22.87
+  ],
+  "runners": [
+   {
+    "place_raw": "1",
+    "place": 1,
+    "no": 6,
+    "horse": "金匯昇",
+    "horse_code": "C010",
+    "jockey": "莫雷拉",
+    "jockey_id": "MOJ",
+    "trainer": "蔡約翰",
+    "trainer_id": "SJJ",
+    "weight": 124,
+    "body_weight": 1096,
+    "draw": 1,
+    "lbw": "---",
+    "running": [
+     6,
+     3,
+     1
+    ],
+    "time": 57.04,
+    "win_odds": 5.0,
+    "sect": [
+     13.04,
+     21.41,
+     22.59
+    ],
+    "comment": "居中間之前位置，走內欄。持續力拼，最後五十米取得領先，以頸位之先勝出賽事。"
+   },
+   {
+    "place_raw": "2",
+    "place": 2,
+    "no": 10,
+    "horse": "獎進",
+    "horse_code": "C283",
+    "jockey": "貝力斯",
+    "jockey_id": null,
+    "trainer": "方嘉柏",
+    "trainer_id": "FC",
+    "weight": 119,
+    "body_weight": 1152,
+    "draw": 2,
+    "lbw": "頸位",
+    "running": [
+     1,
+     1,
+     2
+    ],
+    "time": 57.09,
+    "win_odds": 2.7,
+    "sect": [
+     12.64,
+     21.53,
+     22.92
+    ],
+    "comment": "受催策上前，沿欄領放。持續上前，但約於五十米處被頭馬超越。"
+   },
+   {
+    "place_raw": "3",
+    "place": 3,
+    "no": 12,
+    "horse": "電子群星",
+    "horse_code": "C132",
+    "jockey": "潘明輝",
+    "jockey_id": "PMF",
+    "trainer": "文家良",
+    "trainer_id": "MKL",
+    "weight": 113,
+    "body_weight": 1035,
+    "draw": 3,
+    "lbw": "2-1/2",
+    "running": [
+     12,
+     9,
+     3
+    ],
+    "time": 57.45,
+    "win_odds": 10.0,
+    "sect": [
+     13.24,
+     21.57,
+     22.64
+    ],
+    "comment": "沿欄居後列。追前。衝刺凌厲，取得季軍。"
+   },
+   {
+    "place_raw": "4",
+    "place": 4,
+    "no": 5,
+    "horse": "大武士",
+    "horse_code": "B216",
+    "jockey": "薛恩",
+    "jockey_id": null,
+    "trainer": "沈集成",
+    "trainer_id": "SCS",
+    "weight": 126,
+    "body_weight": 1137,
+    "draw": 4,
+    "lbw": "3-3/4",
+    "running": [
+     2,
+     2,
+     4
+    ],
+    "time": 57.66,
+    "win_odds": 6.3,
+    "sect": [
+     12.76,
+     21.53,
+     23.37
+    ],
+    "comment": "居領放馬外側。接近一百五十米處時被領先馬匹拋離。力竭，但保住殿軍。"
+   },
+   {
+    "place_raw": "5",
+    "place": 5,
+    "no": 4,
+    "horse": "皇仁先鋒",
+    "horse_code": "A381",
+    "jockey": "李寶利",
+    "jockey_id": "RU",
+    "trainer": "徐雨石",
+    "trainer_id": "TYS",
+    "weight": 131,
+    "body_weight": 1139,
+    "draw": 7,
+    "lbw": "4-1/4",
+    "running": [
+     8,
+     5,
+     5
+    ],
+    "time": 57.73,
+    "win_odds": 37.0,
+    "sect": [
+     13.12,
+     21.45,
+     23.16
+    ],
+    "comment": "出閘僅屬一般，其後未能加速，居中間位置，走第二疊。保持同速。"
+   },
+   {
+    "place_raw": "6",
+    "place": 6,
+    "no": 1,
+    "horse": "正陽清風",
+    "horse_code": "B343",
+    "jockey": "蔡明紹",
+    "jockey_id": "CML",
+    "trainer": "姚本輝",
+    "trainer_id": "YPF",
+    "weight": 133,
+    "body_weight": 1191,
+    "draw": 10,
+    "lbw": "4-1/2",
+    "running": [
+     9,
+     11,
+     6
+    ],
+    "time": 57.74,
+    "win_odds": 4.7,
+    "sect": [
+     13.12,
+     21.81,
+     22.81
+    ],
+    "comment": "起初居中間位置。六百米處轉彎時留後以取得遮擋。直路上走勢普通。"
+   },
+   {
+    "place_raw": "7",
+    "place": 7,
+    "no": 11,
+    "horse": "富萬家",
+    "horse_code": "V286",
+    "jockey": "巫顯東",
+    "jockey_id": "MHT",
+    "trainer": "何良",
+    "trainer_id": null,
+    "weight": 116,
+    "body_weight": 1080,
+    "draw": 5,
+    "lbw": "5-1/2",
+    "running": [
+     3,
+     4,
+     7
+    ],
+    "time": 57.9,
+    "win_odds": 31.0,
+    "sect": [
+     12.88,
+     21.61,
+     23.41
+    ],
+    "comment": "居前列，但在沒有遮擋下走外疊。未能加速。"
+   },
+   {
+    "place_raw": "8",
+    "place": 8,
+    "no": 3,
+    "horse": "加州神箭",
+    "horse_code": "A417",
+    "jockey": "希威森",
+    "jockey_id": "HEL",
+    "trainer": "告東尼",
+    "trainer_id": "CAS",
+    "weight": 131,
+    "body_weight": 1112,
+    "draw": 8,
+    "lbw": "5-1/2",
+    "running": [
+     7,
+     8,
+     8
+    ],
+    "time": 57.91,
+    "win_odds": 28.0,
+    "sect": [
+     13.08,
+     21.73,
+     23.1
+    ],
+    "comment": "居中間之後位置，走第二疊。大致保持同速。"
+   },
+   {
+    "place_raw": "9",
+    "place": 9,
+    "no": 2,
+    "horse": "大風暴",
+    "horse_code": "B055",
+    "jockey": "巴度",
+    "jockey_id": "BA",
+    "trainer": "韋達",
+    "trainer_id": "WDJ",
+    "weight": 132,
+    "body_weight": 1177,
+    "draw": 6,
+    "lbw": "8",
+    "running": [
+     4,
+     6,
+     9
+    ],
+    "time": 58.32,
+    "win_odds": 18.0,
+    "sect": [
+     12.88,
+     21.77,
+     23.67
+    ],
+    "comment": "居中間之前位置，走外疊，但有遮擋。跑過二百米處時力竭。（流鼻血。）"
+   },
+   {
+    "place_raw": "10",
+    "place": 10,
+    "no": 8,
+    "horse": "英之友",
+    "horse_code": "A373",
+    "jockey": "黃皓楠",
+    "jockey_id": null,
+    "trainer": "容天鵬",
+    "trainer_id": null,
+    "weight": 118,
+    "body_weight": 1113,
+    "draw": 9,
+    "lbw": "10",
+    "running": [
+     5,
+     10,
+     10
+    ],
+    "time": 58.62,
+    "win_odds": 133.0,
+    "sect": [
+     13.04,
+     21.81,
+     23.77
+    ],
+    "comment": "居中間位置，走外疊，但有遮擋。直路上失地。"
+   },
+   {
+    "place_raw": "11",
+    "place": 11,
+    "no": 7,
+    "horse": "陽明酷酷",
+    "horse_code": "C259",
+    "jockey": "史卓豐",
+    "jockey_id": null,
+    "trainer": "丁冠豪",
+    "trainer_id": "TKH",
+    "weight": 123,
+    "body_weight": 1074,
+    "draw": 11,
+    "lbw": "13-3/4",
+    "running": [
+     11,
+     12,
+     11
+    ],
+    "time": 59.25,
+    "win_odds": 251.0,
+    "sect": [
+     13.24,
+     22.13,
+     23.88
+    ],
+    "comment": "居後列，走外疊，但有遮擋。全無競爭力。"
+   },
+   {
+    "place_raw": "12",
+    "place": 12,
+    "no": 9,
+    "horse": "美麗天驕",
+    "horse_code": "C274",
+    "jockey": "何澤堯",
+    "jockey_id": "HCY",
+    "trainer": "約翰摩亞",
+    "trainer_id": null,
+    "weight": 120,
+    "body_weight": 1054,
+    "draw": 12,
+    "lbw": "14-3/4",
+    "running": [
+     10,
+     7,
+     12
+    ],
+    "time": 59.39,
+    "win_odds": 31.0,
+    "sect": [
+     13.16,
+     21.57,
+     24.66
+    ],
+    "comment": "出閘笨拙及未能加速。六百米處轉彎時居前列，但走外疊，其後瞬即轉弱。"
+   }
+  ],
+  "dividends": {
+   "獨贏": [
+    [
+     "6",
+     50.0
+    ]
+   ],
+   "位置": [
+    [
+     "6",
+     19.0
+    ],
+    [
+     "10",
+     12.5
+    ],
+    [
+     "12",
+     24.5
+    ]
+   ],
+   "連贏": [
+    [
+     "6,10",
+     86.0
+    ]
+   ],
+   "位置Q": [
+    [
+     "6,10",
+     35.0
+    ],
+    [
+     "6,12",
+     82.5
+    ],
+    [
+     "10,12",
+     39.5
+    ]
+   ],
+   "3揀1（組合獨贏）": [
+    [
+     "A1",
+     18.0
+    ],
+    [
+     "A2",
+     null
+    ],
+    [
+     "A3",
+     null
+    ],
+    [
+     "",
+     null
+    ]
+   ],
+   "三重彩": [
+    [
+     "6,10,12",
+     1137.0
+    ]
+   ],
+   "單T": [
+    [
+     "6,10,12",
+     195.0
+    ]
+   ],
+   "四連環": [
+    [
+     "5,6,10,12",
+     261.0
+    ]
+   ],
+   "四重彩": [
+    [
+     "6,10,12,5",
+     6044.0
+    ]
+   ],
+   "第五口孖寶": [
+    [
+     "10/6",
+     411.0
+    ],
+    [
+     "10/10",
+     51.5
+    ]
+   ]
+  },
+  "has_sect": true,
+  "has_comment": true
+ },
+ {
+  "date": "2019-11-27",
+  "venue": "HV",
+  "race_no": 7,
+  "race_id": 205,
+  "class": "第四班",
+  "distance": 1200,
+  "rating_band": "60-40",
+  "going": "好地",
+  "race_name": "傑德堡讓賽",
+  "surface": "TURF",
+  "course": "A",
+  "prize": "HK$ 967,000",
+  "cum_times": [
+   23.32,
+   46.25,
+   69.93
+  ],
+  "sectionals": [
+   23.32,
+   22.93,
+   23.68
+  ],
+  "runners": [
+   {
+    "place_raw": "1",
+    "place": 1,
+    "no": 4,
+    "horse": "如真如假",
+    "horse_code": "C222",
+    "jockey": "薛恩",
+    "jockey_id": null,
+    "trainer": "方嘉柏",
+    "trainer_id": "FC",
+    "weight": 126,
+    "body_weight": 1129,
+    "draw": 2,
+    "lbw": "---",
+    "running": [
+     2,
+     1,
+     1
+    ],
+    "time": 69.93,
+    "win_odds": 3.2,
+    "sect": [
+     23.36,
+     22.89,
+     23.68
+    ],
+    "comment": "自第二檔出閘迅速，大部分途程居領放馬內側，走內欄。約四百五十米處時取得領先，在催策下保持佳勢。"
+   },
+   {
+    "place_raw": "2",
+    "place": 2,
+    "no": 3,
+    "horse": "開心人生",
+    "horse_code": "C065",
+    "jockey": "何澤堯",
+    "jockey_id": "HCY",
+    "trainer": "呂健威",
+    "trainer_id": "LKW",
+    "weight": 129,
+    "body_weight": 1230,
+    "draw": 1,
+    "lbw": "3/4",
+    "running": [
+     8,
+     7,
+     2
+    ],
+    "time": 70.04,
+    "win_odds": 3.5,
+    "sect": [
+     24.0,
+     22.73,
+     23.31
+    ],
+    "comment": "出閘緩慢，居中間位置，走內欄。入直路時開始上前。二百米處向外移出取位。保持佳勢，過終點時最為接近。"
+   },
+   {
+    "place_raw": "3",
+    "place": 3,
+    "no": 10,
+    "horse": "旋風腿",
+    "horse_code": "B002",
+    "jockey": "莫雷拉",
+    "jockey_id": "MOJ",
+    "trainer": "蔡約翰",
+    "trainer_id": "SJJ",
+    "weight": 122,
+    "body_weight": 1108,
+    "draw": 10,
+    "lbw": "2",
+    "running": [
+     10,
+     9,
+     3
+    ],
+    "time": 70.22,
+    "win_odds": 9.4,
+    "sect": [
+     24.24,
+     22.69,
+     23.29
+    ],
+    "comment": "自外檔出閘後留後，勒避，居後列，走內欄。入直路時走內疊以省腳程。一百米處雖一度受阻，但仍保持穩勢，過終點時最為接近。"
+   },
+   {
+    "place_raw": "4",
+    "place": 4,
+    "no": 7,
+    "horse": "紅旺",
+    "horse_code": "C341",
+    "jockey": "巴度",
+    "jockey_id": "BA",
+    "trainer": "葉楚航",
+    "trainer_id": "YCH",
+    "weight": 125,
+    "body_weight": 1183,
+    "draw": 5,
+    "lbw": "2",
+    "running": [
+     3,
+     3,
+     4
+    ],
+    "time": 70.25,
+    "win_odds": 5.0,
+    "sect": [
+     23.48,
+     22.85,
+     23.92
+    ],
+    "comment": "出閘迅速，居領放馬稍後的第三位。轉直路彎時開始上前。入直路時居領放馬之後位置，未能保持走勢。"
+   },
+   {
+    "place_raw": "5",
+    "place": 5,
+    "no": 2,
+    "horse": "問鼎高峰",
+    "horse_code": "A009",
+    "jockey": "郭能",
+    "jockey_id": null,
+    "trainer": "高伯新",
+    "trainer_id": null,
+    "weight": 132,
+    "body_weight": 1155,
+    "draw": 4,
+    "lbw": "2",
+    "running": [
+     5,
+     4,
+     5
+    ],
+    "time": 70.27,
+    "win_odds": 14.0,
+    "sect": [
+     23.72,
+     22.77,
+     23.78
+    ],
+    "comment": "出閘迅速，逐漸居第五或第四位，落後領放馬僅逾兩個馬位。入直路時略為追近，居第三位。保持同速，末段失去季席。"
+   },
+   {
+    "place_raw": "6",
+    "place": 6,
+    "no": 9,
+    "horse": "玩到贏",
+    "horse_code": "B468",
+    "jockey": "貝力斯",
+    "jockey_id": null,
+    "trainer": "容天鵬",
+    "trainer_id": null,
+    "weight": 123,
+    "body_weight": 1059,
+    "draw": 11,
+    "lbw": "3-3/4",
+    "running": [
+     12,
+     11,
+     6
+    ],
+    "time": 70.53,
+    "win_odds": 43.0,
+    "sect": [
+     24.56,
+     22.65,
+     23.32
+    ],
+    "comment": "自外檔出閘後留後，尾隨群駒至六百米處。轉直路彎時走內疊以省腳程。略為上前，未能構成威脅。"
+   },
+   {
+    "place_raw": "7",
+    "place": 7,
+    "no": 11,
+    "horse": "威風駿馬",
+    "horse_code": "B437",
+    "jockey": "史卓豐",
+    "jockey_id": null,
+    "trainer": "蘇保羅",
+    "trainer_id": null,
+    "weight": 122,
+    "body_weight": 1108,
+    "draw": 7,
+    "lbw": "8",
+    "running": [
+     6,
+     8,
+     7
+    ],
+    "time": 71.21,
+    "win_odds": 16.0,
+    "sect": [
+     23.92,
+     22.97,
+     24.32
+    ],
+    "comment": "早段受催策，居領先馬匹之間。首次轉彎時墮居中間位置。四百米處受催策。末段保持同速。"
+   },
+   {
+    "place_raw": "8",
+    "place": 8,
+    "no": 6,
+    "horse": "成功星駒",
+    "horse_code": "D065",
+    "jockey": "希威森",
+    "jockey_id": "HEL",
+    "trainer": "霍利時",
+    "trainer_id": null,
+    "weight": 126,
+    "body_weight": 988,
+    "draw": 12,
+    "lbw": "9-1/4",
+    "running": [
+     11,
+     12,
+     8
+    ],
+    "time": 71.42,
+    "win_odds": 135.0,
+    "sect": [
+     24.32,
+     23.17,
+     23.93
+    ],
+    "comment": "自最外檔出閘，遙居於後，尾隨馬群。最後一百五十米超越數匹洩氣潰敗的對手。"
+   },
+   {
+    "place_raw": "9",
+    "place": 9,
+    "no": 8,
+    "horse": "幸運寶策",
+    "horse_code": "C246",
+    "jockey": "李寶利",
+    "jockey_id": "RU",
+    "trainer": "丁冠豪",
+    "trainer_id": "TKH",
+    "weight": 123,
+    "body_weight": 1143,
+    "draw": 3,
+    "lbw": "9-1/2",
+    "running": [
+     9,
+     10,
+     9
+    ],
+    "time": 71.43,
+    "win_odds": 73.0,
+    "sect": [
+     24.12,
+     23.09,
+     24.22
+    ],
+    "comment": "出閘笨拙及失地，迅速恢復走勢，居中間稍後位置。自趨近直路彎起受催策，再無餘力。"
+   },
+   {
+    "place_raw": "10",
+    "place": 10,
+    "no": 12,
+    "horse": "好利錢",
+    "horse_code": "A332",
+    "jockey": "蘇兆輝",
+    "jockey_id": null,
+    "trainer": "苗禮德",
+    "trainer_id": null,
+    "weight": 120,
+    "body_weight": 1051,
+    "draw": 8,
+    "lbw": "9-3/4",
+    "running": [
+     4,
+     5,
+     10
+    ],
+    "time": 71.49,
+    "win_odds": 10.0,
+    "sect": [
+     23.68,
+     22.93,
+     24.88
+    ],
+    "comment": "早段居前列位置，走外疊，其後居第五位，落後逾兩個馬位。入直路時仍居相若位置，迅速力竭。（獸醫於翌日報告此駒肌腱受傷。）"
+   },
+   {
+    "place_raw": "11",
+    "place": 11,
+    "no": 1,
+    "horse": "香江穩勝",
+    "horse_code": "T254",
+    "jockey": "潘明輝",
+    "jockey_id": "PMF",
+    "trainer": "鄭俊偉",
+    "trainer_id": "CCW",
+    "weight": 131,
+    "body_weight": 1309,
+    "draw": 9,
+    "lbw": "11-3/4",
+    "running": [
+     7,
+     6,
+     11
+    ],
+    "time": 71.83,
+    "win_odds": 39.0,
+    "sect": [
+     23.92,
+     22.73,
+     25.18
+    ],
+    "comment": "自外檔出閘普通，居中間位置，走外疊，沒有遮擋。直路彎前仍居相若位置，瞬即轉弱。"
+   },
+   {
+    "place_raw": "12",
+    "place": 12,
+    "no": 5,
+    "horse": "嘭嘭聲",
+    "horse_code": "D015",
+    "jockey": "蘇狄雄",
+    "jockey_id": null,
+    "trainer": "何良",
+    "trainer_id": null,
+    "weight": 124,
+    "body_weight": 1116,
+    "draw": 6,
+    "lbw": "16-3/4",
+    "running": [
+     1,
+     2,
+     12
+    ],
+    "time": 72.59,
+    "win_odds": 125.0,
+    "sect": [
+     23.32,
+     22.97,
+     26.3
+    ],
+    "comment": "自第二位馬匹外側受催策上前，以短距離領先。未能保持走勢，約四百五十米處被超越。入直路後迅速力竭。"
+   }
+  ],
+  "dividends": {
+   "獨贏": [
+    [
+     "4",
+     32.0
+    ]
+   ],
+   "位置": [
+    [
+     "4",
+     13.0
+    ],
+    [
+     "3",
+     15.5
+    ],
+    [
+     "10",
+     27.5
+    ]
+   ],
+   "連贏": [
+    [
+     "3,4",
+     53.0
+    ]
+   ],
+   "位置Q": [
+    [
+     "3,4",
+     27.5
+    ],
+    [
+     "4,10",
+     52.5
+    ],
+    [
+     "3,10",
+     57.5
+    ]
+   ],
+   "3揀1（組合獨贏）": [
+    [
+     "A1",
+     16.5
+    ],
+    [
+     "A2",
+     null
+    ],
+    [
+     "A3",
+     null
+    ],
+    [
+     "",
+     null
+    ]
+   ],
+   "三重彩": [
+    [
+     "4,3,10",
+     582.0
+    ]
+   ],
+   "單T": [
+    [
+     "3,4,10",
+     122.0
+    ]
+   ],
+   "四連環": [
+    [
+     "3,4,7,10",
+     198.0
+    ]
+   ],
+   "四重彩": [
+    [
+     "4,3,10,7",
+     3482.0
+    ]
+   ],
+   "第六口孖寶": [
+    [
+     "6/4",
+     216.0
+    ],
+    [
+     "6/3",
+     36.5
+    ]
+   ],
+   "三T": [
+    [
+     "10>4,6,12/6,10,12/3,4,10",
+     93500.0
+    ]
+   ],
+   "三T(安慰獎)": [
+    [
+     "10>4,6,12/6,10,12/任何組合",
+     575.0
+    ]
+   ]
+  },
+  "has_sect": true,
+  "has_comment": true
+ },
+ {
+  "date": "2019-11-27",
+  "venue": "HV",
+  "race_no": 8,
+  "race_id": 206,
+  "class": "第三班",
+  "distance": 1800,
+  "rating_band": "80-60",
+  "going": "好地",
+  "race_name": "格拉斯哥讓賽",
+  "surface": "TURF",
+  "course": "A",
+  "prize": "HK$ 1,450,000",
+  "cum_times": [
+   13.51,
+   35.93,
+   60.78,
+   85.15,
+   109.08
+  ],
+  "sectionals": [
+   13.51,
+   22.42,
+   24.85,
+   24.37,
+   23.93
+  ],
+  "runners": [
+   {
+    "place_raw": "1",
+    "place": 1,
+    "no": 7,
+    "horse": "興惑",
+    "horse_code": "B351",
+    "jockey": "何澤堯",
+    "jockey_id": "HCY",
+    "trainer": "告東尼",
+    "trainer_id": "CAS",
+    "weight": 123,
+    "body_weight": 1028,
+    "draw": 5,
+    "lbw": "---",
+    "running": [
+     6,
+     7,
+     6,
+     7,
+     1
+    ],
+    "time": 109.08,
+    "win_odds": 13.0,
+    "sect": [
+     13.87,
+     22.94,
+     24.65,
+     24.13,
+     23.49
+    ],
+    "comment": "留居中間位置，落後四至五個馬位，走第二疊。最後三百米保持佳勢。及時上前，在多駒幾乎齊過終點下險勝。"
+   },
+   {
+    "place_raw": "2",
+    "place": 2,
+    "no": 10,
+    "horse": "超班福星",
+    "horse_code": "C183",
+    "jockey": "史卓豐",
+    "jockey_id": null,
+    "trainer": "丁冠豪",
+    "trainer_id": "TKH",
+    "weight": 121,
+    "body_weight": 1088,
+    "draw": 11,
+    "lbw": "短馬頭位",
+    "running": [
+     11,
+     10,
+     10,
+     6,
+     2
+    ],
+    "time": 109.1,
+    "win_odds": 8.5,
+    "sect": [
+     14.35,
+     22.98,
+     24.37,
+     23.81,
+     23.59
+    ],
+    "comment": "自第十一檔出閘，留居接近包尾位置。跑過八百米處時進佔較接近位置。四百米處居第六位。直路上持續力拼，在多駒幾乎齊過終點下跑獲亞軍。"
+   },
+   {
+    "place_raw": "3",
+    "place": 3,
+    "no": 9,
+    "horse": "紅麗舍",
+    "horse_code": "A005",
+    "jockey": "蘇兆輝",
+    "jockey_id": null,
+    "trainer": "文家良",
+    "trainer_id": "MKL",
+    "weight": 122,
+    "body_weight": 1167,
+    "draw": 10,
+    "lbw": "頭位",
+    "running": [
+     4,
+     5,
+     4,
+     4,
+     3
+    ],
+    "time": 109.11,
+    "win_odds": 19.0,
+    "sect": [
+     13.67,
+     22.82,
+     24.73,
+     24.17,
+     23.72
+    ],
+    "comment": "追趕領先馬匹。入直路時對催策反應良佳。幾乎可以奪標，但過終點時在激烈角逐下僅能取得季軍。"
+   },
+   {
+    "place_raw": "4",
+    "place": 4,
+    "no": 3,
+    "horse": "扎西德勒",
+    "horse_code": "C084",
+    "jockey": "郭能",
+    "jockey_id": null,
+    "trainer": "約翰摩亞",
+    "trainer_id": null,
+    "weight": 125,
+    "body_weight": 1126,
+    "draw": 7,
+    "lbw": "頸位",
+    "running": [
+     3,
+     3,
+     2,
+     2,
+     4
+    ],
+    "time": 109.13,
+    "win_odds": 6.3,
+    "sect": [
+     13.55,
+     22.66,
+     24.77,
+     24.17,
+     23.98
+    ],
+    "comment": "躍出後受催策，跟隨領放馬，走第二疊。直路初上前領放。保持佳勢，末段向內斜跑，導致騎師須停止催策。接近終點時被首三名馬匹超越。"
+   },
+   {
+    "place_raw": "5",
+    "place": 5,
+    "no": 5,
+    "horse": "盈嘉輝",
+    "horse_code": "C080",
+    "jockey": "薛恩",
+    "jockey_id": null,
+    "trainer": "徐雨石",
+    "trainer_id": "TYS",
+    "weight": 123,
+    "body_weight": 1053,
+    "draw": 2,
+    "lbw": "1/2",
+    "running": [
+     9,
+     9,
+     9,
+     9,
+     5
+    ],
+    "time": 109.16,
+    "win_odds": 10.0,
+    "sect": [
+     14.11,
+     22.98,
+     24.57,
+     24.01,
+     23.49
+    ],
+    "comment": "出閘僅屬一般，居中間之後位置。七百米處移離內欄。入直路時移出外疊。保持佳勢至終點，取得接近的第五名。"
+   },
+   {
+    "place_raw": "6",
+    "place": 6,
+    "no": 4,
+    "horse": "文武傳奇",
+    "horse_code": "B137",
+    "jockey": "巴度",
+    "jockey_id": "BA",
+    "trainer": "沈集成",
+    "trainer_id": "SCS",
+    "weight": 124,
+    "body_weight": 1120,
+    "draw": 4,
+    "lbw": "1/2",
+    "running": [
+     8,
+     8,
+     8,
+     3,
+     6
+    ],
+    "time": 109.18,
+    "win_odds": 12.0,
+    "sect": [
+     14.07,
+     23.02,
+     24.41,
+     23.77,
+     23.91
+    ],
+    "comment": "留居中間之後位置。八百米處移至第三疊。上前，直路彎追趕領先馬匹。走勢良佳，末段被力追的對手超越。"
+   },
+   {
+    "place_raw": "7",
+    "place": 7,
+    "no": 6,
+    "horse": "共創歡樂",
+    "horse_code": "C210",
+    "jockey": "巫顯東",
+    "jockey_id": "MHT",
+    "trainer": "何良",
+    "trainer_id": null,
+    "weight": 120,
+    "body_weight": 1051,
+    "draw": 6,
+    "lbw": "1-3/4",
+    "running": [
+     1,
+     2,
+     3,
+     5,
+     7
+    ],
+    "time": 109.36,
+    "win_odds": 8.6,
+    "sect": [
+     13.51,
+     22.66,
+     24.89,
+     24.33,
+     23.97
+    ],
+    "comment": "早段領放。自千二米處起跟隨領放馬。自四百米處起沿欄保持普通走勢。接近一百五十米處時未能望空。接近終點時勒避及踏著他駒後蹄，失去步韻。本應可跑入更前位置。"
+   },
+   {
+    "place_raw": "8",
+    "place": 8,
+    "no": 11,
+    "horse": "關鍵時機",
+    "horse_code": "C159",
+    "jockey": "沈拿",
+    "jockey_id": null,
+    "trainer": "方嘉柏",
+    "trainer_id": "FC",
+    "weight": 119,
+    "body_weight": 1127,
+    "draw": 1,
+    "lbw": "1-3/4",
+    "running": [
+     7,
+     6,
+     7,
+     10,
+     8
+    ],
+    "time": 109.38,
+    "win_odds": 4.1,
+    "sect": [
+     13.87,
+     22.82,
+     24.81,
+     24.25,
+     23.63
+    ],
+    "comment": "自第一檔出閘，居中間位置，沿途走內欄節省腳程。直路彎墮居接近包尾位置。直路上走勢普通，始終落後領先馬匹。"
+   },
+   {
+    "place_raw": "9",
+    "place": 9,
+    "no": 2,
+    "horse": "鑲白旗",
+    "horse_code": "B336",
+    "jockey": "李寶利",
+    "jockey_id": "RU",
+    "trainer": "霍利時",
+    "trainer_id": null,
+    "weight": 129,
+    "body_weight": 1007,
+    "draw": 12,
+    "lbw": "1-3/4",
+    "running": [
+     12,
+     12,
+     12,
+     11,
+     9
+    ],
+    "time": 109.38,
+    "win_odds": 15.0,
+    "sect": [
+     14.51,
+     23.14,
+     24.41,
+     23.73,
+     23.59
+    ],
+    "comment": "自第十二檔出閘，在馬群之後切入。五百米處前居包尾位置。直路上嚴重受困。未能望空直至末段，因而未能施為。"
+   },
+   {
+    "place_raw": "10",
+    "place": 10,
+    "no": 1,
+    "horse": "吉金寶",
+    "horse_code": "C298",
+    "jockey": "莫雷拉",
+    "jockey_id": "MOJ",
+    "trainer": "苗禮德",
+    "trainer_id": null,
+    "weight": 132,
+    "body_weight": 1077,
+    "draw": 9,
+    "lbw": "2-1/2",
+    "running": [
+     10,
+     11,
+     11,
+     12,
+     10
+    ],
+    "time": 109.48,
+    "win_odds": 7.5,
+    "sect": [
+     14.35,
+     23.02,
+     24.49,
+     24.17,
+     23.45
+    ],
+    "comment": "起步後瞬即切入內欄，留居後列。自六百米處起居包尾位置。保持普通走勢至終點。"
+   },
+   {
+    "place_raw": "11",
+    "place": 11,
+    "no": 12,
+    "horse": "明月光",
+    "horse_code": "T369",
+    "jockey": "蔡明紹",
+    "jockey_id": "CML",
+    "trainer": "蘇保羅",
+    "trainer_id": null,
+    "weight": 118,
+    "body_weight": 1057,
+    "draw": 3,
+    "lbw": "4-3/4",
+    "running": [
+     5,
+     4,
+     5,
+     8,
+     11
+    ],
+    "time": 109.82,
+    "win_odds": 26.0,
+    "sect": [
+     13.71,
+     22.7,
+     24.89,
+     24.33,
+     24.19
+    ],
+    "comment": "居中間之前位置，走內欄節省腳程。直路上未能加速。從未能構成威脅。"
+   },
+   {
+    "place_raw": "12",
+    "place": 12,
+    "no": 8,
+    "horse": "幸運時代",
+    "horse_code": "A045",
+    "jockey": "潘明輝",
+    "jockey_id": "PMF",
+    "trainer": "賀賢",
+    "trainer_id": "HAD",
+    "weight": 120,
+    "body_weight": 1072,
+    "draw": 8,
+    "lbw": "5-1/2",
+    "running": [
+     2,
+     1,
+     1,
+     1,
+     12
+    ],
+    "time": 109.96,
+    "win_odds": 23.0,
+    "sect": [
+     13.51,
+     22.42,
+     24.85,
+     24.37,
+     24.81
+    ],
+    "comment": "持續上前，跑過千二米處時切入內疊領放。跑過四百米處時被超越。跑過二百五十米處時轉弱。"
+   }
+  ],
+  "dividends": {
+   "獨贏": [
+    [
+     "7",
+     136.5
+    ]
+   ],
+   "位置": [
+    [
+     "7",
+     41.5
+    ],
+    [
+     "10",
+     27.5
+    ],
+    [
+     "9",
+     55.0
+    ]
+   ],
+   "連贏": [
+    [
+     "7,10",
+     522.5
+    ]
+   ],
+   "位置Q": [
+    [
+     "7,10",
+     188.5
+    ],
+    [
+     "7,9",
+     444.5
+    ],
+    [
+     "9,10",
+     276.0
+    ]
+   ],
+   "3揀1（組合獨贏）": [
+    [
+     "A1",
+     43.5
+    ],
+    [
+     "A2",
+     null
+    ],
+    [
+     "A3",
+     null
+    ],
+    [
+     "",
+     null
+    ]
+   ],
+   "三重彩": [
+    [
+     "7,10,9",
+     19336.0
+    ]
+   ],
+   "單T": [
+    [
+     "7,9,10",
+     3484.0
+    ]
+   ],
+   "四連環": [
+    [
+     "3,7,9,10",
+     7214.0
+    ]
+   ],
+   "四重彩": [
+    [
+     "7,10,9,3",
+     205905.0
+    ]
+   ],
+   "第七口孖寶": [
+    [
+     "4/7",
+     558.0
+    ],
+    [
+     "4/10",
+     77.0
+    ]
+   ],
+   "第二口孖T": [
+    [
+     "3,4,10/7,9,10",
+     59276.0
+    ]
+   ]
+  },
+  "has_sect": true,
+  "has_comment": true
+ },
+ {
+  "date": "2019-11-27",
+  "venue": "HV",
+  "race_no": 9,
+  "race_id": 207,
+  "class": "第三班",
+  "distance": 1200,
+  "rating_band": "80-60",
+  "going": "好地",
+  "race_name": "埃爾金讓賽",
+  "surface": "TURF",
+  "course": "A",
+  "prize": "HK$ 1,450,000",
+  "cum_times": [
+   23.48,
+   46.57,
+   69.91
+  ],
+  "sectionals": [
+   23.48,
+   23.09,
+   23.34
+  ],
+  "runners": [
+   {
+    "place_raw": "1",
+    "place": 1,
+    "no": 10,
+    "horse": "高耀智星",
+    "horse_code": "C067",
+    "jockey": "史卓豐",
+    "jockey_id": null,
+    "trainer": "苗禮德",
+    "trainer_id": null,
+    "weight": 119,
+    "body_weight": 1120,
+    "draw": 4,
+    "lbw": "---",
+    "running": [
+     4,
+     4,
+     1
+    ],
+    "time": 69.91,
+    "win_odds": 3.1,
+    "sect": [
+     23.96,
+     23.01,
+     22.94
+    ],
+    "comment": "出閘迅速，居中間之前位置，走第二疊。直路彎居相同位置。衝刺強勁，勝出賽事。"
+   },
+   {
+    "place_raw": "2",
+    "place": 2,
+    "no": 5,
+    "horse": "好好學習",
+    "horse_code": "C458",
+    "jockey": "何澤堯",
+    "jockey_id": "HCY",
+    "trainer": "呂健威",
+    "trainer_id": "LKW",
+    "weight": 124,
+    "body_weight": 1075,
+    "draw": 2,
+    "lbw": "1/2",
+    "running": [
+     2,
+     2,
+     2
+    ],
+    "time": 70.01,
+    "win_odds": 2.7,
+    "sect": [
+     23.76,
+     22.93,
+     23.32
+    ],
+    "comment": "出閘迅速，居前列。過了首個彎位後讓對手過頭。中段落後領放馬一個馬位。直路彎走第二疊。直路初取得領先。保持佳勢，但最後五十米不敵頭馬。"
+   },
+   {
+    "place_raw": "3",
+    "place": 3,
+    "no": 7,
+    "horse": "紅星",
+    "horse_code": "V273",
+    "jockey": "李寶利",
+    "jockey_id": "RU",
+    "trainer": "葉楚航",
+    "trainer_id": "YCH",
+    "weight": 120,
+    "body_weight": 1091,
+    "draw": 5,
+    "lbw": "1-1/2",
+    "running": [
+     6,
+     5,
+     3
+    ],
+    "time": 70.14,
+    "win_odds": 16.0,
+    "sect": [
+     24.36,
+     22.73,
+     23.05
+    ],
+    "comment": "與對手同步躍出，居中間位置，走內欄。直路彎走內欄節省腳程。直路初對催策反應甚佳。接近一百米處時未能再增速。其後逐漸轉弱。保持走勢，跑獲季軍。"
+   },
+   {
+    "place_raw": "4",
+    "place": 4,
+    "no": 12,
+    "horse": "活力勇士",
+    "horse_code": "A313",
+    "jockey": "蔡明紹",
+    "jockey_id": "CML",
+    "trainer": "約翰摩亞",
+    "trainer_id": null,
+    "weight": 114,
+    "body_weight": 1098,
+    "draw": 7,
+    "lbw": "1-1/2",
+    "running": [
+     8,
+     7,
+     4
+    ],
+    "time": 70.17,
+    "win_odds": 14.0,
+    "sect": [
+     24.56,
+     22.73,
+     22.88
+    ],
+    "comment": "起步時被對手碰撞，居中間之後位置，走內欄。接近五百五十米處時再被對手碰撞。直路彎追近。跑過四百米處後向外移出。直路上追前甚多，跑獲殿軍。"
+   },
+   {
+    "place_raw": "5",
+    "place": 5,
+    "no": 3,
+    "horse": "紅旗星將",
+    "horse_code": "A049",
+    "jockey": "郭能",
+    "jockey_id": null,
+    "trainer": "蘇保羅",
+    "trainer_id": null,
+    "weight": 129,
+    "body_weight": 1215,
+    "draw": 3,
+    "lbw": "2",
+    "running": [
+     5,
+     6,
+     5
+    ],
+    "time": 70.22,
+    "win_odds": 7.4,
+    "sect": [
+     24.28,
+     22.85,
+     23.09
+    ],
+    "comment": "出閘普通，居中間位置，走第二疊。直路彎前居相同位置。跑過四百米處後開始上前。直路上略為追前。"
+   },
+   {
+    "place_raw": "6",
+    "place": 6,
+    "no": 4,
+    "horse": "神舟寶駒",
+    "horse_code": "C269",
+    "jockey": "希威森",
+    "jockey_id": "HEL",
+    "trainer": "徐雨石",
+    "trainer_id": "TYS",
+    "weight": 128,
+    "body_weight": 1214,
+    "draw": 6,
+    "lbw": "3-1/4",
+    "running": [
+     9,
+     9,
+     6
+    ],
+    "time": 70.44,
+    "win_odds": 85.0,
+    "sect": [
+     24.56,
+     22.85,
+     23.03
+    ],
+    "comment": "起步時向外斜跑，碰撞對手，居中間之後位置，走第二疊。接近五百五十米處時再次碰撞對手。入直路時落後五個馬位。直路上略為追前。"
+   },
+   {
+    "place_raw": "7",
+    "place": 7,
+    "no": 6,
+    "horse": "維港奔流",
+    "horse_code": "D042",
+    "jockey": "蘇兆輝",
+    "jockey_id": null,
+    "trainer": "韋達",
+    "trainer_id": "WDJ",
+    "weight": 121,
+    "body_weight": 1086,
+    "draw": 9,
+    "lbw": "3-3/4",
+    "running": [
+     7,
+     8,
+     7
+    ],
+    "time": 70.49,
+    "win_odds": 21.0,
+    "sect": [
+     24.52,
+     22.89,
+     23.08
+    ],
+    "comment": "起步時向內斜跑，觸碰對手，居中間之後位置，走第三疊，沒有遮擋。直路彎居相若位置。直路上略為追前。"
+   },
+   {
+    "place_raw": "8",
+    "place": 8,
+    "no": 1,
+    "horse": "一舖縱橫",
+    "horse_code": "B385",
+    "jockey": "黎海榮",
+    "jockey_id": null,
+    "trainer": "丁冠豪",
+    "trainer_id": "TKH",
+    "weight": 133,
+    "body_weight": 1062,
+    "draw": 1,
+    "lbw": "3-3/4",
+    "running": [
+     3,
+     3,
+     8
+    ],
+    "time": 70.51,
+    "win_odds": 13.0,
+    "sect": [
+     23.92,
+     22.89,
+     23.7
+    ],
+    "comment": "自第一檔出閘普通，落後領放馬兩至三個馬位，走內欄。直路彎沿欄追近。直路初對催策略有反應。一百五十米處未能再增速。其後轉弱。"
+   },
+   {
+    "place_raw": "9",
+    "place": 9,
+    "no": 9,
+    "horse": "電子大師",
+    "horse_code": "A254",
+    "jockey": "貝力斯",
+    "jockey_id": null,
+    "trainer": "方嘉柏",
+    "trainer_id": "FC",
+    "weight": 119,
+    "body_weight": 1136,
+    "draw": 10,
+    "lbw": "4-3/4",
+    "running": [
+     11,
+     10,
+     9
+    ],
+    "time": 70.66,
+    "win_odds": 19.0,
+    "sect": [
+     24.92,
+     22.61,
+     23.13
+    ],
+    "comment": "自外檔出閘，留居後列，走內疊。直路彎沿欄略為追近。直路上衝刺乏力。"
+   },
+   {
+    "place_raw": "10",
+    "place": 10,
+    "no": 11,
+    "horse": "夢幻仙子",
+    "horse_code": "V222",
+    "jockey": "潘明輝",
+    "jockey_id": "PMF",
+    "trainer": "蘇偉賢",
+    "trainer_id": "SWY",
+    "weight": 113,
+    "body_weight": 1171,
+    "draw": 12,
+    "lbw": "5-1/4",
+    "running": [
+     12,
+     12,
+     10
+    ],
+    "time": 70.76,
+    "win_odds": 105.0,
+    "sect": [
+     25.0,
+     22.61,
+     23.15
+    ],
+    "comment": "自大外檔出閘後留後。沿途居後列。從未能構成威脅。"
+   },
+   {
+    "place_raw": "11",
+    "place": 11,
+    "no": 8,
+    "horse": "正本雄心",
+    "horse_code": "V303",
+    "jockey": "沈拿",
+    "jockey_id": null,
+    "trainer": "霍利時",
+    "trainer_id": null,
+    "weight": 119,
+    "body_weight": 1181,
+    "draw": 8,
+    "lbw": "6-3/4",
+    "running": [
+     10,
+     11,
+     11
+    ],
+    "time": 71.0,
+    "win_odds": 20.0,
+    "sect": [
+     24.76,
+     22.81,
+     23.43
+    ],
+    "comment": "躍出時受擠迫，居後列，走第三疊，有遮擋。直路彎落後約六個馬位。入直路時走大外疊。直路上毫無進展。（見競賽事件報告。）"
+   },
+   {
+    "place_raw": "12",
+    "place": 12,
+    "no": 2,
+    "horse": "良才",
+    "horse_code": "A100",
+    "jockey": "巫顯東",
+    "jockey_id": "MHT",
+    "trainer": "文家良",
+    "trainer_id": "MKL",
+    "weight": 129,
+    "body_weight": 1124,
+    "draw": 11,
+    "lbw": "7",
+    "running": [
+     1,
+     1,
+     12
+    ],
+    "time": 71.02,
+    "win_odds": 42.0,
+    "sect": [
+     23.48,
+     23.09,
+     24.45
+    ],
+    "comment": "自第十一檔出閘迅速，受催策上前，取得領先。直路彎領先四分三馬位。直路初未能再增速。二百米處被超越。其後轉弱。"
+   }
+  ],
+  "dividends": {
+   "獨贏": [
+    [
+     "10",
+     31.5
+    ]
+   ],
+   "位置": [
+    [
+     "10",
+     14.0
+    ],
+    [
+     "5",
+     14.0
+    ],
+    [
+     "7",
+     37.5
+    ]
+   ],
+   "連贏": [
+    [
+     "5,10",
+     45.5
+    ]
+   ],
+   "位置Q": [
+    [
+     "5,10",
+     25.0
+    ],
+    [
+     "7,10",
+     83.5
+    ],
+    [
+     "5,7",
+     91.5
+    ]
+   ],
+   "3揀1（組合獨贏）": [
+    [
+     "A1",
+     null
+    ],
+    [
+     "A2",
+     23.5
+    ],
+    [
+     "A3",
+     null
+    ],
+    [
+     "",
+     null
+    ]
+   ],
+   "三重彩": [
+    [
+     "10,5,7",
+     784.0
+    ]
+   ],
+   "單T": [
+    [
+     "5,7,10",
+     193.0
+    ]
+   ],
+   "四連環": [
+    [
+     "5,7,10,12",
+     450.0
+    ]
+   ],
+   "四重彩": [
+    [
+     "10,5,7,12",
+     5838.0
+    ]
+   ],
+   "第八口孖寶": [
+    [
+     "7/10",
+     593.0
+    ],
+    [
+     "7/5",
+     92.0
+    ]
+   ],
+   "三寶": [
+    [
+     "4/7/10",
+     1940.0
+    ],
+    [
+     "4/7/5",
+     358.0
+    ]
+   ],
+   "六環彩": [
+    [
+     "6,10/4,10,12/6,10/3,4/7,10/5,10",
+     1036.0
+    ],
+    [
+     "6/10/6/4/7/10",
+     491998.0
+    ]
+   ],
+   "騎師王 1": [
+    [
+     "1 [莫雷拉]",
+     null
+    ]
+   ]
+  },
+  "has_sect": true,
+  "has_comment": true
+ }
+]
