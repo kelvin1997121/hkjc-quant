@@ -1,0 +1,97 @@
+{
+ "registered": "2026-11-11",
+ "run": "2026-11-11",
+ "coverage": {
+  "meetings_per_season": [
+   86,
+   83,
+   84
+  ],
+  "races": 2395,
+  "test_races": 1955,
+  "comment_share": 0.995
+ },
+ "samples": 1941,
+ "results": {
+  "field_after": {
+   "gain": -0.00095,
+   "z": -1.58,
+   "races": 1641,
+   "a": 1.066,
+   "b": 0.084,
+   "placebo_z": -1.23,
+   "nonzero": 0.915,
+   "passed": false
+  },
+  "race_time": {
+   "gain": -0.00098,
+   "z": -2.01,
+   "races": 1641,
+   "a": 1.066,
+   "b": 0.002,
+   "placebo_z": -0.76,
+   "nonzero": 0.931,
+   "passed": false
+  },
+  "strong_race": {
+   "gain": -0.00036,
+   "z": -0.88,
+   "races": 1641,
+   "a": 1.068,
+   "b": 0.034,
+   "placebo_z": -0.07,
+   "nonzero": 0.32,
+   "passed": false
+  },
+  "forgiven_form": {
+   "gain": -0.0002,
+   "z": -0.82,
+   "races": 1641,
+   "a": 1.066,
+   "b": 0.036,
+   "placebo_z": -1.57,
+   "nonzero": 0.699,
+   "passed": false
+  },
+  "last_draw_bad": {
+   "gain": 0.00036,
+   "z": 0.42,
+   "races": 1641,
+   "a": 1.066,
+   "b": 0.211,
+   "placebo_z": -0.42,
+   "nonzero": 0.907,
+   "passed": false
+  },
+  "blocked_late": {
+   "gain": -0.00197,
+   "z": -1.44,
+   "races": 1641,
+   "a": 1.066,
+   "b": -0.043,
+   "placebo_z": -1.63,
+   "nonzero": 0.029,
+   "passed": false
+  },
+  "jockey_up": {
+   "gain": -0.00276,
+   "z": -2.59,
+   "races": 1641,
+   "a": 1.064,
+   "b": 0.02,
+   "placebo_z": -1.65,
+   "nonzero": 0.255,
+   "passed": false
+  },
+  "recent_bias": {
+   "gain": -0.00136,
+   "z": -1.08,
+   "races": 1641,
+   "a": 1.067,
+   "b": -0.525,
+   "placebo_z": -0.6,
+   "nonzero": 0.829,
+   "passed": false
+  }
+ }
+}
