@@ -76,6 +76,10 @@ def active_features(cfg):
 # z 3.35) and vanished when shuffled, but missed on the 323 locked races from 2026-05-20 (+0.0039,
 # z 1.60, needed 1.64). Not adopted: model weight stays 0, so the first choice wouldn't change.
 # Those 323 races are now used up; retest it on races after 2026-11-08.
+# Old-season test (hkjc/oldbank.py, 2019/20-2021/22, 1,641 races judged against the market,
+# registered before download): strong race by beaten horses placing later, by race time and by
+# both; form forgiving troubled runs; bad last draw; blocked in the straight; jockey_up; last-3-
+# races track bias. All failed (best z +0.42): flagged horses won what their odds implied.
 SEC_PER_LENGTH = 0.17
 
 _CLASS = {"一級賽": -2, "二級賽": -1, "三級賽": 0, "第一班": 1, "第二班": 2,

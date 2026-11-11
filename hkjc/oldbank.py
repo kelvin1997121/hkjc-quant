@@ -74,6 +74,12 @@ Candidates (only information from before the race)
                 LATE word, else 0.
   jockey_up     轉騎師 (retest): log win rate of today's jockey minus that of the last run's
                 jockey, when they differ (model.RateBook as in hkjc/model.py); else 0.
+Result, run once on 2026-11-11 (1,941 test races, 1,641 judged; 99.5% with comments): all eight
+failed. Gain z: field_after -1.58, race_time -2.01, strong_race -0.88, forgiven_form -0.82,
+last_draw_bad +0.42, blocked_late -1.44, jockey_up -2.59, recent_bias -1.08. Horses each flags
+won about what their odds said (e.g. strong_race: 533 wins against 526.9 expected), so the
+market already prices them. This bank is now used up: don't test anything else on it.
+
   recent_bias   臨場走勢(最近幾場): the model's early_x_today, but read from only the last 3
                 finished races on this surface at this meeting that have running positions:
                 4 x (0.5 - horse's usual early position) x (0.45 - mean early position of

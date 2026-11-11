@@ -85,7 +85,7 @@ details.mt summary{cursor:pointer;font-weight:600}
 <script>
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-let data, scData = null, ppData = null, cur = 0;
+let data, scData = null, ppData = null, obData = null, cur = 0;
 
 // two pages: race analysis and the paper account; remembered in the address (#paper)
 let page = location.hash === "#paper" ? "paper" : "race";
@@ -127,8 +127,9 @@ async function load() {
   const btn = $("#refresh");
   btn.disabled = true;
   const sha = await latestSha();
-  const [latest, tr, sc, pp] = await Promise.all(["latest.json", "track_record.json", "selfcheck.json", "paper.json"].map(n => getJSON(n, sha)));
+  const [latest, tr, sc, pp, ob] = await Promise.all(["latest.json", "track_record.json", "selfcheck.json", "paper.json", "oldbank.json"].map(n => getJSON(n, sha)));
   ppData = pp;
+  obData = ob;
   btn.disabled = false;
   if (!latest) {
     if (!data) $("#sub").textContent = "暫時攞唔到數據,請稍後再試。";
@@ -252,6 +253,7 @@ function selfcheck(sc) {
         }).join("")}</tbody></table></div>` : ""}
     ${sc.bet_returns ? betTable(sc.bet_returns) : ""}
     ${sc.learning ? learnTable(sc.learning) : ""}
+    ${obData ? oldbankTable(obData) : ""}
     <div class="notes" style="margin-top:12px">
       <div><div class="sub">因素組貢獻(拎走後 log loss 變差幾多;紅色 = 拎走反而更準)</div>
         <table><tbody>${groups}</tbody></table></div>
@@ -266,6 +268,18 @@ function learnTable(tests) {
     `<td class="num">${t.next ?? "–"}</td><td>${esc(last(t))}</td></tr>`).join("");
   return `<div class="sub" style="margin-top:12px">自我學習:每個改動只用登記之後嘅新賽事評分,去到 300、500、800 場各判斷一次,z ≥ 2.5 先會自動改模型</div>
     <div class="tblwrap"><table><thead><tr><th>測試</th><th>狀態</th><th>新賽事</th><th>下次判斷</th><th>最近結果</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+
+// one-off test on seasons the system had never seen (hkjc/oldbank.py, oldbank.json)
+function oldbankTable(o) {
+  const rows = o.results.map(r => `<tr><td>${esc(r.name)}</td><td class="num">${r.z > 0 ? "+" : ""}${r.z}</td>` +
+    `<td>${esc(r.flag)} ${r.flagged} 匹:贏 ${r.wins},市場預期 ${r.expected}</td><td>${r.passed ? "過關" : "唔過關"}</td></tr>`).join("");
+  const verdict = o.passed_any
+    ? "有因素過關,會加入模型再睇綜合權重。"
+    : `${o.results.length} 個因素全部唔過關:有呢啲情況嘅馬，實際勝出次數同市場賠率預期差唔多，即係賠率已經計咗。`;
+  return `<div class="sub" style="margin-top:12px">舊季度一次性測試(${esc(o.seasons)},${o.judged_races} 場評分;規則 ${esc(o.registered)} 喺下載數據前登記;要 z ≥ ${o.z_pass} 先過關)</div>
+    <div class="note" style="margin:6px 0">${verdict}</div>
+    <div class="tblwrap"><table><thead><tr><th>因素</th><th>z</th><th>實際 vs 市場</th><th>結果</th></tr></thead><tbody>${rows}</tbody></table></div>`;
 }
 
 function betTable(b) {
