@@ -1,9 +1,9 @@
 {
- "races": 20,
+ "races": 21,
  "wins": 2,
- "places": 8,
+ "places": 9,
  "model_wins": 2,
- "flat_roi": -0.58,
+ "flat_roi": -0.6,
  "rows": [
   {
    "date": "2026-11-04",
@@ -242,6 +242,18 @@
    "won": false,
    "placed": true,
    "model_pick": 4,
+   "model_won": false,
+   "return": 0
+  },
+  {
+   "date": "2026-11-11",
+   "race_no": 1,
+   "pick": 6,
+   "pick_prob": 0.1548,
+   "winner": 5,
+   "won": false,
+   "placed": true,
+   "model_pick": 12,
    "model_won": false,
    "return": 0
   }
