@@ -34,20 +34,29 @@ Test, each candidate f on its own
   Gain per race = log loss(base) - log loss(cand).
   Pass: mean gain > 0 with z = mean / (sd / sqrt(n)) >= 2.5, and a placebo run (f shuffled among
   the runners of each race, in fitting and in predicting) gives z < 1.0.
-  Six candidates at z >= 2.5: about a 4% chance that any of them passes by luck alone.
+  Seven candidates at z >= 2.5: about a 4% chance that any of them passes by luck alone.
 
   A candidate that passes joins the model's factors and the model's blend with the market is
   refitted; the published ranking changes only if that blend then gives the model weight above 0.
   A candidate that fails is not used.
 
+Amended 2026-11-11, still before any bank data was read: at the user's request 強組 follows
+their definition. A strong race need not be a class drop: its field ran a fast time, and its
+beaten horses went on to place at later meetings. Looked at over the horse's last 3 runs, any
+of which may count. (First version: all other runners' later starts, mean of the last 2 runs.)
+
 Candidates (only information from before the race)
-  field_after   強組, the other runners: for each of the horse's last 2 runs, the other starters
-                of that race and their starts after it and before today; their top-3 rate,
-                shrunk towards 0.25 with the weight of 5 starts, minus 0.25. Mean over those runs
-                (runs whose field has no later starts are skipped); 0 if none.
-  race_time     強組, the time: for each of the horse's last 2 runs, the winner's speed figure
+  field_after   強組, the beaten horses: for each of the horse's last 3 runs, that race's beaten
+                horses (not its winner, not this horse) whose next start came before today; the
+                share of them that finished in the first 3 in that next start, shrunk towards
+                0.25 with the weight of 5 horses, minus 0.25. Best of those runs; 0 if none.
+  race_time     強組, the time: for each of the horse's last 3 runs, the winner's speed figure
                 (model.State.speed_fig, as known before that race) minus the mean winner figure
-                of up to the previous 200 races of the same class (needs 20). Mean; 0 if none.
+                of up to the previous 200 races of the same class (needs 20). Best; 0 if none.
+  strong_race   強組, both together: 1 if in any of the last 3 runs the horse finished outside
+                the first 3 in a race whose race_time figure is >= +3 (0.3 s per km faster than
+                its class) and in which at least 40% of the beaten horses (at least 3 of them
+                with a next start before today) placed in their next start; else 0.
   forgiven_form 原諒有藉口嘅輸: the model's form (finish score over the last 5 runs, weights
                 0.6 per run back) recomputed without the runs that finished outside the first 3
                 and whose comment shows trouble (TROUBLE), minus the normal form. 0 if no run or
@@ -78,7 +87,8 @@ BANK_FROM, TEST_FROM, BANK_TO = "2019-09-01", "2020-03-01", "2022-08-31"
 SEASONS = (("2019-09-01", "2020-08-31"), ("2020-09-01", "2021-08-31"), ("2021-09-01", "2022-08-31"))
 FIRST_TRAIN, FOLDS, Z_PASS, PLACEBO_MAX = 300, 4, 2.5, 1.0
 MIN_COMMENTS = 0.90
-LAST_N, SHRINK_N, TOP3_BASE = 2, 5, 0.25
+LAST_N, SHRINK_N, TOP3_BASE = 3, 5, 0.25
+FAST, PLACED_SHARE, MIN_BEATEN = 3.0, 0.40, 3
 CLASS_RACES, CLASS_MIN = 200, 20
 FORM_RUNS, FORM_DECAY = 5, 0.6
 
@@ -88,8 +98,10 @@ SLOW_START = ("出閘緩慢", "起步緩慢", "出閘笨拙")
 HEALTH = ("流鼻血", "心律不正常", "跛行", "不良於行")
 TROUBLE = tuple(reports.WIDE_WORDS) + BLOCKED + CHECKED + SLOW_START + HEALTH
 LATE = ("直路", "最後", "末段", "一百", "二百", "三百", "四百", "終點")
-CANDIDATES = ["field_after", "race_time", "forgiven_form", "last_draw_bad", "blocked_late", "jockey_up"]
-NAMES_ZH = {"field_after": "強組(同場馬之後入頭三)", "race_time": "強組(嗰場跑得快)",
+CANDIDATES = ["field_after", "race_time", "strong_race", "forgiven_form", "last_draw_bad",
+              "blocked_late", "jockey_up"]
+NAMES_ZH = {"field_after": "強組(輸嘅馬再出入頭三)", "race_time": "強組(嗰場跑得快)",
+            "strong_race": "強組(跑得快兼輸嘅馬再出入頭三)",
             "forgiven_form": "原諒有藉口嘅輸", "last_draw_bad": "上仗檔位不利",
             "blocked_late": "上仗直路受阻", "jockey_up": "轉騎師(重測)"}
 
@@ -139,24 +151,37 @@ def _form(runs):
     return float(np.dot(w, [x["fscore"] for x in runs]) / w.sum())
 
 
+def beaten_next(run, code, today, hist, race_runs):
+    """That race's beaten horses (not its winner, not `code`) whose next start came before
+    today: how many, and how many of them finished in the first 3 in that next start."""
+    n = top3 = 0
+    for c, place in race_runs[run["key"]]:
+        if c == code or place == 1:
+            continue
+        nxt = next((h for h in hist.get(c, []) if h["date"] > run["date"]), None)
+        if nxt and nxt["date"] < today:
+            n += 1
+            top3 += bool(nxt["place"] and nxt["place"] <= 3)
+    return n, top3
+
+
 def features(x, today, hist, race_runs, race_fig, st) -> list[float]:
     runs = hist.get(x["horse_code"], [])
     out = {}
-    vals = []
+    after, times, strong = [], [], 0.0
     for run in runs[-LAST_N:]:
-        starts = top3 = 0
-        for c in race_runs[run["key"]]:
-            if c == x["horse_code"]:
-                continue
-            for h in hist.get(c, []):
-                if run["date"] < h["date"] < today:
-                    starts += 1
-                    top3 += bool(h["place"] and h["place"] <= 3)
-        if starts:
-            vals.append((top3 + TOP3_BASE * SHRINK_N) / (starts + SHRINK_N) - TOP3_BASE)
-    out["field_after"] = float(np.mean(vals)) if vals else 0.0
-    vals = [race_fig[run["key"]] for run in runs[-LAST_N:] if race_fig.get(run["key"]) is not None]
-    out["race_time"] = float(np.mean(vals)) if vals else 0.0
+        n, top3 = beaten_next(run, x["horse_code"], today, hist, race_runs)
+        if n:
+            after.append((top3 + TOP3_BASE * SHRINK_N) / (n + SHRINK_N) - TOP3_BASE)
+        fig = race_fig.get(run["key"])
+        if fig is not None:
+            times.append(fig)
+        lost = not run["place"] or run["place"] > 3
+        if lost and fig is not None and fig >= FAST and n >= MIN_BEATEN and top3 / n >= PLACED_SHARE:
+            strong = 1.0
+    out["field_after"] = max(after) if after else 0.0
+    out["race_time"] = max(times) if times else 0.0
+    out["strong_race"] = strong
     last = runs[-FORM_RUNS:]
     keep = [run for run in last if not ((not run["place"] or run["place"] > 3) and trouble(run["comment"]))]
     out["forgiven_form"] = _form(keep) - _form(last) if last and keep and len(keep) < len(last) else 0.0
@@ -171,7 +196,7 @@ def build(races):
     """Replay the bank in date order. Returns one sample per test race."""
     st = model.State()
     hist = defaultdict(list)      # horse code -> earlier runs
-    race_runs = {}                # race key -> starters' codes
+    race_runs = {}                # race key -> starters' (code, place)
     race_fig = {}                 # race key -> winner figure minus class par
     class_figs = defaultdict(list)
     samples = []
@@ -202,7 +227,8 @@ def build(races):
                 "fscore": 1 - (pos - 1) / max(field - 1, 1) if pos else 0.0,
                 "comment": x.get("comment") or "", "draw_edge": st.draw_bias(r, x.get("draw")),
                 "jockey": x.get("jockey_id")})
-        race_runs[key] = [x["horse_code"] for x in starters]
+        race_runs[key] = [(x["horse_code"], x.get("place") if isinstance(x.get("place"), int) else None)
+                          for x in starters]
         st.update(r)
     return samples
 
