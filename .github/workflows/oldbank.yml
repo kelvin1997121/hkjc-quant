@@ -1,0 +1,70 @@
+name: oldbank
+
+# Manual, one-off: download the 2019-2022 seasons for the registered old-season test
+# (rules in hkjc/oldbank.py). The data is committed to the `oldbank` branch, never to data/
+# on main, so live training never sees it. Each job stops at its time budget and commits
+# what it has; run again to continue where it stopped.
+on:
+  workflow_dispatch:
+    inputs:
+      minutes:
+        description: "Time budget per job in minutes"
+        default: "150"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: oldbank   # separate from "update" so live race-day runs are never blocked
+  cancel-in-progress: false
+
+env:
+  HKJC_CONCURRENCY: "4"
+  HKJC_RATE: "2"          # request starts per second, per job
+  HKJC_PROXY: ${{ secrets.HKJC_PROXY }}
+
+jobs:
+  seasons:
+    runs-on: ubuntu-latest
+    timeout-minutes: 200
+    strategy:
+      fail-fast: false
+      matrix:
+        range:
+          - "2019-09-01 2020-08-31"
+          - "2020-09-01 2021-08-31"
+          - "2021-09-01 2022-08-31"
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - uses: actions/checkout@v7
+        with:
+          ref: oldbank
+          path: bank
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Download ${{ matrix.range }}
+        run: HKJC_DATA_DIR=bank BACKFILL_MINUTES=${{ inputs.minutes }} python -m hkjc.oldbank download ${{ matrix.range }}
+
+      - name: Commit to oldbank
+        if: always()
+        working-directory: bank
+        run: |
+          git config user.name "hkjc-bot"
+          git config user.email "hkjc-bot@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -m "oldbank: ${{ matrix.range }}"
+          for i in 1 2 3 4 5; do
+            git pull --rebase -X theirs && git push && exit 0
+            sleep $((RANDOM % 20 + 5))
+          done
+          exit 1

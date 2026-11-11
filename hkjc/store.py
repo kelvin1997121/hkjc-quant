@@ -2,10 +2,13 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-DATA = ROOT / "data"
+# HKJC_DATA_DIR points everything at another data folder (the old-season test bank, see
+# hkjc/oldbank.py). Unset in every live workflow, so live runs always use data/.
+DATA = Path(os.environ["HKJC_DATA_DIR"]).resolve() if os.environ.get("HKJC_DATA_DIR") else ROOT / "data"
 RESULTS = DATA / "results"
 CARDS = DATA / "racecards"
 AGENT_CACHE = DATA / "agent_cache"
