@@ -28,7 +28,7 @@ from statistics import median
 
 import numpy as np
 
-from . import reports
+from . import reports, strong
 
 FEATURES = [
     "speed_best", "speed_last", "speed_missing", "form", "dist_form",
@@ -240,6 +240,7 @@ class State:
         # (venue, projected pace) -> running style -> [runners, winners]: what pace really does
         self.pace_style = defaultdict(lambda: defaultdict(lambda: [0, 0]))
         self.trials = reports.load_trials()
+        self.strong = strong.Tracker()            # 強組 marks for the page only (strong.py)
 
     # ---------------------------------------------------------------- helpers
     def std_time(self, r):
@@ -511,6 +512,7 @@ class State:
 
     # ---------------------------------------------------------------- update
     def update(self, race):
+        self.strong.note(self, race)   # before this race is added: its figure uses earlier races
         # only horses that actually started: withdrawn (WV/WX...) and void runs never ran
         runners = [x for x in race["runners"] if x.get("horse_code") and started(x)]
         finished = [x for x in runners if x.get("place")]

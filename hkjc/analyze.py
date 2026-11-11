@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from . import model
+from . import model, strong
 from .model import blend, contributions, market_probs, pace_bucket, predict, prior_vector, style_label
 
 FEATURE_ZH = {
@@ -218,6 +218,7 @@ def analyse_race(state, params, race, odds=None):
             "runs_in_db": prof["n_runs"],
             "draw_edge": round(float(X[i][col["draw_bias"]]), 3) if "draw_bias" in col else None,
             "pros": pos, "cons": neg,
+            "strong": strong.marks(state, x.get("horse_code"), race["date"]),
             "win_odds": win.get(x["no"]), "place_odds": place.get(x["no"]),
             "market_prob": None if q is None else round(float(q[i]), 4),
             "blend_prob": None if pb is None else round(float(pb[i]), 4),

@@ -46,6 +46,7 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
 .stale{margin-top:8px;color:var(--bad);font-size:14px}
 .tag{display:inline-block;background:var(--accent2);color:#1b1f24;border-radius:4px;padding:0 5px;font-size:11px;font-weight:600;margin-left:4px;vertical-align:middle}
 .tag.steam{background:var(--accent);color:#fff}
+.tag.strong{background:transparent;color:var(--ink);border:1px solid var(--accent2)}
 .shots{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 .shots button{border:1px solid var(--accent2);background:transparent;color:var(--ink);border-radius:8px;padding:4px 10px;font-size:13px;cursor:pointer}
 .pages{display:flex;gap:0;margin-top:12px;border:1px solid var(--line);border-radius:10px;overflow:hidden;width:max-content;max-width:100%}
@@ -166,7 +167,7 @@ function show() {
   const rows = r.runners.map(x => `
     <tr class="${x.no === winner ? "won" : ""}">
       <td class="num">${x.final_rank ?? x.rank}</td>
-      <td><b>${x.no}. ${esc(x.horse)}</b>${x.longshot ? '<span class="tag">冷門</span>' : ""}${x.steam ? '<span class="tag steam">落飛</span>' : ""}<br><span class="sub">${esc(x.jockey)} / ${esc(x.trainer)}</span></td>
+      <td><b>${x.no}. ${esc(x.horse)}</b>${x.longshot ? '<span class="tag">冷門</span>' : ""}${x.steam ? '<span class="tag steam">落飛</span>' : ""}${(x.strong || []).length ? `<span class="tag strong" title="${esc(x.strong.map(strongText).join(";"))}">強組</span>` : ""}<br><span class="sub">${esc(x.jockey)} / ${esc(x.trainer)}</span></td>
       <td class="num">${x.draw ?? ""}</td>
       <td class="num">${x.weight ?? ""}</td>
       <td class="num">${x.rating ?? ""}</td>
@@ -205,6 +206,9 @@ function show() {
     ${(r.longshots || []).length ? `<div class="note" style="border-color:var(--accent2);margin-bottom:10px"><b>冷門馬:</b>${
       r.longshots.map(x => `${x.no}. ${esc(x.horse)}(獨贏 ${x.win_odds}${x.place_odds ? " / 位 " + x.place_odds : ""},模型排第 ${x.rank},${(x.win_prob * 100).toFixed(1)}%)${x.pros.length ? ":" + esc(x.pros.slice(0, 2).join("、")) : ""}`).join(";")
     }<br><span class="sub">${esc(shotRecord())}</span></div>` : ""}
+    ${r.runners.some(x => (x.strong || []).length) ? `<div class="note" style="margin-bottom:10px"><b>出自強組:</b>${
+      r.runners.filter(x => (x.strong || []).length).map(x => `${x.no}. ${esc(x.horse)}(${esc(x.strong.map(strongText).join(";"))})`).join(";")
+    }<br><span class="sub">強組 = 上兩仗之中有一場跑得快過同班平均(每公里 0.3 秒或以上)，而且嗰場起碼 3 匹輸馬下一仗就入頭三。2020–22 年舊賽事有呢個標記嘅馬贏 220 場，賠率預期 230 場：市場已經計咗，只作參考，唔影響排名。</span></div>` : ""}
     <div class="tblwrap"><table>
       <thead><tr><th>排名</th><th>馬匹</th><th>檔</th><th title="已扣見習騎師減磅">實際<br>負磅</th><th>評分</th><th>近績</th><th>跑法</th><th>速度</th><th title="讓磅著數 = 比同場中位數高/低幾多分">表現評分<br>(讓磅著數±)</th><th>模型機率<br>(參考)</th><th>公平賠率<br>(模型)</th><th>即時賠率</th><th>綜合機率</th><th>EV</th><th>因素</th></tr></thead>
       <tbody>${rows}</tbody>
@@ -268,6 +272,13 @@ function learnTable(tests) {
     `<td class="num">${t.next ?? "–"}</td><td>${esc(last(t))}</td></tr>`).join("");
   return `<div class="sub" style="margin-top:12px">自我學習:每個改動只用登記之後嘅新賽事評分,去到 300、500、800 場各判斷一次,z ≥ 2.5 先會自動改模型</div>
     <div class="tblwrap"><table><thead><tr><th>測試</th><th>狀態</th><th>新賽事</th><th>下次判斷</th><th>最近結果</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+
+// 強組 mark of one earlier run (hkjc/strong.py)
+function strongText(s) {
+  const [, m, d] = s.date.split("-").map(Number);
+  const where = { ST: "沙田", HV: "跑馬地" }[s.venue] || s.venue;
+  return `${m}/${d} ${where}第${s.race_no}場${s.place ? " 跑第" + s.place : ""},嗰場快過同班每公里 ${s.faster.toFixed(2)} 秒,${s.placed} 匹輸馬下一仗入頭三`;
 }
 
 // one-off test on seasons the system had never seen (hkjc/oldbank.py, oldbank.json)
