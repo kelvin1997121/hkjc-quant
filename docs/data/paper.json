@@ -9,14 +9,14 @@
  "main": {
   "following": "top2_qin",
   "following_name": "首選+次選連贏",
-  "balance": 910.0,
-  "staked": 90.0,
+  "balance": 800.0,
+  "staked": 200.0,
   "settled_staked": 90.0,
   "returned": 0.0,
   "net": -90.0,
-  "bets": 9,
+  "bets": 20,
   "hits": 0,
-  "pending": 0,
+  "pending": 11,
   "roi": -1.0,
   "switches": [],
   "looks": []
@@ -26,31 +26,31 @@
    "key": "fav_place",
    "name": "首選位置",
    "rule": "每場 $10 位置買排名第一嘅馬",
-   "balance": 977.5,
-   "staked": 90.0,
+   "balance": 867.5,
+   "staked": 200.0,
    "settled_staked": 90.0,
    "returned": 67.5,
    "net": -22.5,
-   "bets": 9,
+   "bets": 20,
    "hits": 4,
-   "pending": 0,
+   "pending": 11,
    "roi": -0.25,
-   "backtest_roi": -0.1453
+   "backtest_roi": -0.1459
   },
   {
    "key": "top2_qin",
    "name": "首選+次選連贏",
    "rule": "每場 $10 連贏買排名頭兩匹",
-   "balance": 910.0,
-   "staked": 90.0,
+   "balance": 800.0,
+   "staked": 200.0,
    "settled_staked": 90.0,
    "returned": 0.0,
    "net": -90.0,
-   "bets": 9,
+   "bets": 20,
    "hits": 0,
-   "pending": 0,
+   "pending": 11,
    "roi": -1.0,
-   "backtest_roi": -0.0581
+   "backtest_roi": -0.0715
   },
   {
    "key": "shot_place",
@@ -65,7 +65,7 @@
    "hits": 8,
    "pending": 0,
    "roi": 0.8071,
-   "backtest_roi": -0.1777
+   "backtest_roi": -0.1794
   },
   {
    "key": "value",
@@ -84,6 +84,600 @@
   }
  ],
  "meetings": [
+  {
+   "date": "2026-11-14",
+   "venue": "ST",
+   "venue_zh": "沙田",
+   "races": [
+    {
+     "race_no": 1,
+     "post_time": "12:30",
+     "race_name": "PANASONIC水機讓賽",
+     "following": "top2_qin",
+     "main": [
+      {
+       "pool": "連贏",
+       "sel": "2-11",
+       "names": "丙午傳奇 / 星系之錶",
+       "odds": null,
+       "chance": null,
+       "value": null,
+       "stake": 10.0,
+       "back": null,
+       "refund": false,
+       "placed": true
+      }
+     ],
+     "books": {
+      "fav_place": [
+       {
+        "pool": "位置",
+        "sel": "2",
+        "names": "丙午傳奇",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "top2_qin": [
+       {
+        "pool": "連贏",
+        "sel": "2-11",
+        "names": "丙午傳奇 / 星系之錶",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "shot_place": [],
+      "value": []
+     },
+     "state": "planned"
+    },
+    {
+     "race_no": 2,
+     "post_time": "13:00",
+     "race_name": "PANASONIC電視機讓賽",
+     "following": "top2_qin",
+     "main": [
+      {
+       "pool": "連贏",
+       "sel": "1-10",
+       "names": "隋我同來 / 快樂老撾",
+       "odds": null,
+       "chance": null,
+       "value": null,
+       "stake": 10.0,
+       "back": null,
+       "refund": false,
+       "placed": true
+      }
+     ],
+     "books": {
+      "fav_place": [
+       {
+        "pool": "位置",
+        "sel": "1",
+        "names": "隋我同來",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "top2_qin": [
+       {
+        "pool": "連贏",
+        "sel": "1-10",
+        "names": "隋我同來 / 快樂老撾",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "shot_place": [],
+      "value": []
+     },
+     "state": "planned"
+    },
+    {
+     "race_no": 3,
+     "post_time": "13:55",
+     "race_name": "樂聲牌專門店讓賽",
+     "following": "top2_qin",
+     "main": [
+      {
+       "pool": "連贏",
+       "sel": "5-14",
+       "names": "一鹿歡騰 / 上市魅力",
+       "odds": null,
+       "chance": null,
+       "value": null,
+       "stake": 10.0,
+       "back": null,
+       "refund": false,
+       "placed": true
+      }
+     ],
+     "books": {
+      "fav_place": [
+       {
+        "pool": "位置",
+        "sel": "5",
+        "names": "一鹿歡騰",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "top2_qin": [
+       {
+        "pool": "連贏",
+        "sel": "5-14",
+        "names": "一鹿歡騰 / 上市魅力",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "shot_place": [],
+      "value": []
+     },
+     "state": "planned"
+    },
+    {
+     "race_no": 4,
+     "post_time": "14:25",
+     "race_name": "PANASONIC空調機讓賽",
+     "following": "top2_qin",
+     "main": [
+      {
+       "pool": "連贏",
+       "sel": "1-3",
+       "names": "捷威 / 深心星",
+       "odds": null,
+       "chance": null,
+       "value": null,
+       "stake": 10.0,
+       "back": null,
+       "refund": false,
+       "placed": true
+      }
+     ],
+     "books": {
+      "fav_place": [
+       {
+        "pool": "位置",
+        "sel": "1",
+        "names": "捷威",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "top2_qin": [
+       {
+        "pool": "連贏",
+        "sel": "1-3",
+        "names": "捷威 / 深心星",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "shot_place": [],
+      "value": []
+     },
+     "state": "planned"
+    },
+    {
+     "race_no": 5,
+     "post_time": "14:55",
+     "race_name": "PANASONIC電飯煲讓賽",
+     "following": "top2_qin",
+     "main": [
+      {
+       "pool": "連贏",
+       "sel": "2-3",
+       "names": "怡昌明駒 / 快樂明駒",
+       "odds": null,
+       "chance": null,
+       "value": null,
+       "stake": 10.0,
+       "back": null,
+       "refund": false,
+       "placed": true
+      }
+     ],
+     "books": {
+      "fav_place": [
+       {
+        "pool": "位置",
+        "sel": "2",
+        "names": "怡昌明駒",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "top2_qin": [
+       {
+        "pool": "連贏",
+        "sel": "2-3",
+        "names": "怡昌明駒 / 快樂明駒",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "shot_place": [],
+      "value": []
+     },
+     "state": "planned"
+    },
+    {
+     "race_no": 6,
+     "post_time": "15:25",
+     "race_name": "PANASONIC護髮風筒讓賽",
+     "following": "top2_qin",
+     "main": [
+      {
+       "pool": "連贏",
+       "sel": "4-6",
+       "names": "精明選擇 / 安可",
+       "odds": null,
+       "chance": null,
+       "value": null,
+       "stake": 10.0,
+       "back": null,
+       "refund": false,
+       "placed": true
+      }
+     ],
+     "books": {
+      "fav_place": [
+       {
+        "pool": "位置",
+        "sel": "4",
+        "names": "精明選擇",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "top2_qin": [
+       {
+        "pool": "連贏",
+        "sel": "4-6",
+        "names": "精明選擇 / 安可",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "shot_place": [],
+      "value": []
+     },
+     "state": "planned"
+    },
+    {
+     "race_no": 7,
+     "post_time": "16:00",
+     "race_name": "樂聲盃（讓賽）",
+     "following": "top2_qin",
+     "main": [
+      {
+       "pool": "連贏",
+       "sel": "13-8",
+       "names": "實力股 / 正本巨星",
+       "odds": null,
+       "chance": null,
+       "value": null,
+       "stake": 10.0,
+       "back": null,
+       "refund": false,
+       "placed": true
+      }
+     ],
+     "books": {
+      "fav_place": [
+       {
+        "pool": "位置",
+        "sel": "13",
+        "names": "實力股",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "top2_qin": [
+       {
+        "pool": "連贏",
+        "sel": "13-8",
+        "names": "實力股 / 正本巨星",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "shot_place": [],
+      "value": []
+     },
+     "state": "planned"
+    },
+    {
+     "race_no": 8,
+     "post_time": "16:30",
+     "race_name": "PANASONIC電磁爐讓賽",
+     "following": "top2_qin",
+     "main": [
+      {
+       "pool": "連贏",
+       "sel": "7-1",
+       "names": "馬寶寶 / 晨曦鳳凰",
+       "odds": null,
+       "chance": null,
+       "value": null,
+       "stake": 10.0,
+       "back": null,
+       "refund": false,
+       "placed": true
+      }
+     ],
+     "books": {
+      "fav_place": [
+       {
+        "pool": "位置",
+        "sel": "7",
+        "names": "馬寶寶",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "top2_qin": [
+       {
+        "pool": "連贏",
+        "sel": "7-1",
+        "names": "馬寶寶 / 晨曦鳳凰",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "shot_place": [],
+      "value": []
+     },
+     "state": "planned"
+    },
+    {
+     "race_no": 9,
+     "post_time": "17:00",
+     "race_name": "PANASONIC浴室寶讓賽",
+     "following": "top2_qin",
+     "main": [
+      {
+       "pool": "連贏",
+       "sel": "13-7",
+       "names": "天蓬貓 / 成就非凡",
+       "odds": null,
+       "chance": null,
+       "value": null,
+       "stake": 10.0,
+       "back": null,
+       "refund": false,
+       "placed": true
+      }
+     ],
+     "books": {
+      "fav_place": [
+       {
+        "pool": "位置",
+        "sel": "13",
+        "names": "天蓬貓",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "top2_qin": [
+       {
+        "pool": "連贏",
+        "sel": "13-7",
+        "names": "天蓬貓 / 成就非凡",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "shot_place": [],
+      "value": []
+     },
+     "state": "planned"
+    },
+    {
+     "race_no": 10,
+     "post_time": "17:35",
+     "race_name": "TECHNICS耳機讓賽",
+     "following": "top2_qin",
+     "main": [
+      {
+       "pool": "連贏",
+       "sel": "10-8",
+       "names": "正義波 / 開心宇宙",
+       "odds": null,
+       "chance": null,
+       "value": null,
+       "stake": 10.0,
+       "back": null,
+       "refund": false,
+       "placed": true
+      }
+     ],
+     "books": {
+      "fav_place": [
+       {
+        "pool": "位置",
+        "sel": "10",
+        "names": "正義波",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "top2_qin": [
+       {
+        "pool": "連贏",
+        "sel": "10-8",
+        "names": "正義波 / 開心宇宙",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "shot_place": [],
+      "value": []
+     },
+     "state": "planned"
+    },
+    {
+     "race_no": 11,
+     "post_time": "18:10",
+     "race_name": "PANASONIC日本廚櫃讓賽",
+     "following": "top2_qin",
+     "main": [
+      {
+       "pool": "連贏",
+       "sel": "10-11",
+       "names": "喜悅歡欣 / 旌採",
+       "odds": null,
+       "chance": null,
+       "value": null,
+       "stake": 10.0,
+       "back": null,
+       "refund": false,
+       "placed": true
+      }
+     ],
+     "books": {
+      "fav_place": [
+       {
+        "pool": "位置",
+        "sel": "10",
+        "names": "喜悅歡欣",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "top2_qin": [
+       {
+        "pool": "連贏",
+        "sel": "10-11",
+        "names": "喜悅歡欣 / 旌採",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "shot_place": [],
+      "value": []
+     },
+     "state": "planned"
+    }
+   ],
+   "review": [
+    "模擬倉今日跟「首選+次選連贏」,共 11 注,每注 $10;當中 11 場未開跑,注項會跟賠率變,開跑一刻固定。",
+    "一日嘅賺蝕主要係運氣:一個賽馬日 8 至 11 場,中唔中一注連贏已經可以左右結果。策略要累積夠 300 場先比較,唔會因為一兩日輸贏就改。"
+   ]
+  },
   {
    "date": "2026-11-11",
    "venue": "HV",
@@ -1021,5 +1615,5 @@
    ]
   }
  ],
- "updated_at": "2026-11-11T15:05:47+00:00"
+ "updated_at": "2026-11-12T01:03:30+00:00"
 }
