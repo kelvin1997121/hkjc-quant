@@ -1,0 +1,162 @@
+{
+ "tests": {
+  "add:jockey_up": {
+   "kind": "add",
+   "cols": [
+    "jockey_up"
+   ],
+   "since": "2026-11-08",
+   "status": "testing",
+   "looks": [],
+   "races": 20
+  },
+  "add:awt_pref": {
+   "kind": "add",
+   "cols": [
+    "awt_pref"
+   ],
+   "since": "2026-11-08",
+   "status": "testing",
+   "looks": [],
+   "races": 20
+  },
+  "drop:速度/表現評分": {
+   "kind": "drop",
+   "cols": [
+    "speed_best",
+    "speed_last",
+    "speed_missing",
+    "perf_best",
+    "perf_last",
+    "handicap_edge"
+   ],
+   "since": "2026-11-08",
+   "status": "testing",
+   "looks": [],
+   "races": 20
+  },
+  "drop:近況": {
+   "kind": "drop",
+   "cols": [
+    "form",
+    "dist_form",
+    "class_drop",
+    "layoff",
+    "debut",
+    "bw_change",
+    "form_trend"
+   ],
+   "since": "2026-11-08",
+   "status": "testing",
+   "looks": [],
+   "races": 20
+  },
+  "drop:跑法/步速": {
+   "kind": "drop",
+   "cols": [
+    "early",
+    "early_x_pace",
+    "early_x_today",
+    "early_x_course",
+    "closing"
+   ],
+   "since": "2026-11-08",
+   "status": "testing",
+   "looks": [],
+   "races": 20
+  },
+  "drop:檔位": {
+   "kind": "drop",
+   "cols": [
+    "draw_bias",
+    "draw_x_today"
+   ],
+   "since": "2026-11-08",
+   "status": "testing",
+   "looks": [],
+   "races": 20
+  },
+  "drop:騎練": {
+   "kind": "drop",
+   "cols": [
+    "jockey",
+    "trainer",
+    "jockey_form",
+    "trainer_form",
+    "combo",
+    "trainer_venue"
+   ],
+   "since": "2026-11-08",
+   "status": "testing",
+   "looks": [],
+   "races": 20
+  },
+  "drop:市場往績": {
+   "kind": "drop",
+   "cols": [
+    "mkt_rating",
+    "vs_mkt"
+   ],
+   "since": "2026-11-08",
+   "status": "testing",
+   "looks": [],
+   "races": 20
+  },
+  "drop:分段時間": {
+   "kind": "drop",
+   "cols": [
+    "late_speed",
+    "early_speed"
+   ],
+   "since": "2026-11-08",
+   "status": "testing",
+   "looks": [],
+   "races": 20
+  },
+  "drop:負磅/評分": {
+   "kind": "drop",
+   "cols": [
+    "weight_rel",
+    "rating_move"
+   ],
+   "since": "2026-11-08",
+   "status": "testing",
+   "looks": [],
+   "races": 20
+  },
+  "drop:配備": {
+   "kind": "drop",
+   "cols": [
+    "gear_first",
+    "gear_off",
+    "gear_back"
+   ],
+   "since": "2026-11-08",
+   "status": "testing",
+   "looks": [],
+   "races": 20
+  },
+  "drop:上仗走外疊": {
+   "kind": "drop",
+   "cols": [
+    "run_wide"
+   ],
+   "since": "2026-11-08",
+   "status": "testing",
+   "looks": [],
+   "races": 20
+  },
+  "drop:試閘": {
+   "kind": "drop",
+   "cols": [
+    "trial_score",
+    "trial_count"
+   ],
+   "since": "2026-11-08",
+   "status": "testing",
+   "looks": [],
+   "races": 20
+  }
+ },
+ "checked": "2026-11-12"
+}
