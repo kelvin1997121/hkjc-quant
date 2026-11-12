@@ -30,6 +30,7 @@ class Tracker:
         self.races = {}                    # race key -> {"rel": figure minus class par, "runners"}
         self.run_key = {}                  # (horse code, date) -> race key
         self.class_figs = defaultdict(list)
+        self.raw = {}                      # (horse code, date) -> HKJC code when no place (PU, DNF...)
 
     def note(self, state, race):
         from .model import class_num, started
@@ -46,6 +47,8 @@ class Tracker:
             (x["horse_code"], x.get("place") if isinstance(x.get("place"), int) else None) for x in starters]}
         for x in starters:
             self.run_key[(x["horse_code"], race["date"])] = key
+            if not isinstance(x.get("place"), int) and x.get("place_raw"):
+                self.raw[(x["horse_code"], race["date"])] = x["place_raw"]
 
 
 def marks(state, code, today) -> list[dict]:
@@ -69,5 +72,5 @@ def marks(state, code, today) -> list[dict]:
         if placed >= MIN_PLACED:
             out.append({"date": run["date"], "venue": key[1], "race_no": key[2],
                         "place": run.get("place"), "faster": round(info["rel"] / 10, 2),
-                        "placed": placed})
+                        "placed": placed, "place_raw": tr.raw.get((code, run["date"]))})
     return out

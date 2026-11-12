@@ -278,7 +278,9 @@ function learnTable(tests) {
 function strongText(s) {
   const [, m, d] = s.date.split("-").map(Number);
   const where = { ST: "沙田", HV: "跑馬地" }[s.venue] || s.venue;
-  return `${m}/${d} ${where}第${s.race_no}場${s.place ? " 跑第" + s.place : ""},嗰場快過同班每公里 ${s.faster.toFixed(2)} 秒,${s.placed} 匹輸馬下一仗入頭三`;
+  const raw = { PU: "收停", DNF: "未跑完", UR: "墮騎師", FE: "跌倒", DISQ: "被取消資格" }[s.place_raw] || s.place_raw;
+  const how = s.place ? " 跑第" + s.place : raw ? " " + raw : "";
+  return `${m}/${d} ${where}第${s.race_no}場${how},嗰場快過同班每公里 ${s.faster.toFixed(2)} 秒,${s.placed} 匹輸馬下一仗入頭三`;
 }
 
 // one-off test on seasons the system had never seen (hkjc/oldbank.py, oldbank.json)
