@@ -36,6 +36,20 @@ python -m hkjc run              # 完整更新一次(--no-agent 唔叫 AI)
 
 然後開 `docs/index.html`(需要經 web server,例如 `python -m http.server -d docs`)。
 
+## 測試
+
+```bash
+pip install pytest
+python -m pytest
+```
+
+`tests/` 入面嘅檢查幾秒行完,唔會連馬會網站,亦唔會改 `data/` 同 `docs/`(全部喺臨時資料夾做)。
+每次改 `hkjc/`、`tests/` 或 workflow,GitHub 會自動行一次(Actions → tests);紅燈即係有改動整壞咗嘢。
+
+涵蓋:開跑時鎖定預測、開跑前賠率嘅讀取時間、賽果快出、模擬倉落注同結算(包括退出馬退款)、
+彩池測試、新資料測試點樣判斷、自我學習紀錄、實戰往績、冇偷睇未來數據、馬會頁面解析。
+`tests/test_meeting_1111.py` 用 2026-11-11 嗰日儲低嘅真實檔案重播:模擬倉結餘同彩池測試數字一改就會紅燈。
+
 ## 檔案
 
 ```
@@ -45,6 +59,7 @@ hkjc/analyze.py   將模型輸出變成可解釋分析
 hkjc/agent.py     Claude AI 分析(有快取,數據冇變唔會重複收費)
 hkjc/__main__.py  流程
 hkjc/trackwork.py 賽前儲存晨操同傷患紀錄(暫時只收集,未入模型)
+tests/            自動測試(見上面「測試」)
 data/             歷史賽果、排位表(由 workflow 自動 commit)
 docs/             網頁 + 分析 JSON
 ```

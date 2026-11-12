@@ -1,0 +1,33 @@
+name: tests
+
+# Runs the checks in tests/ whenever the code, the tests or a workflow changes. It reads the
+# repo only: nothing is fetched from HKJC, and nothing is committed or published, so it cannot
+# touch a live update. A red run means a change broke something the tests cover; GitHub emails it.
+on:
+  push:
+    branches: [main]
+    paths: ["hkjc/**", "tests/**", "requirements.txt", "pytest.ini", ".github/workflows/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt pytest
+
+      - run: python -m pytest -q
