@@ -93,16 +93,24 @@ jobs:
           done
           exit 1
 
-      - name: Publish the site, at most every 10 minutes
-        # the page reads new data from the repo at once, so this needn't keep up with races
+      - name: Publish the site when something is new, at most every 10 minutes
+        # the page reads new data from the repo at once, so this needn't keep up with races.
+        # Away from race days most runs change nothing: publishing the same commit again was
+        # about 70 needless deployments a day.
         continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          age=$(gh run list --workflow pages.yml --limit 1 --json createdAt \
-            --jq '((now - (.[0].createdAt | fromdateiso8601)) / 60) | floor') || age=""
-          if [ "${age:-999}" -ge 10 ]; then
+          # the last publish: its commit, minutes since it started, and how it ended
+          last=$(gh run list --workflow pages.yml --limit 1 --json headSha,createdAt,status,conclusion \
+            --jq '.[0] | [.headSha, (((now - (.createdAt | fromdateiso8601)) / 60) | floor), .status, (.conclusion // "")] | @tsv') || last=""
+          IFS=$'\t' read -r sha age status result <<<"$last"
+          head=$(git rev-parse HEAD)
+          echo "repo at $head; last publish: ${sha:-none} ${age:-?} min ago, $status $result"
+          if [ -n "$sha" ] && [ "$sha" = "$head" ] && { [ "$status" != "completed" ] || [ "$result" = "success" ]; }; then
+            echo "nothing new since the last publish"
+          elif [ "${age:-999}" -ge 10 ]; then
             gh workflow run pages.yml && echo "publishing started"
           else
             echo "published $age minutes ago"
