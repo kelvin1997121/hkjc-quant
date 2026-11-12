@@ -347,10 +347,14 @@ def ticker_check():
 def odds_check(meeting_file):
     """Did the last meeting get live odds? Any old file would otherwise pass for ever."""
     stem = meeting_file.stem
-    history = (store.read_json(store.DATA / "odds" / f"{stem}.json") or {}).get("history", {})
+    saved = store.read_json(store.DATA / "odds" / f"{stem}.json") or {}
+    history = saved.get("history", {})
+    # "pre" (the last odds read before each post time) is what the paper account, the pool test
+    # and the new-information test run on; it is only saved when the quinella page was readable
+    pre = sum(1 for book in (saved.get("pools") or {}).values() if book.get("pre"))
     total = len(store.read_json(meeting_file)["races"])
-    return {"name": "即時賠率", "ok": bool(total) and len(history) >= 0.8 * total,
-            "detail": f"{stem[:10]} 有 {len(history)}/{total} 場賠率紀錄"}
+    return {"name": "即時賠率", "ok": bool(total) and min(len(history), pre) >= 0.8 * total,
+            "detail": f"{stem[:10]} 有 {len(history)}/{total} 場賠率紀錄,{pre}/{total} 場有開跑前賠率"}
 
 
 def trackwork_check(past):

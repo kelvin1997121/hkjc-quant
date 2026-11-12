@@ -42,7 +42,10 @@ jobs:
         run: |
           git config user.name "hkjc-bot"
           git config user.email "hkjc-bot@users.noreply.github.com"
-          git add docs/data/selfcheck.json data/model_config.json
+          # learning.json is the record of which looks each self-improvement test has had.
+          # Left out until 12 Nov 2026, so every run started from an empty record: harmless
+          # below 300 new races, but from then on every test would have been judged daily.
+          git add docs/data/selfcheck.json data/model_config.json data/learning.json
           git diff --cached --quiet && exit 0
           git commit -m "selfcheck: $(TZ=Asia/Hong_Kong date '+%Y-%m-%d %H:%M') HKT"
           for i in 1 2 3 4 5; do
