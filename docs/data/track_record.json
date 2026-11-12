@@ -1,250 +1,15 @@
 {
- "races": 29,
- "wins": 3,
- "places": 12,
- "model_wins": 2,
- "flat_roi": -0.5759,
+ "from": "2026-11-11",
+ "races": 9,
+ "wins": 1,
+ "places": 4,
+ "model_wins": 0,
+ "fav_wins": 1.0,
+ "fav_places": 4.0,
+ "z_win_vs_fav": 0.0,
+ "z_place_vs_fav": 0.0,
+ "flat_roi": -0.5667,
  "rows": [
-  {
-   "date": "2026-11-04",
-   "race_no": 1,
-   "pick": 1,
-   "pick_prob": 0.2118,
-   "winner": 2,
-   "won": false,
-   "placed": false,
-   "model_pick": 1,
-   "model_won": false,
-   "return": 0
-  },
-  {
-   "date": "2026-11-04",
-   "race_no": 2,
-   "pick": 9,
-   "pick_prob": 0.1829,
-   "winner": 12,
-   "won": false,
-   "placed": false,
-   "model_pick": 9,
-   "model_won": false,
-   "return": 0
-  },
-  {
-   "date": "2026-11-04",
-   "race_no": 3,
-   "pick": 1,
-   "pick_prob": 0.1774,
-   "winner": 1,
-   "won": true,
-   "placed": true,
-   "model_pick": 1,
-   "model_won": true,
-   "return": 5.9
-  },
-  {
-   "date": "2026-11-04",
-   "race_no": 4,
-   "pick": 10,
-   "pick_prob": 0.2467,
-   "winner": 6,
-   "won": false,
-   "placed": false,
-   "model_pick": 10,
-   "model_won": false,
-   "return": 0
-  },
-  {
-   "date": "2026-11-04",
-   "race_no": 5,
-   "pick": 2,
-   "pick_prob": 0.2142,
-   "winner": 11,
-   "won": false,
-   "placed": false,
-   "model_pick": 2,
-   "model_won": false,
-   "return": 0
-  },
-  {
-   "date": "2026-11-04",
-   "race_no": 6,
-   "pick": 4,
-   "pick_prob": 0.1602,
-   "winner": 1,
-   "won": false,
-   "placed": false,
-   "model_pick": 4,
-   "model_won": false,
-   "return": 0
-  },
-  {
-   "date": "2026-11-04",
-   "race_no": 7,
-   "pick": 5,
-   "pick_prob": 0.2084,
-   "winner": 8,
-   "won": false,
-   "placed": true,
-   "model_pick": 5,
-   "model_won": false,
-   "return": 0
-  },
-  {
-   "date": "2026-11-04",
-   "race_no": 8,
-   "pick": 9,
-   "pick_prob": 0.2984,
-   "winner": 2,
-   "won": false,
-   "placed": false,
-   "model_pick": 9,
-   "model_won": false,
-   "return": 0
-  },
-  {
-   "date": "2026-11-04",
-   "race_no": 9,
-   "pick": 1,
-   "pick_prob": 0.1876,
-   "winner": 10,
-   "won": false,
-   "placed": true,
-   "model_pick": 1,
-   "model_won": false,
-   "return": 0
-  },
-  {
-   "date": "2026-11-08",
-   "race_no": 1,
-   "pick": 2,
-   "pick_prob": 0.1693,
-   "winner": 5,
-   "won": false,
-   "placed": true,
-   "model_pick": 2,
-   "model_won": false,
-   "return": 0
-  },
-  {
-   "date": "2026-11-08",
-   "race_no": 2,
-   "pick": 6,
-   "pick_prob": 0.1192,
-   "winner": 8,
-   "won": false,
-   "placed": false,
-   "model_pick": 1,
-   "model_won": false,
-   "return": 0
-  },
-  {
-   "date": "2026-11-08",
-   "race_no": 3,
-   "pick": 11,
-   "pick_prob": 0.0603,
-   "winner": 1,
-   "won": false,
-   "placed": false,
-   "model_pick": 7,
-   "model_won": false,
-   "return": 0
-  },
-  {
-   "date": "2026-11-08",
-   "race_no": 4,
-   "pick": 3,
-   "pick_prob": 0.2931,
-   "winner": 6,
-   "won": false,
-   "placed": false,
-   "model_pick": 3,
-   "model_won": false,
-   "return": 0
-  },
-  {
-   "date": "2026-11-08",
-   "race_no": 5,
-   "pick": 10,
-   "pick_prob": 0.2273,
-   "winner": 10,
-   "won": true,
-   "placed": true,
-   "model_pick": 10,
-   "model_won": true,
-   "return": 2.5
-  },
-  {
-   "date": "2026-11-08",
-   "race_no": 6,
-   "pick": 12,
-   "pick_prob": 0.1409,
-   "winner": 4,
-   "won": false,
-   "placed": true,
-   "model_pick": 12,
-   "model_won": false,
-   "return": 0
-  },
-  {
-   "date": "2026-11-08",
-   "race_no": 7,
-   "pick": 7,
-   "pick_prob": 0.2965,
-   "winner": 14,
-   "won": false,
-   "placed": false,
-   "model_pick": 7,
-   "model_won": false,
-   "return": 0
-  },
-  {
-   "date": "2026-11-08",
-   "race_no": 8,
-   "pick": 3,
-   "pick_prob": 0.2061,
-   "winner": 7,
-   "won": false,
-   "placed": false,
-   "model_pick": 3,
-   "model_won": false,
-   "return": 0
-  },
-  {
-   "date": "2026-11-08",
-   "race_no": 9,
-   "pick": 6,
-   "pick_prob": 0.2939,
-   "winner": 8,
-   "won": false,
-   "placed": true,
-   "model_pick": 6,
-   "model_won": false,
-   "return": 0
-  },
-  {
-   "date": "2026-11-08",
-   "race_no": 10,
-   "pick": 4,
-   "pick_prob": 0.2063,
-   "winner": 8,
-   "won": false,
-   "placed": false,
-   "model_pick": 2,
-   "model_won": false,
-   "return": 0
-  },
-  {
-   "date": "2026-11-08",
-   "race_no": 11,
-   "pick": 4,
-   "pick_prob": 0.2241,
-   "winner": 7,
-   "won": false,
-   "placed": true,
-   "model_pick": 4,
-   "model_won": false,
-   "return": 0
-  },
   {
    "date": "2026-11-11",
    "race_no": 1,
@@ -255,7 +20,12 @@
    "placed": true,
    "model_pick": 12,
    "model_won": false,
-   "return": 0
+   "return": 0,
+   "favourite": [
+    6
+   ],
+   "fav_won": 0.0,
+   "fav_placed": 1.0
   },
   {
    "date": "2026-11-11",
@@ -267,7 +37,12 @@
    "placed": true,
    "model_pick": 12,
    "model_won": false,
-   "return": 0
+   "return": 0,
+   "favourite": [
+    10
+   ],
+   "fav_won": 0.0,
+   "fav_placed": 1.0
   },
   {
    "date": "2026-11-11",
@@ -279,7 +54,12 @@
    "placed": false,
    "model_pick": 7,
    "model_won": false,
-   "return": 0
+   "return": 0,
+   "favourite": [
+    11
+   ],
+   "fav_won": 0.0,
+   "fav_placed": 0.0
   },
   {
    "date": "2026-11-11",
@@ -291,7 +71,12 @@
    "placed": false,
    "model_pick": 6,
    "model_won": false,
-   "return": 0
+   "return": 0,
+   "favourite": [
+    6
+   ],
+   "fav_won": 0.0,
+   "fav_placed": 0.0
   },
   {
    "date": "2026-11-11",
@@ -303,7 +88,12 @@
    "placed": true,
    "model_pick": 12,
    "model_won": false,
-   "return": 0
+   "return": 0,
+   "favourite": [
+    10
+   ],
+   "fav_won": 0.0,
+   "fav_placed": 1.0
   },
   {
    "date": "2026-11-11",
@@ -315,7 +105,12 @@
    "placed": false,
    "model_pick": 4,
    "model_won": false,
-   "return": 0
+   "return": 0,
+   "favourite": [
+    4
+   ],
+   "fav_won": 0.0,
+   "fav_placed": 0.0
   },
   {
    "date": "2026-11-11",
@@ -327,7 +122,12 @@
    "placed": true,
    "model_pick": 1,
    "model_won": false,
-   "return": 3.9
+   "return": 3.9,
+   "favourite": [
+    5
+   ],
+   "fav_won": 1.0,
+   "fav_placed": 1.0
   },
   {
    "date": "2026-11-11",
@@ -339,7 +139,12 @@
    "placed": false,
    "model_pick": 3,
    "model_won": false,
-   "return": 0
+   "return": 0,
+   "favourite": [
+    12
+   ],
+   "fav_won": 0.0,
+   "fav_placed": 0.0
   },
   {
    "date": "2026-11-11",
@@ -351,7 +156,12 @@
    "placed": false,
    "model_pick": 7,
    "model_won": false,
-   "return": 0
+   "return": 0,
+   "favourite": [
+    12
+   ],
+   "fav_won": 0.0,
+   "fav_placed": 0.0
   }
  ]
 }

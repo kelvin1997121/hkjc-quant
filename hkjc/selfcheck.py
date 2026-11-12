@@ -498,19 +498,25 @@ def model_zh():
     return {f"add:{f}": f"加入:{FEATURE_ZH.get(f, f)}" for f in model.TRIAL_FEATURES}
 
 
-def live_check(tr, base):
-    """Are the frozen pre-race picks doing as well as the backtest said they would?"""
+def live_check(tr):
+    """Are the frozen pre-race first choices doing as well as the final favourite of the same races?
+
+    Changed 2026-11-12 from a comparison with the backtest: that is scored on final odds, which
+    include money placed after our picks are frozen (11 Nov: in 3 of 9 races the final favourite
+    was another horse than at the freeze), so live picks are expected to sit below it. Over the
+    first 29 races the final favourite itself won 4, which the old check would have flagged too.
+    Race by race against the favourite, a bad run for favourites is not mistaken for a fault."""
     n = tr.get("races", 0)
+    since = "/".join(str(int(v)) for v in tr["from"].split("-")[1:]) if tr.get("from") else ""
     if n < 30:
-        return {"name": "實戰表現", "ok": None, "detail": f"實戰 {n} 場,夠 30 場先比較"}
-    zs = []
-    for got, rate in ((tr["wins"], base["blend_hit"]), (tr["places"], base["first_placed"])):
-        zs.append((got - n * rate) / math.sqrt(n * rate * (1 - rate)))
+        return {"name": "實戰表現", "ok": None,
+                "detail": f"實戰 {n} 場" + (f"(由 {since} 起)" if since else "") + ",夠 30 場先比較"}
+    zs = [tr.get("z_win_vs_fav") or 0.0, tr.get("z_place_vs_fav") or 0.0]
     ok = min(zs) > -2
     return {"name": "實戰表現", "ok": ok,
-            "detail": f"實戰 {n} 場:首選勝 {tr['wins'] / n:.0%}(回測 {base['blend_hit']:.0%})、"
-                      f"入位 {tr['places'] / n:.0%}(回測 {base['first_placed']:.0%})"
-                      + ("" if ok else ",明顯差過回測,要檢查")}
+            "detail": f"實戰 {n} 場:首選勝 {tr['wins'] / n:.0%}、入位 {tr['places'] / n:.0%};"
+                      f"同場最後熱門勝 {tr['fav_wins'] / n:.0%}、入位 {tr['fav_places'] / n:.0%}"
+                      + ("" if ok else ",首選明顯差過最後熱門,要檢查")}
 
 
 def load_config():
@@ -607,7 +613,8 @@ def run():
         "factor_groups": contrib,
         "tuning": {"current": current, "tried": tried, "switched": switched,
                    "chosen": {"l2": best["l2"], "stages": best["stages"]} if switched else current},
-        "live": {k: tr.get(k) for k in ("races", "wins", "places", "flat_roi")},
+        "live": {k: tr.get(k) for k in ("from", "races", "wins", "places", "fav_wins", "fav_places",
+                                        "z_win_vs_fav", "z_place_vs_fav", "flat_roi")},
         "longshots": ls,
         "pick_bands": pick_bands(base_rows),
         "bet_returns": bet_returns(base_rows, races),
@@ -615,7 +622,7 @@ def run():
         "pool_test": pool_test,
         "notes": notes,
     }
-    report["health"]["checks"].append(live_check(tr, base))
+    report["health"]["checks"].append(live_check(tr))
     store.write_json(store.DOCS / "data" / "selfcheck.json", report)
     print("  wrote selfcheck.json")
     return report

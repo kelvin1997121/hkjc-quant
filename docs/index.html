@@ -452,11 +452,15 @@ function perf(tr) {
       <div class="kpi"><b>${pct(h.flat_bet_roi_top_pick)}</b>首選平注回報率</div></div>`;
   }
   if (tr && tr.races) {
-    html += `<div class="sub" style="margin-top:12px">實戰往績(賽前鎖定嘅預測)</div><div class="kpis">
+    const since = tr.from ? `,由 ${+tr.from.slice(5, 7)}/${+tr.from.slice(8)} 起` : "";
+    html += `<div class="sub" style="margin-top:12px">實戰往績(開跑前鎖定嘅預測${since})</div><div class="kpis">
       <div class="kpi"><b>${tr.races}</b>場</div>
       <div class="kpi"><b>${pct(tr.wins / tr.races)}</b>首選勝出</div>
       <div class="kpi"><b>${pct(tr.places / tr.races)}</b>首選入位</div>
-      <div class="kpi"><b>${pct(tr.flat_roi)}</b>平注回報率</div></div>`;
+      ${tr.fav_wins != null ? `<div class="kpi"><b>${pct(tr.fav_wins / tr.races)}</b>同場最後熱門勝出(對照)</div>
+      <div class="kpi"><b>${pct(tr.fav_places / tr.races)}</b>同場最後熱門入位(對照)</div>` : ""}
+      <div class="kpi"><b>${pct(tr.flat_roi)}</b>平注回報率</div></div>
+      <div class="sub">11/4 同 11/8 嘅預測係事後重做，唔係開跑前鎖定，所以唔計。回測用最後賠率計，包括我哋鎖定之後先落嘅錢，所以實戰應該同「同場最後熱門」比，唔係同回測比。</div>`;
   }
   $("#perf").innerHTML = html;
 }

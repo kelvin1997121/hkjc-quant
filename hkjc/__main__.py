@@ -10,6 +10,8 @@ import json
 import sys
 from datetime import date, datetime, timezone
 
+import numpy as np
+
 from . import agent, analyze, horses, model, paper, reports, scraper, store, writer
 from .backfill import HKT, backfill, today_hkt
 
@@ -396,30 +398,70 @@ def attach_results():
             store.write_json(p, d)
 
 
+# First meeting whose picks were frozen at each race's post time. Earlier meetings were
+# re-analysed afterwards and are left out of the live record: 4 Nov ran no updates during the
+# meeting (odds read 20 minutes to 4 hours before the off), 8 Nov used odds read up to 12
+# minutes after it (so every first choice was the final favourite).
+LIVE_FROM = "2026-11-11"
+
+
+def _favourites(res_race):
+    """Final favourite(s) of a race from its result: lowest final win odds among the starters."""
+    priced = {x["no"]: x["win_odds"] for x in res_race.get("runners", [])
+              if x.get("win_odds") and model.started(x)}
+    low = min(priced.values(), default=None)
+    return [n for n, o in priced.items() if o == low]
+
+
+def _paired_z(diff):
+    """z of the mean of per-race differences (0 when they never differ)."""
+    x = np.array(diff, dtype=float)
+    sd = x.std(ddof=1) if len(x) > 1 else 0.0
+    return round(float(x.mean() / (sd / np.sqrt(len(x)))), 2) if sd > 0 else 0.0
+
+
 def update_track_record():
-    """Live record of frozen pre-race top picks vs actual results."""
+    """Live record of frozen pre-race top picks vs actual results, beside the final favourite
+    of the same races. The backtest is scored on final odds, which include money placed after
+    our picks are frozen, so the favourite in the same races is the fair comparison."""
     rows = []
     for p in sorted((store.DOCS / "data").glob("20*_*.json")):
         d = store.read_json(p)
+        if d["meeting"]["date"] < LIVE_FROM:
+            continue
+        res = {r["race_no"]: r for r in
+               store.read_json(store.result_path(d["meeting"]["date"], d["meeting"]["venue"]), []) or []}
         for r in d.get("races", []):
             if "result" not in r or not r["result"]["placings"] or r.get("post_hoc"):
                 continue
             top = r["runners"][0]   # the published first choice
             model_top = min(r["runners"], key=lambda x: x["rank"])
-            won = top["no"] == r["result"]["placings"][0]
+            placings = r["result"]["placings"]
+            won = top["no"] == placings[0]
+            favs = _favourites(res.get(r["race_no"]) or {})
             rows.append({"date": d["meeting"]["date"], "race_no": r["race_no"],
                          "pick": top["no"], "pick_prob": top["win_prob"],
-                         "winner": r["result"]["placings"][0], "won": won,
-                         "placed": top["no"] in r["result"]["placings"],
+                         "winner": placings[0], "won": won,
+                         "placed": top["no"] in placings,
                          "model_pick": model_top["no"],
-                         "model_won": model_top["no"] == r["result"]["placings"][0],
-                         "return": r["result"]["win_odds"] if won else 0})
+                         "model_won": model_top["no"] == placings[0],
+                         "return": r["result"]["win_odds"] if won else 0,
+                         # joint favourites share the race: each counts 1 / their number
+                         "favourite": favs,
+                         "fav_won": round(sum(n == placings[0] for n in favs) / len(favs), 3) if favs else 0.0,
+                         "fav_placed": round(sum(n in placings for n in favs) / len(favs), 3) if favs else 0.0})
     n = len(rows)
     summary = {
+        "from": LIVE_FROM,
         "races": n,
         "wins": sum(r["won"] for r in rows),
         "places": sum(r["placed"] for r in rows),
         "model_wins": sum(r["model_won"] for r in rows),
+        "fav_wins": round(sum(r["fav_won"] for r in rows), 1),
+        "fav_places": round(sum(r["fav_placed"] for r in rows), 1),
+        # first choice minus final favourite, race by race (+ = first choice did better)
+        "z_win_vs_fav": _paired_z([r["won"] - r["fav_won"] for r in rows]) if n else None,
+        "z_place_vs_fav": _paired_z([r["placed"] - r["fav_placed"] for r in rows]) if n else None,
         "flat_roi": round(sum(r["return"] or 0 for r in rows) / n - 1, 4) if n else None,
         "rows": rows[-200:],
     }
