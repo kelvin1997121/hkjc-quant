@@ -7,6 +7,9 @@ Rules, fixed now and not to be changed after seeing results:
     Races analysed only after the off (post_hoc) get no bets. The value strategy also uses the
     last odds snapshot before the post time ("pre" in data/odds/<meeting>.json). Bets are paid
     at HKJC's real dividends (data/results, per $10). A bet on a withdrawn horse is refunded.
+    Made exact on 2026-11-12, before any such case had come up in the account: a horse that
+    is in the result with a withdrawn code (WV, WX...) counts as withdrawn even if the race
+    card never marked it, and a bet in a pool HKJC did not pay out is refunded as well.
   * Four strategies, each with its own book:
       fav_place   首選位置       $10 place on the first choice
       top2_qin    首選+次選連贏   $10 quinella on the first two choices
@@ -38,6 +41,7 @@ import numpy as np
 
 from . import pools, store
 from .backfill import HKT
+from .model import started
 
 START = "2026-11-11"
 BANKROLL = 1000.0
@@ -108,9 +112,10 @@ def pick_bets(race, shot):
 
 
 def settle(pool, sel, result, withdrawn):
-    """Money back for a $10 bet: the dividend, the stake if a horse was withdrawn, else 0."""
+    """Money back for a $10 bet: the dividend; the stake if a horse was withdrawn or the pool
+    was not paid out; else 0."""
     horses = {sel} if pool == "pla" else set(sel)
-    if horses & withdrawn:
+    if horses & withdrawn or not pools.paid_out(result.get("dividends") or {}, pool):
         return STAKE, True
     return float(pools._paid(result.get("dividends") or {}, pool, _key(pool, sel))), False
 
@@ -120,8 +125,10 @@ def _withdrawn(result, card_race):
     listed = {x["no"] for x in result.get("runners", []) if x.get("no") is not None}
     scratched = {x["no"] for x in (card_race or {}).get("runners", []) if x.get("scratched")}
     entered = {x["no"] for x in (card_race or {}).get("runners", [])} or listed
+    # in the result but never started: withdrawn at the start, after the last race card we saw
+    out = {x["no"] for x in result.get("runners", []) if x.get("no") is not None and not started(x)}
     # on the card but not in the result at all, or marked scratched and never placed
-    return {n for n in entered if n not in listed} | (scratched - ran)
+    return {n for n in entered if n not in listed} | (scratched - ran) | out
 
 
 def _started(day, post, now):

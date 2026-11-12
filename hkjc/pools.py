@@ -15,6 +15,9 @@ Rules, fixed now and not to be changed after seeing results:
     race is above zero with z >= Z_PASS (races as the unit). Below that it has not shown
     anything; at the last look it is closed either way.
   * Shown alongside, not used to decide: the same bets below VALUE, which should do worse.
+  * Made exact on 2026-11-12, with 9 races collected and none of them affected: HKJC returns
+    the stake on a horse that does not start and on a pool it does not pay out, so such a
+    selection is no bet (it was counted as a $10 loss before).
 
 Harville is known to overrate favourites for 2nd and 3rd, so "value" it finds may be its
 own error; that is why the verdict is the return at real dividends, not the model's opinion.
@@ -27,6 +30,7 @@ import math
 import numpy as np
 
 from . import store
+from .model import started
 
 REGISTERED = "2026-11-08"
 VALUE = 1.20
@@ -63,6 +67,13 @@ def _paid(dividends, pool, key):
                if str(combo).replace(" ", "") in want)
 
 
+def paid_out(dividends, pool) -> bool:
+    """False when HKJC paid nothing in this pool (not in the dividends, or listed without an
+    amount): its stakes were returned."""
+    rows = dividends.get(POOLS[pool])
+    return bool(rows) and all(amount is not None for _, amount in rows)
+
+
 def race_bets(shot: dict, result: dict) -> dict:
     """Per pool: (staked, returned) for bets at or above VALUE, and for those below."""
     win = shot.get("win") or {}
@@ -72,15 +83,16 @@ def race_bets(shot: dict, result: dict) -> dict:
     shown = {"pla": {int(n): o for n, o in (shot.get("place") or {}).items()},
              "qin": {tuple(sorted(map(int, k.split("-")))): o for k, o in (shot.get("qin") or {}).items()},
              "qpl": {tuple(sorted(map(int, k.split("-")))): o for k, o in (shot.get("qpl") or {}).items()}}
+    starters = {x.get("no") for x in result.get("runners", []) if started(x)}
     out = {}
     for pool, odds in shown.items():
-        if not odds:
+        if not odds or not paid_out(result["dividends"], pool):
             continue
         above = below = (0, 0.0)
         for key, o in odds.items():
             p = ch[pool].get(key)
-            if p is None:
-                continue
+            if p is None or not ({key} if pool == "pla" else set(key)) <= starters:
+                continue   # no chance worked out, or a horse that did not start: stake returned
             back = _paid(result["dividends"], pool, key)
             if p * o >= VALUE:
                 above = (above[0] + 10, above[1] + back)
