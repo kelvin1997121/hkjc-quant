@@ -207,6 +207,12 @@ def quick_results(now=None):
             if n in new and n in res and "result" not in a and a.get("race_name") == names.get(n):
                 a["result"] = _result_summary(res[n])
         store.write_json(doc_path, doc)
+        # The page reads latest.json. Until 12 Nov 2026 only the meeting's own file was
+        # written here, so a result still reached the page only after the full run.
+        latest_path = store.DOCS / "data" / "latest.json"
+        shown = (store.read_json(latest_path, {}) or {}).get("meeting") or {}
+        if (shown.get("date"), shown.get("venue")) == (card["date"], card["venue"]):
+            store.write_json(latest_path, doc)
     write_if_changed(store.DOCS / "data" / "schedule.json", race_schedule(card, finished))
     print(f"results: races {sorted(new)} on the page")
     update_paper()
@@ -239,19 +245,23 @@ def live_odds(card, skip=()):
         print(f"   odds unavailable: {e!r}")
         return with_open(saved, card["date"])
     fetched = snap.pop("_fetched_at")
-    at = datetime.fromisoformat(fetched).astimezone(HKT)
     posts = {str(r["race_no"]): r.get("post_time") for r in card["races"]}
     for n, o in snap.items():
         k = str(n)
+        # Each race's own read time. Until 12 Nov 2026 the whole batch carried one stamp, taken
+        # after its last page: 11 Nov race 2 (post 19:10) was read at about 19:09, stamped
+        # 19:10:01 and so not kept as "pre", while the page's pick did use it.
+        read = o.setdefault("t", fetched)
+        at = datetime.fromisoformat(read).astimezone(HKT)
         pools = {p: o.pop(p) for p in ("qin", "qpl") if p in o}
         saved["latest"][k] = o
         hist = saved["history"].setdefault(k, [])
         if not hist or hist[-1]["win"] != {str(x): v for x, v in o["win"].items()}:
-            hist.append({"t": fetched, "win": o["win"], "place": o["place"]})
+            hist.append({"t": read, "win": o["win"], "place": o["place"]})
         if pools:
             # all four pools at once, for the pool test registered in pools.py: first seen,
             # last before the post time, and the latest (= final odds after the off)
-            shot = {"t": fetched, "updated": o.get("updated"), "win": o["win"], "place": o["place"], **pools}
+            shot = {"t": read, "updated": o.get("updated"), "win": o["win"], "place": o["place"], **pools}
             book = saved.setdefault("pools", {}).setdefault(k, {})
             book.setdefault("first", shot)
             book["last"] = shot
@@ -260,6 +270,21 @@ def live_odds(card, skip=()):
     store.write_json(path, saved)
     print(f"   odds for {len(snap)} races")
     return with_open(saved, card["date"])
+
+
+def read_after_post(card, odds):
+    """Races whose latest odds were read at or after their post time (odds as returned by
+    live_odds; a race with no read time, from a file saved before 12 Nov 2026, is left out)."""
+    posts = {r["race_no"]: r.get("post_time") for r in card["races"]}
+    late = set()
+    for n, o in odds.items():
+        if not o.get("t") or not posts.get(n):
+            continue
+        at = datetime.fromisoformat(o["t"]).astimezone(HKT)
+        day = at.date().isoformat()
+        if day > card["date"] or (day == card["date"] and at.strftime("%H:%M") >= posts[n]):
+            late.add(n)
+    return late
 
 
 def run(use_agent=True):
@@ -314,6 +339,10 @@ def run(use_agent=True):
 
     print("3b) live odds")
     odds = live_odds(card, skip=finished)
+    # The clock can pass a post time between the line above and the page being read. Such a
+    # race is treated as off too, so its pick is always the one made from "pre", the last
+    # odds read before the post time (what the paper account and the registered tests use).
+    off |= read_after_post(card, odds)
 
     print("4) training model on history")
     races = store.load_all_results()

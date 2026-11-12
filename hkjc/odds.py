@@ -86,8 +86,9 @@ def _parse(data):
 
 
 def fetch_odds(date_iso: str, venue: str, race_nos: list[int], log=print) -> dict:
-    """{race_no: {"updated", "win": {no: odds}, "place": {no: odds}, "scratched": [no],
-    "qin": {"a-b": odds}, "qpl": {"a-b": odds}}} (qin/qpl only when the page showed them)"""
+    """{race_no: {"t", "updated", "win": {no: odds}, "place": {no: odds}, "scratched": [no],
+    "qin": {"a-b": odds}, "qpl": {"a-b": odds}}} (qin/qpl only when the page showed them).
+    "t" is when we read that race's page; "updated" is the page's own update time."""
     from playwright.sync_api import Error as PlaywrightError  # includes timeouts
     from playwright.sync_api import sync_playwright
 
@@ -132,6 +133,9 @@ def fetch_odds(date_iso: str, venue: str, race_nos: list[int], log=print) -> dic
                     use_wpq = False         # don't wait 20 s on it for every race
                     log("   odds: quinella page unreadable, win/place page for the rest")
             if got and got["win"]:
+                # when this race's page was read: the caller needs it per race, as the whole
+                # batch can end a minute or more after the next race to run was read
+                got["t"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
                 out[n] = got
         browser.close()
     out["_fetched_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
