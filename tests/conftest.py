@@ -47,3 +47,39 @@ def meeting_1111(sandbox):
                       ("data/racecards", "card.json"), ("data/odds", "odds.json")):
         shutil.copy(src / name, sandbox / rel / f"{stem}.json")
     return sandbox
+
+
+# ------------------------------------------------------------------ a real browser, a local web server
+
+@pytest.fixture(scope="session")
+def chrome():
+    """Skip (in the cloud: fail) unless Playwright can start a browser, the way hkjc/odds.py does."""
+    from helpers import unavailable
+    try:
+        from playwright.sync_api import sync_playwright
+        with sync_playwright() as pw:
+            try:
+                pw.chromium.launch(channel="chrome").close()
+            except Exception:
+                pw.chromium.launch().close()
+    except Exception as e:
+        unavailable(f"a browser for Playwright ({type(e).__name__})")
+
+
+@pytest.fixture
+def serve():
+    """serve(handler_class) -> 'http://127.0.0.1:<port>'. Servers stop when the test ends."""
+    import http.server
+    import threading
+    running = []
+
+    def start(handler):
+        server = http.server.ThreadingHTTPServer(("127.0.0.1", 0), handler)
+        threading.Thread(target=server.serve_forever, daemon=True).start()
+        running.append(server)
+        return f"http://127.0.0.1:{server.server_address[1]}"
+
+    yield start
+    for server in running:
+        server.shutdown()
+        server.server_close()

@@ -1,7 +1,11 @@
 """Small builders for made-up race cards, results, odds and analysis files."""
 from __future__ import annotations
 
+import os
+import shutil
 from datetime import datetime, timedelta, timezone
+
+import pytest
 
 HKT = timezone(timedelta(hours=8))
 
@@ -94,3 +98,20 @@ def analysis_race(race, order, win_odds=None, longshots=(), post_hoc=False):
 def analysis_doc(day, venue, races):
     return {"meeting": {"date": day, "venue": venue, "venue_zh": "沙田" if venue == "ST" else "跑馬地"},
             "updated_at": f"{day}T00:00:00+00:00", "races": races}
+
+
+# ------------------------------------------------------------------ tools some tests need
+
+# set in .github/workflows/tests.yml: there a missing tool is a failure, not a skipped test
+REQUIRE_ALL = os.environ.get("HKJC_TESTS_REQUIRE_ALL") == "1"
+
+
+def unavailable(what):
+    if REQUIRE_ALL:
+        pytest.fail(f"{what} is needed for this test and is missing")
+    pytest.skip(f"{what} not available here")
+
+
+def need(tool):
+    """Path of a command-line tool, or skip the test (fail it in the cloud)."""
+    return shutil.which(tool) or unavailable(tool)

@@ -99,8 +99,20 @@ def fetch_odds(date_iso: str, venue: str, race_nos: list[int], log=print) -> dic
             browser = pw.chromium.launch(channel="chrome")
         except Exception:
             browser = pw.chromium.launch()
-        # cloud runners are on UTC; the page prints its update time in local time
-        page = browser.new_page(locale="zh-HK", timezone_id="Asia/Hong_Kong")
+        def new_tab(failed=None):
+            """A tab to read with. After a navigation fails outright (connection refused or
+            reset) Chrome goes on loading its own error page in that tab, and Playwright then
+            reports the next goto there as cancelled: the fallback page was never read in that
+            case. So a tab that failed is closed and not used again."""
+            if failed is not None:
+                try:
+                    failed.close()
+                except PlaywrightError:
+                    pass
+            # cloud runners are on UTC; the page prints its update time in local time
+            return browser.new_page(locale="zh-HK", timezone_id="Asia/Hong_Kong")
+
+        page = new_tab()
         use_wpq = True
         for n in race_nos:
             if time.time() - started > BUDGET_SECONDS:
@@ -117,6 +129,7 @@ def fetch_odds(date_iso: str, venue: str, race_nos: list[int], log=print) -> dic
                     got = _parse(page.evaluate(_EXTRACT_WPQ, n))
                 except PlaywrightError as e:
                     log(f"   odds R{n} (wpq): {type(e).__name__}")
+                    page = new_tab(failed=page)
             if not (got and got["win"]) and time.time() - started <= BUDGET_SECONDS:
                 try:  # the plain win/place page, as before
                     page.goto(URL.format(date=date_iso, venue=venue, race=n), timeout=30000)
@@ -128,6 +141,7 @@ def fetch_odds(date_iso: str, venue: str, race_nos: list[int], log=print) -> dic
                     got = _parse(page.evaluate(_EXTRACT, n))
                 except PlaywrightError as e:
                     log(f"   odds R{n}: {type(e).__name__}")
+                    page = new_tab(failed=page)
                     continue
                 if got["win"] and use_wpq:  # the plain page works and the other doesn't:
                     use_wpq = False         # don't wait 20 s on it for every race
