@@ -1,5 +1,5 @@
 """Daily self-check (hkjc/selfcheck.py): health checks and the record of self-improvement tests."""
-from datetime import timedelta
+from datetime import date, timedelta
 
 import numpy as np
 import pytest
@@ -223,3 +223,68 @@ def test_forward_gain_finds_a_real_factor_and_loses_it_when_shuffled(sandbox, mo
     _, shuffled = selfcheck.forward_gain(rows, 60, ["form"], ["form", "speed_best"], CFG, shuffle=["speed_best"])
     assert gain > 0 and z > 4
     assert shuffled < 1
+
+
+# ------------------------------------------------------------------ odds before the next meeting
+
+NEXT, NEXT_VENUE = "2026-11-14", "ST"
+
+
+def coming_meeting(read, four_pools=None, timed=None, races=11):
+    """schedule.json for a meeting on 14 Nov and its odds file: `read` races have a snapshot,
+    `four_pools` of them with quinella odds, `timed` of them with their own read time."""
+    four_pools = read if four_pools is None else four_pools
+    timed = read if timed is None else timed
+    card = make_card(NEXT, NEXT_VENUE, {n: "12:30" for n in range(1, races + 1)})
+    store.write_json(store.DOCS / "data" / "schedule.json",
+                     {"date": NEXT, "venue": NEXT_VENUE, "posts": {str(n): "12:30" for n in range(1, races + 1)}})
+    if not read:
+        return
+    snap = lambda r: odds_read(r, 1, utc_iso("2026-11-13", "13:00:00"))
+    rs = card["races"]
+    latest = {str(r["race_no"]): {"win": snap(r)["win"], **({"t": snap(r)["t"]} if i < timed else {})}
+              for i, r in enumerate(rs[:read])}
+    store.write_json(store.DATA / "odds" / f"{NEXT}_{NEXT_VENUE}.json", {
+        "latest": latest,
+        "history": {str(r["race_no"]): [{"t": snap(r)["t"], "win": snap(r)["win"]}] for r in rs[:read]},
+        "pools": {str(r["race_no"]): {"last": snap(r)} for r in rs[:four_pools]}})
+
+
+def on(day, monkeypatch):
+    monkeypatch.setattr(selfcheck, "today_hkt", lambda: date.fromisoformat(day))
+    return selfcheck.next_odds_check()
+
+
+def test_next_odds_check_passes_on_race_day_when_every_race_was_read(sandbox, monkeypatch):
+    coming_meeting(read=11)
+    c = on("2026-11-14", monkeypatch)
+    assert c["ok"] is True and c["name"] == "賽前賠率"
+    assert "11/14 已讀到 11/11 場" in c["detail"] and "11 場有讀取時間" in c["detail"]
+
+
+def test_next_odds_check_fails_on_race_day_when_odds_were_not_read(sandbox, monkeypatch):
+    coming_meeting(read=0)
+    c = on("2026-11-14", monkeypatch)
+    assert c["ok"] is False and "開跑前要檢查" in c["detail"]
+
+
+def test_next_odds_check_fails_without_quinella_odds_or_read_times(sandbox, monkeypatch):
+    coming_meeting(read=11, four_pools=3)                 # the 連贏/位置Q page stopped working
+    assert on("2026-11-14", monkeypatch)["ok"] is False
+    coming_meeting(read=11, timed=0)                      # odds saved without each race's read time
+    assert on("2026-11-14", monkeypatch)["ok"] is False
+
+
+def test_next_odds_check_waits_until_betting_opens(sandbox, monkeypatch):
+    coming_meeting(read=0)
+    assert on("2026-11-13", monkeypatch)["ok"] is None    # 03:40 the day before: not open yet
+    assert on("2026-11-12", monkeypatch)["ok"] is None
+    coming_meeting(read=11)
+    assert on("2026-11-13", monkeypatch)["ok"] is True    # read later the day before
+    assert on("2026-11-12", monkeypatch)["ok"] is None    # two days ahead: nothing is read yet
+
+
+def test_next_odds_check_says_nothing_without_a_coming_meeting(sandbox, monkeypatch):
+    assert on("2026-11-14", monkeypatch) is None          # no schedule at all
+    coming_meeting(read=11)
+    assert on("2026-11-15", monkeypatch) is None          # the meeting on the page is over

@@ -16,6 +16,7 @@ from datetime import date, datetime, timedelta, timezone
 
 import numpy as np
 import requests
+from bs4 import BeautifulSoup
 
 from . import livetest, model, pools, scraper, store
 from .backfill import HKT, today_hkt
@@ -357,6 +358,74 @@ def odds_check(meeting_file):
             "detail": f"{stem[:10]} 有 {len(history)}/{total} 場賠率紀錄,{pre}/{total} 場有開跑前賠率"}
 
 
+def next_odds_check():
+    """Before a meeting: have its odds pages been readable since betting opened?
+
+    The 即時賠率 check above only says so after the meeting. Betting opens about noon the day
+    before, so at this check's usual hour on race day every race should have been read, with all
+    four pools and its own read time. None when the page shows no coming meeting."""
+    sched = store.read_json(store.DOCS / "data" / "schedule.json", {}) or {}
+    day, venue, total = sched.get("date"), sched.get("venue"), len(sched.get("posts") or {})
+    today = today_hkt()
+    if not day or not total or day < today.isoformat():
+        return None
+    ahead = (date.fromisoformat(day) - today).days
+    label = f"{int(day[5:7])}/{int(day[8:10])}"
+    saved = store.read_json(store.DATA / "odds" / f"{day}_{venue}.json") or {}
+    read = len(saved.get("history") or {})
+    four = len(saved.get("pools") or {})
+    timed = sum(1 for o in (saved.get("latest") or {}).values() if o.get("t"))
+    if ahead > 1 or (ahead == 1 and not read):
+        return {"name": "賽前賠率", "ok": None, "detail": f"{label} 賽事嘅賠率未開始讀(前一日中午左右開)"}
+    ok = min(read, four, timed) >= 0.8 * total
+    return {"name": "賽前賠率", "ok": ok,
+            "detail": f"{label} 已讀到 {read}/{total} 場,{four} 場有連贏同位置Q,{timed} 場有讀取時間"
+                      + ("" if ok else ";賠率頁可能讀唔到,開跑前要檢查")}
+
+
+PAGE_FIELDS = ("no", "place", "place_raw", "horse_code", "jockey_id", "trainer_id", "weight", "body_weight",
+               "draw", "running", "time", "win_odds")
+RACE_FIELDS = ("class", "distance", "going", "surface", "course", "cum_times", "sectionals")
+
+
+def page_check(races):
+    """Read one stored race again from HKJC and compare it with what is stored.
+
+    The other checks need a meeting, so a change to HKJC's result or sectional-time page would
+    first show on a race day. This one runs every night on the newest finished meeting (its
+    first race, two requests), so it shows the next morning."""
+    name, today = "馬會頁面", today_hkt().isoformat()
+    done = [r for r in races if r["date"] < today and r.get("dividends") and r.get("has_sect")]
+    if not done:
+        return {"name": name, "ok": None, "detail": "未有可以重讀嘅賽事"}
+    stored = max(done, key=lambda r: (r["date"], -r["race_no"]))
+    day, n = date.fromisoformat(stored["date"]), stored["race_no"]
+    label = f"{day.month}/{day.day} 第 {n} 場"
+    try:
+        html = scraper.get("LocalResults.aspx", RaceDate=day.strftime("%Y/%m/%d"),
+                           Racecourse=stored["venue"], RaceNo=n)
+        fresh = scraper._parse_result_race(BeautifulSoup(html, "html.parser"), stored["venue"], day, n)
+        sect = scraper.fetch_sectionals(day, n)
+    except RuntimeError:
+        return {"name": name, "ok": False, "detail": f"重讀 {label}時連接唔到馬會網站"}
+    if not fresh or not fresh.get("runners"):
+        return {"name": name, "ok": False, "detail": f"重讀 {label}嘅賽果頁讀唔到內容,頁面可能改咗版"}
+    rows = lambda r: sorted(([x.get(k) for k in PAGE_FIELDS] for x in r["runners"]), key=str)
+    wrong = []
+    if rows(fresh) != rows(stored):
+        wrong.append("名次、賠率或走位")
+    if any(fresh.get(k) != stored.get(k) for k in RACE_FIELDS):
+        wrong.append("賽事資料")
+    if fresh.get("dividends") != stored.get("dividends"):
+        wrong.append("派彩")
+    if sect != {x["no"]: x["sect"] for x in stored["runners"] if x.get("sect")}:
+        wrong.append("分段時間")
+    if wrong:
+        return {"name": name, "ok": False,
+                "detail": f"重讀 {label}同儲存嘅唔同({'、'.join(wrong)}):頁面可能改咗版,或者馬會改咗賽果"}
+    return {"name": name, "ok": True, "detail": f"重讀 {label}嘅賽果、派彩同分段時間,同儲存嘅一致"}
+
+
 def trackwork_check(past):
     """A log that quietly stops would only be noticed months later, when it's needed."""
     folder = store.DATA / "trackwork"
@@ -401,6 +470,10 @@ def data_health(races):
     if past:
         checks.append(odds_check(past[-1]))
         checks.append(meeting_updates(store.read_json(past[-1])))
+    coming = next_odds_check()
+    if coming:
+        checks.append(coming)
+    checks.append(page_check(races))
     checks.append(ticker_check())
     checks.append(trackwork_check(past))
     void = sum(1 for r in recent for x in r["runners"]
