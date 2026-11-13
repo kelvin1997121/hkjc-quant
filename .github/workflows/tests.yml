@@ -1,12 +1,13 @@
 name: tests
 
-# Runs the checks in tests/ whenever the code, the tests or a workflow changes. It reads the
-# repo only: nothing is fetched from HKJC, and nothing is committed or published, so it cannot
-# touch a live update. A red run means a change broke something the tests cover; GitHub emails it.
+# Runs the checks in tests/ whenever the code, the page, the tests or a workflow changes. It
+# reads the repo only: nothing is fetched from HKJC, and nothing is committed or published, so it
+# cannot touch a live update. A red run means a change broke something the tests cover; GitHub
+# emails it.
 on:
   push:
     branches: [main]
-    paths: ["hkjc/**", "tests/**", "requirements.txt", "pytest.ini", ".github/workflows/**"]
+    paths: ["hkjc/**", "tests/**", "docs/index.html", "requirements.txt", "pytest.ini", ".github/workflows/**"]
   workflow_dispatch:
 
 permissions:
@@ -30,4 +31,11 @@ jobs:
 
       - run: pip install -r requirements.txt pytest
 
+      - name: Headless browser for the odds reader and page tests
+        # the runner's preinstalled Chrome, as in update.yml; only install Chromium if it's missing
+        run: command -v google-chrome || python -m playwright install --with-deps chromium
+
       - run: python -m pytest -q
+        env:
+          # here a missing browser, bash or jq fails the run; elsewhere those tests are skipped
+          HKJC_TESTS_REQUIRE_ALL: "1"

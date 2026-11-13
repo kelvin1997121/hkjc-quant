@@ -29,4 +29,10 @@ def test_tests_do_not_run_on_data_commits():
     # a run on every race-day data commit would bury real failures
     text = (WORKFLOWS / "tests.yml").read_text(encoding="utf-8")
     paths = text.split("paths:", 1)[1].split("workflow_dispatch", 1)[0]
-    assert '"data' not in paths and '"docs' not in paths
+    assert '"data' not in paths and "docs/data" not in paths and '"docs/**' not in paths
+    assert '"docs/index.html"' in paths                      # the page itself is tested
+
+
+def test_tests_cannot_be_skipped_in_the_cloud():
+    text = (WORKFLOWS / "tests.yml").read_text(encoding="utf-8")
+    assert 'HKJC_TESTS_REQUIRE_ALL: "1"' in text
