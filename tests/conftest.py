@@ -10,7 +10,7 @@ from pathlib import Path
 
 import pytest
 
-from hkjc import horses, model, reports, selfcheck, store, trackwork
+from hkjc import aerial, horses, model, reports, selfcheck, store, trackwork
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -23,6 +23,7 @@ REDIRECTS = [
     (reports, "TRIALS", "data/trials"), (reports, "EMPTY", "data/trials/_empty.json"),
     (reports, "CHECKED", "data/trials/_checked.json"),
     (trackwork, "FOLDER", "data/trackwork"),
+    (aerial, "FOLDER", "data/aerial"),
     (selfcheck, "LEARN_PATH", "data/learning.json"),
 ]
 

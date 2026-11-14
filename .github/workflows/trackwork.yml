@@ -1,8 +1,10 @@
 name: trackwork
 
-# Saves trackwork and vet records for upcoming race cards. The ticker starts it each
-# night and the cron is a backup. It has its own queue and touches only data/trackwork,
-# so it can't delay a live update, and if it fails nothing else stops.
+# Saves trackwork and vet records for upcoming race cards, and the positions read from HKJC's
+# overhead pictures of the last meetings (hkjc/aerial.py; the pictures come a day after a
+# meeting). The ticker starts it each night and the cron is a backup. It has its own queue and
+# touches only data/trackwork and data/aerial, so it can't delay a live update, and if it fails
+# nothing else stops.
 on:
   schedule:
     - cron: "41 19 * * *"   # 03:41 HKT
@@ -34,11 +36,18 @@ jobs:
           HKJC_PROXY: ${{ secrets.HKJC_PROXY }}
         run: python -m hkjc.trackwork
 
+      - name: Read overhead pictures
+        # after the records, and never in their way: a fault here still lets them be committed
+        continue-on-error: true
+        env:
+          HKJC_PROXY: ${{ secrets.HKJC_PROXY }}
+        run: python -m hkjc.aerial
+
       - name: Commit
         run: |
           git config user.name "hkjc-bot"
           git config user.email "hkjc-bot@users.noreply.github.com"
-          git add data/trackwork
+          git add data/trackwork data/aerial
           git diff --cached --quiet && exit 0
           git commit -m "trackwork: $(TZ=Asia/Hong_Kong date '+%Y-%m-%d %H:%M') HKT"
           for i in 1 2 3 4 5; do

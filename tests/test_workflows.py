@@ -21,8 +21,16 @@ def test_update_commits_all_of_data_and_docs():
     assert adds and all(add == "git add data docs" for add in adds)
 
 
-def test_trackwork_commits_its_folder():
-    assert git_adds("trackwork.yml") == ["git add data/trackwork"]
+def test_trackwork_commits_its_folders():
+    # trackwork and vet records, and the positions read from the overhead pictures (hkjc/aerial.py)
+    assert git_adds("trackwork.yml") == ["git add data/trackwork data/aerial"]
+
+
+def test_pillow_is_installed_wherever_the_pictures_are_read():
+    needs = (WORKFLOWS.parent.parent / "requirements.txt").read_text(encoding="utf-8").lower()
+    assert "pillow" in needs
+    text = (WORKFLOWS / "trackwork.yml").read_text(encoding="utf-8")
+    assert "python -m hkjc.aerial" in text and "pip install -r requirements.txt" in text
 
 
 def test_tests_do_not_run_on_data_commits():
