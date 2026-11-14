@@ -75,6 +75,7 @@ hkjc/aerial.py    讀馬會「模擬鳥瞰圖」,儲低每匹馬喺 800/400/200 
 hkjc/trips.py     由鳥瞰圖位置量「轉彎蝕位」同「直路受困」,連同 2026-11-14 登記嘅測試規則(由 11-15 起嘅賽事先計)
 hkjc/watch.py     賽馬日監察:`python -m hkjc.watch` 睇系統而家有冇正常運作(只讀;加 --act 可以重新觸發更新或時鐘)
 tests/            自動測試(見上面「測試」)
+tools/            核對工具:`model_audit.py` 逐個因素審查模型,`aerial_check.py`、`trips_check.py` 核對鳥瞰圖讀取同量度
 data/             歷史賽果、排位表(由 workflow 自動 commit)
 docs/             網頁 + 分析 JSON
 ```

@@ -80,6 +80,20 @@ def active_features(cfg):
 # registered before download): strong race by beaten horses placing later, by race time and by
 # both; form forgiving troubled runs; bad last draw; blocked in the straight; jockey_up; last-3-
 # races track bias. All failed (best z +0.42): flagged horses won what their odds implied.
+#
+# Audit of 14 Nov 2026 (tools/model_audit.py prints it): every factor comes out the same from
+# the race card as from the result (only weight_rel moves, by the pound or two a jockey rides
+# over the card weight); none is linked with its own race's result more closely than the market
+# is; the plain factors, worked out independently for a whole meeting, matched to the last digit.
+# Fixed then: jockeys and trainers with no id were nobody to the model (see who()). It made no
+# difference to accuracy (holdout log loss 2.2032 before, 2.2038 after; model weight still 0).
+# Found and left alone, because changing a factor needs new races to judge it:
+#   - speed figures depend a little on where the run was: for the same horse in the same class,
+#     about +2.8 points at Happy Valley 1200 m and -1.5 at Sha Tin 2000 m (spread 1.3, the
+#     factor's own about 6). The standard time of a course takes its winners of every class.
+#     speed_best ends with no weight of its own beside perf_best and speed_last.
+#   - class_drop starts from +0.10 (a drop in class should help) and stays there, though in
+#     the plain data horses dropping in class win a little less often, as the market expects.
 SEC_PER_LENGTH = 0.17
 
 _CLASS = {"一級賽": -2, "二級賽": -1, "三級賽": 0, "第一班": 1, "第二班": 2,
@@ -157,6 +171,19 @@ def started(x) -> bool:
         return True
     code = (x.get("place_raw") or "").upper()
     return bool(code) and not code.startswith("W") and code != "VOID"
+
+
+def who(x, role):
+    """Key of a runner's jockey or trainer (role = "jockey" or "trainer"): HKJC's id, or the
+    name for those without one.
+
+    A jockey or trainer who has left Hong Kong no longer has a profile page, so results
+    fetched afterwards carry the name but no id: 22% of runners of the 2022/23 season had no
+    jockey id and 13% no trainer id (7% and 4% in 2024/25, none now). Until 14 Nov 2026 the
+    model knew such a runner's jockey and trainer as nobody: no record was kept for them and
+    their runners all got the starting rate. A visiting jockey with no id is covered the same
+    way."""
+    return x.get(role + "_id") or (("name:" + x[role]) if x.get(role) else None)
 
 
 def class_num(s):
@@ -435,6 +462,7 @@ class State:
         X, extra = [], []
         for x, p, rating in zip(runners, profs, ratings):
             rating = rating if rating is not None else r_fill
+            jid, tid = who(x, "jockey"), who(x, "trainer")
             gear = gear_flags(x.get("gear"))
             pb = p["perf_best"] if p["perf_best"] is not None else pb_fill
             pl = p["perf_last"] if p["perf_last"] is not None else pb
@@ -460,15 +488,12 @@ class State:
                 "early_x_course": e_c * c_edge * 4,
                 "draw_bias": self.draw_bias(race, draw),
                 "draw_x_today": (0.5 - draw_frac) * t_draw * 4,
-                "jockey": math.log(self.jockey.rate(x.get("jockey_id"))),
-                "trainer": math.log(self.trainer.rate(x.get("trainer_id"))),
-                "jockey_form": self.jockey_recent.rate_vs(
-                    x.get("jockey_id"), self.jockey_place.rate(x.get("jockey_id"))),
-                "trainer_form": self.trainer_recent.rate_vs(
-                    x.get("trainer_id"), self.trainer_place.rate(x.get("trainer_id"))),
-                "combo": math.log(self.combo.rate((x.get("jockey_id"), x.get("trainer_id")))),
-                "trainer_venue": self.trainer_venue.rate_vs(
-                    (x.get("trainer_id"), race["venue"]), self.trainer_place.rate(x.get("trainer_id"))),
+                "jockey": math.log(self.jockey.rate(jid)),
+                "trainer": math.log(self.trainer.rate(tid)),
+                "jockey_form": self.jockey_recent.rate_vs(jid, self.jockey_place.rate(jid)),
+                "trainer_form": self.trainer_recent.rate_vs(tid, self.trainer_place.rate(tid)),
+                "combo": math.log(self.combo.rate((jid, tid))),
+                "trainer_venue": self.trainer_venue.rate_vs((tid, race["venue"]), self.trainer_place.rate(tid)),
                 # weight-implied rating now vs. last run (+ = raised by the handicapper)
                 "rating_move": (rating - p["last_est"]) / 5 if p["last_est"] is not None else 0.0,
                 "form_trend": p["form_trend"] if p["form_trend"] is not None else 0.0,
@@ -476,10 +501,8 @@ class State:
                 "gear_off": gear["off"],
                 "gear_back": gear["back"],
                 "run_wide": float(p["last_wide"]),
-                "jockey_up": math.log(self.jockey.rate(x.get("jockey_id")))
-                             - math.log(self.jockey.rate(p["last_jockey"]))
-                             if p["last_jockey"] and x.get("jockey_id")
-                             and x.get("jockey_id") != p["last_jockey"] else 0.0,
+                "jockey_up": math.log(self.jockey.rate(jid)) - math.log(self.jockey.rate(p["last_jockey"]))
+                             if p["last_jockey"] and jid and jid != p["last_jockey"] else 0.0,
                 "awt_pref": p["awt_pref"] if race.get("surface") == "AWT" and p["awt_pref"] is not None
                             else 0.0,
                 **self.trial_factors(x.get("horse_code"), race["date"]),
@@ -605,16 +628,18 @@ class State:
                     top_draw.append((x["draw"] - 1) / max(field - 1, 1))
             if pos == 1 and early is not None:
                 self.course_early[dk].append(early)
-            self.jockey.add(x.get("jockey_id"), pos == 1)
-            self.trainer.add(x.get("trainer_id"), pos == 1)
+            jid, tid = who(x, "jockey"), who(x, "trainer")
+            self.jockey.add(jid, pos == 1)
+            self.trainer.add(tid, pos == 1)
             placed = bool(pos and pos <= 3)
-            self.jockey_place.add(x.get("jockey_id"), placed)
-            self.trainer_place.add(x.get("trainer_id"), placed)
-            self.jockey_recent.add(x.get("jockey_id"), placed)
-            self.trainer_recent.add(x.get("trainer_id"), placed)
-            if x.get("jockey_id") and x.get("trainer_id"):
-                self.combo.add((x["jockey_id"], x["trainer_id"]), placed)
-            self.trainer_venue.add((x.get("trainer_id"), race["venue"]), placed)
+            self.jockey_place.add(jid, placed)
+            self.trainer_place.add(tid, placed)
+            self.jockey_recent.add(jid, placed)
+            self.trainer_recent.add(tid, placed)
+            if jid and tid:
+                self.combo.add((jid, tid), placed)
+            if tid:
+                self.trainer_venue.add((tid, race["venue"]), placed)
             fscore = 1 - (pos - 1) / max(field - 1, 1) if pos else 0.0
             m = mkt.get(x["no"])
             self.horse[x["horse_code"]].append({
@@ -629,7 +654,7 @@ class State:
                 "closing": (x["running"][0] - pos) / max(field - 1, 1)
                            if pos and x.get("running") else None,
                 "cls": class_num(race.get("class")), "bw": x.get("body_weight"),
-                "jockey": x.get("jockey_id"),
+                "jockey": jid,
                 "perf": perf.get(x["no"]), "est": est.get(x["no"]),
                 "wide": reports.ran_wide(x),
                 "early_s": sect_rel[x["no"]][0] if x["no"] in sect_rel else None,
