@@ -9,14 +9,14 @@
  "main": {
   "following": "top2_qin",
   "following_name": "首選+次選連贏",
-  "balance": 917.5,
-  "staked": 200.0,
+  "balance": 927.5,
+  "staked": 190.0,
   "settled_staked": 190.0,
   "returned": 117.5,
   "net": -72.5,
-  "bets": 20,
+  "bets": 19,
   "hits": 1,
-  "pending": 1,
+  "pending": 0,
   "roi": -0.3816,
   "switches": [],
   "looks": []
@@ -26,14 +26,14 @@
    "key": "fav_place",
    "name": "首選位置",
    "rule": "每場 $10 位置買排名第一嘅馬",
-   "balance": 934.5,
-   "staked": 200.0,
+   "balance": 944.5,
+   "staked": 190.0,
    "settled_staked": 190.0,
    "returned": 134.5,
    "net": -55.5,
-   "bets": 20,
+   "bets": 19,
    "hits": 9,
-   "pending": 1,
+   "pending": 0,
    "roi": -0.2921,
    "backtest_roi": -0.1459
   },
@@ -41,14 +41,14 @@
    "key": "top2_qin",
    "name": "首選+次選連贏",
    "rule": "每場 $10 連贏買排名頭兩匹",
-   "balance": 917.5,
-   "staked": 200.0,
+   "balance": 927.5,
+   "staked": 190.0,
    "settled_staked": 190.0,
    "returned": 117.5,
    "net": -72.5,
-   "bets": 20,
+   "bets": 19,
    "hits": 1,
-   "pending": 1,
+   "pending": 0,
    "roi": -0.3816,
    "backtest_roi": -0.0715
   },
@@ -56,14 +56,14 @@
    "key": "shot_place",
    "name": "冷門馬位置",
    "rule": "每匹冷門馬(獨贏 10 倍以上而模型排頭五)$10 位置",
-   "balance": 960.0,
-   "staked": 410.0,
+   "balance": 990.0,
+   "staked": 380.0,
    "settled_staked": 380.0,
    "returned": 370.0,
    "net": -10.0,
-   "bets": 41,
+   "bets": 38,
    "hits": 12,
-   "pending": 3,
+   "pending": 0,
    "roi": -0.0263,
    "backtest_roi": -0.1794
   },
@@ -71,14 +71,14 @@
    "key": "value",
    "name": "彩池值博",
    "rule": "用獨贏賠率估位置、連贏、位置Q 機會;機會 × 賠率 ≥ 1.2 嘅注項入面,揀最大機會嘅兩注,每注 $10",
-   "balance": 935.5,
-   "staked": 400.0,
+   "balance": 955.5,
+   "staked": 380.0,
    "settled_staked": 380.0,
    "returned": 335.5,
    "net": -44.5,
-   "bets": 40,
+   "bets": 38,
    "hits": 4,
-   "pending": 2,
+   "pending": 0,
    "roi": -0.1171,
    "backtest_roi": null
   }
@@ -717,7 +717,8 @@
        "stake": 10.0,
        "back": null,
        "refund": false,
-       "placed": true
+       "placed": false,
+       "void": true
       }
      ],
      "books": {
@@ -732,7 +733,8 @@
         "stake": 10.0,
         "back": null,
         "refund": false,
-        "placed": true
+        "placed": false,
+        "void": true
        }
       ],
       "top2_qin": [
@@ -746,7 +748,8 @@
         "stake": 10.0,
         "back": null,
         "refund": false,
-        "placed": true
+        "placed": false,
+        "void": true
        }
       ],
       "shot_place": [
@@ -760,7 +763,8 @@
         "stake": 10.0,
         "back": null,
         "refund": false,
-        "placed": true
+        "placed": false,
+        "void": true
        },
        {
         "pool": "位置",
@@ -772,7 +776,8 @@
         "stake": 10.0,
         "back": null,
         "refund": false,
-        "placed": true
+        "placed": false,
+        "void": true
        },
        {
         "pool": "位置",
@@ -784,7 +789,8 @@
         "stake": 10.0,
         "back": null,
         "refund": false,
-        "placed": true
+        "placed": false,
+        "void": true
        }
       ],
       "value": [
@@ -798,7 +804,8 @@
         "stake": 10.0,
         "back": null,
         "refund": false,
-        "placed": true
+        "placed": false,
+        "void": true
        },
        {
         "pool": "位置",
@@ -810,11 +817,13 @@
         "stake": 10.0,
         "back": null,
         "refund": false,
-        "placed": true
+        "placed": false,
+        "void": true
        }
       ]
      },
-     "state": "placed"
+     "state": "void",
+     "cancelled": true
     },
     {
      "race_no": 7,
@@ -1333,7 +1342,7 @@
     }
    ],
    "review": [
-    "模擬倉今日跟「首選+次選連贏」,共 11 注,每注 $10。",
+    "模擬倉今日跟「首選+次選連贏」,共 10 注,每注 $10。",
     "已結算 10 注:中 1 注,收回 $118,淨 +$18。",
     "各策略今日(已結算):首選位置 10 注 -$33;首選+次選連贏 10 注 +$18;冷門馬位置 24 注 -$123;彩池值博 20 注 +$70。",
     "最好一注:連贏 6-9(頌星 / 文武全能),派 $117.5。",
@@ -2277,5 +2286,5 @@
    ]
   }
  ],
- "updated_at": "2026-11-14T10:30:34+00:00"
+ "updated_at": "2026-11-14T12:10:26+00:00"
 }
