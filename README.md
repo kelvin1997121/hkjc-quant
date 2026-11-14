@@ -72,6 +72,7 @@ hkjc/agent.py     Claude AI 分析(有快取,數據冇變唔會重複收費)
 hkjc/__main__.py  流程
 hkjc/trackwork.py 賽前儲存晨操同傷患紀錄(暫時只收集,未入模型)
 hkjc/aerial.py    讀馬會「模擬鳥瞰圖」,儲低每匹馬喺 800/400/200 米同終點嘅位置(暫時只收集,未入模型)
+hkjc/trips.py     由鳥瞰圖位置量「轉彎蝕位」同「直路受困」,連同 2026-11-14 登記嘅測試規則(由 11-15 起嘅賽事先計)
 hkjc/watch.py     賽馬日監察:`python -m hkjc.watch` 睇系統而家有冇正常運作(只讀;加 --act 可以重新觸發更新或時鐘)
 tests/            自動測試(見上面「測試」)
 data/             歷史賽果、排位表(由 workflow 自動 commit)

@@ -18,7 +18,7 @@ import numpy as np
 import requests
 from bs4 import BeautifulSoup
 
-from . import livetest, model, pools, scraper, store
+from . import livetest, model, pools, scraper, store, trips
 from .backfill import HKT, today_hkt
 
 CLOCK_LIVE = "2026-11-05"   # meetings before this ran on GitHub cron, not the 5-minute clock
@@ -695,6 +695,21 @@ def run():
     except Exception as e:
         live_test = {"error": repr(e)}
 
+    try:   # overhead-picture test registered 2026-11-14 (trips.py)
+        trip_test = trips.status(races)
+        rows = trip_test["candidates"].values()
+        done = [c for c in rows if c.get("verdict")]
+        if done:
+            notes.append("鳥瞰圖測試(對比開跑前賠率):" + ";".join(
+                f"{c['name']} {c['look']} 場 z {c['z']:+.1f}(打亂後 {c['placebo_z']:+.1f}),{c['verdict']}"
+                for c in done) + "。")
+        else:
+            notes.append(f"鳥瞰圖測試(由 {trip_test['from']} 起):" + "、".join(
+                f"{c['name']} {c['races']} 場" for c in rows)
+                + f",{trips.LOOKS[0]} 場先判斷馬會鳥瞰圖量到嘅蝕位同受困有冇賠率以外嘅資訊。")
+    except Exception as e:
+        trip_test = {"error": repr(e)}
+
     report = {
         "checked_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "health": data_health(races),
@@ -713,6 +728,7 @@ def run():
         "steam": steam_stats(),
         "pool_test": pool_test,
         "live_test": live_test,
+        "trip_test": trip_test,
         "notes": notes,
     }
     report["health"]["checks"].append(live_check(tr))
