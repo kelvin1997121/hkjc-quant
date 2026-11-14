@@ -1,14 +1,14 @@
 {
  "from": "2026-11-11",
- "races": 9,
+ "races": 10,
  "wins": 1,
- "places": 4,
+ "places": 5,
  "model_wins": 0,
  "fav_wins": 1.0,
- "fav_places": 4.0,
+ "fav_places": 5.0,
  "z_win_vs_fav": 0.0,
  "z_place_vs_fav": 0.0,
- "flat_roi": -0.5667,
+ "flat_roi": -0.61,
  "rows": [
   {
    "date": "2026-11-11",
@@ -162,6 +162,23 @@
    ],
    "fav_won": 0.0,
    "fav_placed": 0.0
+  },
+  {
+   "date": "2026-11-14",
+   "race_no": 1,
+   "pick": 2,
+   "pick_prob": 0.2223,
+   "winner": 12,
+   "won": false,
+   "placed": true,
+   "model_pick": 2,
+   "model_won": false,
+   "return": 0,
+   "favourite": [
+    2
+   ],
+   "fav_won": 0.0,
+   "fav_placed": 1.0
   }
  ]
 }
