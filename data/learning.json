@@ -156,7 +156,17 @@
    "status": "testing",
    "looks": [],
    "races": 30
+  },
+  "add:course_adj": {
+   "kind": "add",
+   "cols": [
+    "course_adj"
+   ],
+   "since": "2026-11-15",
+   "status": "testing",
+   "looks": [],
+   "races": 0
   }
  },
- "checked": "2026-11-14"
+ "checked": "2026-11-15"
 }
