@@ -4,7 +4,7 @@
   "venue": "ST",
   "venue_zh": "沙田"
  },
- "updated_at": "2026-11-14T09:55:46+00:00",
+ "updated_at": "2026-11-14T10:01:16+00:00",
  "model": {
   "holdout": {
    "races": 652,
@@ -7038,28 +7038,9 @@
     "races": 7
    },
    "course_bias": "此跑道路程前置馬優勢比沙田草地平均細,後上馬較有機會",
-   "odds_updated": "14/11/2026 17:54",
+   "odds_updated": "14/11/2026 18:00",
    "confidence": "中",
-   "longshots": [
-    {
-     "no": 12,
-     "horse": "紫荊拼搏",
-     "win_odds": 10.0,
-     "place_odds": 2.8,
-     "win_prob": 0.1079,
-     "rank": 4,
-     "style": "中游",
-     "pros": [
-      "過往市場評價",
-      "近況",
-      "狀態走勢"
-     ],
-     "cons": [
-      "後段追勁",
-      "練馬師本場地成績"
-     ]
-    }
-   ],
+   "longshots": [],
    "runners": [
     {
      "rank": 1,
@@ -7090,16 +7071,16 @@
       "後段追勁"
      ],
      "strong": [],
-     "win_odds": 4.0,
-     "place_odds": 2.0,
-     "market_prob": 0.2053,
-     "blend_prob": 0.2128,
+     "win_odds": 3.8,
+     "place_odds": 1.8,
+     "market_prob": 0.2155,
+     "blend_prob": 0.224,
      "ev": 0.851,
      "value": false,
      "longshot": false,
      "open_odds": 2.7,
      "steam": false,
-     "final_prob": 0.2128,
+     "final_prob": 0.224,
      "final_rank": 1
     },
     {
@@ -7132,16 +7113,16 @@
       "升班"
      ],
      "strong": [],
-     "win_odds": 6.1,
-     "place_odds": 1.7,
-     "market_prob": 0.1346,
-     "blend_prob": 0.1366,
-     "ev": 0.834,
+     "win_odds": 6.3,
+     "place_odds": 1.8,
+     "market_prob": 0.13,
+     "blend_prob": 0.1318,
+     "ev": 0.83,
      "value": false,
      "longshot": false,
      "open_odds": 9.5,
      "steam": true,
-     "final_prob": 0.1366,
+     "final_prob": 0.1318,
      "final_rank": 2
     },
     {
@@ -7173,16 +7154,16 @@
       "練馬師本場地成績"
      ],
      "strong": [],
-     "win_odds": 6.7,
-     "place_odds": 1.6,
-     "market_prob": 0.1226,
-     "blend_prob": 0.1238,
-     "ev": 0.83,
+     "win_odds": 7.1,
+     "place_odds": 1.7,
+     "market_prob": 0.1154,
+     "blend_prob": 0.1162,
+     "ev": 0.825,
      "value": false,
      "longshot": false,
      "open_odds": 10.0,
      "steam": false,
-     "final_prob": 0.1238,
+     "final_prob": 0.1162,
      "final_rank": 3
     },
     {
@@ -7215,16 +7196,16 @@
       "步速形勢"
      ],
      "strong": [],
-     "win_odds": 7.6,
+     "win_odds": 7.8,
      "place_odds": 2.3,
-     "market_prob": 0.1081,
-     "blend_prob": 0.1085,
-     "ev": 0.824,
+     "market_prob": 0.105,
+     "blend_prob": 0.1053,
+     "ev": 0.821,
      "value": false,
      "longshot": false,
      "open_odds": 8.1,
      "steam": false,
-     "final_prob": 0.1085,
+     "final_prob": 0.1053,
      "final_rank": 4
     },
     {
@@ -7257,59 +7238,17 @@
       "檔位統計"
      ],
      "strong": [],
-     "win_odds": 8.0,
-     "place_odds": 3.3,
-     "market_prob": 0.1027,
-     "blend_prob": 0.1028,
-     "ev": 0.822,
+     "win_odds": 8.3,
+     "place_odds": 3.5,
+     "market_prob": 0.0987,
+     "blend_prob": 0.0986,
+     "ev": 0.819,
      "value": false,
      "longshot": false,
      "open_odds": 10.0,
      "steam": false,
-     "final_prob": 0.1028,
+     "final_prob": 0.0986,
      "final_rank": 5
-    },
-    {
-     "rank": 9,
-     "no": 4,
-     "horse": "美麗飛馳",
-     "horse_code": "M065",
-     "jockey": "巴度",
-     "trainer": "告東尼",
-     "draw": 11,
-     "weight": 130,
-     "rating": 75,
-     "last6": "-",
-     "gear": "TT1",
-     "win_prob": 0.0312,
-     "fair_odds": 32.1,
-     "style": "未知",
-     "speed_best": null,
-     "perf_best": null,
-     "handicap_edge": null,
-     "runs_in_db": 0,
-     "draw_edge": -0.088,
-     "pros": [
-      "過往市場評價",
-      "初出",
-      "上仗速度指數"
-     ],
-     "cons": [
-      "缺速度數據",
-      "試閘名次"
-     ],
-     "strong": [],
-     "win_odds": 9.5,
-     "place_odds": 8.1,
-     "market_prob": 0.0864,
-     "blend_prob": 0.0858,
-     "ev": 0.815,
-     "value": false,
-     "longshot": false,
-     "open_odds": 25.0,
-     "steam": true,
-     "final_prob": 0.0858,
-     "final_rank": 6
     },
     {
      "rank": 4,
@@ -7351,16 +7290,58 @@
        "place_raw": null
       }
      ],
-     "win_odds": 10.0,
+     "win_odds": 9.4,
      "place_odds": 2.8,
-     "market_prob": 0.0821,
-     "blend_prob": 0.0813,
-     "ev": 0.813,
+     "market_prob": 0.0871,
+     "blend_prob": 0.0866,
+     "ev": 0.814,
      "value": false,
-     "longshot": true,
+     "longshot": false,
      "open_odds": 8.4,
      "steam": false,
-     "final_prob": 0.0813,
+     "final_prob": 0.0866,
+     "final_rank": 6
+    },
+    {
+     "rank": 9,
+     "no": 4,
+     "horse": "美麗飛馳",
+     "horse_code": "M065",
+     "jockey": "巴度",
+     "trainer": "告東尼",
+     "draw": 11,
+     "weight": 130,
+     "rating": 75,
+     "last6": "-",
+     "gear": "TT1",
+     "win_prob": 0.0312,
+     "fair_odds": 32.1,
+     "style": "未知",
+     "speed_best": null,
+     "perf_best": null,
+     "handicap_edge": null,
+     "runs_in_db": 0,
+     "draw_edge": -0.088,
+     "pros": [
+      "過往市場評價",
+      "初出",
+      "上仗速度指數"
+     ],
+     "cons": [
+      "缺速度數據",
+      "試閘名次"
+     ],
+     "strong": [],
+     "win_odds": 10.0,
+     "place_odds": 7.7,
+     "market_prob": 0.0819,
+     "blend_prob": 0.0811,
+     "ev": 0.811,
+     "value": false,
+     "longshot": false,
+     "open_odds": 25.0,
+     "steam": true,
+     "final_prob": 0.0811,
      "final_rank": 7
     },
     {
@@ -7404,15 +7385,15 @@
       }
      ],
      "win_odds": 23.0,
-     "place_odds": 5.8,
-     "market_prob": 0.0357,
-     "blend_prob": 0.0339,
-     "ev": 0.78,
+     "place_odds": 5.7,
+     "market_prob": 0.0356,
+     "blend_prob": 0.0338,
+     "ev": 0.778,
      "value": false,
      "longshot": false,
      "open_odds": 15.0,
      "steam": false,
-     "final_prob": 0.0339,
+     "final_prob": 0.0338,
      "final_rank": 8
     },
     {
@@ -7445,16 +7426,16 @@
       "試閘名次"
      ],
      "strong": [],
-     "win_odds": 25.0,
-     "place_odds": 6.3,
-     "market_prob": 0.0329,
-     "blend_prob": 0.0311,
-     "ev": 0.777,
+     "win_odds": 23.0,
+     "place_odds": 5.9,
+     "market_prob": 0.0356,
+     "blend_prob": 0.0338,
+     "ev": 0.778,
      "value": false,
      "longshot": false,
      "open_odds": 17.0,
      "steam": false,
-     "final_prob": 0.0311,
+     "final_prob": 0.0338,
      "final_rank": 9
     },
     {
@@ -7487,16 +7468,16 @@
       "缺速度數據"
      ],
      "strong": [],
-     "win_odds": 29.0,
-     "place_odds": 10.0,
-     "market_prob": 0.0283,
-     "blend_prob": 0.0266,
-     "ev": 0.771,
+     "win_odds": 28.0,
+     "place_odds": 9.8,
+     "market_prob": 0.0293,
+     "blend_prob": 0.0275,
+     "ev": 0.77,
      "value": false,
      "longshot": false,
      "open_odds": 21.0,
      "steam": false,
-     "final_prob": 0.0266,
+     "final_prob": 0.0275,
      "final_rank": 10
     },
     {
@@ -7529,16 +7510,16 @@
       "缺速度數據"
      ],
      "strong": [],
-     "win_odds": 34.0,
-     "place_odds": 9.7,
-     "market_prob": 0.0242,
-     "blend_prob": 0.0225,
+     "win_odds": 32.0,
+     "place_odds": 9.0,
+     "market_prob": 0.0256,
+     "blend_prob": 0.0239,
      "ev": 0.765,
      "value": false,
      "longshot": false,
      "open_odds": 34.0,
      "steam": false,
-     "final_prob": 0.0225,
+     "final_prob": 0.0239,
      "final_rank": 11
     },
     {
@@ -7571,16 +7552,16 @@
       "過往市場評價"
      ],
      "strong": [],
-     "win_odds": 35.0,
-     "place_odds": 7.6,
-     "market_prob": 0.0235,
-     "blend_prob": 0.0218,
+     "win_odds": 33.0,
+     "place_odds": 7.5,
+     "market_prob": 0.0248,
+     "blend_prob": 0.0232,
      "ev": 0.764,
      "value": false,
      "longshot": false,
      "open_odds": 30.0,
      "steam": false,
-     "final_prob": 0.0218,
+     "final_prob": 0.0232,
      "final_rank": 12
     },
     {
@@ -7613,21 +7594,21 @@
       "狀態走勢"
      ],
      "strong": [],
-     "win_odds": 60.0,
-     "place_odds": 13.0,
-     "market_prob": 0.0137,
-     "blend_prob": 0.0124,
-     "ev": 0.744,
+     "win_odds": 53.0,
+     "place_odds": 12.0,
+     "market_prob": 0.0155,
+     "blend_prob": 0.0141,
+     "ev": 0.746,
      "value": false,
      "longshot": false,
      "open_odds": 26.0,
      "steam": false,
-     "final_prob": 0.0124,
+     "final_prob": 0.0141,
      "final_rank": 13
     }
    ],
    "ai": null,
-   "summary": "【步速】2號仁心星有機會爭放。預計步速偏慢(1 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 14.4%、前列 9.9%、中游 7.7%、後上 5.7%;前置馬仍然較有利,而且領放馬優勢比平時大。跑法配合嘅熱門選擇:8號名揚四海。\n【場地】根據今日草地已跑 7 場:頭三名 22 匹之中 6 匹出閘後跑喺前列(平時約 48%),後上馬比平時跑得好;7 匹來自內檔(平時約 41%),檔位同平時差唔多。過往同日早段嘅走勢對之後場次預測力好低,只作參考;此跑道路程前置馬優勢比沙田草地平均細,後上馬較有機會。今日分段時間(7 場):跑道偏慢(比標準慢約 0.4 秒/公里);末段追勁作用大,末段快嘅馬有著數。末段快嘅9號泰力受惠。檔位統計著數:11號旌採、10號喜悅歡欣。1號綠至尊檔位統計較差。\n【選擇】首選10號喜悅歡欣(綜合 21%,獨贏 4 倍):過往市場評價、近況、騎師佔優;次選11號旌採(綜合 14%,獨贏 6.1 倍):過往市場評價、近況、評分變動佔優;三選8號名揚四海(綜合 12%,獨贏 6.7 倍):近況、過往市場評價、上仗速度指數佔優。\n【把握】中:首選獨贏 4 倍。把握係睇賠率高低,唔代表值博。\n【冷門】12號紫荊拼搏(獨贏 10,模型排第 4):過往市場評價、近況。呢類馬入位率略高過同賠率嘅其他馬,但過往買獨贏、位置都係蝕錢,只供參考,唔係值博訊號。\n【落飛】11號旌採(早段 9.5 → 而家 6.1);4號美麗飛馳(早段 25 → 而家 9.5)。\n【風險】按綜合機率計暫時冇明顯值博;10號喜悅歡欣要留意後段追勁;11號旌採要留意讓磅著數、升班;賠率會變,以開跑前為準。"
+   "summary": "【步速】2號仁心星有機會爭放。預計步速偏慢(1 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 14.4%、前列 9.9%、中游 7.7%、後上 5.7%;前置馬仍然較有利,而且領放馬優勢比平時大。跑法配合嘅熱門選擇:8號名揚四海。\n【場地】根據今日草地已跑 7 場:頭三名 22 匹之中 6 匹出閘後跑喺前列(平時約 48%),後上馬比平時跑得好;7 匹來自內檔(平時約 41%),檔位同平時差唔多。過往同日早段嘅走勢對之後場次預測力好低,只作參考;此跑道路程前置馬優勢比沙田草地平均細,後上馬較有機會。今日分段時間(7 場):跑道偏慢(比標準慢約 0.4 秒/公里);末段追勁作用大,末段快嘅馬有著數。末段快嘅9號泰力受惠。檔位統計著數:11號旌採、10號喜悅歡欣。1號綠至尊檔位統計較差。\n【選擇】首選10號喜悅歡欣(綜合 22%,獨贏 3.8 倍):過往市場評價、近況、騎師佔優;次選11號旌採(綜合 13%,獨贏 6.3 倍):過往市場評價、近況、評分變動佔優;三選8號名揚四海(綜合 12%,獨贏 7.1 倍):近況、過往市場評價、上仗速度指數佔優。\n【把握】中:首選獨贏 3.8 倍。把握係睇賠率高低,唔代表值博。\n【冷門】今場冇賠率 10 倍以上而模型排頭五嘅馬。\n【落飛】11號旌採(早段 9.5 → 而家 6.3);4號美麗飛馳(早段 25 → 而家 10)。\n【風險】按綜合機率計暫時冇明顯值博;10號喜悅歡欣要留意後段追勁;11號旌採要留意讓磅著數、升班;賠率會變,以開跑前為準。"
   }
  ],
  "runs": [
@@ -7755,6 +7736,7 @@
   "2026-11-14T09:48:59+00:00",
   "2026-11-14T09:51:40+00:00",
   "2026-11-14T09:53:47+00:00",
-  "2026-11-14T09:55:46+00:00"
+  "2026-11-14T09:55:46+00:00",
+  "2026-11-14T10:01:16+00:00"
  ]
 }
