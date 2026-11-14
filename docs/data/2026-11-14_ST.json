@@ -4,7 +4,7 @@
   "venue": "ST",
   "venue_zh": "沙田"
  },
- "updated_at": "2026-11-14T08:08:10+00:00",
+ "updated_at": "2026-11-14T08:10:58+00:00",
  "model": {
   "holdout": {
    "races": 651,
@@ -4972,14 +4972,14 @@
     "races": 4
    },
    "course_bias": "此跑道路程跑法影響同沙田草地平均差唔多",
-   "odds_updated": "14/11/2026 16:07",
+   "odds_updated": "14/11/2026 16:09",
    "confidence": "中",
    "longshots": [
     {
      "no": 1,
      "horse": "晨曦鳳凰",
      "win_odds": 16.0,
-     "place_odds": 4.3,
+     "place_odds": 4.0,
      "win_prob": 0.161,
      "rank": 1,
      "style": "前列",
@@ -4991,6 +4991,23 @@
      "cons": [
       "檔位統計",
       "後段追勁"
+     ]
+    },
+    {
+     "no": 7,
+     "horse": "馬寶寶",
+     "win_odds": 19.0,
+     "place_odds": 4.6,
+     "win_prob": 0.1562,
+     "rank": 2,
+     "style": "前列",
+     "pros": [
+      "讓磅著數",
+      "騎師",
+      "過往市場評價"
+     ],
+     "cons": [
+      "檔位統計"
      ]
     },
     {
@@ -5009,23 +5026,6 @@
      "cons": [
       "騎練組合",
       "過往市場評價"
-     ]
-    },
-    {
-     "no": 7,
-     "horse": "馬寶寶",
-     "win_odds": 20.0,
-     "place_odds": 4.6,
-     "win_prob": 0.1562,
-     "rank": 2,
-     "style": "前列",
-     "pros": [
-      "讓磅著數",
-      "騎師",
-      "過往市場評價"
-     ],
-     "cons": [
-      "檔位統計"
      ]
     }
    ],
@@ -5062,15 +5062,57 @@
      "strong": [],
      "win_odds": 2.6,
      "place_odds": 2.2,
-     "market_prob": 0.3144,
-     "blend_prob": 0.3312,
-     "ev": 0.861,
+     "market_prob": 0.3125,
+     "blend_prob": 0.3291,
+     "ev": 0.856,
      "value": false,
      "longshot": false,
      "open_odds": 3.5,
      "steam": false,
-     "final_prob": 0.3312,
+     "final_prob": 0.3291,
      "final_rank": 1
+    },
+    {
+     "rank": 4,
+     "no": 5,
+     "horse": "閃電奇駿",
+     "horse_code": "L362",
+     "jockey": "巴度",
+     "trainer": "甘敏斯",
+     "draw": 12,
+     "weight": 132,
+     "rating": 52,
+     "last6": "1/3/7/6/12/7",
+     "gear": "TT",
+     "win_prob": 0.1071,
+     "fair_odds": 9.3,
+     "style": "後上",
+     "speed_best": -5.1,
+     "perf_best": 52.4,
+     "handicap_edge": -3.2,
+     "runs_in_db": 6,
+     "draw_edge": -0.191,
+     "pros": [
+      "評分變動",
+      "過往市場評價",
+      "近況"
+     ],
+     "cons": [
+      "後段追勁",
+      "讓磅著數"
+     ],
+     "strong": [],
+     "win_odds": 6.2,
+     "place_odds": 1.9,
+     "market_prob": 0.1311,
+     "blend_prob": 0.1322,
+     "ev": 0.819,
+     "value": false,
+     "longshot": false,
+     "open_odds": 6.5,
+     "steam": false,
+     "final_prob": 0.1322,
+     "final_rank": 2
     },
     {
      "rank": 7,
@@ -5113,57 +5155,15 @@
       }
      ],
      "win_odds": 6.2,
-     "place_odds": 1.8,
-     "market_prob": 0.1319,
-     "blend_prob": 0.133,
-     "ev": 0.824,
+     "place_odds": 1.9,
+     "market_prob": 0.1311,
+     "blend_prob": 0.1322,
+     "ev": 0.819,
      "value": false,
      "longshot": false,
      "open_odds": 4.6,
      "steam": false,
-     "final_prob": 0.133,
-     "final_rank": 2
-    },
-    {
-     "rank": 4,
-     "no": 5,
-     "horse": "閃電奇駿",
-     "horse_code": "L362",
-     "jockey": "巴度",
-     "trainer": "甘敏斯",
-     "draw": 12,
-     "weight": 132,
-     "rating": 52,
-     "last6": "1/3/7/6/12/7",
-     "gear": "TT",
-     "win_prob": 0.1071,
-     "fair_odds": 9.3,
-     "style": "後上",
-     "speed_best": -5.1,
-     "perf_best": 52.4,
-     "handicap_edge": -3.2,
-     "runs_in_db": 6,
-     "draw_edge": -0.191,
-     "pros": [
-      "評分變動",
-      "過往市場評價",
-      "近況"
-     ],
-     "cons": [
-      "後段追勁",
-      "讓磅著數"
-     ],
-     "strong": [],
-     "win_odds": 6.3,
-     "place_odds": 1.9,
-     "market_prob": 0.1298,
-     "blend_prob": 0.1308,
-     "ev": 0.824,
-     "value": false,
-     "longshot": false,
-     "open_odds": 6.5,
-     "steam": false,
-     "final_prob": 0.1308,
+     "final_prob": 0.1322,
      "final_rank": 3
     },
     {
@@ -5208,14 +5208,14 @@
      ],
      "win_odds": 8.3,
      "place_odds": 2.5,
-     "market_prob": 0.0985,
-     "blend_prob": 0.0979,
-     "ev": 0.812,
+     "market_prob": 0.0979,
+     "blend_prob": 0.0973,
+     "ev": 0.808,
      "value": false,
      "longshot": false,
      "open_odds": 9.1,
      "steam": false,
-     "final_prob": 0.0979,
+     "final_prob": 0.0973,
      "final_rank": 4
     },
     {
@@ -5249,15 +5249,15 @@
      ],
      "strong": [],
      "win_odds": 16.0,
-     "place_odds": 4.3,
-     "market_prob": 0.0511,
-     "blend_prob": 0.0491,
-     "ev": 0.786,
+     "place_odds": 4.0,
+     "market_prob": 0.0508,
+     "blend_prob": 0.0488,
+     "ev": 0.781,
      "value": false,
      "longshot": true,
      "open_odds": 14.0,
      "steam": false,
-     "final_prob": 0.0491,
+     "final_prob": 0.0488,
      "final_rank": 5
     },
     {
@@ -5291,16 +5291,57 @@
      ],
      "strong": [],
      "win_odds": 18.0,
-     "place_odds": 4.9,
-     "market_prob": 0.0454,
-     "blend_prob": 0.0434,
-     "ev": 0.782,
+     "place_odds": 5.0,
+     "market_prob": 0.0451,
+     "blend_prob": 0.0432,
+     "ev": 0.777,
      "value": false,
      "longshot": false,
      "open_odds": 19.0,
      "steam": false,
-     "final_prob": 0.0434,
+     "final_prob": 0.0432,
      "final_rank": 6
+    },
+    {
+     "rank": 2,
+     "no": 7,
+     "horse": "馬寶寶",
+     "horse_code": "K586",
+     "jockey": "袁幸堯",
+     "trainer": "蘇偉賢",
+     "draw": 10,
+     "weight": 124,
+     "rating": 51,
+     "last6": "3/5/10/8/4/12",
+     "gear": "B/TT",
+     "win_prob": 0.1562,
+     "fair_odds": 6.4,
+     "style": "前列",
+     "speed_best": -0.1,
+     "perf_best": 62.7,
+     "handicap_edge": 8.2,
+     "runs_in_db": 8,
+     "draw_edge": -0.125,
+     "pros": [
+      "讓磅著數",
+      "騎師",
+      "過往市場評價"
+     ],
+     "cons": [
+      "檔位統計"
+     ],
+     "strong": [],
+     "win_odds": 19.0,
+     "place_odds": 4.6,
+     "market_prob": 0.0428,
+     "blend_prob": 0.0408,
+     "ev": 0.775,
+     "value": false,
+     "longshot": true,
+     "open_odds": 18.0,
+     "steam": false,
+     "final_prob": 0.0408,
+     "final_rank": 7
     },
     {
      "rank": 3,
@@ -5334,55 +5375,14 @@
      "strong": [],
      "win_odds": 19.0,
      "place_odds": 5.0,
-     "market_prob": 0.043,
-     "blend_prob": 0.041,
-     "ev": 0.78,
+     "market_prob": 0.0428,
+     "blend_prob": 0.0408,
+     "ev": 0.775,
      "value": false,
      "longshot": true,
      "open_odds": 15.0,
      "steam": false,
-     "final_prob": 0.041,
-     "final_rank": 7
-    },
-    {
-     "rank": 2,
-     "no": 7,
-     "horse": "馬寶寶",
-     "horse_code": "K586",
-     "jockey": "袁幸堯",
-     "trainer": "蘇偉賢",
-     "draw": 10,
-     "weight": 124,
-     "rating": 51,
-     "last6": "3/5/10/8/4/12",
-     "gear": "B/TT",
-     "win_prob": 0.1562,
-     "fair_odds": 6.4,
-     "style": "前列",
-     "speed_best": -0.1,
-     "perf_best": 62.7,
-     "handicap_edge": 8.2,
-     "runs_in_db": 8,
-     "draw_edge": -0.125,
-     "pros": [
-      "讓磅著數",
-      "騎師",
-      "過往市場評價"
-     ],
-     "cons": [
-      "檔位統計"
-     ],
-     "strong": [],
-     "win_odds": 20.0,
-     "place_odds": 4.6,
-     "market_prob": 0.0409,
-     "blend_prob": 0.0389,
-     "ev": 0.778,
-     "value": false,
-     "longshot": true,
-     "open_odds": 18.0,
-     "steam": false,
-     "final_prob": 0.0389,
+     "final_prob": 0.0408,
      "final_rank": 8
     },
     {
@@ -5415,16 +5415,16 @@
       "路程適應"
      ],
      "strong": [],
-     "win_odds": 26.0,
+     "win_odds": 25.0,
      "place_odds": 6.2,
-     "market_prob": 0.0314,
-     "blend_prob": 0.0295,
-     "ev": 0.767,
+     "market_prob": 0.0325,
+     "blend_prob": 0.0306,
+     "ev": 0.764,
      "value": false,
      "longshot": false,
      "open_odds": 19.0,
      "steam": false,
-     "final_prob": 0.0295,
+     "final_prob": 0.0306,
      "final_rank": 9
     },
     {
@@ -5458,15 +5458,15 @@
      ],
      "strong": [],
      "win_odds": 26.0,
-     "place_odds": 3.2,
-     "market_prob": 0.0314,
-     "blend_prob": 0.0295,
-     "ev": 0.767,
+     "place_odds": 3.3,
+     "market_prob": 0.0313,
+     "blend_prob": 0.0293,
+     "ev": 0.763,
      "value": false,
      "longshot": false,
      "open_odds": 28.0,
      "steam": false,
-     "final_prob": 0.0295,
+     "final_prob": 0.0293,
      "final_rank": 10
     },
     {
@@ -5500,15 +5500,15 @@
      ],
      "strong": [],
      "win_odds": 27.0,
-     "place_odds": 6.9,
-     "market_prob": 0.0303,
-     "blend_prob": 0.0284,
-     "ev": 0.766,
+     "place_odds": 6.8,
+     "market_prob": 0.0301,
+     "blend_prob": 0.0282,
+     "ev": 0.761,
      "value": false,
      "longshot": false,
      "open_odds": 20.0,
      "steam": false,
-     "final_prob": 0.0284,
+     "final_prob": 0.0282,
      "final_rank": 11
     },
     {
@@ -5541,16 +5541,16 @@
       "騎師"
      ],
      "strong": [],
-     "win_odds": 39.0,
-     "place_odds": 7.9,
-     "market_prob": 0.021,
-     "blend_prob": 0.0193,
-     "ev": 0.752,
+     "win_odds": 38.0,
+     "place_odds": 7.8,
+     "market_prob": 0.0214,
+     "blend_prob": 0.0197,
+     "ev": 0.748,
      "value": false,
      "longshot": false,
      "open_odds": 41.0,
      "steam": false,
-     "final_prob": 0.0193,
+     "final_prob": 0.0197,
      "final_rank": 12
     },
     {
@@ -5581,14 +5581,14 @@
      "strong": [],
      "win_odds": 40.0,
      "place_odds": 10.0,
-     "market_prob": 0.0204,
-     "blend_prob": 0.0188,
-     "ev": 0.751,
+     "market_prob": 0.0203,
+     "blend_prob": 0.0187,
+     "ev": 0.746,
      "value": false,
      "longshot": false,
      "open_odds": 29.0,
      "steam": false,
-     "final_prob": 0.0188,
+     "final_prob": 0.0187,
      "final_rank": 13
     },
     {
@@ -5631,9 +5631,9 @@
      ],
      "win_odds": 78.0,
      "place_odds": 18.0,
-     "market_prob": 0.0105,
+     "market_prob": 0.0104,
      "blend_prob": 0.0093,
-     "ev": 0.726,
+     "ev": 0.722,
      "value": false,
      "longshot": false,
      "open_odds": 58.0,
@@ -5643,7 +5643,7 @@
     }
    ],
    "ai": null,
-   "summary": "【步速】8號浩然、12號升升雙息有機會爭放。預計步速中等(2 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:8號浩然、1號晨曦鳳凰。\n【場地】根據今日草地已跑 4 場:頭三名 12 匹之中 5 匹出閘後跑喺前列(平時約 48%),跑法同平時差唔多;5 匹來自內檔(平時約 41%),檔位同平時差唔多。過往同日早段嘅走勢對之後場次預測力好低,只作參考;此跑道路程跑法影響同沙田草地平均差唔多。今日分段時間(4 場):跑道偏慢(比標準慢約 0.3 秒/公里);末段追勁作用大,末段快嘅馬有著數。檔位統計著數:13號共同享樂、14號萬里雲。5號閃電奇駿、1號晨曦鳳凰檔位統計較差。\n【選擇】首選6號旺旺當道(綜合 33%,獨贏 2.6 倍):騎師、試閘名次、騎練組合佔優;次選8號浩然(綜合 13%,獨贏 6.2 倍):近況、狀態走勢、檔位統計佔優;三選5號閃電奇駿(綜合 13%,獨贏 6.3 倍):評分變動、過往市場評價、近況佔優。\n【把握】中:首選獨贏 2.6 倍。把握係睇賠率高低,唔代表值博。\n【冷門】1號晨曦鳳凰(獨贏 16,模型排第 1):近況、過往市場評價;12號升升雙息(獨贏 19,模型排第 3):讓磅著數、試閘名次;7號馬寶寶(獨贏 20,模型排第 2):讓磅著數、騎師。呢類馬入位率略高過同賠率嘅其他馬,但過往買獨贏、位置都係蝕錢,只供參考,唔係值博訊號。\n【風險】模型自己最睇好1號晨曦鳳凰,同市場睇法唔同;按綜合機率計暫時冇明顯值博;6號旺旺當道數據不足(初出或冇往績),評估把握較低;6號旺旺當道要留意缺速度數據、讓磅著數;8號浩然要留意騎師、騎練組合;賠率會變,以開跑前為準。"
+   "summary": "【步速】8號浩然、12號升升雙息有機會爭放。預計步速中等(2 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:8號浩然、1號晨曦鳳凰。\n【場地】根據今日草地已跑 4 場:頭三名 12 匹之中 5 匹出閘後跑喺前列(平時約 48%),跑法同平時差唔多;5 匹來自內檔(平時約 41%),檔位同平時差唔多。過往同日早段嘅走勢對之後場次預測力好低,只作參考;此跑道路程跑法影響同沙田草地平均差唔多。今日分段時間(4 場):跑道偏慢(比標準慢約 0.3 秒/公里);末段追勁作用大,末段快嘅馬有著數。檔位統計著數:13號共同享樂、14號萬里雲。5號閃電奇駿、1號晨曦鳳凰檔位統計較差。\n【選擇】首選6號旺旺當道(綜合 33%,獨贏 2.6 倍):騎師、試閘名次、騎練組合佔優;次選5號閃電奇駿(綜合 13%,獨贏 6.2 倍):評分變動、過往市場評價、近況佔優;三選8號浩然(綜合 13%,獨贏 6.2 倍):近況、狀態走勢、檔位統計佔優。\n【把握】中:首選獨贏 2.6 倍。把握係睇賠率高低,唔代表值博。\n【冷門】1號晨曦鳳凰(獨贏 16,模型排第 1):近況、過往市場評價;7號馬寶寶(獨贏 19,模型排第 2):讓磅著數、騎師;12號升升雙息(獨贏 19,模型排第 3):讓磅著數、試閘名次。呢類馬入位率略高過同賠率嘅其他馬,但過往買獨贏、位置都係蝕錢,只供參考,唔係值博訊號。\n【風險】模型自己最睇好1號晨曦鳳凰,同市場睇法唔同;按綜合機率計暫時冇明顯值博;6號旺旺當道數據不足(初出或冇往績),評估把握較低;6號旺旺當道要留意缺速度數據、讓磅著數;5號閃電奇駿要留意後段追勁、讓磅著數;賠率會變,以開跑前為準。"
   },
   {
    "race_no": 9,
@@ -7019,7 +7019,7 @@
     "races": 4
    },
    "course_bias": "此跑道路程前置馬優勢比沙田草地平均細,後上馬較有機會",
-   "odds_updated": "14/11/2026 16:05",
+   "odds_updated": "14/11/2026 16:10",
    "confidence": "中",
    "longshots": [
     {
@@ -7705,6 +7705,7 @@
   "2026-11-14T08:00:49+00:00",
   "2026-11-14T08:02:47+00:00",
   "2026-11-14T08:05:06+00:00",
-  "2026-11-14T08:08:10+00:00"
+  "2026-11-14T08:08:10+00:00",
+  "2026-11-14T08:10:58+00:00"
  ]
 }
