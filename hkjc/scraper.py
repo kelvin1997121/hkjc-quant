@@ -210,6 +210,32 @@ def _parse_result_race(soup: BeautifulSoup, venue: str, race_date: date, race_no
     return info
 
 
+CANCELLED_NOTICE = "此場賽事宣佈取消"
+
+
+def _cancelled_race(soup: BeautifulSoup, venue: str, race_date: date, race_no: int) -> bool:
+    """True when the page is HKJC's notice that this race was cancelled and its bets refunded.
+
+    Seen on 14 Nov 2026 (Sha Tin race 6): no race header and no result table, only the notice
+    and a dividend table with 退款 in every single-race pool. Before a race is run HKJC can
+    serve another meeting's page for the same number, so the notice is believed only when the
+    page is about the race asked for: the meeting date shown, this race highlighted in this
+    venue's row of race numbers, and a refund in the win pool."""
+    text = soup.get_text(" ", strip=True)
+    if CANCELLED_NOTICE not in text:
+        return False
+    shown = re.search(r"賽事日期\s*[:：]?\s*(\d{2}/\d{2}/\d{4})", text)
+    if not shown or datetime.strptime(shown.group(1), "%d/%m/%Y").date() != race_date:
+        return False
+    # the race on show has no link and an "_o" picture; the rest of its row links to its venue
+    mark = soup.find("img", src=re.compile(rf"racecard_rt_{race_no}_o\.gif"))
+    row = mark.find_parent("tr") if mark else None
+    if not row or not row.find("a", href=re.compile(rf"Racecourse={venue}\b", re.I)):
+        return False
+    win = _parse_dividends(soup).get("獨贏")
+    return bool(win) and all(amount is None for _, amount in win)
+
+
 def _parse_dividends(soup) -> dict:
     """{'獨贏': [['2', 172.5]], '位置': [['2', 49.0], ['7', 26.0], ...], ...}, per HK$10.
 
@@ -287,13 +313,14 @@ def attach_sectionals(race: dict):
 
 
 def fetch_meeting_results(race_date: date, with_sectionals: bool = True, venue: str | None = None,
-                          race_nos=None, have: dict | None = None):
+                          race_nos=None, have: dict | None = None, void: set | None = None):
     """Fetch race results for a meeting. Returns list of race dicts (maybe empty).
 
     Every race is requested by explicit number: during a meeting HKJC's default
     page shows the *latest* race, not race 1. Live runs pass venue and race_nos
     from the card (with one race run there may be no links to discover them from)
-    and `have` = finished races to keep instead of fetching again.
+    and `have` = finished races to keep instead of fetching again. The numbers of
+    races HKJC declared cancelled are added to `void` when a set is passed.
     """
     ds = race_date.strftime("%Y/%m/%d")
     if venue is None or race_nos is None:
@@ -317,11 +344,14 @@ def fetch_meeting_results(race_date: date, with_sectionals: bool = True, venue: 
                 raise
             print(f"   R{n} result unavailable: {e}")
             return None
-        r = _parse_result_race(BeautifulSoup(page, "html.parser"), venue, race_date, n)
+        soup = BeautifulSoup(page, "html.parser")
+        r = _parse_result_race(soup, venue, race_date, n)
         if r and r["runners"]:
             if with_sectionals:
                 attach_sectionals(r)
             return r
+        if void is not None and _cancelled_race(soup, venue, race_date, n):
+            void.add(n)
         return None
 
     with ThreadPoolExecutor(max_workers=CONCURRENCY) as pool:

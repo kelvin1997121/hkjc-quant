@@ -44,12 +44,18 @@ def complete_recent_results(days=4):
         if d == today and card["date"] == current:   # run() reads this meeting's results itself
             continue
         have = store.read_json(store.result_path(card["date"], card["venue"]), [])
-        if len(have) < len(card["races"]):
-            res = scraper.fetch_meeting_results(d)
+        # a race HKJC cancelled has no result to wait for (14 Nov 2026, Sha Tin race 6)
+        void = store.cancelled(card["date"], card["venue"]) - {r["race_no"] for r in have}
+        if len(have) + len(void) < len(card["races"]):
+            found = set()
+            res = scraper.fetch_meeting_results(d, void=found)
             if len(res) > len(have):
                 horses.attach_card_fields(res, card)
                 store.save_results(res)
                 print(f"   completed {card['date']}: {len(have)} -> {len(res)} races")
+            found -= {r["race_no"] for r in res}
+            if res and found and store.set_cancelled(card["date"], card["venue"], found | void):
+                print(f"   {card['date']}: races {sorted(found)} were cancelled by HKJC")
         elif d < today and any(not r.get("has_sect") for r in have):
             # sectional times are sometimes published a while after the result
             for r in have:
@@ -100,7 +106,8 @@ def write_if_changed(path, doc):
 
 def race_schedule(card, resulted=()):
     """Post times and races already resulted, read by the cloud ticker: an update every
-    5 minutes during a meeting, every 2 while a race's result is due."""
+    5 minutes during a meeting, every 2 while a race's result is due. A cancelled race counts
+    as resulted here: there is nothing more to wait for."""
     posts = sorted(r["post_time"] for r in card["races"] if r.get("post_time"))
     return {"date": card["date"], "venue": card["venue"],
             "first_post": posts[0] if posts else None, "last_post": posts[-1] if posts else None,
@@ -132,7 +139,7 @@ def started_races(card, now=None):
 
 def live_results(card, race_nos=None):
     """Fetch today's results (all races on the card, or just race_nos) and store them.
-    Returns the race numbers that now have a result."""
+    Returns the race numbers that are over: those with a result, and those HKJC cancelled."""
     path = store.result_path(card["date"], card["venue"])
     # Before a race has run, HKJC can answer with another meeting's race of the same number
     # (8 Nov: 4 Nov's race 1 was stored as today's 25 minutes before the off). A result
@@ -150,9 +157,10 @@ def live_results(card, race_nos=None):
     # a race posted before its running positions or dividends is fetched again
     have = {r["race_no"]: r for r in stored
             if r.get("has_sect") and r.get("dividends") and has_running(r)}
+    seen_void = set()
     live = scraper.fetch_meeting_results(
         date.fromisoformat(card["date"]), venue=card["venue"],
-        race_nos=race_nos or [r["race_no"] for r in card["races"]], have=have)
+        race_nos=race_nos or [r["race_no"] for r in card["races"]], have=have, void=seen_void)
     wrong += [r["race_no"] for r in live if not ours(r)]
     live = [r for r in live if ours(r)]
     if wrong:
@@ -163,7 +171,16 @@ def live_results(card, race_nos=None):
     horses.attach_card_fields(live, card)
     if live or wrong:
         store.write_json(path, live)
-    return {r["race_no"] for r in live}
+    done = {r["race_no"] for r in live}
+    # A race HKJC declared cancelled (14 Nov 2026, Sha Tin race 6) has no result and never will.
+    # It is recorded apart from the results. The full update asks for it again every time, and
+    # a result that does turn up wins over the record.
+    known = store.cancelled(card["date"], card["venue"])
+    void = (known | seen_void) - done
+    if store.set_cancelled(card["date"], card["venue"], void):
+        print(f"   cancelled by HKJC: races {sorted(void)}" if void else
+              f"   races {sorted(known)} have a result after all: no longer marked cancelled")
+    return done | void
 
 
 def quick_results(now=None):
@@ -181,7 +198,8 @@ def quick_results(now=None):
     now = now or now_hkt()
     mins = now.hour * 60 + now.minute
     path = store.result_path(card["date"], card["venue"])
-    done = {r["race_no"] for r in store.read_json(path, []) or []}
+    # over already: a result is stored, or HKJC cancelled the race
+    done = {r["race_no"] for r in store.read_json(path, []) or []} | store.cancelled(card["date"], card["venue"])
     due = [r["race_no"] for r in card["races"] if r.get("post_time") and r["race_no"] not in done
            and _minutes(r["post_time"]) + 3 <= mins]
     if not due:
@@ -199,6 +217,7 @@ def quick_results(now=None):
     doc_path = store.DOCS / "data" / f"{card['date']}_{card['venue']}.json"
     doc = store.read_json(doc_path)
     res = {r["race_no"]: r for r in store.read_json(path, []) or []}
+    void = store.cancelled(card["date"], card["venue"])
     names = {r["race_no"]: r.get("race_name") for r in card["races"]}
     if doc:
         for a in doc.get("races", []):
@@ -206,6 +225,8 @@ def quick_results(now=None):
             # the pre-race analysis stays as it was; only the result is attached
             if n in new and n in res and "result" not in a and a.get("race_name") == names.get(n):
                 a["result"] = _result_summary(res[n])
+            elif n in new and n in void and "result" not in a and a.get("race_name") == names.get(n):
+                a["cancelled"] = True
         store.write_json(doc_path, doc)
         # The page reads latest.json. Until 12 Nov 2026 only the meeting's own file was
         # written here, so a result still reached the page only after the full run.
@@ -214,7 +235,8 @@ def quick_results(now=None):
         if (shown.get("date"), shown.get("venue")) == (card["date"], card["venue"]):
             store.write_json(latest_path, doc)
     write_if_changed(store.DOCS / "data" / "schedule.json", race_schedule(card, finished))
-    print(f"results: races {sorted(new)} on the page")
+    print(f"results: races {sorted(new)} on the page" +
+          (f" (cancelled by HKJC: {sorted(new & void)})" if new & void else ""))
     update_paper()
     return True
 
@@ -323,7 +345,7 @@ def run(use_agent=True):
     print(f"   {mkey}: {len(card['races'])} races")
     stored = store.read_json(store.result_path(card["date"], card["venue"]), []) or []
     write_if_changed(store.DOCS / "data" / "schedule.json",
-                     race_schedule(card, {r["race_no"] for r in stored}))
+                     race_schedule(card, {r["race_no"] for r in stored} | store.cancelled(card["date"], card["venue"])))
 
     finished = set()
     if meeting_day <= today_hkt():
@@ -357,6 +379,7 @@ def run(use_agent=True):
     out_path = store.DOCS / "data" / f"{mkey}.json"
     previous = store.read_json(out_path, {}) or {}
     prev_races = {r["race_no"]: r for r in previous.get("races", [])}
+    void = store.cancelled(card["date"], card["venue"])
     out_races = []
     for race in card["races"]:
         res = results_today.get(race["race_no"])
@@ -380,6 +403,11 @@ def run(use_agent=True):
             a["summary"] = writer.summarise(a)
         if res:
             a["result"] = _result_summary(res)
+        # cancelled by HKJC: the analysis stays as it was, marked so nothing waits for a result
+        if race["race_no"] in void and not res:
+            a["cancelled"] = True
+        else:
+            a.pop("cancelled", None)
         out_races.append(a)
 
     doc = {
@@ -414,14 +442,19 @@ def attach_results():
     today = today_hkt().isoformat()
     for p in sorted((store.DOCS / "data").glob("20*_*.json")):
         d = store.read_json(p)
-        if d["meeting"]["date"] > today or all("result" in r for r in d["races"]):
+        if d["meeting"]["date"] > today or all("result" in r or r.get("cancelled") for r in d["races"]):
             continue
         res = store.read_json(store.result_path(d["meeting"]["date"], d["meeting"]["venue"]), [])
         by_no = {r["race_no"]: r for r in res}
+        void = store.cancelled(d["meeting"]["date"], d["meeting"]["venue"])
         changed = False
         for r in d["races"]:
             if "result" not in r and r["race_no"] in by_no:
                 r["result"] = _result_summary(by_no[r["race_no"]])
+                r.pop("cancelled", None)
+                changed = True
+            elif "result" not in r and r["race_no"] in void and not r.get("cancelled"):
+                r["cancelled"] = True
                 changed = True
         if changed:
             store.write_json(p, d)

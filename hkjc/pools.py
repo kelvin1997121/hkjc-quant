@@ -18,6 +18,9 @@ Rules, fixed now and not to be changed after seeing results:
   * Made exact on 2026-11-12, with 9 races collected and none of them affected: HKJC returns
     the stake on a horse that does not start and on a pool it does not pay out, so such a
     selection is no bet (it was counted as a $10 loss before).
+  * Noted on 2026-11-14, when HKJC cancelled race 6 at Sha Tin: a cancelled race has no
+    result and every pool is refunded, so by the rule above it holds no bet and is not one
+    of the races counted. Nothing in the code changed for it.
 
 Harville is known to overrate favourites for 2nd and 3rd, so "value" it finds may be its
 own error; that is why the verdict is the return at real dividends, not the model's opinion.

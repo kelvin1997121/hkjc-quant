@@ -10,6 +10,11 @@ Rules, fixed now and not to be changed after seeing results:
     Made exact on 2026-11-12, before any such case had come up in the account: a horse that
     is in the result with a withdrawn code (WV, WX...) counts as withdrawn even if the race
     card never marked it, and a bet in a pool HKJC did not pay out is refunded as well.
+    Noted on 2026-11-14, when HKJC cancelled race 6 at Sha Tin (the first such case): a
+    cancelled race has no result at all, so it is recognised from data/cancelled.json and
+    handled as the code has handled a race without dividends since 2026-11-10 ("void"):
+    nothing is bet on it and it does not count towards the 300. The balance is the same as
+    placing the bets and getting every stake back.
   * Four strategies, each with its own book:
       fav_place   首選位置       $10 place on the first choice
       top2_qin    首選+次選連贏   $10 quinella on the first two choices
@@ -201,6 +206,7 @@ def build(now=None):
         results = {r["race_no"]: r for r in store.read_json(store.result_path(day, venue), []) or []}
         odds = store.read_json(store.DATA / "odds" / f"{day}_{venue}.json", {}) or {}
         card = {r["race_no"]: r for r in (store.load_card(day, venue) or {}).get("races", [])}
+        cancelled = store.cancelled(day, venue)
         rows = []
         for race in sorted(d.get("races", []), key=lambda r: r["race_no"]):
             n = race["race_no"]
@@ -220,13 +226,19 @@ def build(now=None):
             row["state"] = "settled" if res and res.get("dividends") else ("placed" if off else "planned")
             if res and not res.get("dividends"):
                 row["state"] = "void"   # no dividends (abandoned or not parsed): nothing is bet
+            if res is None and n in cancelled:
+                row["state"], row["cancelled"] = "void", True   # HKJC cancelled the race
             withdrawn = _withdrawn(res, card.get(n)) if row["state"] == "settled" else set()
 
             def run(bk, sels):
                 rows_out = []
                 for pool, sel, o, c in sels:
                     b = _bet_row(pool, sel, o, c, names)
-                    if row["state"] == "void" or not bk.place():
+                    if row["state"] == "void":
+                        b["placed"], b["void"] = False, True   # not for want of money
+                        rows_out.append(b)
+                        continue
+                    if not bk.place():
                         b["placed"] = False
                         rows_out.append(b)
                         continue

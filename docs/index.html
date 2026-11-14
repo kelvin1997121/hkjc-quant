@@ -146,7 +146,7 @@ async function load() {
   $("#stale").style.display = stale ? "" : "none";
   $("#stale").textContent = stale ? `⚠ 數據已經 ${age} 分鐘冇更新,賠率同走勢可能唔係最新。` : "";
   if (!load.done) {
-    const next = data.races.findIndex(r => !r.result);
+    const next = data.races.findIndex(r => !r.result && !r.cancelled);
     cur = next >= 0 ? next : 0;
     load.done = true;
   }
@@ -156,7 +156,7 @@ async function load() {
 
 function tabs() {
   $("#tabs").innerHTML = data.races.map((r, i) =>
-    `<button class="${i === cur ? "on" : ""}" data-i="${i}">第${r.race_no}場${r.result ? " ✓" : ""}</button>`).join("");
+    `<button class="${i === cur ? "on" : ""}" data-i="${i}">第${r.race_no}場${r.result ? " ✓" : r.cancelled ? " 取消" : ""}</button>`).join("");
   $("#tabs").querySelectorAll("button").forEach(b => b.onclick = () => { cur = +b.dataset.i; tabs(); show(); });
 }
 
@@ -182,7 +182,8 @@ function show() {
       <td class="num">${x.ev != null ? `<span class="${x.value ? "pro" : ""}">${x.ev.toFixed(2)}${x.value ? " 值博" : ""}</span>` : "–"}</td>
       <td>${x.pros.map(p => `<div class="pro">+ ${esc(p)}</div>`).join("")}${x.cons.map(p => `<div class="con">− ${esc(p)}</div>`).join("")}</td>
     </tr>`).join("");
-  const res = r.result ? `<div class="res">賽果:${r.result.placings.join(" - ")}(頭馬獨贏 ${r.result.win_odds ?? "-"})${r.post_hoc ? " · 此場預測於開跑後產生,不計入往績" : ""}</div>` : "";
+  const res = r.result ? `<div class="res">賽果:${r.result.placings.join(" - ")}(頭馬獨贏 ${r.result.win_odds ?? "-"})${r.post_hoc ? " · 此場預測於開跑後產生,不計入往績" : ""}</div>`
+    : r.cancelled ? `<div class="res">此場賽事已取消:馬會將所有單場注項退款,呢場唔計入往績同模擬倉。</div>` : "";
   $("#view").innerHTML = `
   <section class="card">
     <h2 style="margin:0">第${r.race_no}場 ${esc(r.race_name || "")}</h2>
@@ -359,11 +360,12 @@ function edgeNote() {
 const money = v => (v > 0 ? "+" : v < 0 ? "-" : "") + "$" + Math.abs(v).toLocaleString("en", { maximumFractionDigits: 0 });
 const STATE = { planned: "暫定(開跑前會跟賠率變)", placed: "已落注,等賽果", settled: "已結算",
   post_hoc: "開跑後先有分析,唔落注", void: "冇派彩數據,當冇落注" };
+const stateText = r => r.cancelled ? "賽事取消,當冇落注" : STATE[r.state] || "";
 
 function betText(b) {
   const why = b.value != null ? `,機會 ${(b.chance * 100).toFixed(1)}% × 賠率 ${b.odds} = ${b.value}` : b.odds ? `,賠率 ${b.odds}` : "";
   const paid = b.back == null ? "" : b.refund ? " · 退款" : b.back > 0 ? ` · <b class="pos">派 $${b.back}</b>` : ` · <span class="neg">冇中</span>`;
-  return `${esc(b.pool)} ${esc(b.sel)}(${esc(b.names)}${esc(why)})${b.placed ? "" : " · 本金唔夠,冇落"}${paid}`;
+  return `${esc(b.pool)} ${esc(b.sel)}(${esc(b.names)}${esc(why)})${b.placed ? "" : b.void ? " · 冇落" : " · 本金唔夠,冇落"}${paid}`;
 }
 
 function paperMeeting() {
@@ -377,7 +379,7 @@ function paperRace(r) {
   if (!pr) return "";
   const name = esc((ppData.books.find(b => b.key === pr.following) || {}).name || "");
   const body = pr.main.length ? pr.main.map(betText).join(";") : "今場冇注";
-  return `<div class="note" style="margin-bottom:10px"><b>模擬倉(${name}):</b>${body} <span class="sub">· ${esc(STATE[pr.state] || "")}</span></div>`;
+  return `<div class="note" style="margin-bottom:10px"><b>模擬倉(${name}):</b>${body} <span class="sub">· ${esc(stateText(pr))}</span></div>`;
 }
 
 function paperMeetingBlock(p, mt, open, openInner) {
@@ -388,7 +390,7 @@ function paperMeetingBlock(p, mt, open, openInner) {
     (done.length ? ` · 已結算 <span class="${net > 0 ? "pos" : net < 0 ? "neg" : ""}">${money(net)}</span>` : " · 未結算");
   const rows = mt.races.map(r => `<tr><td>第${r.race_no}場<div class="sub">${esc(r.post_time || "")}</div></td>
       <td>${r.main.length ? r.main.map(betText).join("<br>") : "–"}</td>
-      <td>${esc(STATE[r.state] || "")}${r.result ? `<div class="sub">賽果 ${r.result.join("-")}</div>` : ""}</td></tr>`).join("");
+      <td>${esc(stateText(r))}${r.result ? `<div class="sub">賽果 ${r.result.join("-")}</div>` : ""}</td></tr>`).join("");
   const others = mt.races.map(r => `<tr><td>第${r.race_no}場</td>${p.books.map(b =>
       `<td>${(r.books[b.key] || []).length ? r.books[b.key].map(betText).join("<br>") : "–"}</td>`).join("")}</tr>`).join("");
   const k = esc(mt.date + mt.venue);

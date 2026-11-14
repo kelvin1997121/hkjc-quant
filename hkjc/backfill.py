@@ -22,14 +22,18 @@ def backfill(max_meetings: int = 120, log=print) -> int:
     todo = [d for d in dates[:max_meetings] if not store.have_results(d.isoformat())]
     added = 0
     for i, d in enumerate(todo, 1):
+        void = set()
         try:
-            races = scraper.fetch_meeting_results(d)
+            races = scraper.fetch_meeting_results(d, void=void)
         except RuntimeError as e:
             log(f"  ! {d}: {e}")
             continue
         if races:
             store.save_results(races)
             added += 1
+            void -= {r["race_no"] for r in races}
+            if void:   # cancelled by HKJC: remembered, so the meeting is not taken for incomplete
+                store.set_cancelled(races[0]["date"], races[0]["venue"], void)
         elif d < today_hkt():  # overseas simulcast date: remember it so we don't refetch
             store.write_json(store.result_path(d.isoformat(), "NONE"), [])
         log(f"  [{i}/{len(todo)}] {d} {races[0]['venue'] if races else '-'} {len(races)} races")

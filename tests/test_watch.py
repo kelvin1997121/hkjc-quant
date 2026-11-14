@@ -220,6 +220,64 @@ def test_summary_counts_faults_and_notes_apart():
     assert "仲有 1 個問題未解決" in report["summary"] and "1 場有備註" in report["summary"]
 
 
+# ------------------------------------------------------------------ a race HKJC cancels
+# 14 Nov 2026, race 6: the watch reported "no result" every 30 minutes for the rest of the day.
+
+def cancel(data, n):
+    """The files once the system knows race n was cancelled."""
+    next(r for r in data["doc"]["races"] if r["race_no"] == n)["cancelled"] = True
+    row = next(r for r in data["paper"]["meetings"][0]["races"] if r["race_no"] == n)
+    row.update(state="void", cancelled=True, main=[{"placed": False, "void": True, "stake": 10.0, "back": None}])
+    return data
+
+
+def test_a_cancelled_race_is_a_note_not_a_missing_result():
+    now = "13:40:00"                                                           # 40 minutes after race 2's post
+    assert "result_late:2" in keys(check(now, results=[1]))
+    report = watch.assess(cancel(meeting(now, results=[1]), 2), at(now))
+    assert keys(report) == ["cancelled:2"] and report["problems"][0]["lasting"]
+    assert report["problems"][0]["text"] == "第2場馬會宣佈取消,所有注項退款"
+    assert "有賽果 1 場,取消 1 場" in report["headline"] and report["actions"] == []
+
+
+def test_a_cancelled_race_is_not_judged_on_how_old_its_last_odds_were():
+    now = "13:40:00"                                # its pools closed 13 minutes before the post
+    assert "pre_old:2" in keys(check(now, results=[1], pre={2: "12:47:00"}))
+    report = watch.assess(cancel(meeting(now, results=[1], pre={2: "12:47:00"}), 2), at(now))
+    assert keys(report) == ["cancelled:2"]
+
+
+def test_a_race_cancelled_before_its_post_time_is_not_an_odds_fault():
+    now = "12:50:00"
+
+    def files():
+        data = meeting(now, results=[1])
+        old = utc_iso(DAY, "12:20:00")
+        data["odds"]["latest"]["2"]["t"] = data["odds"]["pools"]["2"]["last"]["t"] = old
+        return data
+
+    assert "odds_stale" in keys(watch.assess(files(), at(now)))
+    assert keys(watch.assess(cancel(files(), 2), at(now))) == ["cancelled:2"]
+
+
+def test_the_summary_names_the_cancelled_race():
+    now = "14:41:00"
+    report = watch.assess(cancel(meeting(now, results=[1, 3]), 2), at(now))
+    assert report["phase"] == "after" and "2/3 場有賽果,取消 1 場" in report["headline"]
+    assert "2/3 場有賽果(第2場馬會取消)" in report["summary"]
+    assert "運作正常" in report["summary"] and "1 場有備註" in report["summary"]
+
+
+def test_a_cancelled_race_is_said_once():
+    now = "13:40:00"
+    report = watch.assess(cancel(meeting(now, results=[1]), 2), at(now))
+    state = {"day": DAY, "open": {}, "ready": True, "done": False}
+    lines, state = watch.decide(dict(report, done_actions=[]), state, at(now), DAY)
+    assert lines == ["賽馬系統備註:第2場馬會宣佈取消,所有注項退款"]
+    lines, state = watch.decide(dict(report, done_actions=[]), state, at("14:30:00"), DAY)
+    assert lines == []
+
+
 # ------------------------------------------------------------------ what gets said
 
 def say(report, state, clock):

@@ -1,12 +1,16 @@
 """Race-day updates (hkjc/__main__.py): odds snapshots, freezing a pick at its post time,
 and getting a result onto the page. HKJC, the odds pages, the clock and the model are replaced."""
 import copy
+from datetime import date
 from types import SimpleNamespace
 
 import pytest
 
-from helpers import hkt, make_card, make_result, odds_read, utc_iso
+from helpers import analysis_doc, analysis_race, hkt, make_card, make_result, odds_read, utc_iso
 from hkjc import __main__ as m, model, odds as odds_mod, reports, store
+
+# the raceday fixture below replaces these two; the tests of a cancelled race use the real ones
+REAL_LIVE_RESULTS, REAL_CATCH_UP = m.live_results, m.complete_recent_results
 
 DAY, VENUE = "2026-11-14", "ST"
 POSTS = {1: "12:30", 2: "13:00", 3: "13:55"}
@@ -292,3 +296,150 @@ def test_quick_results_do_nothing_on_other_days(raceday):
     update(raceday, "12:24:00", all_at("12:24:20"), "12:25:00")
     raceday.now = hkt("2026-11-15", "12:45:00")
     assert m.quick_results(now=raceday.now) is False
+
+
+# ------------------------------------------------------------------ a race HKJC cancels
+# 14 Nov 2026, Sha Tin race 6: declared cancelled, every single-race pool refunded, no result.
+
+def hkjc_says(world, monkeypatch, results=(), cancelled=()):
+    """HKJC's result pages: a result for `results`, the cancellation notice for `cancelled`,
+    nothing yet for the rest. Returns the race numbers asked for, call by call."""
+    asked = []
+
+    def fetch(race_date, with_sectionals=True, venue=None, race_nos=None, have=None, void=None):
+        asked.append(list(race_nos))
+        out = []
+        for n in race_nos:
+            if have and n in have:
+                out.append(have[n])
+            elif n in results:
+                out.append(make_result(world.races[n], list(range(1, 9))))
+            elif n in cancelled and void is not None:
+                void.add(n)
+        return out
+
+    monkeypatch.setattr(m.scraper, "fetch_meeting_results", fetch)
+    monkeypatch.setattr(m, "live_results", REAL_LIVE_RESULTS)
+    return asked
+
+
+def schedule():
+    return store.read_json(store.DOCS / "data" / "schedule.json")
+
+
+def test_a_cancelled_race_is_over_but_is_not_stored_as_a_result(raceday, monkeypatch):
+    hkjc_says(raceday, monkeypatch, results={1}, cancelled={2})
+    assert m.live_results(raceday.card) == {1, 2}
+    assert store.cancelled(DAY, VENUE) == {2}
+    assert [r["race_no"] for r in store.read_json(store.result_path(DAY, VENUE))] == [1]
+    assert [r["race_no"] for r in store.load_all_results()] == [1]             # history never sees it
+
+
+def test_a_cancelled_race_stays_marked_while_hkjc_says_nothing_new(raceday, monkeypatch):
+    store.set_cancelled(DAY, VENUE, {2})
+    hkjc_says(raceday, monkeypatch, results={1})
+    assert m.live_results(raceday.card, race_nos=[1]) == {1, 2}                # asked about race 1 only
+    assert m.live_results(raceday.card) == {1, 2}                              # asked again, no notice this time
+    assert store.cancelled(DAY, VENUE) == {2}
+
+
+def test_a_result_that_turns_up_wins_over_the_cancelled_mark(raceday, monkeypatch):
+    store.set_cancelled(DAY, VENUE, {2})
+    hkjc_says(raceday, monkeypatch, results={1, 2})
+    assert m.live_results(raceday.card) == {1, 2}
+    assert store.cancelled(DAY, VENUE) == set()
+    assert [r["race_no"] for r in store.read_json(store.result_path(DAY, VENUE))] == [1, 2]
+
+
+def test_quick_results_mark_a_cancelled_race_and_stop_asking_for_it(raceday, monkeypatch):
+    update(raceday, "12:24:00", all_at("12:24:20"), "12:25:00")
+    frozen = analysis(2)["runners"]
+    asked = hkjc_says(raceday, monkeypatch, results={1}, cancelled={2})
+    raceday.now = hkt(DAY, "13:05:00")
+    assert m.quick_results(now=raceday.now) is True
+    shown = store.read_json(store.DOCS / "data" / "latest.json")
+    first, second, third = shown["races"]
+    assert second["cancelled"] is True and "result" not in second and second["runners"] == frozen
+    assert first["result"]["placings"] == [1, 2, 3] and "cancelled" not in first
+    assert "cancelled" not in third and "result" not in third
+    assert shown == store.read_json(store.DOCS / "data" / f"{DAY}_{VENUE}.json")
+    assert schedule()["resulted"] == [1, 2]                                    # the ticker waits for nothing
+    paper = {r["race_no"]: r for r in store.read_json(store.DOCS / "data" / "paper.json")["meetings"][0]["races"]}
+    assert paper[1]["state"] == "settled" and (paper[2]["state"], paper[2]["cancelled"]) == ("void", True)
+    assert m.quick_results(now=raceday.now) is False                           # nothing is due any more
+    assert asked == [[1, 2]]
+
+
+def test_the_full_update_marks_a_cancelled_race_and_leaves_its_odds_page_alone(raceday, monkeypatch):
+    update(raceday, "12:24:00", all_at("12:24:20", fav=2), "12:25:00")
+    update(raceday, "12:54:00", all_at("12:54:20", fav=3), "12:55:00")
+    frozen, read = analysis(2)["runners"], odds_file()["latest"]["2"]["t"]
+    hkjc_says(raceday, monkeypatch, results={1}, cancelled={2})
+    update(raceday, "13:20:00", all_at("13:20:10", fav=5), "13:20:40")
+    race = analysis(2)
+    assert race["cancelled"] is True and "result" not in race and not race.get("post_hoc")
+    assert race["runners"] == frozen                                           # as it stood at its post time
+    assert odds_file()["latest"]["2"]["t"] == read                             # its closed odds page was not asked for
+    assert odds_file()["latest"]["3"]["t"] == utc_iso(DAY, "13:20:10")         # the others still are
+    assert schedule()["resulted"] == [1, 2]
+    assert "cancelled" not in analysis(1) and "cancelled" not in analysis(3)
+    record = store.read_json(store.DOCS / "data" / "track_record.json")
+    assert record["races"] == 1 and record["rows"][0]["race_no"] == 1          # no pick is scored on race 2
+
+
+def test_the_mark_goes_when_the_race_turns_out_to_have_a_result(raceday, monkeypatch):
+    update(raceday, "12:54:00", all_at("12:54:20"), "12:55:00")
+    hkjc_says(raceday, monkeypatch, results={1}, cancelled={2})
+    update(raceday, "13:20:00", all_at("13:20:10"), "13:20:40")
+    assert analysis(2)["cancelled"] is True
+    hkjc_says(raceday, monkeypatch, results={1, 2})
+    update(raceday, "13:25:00", all_at("13:25:10"), "13:25:40")
+    assert "cancelled" not in analysis(2) and analysis(2)["result"]["placings"] == [1, 2, 3]
+
+
+def past_meeting():
+    card = make_card(DAY, VENUE, POSTS)
+    races = {r["race_no"]: r for r in card["races"]}
+    store.save_card(card)
+    store.save_results([make_result(races[1], list(range(1, 9))), make_result(races[3], list(range(1, 9)))])
+    return races
+
+
+def test_catch_up_finds_a_cancelled_race_once_and_then_leaves_the_meeting_alone(sandbox, monkeypatch):
+    past_meeting()
+    asked = []
+
+    def fetch(race_date, **kw):
+        asked.append(race_date)
+        kw["void"].add(2)
+        return store.read_json(store.result_path(DAY, VENUE))
+
+    monkeypatch.setattr(m.scraper, "fetch_meeting_results", fetch)
+    monkeypatch.setattr(m, "today_hkt", lambda: date(2026, 11, 15))
+    REAL_CATCH_UP()
+    assert asked == [date(2026, 11, 14)] and store.cancelled(DAY, VENUE) == {2}
+    REAL_CATCH_UP()
+    assert len(asked) == 1                                                     # 2 results + 1 cancelled = the card
+    assert len(store.read_json(store.result_path(DAY, VENUE))) == 2
+
+
+def test_an_earlier_meetings_cancelled_race_is_marked_on_its_page(sandbox, monkeypatch):
+    races = past_meeting()
+    path = store.DOCS / "data" / f"{DAY}_{VENUE}.json"
+    store.write_json(path, analysis_doc(DAY, VENUE, [analysis_race(races[n], list(range(1, 9))) for n in POSTS]))
+    store.set_cancelled(DAY, VENUE, {2})
+    monkeypatch.setattr(m, "today_hkt", lambda: date(2026, 11, 15))
+    m.attach_results()
+    saved = {r["race_no"]: r for r in store.read_json(path)["races"]}
+    assert saved[2]["cancelled"] is True and "result" not in saved[2]
+    assert "result" in saved[1] and "result" in saved[3] and "cancelled" not in saved[1]
+    before = path.stat().st_mtime_ns
+    m.attach_results()                                                         # complete now: not written again
+    assert path.stat().st_mtime_ns == before
+
+
+def test_a_race_cancelled_before_race_day_is_already_finished_for_the_clock(raceday):
+    store.set_cancelled(DAY, VENUE, {1})
+    set_reads(raceday, "20:00:00", {}, "20:00:30", day="2026-11-13")           # the evening before
+    m.run(use_agent=False)
+    assert schedule()["resulted"] == [1]

@@ -123,6 +123,33 @@ def test_the_first_race_without_a_result_is_shown_first(view, site):
     assert page.locator("#view .res").count() == 0
 
 
+def test_a_cancelled_race_says_so_and_is_not_waited_for(view, site):
+    race = site.latest["races"][1]
+    del race["result"]
+    race["cancelled"] = True
+    site.save()
+    page = view()
+    assert page.locator("#tabs button").all_inner_texts()[:3] == ["第1場 ✓", "第2場 取消", "第3場 ✓"]
+    assert "第1場" in text(page, "#view h2")                                   # no race is still to come
+    page.locator("#tabs button").nth(1).click()
+    assert "此場賽事已取消" in text(page, "#view .res") and "退款" in text(page, "#view .res")
+    assert page.locator("#view tbody tr.won").count() == 0
+
+
+def test_paper_page_shows_a_cancelled_race_as_not_bet(view, site):
+    path = store.result_path("2026-11-11", "HV")
+    store.write_json(path, [r for r in store.read_json(path) if r["race_no"] != 2])
+    store.set_cancelled("2026-11-11", "HV", {2})
+    paper.update(now=NOW)
+    page = view()
+    page.locator("#tabs button").nth(1).click()
+    assert "賽事取消,當冇落注" in text(page, "#view")
+    page.click('#pages button[data-p="paper"]')
+    body = text(page, "#paperpage")
+    assert "賽事取消,當冇落注" in body and "8 / 300" in body                    # 8 races settled, not 9
+    assert "2026-11-11 跑馬地 · 8 注" in body and "本金唔夠" not in body
+
+
 def test_a_race_analysed_after_the_off_says_so(view, site):
     site.latest["races"][0]["post_hoc"] = True
     site.save()

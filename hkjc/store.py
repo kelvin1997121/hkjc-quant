@@ -12,6 +12,7 @@ DATA = Path(os.environ["HKJC_DATA_DIR"]).resolve() if os.environ.get("HKJC_DATA_
 RESULTS = DATA / "results"
 CARDS = DATA / "racecards"
 AGENT_CACHE = DATA / "agent_cache"
+CANCELLED = DATA / "cancelled.json"   # {"2026-11-14_ST": [6]}: races HKJC declared cancelled
 DOCS = ROOT / "docs"
 
 
@@ -48,6 +49,28 @@ def load_all_results() -> list[dict]:
         races.extend(_read(p, []))
     races.sort(key=lambda r: (r["date"], r["race_no"]))
     return races
+
+
+def cancelled(date_iso: str, venue: str) -> set[int]:
+    """Race numbers of a meeting that HKJC declared cancelled (every single-race pool refunded).
+
+    Such a race has no result and never will. It is kept apart from data/results, which holds
+    races that were run, so nothing that learns from history ever sees it."""
+    return set((_read(CANCELLED, {}) or {}).get(f"{date_iso}_{venue}", []))
+
+
+def set_cancelled(date_iso: str, venue: str, nos) -> bool:
+    """Record a meeting's cancelled races (an empty set forgets the meeting). True if changed."""
+    book = _read(CANCELLED, {}) or {}
+    key, new = f"{date_iso}_{venue}", sorted(set(nos))
+    if book.get(key, []) == new:
+        return False
+    if new:
+        book[key] = new
+    else:
+        book.pop(key, None)
+    _write(CANCELLED, dict(sorted(book.items())))
+    return True
 
 
 def save_card(card: dict):

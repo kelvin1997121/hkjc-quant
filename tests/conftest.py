@@ -18,6 +18,7 @@ FIXTURES = Path(__file__).parent / "fixtures"
 REDIRECTS = [
     (store, "DATA", "data"), (store, "RESULTS", "data/results"), (store, "CARDS", "data/racecards"),
     (store, "AGENT_CACHE", "data/agent_cache"), (store, "DOCS", "docs"),
+    (store, "CANCELLED", "data/cancelled.json"),
     (horses, "PATH", "data/horses.json"),
     (reports, "TRIALS", "data/trials"), (reports, "EMPTY", "data/trials/_empty.json"),
     (reports, "CHECKED", "data/trials/_checked.json"),

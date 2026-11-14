@@ -108,12 +108,16 @@ def assess(data: dict, now: datetime, runs: dict | None = None) -> dict:
 
     off = [k for k in order if _post(day, posts[k]) <= now - timedelta(minutes=1)]
     resulted = [k for k in order if races.get(k, {}).get("result")]
+    # cancelled by HKJC: no result to wait for, no pick to score, no odds to read
+    void = [k for k in order if k not in resulted and races.get(k, {}).get("cancelled")]
+    for k in void:
+        add(f"cancelled:{k}", f"第{k}場馬會宣佈取消,所有注項退款", lasting=True)
 
     # every race already off: frozen before the off, from the last odds read before it
     pools = odds.get("pools") or {}
     for k in off:
         race, post = races.get(k), _post(day, posts[k])
-        if not race:
+        if not race or k in void:
             continue
         if race.get("post_hoc"):
             add(f"post_hoc:{k}", f"第{k}場開跑後先有分析,唔計入往績同模擬倉", lasting=True)
@@ -129,7 +133,7 @@ def assess(data: dict, now: datetime, runs: dict | None = None) -> dict:
             add(f"pre_differs:{k}", f"第{k}場首選用嘅賠率同開跑前賠率唔係同一份", lasting=True)
     for k in order:
         waited = _mins(_post(day, posts[k]), now)
-        if k not in resulted and waited >= RESULT_DUE:
+        if k not in resulted and k not in void and waited >= RESULT_DUE:
             add(f"result_late:{k}", f"第{k}場開跑 {waited} 分鐘都未有賽果")
     paper_rows = {str(r["race_no"]): r for m in (data.get("paper") or {}).get("meetings", [])
                   if m.get("date") == day for r in m.get("races", [])}
@@ -143,6 +147,7 @@ def assess(data: dict, now: datetime, runs: dict | None = None) -> dict:
         out["phase"] = "live"
         nxt = next((k for k in order if _post(day, posts[k]) > now), None)
         out["headline"] = f"{label} 進行中:已開跑 {len(off)} 場,有賽果 {len(resulted)} 場" + \
+            (f",取消 {len(void)} 場" if void else "") + \
             (f",下一場第{nxt}場 {posts[nxt]}" if nxt else ",全部開跑咗")
         out["ready"] = f"{label} 賽前檢查正常,{posts[order[0]]} 開第 1 場。之後有問題先會通知"
         # the window has only just opened: the last update may still be from the slower morning clock
@@ -154,7 +159,7 @@ def assess(data: dict, now: datetime, runs: dict | None = None) -> dict:
             add("stalled", "今日未有完整更新" if gap is None else f"已經 {gap} 分鐘冇完整更新(正常約 5 分鐘一次)")
             out["actions"].append("update")
         else:
-            coming = [k for k in order if _post(day, posts[k]) > now]
+            coming = [k for k in order if _post(day, posts[k]) > now and k not in void]
             stale = [k for k in coming if _odds_age(odds, k, now) > max_age]
             four = [k for k in coming if k not in stale and _odds_age(odds, k, now, four_pools=True) > max_age]
             if stale:
@@ -165,9 +170,9 @@ def assess(data: dict, now: datetime, runs: dict | None = None) -> dict:
         return out
 
     out["phase"] = "after"
-    out["headline"] = f"{label} 已完:{len(resulted)}/{len(order)} 場有賽果"
+    out["headline"] = f"{label} 已完:{len(resulted)}/{len(order)} 場有賽果" + (f",取消 {len(void)} 場" if void else "")
     _workflows(runs, add, out["actions"])
-    out["summary"] = _summary(data, label, day, order, resulted, races, problems)
+    out["summary"] = _summary(data, label, day, order, resulted, races, problems, void)
     return out
 
 
@@ -216,9 +221,10 @@ def _workflows(runs, add, actions):
         add("update_failed", f"最近兩次更新都失敗 {done[0].get('url', '')}".strip())
 
 
-def _summary(data, label, day, order, resulted, races, problems):
+def _summary(data, label, day, order, resulted, races, problems, void=()):
     doc = data.get("doc") or {}
-    text = f"{label}完成:{len(resulted)}/{len(order)} 場有賽果"
+    text = f"{label}完成:{len(resulted)}/{len(order)} 場有賽果" + \
+        (f"(第{'、'.join(void)}場馬會取消)" if void else "")
     posts = [_post(day, r["post_time"]) for r in doc.get("races", []) if r.get("post_time")]
     if doc.get("runs") and posts:
         start, end = min(posts) - timedelta(minutes=WINDOW_BEFORE), max(posts) + timedelta(minutes=WINDOW_AFTER)
