@@ -47,6 +47,13 @@ BASE_FEATURES = list(FEATURES)
 TRIAL_FEATURES = {
     "jockey_up": "2026-11-08",   # today's jockey's win rate against the horse's last jockey's
     "awt_pref": "2026-11-08",    # all-weather form against overall form, in all-weather races
+    # points the course of the horse's last speed figure took off it (+) or added to it (-):
+    # State.course_offsets. Registered after the audit of 14 Nov 2026 found that figures depend
+    # on where the run was. A development look on 1,058 races from Sep 2025 (used before, so no
+    # confirmation): this column +0.0019 (z 1.76, shuffled -0.48); the corrected last figure as
+    # a column +0.0004 (z 1.50); the corrected best-two figure -0.0007 (z -2.79). Only this one
+    # is on trial; beside speed_last it lets the model use the corrected figure.
+    "course_adj": "2026-11-15",
 }
 ALL_FEATURES = BASE_FEATURES + list(TRIAL_FEATURES)
 
@@ -91,7 +98,8 @@ def active_features(cfg):
 #   - speed figures depend a little on where the run was: for the same horse in the same class,
 #     about +2.8 points at Happy Valley 1200 m and -1.5 at Sha Tin 2000 m (spread 1.3, the
 #     factor's own about 6). The standard time of a course takes its winners of every class.
-#     speed_best ends with no weight of its own beside perf_best and speed_last.
+#     speed_best ends with no weight of its own beside perf_best and speed_last. The
+#     correction went on trial the next day as course_adj (see TRIAL_FEATURES).
 #   - class_drop starts from +0.10 (a drop in class should help) and stays there, though in
 #     the plain data horses dropping in class win a little less often, as the market expects.
 SEC_PER_LENGTH = 0.17
@@ -199,6 +207,8 @@ def _mean(vals):
     return float(np.mean(vals)) if vals else None
 
 LB_SEC_PER_KM = 0.07          # 1 lb ~ 0.07 s per 1000 m
+COURSE_GAP_DAYS = 45          # two runs this close, in the same class, show what the course adds
+COURSE_RIDGE = 50.0           # a course with few such pairs keeps an offset near nil
 WARMUP_DAYS = 60
 GOOD = {"好地", "快地", "好至快地", "好地至快地"}
 
@@ -266,6 +276,10 @@ class State:
         self.late_top_hist = []                   # per race: avg final-section edge of top 3
         # (venue, projected pace) -> running style -> [runners, winners]: what pace really does
         self.pace_style = defaultdict(lambda: defaultdict(lambda: [0, 0]))
+        # (course a, course b) -> [pairs, sum of figure at b minus figure at a], for horses that
+        # ran at both within COURSE_GAP_DAYS in the same class (see course_offsets)
+        self.course_pairs = defaultdict(lambda: [0, 0.0])
+        self._course_off = (-1, {})
         self.trials = reports.load_trials()
         self.strong = strong.Tracker()            # 強組 marks for the page only (strong.py)
 
@@ -290,6 +304,31 @@ class State:
         diff = (time - std) / km - self.going_adj(r.get("going"))
         diff -= (weight - 126) * LB_SEC_PER_KM if weight else 0
         return round(-diff * 10, 2)  # 1 point = 0.1 s per km faster than standard
+
+    def course_offsets(self) -> dict:
+        """{course and distance: points a speed figure gains or loses just for being run there}.
+
+        A course's standard time is the median of its winners of every class, so the same
+        horse in the same class gets a higher figure where the usual winner is a lesser horse
+        (found 14 Nov 2026: about +2.8 at Happy Valley 1200 m, -1.5 at Sha Tin 2000 m). The
+        offsets are the least-squares fit to every pair of runs counted so far, shrunk towards
+        nil; they use earlier races only."""
+        total = sum(v[0] for v in self.course_pairs.values())
+        if self._course_off[0] != total:
+            keys = sorted({k for pair in self.course_pairs for k in pair}, key=str)
+            at = {k: i for i, k in enumerate(keys)}
+            A, y = np.eye(len(keys)) * COURSE_RIDGE, np.zeros(len(keys))
+            for (a, b), (n, s) in self.course_pairs.items():
+                i, j = at[a], at[b]
+                A[i, i] += n
+                A[j, j] += n
+                A[i, j] -= n
+                A[j, i] -= n
+                y[j] += s
+                y[i] -= s
+            off = np.linalg.solve(A, y) if keys else []
+            self._course_off = (total, {k: float(v) for k, v in zip(keys, off)})
+        return self._course_off[1]
 
     def draw_bias(self, r, draw):
         stats = self.draw.get(draw_key(r))
@@ -388,6 +427,7 @@ class State:
         here = [x["fscore"] for x in runs
                 if x["venue"] == venue and x.get("surface", "TURF") == surface][-6:]
         figs = [x["speed"] for x in runs[-6:] if x["speed"] is not None]
+        last_fig = next((x for x in reversed(runs[-6:]) if x["speed"] is not None), None)
         early = [x["early"] for x in runs[-6:] if x["early"] is not None]
         fsc = [x["fscore"] for x in runs[-5:]]
         dsc = [x["fscore"] for x in runs if dist and abs((x["dist"] or 0) - dist) <= 200]
@@ -396,6 +436,8 @@ class State:
             "n_runs": len(runs),
             "speed_best": float(np.mean(sorted(figs)[-2:])) if figs else None,
             "speed_last": figs[-1] if figs else None,
+            # what the course of the last figure took off it (+) or added to it (-)
+            "course_adj": -self.course_offsets().get(last_fig.get("tk"), 0.0) if last_fig else None,
             "early": float(np.mean(early)) if early else None,
             "form": float(np.dot(wts, fsc) / wts.sum()) if fsc else None,
             "dist_form": float(np.mean(dsc[-6:])) if dsc else None,
@@ -480,6 +522,7 @@ class State:
                 "speed_best": sb,
                 "speed_last": sl,
                 "speed_missing": 1.0 if p["speed_best"] is None else 0.0,
+                "course_adj": p["course_adj"] if p["course_adj"] is not None else 0.0,
                 "form": p["form"] if p["form"] is not None else 0.4,
                 "dist_form": p["dist_form"] if p["dist_form"] is not None else 0.4,
                 "early": e_c,
@@ -642,10 +685,18 @@ class State:
                 self.trainer_venue.add((tid, race["venue"]), placed)
             fscore = 1 - (pos - 1) / max(field - 1, 1) if pos else 0.0
             m = mkt.get(x["no"])
+            speed = self.speed_fig(race, x.get("time"), x.get("weight")) if pos else None
+            tk, cls = track_key(race), class_num(race.get("class"))
+            before = next((r for r in reversed(self.horse[x["horse_code"]]) if r["speed"] is not None), None)
+            if speed is not None and before and before["tk"] != tk and before["cls"] == cls and \
+                    (date.fromisoformat(race["date"]) - date.fromisoformat(before["date"])).days <= COURSE_GAP_DAYS:
+                pair = self.course_pairs[(before["tk"], tk)]
+                pair[0] += 1
+                pair[1] += speed - before["speed"]
             self.horse[x["horse_code"]].append({
                 "date": race["date"], "dist": race.get("distance"), "venue": race["venue"],
-                "surface": race.get("surface", "TURF"),
-                "speed": self.speed_fig(race, x.get("time"), x.get("weight")) if pos else None,
+                "surface": race.get("surface", "TURF"), "tk": tk,
+                "speed": speed,
                 "early": early, "fscore": fscore, "place": pos,
                 # how the market rated the horse that day (log of implied prob x field size)
                 "mkt": math.log(m[0] * field) if m else None,
@@ -653,7 +704,7 @@ class State:
                 "vs_mkt": (m[1] - pos) / max(field - 1, 1) if m and pos else None,
                 "closing": (x["running"][0] - pos) / max(field - 1, 1)
                            if pos and x.get("running") else None,
-                "cls": class_num(race.get("class")), "bw": x.get("body_weight"),
+                "cls": cls, "bw": x.get("body_weight"),
                 "jockey": jid,
                 "perf": perf.get(x["no"]), "est": est.get(x["no"]),
                 "wide": reports.ran_wide(x),

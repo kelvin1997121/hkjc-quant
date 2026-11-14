@@ -20,7 +20,7 @@ FEATURE_ZH = {
     "rating_move": "評分變動", "trainer_venue": "練馬師本場地成績", "form_trend": "狀態走勢",
     "gear_first": "首次配備", "gear_off": "除去配備", "gear_back": "重戴配備",
     "run_wide": "上仗走外疊", "trial_score": "試閘名次", "trial_count": "試閘次數",
-    "jockey_up": "換騎師", "awt_pref": "全天候往績",
+    "jockey_up": "換騎師", "awt_pref": "全天候往績", "course_adj": "上仗場地速度修正",
 }
 
 

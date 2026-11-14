@@ -155,6 +155,95 @@ def test_nobody_is_recorded_for_a_runner_with_neither_id_nor_name(sandbox):
     assert len(st.horse["A001"]) == 14                                    # the horse's own runs still count
 
 
+# ------------------------------------------------------------------ what a course adds to a speed figure
+# A course's standard time comes from its winners of every class, so the same horse gets a higher
+# figure where the usual winner is a lesser horse (audit of 14 Nov 2026). course_adj, on trial
+# from 15 Nov 2026, is that amount for the course of the horse's last figure.
+
+def two_courses(meetings=16, days=7, classes=("第四班", "第四班")):
+    """The same eight horses, a race every `days` days, by turns over 1200 m and 1400 m."""
+    races, day = [], date(2026, 6, 7)
+    for i in range(meetings):
+        d = (day + timedelta(days=days * i)).isoformat()
+        race = make_card(d, "ST", {1: "12:30"})["races"][0]
+        race["distance"], race["class"] = (1200, 1400)[i % 2], classes[i % 2]
+        result = make_result(race, [(j + i) % 8 + 1 for j in range(8)])
+        result["distance"], result["class"] = race["distance"], race["class"]
+        races.append(result)
+    return races
+
+
+def replay(races):
+    st = model.State()
+    for r in races:
+        st.update(r)
+    return st
+
+
+def test_runs_at_two_courses_close_together_in_one_class_are_paired(sandbox):
+    st = replay(two_courses())
+    pairs = {k: v[0] for k, v in st.course_pairs.items()}
+    a, b = ("ST", "TURF", 1200), ("ST", "TURF", 1400)
+    assert set(pairs) == {(a, b), (b, a)} and min(pairs.values()) > 20
+
+
+@pytest.mark.parametrize("kw", [{"days": 50},                                 # too far apart to compare
+                                {"classes": ("第四班", "第三班")}])            # not the same class
+def test_runs_far_apart_or_in_different_classes_are_not_paired(sandbox, kw):
+    assert not replay(two_courses(**kw)).course_pairs
+
+
+def test_runs_at_one_course_tell_nothing_about_courses(sandbox):
+    assert not replay(history()).course_pairs and replay(history()).course_offsets() == {}
+
+
+def test_offsets_are_the_shrunk_fit_to_the_pairs(sandbox):
+    st = model.State()
+    a, b, c = ("HV", "TURF", 1200), ("ST", "TURF", 1400), ("ST", "TURF", 2000)
+    st.course_pairs[(b, a)] = [200, 200 * 3.0]         # the same horses run 3 points higher at a than at b
+    st.course_pairs[(c, b)] = [4, 4 * 10.0]            # four pairs only: next to nothing is made of them
+    off = st.course_offsets()
+    assert off[a] - off[b] == pytest.approx(2.67, abs=0.1)        # 3.0 shrunk by the ridge
+    assert abs(off[c] - off[b]) < 1.0
+    st.course_pairs[(b, a)][0] += 200                  # more pairs with no gap: the estimate moves
+    assert st.course_offsets()[a] - st.course_offsets()[b] < 2.0
+
+
+def test_course_adj_is_the_offset_of_the_last_figures_course(sandbox):
+    st = replay(two_courses())
+    last = st.horse["A001"][-1]
+    assert last["speed"] is not None and last["tk"] == ("ST", "TURF", 1400)
+    st.course_pairs.clear()
+    st.course_pairs[(("ST", "TURF", 1200), ("ST", "TURF", 1400))] = [300, 300 * 2.0]
+    off = st.course_offsets()
+    assert off[("ST", "TURF", 1400)] > 0.9
+    assert st.runner_profile("A001", 1400)["course_adj"] == pytest.approx(-off[("ST", "TURF", 1400)])
+    assert st.runner_profile("nobody", 1400)["course_adj"] is None
+
+
+def test_factors_on_trial_do_not_use_the_races_own_result_either(sandbox, monkeypatch):
+    monkeypatch.setattr(model, "FEATURES", list(model.ALL_FEATURES))
+    races = two_courses()
+    base = features_of_last(races)
+    j = model.FEATURES.index("course_adj")
+    assert np.abs(base[:, j]).max() > 0                # the factor is alive in this history
+    changed = copy.deepcopy(races)
+    last = changed[-1]
+    flipped = make_result(make_card(last["date"], "ST", {1: "12:30"})["races"][0],
+                          [x["no"] for x in reversed(sorted(last["runners"], key=lambda x: x["no"]))])
+    flipped["distance"], flipped["class"] = last["distance"], last["class"]
+    changed[-1] = flipped
+    assert np.array_equal(features_of_last(changed), base)
+
+
+def test_the_factors_on_trial_and_their_dates():
+    assert model.TRIAL_FEATURES == {"jockey_up": "2026-11-08", "awt_pref": "2026-11-08", "course_adj": "2026-11-15"}
+    assert model.ALL_FEATURES == model.BASE_FEATURES + ["jockey_up", "awt_pref", "course_adj"]
+    assert "course_adj" not in model.BASE_FEATURES     # not used by the live model unless it passes
+    from hkjc.analyze import FEATURE_ZH
+    assert all(f in FEATURE_ZH for f in model.ALL_FEATURES)
+
+
 def test_training_needs_enough_history(sandbox):
     state, params, report = model.train(history(meetings=6))
     assert params is None and report["note"] == "not enough history"
