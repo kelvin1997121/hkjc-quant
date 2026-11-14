@@ -4,20 +4,20 @@
  "stake": 10.0,
  "look_every": 300,
  "z_pass": 2.5,
- "races": 17,
+ "races": 18,
  "next_look": 300,
  "main": {
   "following": "top2_qin",
   "following_name": "首選+次選連贏",
   "balance": 917.5,
   "staked": 200.0,
-  "settled_staked": 170.0,
+  "settled_staked": 180.0,
   "returned": 117.5,
-  "net": -52.5,
+  "net": -62.5,
   "bets": 20,
   "hits": 1,
-  "pending": 3,
-  "roi": -0.3088,
+  "pending": 2,
+  "roi": -0.3472,
   "switches": [],
   "looks": []
  },
@@ -28,13 +28,13 @@
    "rule": "每場 $10 位置買排名第一嘅馬",
    "balance": 934.5,
    "staked": 200.0,
-   "settled_staked": 170.0,
+   "settled_staked": 180.0,
    "returned": 134.5,
-   "net": -35.5,
+   "net": -45.5,
    "bets": 20,
    "hits": 9,
-   "pending": 3,
-   "roi": -0.2088,
+   "pending": 2,
+   "roi": -0.2528,
    "backtest_roi": -0.1459
   },
   {
@@ -43,13 +43,13 @@
    "rule": "每場 $10 連贏買排名頭兩匹",
    "balance": 917.5,
    "staked": 200.0,
-   "settled_staked": 170.0,
+   "settled_staked": 180.0,
    "returned": 117.5,
-   "net": -52.5,
+   "net": -62.5,
    "bets": 20,
    "hits": 1,
-   "pending": 3,
-   "roi": -0.3088,
+   "pending": 2,
+   "roi": -0.3472,
    "backtest_roi": -0.0715
   },
   {
@@ -58,13 +58,13 @@
    "rule": "每匹冷門馬(獨贏 10 倍以上而模型排頭五)$10 位置",
    "balance": 950.0,
    "staked": 420.0,
-   "settled_staked": 360.0,
+   "settled_staked": 380.0,
    "returned": 370.0,
-   "net": 10.0,
+   "net": -10.0,
    "bets": 42,
    "hits": 12,
-   "pending": 6,
-   "roi": 0.0278,
+   "pending": 4,
+   "roi": -0.0263,
    "backtest_roi": -0.1794
   },
   {
@@ -73,13 +73,13 @@
    "rule": "用獨贏賠率估位置、連贏、位置Q 機會;機會 × 賠率 ≥ 1.2 嘅注項入面,揀最大機會嘅兩注,每注 $10",
    "balance": 935.5,
    "staked": 400.0,
-   "settled_staked": 340.0,
+   "settled_staked": 360.0,
    "returned": 335.5,
-   "net": -4.5,
+   "net": -24.5,
    "bets": 40,
    "hits": 4,
-   "pending": 6,
-   "roi": -0.0132,
+   "pending": 4,
+   "roi": -0.0681,
    "backtest_roi": null
   }
  ],
@@ -1154,7 +1154,7 @@
        "chance": 0.0592,
        "value": 0.54,
        "stake": 10.0,
-       "back": null,
+       "back": 0.0,
        "refund": false,
        "placed": true
       }
@@ -1169,7 +1169,7 @@
         "chance": 0.4996,
         "value": 0.9,
         "stake": 10.0,
-        "back": null,
+        "back": 0.0,
         "refund": false,
         "placed": true
        }
@@ -1183,7 +1183,7 @@
         "chance": 0.0592,
         "value": 0.54,
         "stake": 10.0,
-        "back": null,
+        "back": 0.0,
         "refund": false,
         "placed": true
        }
@@ -1197,7 +1197,7 @@
         "chance": 0.1834,
         "value": 0.81,
         "stake": 10.0,
-        "back": null,
+        "back": 0.0,
         "refund": false,
         "placed": true
        },
@@ -1209,7 +1209,7 @@
         "chance": 0.1528,
         "value": 0.79,
         "stake": 10.0,
-        "back": null,
+        "back": 0.0,
         "refund": false,
         "placed": true
        }
@@ -1223,7 +1223,7 @@
         "chance": 0.1043,
         "value": 1.25,
         "stake": 10.0,
-        "back": null,
+        "back": 0.0,
         "refund": false,
         "placed": true
        },
@@ -1235,13 +1235,18 @@
         "chance": 0.0464,
         "value": 1.35,
         "stake": 10.0,
-        "back": null,
+        "back": 0.0,
         "refund": false,
         "placed": true
        }
       ]
      },
-     "state": "placed"
+     "state": "settled",
+     "result": [
+      12,
+      13,
+      5
+     ]
     },
     {
      "race_no": 11,
@@ -1337,8 +1342,8 @@
    ],
    "review": [
     "模擬倉今日跟「首選+次選連贏」,共 11 注,每注 $10;當中 1 場未開跑,注項會跟賠率變,開跑一刻固定。",
-    "已結算 8 注:中 1 注,收回 $118,淨 +$38。",
-    "各策略今日(已結算):首選位置 8 注 -$13;首選+次選連贏 8 注 +$38;冷門馬位置 22 注 -$103;彩池值博 16 注 +$110。",
+    "已結算 9 注:中 1 注,收回 $118,淨 +$28。",
+    "各策略今日(已結算):首選位置 9 注 -$23;首選+次選連贏 9 注 +$28;冷門馬位置 24 注 -$123;彩池值博 18 注 +$90。",
     "最好一注:連贏 6-9(頌星 / 文武全能),派 $117.5。",
     "一日嘅賺蝕主要係運氣:一個賽馬日 8 至 11 場,中唔中一注連贏已經可以左右結果。策略要累積夠 300 場先比較,唔會因為一兩日輸贏就改。"
    ]
@@ -2280,5 +2285,5 @@
    ]
   }
  ],
- "updated_at": "2026-11-14T09:53:47+00:00"
+ "updated_at": "2026-11-14T09:54:33+00:00"
 }
