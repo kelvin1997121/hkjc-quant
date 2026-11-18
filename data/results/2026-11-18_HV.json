@@ -2438,9 +2438,18 @@
     "body_weight": 1112,
     "draw": 1,
     "lbw": "---",
-    "running": [],
+    "running": [
+     1,
+     1,
+     1
+    ],
     "time": 56.87,
     "win_odds": 3.0,
+    "sect": [
+     12.55,
+     21.35,
+     22.97
+    ],
     "rating": 57,
     "gear": "B/TT"
    },
@@ -2458,9 +2467,18 @@
     "body_weight": 1115,
     "draw": 8,
     "lbw": "短馬頭位",
-    "running": [],
+    "running": [
+     3,
+     2,
+     2
+    ],
     "time": 56.88,
     "win_odds": 5.3,
+    "sect": [
+     12.67,
+     21.27,
+     22.94
+    ],
     "rating": 50,
     "gear": ""
    },
@@ -2478,9 +2496,18 @@
     "body_weight": 1168,
     "draw": 11,
     "lbw": "1-1/4",
-    "running": [],
+    "running": [
+     4,
+     4,
+     3
+    ],
     "time": 57.05,
     "win_odds": 10.0,
+    "sect": [
+     12.71,
+     21.63,
+     22.71
+    ],
     "rating": 50,
     "gear": "TT"
    },
@@ -2498,9 +2525,18 @@
     "body_weight": 1090,
     "draw": 4,
     "lbw": "1-1/4",
-    "running": [],
+    "running": [
+     2,
+     3,
+     4
+    ],
     "time": 57.08,
     "win_odds": 20.0,
+    "sect": [
+     12.63,
+     21.55,
+     22.9
+    ],
     "rating": 47,
     "gear": "B/TT"
    },
@@ -2518,9 +2554,18 @@
     "body_weight": 1186,
     "draw": 5,
     "lbw": "2",
-    "running": [],
+    "running": [
+     9,
+     8,
+     5
+    ],
     "time": 57.2,
     "win_odds": 27.0,
+    "sect": [
+     13.07,
+     21.63,
+     22.5
+    ],
     "rating": 52,
     "gear": "E/XB/TT"
    },
@@ -2538,9 +2583,18 @@
     "body_weight": 1053,
     "draw": 12,
     "lbw": "2",
-    "running": [],
+    "running": [
+     5,
+     7,
+     6
+    ],
     "time": 57.2,
     "win_odds": 3.2,
+    "sect": [
+     12.83,
+     21.75,
+     22.62
+    ],
     "rating": 60,
     "gear": "CP/XB"
    },
@@ -2558,9 +2612,18 @@
     "body_weight": 1165,
     "draw": 2,
     "lbw": "2-3/4",
-    "running": [],
+    "running": [
+     10,
+     10,
+     7
+    ],
     "time": 57.33,
     "win_odds": 71.0,
+    "sect": [
+     13.19,
+     21.63,
+     22.51
+    ],
     "rating": 41,
     "gear": "CP"
    },
@@ -2578,9 +2641,18 @@
     "body_weight": 1199,
     "draw": 9,
     "lbw": "4",
-    "running": [],
+    "running": [
+     8,
+     9,
+     8
+    ],
     "time": 57.51,
     "win_odds": 44.0,
+    "sect": [
+     13.03,
+     21.71,
+     22.77
+    ],
     "rating": 41,
     "gear": "TT"
    },
@@ -2598,9 +2670,18 @@
     "body_weight": 1004,
     "draw": 6,
     "lbw": "4",
-    "running": [],
+    "running": [
+     6,
+     6,
+     9
+    ],
     "time": 57.52,
     "win_odds": 10.0,
+    "sect": [
+     12.87,
+     21.59,
+     23.06
+    ],
     "rating": 56,
     "gear": "TT"
    },
@@ -2618,9 +2699,18 @@
     "body_weight": 1159,
     "draw": 10,
     "lbw": "7-1/4",
-    "running": [],
+    "running": [
+     11,
+     11,
+     10
+    ],
     "time": 58.04,
     "win_odds": 44.0,
+    "sect": [
+     13.39,
+     21.75,
+     22.9
+    ],
     "rating": 42,
     "gear": "TT"
    },
@@ -2638,9 +2728,18 @@
     "body_weight": 1097,
     "draw": 3,
     "lbw": "10-1/4",
-    "running": [],
+    "running": [
+     7,
+     5,
+     11
+    ],
     "time": 58.53,
     "win_odds": 99.0,
+    "sect": [
+     12.91,
+     21.51,
+     24.11
+    ],
     "rating": 49,
     "gear": "H/XB1/TT"
    },
@@ -2658,9 +2757,18 @@
     "body_weight": 1085,
     "draw": 7,
     "lbw": "10-3/4",
-    "running": [],
+    "running": [
+     12,
+     12,
+     12
+    ],
     "time": 58.57,
     "win_odds": 34.0,
+    "sect": [
+     13.39,
+     21.87,
+     23.31
+    ],
     "rating": 57,
     "gear": ""
    },
@@ -2765,6 +2873,6 @@
     ]
    ]
   },
-  "has_sect": false
+  "has_sect": true
  }
 ]
