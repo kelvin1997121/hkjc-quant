@@ -4,7 +4,7 @@
   "venue": "HV",
   "venue_zh": "跑馬地"
  },
- "updated_at": "2026-11-18T13:16:23+00:00",
+ "updated_at": "2026-11-18T13:18:14+00:00",
  "model": {
   "holdout": {
    "races": 653,
@@ -3729,14 +3729,14 @@
     "races": 5
    },
    "course_bias": "此跑道路程前置馬優勢比跑馬地平均細,後上馬較有機會",
-   "odds_updated": "18/11/2026 21:15",
-   "confidence": "中",
+   "odds_updated": "18/11/2026 21:17",
+   "confidence": "高",
    "longshots": [
     {
      "no": 4,
      "horse": "三軍勇將",
-     "win_odds": 12.0,
-     "place_odds": 3.3,
+     "win_odds": 14.0,
+     "place_odds": 4.3,
      "win_prob": 0.1234,
      "rank": 2,
      "style": "後上",
@@ -3753,8 +3753,8 @@
     {
      "no": 5,
      "horse": "智勇名駒",
-     "win_odds": 12.0,
-     "place_odds": 3.2,
+     "win_odds": 17.0,
+     "place_odds": 5.1,
      "win_prob": 0.0955,
      "rank": 5,
      "style": "領放",
@@ -3799,16 +3799,16 @@
       "練馬師本場地成績"
      ],
      "strong": [],
-     "win_odds": 3.0,
-     "place_odds": 1.5,
-     "market_prob": 0.2702,
-     "blend_prob": 0.2825,
-     "ev": 0.848,
+     "win_odds": 2.4,
+     "place_odds": 1.4,
+     "market_prob": 0.3413,
+     "blend_prob": 0.3574,
+     "ev": 0.858,
      "value": false,
      "longshot": false,
      "open_odds": 4.6,
      "steam": true,
-     "final_prob": 0.2825,
+     "final_prob": 0.3574,
      "final_rank": 1
     },
     {
@@ -3851,16 +3851,16 @@
        "place_raw": null
       }
      ],
-     "win_odds": 5.4,
-     "place_odds": 2.4,
-     "market_prob": 0.1501,
-     "blend_prob": 0.1524,
-     "ev": 0.823,
+     "win_odds": 4.3,
+     "place_odds": 1.1,
+     "market_prob": 0.1905,
+     "blend_prob": 0.1938,
+     "ev": 0.833,
      "value": false,
      "longshot": false,
      "open_odds": 5.4,
      "steam": false,
-     "final_prob": 0.1524,
+     "final_prob": 0.1938,
      "final_rank": 2
     },
     {
@@ -3893,16 +3893,16 @@
       "檔位統計"
      ],
      "strong": [],
-     "win_odds": 6.6,
-     "place_odds": 2.2,
-     "market_prob": 0.1228,
-     "blend_prob": 0.1235,
-     "ev": 0.815,
+     "win_odds": 7.0,
+     "place_odds": 2.4,
+     "market_prob": 0.117,
+     "blend_prob": 0.1162,
+     "ev": 0.813,
      "value": false,
      "longshot": false,
      "open_odds": 7.3,
      "steam": false,
-     "final_prob": 0.1235,
+     "final_prob": 0.1162,
      "final_rank": 3
     },
     {
@@ -3935,16 +3935,16 @@
       "負磅"
      ],
      "strong": [],
-     "win_odds": 9.4,
-     "place_odds": 2.9,
-     "market_prob": 0.0862,
-     "blend_prob": 0.0852,
-     "ev": 0.801,
+     "win_odds": 10.0,
+     "place_odds": 3.9,
+     "market_prob": 0.0819,
+     "blend_prob": 0.0799,
+     "ev": 0.799,
      "value": false,
      "longshot": false,
      "open_odds": 9.3,
      "steam": false,
-     "final_prob": 0.0852,
+     "final_prob": 0.0799,
      "final_rank": 4
     },
     {
@@ -3977,16 +3977,16 @@
       "狀態走勢"
      ],
      "strong": [],
-     "win_odds": 12.0,
-     "place_odds": 3.3,
-     "market_prob": 0.0675,
-     "blend_prob": 0.0659,
-     "ev": 0.791,
+     "win_odds": 14.0,
+     "place_odds": 4.3,
+     "market_prob": 0.0585,
+     "blend_prob": 0.0561,
+     "ev": 0.785,
      "value": false,
      "longshot": true,
      "open_odds": 11.0,
      "steam": false,
-     "final_prob": 0.0659,
+     "final_prob": 0.0561,
      "final_rank": 5
     },
     {
@@ -4019,16 +4019,16 @@
       "檔位統計"
      ],
      "strong": [],
-     "win_odds": 12.0,
-     "place_odds": 3.2,
-     "market_prob": 0.0675,
-     "blend_prob": 0.0659,
-     "ev": 0.791,
+     "win_odds": 17.0,
+     "place_odds": 5.1,
+     "market_prob": 0.0482,
+     "blend_prob": 0.0458,
+     "ev": 0.778,
      "value": false,
      "longshot": true,
      "open_odds": 11.0,
      "steam": false,
-     "final_prob": 0.0659,
+     "final_prob": 0.0458,
      "final_rank": 6
     },
     {
@@ -4061,16 +4061,16 @@
       "近況"
      ],
      "strong": [],
-     "win_odds": 12.0,
-     "place_odds": 3.7,
-     "market_prob": 0.0675,
-     "blend_prob": 0.0659,
-     "ev": 0.791,
+     "win_odds": 17.0,
+     "place_odds": 4.7,
+     "market_prob": 0.0482,
+     "blend_prob": 0.0458,
+     "ev": 0.778,
      "value": false,
      "longshot": false,
      "open_odds": 8.8,
      "steam": false,
-     "final_prob": 0.0659,
+     "final_prob": 0.0458,
      "final_rank": 7
     },
     {
@@ -4113,16 +4113,16 @@
        "place_raw": null
       }
      ],
-     "win_odds": 15.0,
-     "place_odds": 3.5,
-     "market_prob": 0.054,
-     "blend_prob": 0.0521,
-     "ev": 0.782,
+     "win_odds": 20.0,
+     "place_odds": 4.6,
+     "market_prob": 0.041,
+     "blend_prob": 0.0386,
+     "ev": 0.772,
      "value": false,
      "longshot": false,
      "open_odds": 15.0,
      "steam": false,
-     "final_prob": 0.0521,
+     "final_prob": 0.0386,
      "final_rank": 8
     },
     {
@@ -4155,16 +4155,16 @@
       "近況"
      ],
      "strong": [],
-     "win_odds": 23.0,
-     "place_odds": 5.4,
-     "market_prob": 0.0352,
-     "blend_prob": 0.0333,
-     "ev": 0.765,
+     "win_odds": 30.0,
+     "place_odds": 2.9,
+     "market_prob": 0.0273,
+     "blend_prob": 0.0252,
+     "ev": 0.756,
      "value": false,
      "longshot": false,
      "open_odds": 16.0,
      "steam": false,
-     "final_prob": 0.0333,
+     "final_prob": 0.0252,
      "final_rank": 9
     },
     {
@@ -4207,16 +4207,16 @@
        "place_raw": null
       }
      ],
-     "win_odds": 29.0,
-     "place_odds": 6.7,
-     "market_prob": 0.0279,
-     "blend_prob": 0.0261,
-     "ev": 0.757,
+     "win_odds": 50.0,
+     "place_odds": 11.0,
+     "market_prob": 0.0164,
+     "blend_prob": 0.0147,
+     "ev": 0.737,
      "value": false,
      "longshot": false,
      "open_odds": 18.0,
      "steam": false,
-     "final_prob": 0.0261,
+     "final_prob": 0.0147,
      "final_rank": 10
     },
     {
@@ -4249,16 +4249,16 @@
       "騎師"
      ],
      "strong": [],
-     "win_odds": 30.0,
-     "place_odds": 7.2,
-     "market_prob": 0.027,
-     "blend_prob": 0.0252,
-     "ev": 0.755,
+     "win_odds": 51.0,
+     "place_odds": 12.0,
+     "market_prob": 0.0161,
+     "blend_prob": 0.0144,
+     "ev": 0.736,
      "value": false,
      "longshot": false,
      "open_odds": 19.0,
      "steam": false,
-     "final_prob": 0.0252,
+     "final_prob": 0.0144,
      "final_rank": 11
     },
     {
@@ -4291,21 +4291,21 @@
       "試閘名次"
      ],
      "strong": [],
-     "win_odds": 34.0,
-     "place_odds": 8.0,
-     "market_prob": 0.0238,
-     "blend_prob": 0.0221,
-     "ev": 0.751,
+     "win_odds": 60.0,
+     "place_odds": 14.0,
+     "market_prob": 0.0137,
+     "blend_prob": 0.0122,
+     "ev": 0.73,
      "value": false,
      "longshot": false,
      "open_odds": 23.0,
      "steam": false,
-     "final_prob": 0.0221,
+     "final_prob": 0.0122,
      "final_rank": 12
     }
    ],
    "ai": null,
-   "summary": "【步速】5號智勇名駒有機會爭放。預計步速中等(2 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.5%、前列 8.7%、中游 9.7%、後上 6.4%;前置馬仍然較有利。跑法配合嘅熱門選擇:2號盈好威楓、3號同心同樂。\n【場地】根據今日草地已跑 5 場:頭三名 15 匹之中 4 匹出閘後跑喺前列(平時約 44%),後上馬比平時跑得好;6 匹來自內檔(平時約 42%),檔位同平時差唔多。過往同日早段嘅走勢對之後場次預測力好低,只作參考;此跑道路程前置馬優勢比跑馬地平均細,後上馬較有機會。今日分段時間(5 場):跑道偏慢(比標準慢約 0.2 秒/公里);末段追勁影響正常。檔位統計著數:4號三軍勇將、11號龍城上將。3號同心同樂檔位統計較差。\n【選擇】首選2號盈好威楓(綜合 28%,獨贏 3 倍):騎師、今日檔位走勢、近況佔優;次選8號風將(綜合 15%,獨贏 5.4 倍):騎師、騎練組合、過往市場評價佔優;三選3號同心同樂(綜合 12%,獨贏 6.6 倍):近況、讓磅著數、狀態走勢佔優。\n【把握】中:首選獨贏 3 倍。把握係睇賠率高低,唔代表值博。\n【冷門】4號三軍勇將(獨贏 12,模型排第 2):試閘名次、檔位統計;5號智勇名駒(獨贏 12,模型排第 5):讓磅著數、試閘名次。呢類馬入位率略高過同賠率嘅其他馬,但過往買獨贏、位置都係蝕錢,只供參考,唔係值博訊號。\n【落飛】2號盈好威楓(早段 4.6 → 而家 3)。\n【風險】按綜合機率計暫時冇明顯值博;2號盈好威楓要留意練馬師本場地成績;8號風將要留意試閘名次、今日檔位走勢;賠率會變,以開跑前為準。"
+   "summary": "【步速】5號智勇名駒有機會爭放。預計步速中等(2 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.5%、前列 8.7%、中游 9.7%、後上 6.4%;前置馬仍然較有利。跑法配合嘅熱門選擇:2號盈好威楓、3號同心同樂。\n【場地】根據今日草地已跑 5 場:頭三名 15 匹之中 4 匹出閘後跑喺前列(平時約 44%),後上馬比平時跑得好;6 匹來自內檔(平時約 42%),檔位同平時差唔多。過往同日早段嘅走勢對之後場次預測力好低,只作參考;此跑道路程前置馬優勢比跑馬地平均細,後上馬較有機會。今日分段時間(5 場):跑道偏慢(比標準慢約 0.2 秒/公里);末段追勁影響正常。檔位統計著數:4號三軍勇將、11號龍城上將。3號同心同樂檔位統計較差。\n【選擇】首選2號盈好威楓(綜合 36%,獨贏 2.4 倍):騎師、今日檔位走勢、近況佔優;次選8號風將(綜合 19%,獨贏 4.3 倍):騎師、騎練組合、過往市場評價佔優;三選3號同心同樂(綜合 12%,獨贏 7 倍):近況、讓磅著數、狀態走勢佔優。\n【把握】高:首選獨贏 2.4 倍。把握係睇賠率高低,唔代表值博。\n【冷門】4號三軍勇將(獨贏 14,模型排第 2):試閘名次、檔位統計;5號智勇名駒(獨贏 17,模型排第 5):讓磅著數、試閘名次。呢類馬入位率略高過同賠率嘅其他馬,但過往買獨贏、位置都係蝕錢,只供參考,唔係值博訊號。\n【落飛】2號盈好威楓(早段 4.6 → 而家 2.4)。\n【風險】按綜合機率計暫時冇明顯值博;2號盈好威楓要留意練馬師本場地成績;8號風將要留意試閘名次、今日檔位走勢;賠率會變,以開跑前為準。"
   },
   {
    "race_no": 8,
@@ -5560,6 +5560,7 @@
   "2026-11-18T13:01:02+00:00",
   "2026-11-18T13:06:10+00:00",
   "2026-11-18T13:11:05+00:00",
-  "2026-11-18T13:16:23+00:00"
+  "2026-11-18T13:16:23+00:00",
+  "2026-11-18T13:18:14+00:00"
  ]
 }
