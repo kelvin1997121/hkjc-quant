@@ -4,38 +4,38 @@
   "venue": "HV",
   "venue_zh": "跑馬地"
  },
- "updated_at": "2026-11-18T15:04:19+00:00",
+ "updated_at": "2026-11-18T15:05:52+00:00",
  "model": {
   "holdout": {
-   "races": 653,
-   "logloss": 2.2013,
-   "top_pick_win_rate": 0.2312,
+   "races": 654,
+   "logloss": 2.2018,
+   "top_pick_win_rate": 0.2309,
    "market_logloss": 2.0431,
-   "favourite_win_rate": 0.2833,
-   "flat_bet_roi_top_pick": -0.1956,
-   "uniform_logloss": 2.5091
+   "favourite_win_rate": 0.2829,
+   "flat_bet_roi_top_pick": -0.1968,
+   "uniform_logloss": 2.509
   },
   "train_races": 2612,
   "holdout_from": "2026-02-08",
   "blend": {
    "a": 0.0,
    "b": 1.05,
-   "logloss": 2.0427,
+   "logloss": 2.0428,
    "market_logloss": 2.0431
   },
   "weights": {
    "speed_best": -0.014,
    "speed_last": 0.118,
    "speed_missing": -0.047,
-   "form": 0.188,
+   "form": 0.189,
    "dist_form": 0.086,
    "early": 0.008,
-   "early_x_pace": 0.036,
+   "early_x_pace": 0.035,
    "early_x_today": 0.017,
    "early_x_course": 0.025,
    "draw_bias": 0.117,
    "draw_x_today": 0.086,
-   "jockey": 0.146,
+   "jockey": 0.147,
    "trainer": 0.032,
    "weight_rel": -0.079,
    "layoff": -0.018,
@@ -46,8 +46,8 @@
    "class_drop": 0.081,
    "bw_change": -0.002,
    "perf_best": 0.098,
-   "perf_last": 0.006,
-   "handicap_edge": 0.19,
+   "perf_last": 0.005,
+   "handicap_edge": 0.191,
    "late_speed": 0.134,
    "early_speed": 0.025,
    "jockey_form": 0.001,
@@ -59,7 +59,7 @@
    "gear_first": -0.063,
    "gear_off": 0.043,
    "gear_back": -0.051,
-   "run_wide": 0.05,
+   "run_wide": 0.049,
    "trial_score": 0.142,
    "trial_count": 0.028
   },
@@ -68,7 +68,7 @@
    "stages": 3
   }
  },
- "history_races": 3449,
+ "history_races": 3450,
  "races": [
   {
    "race_no": 1,
@@ -5643,6 +5643,7 @@
   "2026-11-18T14:57:43+00:00",
   "2026-11-18T14:59:37+00:00",
   "2026-11-18T15:02:14+00:00",
-  "2026-11-18T15:04:19+00:00"
+  "2026-11-18T15:04:19+00:00",
+  "2026-11-18T15:05:52+00:00"
  ]
 }
