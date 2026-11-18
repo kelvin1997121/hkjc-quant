@@ -4,7 +4,7 @@
   "venue": "HV",
   "venue_zh": "跑馬地"
  },
- "updated_at": "2026-11-18T14:26:26+00:00",
+ "updated_at": "2026-11-18T14:28:55+00:00",
  "model": {
   "holdout": {
    "races": 653,
@@ -4972,14 +4972,14 @@
     "races": 7
    },
    "course_bias": "此跑道路程前置馬優勢比跑馬地平均大",
-   "odds_updated": "18/11/2026 22:25",
+   "odds_updated": "18/11/2026 22:27",
    "confidence": "低",
    "longshots": [
     {
      "no": 1,
      "horse": "星運少爵",
      "win_odds": 17.0,
-     "place_odds": 4.6,
+     "place_odds": 5.7,
      "win_prob": 0.0872,
      "rank": 5,
      "style": "中游",
@@ -5025,16 +5025,16 @@
       "過往市場評價"
      ],
      "strong": [],
-     "win_odds": 4.5,
-     "place_odds": 2.2,
-     "market_prob": 0.1818,
-     "blend_prob": 0.1867,
-     "ev": 0.84,
+     "win_odds": 4.6,
+     "place_odds": 2.7,
+     "market_prob": 0.1778,
+     "blend_prob": 0.1825,
+     "ev": 0.839,
      "value": false,
      "longshot": false,
      "open_odds": 4.5,
      "steam": false,
-     "final_prob": 0.1867,
+     "final_prob": 0.1825,
      "final_rank": 1
     },
     {
@@ -5067,16 +5067,16 @@
       "過往市場評價"
      ],
      "strong": [],
-     "win_odds": 4.8,
-     "place_odds": 2.3,
-     "market_prob": 0.1704,
-     "blend_prob": 0.1745,
-     "ev": 0.838,
+     "win_odds": 4.9,
+     "place_odds": 2.7,
+     "market_prob": 0.1669,
+     "blend_prob": 0.1708,
+     "ev": 0.837,
      "value": false,
      "longshot": false,
      "open_odds": 7.7,
      "steam": true,
-     "final_prob": 0.1745,
+     "final_prob": 0.1708,
      "final_rank": 2
     },
     {
@@ -5109,16 +5109,16 @@
       "今日檔位走勢"
      ],
      "strong": [],
-     "win_odds": 5.4,
-     "place_odds": 1.6,
-     "market_prob": 0.1515,
-     "blend_prob": 0.1542,
-     "ev": 0.833,
+     "win_odds": 5.3,
+     "place_odds": 2.0,
+     "market_prob": 0.1543,
+     "blend_prob": 0.1573,
+     "ev": 0.834,
      "value": false,
      "longshot": false,
      "open_odds": 5.4,
      "steam": false,
-     "final_prob": 0.1542,
+     "final_prob": 0.1573,
      "final_rank": 3
     },
     {
@@ -5151,16 +5151,16 @@
       "升班"
      ],
      "strong": [],
-     "win_odds": 6.4,
-     "place_odds": 2.2,
-     "market_prob": 0.1278,
-     "blend_prob": 0.129,
+     "win_odds": 6.3,
+     "place_odds": 1.3,
+     "market_prob": 0.1298,
+     "blend_prob": 0.1312,
      "ev": 0.826,
      "value": false,
      "longshot": false,
      "open_odds": 8.9,
      "steam": false,
-     "final_prob": 0.129,
+     "final_prob": 0.1312,
      "final_rank": 4
     },
     {
@@ -5191,8 +5191,8 @@
      "cons": [],
      "strong": [],
      "win_odds": 7.9,
-     "place_odds": 2.5,
-     "market_prob": 0.1036,
+     "place_odds": 3.0,
+     "market_prob": 0.1035,
      "blend_prob": 0.1034,
      "ev": 0.817,
      "value": false,
@@ -5243,7 +5243,7 @@
       }
      ],
      "win_odds": 17.0,
-     "place_odds": 4.6,
+     "place_odds": 5.7,
      "market_prob": 0.0481,
      "blend_prob": 0.0463,
      "ev": 0.786,
@@ -5253,6 +5253,48 @@
      "steam": false,
      "final_prob": 0.0463,
      "final_rank": 6
+    },
+    {
+     "rank": 8,
+     "no": 6,
+     "horse": "江江彩彩",
+     "horse_code": "L516",
+     "jockey": "班德禮",
+     "trainer": "甘敏斯",
+     "draw": 12,
+     "weight": 123,
+     "rating": 67,
+     "last6": "4/8",
+     "gear": "TT1",
+     "win_prob": 0.0567,
+     "fair_odds": 17.6,
+     "style": "前列",
+     "speed_best": -6.2,
+     "perf_best": 69.3,
+     "handicap_edge": 0.0,
+     "runs_in_db": 2,
+     "draw_edge": -0.651,
+     "pros": [
+      "試閘名次",
+      "過往市場評價",
+      "近況"
+     ],
+     "cons": [
+      "檔位統計",
+      "今日檔位走勢"
+     ],
+     "strong": [],
+     "win_odds": 17.0,
+     "place_odds": 5.8,
+     "market_prob": 0.0481,
+     "blend_prob": 0.0463,
+     "ev": 0.786,
+     "value": false,
+     "longshot": false,
+     "open_odds": 13.0,
+     "steam": false,
+     "final_prob": 0.0463,
+     "final_rank": 7
     },
     {
      "rank": 10,
@@ -5285,7 +5327,7 @@
      ],
      "strong": [],
      "win_odds": 17.0,
-     "place_odds": 4.3,
+     "place_odds": 2.4,
      "market_prob": 0.0481,
      "blend_prob": 0.0463,
      "ev": 0.786,
@@ -5294,7 +5336,7 @@
      "open_odds": 15.0,
      "steam": false,
      "final_prob": 0.0463,
-     "final_rank": 7
+     "final_rank": 8
     },
     {
      "rank": 7,
@@ -5327,55 +5369,13 @@
      ],
      "strong": [],
      "win_odds": 18.0,
-     "place_odds": 3.9,
+     "place_odds": 4.9,
      "market_prob": 0.0454,
      "blend_prob": 0.0436,
      "ev": 0.784,
      "value": false,
      "longshot": false,
      "open_odds": 16.0,
-     "steam": false,
-     "final_prob": 0.0436,
-     "final_rank": 8
-    },
-    {
-     "rank": 8,
-     "no": 6,
-     "horse": "江江彩彩",
-     "horse_code": "L516",
-     "jockey": "班德禮",
-     "trainer": "甘敏斯",
-     "draw": 12,
-     "weight": 123,
-     "rating": 67,
-     "last6": "4/8",
-     "gear": "TT1",
-     "win_prob": 0.0567,
-     "fair_odds": 17.6,
-     "style": "前列",
-     "speed_best": -6.2,
-     "perf_best": 69.3,
-     "handicap_edge": 0.0,
-     "runs_in_db": 2,
-     "draw_edge": -0.651,
-     "pros": [
-      "試閘名次",
-      "過往市場評價",
-      "近況"
-     ],
-     "cons": [
-      "檔位統計",
-      "今日檔位走勢"
-     ],
-     "strong": [],
-     "win_odds": 18.0,
-     "place_odds": 5.1,
-     "market_prob": 0.0454,
-     "blend_prob": 0.0436,
-     "ev": 0.784,
-     "value": false,
-     "longshot": false,
-     "open_odds": 13.0,
      "steam": false,
      "final_prob": 0.0436,
      "final_rank": 9
@@ -5411,7 +5411,7 @@
      ],
      "strong": [],
      "win_odds": 25.0,
-     "place_odds": 6.3,
+     "place_odds": 7.5,
      "market_prob": 0.0327,
      "blend_prob": 0.0309,
      "ev": 0.771,
@@ -5453,10 +5453,10 @@
      ],
      "strong": [],
      "win_odds": 34.0,
-     "place_odds": 8.0,
+     "place_odds": 9.6,
      "market_prob": 0.0241,
      "blend_prob": 0.0223,
-     "ev": 0.759,
+     "ev": 0.76,
      "value": false,
      "longshot": false,
      "open_odds": 18.0,
@@ -5495,7 +5495,7 @@
      ],
      "strong": [],
      "win_odds": 39.0,
-     "place_odds": 7.5,
+     "place_odds": 9.4,
      "market_prob": 0.021,
      "blend_prob": 0.0193,
      "ev": 0.754,
@@ -5508,7 +5508,7 @@
     }
    ],
    "ai": null,
-   "summary": "【步速】預計步速偏慢(1 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.1%、前列 10.8%、中游 8.7%、後上 7.1%;前置馬仍然較有利。跑法配合嘅熱門選擇:4號嘉應勇將、2號繼往開來。\n【場地】根據今日草地已跑 7 場:頭三名 21 匹之中 8 匹出閘後跑喺前列(平時約 44%),跑法同平時差唔多;8 匹來自內檔(平時約 42%),檔位同平時差唔多。過往同日早段嘅走勢對之後場次預測力好低,只作參考;此跑道路程前置馬優勢比跑馬地平均大。今日分段時間(7 場):跑道速度正常;末段追勁影響正常。檔位統計著數:9號馬大愛、5號家樂龍駒。12號耀寶、2號繼往開來檔位統計較差。\n【選擇】首選12號耀寶(綜合 19%,獨贏 4.5 倍):騎師、讓磅著數、騎練組合佔優,讓磅著數比同場中位數多約 8 分;次選4號嘉應勇將(綜合 17%,獨贏 4.8 倍):試閘名次、練馬師本場地成績、騎師佔優,讓磅著數比同場中位數多約 3 分;三選2號繼往開來(綜合 15%,獨贏 5.4 倍):過往市場評價、近況、上仗速度指數佔優。\n【把握】低:首選獨贏 4.5 倍。把握係睇賠率高低,唔代表值博。\n【冷門】1號星運少爵(獨贏 17,模型排第 5):過往市場評價、近況。呢類馬入位率略高過同賠率嘅其他馬,但過往買獨贏、位置都係蝕錢,只供參考,唔係值博訊號。\n【落飛】4號嘉應勇將(早段 7.7 → 而家 4.8)。\n【風險】模型自己最睇好11號喵喵怪,同市場睇法唔同;按綜合機率計暫時冇明顯值博;首選機率只有 19%,形勢開放;12號耀寶要留意後段追勁、過往市場評價;4號嘉應勇將要留意近況、過往市場評價;賠率會變,以開跑前為準。"
+   "summary": "【步速】預計步速偏慢(1 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.1%、前列 10.8%、中游 8.7%、後上 7.1%;前置馬仍然較有利。跑法配合嘅熱門選擇:4號嘉應勇將、2號繼往開來。\n【場地】根據今日草地已跑 7 場:頭三名 21 匹之中 8 匹出閘後跑喺前列(平時約 44%),跑法同平時差唔多;8 匹來自內檔(平時約 42%),檔位同平時差唔多。過往同日早段嘅走勢對之後場次預測力好低,只作參考;此跑道路程前置馬優勢比跑馬地平均大。今日分段時間(7 場):跑道速度正常;末段追勁影響正常。檔位統計著數:9號馬大愛、5號家樂龍駒。12號耀寶、2號繼往開來檔位統計較差。\n【選擇】首選12號耀寶(綜合 18%,獨贏 4.6 倍):騎師、讓磅著數、騎練組合佔優,讓磅著數比同場中位數多約 8 分;次選4號嘉應勇將(綜合 17%,獨贏 4.9 倍):試閘名次、練馬師本場地成績、騎師佔優,讓磅著數比同場中位數多約 3 分;三選2號繼往開來(綜合 16%,獨贏 5.3 倍):過往市場評價、近況、上仗速度指數佔優。\n【把握】低:首選獨贏 4.6 倍。把握係睇賠率高低,唔代表值博。\n【冷門】1號星運少爵(獨贏 17,模型排第 5):過往市場評價、近況。呢類馬入位率略高過同賠率嘅其他馬,但過往買獨贏、位置都係蝕錢,只供參考,唔係值博訊號。\n【落飛】4號嘉應勇將(早段 7.7 → 而家 4.9)。\n【風險】模型自己最睇好11號喵喵怪,同市場睇法唔同;按綜合機率計暫時冇明顯值博;首選機率只有 18%,形勢開放;12號耀寶要留意後段追勁、過往市場評價;4號嘉應勇將要留意近況、過往市場評價;賠率會變,以開跑前為準。"
   }
  ],
  "runs": [
@@ -5606,6 +5606,7 @@
   "2026-11-18T14:20:29+00:00",
   "2026-11-18T14:22:29+00:00",
   "2026-11-18T14:24:36+00:00",
-  "2026-11-18T14:26:26+00:00"
+  "2026-11-18T14:26:26+00:00",
+  "2026-11-18T14:28:55+00:00"
  ]
 }
