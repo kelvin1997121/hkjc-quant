@@ -4,7 +4,7 @@
   "venue": "HV",
   "venue_zh": "跑馬地"
  },
- "updated_at": "2026-11-18T11:21:18+00:00",
+ "updated_at": "2026-11-18T11:23:39+00:00",
  "model": {
   "holdout": {
    "races": 652,
@@ -1327,14 +1327,14 @@
     "races": 1
    },
    "course_bias": "此跑道路程前置馬優勢比跑馬地平均大",
-   "odds_updated": "18/11/2026 19:20",
+   "odds_updated": "18/11/2026 19:22",
    "confidence": "中",
    "longshots": [
     {
      "no": 4,
      "horse": "銳目",
      "win_odds": 12.0,
-     "place_odds": 3.7,
+     "place_odds": 3.5,
      "win_prob": 0.1353,
      "rank": 2,
      "style": "前列",
@@ -1397,16 +1397,16 @@
       "缺速度數據"
      ],
      "strong": [],
-     "win_odds": 2.6,
+     "win_odds": 2.7,
      "place_odds": 2.1,
-     "market_prob": 0.3131,
-     "blend_prob": 0.3275,
-     "ev": 0.852,
+     "market_prob": 0.3028,
+     "blend_prob": 0.3165,
+     "ev": 0.855,
      "value": false,
      "longshot": false,
      "open_odds": 2.9,
      "steam": false,
-     "final_prob": 0.3275,
+     "final_prob": 0.3165,
      "final_rank": 1
     },
     {
@@ -1441,14 +1441,14 @@
      "strong": [],
      "win_odds": 3.6,
      "place_odds": 1.5,
-     "market_prob": 0.2261,
-     "blend_prob": 0.2327,
-     "ev": 0.838,
+     "market_prob": 0.2271,
+     "blend_prob": 0.234,
+     "ev": 0.842,
      "value": false,
      "longshot": false,
      "open_odds": 3.9,
      "steam": false,
-     "final_prob": 0.2327,
+     "final_prob": 0.234,
      "final_rank": 2
     },
     {
@@ -1481,16 +1481,16 @@
       "狀態走勢"
      ],
      "strong": [],
-     "win_odds": 9.1,
-     "place_odds": 3.8,
-     "market_prob": 0.0894,
-     "blend_prob": 0.0879,
-     "ev": 0.8,
+     "win_odds": 8.9,
+     "place_odds": 3.6,
+     "market_prob": 0.0919,
+     "blend_prob": 0.0905,
+     "ev": 0.805,
      "value": false,
      "longshot": false,
      "open_odds": 12.0,
      "steam": false,
-     "final_prob": 0.0879,
+     "final_prob": 0.0905,
      "final_rank": 3
     },
     {
@@ -1523,15 +1523,15 @@
      ],
      "strong": [],
      "win_odds": 12.0,
-     "place_odds": 3.7,
-     "market_prob": 0.0678,
-     "blend_prob": 0.0657,
-     "ev": 0.789,
+     "place_odds": 3.5,
+     "market_prob": 0.0681,
+     "blend_prob": 0.0661,
+     "ev": 0.793,
      "value": false,
      "longshot": true,
      "open_odds": 14.0,
      "steam": false,
-     "final_prob": 0.0657,
+     "final_prob": 0.0661,
      "final_rank": 4
     },
     {
@@ -1564,16 +1564,16 @@
       "狀態走勢"
      ],
      "strong": [],
-     "win_odds": 16.0,
+     "win_odds": 15.0,
      "place_odds": 1.7,
-     "market_prob": 0.0509,
-     "blend_prob": 0.0486,
-     "ev": 0.778,
+     "market_prob": 0.0545,
+     "blend_prob": 0.0523,
+     "ev": 0.784,
      "value": false,
      "longshot": false,
      "open_odds": 15.0,
      "steam": false,
-     "final_prob": 0.0486,
+     "final_prob": 0.0523,
      "final_rank": 5
     },
     {
@@ -1607,15 +1607,15 @@
      ],
      "strong": [],
      "win_odds": 18.0,
-     "place_odds": 1.9,
-     "market_prob": 0.0452,
-     "blend_prob": 0.0429,
-     "ev": 0.773,
+     "place_odds": 2.0,
+     "market_prob": 0.0454,
+     "blend_prob": 0.0432,
+     "ev": 0.777,
      "value": false,
      "longshot": false,
      "open_odds": 15.0,
      "steam": false,
-     "final_prob": 0.0429,
+     "final_prob": 0.0432,
      "final_rank": 6
     },
     {
@@ -1649,15 +1649,15 @@
      ],
      "strong": [],
      "win_odds": 18.0,
-     "place_odds": 5.8,
-     "market_prob": 0.0452,
-     "blend_prob": 0.0429,
-     "ev": 0.773,
+     "place_odds": 5.6,
+     "market_prob": 0.0454,
+     "blend_prob": 0.0432,
+     "ev": 0.777,
      "value": false,
      "longshot": false,
      "open_odds": 12.0,
      "steam": false,
-     "final_prob": 0.0429,
+     "final_prob": 0.0432,
      "final_rank": 7
     },
     {
@@ -1702,14 +1702,14 @@
      ],
      "win_odds": 21.0,
      "place_odds": 6.0,
-     "market_prob": 0.0388,
-     "blend_prob": 0.0365,
-     "ev": 0.767,
+     "market_prob": 0.0389,
+     "blend_prob": 0.0367,
+     "ev": 0.771,
      "value": false,
      "longshot": true,
      "open_odds": 16.0,
      "steam": false,
-     "final_prob": 0.0365,
+     "final_prob": 0.0367,
      "final_rank": 8
     },
     {
@@ -1743,15 +1743,15 @@
      ],
      "strong": [],
      "win_odds": 21.0,
-     "place_odds": 6.0,
-     "market_prob": 0.0388,
-     "blend_prob": 0.0365,
-     "ev": 0.767,
+     "place_odds": 5.9,
+     "market_prob": 0.0389,
+     "blend_prob": 0.0367,
+     "ev": 0.771,
      "value": false,
      "longshot": false,
      "open_odds": 16.0,
      "steam": false,
-     "final_prob": 0.0365,
+     "final_prob": 0.0367,
      "final_rank": 9
     },
     {
@@ -1785,15 +1785,15 @@
      ],
      "strong": [],
      "win_odds": 26.0,
-     "place_odds": 7.8,
-     "market_prob": 0.0313,
-     "blend_prob": 0.0292,
-     "ev": 0.759,
+     "place_odds": 7.7,
+     "market_prob": 0.0314,
+     "blend_prob": 0.0294,
+     "ev": 0.763,
      "value": false,
      "longshot": false,
      "open_odds": 18.0,
      "steam": false,
-     "final_prob": 0.0292,
+     "final_prob": 0.0294,
      "final_rank": 10
     },
     {
@@ -1826,16 +1826,16 @@
       "首次配備"
      ],
      "strong": [],
-     "win_odds": 30.0,
-     "place_odds": 8.3,
-     "market_prob": 0.0271,
-     "blend_prob": 0.0251,
-     "ev": 0.754,
+     "win_odds": 29.0,
+     "place_odds": 8.2,
+     "market_prob": 0.0282,
+     "blend_prob": 0.0262,
+     "ev": 0.759,
      "value": false,
      "longshot": false,
      "open_odds": 21.0,
      "steam": false,
-     "final_prob": 0.0251,
+     "final_prob": 0.0262,
      "final_rank": 11
     },
     {
@@ -1878,21 +1878,21 @@
        "place_raw": null
       }
      ],
-     "win_odds": 31.0,
-     "place_odds": 7.3,
-     "market_prob": 0.0263,
-     "blend_prob": 0.0243,
-     "ev": 0.752,
+     "win_odds": 30.0,
+     "place_odds": 7.2,
+     "market_prob": 0.0273,
+     "blend_prob": 0.0253,
+     "ev": 0.758,
      "value": false,
      "longshot": false,
      "open_odds": 22.0,
      "steam": false,
-     "final_prob": 0.0243,
+     "final_prob": 0.0253,
      "final_rank": 12
     }
    ],
    "ai": null,
-   "summary": "【步速】預計步速偏慢(0 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.1%、前列 10.8%、中游 8.6%、後上 7.1%;前置馬仍然較有利。跑法配合嘅熱門選擇:4號銳目。\n【場地】根據今日草地已跑 1 場:跑完場數太少,跑法走勢未能判斷。過往同日早段嘅走勢對之後場次預測力好低,只作參考;此跑道路程前置馬優勢比跑馬地平均大。今日分段時間(1 場):跑道速度正常;末段追勁作用大,末段快嘅馬有著數。末段快嘅1號超強六十受惠。檔位統計著數:5號魅影諜飛、7號極速寶寶。1號超強六十、4號銳目檔位統計較差。\n【選擇】首選6號威武凱旋(綜合 33%,獨贏 2.6 倍):試閘名次、檔位統計、過往市場評價佔優;次選8號機不可失(綜合 23%,獨贏 3.6 倍):過往市場評價、讓磅著數、騎練組合佔優;三選1號超強六十(綜合 9%,獨贏 9.1 倍):練馬師本場地成績、上仗走外疊、末段速度(分段時間)佔優。\n【把握】中:首選獨贏 2.6 倍。把握係睇賠率高低,唔代表值博。\n【冷門】4號銳目(獨贏 12,模型排第 2):試閘名次、狀態走勢;10號牛精新星(獨贏 21,模型排第 5):讓磅著數、負磅。呢類馬入位率略高過同賠率嘅其他馬,但過往買獨贏、位置都係蝕錢,只供參考,唔係值博訊號。\n【風險】模型自己最睇好8號機不可失,同市場睇法唔同;按綜合機率計暫時冇明顯值博;6號威武凱旋數據不足(初出或冇往績),評估把握較低;6號威武凱旋要留意騎師、缺速度數據;8號機不可失要留意試閘名次、上仗速度指數;賠率會變,以開跑前為準。"
+   "summary": "【步速】預計步速偏慢(0 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.1%、前列 10.8%、中游 8.6%、後上 7.1%;前置馬仍然較有利。跑法配合嘅熱門選擇:4號銳目。\n【場地】根據今日草地已跑 1 場:跑完場數太少,跑法走勢未能判斷。過往同日早段嘅走勢對之後場次預測力好低,只作參考;此跑道路程前置馬優勢比跑馬地平均大。今日分段時間(1 場):跑道速度正常;末段追勁作用大,末段快嘅馬有著數。末段快嘅1號超強六十受惠。檔位統計著數:5號魅影諜飛、7號極速寶寶。1號超強六十、4號銳目檔位統計較差。\n【選擇】首選6號威武凱旋(綜合 32%,獨贏 2.7 倍):試閘名次、檔位統計、過往市場評價佔優;次選8號機不可失(綜合 23%,獨贏 3.6 倍):過往市場評價、讓磅著數、騎練組合佔優;三選1號超強六十(綜合 9%,獨贏 8.9 倍):練馬師本場地成績、上仗走外疊、末段速度(分段時間)佔優。\n【把握】中:首選獨贏 2.7 倍。把握係睇賠率高低,唔代表值博。\n【冷門】4號銳目(獨贏 12,模型排第 2):試閘名次、狀態走勢;10號牛精新星(獨贏 21,模型排第 5):讓磅著數、負磅。呢類馬入位率略高過同賠率嘅其他馬,但過往買獨贏、位置都係蝕錢,只供參考,唔係值博訊號。\n【風險】模型自己最睇好8號機不可失,同市場睇法唔同;按綜合機率計暫時冇明顯值博;6號威武凱旋數據不足(初出或冇往績),評估把握較低;6號威武凱旋要留意騎師、缺速度數據;8號機不可失要留意試閘名次、上仗速度指數;賠率會變,以開跑前為準。"
   },
   {
    "race_no": 4,
@@ -2504,7 +2504,7 @@
     "races": 1
    },
    "course_bias": "此跑道路程前置馬優勢比跑馬地平均大",
-   "odds_updated": "18/11/2026 19:19",
+   "odds_updated": "18/11/2026 19:20",
    "confidence": "中",
    "longshots": [
     {
@@ -2596,13 +2596,13 @@
      "win_odds": 3.5,
      "place_odds": 1.9,
      "market_prob": 0.2336,
-     "blend_prob": 0.2428,
+     "blend_prob": 0.2429,
      "ev": 0.85,
      "value": false,
      "longshot": false,
      "open_odds": 3.6,
      "steam": false,
-     "final_prob": 0.2428,
+     "final_prob": 0.2429,
      "final_rank": 1
     },
     {
@@ -2647,9 +2647,9 @@
      ],
      "win_odds": 4.7,
      "place_odds": 1.8,
-     "market_prob": 0.1739,
+     "market_prob": 0.174,
      "blend_prob": 0.1782,
-     "ev": 0.837,
+     "ev": 0.838,
      "value": false,
      "longshot": false,
      "open_odds": 5.8,
@@ -2687,16 +2687,16 @@
       "缺速度數據"
      ],
      "strong": [],
-     "win_odds": 8.1,
+     "win_odds": 8.2,
      "place_odds": 2.5,
-     "market_prob": 0.1009,
-     "blend_prob": 0.1006,
+     "market_prob": 0.0997,
+     "blend_prob": 0.0994,
      "ev": 0.815,
      "value": false,
      "longshot": false,
      "open_odds": 7.9,
      "steam": false,
-     "final_prob": 0.1006,
+     "final_prob": 0.0994,
      "final_rank": 3
     },
     {
@@ -2732,13 +2732,13 @@
      "win_odds": 9.4,
      "place_odds": 2.6,
      "market_prob": 0.087,
-     "blend_prob": 0.086,
+     "blend_prob": 0.0861,
      "ev": 0.809,
      "value": false,
      "longshot": false,
      "open_odds": 10.0,
      "steam": false,
-     "final_prob": 0.086,
+     "final_prob": 0.0861,
      "final_rank": 4
     },
     {
@@ -2771,16 +2771,16 @@
       "騎練組合"
      ],
      "strong": [],
-     "win_odds": 9.6,
+     "win_odds": 9.5,
      "place_odds": 2.6,
-     "market_prob": 0.0851,
-     "blend_prob": 0.0842,
-     "ev": 0.808,
+     "market_prob": 0.0861,
+     "blend_prob": 0.0851,
+     "ev": 0.809,
      "value": false,
      "longshot": false,
      "open_odds": 11.0,
      "steam": false,
-     "final_prob": 0.0842,
+     "final_prob": 0.0851,
      "final_rank": 5
     },
     {
@@ -2815,14 +2815,14 @@
      "strong": [],
      "win_odds": 10.0,
      "place_odds": 3.2,
-     "market_prob": 0.0817,
-     "blend_prob": 0.0806,
-     "ev": 0.806,
+     "market_prob": 0.0818,
+     "blend_prob": 0.0807,
+     "ev": 0.807,
      "value": false,
      "longshot": true,
      "open_odds": 9.0,
      "steam": false,
-     "final_prob": 0.0806,
+     "final_prob": 0.0807,
      "final_rank": 6
     },
     {
@@ -2857,14 +2857,14 @@
      "strong": [],
      "win_odds": 10.0,
      "place_odds": 2.7,
-     "market_prob": 0.0817,
-     "blend_prob": 0.0806,
-     "ev": 0.806,
+     "market_prob": 0.0818,
+     "blend_prob": 0.0807,
+     "ev": 0.807,
      "value": false,
      "longshot": false,
      "open_odds": 10.0,
      "steam": false,
-     "final_prob": 0.0806,
+     "final_prob": 0.0807,
      "final_rank": 7
     },
     {
@@ -2943,7 +2943,7 @@
      "place_odds": 5.9,
      "market_prob": 0.0327,
      "blend_prob": 0.0308,
-     "ev": 0.77,
+     "ev": 0.771,
      "value": false,
      "longshot": true,
      "open_odds": 20.0,
@@ -2985,7 +2985,7 @@
      "place_odds": 6.1,
      "market_prob": 0.0327,
      "blend_prob": 0.0308,
-     "ev": 0.77,
+     "ev": 0.771,
      "value": false,
      "longshot": false,
      "open_odds": 18.0,
@@ -3078,7 +3078,7 @@
      "place_odds": 9.7,
      "market_prob": 0.0204,
      "blend_prob": 0.0188,
-     "ev": 0.752,
+     "ev": 0.753,
      "value": false,
      "longshot": false,
      "open_odds": 26.0,
@@ -3088,7 +3088,7 @@
     }
    ],
    "ai": null,
-   "summary": "【步速】10號快樂高球有機會爭放。預計步速中等(2 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.5%、前列 8.7%、中游 9.7%、後上 6.4%;前置馬仍然較有利。\n【場地】根據今日草地已跑 1 場:跑完場數太少,跑法走勢未能判斷。過往同日早段嘅走勢對之後場次預測力好低,只作參考;此跑道路程前置馬優勢比跑馬地平均大。今日分段時間(1 場):跑道速度正常;末段追勁作用大,末段快嘅馬有著數。檔位統計著數:1號蓮冠皇、7號辣得爽利。5號靖哥哥、3號非凡節拍檔位統計較差。\n【選擇】首選1號蓮冠皇(綜合 24%,獨贏 3.5 倍):騎師、檔位統計、降班佔優;次選5號靖哥哥(綜合 18%,獨贏 4.7 倍):過往市場評價、評分變動、近況佔優;三選3號非凡節拍(綜合 10%,獨贏 8.1 倍):試閘名次、過往市場評價、初出佔優。\n【把握】中:首選獨贏 3.5 倍。把握係睇賠率高低,唔代表值博。\n【冷門】11號大才(獨贏 10,模型排第 3):近況、讓磅著數;2號隨意門(獨贏 18,模型排第 4):過往市場評價、初出;10號快樂高球(獨贏 25,模型排第 5):後段追勁、檔位統計。呢類馬入位率略高過同賠率嘅其他馬,但過往買獨贏、位置都係蝕錢,只供參考,唔係值博訊號。\n【風險】模型自己最睇好5號靖哥哥,同市場睇法唔同;按綜合機率計暫時冇明顯值博;3號非凡節拍數據不足(初出或冇往績),評估把握較低;1號蓮冠皇要留意負磅、後段追勁;5號靖哥哥要留意升班、檔位統計;賠率會變,以開跑前為準。"
+   "summary": "【步速】10號快樂高球有機會爭放。預計步速中等(2 匹慣常跑喺最前嘅位置)。跑馬地同類步速歷來每匹馬勝出率:領放 11.5%、前列 8.7%、中游 9.7%、後上 6.4%;前置馬仍然較有利。\n【場地】根據今日草地已跑 1 場:跑完場數太少,跑法走勢未能判斷。過往同日早段嘅走勢對之後場次預測力好低,只作參考;此跑道路程前置馬優勢比跑馬地平均大。今日分段時間(1 場):跑道速度正常;末段追勁作用大,末段快嘅馬有著數。檔位統計著數:1號蓮冠皇、7號辣得爽利。5號靖哥哥、3號非凡節拍檔位統計較差。\n【選擇】首選1號蓮冠皇(綜合 24%,獨贏 3.5 倍):騎師、檔位統計、降班佔優;次選5號靖哥哥(綜合 18%,獨贏 4.7 倍):過往市場評價、評分變動、近況佔優;三選3號非凡節拍(綜合 10%,獨贏 8.2 倍):試閘名次、過往市場評價、初出佔優。\n【把握】中:首選獨贏 3.5 倍。把握係睇賠率高低,唔代表值博。\n【冷門】11號大才(獨贏 10,模型排第 3):近況、讓磅著數;2號隨意門(獨贏 18,模型排第 4):過往市場評價、初出;10號快樂高球(獨贏 25,模型排第 5):後段追勁、檔位統計。呢類馬入位率略高過同賠率嘅其他馬,但過往買獨贏、位置都係蝕錢,只供參考,唔係值博訊號。\n【風險】模型自己最睇好5號靖哥哥,同市場睇法唔同;按綜合機率計暫時冇明顯值博;3號非凡節拍數據不足(初出或冇往績),評估把握較低;1號蓮冠皇要留意負磅、後段追勁;5號靖哥哥要留意升班、檔位統計;賠率會變,以開跑前為準。"
   },
   {
    "race_no": 6,
@@ -4286,7 +4286,7 @@
     "races": 1
    },
    "course_bias": "此跑道路程前置馬優勢比跑馬地平均大",
-   "odds_updated": "18/11/2026 19:19",
+   "odds_updated": "18/11/2026 19:20",
    "confidence": "低",
    "longshots": [
     {
@@ -5487,6 +5487,7 @@
   "2026-11-18T11:11:56+00:00",
   "2026-11-18T11:16:58+00:00",
   "2026-11-18T11:19:19+00:00",
-  "2026-11-18T11:21:18+00:00"
+  "2026-11-18T11:21:18+00:00",
+  "2026-11-18T11:23:39+00:00"
  ]
 }
