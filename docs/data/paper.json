@@ -4,20 +4,20 @@
  "stake": 10.0,
  "look_every": 300,
  "z_pass": 2.5,
- "races": 23,
+ "races": 24,
  "next_look": 300,
  "main": {
   "following": "top2_qin",
   "following_name": "首選+次選連贏",
   "balance": 883.5,
   "staked": 280.0,
-  "settled_staked": 230.0,
+  "settled_staked": 240.0,
   "returned": 163.5,
-  "net": -66.5,
+  "net": -76.5,
   "bets": 28,
   "hits": 2,
-  "pending": 5,
-  "roi": -0.2891,
+  "pending": 4,
+  "roi": -0.3187,
   "switches": [],
   "looks": []
  },
@@ -26,15 +26,15 @@
    "key": "fav_place",
    "name": "首選位置",
    "rule": "每場 $10 位置買排名第一嘅馬",
-   "balance": 883.0,
+   "balance": 899.5,
    "staked": 280.0,
-   "settled_staked": 230.0,
-   "returned": 163.0,
-   "net": -67.0,
+   "settled_staked": 240.0,
+   "returned": 179.5,
+   "net": -60.5,
    "bets": 28,
-   "hits": 11,
-   "pending": 5,
-   "roi": -0.2913,
+   "hits": 12,
+   "pending": 4,
+   "roi": -0.2521,
    "backtest_roi": -0.1448
   },
   {
@@ -43,13 +43,13 @@
    "rule": "每場 $10 連贏買排名頭兩匹",
    "balance": 883.5,
    "staked": 280.0,
-   "settled_staked": 230.0,
+   "settled_staked": 240.0,
    "returned": 163.5,
-   "net": -66.5,
+   "net": -76.5,
    "bets": 28,
    "hits": 2,
-   "pending": 5,
-   "roi": -0.2891,
+   "pending": 4,
+   "roi": -0.3187,
    "backtest_roi": -0.069
   },
   {
@@ -58,13 +58,13 @@
    "rule": "每匹冷門馬(獨贏 10 倍以上而模型排頭五)$10 位置",
    "balance": 900.5,
    "staked": 550.0,
-   "settled_staked": 460.0,
+   "settled_staked": 480.0,
    "returned": 450.5,
-   "net": -9.5,
+   "net": -29.5,
    "bets": 55,
    "hits": 14,
-   "pending": 9,
-   "roi": -0.0207,
+   "pending": 7,
+   "roi": -0.0615,
    "backtest_roi": -0.1935
   },
   {
@@ -73,13 +73,13 @@
    "rule": "用獨贏賠率估位置、連贏、位置Q 機會;機會 × 賠率 ≥ 1.2 嘅注項入面,揀最大機會嘅兩注,每注 $10",
    "balance": 775.5,
    "staked": 560.0,
-   "settled_staked": 460.0,
+   "settled_staked": 480.0,
    "returned": 335.5,
-   "net": -124.5,
+   "net": -144.5,
    "bets": 56,
    "hits": 4,
-   "pending": 10,
-   "roi": -0.2707,
+   "pending": 8,
+   "roi": -0.301,
    "backtest_roi": null
   }
  ],
@@ -535,7 +535,7 @@
        "chance": 0.1459,
        "value": 0.9,
        "stake": 10.0,
-       "back": null,
+       "back": 0.0,
        "refund": false,
        "placed": true
       }
@@ -550,7 +550,7 @@
         "chance": 0.6942,
         "value": 0.76,
         "stake": 10.0,
-        "back": null,
+        "back": 16.5,
         "refund": false,
         "placed": true
        }
@@ -564,7 +564,7 @@
         "chance": 0.1459,
         "value": 0.9,
         "stake": 10.0,
-        "back": null,
+        "back": 0.0,
         "refund": false,
         "placed": true
        }
@@ -578,7 +578,7 @@
         "chance": 0.111,
         "value": 0.84,
         "stake": 10.0,
-        "back": null,
+        "back": 0.0,
         "refund": false,
         "placed": true
        },
@@ -590,7 +590,7 @@
         "chance": 0.111,
         "value": 0.69,
         "stake": 10.0,
-        "back": null,
+        "back": 0.0,
         "refund": false,
         "placed": true
        }
@@ -604,7 +604,7 @@
         "chance": 0.1626,
         "value": 1.25,
         "stake": 10.0,
-        "back": null,
+        "back": 0.0,
         "refund": false,
         "placed": true
        },
@@ -616,13 +616,18 @@
         "chance": 0.1097,
         "value": 1.54,
         "stake": 10.0,
-        "back": null,
+        "back": 0.0,
         "refund": false,
         "placed": true
        }
       ]
      },
-     "state": "placed"
+     "state": "settled",
+     "result": [
+      5,
+      9,
+      1
+     ]
     },
     {
      "race_no": 6,
@@ -1027,8 +1032,8 @@
    ],
    "review": [
     "模擬倉今日跟「首選+次選連贏」,共 9 注,每注 $10;當中 4 場未開跑,注項會跟賠率變,開跑一刻固定。",
-    "已結算 4 注:中 1 注,收回 $46,淨 +$6。",
-    "各策略今日(已結算):首選位置 4 注 -$12;首選+次選連贏 4 注 +$6;冷門馬位置 8 注 +$0;彩池值博 8 注 -$80。",
+    "已結算 5 注:中 1 注,收回 $46,淨 -$4。",
+    "各策略今日(已結算):首選位置 5 注 -$5;首選+次選連贏 5 注 -$4;冷門馬位置 10 注 -$20;彩池值博 10 注 -$100。",
     "最好一注:連贏 9-12(同心 / 紅磚戰士),派 $46.0。",
     "一日嘅賺蝕主要係運氣:一個賽馬日 8 至 11 場,中唔中一注連贏已經可以左右結果。策略要累積夠 300 場先比較,唔會因為一兩日輸贏就改。"
    ]
@@ -3235,5 +3240,5 @@
    ]
   }
  ],
- "updated_at": "2026-11-18T12:53:34+00:00"
+ "updated_at": "2026-11-18T12:55:00+00:00"
 }
