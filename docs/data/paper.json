@@ -4,20 +4,20 @@
  "stake": 10.0,
  "look_every": 300,
  "z_pass": 2.5,
- "races": 20,
+ "races": 21,
  "next_look": 300,
  "main": {
   "following": "top2_qin",
   "following_name": "首選+次選連贏",
   "balance": 837.5,
   "staked": 280.0,
-  "settled_staked": 200.0,
+  "settled_staked": 210.0,
   "returned": 117.5,
-  "net": -82.5,
+  "net": -92.5,
   "bets": 28,
   "hits": 1,
-  "pending": 8,
-  "roi": -0.4125,
+  "pending": 7,
+  "roi": -0.4405,
   "switches": [],
   "looks": []
  },
@@ -28,13 +28,13 @@
    "rule": "每場 $10 位置買排名第一嘅馬",
    "balance": 868.5,
    "staked": 280.0,
-   "settled_staked": 200.0,
+   "settled_staked": 210.0,
    "returned": 148.5,
-   "net": -51.5,
+   "net": -61.5,
    "bets": 28,
    "hits": 10,
-   "pending": 8,
-   "roi": -0.2575,
+   "pending": 7,
+   "roi": -0.2929,
    "backtest_roi": -0.1448
   },
   {
@@ -43,13 +43,13 @@
    "rule": "每場 $10 連贏買排名頭兩匹",
    "balance": 837.5,
    "staked": 280.0,
-   "settled_staked": 200.0,
+   "settled_staked": 210.0,
    "returned": 117.5,
-   "net": -82.5,
+   "net": -92.5,
    "bets": 28,
    "hits": 1,
-   "pending": 8,
-   "roi": -0.4125,
+   "pending": 7,
+   "roi": -0.4405,
    "backtest_roi": -0.069
   },
   {
@@ -58,13 +58,13 @@
    "rule": "每匹冷門馬(獨贏 10 倍以上而模型排頭五)$10 位置",
    "balance": 890.5,
    "staked": 560.0,
-   "settled_staked": 410.0,
+   "settled_staked": 420.0,
    "returned": 450.5,
-   "net": 40.5,
+   "net": 30.5,
    "bets": 56,
    "hits": 14,
-   "pending": 15,
-   "roi": 0.0988,
+   "pending": 14,
+   "roi": 0.0726,
    "backtest_roi": -0.1935
   },
   {
@@ -73,13 +73,13 @@
    "rule": "用獨贏賠率估位置、連贏、位置Q 機會;機會 × 賠率 ≥ 1.2 嘅注項入面,揀最大機會嘅兩注,每注 $10",
    "balance": 775.5,
    "staked": 560.0,
-   "settled_staked": 400.0,
+   "settled_staked": 420.0,
    "returned": 335.5,
-   "net": -64.5,
+   "net": -84.5,
    "bets": 56,
    "hits": 4,
-   "pending": 16,
-   "roi": -0.1613,
+   "pending": 14,
+   "roi": -0.2012,
    "backtest_roi": null
   }
  ],
@@ -223,7 +223,7 @@
        "chance": 0.1392,
        "value": 0.99,
        "stake": 10.0,
-       "back": null,
+       "back": 0.0,
        "refund": false,
        "placed": true
       }
@@ -238,7 +238,7 @@
         "chance": 0.7149,
         "value": 1.14,
         "stake": 10.0,
-        "back": null,
+        "back": 0.0,
         "refund": false,
         "placed": true
        }
@@ -252,7 +252,7 @@
         "chance": 0.1392,
         "value": 0.99,
         "stake": 10.0,
-        "back": null,
+        "back": 0.0,
         "refund": false,
         "placed": true
        }
@@ -266,7 +266,7 @@
         "chance": 0.1388,
         "value": 0.69,
         "stake": 10.0,
-        "back": null,
+        "back": 0.0,
         "refund": false,
         "placed": true
        }
@@ -280,7 +280,7 @@
         "chance": 0.0699,
         "value": 1.26,
         "stake": 10.0,
-        "back": null,
+        "back": 0.0,
         "refund": false,
         "placed": true
        },
@@ -292,13 +292,18 @@
         "chance": 0.0428,
         "value": 1.76,
         "stake": 10.0,
-        "back": null,
+        "back": 0.0,
         "refund": false,
         "placed": true
        }
       ]
      },
-     "state": "placed"
+     "state": "settled",
+     "result": [
+      1,
+      8,
+      10
+     ]
     },
     {
      "race_no": 3,
@@ -1024,8 +1029,8 @@
    ],
    "review": [
     "模擬倉今日跟「首選+次選連贏」,共 9 注,每注 $10;當中 7 場未開跑,注項會跟賠率變,開跑一刻固定。",
-    "已結算 1 注:中 0 注,收回 $0,淨 -$10。",
-    "各策略今日(已結算):首選位置 1 注 +$4;首選+次選連贏 1 注 -$10;冷門馬位置 3 注 +$50;彩池值博 2 注 -$20。",
+    "已結算 2 注:中 0 注,收回 $0,淨 -$20。",
+    "各策略今日(已結算):首選位置 2 注 -$6;首選+次選連贏 2 注 -$20;冷門馬位置 4 注 +$40;彩池值博 4 注 -$40。",
     "一日嘅賺蝕主要係運氣:一個賽馬日 8 至 11 場,中唔中一注連贏已經可以左右結果。策略要累積夠 300 場先比較,唔會因為一兩日輸贏就改。"
    ]
   },
@@ -3231,5 +3236,5 @@
    ]
   }
  ],
- "updated_at": "2026-11-18T11:23:39+00:00"
+ "updated_at": "2026-11-18T11:24:40+00:00"
 }
