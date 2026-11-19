@@ -9,14 +9,14 @@
  "main": {
   "following": "top2_qin",
   "following_name": "首選+次選連贏",
-  "balance": 1189.0,
-  "staked": 280.0,
+  "balance": 1079.0,
+  "staked": 390.0,
   "settled_staked": 280.0,
   "returned": 469.0,
   "net": 189.0,
-  "bets": 28,
+  "bets": 39,
   "hits": 5,
-  "pending": 0,
+  "pending": 11,
   "roi": 0.675,
   "switches": [],
   "looks": []
@@ -26,14 +26,14 @@
    "key": "fav_place",
    "name": "首選位置",
    "rule": "每場 $10 位置買排名第一嘅馬",
-   "balance": 962.5,
-   "staked": 280.0,
+   "balance": 852.5,
+   "staked": 390.0,
    "settled_staked": 280.0,
    "returned": 242.5,
    "net": -37.5,
-   "bets": 28,
+   "bets": 39,
    "hits": 16,
-   "pending": 0,
+   "pending": 11,
    "roi": -0.1339,
    "backtest_roi": -0.1417
   },
@@ -41,14 +41,14 @@
    "key": "top2_qin",
    "name": "首選+次選連贏",
    "rule": "每場 $10 連贏買排名頭兩匹",
-   "balance": 1189.0,
-   "staked": 280.0,
+   "balance": 1079.0,
+   "staked": 390.0,
    "settled_staked": 280.0,
    "returned": 469.0,
    "net": 189.0,
-   "bets": 28,
+   "bets": 39,
    "hits": 5,
-   "pending": 0,
+   "pending": 11,
    "roi": 0.675,
    "backtest_roi": -0.0635
   },
@@ -84,6 +84,600 @@
   }
  ],
  "meetings": [
+  {
+   "date": "2026-11-22",
+   "venue": "ST",
+   "venue_zh": "沙田",
+   "races": [
+    {
+     "race_no": 1,
+     "post_time": "12:30",
+     "race_name": "中銀香港跨境服務讓賽",
+     "following": "top2_qin",
+     "main": [
+      {
+       "pool": "連贏",
+       "sel": "2-12",
+       "names": "源好運 / 爆熱",
+       "odds": null,
+       "chance": null,
+       "value": null,
+       "stake": 10.0,
+       "back": null,
+       "refund": false,
+       "placed": true
+      }
+     ],
+     "books": {
+      "fav_place": [
+       {
+        "pool": "位置",
+        "sel": "2",
+        "names": "源好運",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "top2_qin": [
+       {
+        "pool": "連贏",
+        "sel": "2-12",
+        "names": "源好運 / 爆熱",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "shot_place": [],
+      "value": []
+     },
+     "state": "planned"
+    },
+    {
+     "race_no": 2,
+     "post_time": "13:00",
+     "race_name": "中銀香港中小企理財讓賽",
+     "following": "top2_qin",
+     "main": [
+      {
+       "pool": "連贏",
+       "sel": "3-2",
+       "names": "常嚐發財 / 紅錢到",
+       "odds": null,
+       "chance": null,
+       "value": null,
+       "stake": 10.0,
+       "back": null,
+       "refund": false,
+       "placed": true
+      }
+     ],
+     "books": {
+      "fav_place": [
+       {
+        "pool": "位置",
+        "sel": "3",
+        "names": "常嚐發財",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "top2_qin": [
+       {
+        "pool": "連贏",
+        "sel": "3-2",
+        "names": "常嚐發財 / 紅錢到",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "shot_place": [],
+      "value": []
+     },
+     "state": "planned"
+    },
+    {
+     "race_no": 3,
+     "post_time": "13:30",
+     "race_name": "中銀人壽讓賽",
+     "following": "top2_qin",
+     "main": [
+      {
+       "pool": "連贏",
+       "sel": "3-1",
+       "names": "包裝醒目 / 滿利時",
+       "odds": null,
+       "chance": null,
+       "value": null,
+       "stake": 10.0,
+       "back": null,
+       "refund": false,
+       "placed": true
+      }
+     ],
+     "books": {
+      "fav_place": [
+       {
+        "pool": "位置",
+        "sel": "3",
+        "names": "包裝醒目",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "top2_qin": [
+       {
+        "pool": "連贏",
+        "sel": "3-1",
+        "names": "包裝醒目 / 滿利時",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "shot_place": [],
+      "value": []
+     },
+     "state": "planned"
+    },
+    {
+     "race_no": 4,
+     "post_time": "14:15",
+     "race_name": "中銀香港「理財TRENDYTOO」讓賽",
+     "following": "top2_qin",
+     "main": [
+      {
+       "pool": "連贏",
+       "sel": "2-4",
+       "names": "紅衣醒目 / 紫荊飛躍",
+       "odds": null,
+       "chance": null,
+       "value": null,
+       "stake": 10.0,
+       "back": null,
+       "refund": false,
+       "placed": true
+      }
+     ],
+     "books": {
+      "fav_place": [
+       {
+        "pool": "位置",
+        "sel": "2",
+        "names": "紅衣醒目",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "top2_qin": [
+       {
+        "pool": "連贏",
+        "sel": "2-4",
+        "names": "紅衣醒目 / 紫荊飛躍",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "shot_place": [],
+      "value": []
+     },
+     "state": "planned"
+    },
+    {
+     "race_no": 5,
+     "post_time": "15:05",
+     "race_name": "中銀香港中銀理財讓賽",
+     "following": "top2_qin",
+     "main": [
+      {
+       "pool": "連贏",
+       "sel": "1-2",
+       "names": "跨境寶馬 / 偵探傳奇",
+       "odds": null,
+       "chance": null,
+       "value": null,
+       "stake": 10.0,
+       "back": null,
+       "refund": false,
+       "placed": true
+      }
+     ],
+     "books": {
+      "fav_place": [
+       {
+        "pool": "位置",
+        "sel": "1",
+        "names": "跨境寶馬",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "top2_qin": [
+       {
+        "pool": "連贏",
+        "sel": "1-2",
+        "names": "跨境寶馬 / 偵探傳奇",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "shot_place": [],
+      "value": []
+     },
+     "state": "planned"
+    },
+    {
+     "race_no": 6,
+     "post_time": "15:35",
+     "race_name": "中銀信用卡讓賽",
+     "following": "top2_qin",
+     "main": [
+      {
+       "pool": "連贏",
+       "sel": "4-1",
+       "names": "紫荊傳令 / 勇謀神駒",
+       "odds": null,
+       "chance": null,
+       "value": null,
+       "stake": 10.0,
+       "back": null,
+       "refund": false,
+       "placed": true
+      }
+     ],
+     "books": {
+      "fav_place": [
+       {
+        "pool": "位置",
+        "sel": "4",
+        "names": "紫荊傳令",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "top2_qin": [
+       {
+        "pool": "連贏",
+        "sel": "4-1",
+        "names": "紫荊傳令 / 勇謀神駒",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "shot_place": [],
+      "value": []
+     },
+     "state": "planned"
+    },
+    {
+     "race_no": 7,
+     "post_time": "16:05",
+     "race_name": "中銀香港私人銀行馬會短途錦標",
+     "following": "top2_qin",
+     "main": [
+      {
+       "pool": "連贏",
+       "sel": "1-5",
+       "names": "嘉應高昇 / 嘉應奇兵",
+       "odds": null,
+       "chance": null,
+       "value": null,
+       "stake": 10.0,
+       "back": null,
+       "refund": false,
+       "placed": true
+      }
+     ],
+     "books": {
+      "fav_place": [
+       {
+        "pool": "位置",
+        "sel": "1",
+        "names": "嘉應高昇",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "top2_qin": [
+       {
+        "pool": "連贏",
+        "sel": "1-5",
+        "names": "嘉應高昇 / 嘉應奇兵",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "shot_place": [],
+      "value": []
+     },
+     "state": "planned"
+    },
+    {
+     "race_no": 8,
+     "post_time": "16:40",
+     "race_name": "中銀香港私人財富馬會一哩錦標",
+     "following": "top2_qin",
+     "main": [
+      {
+       "pool": "連贏",
+       "sel": "1-7",
+       "names": "祝願 / 光年魅力",
+       "odds": null,
+       "chance": null,
+       "value": null,
+       "stake": 10.0,
+       "back": null,
+       "refund": false,
+       "placed": true
+      }
+     ],
+     "books": {
+      "fav_place": [
+       {
+        "pool": "位置",
+        "sel": "1",
+        "names": "祝願",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "top2_qin": [
+       {
+        "pool": "連贏",
+        "sel": "1-7",
+        "names": "祝願 / 光年魅力",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "shot_place": [],
+      "value": []
+     },
+     "state": "planned"
+    },
+    {
+     "race_no": 9,
+     "post_time": "17:15",
+     "race_name": "中銀香港馬會盃",
+     "following": "top2_qin",
+     "main": [
+      {
+       "pool": "連贏",
+       "sel": "3-9",
+       "names": "港邊小區 / 大至尊",
+       "odds": null,
+       "chance": null,
+       "value": null,
+       "stake": 10.0,
+       "back": null,
+       "refund": false,
+       "placed": true
+      }
+     ],
+     "books": {
+      "fav_place": [
+       {
+        "pool": "位置",
+        "sel": "3",
+        "names": "港邊小區",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "top2_qin": [
+       {
+        "pool": "連贏",
+        "sel": "3-9",
+        "names": "港邊小區 / 大至尊",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "shot_place": [],
+      "value": []
+     },
+     "state": "planned"
+    },
+    {
+     "race_no": 10,
+     "post_time": "17:50",
+     "race_name": "中銀香港BOC PAY+ 讓賽",
+     "following": "top2_qin",
+     "main": [
+      {
+       "pool": "連贏",
+       "sel": "3-8",
+       "names": "嵐臣 / 絲王之王",
+       "odds": null,
+       "chance": null,
+       "value": null,
+       "stake": 10.0,
+       "back": null,
+       "refund": false,
+       "placed": true
+      }
+     ],
+     "books": {
+      "fav_place": [
+       {
+        "pool": "位置",
+        "sel": "3",
+        "names": "嵐臣",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "top2_qin": [
+       {
+        "pool": "連贏",
+        "sel": "3-8",
+        "names": "嵐臣 / 絲王之王",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "shot_place": [],
+      "value": []
+     },
+     "state": "planned"
+    },
+    {
+     "race_no": 11,
+     "post_time": "18:25",
+     "race_name": "中銀香港FAMILYMAX讓賽",
+     "following": "top2_qin",
+     "main": [
+      {
+       "pool": "連贏",
+       "sel": "8-9",
+       "names": "綫路英雄 / 包裝明將",
+       "odds": null,
+       "chance": null,
+       "value": null,
+       "stake": 10.0,
+       "back": null,
+       "refund": false,
+       "placed": true
+      }
+     ],
+     "books": {
+      "fav_place": [
+       {
+        "pool": "位置",
+        "sel": "8",
+        "names": "綫路英雄",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "top2_qin": [
+       {
+        "pool": "連贏",
+        "sel": "8-9",
+        "names": "綫路英雄 / 包裝明將",
+        "odds": null,
+        "chance": null,
+        "value": null,
+        "stake": 10.0,
+        "back": null,
+        "refund": false,
+        "placed": true
+       }
+      ],
+      "shot_place": [],
+      "value": []
+     },
+     "state": "planned"
+    }
+   ],
+   "review": [
+    "模擬倉今日跟「首選+次選連贏」,共 11 注,每注 $10;當中 11 場未開跑,注項會跟賠率變,開跑一刻固定。",
+    "一日嘅賺蝕主要係運氣:一個賽馬日 8 至 11 場,中唔中一注連贏已經可以左右結果。策略要累積夠 300 場先比較,唔會因為一兩日輸贏就改。"
+   ]
+  },
   {
    "date": "2026-11-18",
    "venue": "HV",
@@ -3260,5 +3854,5 @@
    ]
   }
  ],
- "updated_at": "2026-11-18T19:38:47+00:00"
+ "updated_at": "2026-11-19T01:03:16+00:00"
 }
