@@ -4,7 +4,7 @@
   "venue": "ST",
   "venue_zh": "沙田"
  },
- "updated_at": "2026-11-20T08:18:57+00:00",
+ "updated_at": "2026-11-21T02:38:47+00:00",
  "model": {
   "holdout": {
    "races": 654,
@@ -4403,57 +4403,6 @@
    "runners": [
     {
      "rank": 1,
-     "no": 3,
-     "horse": "港邊小區",
-     "horse_code": "K902",
-     "jockey": "麥道朗",
-     "trainer": "游孝廉",
-     "draw": 9,
-     "weight": 123,
-     "rating": null,
-     "last6": "3/4/12",
-     "gear": "CP-/XB/TT",
-     "win_prob": 0.2276,
-     "fair_odds": 4.4,
-     "style": "中游",
-     "speed_best": 7.3,
-     "perf_best": 134.4,
-     "handicap_edge": 17.4,
-     "runs_in_db": 3,
-     "draw_edge": 0.045,
-     "pros": [
-      "讓磅著數",
-      "表現評分(近績最佳)",
-      "騎師"
-     ],
-     "cons": [
-      "評分變動",
-      "過往市場評價"
-     ],
-     "strong": [
-      {
-       "date": "2026-04-26",
-       "venue": "ST",
-       "race_no": 7,
-       "place": 3,
-       "faster": 0.56,
-       "placed": 4,
-       "place_raw": null
-      }
-     ],
-     "win_odds": null,
-     "place_odds": null,
-     "market_prob": null,
-     "blend_prob": null,
-     "ev": null,
-     "value": false,
-     "longshot": false,
-     "open_odds": null,
-     "steam": false,
-     "final_rank": 1
-    },
-    {
-     "rank": 2,
      "no": 9,
      "horse": "大至尊",
      "horse_code": "J208",
@@ -4464,12 +4413,12 @@
      "rating": 102,
      "last6": "3/1/5/12/6/4",
      "gear": "CP",
-     "win_prob": 0.1747,
-     "fair_odds": 5.7,
+     "win_prob": 0.2254,
+     "fair_odds": 4.4,
      "style": "後上",
      "speed_best": 6.4,
      "perf_best": 105.6,
-     "handicap_edge": -0.4,
+     "handicap_edge": 0.0,
      "runs_in_db": 12,
      "draw_edge": 0.169,
      "pros": [
@@ -4491,10 +4440,10 @@
      "longshot": false,
      "open_odds": null,
      "steam": false,
-     "final_rank": 2
+     "final_rank": 1
     },
     {
-     "rank": 3,
+     "rank": 2,
      "no": 1,
      "horse": "遨遊氣泡",
      "horse_code": "E436",
@@ -4505,12 +4454,12 @@
      "rating": 126,
      "last6": "11/5/3/5/3/1",
      "gear": "B",
-     "win_prob": 0.1367,
-     "fair_odds": 7.3,
+     "win_prob": 0.1755,
+     "fair_odds": 5.7,
      "style": "前列",
      "speed_best": 8.3,
      "perf_best": 134.5,
-     "handicap_edge": 4.4,
+     "handicap_edge": 4.9,
      "runs_in_db": 27,
      "draw_edge": 0.295,
      "pros": [
@@ -4542,10 +4491,10 @@
      "longshot": false,
      "open_odds": null,
      "steam": false,
-     "final_rank": 3
+     "final_rank": 2
     },
     {
-     "rank": 4,
+     "rank": 3,
      "no": 7,
      "horse": "嘉應傳承",
      "horse_code": "J075",
@@ -4556,12 +4505,12 @@
      "rating": 78,
      "last6": "4/10/5/7/2/3",
      "gear": "CP/TT",
-     "win_prob": 0.0993,
-     "fair_odds": 10.1,
+     "win_prob": 0.128,
+     "fair_odds": 7.8,
      "style": "後上",
      "speed_best": 3.3,
      "perf_best": 84.5,
-     "handicap_edge": 2.5,
+     "handicap_edge": 2.9,
      "runs_in_db": 21,
      "draw_edge": -0.124,
      "pros": [
@@ -4583,10 +4532,10 @@
      "longshot": false,
      "open_odds": null,
      "steam": false,
-     "final_rank": 4
+     "final_rank": 3
     },
     {
-     "rank": 5,
+     "rank": 4,
      "no": 2,
      "horse": "數字天文",
      "horse_code": "L080",
@@ -4597,12 +4546,12 @@
      "rating": 108,
      "last6": "6/2/7/2/4/1",
      "gear": "XB",
-     "win_prob": 0.0933,
-     "fair_odds": 10.7,
+     "win_prob": 0.1193,
+     "fair_odds": 8.4,
      "style": "領放",
      "speed_best": 7.1,
      "perf_best": 107.8,
-     "handicap_edge": -4.2,
+     "handicap_edge": -3.8,
      "runs_in_db": 8,
      "draw_edge": -0.057,
      "pros": [
@@ -4624,10 +4573,10 @@
      "longshot": false,
      "open_odds": null,
      "steam": false,
-     "final_rank": 5
+     "final_rank": 4
     },
     {
-     "rank": 6,
+     "rank": 5,
      "no": 8,
      "horse": "君子傳承",
      "horse_code": "K385",
@@ -4638,12 +4587,12 @@
      "rating": 95,
      "last6": "2/4/9/8/2/4",
      "gear": "B/TT",
-     "win_prob": 0.0916,
-     "fair_odds": 10.9,
+     "win_prob": 0.118,
+     "fair_odds": 8.5,
      "style": "中游",
      "speed_best": 0.6,
      "perf_best": 95.3,
-     "handicap_edge": -3.7,
+     "handicap_edge": -3.3,
      "runs_in_db": 18,
      "draw_edge": 0.099,
      "pros": [
@@ -4665,10 +4614,10 @@
      "longshot": false,
      "open_odds": null,
      "steam": false,
-     "final_rank": 6
+     "final_rank": 5
     },
     {
-     "rank": 7,
+     "rank": 6,
      "no": 6,
      "horse": "天將龍駒",
      "horse_code": "K129",
@@ -4679,12 +4628,12 @@
      "rating": 96,
      "last6": "8/5/3/8/3/1",
      "gear": "",
-     "win_prob": 0.0619,
-     "fair_odds": 16.2,
+     "win_prob": 0.08,
+     "fair_odds": 12.5,
      "style": "後上",
      "speed_best": 6.8,
      "perf_best": 97.9,
-     "handicap_edge": -2.1,
+     "handicap_edge": -1.7,
      "runs_in_db": 20,
      "draw_edge": -0.221,
      "pros": [
@@ -4706,10 +4655,10 @@
      "longshot": false,
      "open_odds": null,
      "steam": false,
-     "final_rank": 7
+     "final_rank": 6
     },
     {
-     "rank": 8,
+     "rank": 7,
      "no": 10,
      "horse": "銀亮奔騰",
      "horse_code": "K057",
@@ -4720,12 +4669,12 @@
      "rating": 90,
      "last6": "4/6/9/3/4/1",
      "gear": "CP/TT",
-     "win_prob": 0.0614,
-     "fair_odds": 16.3,
+     "win_prob": 0.0792,
+     "fair_odds": 12.6,
      "style": "後上",
      "speed_best": -1.3,
      "perf_best": 94.4,
-     "handicap_edge": 0.4,
+     "handicap_edge": 0.9,
      "runs_in_db": 20,
      "draw_edge": -0.242,
      "pros": [
@@ -4747,10 +4696,10 @@
      "longshot": false,
      "open_odds": null,
      "steam": false,
-     "final_rank": 8
+     "final_rank": 7
     },
     {
-     "rank": 9,
+     "rank": 8,
      "no": 5,
      "horse": "浪漫戰神",
      "horse_code": "K012",
@@ -4761,12 +4710,12 @@
      "rating": 86,
      "last6": "12/9/7/3/4/1",
      "gear": "XB/TT",
-     "win_prob": 0.0319,
-     "fair_odds": 31.3,
+     "win_prob": 0.041,
+     "fair_odds": 24.4,
      "style": "前列",
      "speed_best": 0.4,
      "perf_best": 86.5,
-     "handicap_edge": -3.5,
+     "handicap_edge": -3.1,
      "runs_in_db": 18,
      "draw_edge": 0.234,
      "pros": [
@@ -4788,28 +4737,28 @@
      "longshot": false,
      "open_odds": null,
      "steam": false,
-     "final_rank": 9
+     "final_rank": 8
     },
     {
-     "rank": 10,
+     "rank": 9,
      "no": 4,
      "horse": "安騁",
      "horse_code": "H452",
      "jockey": "麥文堅",
      "trainer": "蔡約翰",
-     "draw": 10,
+     "draw": 9,
      "weight": 123,
      "rating": 96,
      "last6": "9/13/2/4/10/9",
      "gear": "B",
-     "win_prob": 0.0217,
-     "fair_odds": 46.2,
+     "win_prob": 0.0337,
+     "fair_odds": 29.7,
      "style": "中游",
      "speed_best": 5.5,
      "perf_best": 100.5,
-     "handicap_edge": 0.5,
+     "handicap_edge": 0.9,
      "runs_in_db": 25,
-     "draw_edge": -0.263,
+     "draw_edge": 0.045,
      "pros": [
       "表現評分(近績最佳)"
      ],
@@ -4827,11 +4776,11 @@
      "longshot": false,
      "open_odds": null,
      "steam": false,
-     "final_rank": 10
+     "final_rank": 9
     }
    ],
    "ai": null,
-   "summary": "【步速】2號數字天文有機會爭放。預計步速中等(1 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:1號遨遊氣泡、2號數字天文。\n【場地】今日草地未有已完成賽事,未能計算即日場地走勢;此跑道路程往績太少,未能比較跑法。檔位統計著數:1號遨遊氣泡、5號浪漫戰神。7號嘉應傳承檔位統計較差。\n【選擇】首選3號港邊小區(模型 23%,公平賠率 4.4):讓磅著數、表現評分(近績最佳)、騎師佔優,讓磅著數比同場中位數多約 17 分;次選9號大至尊(模型 17%,公平賠率 5.7):騎師、表現評分(近績最佳)、近況佔優;三選1號遨遊氣泡(模型 14%,公平賠率 7.3):表現評分(近績最佳)、檔位統計、試閘名次佔優,讓磅著數比同場中位數多約 4 分。\n【風險】3號港邊小區要留意評分變動、過往市場評價;9號大至尊要留意升班、後段追勁;賠率會變,以開跑前為準。"
+   "summary": "【步速】2號數字天文有機會爭放。預計步速中等(1 匹慣常跑喺最前嘅位置)。沙田同類步速歷來每匹馬勝出率:領放 10.9%、前列 9.4%、中游 8.3%、後上 5.6%;前置馬仍然較有利。跑法配合嘅熱門選擇:1號遨遊氣泡、2號數字天文。\n【場地】今日草地未有已完成賽事,未能計算即日場地走勢;此跑道路程往績太少,未能比較跑法。檔位統計著數:1號遨遊氣泡、5號浪漫戰神。7號嘉應傳承檔位統計較差。\n【選擇】首選9號大至尊(模型 23%,公平賠率 4.4):騎師、表現評分(近績最佳)、近況佔優;次選1號遨遊氣泡(模型 18%,公平賠率 5.7):表現評分(近績最佳)、檔位統計、試閘名次佔優,讓磅著數比同場中位數多約 5 分;三選7號嘉應傳承(模型 13%,公平賠率 7.8):試閘名次、上仗速度指數、表現評分(近績最佳)佔優。\n【風險】9號大至尊要留意升班、後段追勁;1號遨遊氣泡要留意狀態走勢、末段速度(分段時間);賠率會變,以開跑前為準。"
   },
   {
    "race_no": 10,
